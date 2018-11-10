@@ -1,0 +1,694 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.25)  10 NOV 2018 18:12
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**Latex.tex
+(./Latex.tex
+LaTeX2e <2018-04-01> patch level 2
+Babel <3.18> and hyphenation patterns for 22 language(s) loaded.
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 99.
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen103
+\Gin@req@width=\dimen104
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/tools/longtable.sty
+Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)
+\LTleft=\skip43
+\LTright=\skip44
+\LTpre=\skip45
+\LTpost=\skip46
+\LTchunksize=\count88
+\LTcapwidth=\dimen105
+\LT@head=\box26
+\LT@firsthead=\box27
+\LT@foot=\box28
+\LT@lastfoot=\box29
+\LT@cols=\count89
+\LT@rows=\count90
+\c@LT@tables=\count91
+\c@LT@chunks=\count92
+\LT@p@ftn=\toks15
+)
+(./Latex.aux
+
+LaTeX Warning: Label `fig:Logo' multiply defined.
+
+)
+\openout1 = `Latex.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+ (/usr/local/texlive/2018basic/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count93
+\scratchdimen=\dimen106
+\scratchbox=\box30
+\nofMPsegments=\count94
+\nofMParguments=\count95
+\everyMPshowfont=\toks16
+\MPscratchCnt=\count96
+\MPscratchDim=\dimen107
+\MPnumerator=\count97
+\makeMPintoPDFobject=\count98
+\everyMPtoPDFconversion=\toks17
+) (/usr/local/texlive/2018basic/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+)))
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2018/01/30 v0.27 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+38.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+<./images/logo.png, id=1, 666.49pt x 489.83pt>
+File: ./images/logo.png Graphic file (type png)
+<use ./images/logo.png>
+Package pdftex.def Info: ./images/logo.png  used on input line 18.
+(pdftex.def)             Requested size: 345.0pt x 253.55457pt.
+ [1
+
+{/usr/local/texlive/2018basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./
+images/logo.png>] (./Latex.toc
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 2.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 2.
+ [1])
+\tf@toc=\write3
+\openout3 = `Latex.toc'.
+
+ [2]
+Underfull \hbox (badness 10000) in paragraph at lines 50--66
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 50--66
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 50--66
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 50--66
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 50--66
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 50--66
+
+ []
+
+[3]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 69.
+ (/usr/local/texlive/2018basic/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 69.
+
+Underfull \hbox (badness 10000) in paragraph at lines 73--76
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 76--79
+
+ []
+
+[4]
+Underfull \hbox (badness 10000) in paragraph at lines 85--89
+
+ []
+
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 113--114
+
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 154
+ []
+
+
+Overfull \vbox (13.84973pt too high) has occurred while \output is active []
+
+
+[6] [7]
+Overfull \hbox (32.13979pt too wide) in paragraph at lines 211--212
+[]\OT1/cmr/m/n/10 Alloy Of-fi-cial Doc-u-men-ta-tion: http://alloy.lcs.mit.edu/
+alloy/documentation.html 
+ []
+
+[8] [9]
+Underfull \hbox (badness 10000) in paragraph at lines 231--236
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 231--236
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 231--236
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 237--239
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 240--242
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 243--245
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 246--248
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 249--251
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 252--254
+
+ []
+
+[10]
+Underfull \hbox (badness 10000) in paragraph at lines 255--257
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 258--260
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 261--263
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 264--266
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 267--269
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 270--272
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 273--275
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 276--278
+
+ []
+
+[11]
+Underfull \hbox (badness 10000) in paragraph at lines 279--281
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 282--284
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 285--287
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 288--290
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 291--293
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 294--296
+
+ []
+
+<./images/Diagrammi/D4HClass.png, id=51, 1205.50375pt x 1606.0pt>
+File: ./images/Diagrammi/D4HClass.png Graphic file (type png)
+<use ./images/Diagrammi/D4HClass.png>
+Package pdftex.def Info: ./images/Diagrammi/D4HClass.png  used on input line 30
+1.
+(pdftex.def)             Requested size: 345.0pt x 459.6017pt.
+<./images/Diagrammi/SOSClass.png, id=52, 542.025pt x 797.98125pt>
+File: ./images/Diagrammi/SOSClass.png Graphic file (type png)
+<use ./images/Diagrammi/SOSClass.png>
+Package pdftex.def Info: ./images/Diagrammi/SOSClass.png  used on input line 30
+7.
+(pdftex.def)             Requested size: 345.0pt x 507.93008pt.
+<./images/Diagrammi/T4RClass.png, id=53, 1538.74875pt x 1606.0pt>
+File: ./images/Diagrammi/T4RClass.png Graphic file (type png)
+<use ./images/Diagrammi/T4RClass.png>
+Package pdftex.def Info: ./images/Diagrammi/T4RClass.png  used on input line 31
+3.
+(pdftex.def)             Requested size: 345.0pt x 360.06012pt.
+<./images/Diagrammi/groupStateChart.png, id=54, 1606.0pt x 1153.30875pt>
+File: ./images/Diagrammi/groupStateChart.png Graphic file (type png)
+<use ./images/Diagrammi/groupStateChart.png>
+Package pdftex.def Info: ./images/Diagrammi/groupStateChart.png  used on input 
+line 321.
+(pdftex.def)             Requested size: 345.0pt x 247.74538pt.
+<./images/Diagrammi/singleStateChart.png, id=55, 592.2125pt x 618.31pt>
+File: ./images/Diagrammi/singleStateChart.png Graphic file (type png)
+<use ./images/Diagrammi/singleStateChart.png>
+Package pdftex.def Info: ./images/Diagrammi/singleStateChart.png  used on input
+ line 327.
+(pdftex.def)             Requested size: 345.0pt x 360.21451pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 333--334
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 336--341
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 336--341
+
+ []
+
+[12]
+Underfull \hbox (badness 10000) in paragraph at lines 342--344
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 345--347
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 348--350
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 351--356
+
+ []
+
+[13]
+Underfull \hbox (badness 10000) in paragraph at lines 361--362
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 363--364
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 372--373
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 374--375
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 376--379
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 380--385
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 380--385
+
+ []
+
+[14]
+Underfull \hbox (badness 10000) in paragraph at lines 388--399
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 388--399
+
+ []
+
+[15] [16]
+Underfull \hbox (badness 10000) in paragraph at lines 442--443
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 444--447
+
+ []
+
+[17]
+Underfull \hbox (badness 10000) in paragraph at lines 457--458
+
+ []
+
+<./images/D4HLogo.jpg, id=75, 681.5061pt x 460.8417pt>
+File: ./images/D4HLogo.jpg Graphic file (type jpg)
+<use ./images/D4HLogo.jpg>
+Package pdftex.def Info: ./images/D4HLogo.jpg  used on input line 465.
+(pdftex.def)             Requested size: 241.49895pt x 163.30109pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<./images/mockupRegisterSU.png, id=76, 376.40625pt x 672.01062pt>
+File: ./images/mockupRegisterSU.png Graphic file (type png)
+<use ./images/mockupRegisterSU.png>
+Package pdftex.def Info: ./images/mockupRegisterSU.png  used on input line 472.
+
+(pdftex.def)             Requested size: 172.5pt x 307.98018pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 479--481
+
+ []
+
+[18] [19]
+Underfull \hbox (badness 10000) in paragraph at lines 519--520
+
+ []
+
+File: ./images/D4HLogo.jpg Graphic file (type jpg)
+<use ./images/D4HLogo.jpg>
+Package pdftex.def Info: ./images/D4HLogo.jpg  used on input line 527.
+(pdftex.def)             Requested size: 241.49895pt x 163.30109pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 536--538
+
+ []
+
+[20]
+Underfull \hbox (badness 10000) in paragraph at lines 539--541
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 553--554
+
+ []
+
+[21]
+<./images/SingleUserUseCase.png, id=90, 737.75626pt x 603.25375pt>
+File: ./images/SingleUserUseCase.png Graphic file (type png)
+<use ./images/SingleUserUseCase.png>
+Package pdftex.def Info: ./images/SingleUserUseCase.png  used on input line 591
+.
+(pdftex.def)             Requested size: 345.0pt x 282.10254pt.
+<./images/ThirdPartyUseCase.png, id=91, 607.26875pt x 527.9725pt>
+File: ./images/ThirdPartyUseCase.png Graphic file (type png)
+<use ./images/ThirdPartyUseCase.png>
+Package pdftex.def Info: ./images/ThirdPartyUseCase.png  used on input line 597
+.
+(pdftex.def)             Requested size: 345.0pt x 299.95653pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 605--608
+[]\OT1/cmr/bx/n/10 Scenario 1
+ []
+
+[22]
+Underfull \hbox (badness 10000) in paragraph at lines 608--612
+[]\OT1/cmr/bx/n/10 Scenario 2
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 612--616
+[]\OT1/cmr/bx/n/10 Scenario 3
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 616--618
+[]\OT1/cmr/bx/n/10 Scenario 4
+ []
+
+[23]
+Overfull \hbox (48.88582pt too wide) in alignment at lines 624--677
+ [] [] 
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 677
+ []
+
+[24] [25]
+Overfull \hbox (48.88582pt too wide) in alignment at lines 680--689
+ [] [] 
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 689
+ []
+
+[26] [27] [28] [29] [30]
+Underfull \hbox (badness 10000) in paragraph at lines 844--852
+
+ []
+
+[31]
+Underfull \hbox (badness 10000) in paragraph at lines 876--878
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 879--881
+
+ []
+
+[32]
+Underfull \hbox (badness 10000) in paragraph at lines 890--891
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 892--893
+
+ []
+
+[33]
+Underfull \hbox (badness 10000) in paragraph at lines 900--909
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 900--909
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 900--909
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 900--909
+
+ []
+
+<./images/Alloy/staticAlloy.png, id=130, 618.05907pt x 562.35094pt>
+File: ./images/Alloy/staticAlloy.png Graphic file (type png)
+<use ./images/Alloy/staticAlloy.png>
+Package pdftex.def Info: ./images/Alloy/staticAlloy.png  used on input line 913
+.
+(pdftex.def)             Requested size: 241.49895pt x 219.72786pt.
+<./images/Alloy/staticModel.png, id=131, 534.49687pt x 280.04625pt>
+File: ./images/Alloy/staticModel.png Graphic file (type png)
+<use ./images/Alloy/staticModel.png>
+Package pdftex.def Info: ./images/Alloy/staticModel.png  used on input line 920
+.
+(pdftex.def)             Requested size: 345.0pt x 180.7673pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 926--935
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 926--935
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 926--935
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 926--935
+
+ []
+
+[34] [35] [36 <./images/Diagrammi/D4HClass.png>] [37 <./images/Diagrammi/SOSCla
+ss.png>] [38 <./images/Diagrammi/T4RClass.png>] [39 <./images/Diagrammi/groupSt
+ateChart.png>] [40 <./images/Diagrammi/singleStateChart.png>] [41 <./images/D4H
+Logo.jpg> <./images/mockupRegisterSU.png>] [42 <./images/SingleUserUseCase.png>
+] [43 <./images/ThirdPartyUseCase.png>] [44 <./images/Alloy/staticAlloy.png> <.
+/images/Alloy/staticModel.png>] (./Latex.aux)
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 1616 strings out of 494091
+ 24451 string characters out of 6163522
+ 95465 words of memory out of 5000000
+ 5277 multiletter control sequences out of 15000+600000
+ 6748 words of font info for 24 fonts, out of 8000000 for 9000
+ 319 hyphenation exceptions out of 8191
+ 41i,7n,25p,1071b,375s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx1
+0.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mbx12.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmr10.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmr12.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmr17.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmti10.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmti12.pfb>
+Output written on Latex.pdf (45 pages, 1069883 bytes).
+PDF statistics:
+ 202 PDF objects out of 1000 (max. 8388607)
+ 127 compressed objects within 2 object streams
+ 0 named destinations out of 1000 (max. 500000)
+ 61 words of extra memory for PDF output out of 10000 (max. 10000000)
+
