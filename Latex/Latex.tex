@@ -3,6 +3,7 @@
 
 \usepackage{graphicx}
 \usepackage{longtable}
+\usepackage{float}
 \graphicspath{ {./images/} }
 			
 
@@ -296,19 +297,19 @@ All sensitive data are encrypted by the System in order to guarantee the privacy
 
 		\subsubsection{Class Diagrams}
 		
-		\begin{figure}[ht]
+		\begin{figure}[H]
 			\center
   			\includegraphics[width=\textwidth]{Diagrammi/D4HClass.png}
   			\caption{Data4Help Class Diagram}
  			\label{fig:D4HClass}
 		\end{figure}
-		\begin{figure}[ht]
+		\begin{figure}[H]
 			\center
   			\includegraphics[width=\textwidth]{Diagrammi/SOSClass.png}
   			\caption{Automated SOS Class Diagram}
  			\label{fig:SOSClass}
 		\end{figure}
-		\begin{figure}[ht]
+		\begin{figure}[H]
 			\center
   			\includegraphics[width=\textwidth]{Diagrammi/T4RClass.png}
   			\caption{Track4Run Class Diagram}
@@ -316,13 +317,13 @@ All sensitive data are encrypted by the System in order to guarantee the privacy
 		\end{figure}
 		
 		\subsubsection{State Charts}
-		\begin{figure}[ht]
+		\begin{figure}[H]
 			\center
   			\includegraphics[width=\textwidth]{Diagrammi/groupStateChart.png}
   			\caption{ Group request state chart}
  			\label{fig:groupStateChart}
 		\end{figure}
-		\begin{figure}[ht]
+		\begin{figure}[H]
 			\center
   			\includegraphics[width=\textwidth]{Diagrammi/singleStateChart.png}
   			\caption{ Single request state chart}
@@ -456,63 +457,129 @@ We will now briefly precise which types of users the System encounters at differ
 		\begin{itemize}
 			\item {\bf DATA4HELP INTERFACES} \\[1ex]
 			\begin{itemize}
+
 				\item{\bf Logo}\\
 			Data4Help’s Logo represents a heart containing the sketch of a pulse. This simple image fully captures the purpose of the service: to collect data concerning individuals’ health and allowing it to be monitored. \\
 The logo is also used as the application’s icon and will be visible to whoever downloads the app onto his device.
-
-					\begin{figure}[h]
+					\begin{figure}[H]
 						\center
   						\includegraphics[width=0.7\columnwidth]{D4HLogo.jpg}
   						\caption{Data4Help Logo}
  						\label{fig:Logo}
 					\end{figure}
+
 				\item{\bf Login or Signup}\\
 			When a Guest downloads Data4Help for the first time, the first interface will ask the user to choose between login and signup. If the user has already created an account he will choose to login in order to access the application’s functionalities. If the user instead has not created an account yet he will choose the signup option.\\
-					\begin{figure}[h]
-  						\includegraphics[width=0.5\columnwidth]{Mockup/mockupRegisterSU.png}
-  						\caption{Single User Registration Interface}
- 					 \label{fig:SURegister}
+					\begin{figure}[H]
+						\center
+  						\includegraphics[width=0.5\columnwidth]{Mockup/mockupLogin.png}
+  						\caption{Login interface}
+ 						 \label{fig:Login}
 					\end{figure}
+
 				\item{\bf Tutorial}\\
-				When a Guest decides to create a new account Data4Help provides him with a simple guide to the service. The user will easily swipe from one page to another and follow the tutorial on all the features it can access after registration. 
+				When a Guest decides to create a new account Data4Help provides him with a simple guide to the service. The user will easily swipe from one page to another and follow the tutorial on all the features it can access after registration. \\
+					\begin{figure}[H]
+						\center
+  						\includegraphics[width=0.5\columnwidth]{Mockup/mockupTutorial.png}
+  						\caption{Tutorial interface}
+ 					 	\label{fig:Tutorial}
+					\end{figure}
 
 				\item{\bf Create an account}\\
 				Following the initial guide a Guest will be able to create an account and register to the service. The user will be asked to select which type of account to create: Single User or Third Party. Once the type has been selected, the user will be asked to fill in a form with his general information, an email that will identify him uniquely and a password. Furthermore, according to the type of account, a user will have to provide a unique FC or P.IVA if creating respectively a Single User account or Third Party account.\\
+					\begin{figure}[H]
+						\center
+  						\includegraphics[width=0.5\columnwidth]{Mockup/mockupRegisterSU.png}
+  						\caption{Single User registration interface}
+ 					 	\label{fig:SURegister}
+					\end{figure}
+
+					\begin{figure}[H]
+						\center
+  						\includegraphics[width=0.5\columnwidth]{Mockup/mockupRegisterTP.png}
+  						\caption{Third Party registration interface}
+ 					 	\label{fig:TPRegister}
+					\end{figure}
 
 				\item{\bf Single User Interface} \\
 			When a user signs in with a Single User account he is presented with the first of a sequence of interfaces, all handled by a Tab Bar Controller. We will now detail the features of each tab:
 				\begin{itemize}
-					\item[$\circ$] Research tab
 					\item[$\circ$] My Health tab\\
 				My Health tab is the default tab, the first interface presented to the Single User. It displays a summary of the user’s health, measured thanks to the data imported from the device onto which the app is downloaded. This is the interface that a user will access in order to monitor his health status and have a clear view of how his parameters compare to the average for his age. Furthermore, plots, tables and charts will guarantee a more user friendly experience.\\
-Finally in this section the user will be able to activate at anytime AutomatedSOS. A simple click on the SOS icon will enable this feature and immediately contact an ambulance in case of critical health status.
+Finally in this section the user will be able to activate at anytime AutomatedSOS. A simple click on the SOS icon will enable this feature and immediately contact an ambulance in case of critical health status.\\
+					\begin{figure}[H]
+						\center
+  						\includegraphics[width=0.5\columnwidth]{Mockup/mockupMyHealth.png}
+  						\caption{My Health tab}
+ 					 	\label{fig:MyH}
+					\end{figure}
 
 					\item[$\circ$] My Settings tab \\
 				My settings is the tab that allows a user to manage his personal data associated to his account. In this section a user may at any time modify his general information and password. However a user can never change the email and CF associated to its account as they are its unique identifiers.\\
-In this screen the user will find all the information linked to its account in a list, where each item can be modified at any time. After any modification the user will have to save its updates in order to notify the application’s server.
+In this screen the user will find all the information linked to its account in a list, where each item can be modified at any time. After any modification the user will have to save its updates in order to notify the application’s server.\\
+					\begin{figure}[H]
+						\center
+  						\includegraphics[width=0.5\columnwidth]{Mockup/mockupSettingsSU.png}
+  						\caption{My Settings tab}
+ 					 	\label{fig:MyS}
+					\end{figure}
 
 					\item[$\circ$] My Followers tab \\
-				My followers is the tab that allows a user to keep track of all the Third Parties requesting his data. These include both those Third Parties that have performed single requests and those that have subscribed to the user’s data. Furthermore in this section the user will also be able to accept or reject pending requests.
+				My followers is the tab that allows a user to keep track of all the Third Parties requesting his data. These include both those Third Parties that have performed single requests and those that have subscribed to the user’s data. Furthermore in this section the user will also be able to accept or reject pending requests.\\
+					\begin{figure}[H]
+						\center
+  						\includegraphics[width=0.5\columnwidth]{Mockup/mockupMyFollowers.png}
+  						\caption{My Followers tab}
+ 					 	\label{fig:MyF}
+					\end{figure}
 
 				\end{itemize}
 			
 				\item{\bf Third Party Interface}
 				\begin{itemize}
+
 					\item[$\circ$] Research tab \\
-				The research tab is the default tab, the first interface presented to the Third Party. This is the section in which the Third Party can perform requests to individuals or on groups of users. The interface suggests the user to select one of the two types of requests. According to the selected type, the Third Party will have to fill in a form providing all the necessary parameters to perform the research.
+				The research tab is the default tab, the first interface presented to the Third Party. This is the section in which the Third Party can perform requests to individuals or on groups of users. The interface suggests the user to select one of the two types of requests. According to the selected type, the Third Party will have to fill in a form providing all the necessary parameters to perform the research.\\
+					\begin{figure}[H]
+						\center
+  						\includegraphics[width=0.5\columnwidth]{Mockup/mockupSingleRequest.png}
+  						\caption{Single Request tab}
+ 					 	\label{fig:SRtab}
+					\end{figure}
+
+					\begin{figure}[H]
+						\center
+  						\includegraphics[width=0.5\columnwidth]{Mockup/mockupGroupRequest.png}
+  						\caption{Group Request tab}
+ 					 	\label{fig:GRtab}
+					\end{figure}
+
 					\item[$\circ$] History tab\\
 				In this tab the Third Party will be able to save all the searches it has performed on individuals or anonymous groups of users. The screen displays a list of items in chronological order, each representing an old or pending request.\\
 Each item in the list has the following features:
 						\begin{itemize}
 							\item name: FC or email of an individual, in case of a single request, or brief description of the group of users, in case of a group request.
 							\item download button: enables the Third Party to download at any time the CSV file containing the requested data, or to have it sent by email.
-							\item subscription button: allows at any time to end a subscription to a certain request. In case of single requests, the subscription will be active only if the user grants his permission with a positive response.
+							\item subscription button: allows at any time to end a subscription to a certain request. In case of single requests, the subscription will be active only if the user grants his permission with a positive response.\\
+					\begin{figure}[H]
+						\center
+  						\includegraphics[width=0.5\columnwidth]{Mockup/mockupHistory.png}
+  						\caption{History tab}
+ 					 	\label{fig:Hist}
+					\end{figure}
 						\end{itemize}
 						
 
 					\item[$\circ$] My Settings tab \\
 				In this section the Third Party is able to manage its general information associated to its account and possibly modify its password. However a Third Party cannot change the email and P.IVA uniquely linked to its account as they are its unique identifiers.\\
-In this screen the user will find all the information linked to its account in a list, where each item can be modified at any time. After any modification the user will have to save its updates in order to notify the application’s server.
+In this screen the user will find all the information linked to its account in a list, where each item can be modified at any time. After any modification the user will have to save its updates in order to notify the application’s server.\\
+					\begin{figure}[H]
+						\center
+  						\includegraphics[width=0.5\columnwidth]{Mockup/mockupSettingsTP.png}
+  						\caption{My Settings tab}
+ 					 	\label{fig:MySTP}
+					\end{figure}
 
 				\end{itemize}
 			\end{itemize}
@@ -522,40 +589,88 @@ In this screen the user will find all the information linked to its account in a
 			While reminiscing its underlying service’s logo with the sketch of a heart pulse, Track4Run’s logo is iconic on its own. The image stands out for its simple but direct meaning. The symbols of a runner and the heart pulse in a red colored background immediately convey the purpose of the application: to track runners during their activity while keeping track of their health.\\
 The logo is also used as the application’s icon and will be visible to whoever downloads the app onto his device.
 
-					\begin{figure}[h]
+					\begin{figure}[H]
 						\center
-  						\includegraphics[width=0.7\columnwidth]{D4HLogo.jpg}
-  						\caption{Data4Help Logo}
- 						\label{fig:Logo}
+  						\includegraphics[width=0.7\columnwidth]{T4RLogo.jpg}
+  						\caption{Track4Run Logo}
+ 						\label{fig:Loogo}
 					\end{figure}
 				\item{\bf Login, Signup or access as Spectator}\\
-				Whenever a user downloads Track4Run for the first time, he will be immediately asked to login, sign up or access as a Spectator. A user can only login with his Data4Help account. If absent, he may create it at the moment and can therefore access all Data4Help’s services through its exclusive app. However, even without an account, a user will still be able to access one of Track4Run’s services, that look for an active run a follow its participants live on the track.
+				Whenever a user downloads Track4Run for the first time, he will be immediately asked to login, sign up or access as a Spectator. A user can only login with his Data4Help account. If absent, he may create it at the moment and can therefore access all Data4Help’s services through its exclusive app. However, even without an account, a user will still be able to access one of Track4Run’s services, that look for an active run a follow its participants live on the track.\\
+		
+
 				\item{\bf Single User Interfaces}\\
 			When a user logs into Track4Run as a Single User he will be able to access all different features through a tab bar controller. We shall now start describing each tab’s purpose:
 				\begin{itemize}
 					\item[$\circ$] My Run tab \\
 					The MyRun tab is the default interface, showed as soon as a user logs into his account. In this section a user can see the active run he has decided to join, check its starting and ending time and its path on a map.\\
+					\begin{figure}[H]
+						\center
+  						\includegraphics[width=0.5\columnwidth]{Mockup/mockupMyRunSU.png}
+  						\caption{My run tab}
+ 					 	\label{fig:MyRun}
+					\end{figure}
 
 					\item[$\circ$] Active Runs tab \\
 Active Runs tab is an interface in which a user can scroll through a list of all active runs and decide whether to monitor it as a spectator or to join it. When looking for a specific run, a user can either run through the entire list or research it by its unique identifier. Furthermore a user may also want to filter the list by location, in order to find the closest runs to his position.\\
+					\begin{figure}[H]
+						\center
+  						\includegraphics[width=0.5\columnwidth]{Mockup/mockupActiveRunsSU.png}
+  						\caption{Active runs tab}
+ 					 	\label{fig:ActiveRuns}
+					\end{figure}
 				\end{itemize}
+
 				\item{\bf Third Party Interfaces} \\
 			Also Third Parties will access all Track4Run’s features by navigating through a tab bar controller. We shall briefly describe each tab’s features:
 				\begin{itemize}
 					\item[$\circ$] New Run tab \\
-					New Run tab is the default tab in a Third Party’s interface. In this section a Third Party can organise a new run. A form where to fill in the run’s detail is immediately presented to the user. In order to create a new run the user will have to provide a name for it, a starting and ending time and finally will have to select the desired path onto a map. After having submitted the new run, the Third Party will receive the run’s unique identifier and the newly created will appear in the My Runs tab.
+					New Run tab is the default tab in a Third Party’s interface. In this section a Third Party can organise a new run. A form where to fill in the run’s detail is immediately presented to the user. In order to create a new run the user will have to provide a name for it, a starting and ending time and finally will have to select the desired path onto a map. After having submitted the new run, the Third Party will receive the run’s unique identifier and the newly created will appear in the My Runs tab.\\
+					\begin{figure}[H]
+						\center
+  						\includegraphics[width=0.5\columnwidth]{Mockup/mockupNewRun.png}
+  						\caption{New run tab}
+ 					 	\label{fig:NewRun}
+					\end{figure}
+
 					\item[$\circ$] My Runs tab \\
-					This section keeps a history of all runs a Third Party has organised, both past and active ones. As soon as Third Party creates a new run this will immediately appear on top of the list. For all runs, the organiser will be able to see who has participated or will participate to it and will be able to download a file containing all the runners’ health data. The types of downloaded data will depend on those accepted to be shared by each participant. 
+					This section keeps a history of all runs a Third Party has organised, both past and active ones. As soon as Third Party creates a new run this will immediately appear on top of the list. For all runs, the organiser will be able to see who has participated or will participate to it and will be able to download a file containing all the runners’ health data. The types of downloaded data will depend on those accepted to be shared by each participant. \\
+					\begin{figure}[H]
+						\center
+  						\includegraphics[width=0.5\columnwidth]{Mockup/mockupMyRuns.png}
+  						\caption{My runs tab}
+ 					 	\label{fig:MyRuns}
+					\end{figure}
+
 					\item[$\circ$] Active Runs tab \\
-					In this section a Third Party can check all active runs at the moment and will be able to monitor one as a Spectator. To look for a specific run the user can either scroll through the entire list or enter a specific run’s ID. Furthermore the user can also filter the list my entering a location.
+					In this section a Third Party can check all active runs at the moment and will be able to monitor one as a Spectator. To look for a specific run the user can either scroll through the entire list or enter a specific run’s ID. Furthermore the user can also filter the list my entering a location.\\
+					\begin{figure}[H]
+						\center
+  						\includegraphics[width=0.5\columnwidth]{Mockup/mockupActiveRuns.png}
+  						\caption{Active runs tab}
+ 					 	\label{fig:Active runs}
+					\end{figure}
 
 				\end{itemize}
 				\item{\bf Spectator Interfaces} \\
 				\begin{itemize}
 					\item[$\circ$] Research by identifier or in a list \\
-					Whenever a user access the application as a Spectator, that is without logging in, he will be presented with a unique interface with a list of all active runs. The user can scroll through the entire list of active runs and select one to spectate. Furthermore a run can be researched by entering its unique ID or by filtering the list with a location.
+					Whenever a user access the application as a Spectator, that is without logging in, he will be presented with a unique interface with a list of all active runs. The user can scroll through the entire list of active runs and select one to spectate. Furthermore a run can be researched by entering its unique ID or by filtering the list with a location.\\
+					\begin{figure}[H]
+						\center
+  						\includegraphics[width=0.5\columnwidth]{Mockup/mockupResearch.png}
+  						\caption{Research run tab}
+ 					 	\label{fig:Research}
+					\end{figure}
+
 					\item[$\circ$] Selected run \\
-					After having selected a run, the spectator will see its path and its participants’ locations live on the track. This view will be visible for the whole duration of the run.
+					After having selected a run, the spectator will see its path and its participants’ locations live on the track. This view will be visible for the whole duration of the run.\\	
+					\begin{figure}[H]
+						\center
+  						\includegraphics[width=0.5\columnwidth]{Mockup/mockupSelectedRun.png}
+  						\caption{Selected run tab}
+ 					 	\label{fig:SelectedRun}
+					\end{figure}
 				\end{itemize}
 			\end{itemize}
 		\end{itemize}
@@ -587,13 +702,13 @@ These APIs are public and can be used by Third Parties to directly access the We
 			
 		\subsubsection{Use Case Diagrams}
 			
-		\begin{figure}[ht]
+		\begin{figure}[H]
   			\includegraphics[width=\linewidth]{Diagrammi/SingleUserUseCase.png}
   			\caption{Single User Use Case Diagram}
  			 \label{fig:SingleUserUseCase}
 		\end{figure}
 			
-		\begin{figure}[ht]
+		\begin{figure}[H]
   			\includegraphics[width=\linewidth]{Diagrammi/ThirdPartyUseCase.png}
   			\caption{Third Party User Use Case Diagram}
  			 \label{fig:ThirdPartyUseCase}
@@ -1460,14 +1575,19 @@ The System does not retrieve any data corresponding to that type
 		In order to make generated worlds easier to understand, all relations that were not relevant for that specific world 		have been removed from the graphs.\\
 		
 		\subsection{Static Model}
-		\begin{figure}[ht]
+		\begin{figure}[H]
 			\center
   			\includegraphics[width=0.7\columnwidth]{Alloy/staticAlloy.png}
-  			\caption{Data4Help Logo}
 			\label{fig:staticAlloy}
 		\end{figure}
+
+		\begin{figure}[H]
+			\center
+  			\includegraphics[width=\textwidth]{Alloy/staticCheck.png}
+ 			\label{fig:staticCheckl}
+		\end{figure}
 		
-		\begin{figure}[ht]
+		\begin{figure}[H]
 			\center
   			\includegraphics[width=\textwidth]{Alloy/staticModel.png}
   			\caption{Alloy Static Model}
@@ -1484,5 +1604,54 @@ The System does not retrieve any data corresponding to that type
 		The health parameters taken into consideration are Age, Heart Rate and Height, all represented as integers with a 		positive value.\\
 		\\
 		As an addition to the first model, all Private Accounts must have an Age, Height and the last recorded value for the 		Heart Rate. Also, each account keeps track of the pending, approved and declined single requests, which are 			disjoint one another.\\	
+		\begin{figure}[H]
+			\center
+  			\includegraphics[width=0.7\columnwidth]{Alloy/Dynamic1.png}
+			\label{fig:dyn1}
+		\end{figure}
+
+		\begin{figure}[H]
+			\center
+  			\includegraphics[width=0.7\columnwidth]{Alloy/Dynamic2.png}
+			\label{fig:dyn2}
+		\end{figure}
+
+		\begin{figure}[H]
+			\center
+  			\includegraphics[width=0.7\columnwidth]{Alloy/Dynamic3.png}
+			\label{fig:dyn3}
+		\end{figure}
+
+		\begin{figure}[H]
+			\center
+  			\includegraphics[width=0.7\columnwidth]{Alloy/Dynamic4.png}
+			\label{fig:dyn4}
+		\end{figure}
+
+		\begin{figure}[H]
+			\center
+  			\includegraphics[width=0.7\columnwidth]{Alloy/Dynamic5.png}
+			\label{fig:dyn5}
+		\end{figure}
+
+		\begin{figure}[H]
+			\center
+  			\includegraphics[width=0.7\columnwidth]{Alloy/Dynamic6.png}
+			\label{fig:dyn6}
+		\end{figure}
+
+		\begin{figure}[H]
+			\center
+  			\includegraphics[width=0.7\columnwidth]{Alloy/singleRequest.png}
+			\caption{Approved Single Request}
+			\label{fig:sing}
+		\end{figure}
+
+		\begin{figure}[H]
+			\center
+  			\includegraphics[width=0.7\columnwidth]{Alloy/groupRequest.png}
+			\caption{Approved Group Request}
+			\label{fig:groupg}
+		\end{figure}
 
 \end{document}
