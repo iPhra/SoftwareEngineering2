@@ -469,7 +469,7 @@ The logo is also used as the application’s icon and will be visible to whoever
 				\item{\bf Login or Signup}\\
 			When a Guest downloads Data4Help for the first time, the first interface will ask the user to choose between login and signup. If the user has already created an account he will choose to login in order to access the application’s functionalities. If the user instead has not created an account yet he will choose the signup option.\\
 					\begin{figure}[h]
-  						\includegraphics[width=0.5\columnwidth]{mockupRegisterSU.png}
+  						\includegraphics[width=0.5\columnwidth]{Mockup/mockupRegisterSU.png}
   						\caption{Single User Registration Interface}
  					 \label{fig:SURegister}
 					\end{figure}
@@ -588,13 +588,13 @@ These APIs are public and can be used by Third Parties to directly access the We
 		\subsubsection{Use Case Diagrams}
 			
 		\begin{figure}[ht]
-  			\includegraphics[width=\linewidth]{SingleUserUseCase.png}
+  			\includegraphics[width=\linewidth]{Diagrammi/SingleUserUseCase.png}
   			\caption{Single User Use Case Diagram}
  			 \label{fig:SingleUserUseCase}
 		\end{figure}
 			
 		\begin{figure}[ht]
-  			\includegraphics[width=\linewidth]{ThirdPartyUseCase.png}
+  			\includegraphics[width=\linewidth]{Diagrammi/ThirdPartyUseCase.png}
   			\caption{Third Party User Use Case Diagram}
  			 \label{fig:ThirdPartyUseCase}
 		\end{figure}
@@ -621,11 +621,12 @@ These APIs are public and can be used by Third Parties to directly access the We
 		
 		%USE CASES
 		
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 			\begin{longtable}{| p{3 cm} | p{10 cm} |} 
 			\hline
 			{\bf ID} & UC1 \\
 			\hline
-			{\bf Description} & A {\it Guest} creates a Single User Account for the application \\
+			{\bf Description} & A {\it Guest} creates a Single User account for the application \\
 			\hline
 			{\bf Actors} & {\it Guest} \\
 			\hline
@@ -644,9 +645,9 @@ These APIs are public and can be used by Third Parties to directly access the We
 								\item The {\it Guest} swipes through the pages of the tutorial
 								\item The {\it System}  asks which type of account the {\it Guest} wants to create
 								\item The {\it Guest} selects the button corresponding to the creation of a Single 									User account
-								\item The {\it System}  presents a form to fill with the user’s personal information, 									including FC,  and credentials (email and password) 
-								\item The {\it User} fills in the form, including entering an email and password
-								\item The {\it System}  sends the input data to the {\it User Account Manager} and to 									the {\it Mailing System}
+								\item The {\it System}  presents a form to fill with the user’s personal information, including FC  and credentials (email and password) 
+								\item The user fills in the form
+								\item The {\it System}  checks the validity of the input form
 								\item The {\it Mailing System} sends the user an email to confirm its account
 								\item The {\it User} receives the email and selects the URL to confirm its account
 							\end{enumerate}
@@ -658,11 +659,6 @@ These APIs are public and can be used by Third Parties to directly access the We
 								\item The {\it System} has stored a new Single User account associated to the 										requesting guest
 								\item The {\it User} can access the application’s functionalities by logging in
 							\end{itemize}
-							For all the above: The {\it User Account Manager} shows the user an error message and the 	flow of events restarts from point 7.
-							\begin{itemize}
-								\item The {\it Guest}  selects the login button and provides credentials that are not 									associated to any account
-							\end{itemize}
-							The {\it User Account Manager }shows the user an error message and the flow of events 							restarts from point 2.
 			\\
 			\hline
 			{\bf Exceptions} & 
@@ -670,23 +666,579 @@ These APIs are public and can be used by Third Parties to directly access the We
 								\item The {\it Guest} inputs an email that is already associated to an account. 
 								\item The {\it Guest} inputs a password that doesn’t respect security constraints. 								\item The 	{\it Guest} inputs a FC that is already associated to an account. 
 							\end{itemize} 
+							For all the above: The {\it System} shows the user an error message and the flow of events restarts from point 7.
+							\begin{itemize}
+								\item The {\it Guest}  selects the login button and provides credentials that are not 									associated to any account
+							\end{itemize} 
+							The {\it System} shows the user an error message and the flow of events 							restarts from point 2.
 							
 			\\
 			\hline
-			\caption{Create an Account Use Case}
+			\caption{Create a Single User account Use Case}
 			\end{longtable}
 			
-					
-			\begin{longtable}{| p{3 cm} | p{10 cm} |} \hline
-				{\bf ID} & UC1 \\\hline
-				{\bf Description} & - \\ \hline
-				{\bf Actors} & - \\ \hline
-				{\bf Preconditions} & - \\ \hline
-				{\bf Flow of events} & - \\ \hline
-				{\bf Postconditions} & - \\ \hline
-				{\bf Exceptions} & - \\ \hline
-				\caption{Create an Account Use Case}			
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+			
+			\begin{longtable}{| p{3 cm} | p{10 cm} |} 
+			\hline
+			{\bf ID} & UC2 \\
+			\hline
+			{\bf Description} & A {\it Guest} creates a Third Party account for the application \\
+			\hline
+			{\bf Actors} & {\it Guest} \\
+			\hline
+			{\bf Preconditions} & 		
+							\begin{itemize}
+								\item The {\it Guest}  has downloaded the app onto his mobile device
+								\item The {\it Guest}  doesn’t already have an account
+							\end{itemize}
+			\\
+			\hline
+			{\bf Flow of events} & 
+							\begin{enumerate}
+								\item The {\it Guest} opens the application
+								\item The {\it System} asks the user to register or to login
+								\item The {\it Guest} selects the register button
+								\item The {\it Guest} swipes through the pages of the tutorial
+								\item The {\it System}  asks which type of account the {\it Guest} wants to create
+								\item The {\it Guest} selects the button corresponding to the creation of a Third Party account
+								\item The {\it System}  presents a form to fill with the user’s personal information, including P.IVA and credentials (email and password) 
+								\item The user fills in the form
+								\item The {\it System}  checks the validity of the input form
+								\item The {\it Mailing System} sends the user an email to confirm its account
+								\item The {\it User} receives the email and selects the URL to confirm its account
+							\end{enumerate}
+			
+			 \\
+			\hline
+			{\bf Postconditions} & 
+							\begin{itemize}
+								\item The {\it System} has stored a new Third Party account associated to the 										requesting guest
+								\item The {\it User} can access the application’s functionalities by logging in
+							\end{itemize}
+			\\
+			\hline
+			{\bf Exceptions} & 
+							\begin{itemize}
+								\item The {\it Guest} inputs an email that is already associated to an account. 
+								\item The {\it Guest} inputs a password that doesn’t respect security constraints. 								\item The 	{\it Guest} inputs a P.IVA that is already associated to an account. 
+							\end{itemize} 
+							For all the above: The {\it User Account Manager} shows the user an error message and the flow of events restarts from point 7.
+							\begin{itemize}
+								\item The {\it Guest}  selects the login button and provides credentials that are not 									associated to any account
+							\end{itemize} 
+							The {\it System}shows the user an error message and the flow of events 							restarts from point 2.
+							
+			\\
+			\hline
+			\caption{Create a Third Party Use Case}
 			\end{longtable}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%		
+\begin{longtable}{| p{3 cm} | p{10 cm} |} 
+			\hline
+			{\bf ID} & UC3 \\
+			\hline
+			{\bf Description} & A {\it Single User} logs in\\
+			\hline
+			{\bf Actors} & {\it Single User} \\
+			\hline
+			{\bf Preconditions} & 		
+							\begin{itemize}
+								\item The {\it Single User}  has already created a Single User account 
+							\end{itemize}
+			\\
+			\hline
+			{\bf Flow of events} & 
+							\begin{enumerate}
+								\item The Single User opens the application
+								\item The System asks the user to login or register
+								\item The Single User selects the login button
+								\item The System asks the user to input its credentials (email and password)
+								\item The Single User inputs its credentials
+								\item The System checks the provided credentials
+
+							\end{enumerate}
+			
+			 \\
+			\hline
+			{\bf Postconditions} & 
+							\begin{itemize}
+								\item The {\it System} shows the Single User’s main interface
+							\end{itemize}
+			\\
+			\hline
+			{\bf Exceptions} & 
+							\begin{itemize}
+								\item The Single User inputs the wrong credentials. 
+							\end{itemize}
+							The {\it System} shows the user an error message and the flow of events 							restarts from point 4.
+							
+			\\
+			\hline
+			\caption{Log in a Single User Account}
+			\end{longtable}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%		
+\begin{longtable}{| p{3 cm} | p{10 cm} |} 
+			\hline
+			{\bf ID} & UC4 \\
+			\hline
+			{\bf Description} & A {\it Third Party} logs in\\
+			\hline
+			{\bf Actors} & {\it Third Party User} \\
+			\hline
+			{\bf Preconditions} & 		
+							\begin{itemize}
+								\item The {\it Third Party}  has already created a Third Party account 
+							\end{itemize}
+			\\
+			\hline
+			{\bf Flow of events} & 
+							\begin{enumerate}
+								\item The Third Party opens the application
+								\item The System asks the user to login or register
+								\item The Third Party selects the login button
+								\item The System asks the user to input its credentials (email and password)
+								\item The Third Party inputs its credentials
+								\item The System checks the provided credentials
+
+							\end{enumerate}
+			
+			 \\
+			\hline
+			{\bf Postconditions} & 
+							\begin{itemize}
+								\item The {\it System} shows the Third Party’s main interface
+							\end{itemize}
+			\\
+			\hline
+			{\bf Exceptions} & 
+							\begin{itemize}
+								\item The Third Party inputs the wrong credentials. 
+							\end{itemize}
+							The {\it System}shows the user an error message and the flow of events 							restarts from point 4.
+							
+			\\
+			\hline
+			\caption{Log in a Third Party Account}
+			\end{longtable}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{longtable}{| p{3 cm} | p{10 cm} |} 
+			\hline
+			{\bf ID} & UC5 \\
+			\hline
+			{\bf Description} & A {\it Single User} selects which health data to import\\
+			\hline
+			{\bf Actors} & {\it Logged-in Single User} \\
+			\hline
+			{\bf Preconditions} & 		
+							\begin{itemize}
+								\item The {\it Single User}  has  logged into his account 
+							\end{itemize}
+			\\
+			\hline
+			{\bf Flow of events} & 
+							\begin{enumerate}
+								\item The Single User selects the My Settings tab in the application
+\item The System shows all the information related to the user’s account and enables modifications
+\item The user selects the types of health data to import from the list displayed in the interface
+							\end{enumerate}
+			
+			 \\
+			\hline
+			{\bf Postconditions} & 
+							\begin{itemize}
+								\item The System updates the user’s account settings 
+\item The System imports data from the user’s device corresponding to the new selected types (if any)
+\item The System does not import anymore the removed types (if any)
+
+							\end{itemize}
+			\\
+			\hline
+			{\bf Exceptions} & 
+							\begin{itemize}
+								\item The User has no available data related to the selected type
+The System does not retrieve any data corresponding to that type
+
+							\end{itemize}
+							
+			\\
+			\hline
+			\caption{Select types of health data to import}
+			\end{longtable}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+
+\begin{longtable}{| p{3 cm} | p{10 cm} |} 
+			\hline
+			{\bf ID} & UC6 \\
+			\hline
+			{\bf Description} & A {\it Single User} accepts a request from a {\it Third Party}\\
+			\hline
+			{\bf Actors} & {\it Logged-in Single User}, {\it Third Party} \\
+			\hline
+			{\bf Preconditions} & 		
+							\begin{itemize}
+								\item The {\it Single User}  has  logged into his account 
+							\end{itemize}
+			\\
+			\hline
+			{\bf Flow of events} & 
+							\begin{enumerate}
+								\item The System signals a new Third Party request with a notification on the My Follower tab icon
+\item The Logged-in Single User selects the My Followers tab
+\item The System  in this tab shows the user a Third Party request
+\item The user reads the description of the Third Party sending the request
+\item The Systems asks the user to accept or reject the request
+\item The user accepts the request
+\item The System signs the request as accepted and forwards the response to the sender
+							\end{enumerate}
+			
+			 \\
+			\hline
+			{\bf Postconditions} & 
+							\begin{itemize}
+								\item The Third Party sending the request is added to the list of the user’s followers
+\item The System retrieves the accepting Single User’s data and forwards it to the requesting Third Party 
+
+
+							\end{itemize}
+			\\
+			\hline
+			{\bf Exceptions} & 
+							\begin{itemize}
+								\item There is no available data related to the Single User’s account corresponding to the parameters input by the Third Party
+							\end{itemize}
+							The System notifies to the Third Party that there is no such data available.
+
+							
+			\\
+			\hline
+			\caption{Accept a Third Party Request}
+			\end{longtable}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%				
+\begin{longtable}{| p{3 cm} | p{10 cm} |} 
+			\hline
+			{\bf ID} & UC7 \\
+			\hline
+			{\bf Description} & A {\it Single User} rejects a request from a {\it Third Party}\\
+			\hline
+			{\bf Actors} & {\it Logged-in Single User}, {\it Third Party} \\
+			\hline
+			{\bf Preconditions} & 		
+							\begin{itemize}
+								\item The {\it Single User}  has  logged into his account 
+							\end{itemize}
+			\\
+			\hline
+			{\bf Flow of events} & 
+							\begin{enumerate}
+								\item The System signals a new Third Party request with a notification on the My Follower tab icon
+\item The Logged-in Single User selects the My Followers tab
+\item The System  in this tab shows the user a Third Party request
+\item The user reads the description of the Third Party sending the request
+\item The Systems asks the user to accept or reject the request
+\item The user rejects the request
+\item The System signs the request as rejected and forwards the response to the sender
+							\end{enumerate}
+			
+			 \\
+			\hline
+			{\bf Postconditions} & 
+							\begin{itemize}
+								\item The Third Party receives the notification from the System signaling the user’s rejection
+
+							\end{itemize}
+			\\
+			\hline
+			{\bf Exceptions} & 
+							
+			\\
+			\hline
+			\caption{Reject a Third Party Request}
+			\end{longtable}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%		
+
+\begin{longtable}{| p{3 cm} | p{10 cm} |} 
+			\hline
+			{\bf ID} & UC8 \\
+			\hline
+			{\bf Description} & A Third Party sends a request to a Single User \\
+			\hline
+			{\bf Actors} & {\it Logged-in Third Party }, {\it Single User} \\
+			\hline
+			{\bf Preconditions} & 		
+							\begin{itemize}
+								\item The Third Party has logged into his account
+							\end{itemize}
+			\\
+			\hline
+			{\bf Flow of events} & 
+							\begin{enumerate}
+								\item The Third Party opens the Search tab in the application
+\item The System asks the user to select the type of research: single request or group request
+\item The Third Party selects the request to a single user
+\item They System asks the user to select the requested data types and the single user’s ID
+\item The user inputs the ID (FC or email) and the requested data types 
+\item The user submits the request
+\item The System checks if the input ID is valid and if any requested data type is available
+\item The System forwards the request to the addressed Single User
+
+							\end{enumerate}
+			
+			 \\
+			\hline
+			{\bf Postconditions} & 
+							\begin{itemize}
+								\item The System forwards the Single User’s response to the Third Party (acceptance or rejection)
+
+							\end{itemize}
+			\\
+			\hline
+			{\bf Exceptions} & 
+							\begin{itemize}
+								\item The input ID is not associated to any account
+\item All requested data types of the single user are not available.
+
+							\end{itemize}
+							For all the above: The System notifies the Third Party with an error message and the flow of events restarts from point 2.
+
+							
+			\\
+			\hline
+			\caption{Request Data from a Single User}
+			\end{longtable}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%							
+\begin{longtable}{| p{3 cm} | p{10 cm} |} 
+			\hline
+			{\bf ID} & UC9 \\
+			\hline
+			{\bf Description} & A Third Party submits a Group Request \\
+			\hline
+			{\bf Actors} & {\it Logged-in Third Party }\\
+			\hline
+			{\bf Preconditions} & 		
+							\begin{itemize}
+								\item The Third Party has logged into his account
+							\end{itemize}
+			\\
+			\hline
+			{\bf Flow of events} & 
+							\begin{enumerate}
+								\item The Third Party opens the Search tab in the application
+\item The System asks the user to select the type of research: single request or group request.
+\item The Third Party selects group request
+\item The System asks the user to select the search parameters and the selected data types
+\item The user inputs the search parameters
+\item The user submits the request
+\item The System analyses the search parameters and checks the corresponding data in the DB
+							\end{enumerate}
+			
+			 \\
+			\hline
+			{\bf Postconditions} & 
+							\begin{itemize}
+								\item The System sends the anonymous data matching the search parameters to the Third Party
+\item The Third Party can download the researched data
+
+							\end{itemize}
+			\\
+			\hline
+			{\bf Exceptions} & 
+							\begin{itemize}
+								\item The matching data belongs to a group of not more than 1000 users.
+							\end{itemize}
+							The System notifies the user that the matching data corresponds to a group that is too small and therefore cannot be retrieved. The flow of events restarts from point 2.
+							\begin{itemize}
+								\item There is no data in the db matching the search parameters.
+							\end{itemize}
+							The System notifies the user that there is no available data matching the request. The flow of events restarts from point 2.
+							
+			\\
+			\hline
+			\caption{Submit a Group Request}
+			\end{longtable}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%		
+\begin{longtable}{| p{3 cm} | p{10 cm} |} 
+			\hline
+			{\bf ID} & UC10 \\
+			\hline
+			{\bf Description} & A Logged-in Single User enables AutomatedSOS  \\
+			\hline
+			{\bf Actors} & {\it Logged-in Single User }\\
+			\hline
+			{\bf Preconditions} & 		
+							\begin{itemize}
+								\item The user has logged into his account
+							\end{itemize}
+			\\
+			\hline
+			{\bf Flow of events} & 
+							\begin{enumerate}
+								\item The Logged-in Single User selects the My Health tab in the application
+\item The user selects the AutomatedSOS button to enable it
+\item The System asks the user permission to access his calls
+\item The user grants access to his calls
+
+							\end{enumerate}
+			
+			 \\
+			\hline
+			{\bf Postconditions} & 
+							\begin{itemize}
+								\item When the user’s health parameters are critical, the System calls an ambulance to the user’s location
+
+							\end{itemize}
+			\\
+			\hline
+			{\bf Exceptions} & 
+							\begin{itemize}
+								\item The user does not grant permission to make phone calls.
+							\end{itemize}
+							The System displays an error and disables AutomatedSOS.							
+			\\
+			\hline
+			\caption{Enable AutomatedSOS}
+			\end{longtable}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%		
+
+\begin{longtable}{| p{3 cm} | p{10 cm} |} 
+			\hline
+			{\bf ID} & UC11 \\
+			\hline
+			{\bf Description} & A Third Party organizes a run  \\
+			\hline
+			{\bf Actors} & {\it Logged-in Third Party }\\
+			\hline
+			{\bf Preconditions} & 		
+							\begin{itemize}
+								\item The user has logged into his account in Track4Run
+							\end{itemize}
+			\\
+			\hline
+			{\bf Flow of events} & 
+							\begin{enumerate}
+								\item The user selects the New Run tab
+\item The System asks the user to define the run’s details: name, starting and ending times, maximum participants
+\item The user inputs the run’s details
+\item The System shows the user a map on which to define the path
+\item The user selects a path on the map
+\item The user submits the new run
+							\end{enumerate}
+			
+			 \\
+			\hline
+			{\bf Postconditions} & 
+							\begin{itemize}
+								\item The new run is added to the list in the Active Runs tab
+\item The new run is visible to all single users and spectators
+
+							\end{itemize}
+			\\
+			\hline
+			{\bf Exceptions} & 
+							\begin{itemize}
+								\item The organizer selects a non feasible path on the map.
+							\end{itemize}
+							The System asks the user to select another path.						
+			\\
+			\hline
+			\caption{Organize a run}
+			\end{longtable}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ \begin{longtable}{| p{3 cm} | p{10 cm} |} 
+			\hline
+			{\bf ID} & UC12 \\
+			\hline
+			{\bf Description} & A Single User joins an active run  \\
+			\hline
+			{\bf Actors} & {\it Logged-in Single User }\\
+			\hline
+			{\bf Preconditions} & 		
+							\begin{itemize}
+								\item The user has logged into his account on Track4Run
+							\end{itemize}
+			\\
+			\hline
+			{\bf Flow of events} & 
+							\begin{enumerate}
+								\item The user selects the Active Runs tab
+\item The System shows the user a list of all active runs 
+\item The user selects a run to join
+\item On the day of the run, the System sends the user an automatic request to share his health data and position with the Organizer.
+\item The User accepts the request
+							\end{enumerate}			
+			 \\
+			\hline
+			{\bf Postconditions} & 
+							\begin{itemize}
+								\item The User can track his position live on the run’s map in the My Run section
+\item The User’s position is visible to all spectators 
+							\end{itemize}
+			\\
+			\hline
+			{\bf Exceptions} & 
+							\begin{itemize}
+								\item The user doesn’t accept the request to share his data.
+							\end{itemize}
+							The System shows an error message to the user saying he cannot participate to the run. The flow of events restarts from point 2.						
+			\\
+			\hline
+			\caption{Join an active run}
+			\end{longtable}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ \begin{longtable}{| p{3 cm} | p{10 cm} |} 
+			\hline
+			{\bf ID} & UC13\\
+			\hline
+			{\bf Description} & A Spectator looks for a specific run to spectate  \\
+			\hline
+			{\bf Actors} & {\it Spectator }\\
+			\hline
+			{\bf Preconditions} & 		
+							\begin{itemize}
+								\item The Spectator has downloaded the application Track4Run
+							\end{itemize}
+			\\
+			\hline
+			{\bf Flow of events} & 
+							\begin{enumerate}
+								\item The User opens Track4Run
+\item The System asks the user to login, register or access the service as a Spectator
+\item The User selects to access as a Spectator
+\item The System asks the User to find a run by its identifier or to search in the list of active runs
+\item The User inserts the run’s identifier
+\item The User submits its research
+							\end{enumerate}			
+			 \\
+			\hline
+			{\bf Postconditions} & 
+							\begin{itemize}
+								\item The user can spectate the run and see its participants’ live positions
+
+							\end{itemize}
+			\\
+			\hline
+			{\bf Exceptions} & 
+							\begin{itemize}
+								\item The identifier input by the user is not associated to any existing run
+							\end{itemize}
+							The System shows an error message to the user. The flow of events restarts from point 4.					
+			\\
+			\hline
+			\caption{Spectate a run}
+			\end{longtable}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%																								
 		
 			\subsubsection{Sequence Diagrams}
 									

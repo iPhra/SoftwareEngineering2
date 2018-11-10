@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.25)  10 NOV 2018 18:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.25)  10 NOV 2018 19:48
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -489,11 +489,11 @@ Package pdftex.def Info: ./images/D4HLogo.jpg  used on input line 465.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<./images/mockupRegisterSU.png, id=76, 376.40625pt x 672.01062pt>
-File: ./images/mockupRegisterSU.png Graphic file (type png)
-<use ./images/mockupRegisterSU.png>
-Package pdftex.def Info: ./images/mockupRegisterSU.png  used on input line 472.
-
+<./images/Mockup/mockupRegisterSU.png, id=76, 376.40625pt x 672.01062pt>
+File: ./images/Mockup/mockupRegisterSU.png Graphic file (type png)
+<use ./images/Mockup/mockupRegisterSU.png>
+Package pdftex.def Info: ./images/Mockup/mockupRegisterSU.png  used on input li
+ne 472.
 (pdftex.def)             Requested size: 172.5pt x 307.98018pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -531,17 +531,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 553--554
  []
 
 [21]
-<./images/SingleUserUseCase.png, id=90, 737.75626pt x 603.25375pt>
-File: ./images/SingleUserUseCase.png Graphic file (type png)
-<use ./images/SingleUserUseCase.png>
-Package pdftex.def Info: ./images/SingleUserUseCase.png  used on input line 591
-.
+<./images/Diagrammi/SingleUserUseCase.png, id=90, 737.75626pt x 603.25375pt>
+File: ./images/Diagrammi/SingleUserUseCase.png Graphic file (type png)
+<use ./images/Diagrammi/SingleUserUseCase.png>
+Package pdftex.def Info: ./images/Diagrammi/SingleUserUseCase.png  used on inpu
+t line 591.
 (pdftex.def)             Requested size: 345.0pt x 282.10254pt.
-<./images/ThirdPartyUseCase.png, id=91, 607.26875pt x 527.9725pt>
-File: ./images/ThirdPartyUseCase.png Graphic file (type png)
-<use ./images/ThirdPartyUseCase.png>
-Package pdftex.def Info: ./images/ThirdPartyUseCase.png  used on input line 597
-.
+<./images/Diagrammi/ThirdPartyUseCase.png, id=91, 607.26875pt x 527.9725pt>
+File: ./images/Diagrammi/ThirdPartyUseCase.png Graphic file (type png)
+<use ./images/Diagrammi/ThirdPartyUseCase.png>
+Package pdftex.def Info: ./images/Diagrammi/ThirdPartyUseCase.png  used on inpu
+t line 597.
 (pdftex.def)             Requested size: 345.0pt x 299.95653pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 605--608
@@ -564,115 +564,214 @@ Underfull \hbox (badness 10000) in paragraph at lines 616--618
  []
 
 [23]
-Overfull \hbox (48.88582pt too wide) in alignment at lines 624--677
+Overfull \hbox (48.88582pt too wide) in alignment at lines 625--678
  [] [] 
  []
 
 
-Underfull \vbox (badness 10000) detected at line 677
+Underfull \vbox (badness 10000) detected at line 678
  []
 
-[24] [25]
-Overfull \hbox (48.88582pt too wide) in alignment at lines 680--689
+[24]
+Overfull \hbox (48.88582pt too wide) in alignment at lines 682--735
  [] [] 
  []
 
 
-Underfull \vbox (badness 10000) detected at line 689
+Underfull \vbox (badness 10000) detected at line 735
  []
 
-[26] [27] [28] [29] [30]
-Underfull \hbox (badness 10000) in paragraph at lines 844--852
+[25] [26]
+Overfull \hbox (48.88582pt too wide) in alignment at lines 738--780
+ [] [] 
+ []
 
+
+Underfull \vbox (badness 10000) detected at line 780
+ []
+
+[27]
+Overfull \hbox (48.88582pt too wide) in alignment at lines 783--825
+ [] [] 
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 825
+ []
+
+
+Overfull \hbox (48.88582pt too wide) in alignment at lines 828--870
+ [] [] 
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 870
+ []
+
+[28]
+Overfull \hbox (48.88582pt too wide) in alignment at lines 874--920
+ [] [] 
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 920
+ []
+
+[29]
+Overfull \hbox (48.88582pt too wide) in alignment at lines 923--962
+ [] [] 
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 962
+ []
+
+[30]
+Overfull \hbox (48.88582pt too wide) in alignment at lines 966--1014
+ [] [] 
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 1014
  []
 
 [31]
-Underfull \hbox (badness 10000) in paragraph at lines 876--878
-
+Overfull \hbox (48.88582pt too wide) in alignment at lines 1017--1065
+ [] [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 879--881
-
+Underfull \vbox (badness 10000) detected at line 1065
  []
 
 [32]
-Underfull \hbox (badness 10000) in paragraph at lines 890--891
-
+Overfull \hbox (48.88582pt too wide) in alignment at lines 1068--1108
+ [] [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 892--893
-
+Underfull \vbox (badness 10000) detected at line 1108
  []
 
 [33]
-Underfull \hbox (badness 10000) in paragraph at lines 900--909
+Overfull \hbox (48.88582pt too wide) in alignment at lines 1112--1154
+ [] [] 
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 1154
+ []
+
+[34]
+Overfull \hbox (48.88582pt too wide) in alignment at lines 1157--1196
+ [] [] 
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 1196
+ []
+
+[35]
+Overfull \hbox (48.88582pt too wide) in alignment at lines 1199--1239
+ [] [] 
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 1239
+ []
+
+[36] [37] [38] [39] [40] [41]
+Underfull \hbox (badness 10000) in paragraph at lines 1396--1404
+
+ []
+
+[42]
+Underfull \hbox (badness 10000) in paragraph at lines 1428--1430
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 900--909
+Underfull \hbox (badness 10000) in paragraph at lines 1431--1433
+
+ []
+
+[43]
+Underfull \hbox (badness 10000) in paragraph at lines 1442--1443
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 900--909
+Underfull \hbox (badness 10000) in paragraph at lines 1444--1445
+
+ []
+
+[44]
+Underfull \hbox (badness 10000) in paragraph at lines 1452--1461
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 900--909
+Underfull \hbox (badness 10000) in paragraph at lines 1452--1461
 
  []
 
-<./images/Alloy/staticAlloy.png, id=130, 618.05907pt x 562.35094pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 1452--1461
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1452--1461
+
+ []
+
+<./images/Alloy/staticAlloy.png, id=165, 618.05907pt x 562.35094pt>
 File: ./images/Alloy/staticAlloy.png Graphic file (type png)
 <use ./images/Alloy/staticAlloy.png>
-Package pdftex.def Info: ./images/Alloy/staticAlloy.png  used on input line 913
-.
+Package pdftex.def Info: ./images/Alloy/staticAlloy.png  used on input line 146
+5.
 (pdftex.def)             Requested size: 241.49895pt x 219.72786pt.
-<./images/Alloy/staticModel.png, id=131, 534.49687pt x 280.04625pt>
+<./images/Alloy/staticModel.png, id=166, 534.49687pt x 280.04625pt>
 File: ./images/Alloy/staticModel.png Graphic file (type png)
 <use ./images/Alloy/staticModel.png>
-Package pdftex.def Info: ./images/Alloy/staticModel.png  used on input line 920
-.
+Package pdftex.def Info: ./images/Alloy/staticModel.png  used on input line 147
+2.
 (pdftex.def)             Requested size: 345.0pt x 180.7673pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 926--935
+Underfull \hbox (badness 10000) in paragraph at lines 1478--1487
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 926--935
+Underfull \hbox (badness 10000) in paragraph at lines 1478--1487
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 926--935
+Underfull \hbox (badness 10000) in paragraph at lines 1478--1487
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 926--935
+Underfull \hbox (badness 10000) in paragraph at lines 1478--1487
 
  []
 
-[34] [35] [36 <./images/Diagrammi/D4HClass.png>] [37 <./images/Diagrammi/SOSCla
-ss.png>] [38 <./images/Diagrammi/T4RClass.png>] [39 <./images/Diagrammi/groupSt
-ateChart.png>] [40 <./images/Diagrammi/singleStateChart.png>] [41 <./images/D4H
-Logo.jpg> <./images/mockupRegisterSU.png>] [42 <./images/SingleUserUseCase.png>
-] [43 <./images/ThirdPartyUseCase.png>] [44 <./images/Alloy/staticAlloy.png> <.
-/images/Alloy/staticModel.png>] (./Latex.aux)
+[45] [46] [47 <./images/Diagrammi/D4HClass.png>] [48 <./images/Diagrammi/SOSCla
+ss.png>] [49 <./images/Diagrammi/T4RClass.png>] [50 <./images/Diagrammi/groupSt
+ateChart.png>] [51 <./images/Diagrammi/singleStateChart.png>] [52 <./images/D4H
+Logo.jpg> <./images/Mockup/mockupRegisterSU.png>] [53 <./images/Diagrammi/Singl
+eUserUseCase.png>] [54 <./images/Diagrammi/ThirdPartyUseCase.png>] [55 <./image
+s/Alloy/staticAlloy.png> <./images/Alloy/staticModel.png>] (./Latex.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 1616 strings out of 494091
- 24451 string characters out of 6163522
- 95465 words of memory out of 5000000
- 5277 multiletter control sequences out of 15000+600000
+ 1629 strings out of 494091
+ 24642 string characters out of 6163522
+ 98850 words of memory out of 5000000
+ 5288 multiletter control sequences out of 15000+600000
  6748 words of font info for 24 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
  41i,7n,25p,1071b,375s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -685,10 +784,10 @@ fonts/cm/cmr17.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/
 amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/pub
 lic/amsfonts/cm/cmti10.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1
 /public/amsfonts/cm/cmti12.pfb>
-Output written on Latex.pdf (45 pages, 1069883 bytes).
+Output written on Latex.pdf (56 pages, 1085813 bytes).
 PDF statistics:
- 202 PDF objects out of 1000 (max. 8388607)
- 127 compressed objects within 2 object streams
+ 237 PDF objects out of 1000 (max. 8388607)
+ 151 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  61 words of extra memory for PDF output out of 10000 (max. 10000000)
 
