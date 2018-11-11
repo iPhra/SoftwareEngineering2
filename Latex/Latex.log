@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.25)  11 NOV 2018 09:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.25)  11 NOV 2018 09:54
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1093,31 +1093,40 @@ File: ./images/Alloy/groupRequest.png Graphic file (type png)
 Package pdftex.def Info: ./images/Alloy/groupRequest.png  used on input line 16
 82.
 (pdftex.def)             Requested size: 345.0pt x 190.95615pt.
- [85 <./images/Alloy/singleRequest.png> <./images/Alloy/groupRequest.png>] (./L
-atex.aux) ) 
+
+Underfull \hbox (badness 1430) in paragraph at lines 1705--1705
+[]|\OT1/cmr/m/n/10 Goals, Re-quire-ments and Do-
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 1714
+ []
+
+[85 <./images/Alloy/singleRequest.png> <./images/Alloy/groupRequest.png>]
+[86] (./Latex.aux) ) 
 Here is how much of TeX's memory you used:
- 3143 strings out of 494091
- 53751 string characters out of 6163522
- 121874 words of memory out of 5000000
- 6748 multiletter control sequences out of 15000+600000
+ 3144 strings out of 494091
+ 53756 string characters out of 6163522
+ 121923 words of memory out of 5000000
+ 6749 multiletter control sequences out of 15000+600000
  7746 words of font info for 27 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
  44i,9n,49p,1110b,535s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmbx10.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmbx12.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmr10.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmr12.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmr17.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018basic/texmf-dist/font
-s/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2018basic/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2018basic/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmti8.pfb>
-Output written on Latex.pdf (86 pages, 3079127 bytes).
+</usr/local/texlive/2018basic/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2018basic/texmf-dist/font
+s/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2018basic/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2018basic/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018basic/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2018basic/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2018basi
+c/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb>
+Output written on Latex.pdf (87 pages, 3081394 bytes).
 PDF statistics:
- 402 PDF objects out of 1000 (max. 8388607)
- 223 compressed objects within 3 object streams
+ 405 PDF objects out of 1000 (max. 8388607)
+ 225 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
  236 words of extra memory for PDF output out of 10000 (max. 10000000)
 
