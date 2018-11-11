@@ -13,37 +13,37 @@
 \contentsline {subsection}{\numberline {1.6}Document Structure}{9}
 \contentsline {section}{\numberline {2}Overall Description}{10}
 \contentsline {subsection}{\numberline {2.1}Product perspective}{10}
-\contentsline {subsubsection}{\numberline {2.1.1}Class Diagrams}{12}
-\contentsline {subsubsection}{\numberline {2.1.2}State Charts}{12}
-\contentsline {subsection}{\numberline {2.2}Product functions}{12}
-\contentsline {subsection}{\numberline {2.3}User characteristics}{15}
-\contentsline {subsection}{\numberline {2.4}Assumptions, dependencies and constraints}{16}
-\contentsline {subsubsection}{\numberline {2.4.1}Constraints}{16}
-\contentsline {subsubsection}{\numberline {2.4.2}Dependencies}{16}
-\contentsline {subsubsection}{\numberline {2.4.3}Domain Assumptions}{16}
-\contentsline {section}{\numberline {3}Specific Requirements}{18}
-\contentsline {subsection}{\numberline {3.1}External Interface Requirements}{18}
-\contentsline {subsubsection}{\numberline {3.1.1}User Interfaces}{18}
-\contentsline {subsubsection}{\numberline {3.1.2}Hardware Interfaces}{22}
-\contentsline {subsubsection}{\numberline {3.1.3}Software Interfaces}{22}
-\contentsline {subsubsection}{\numberline {3.1.4}Communication Interfaces}{22}
-\contentsline {subsection}{\numberline {3.2}Functional Requirements}{22}
-\contentsline {subsubsection}{\numberline {3.2.1}Use Case Diagrams}{22}
-\contentsline {subsubsection}{\numberline {3.2.2}Scenarios}{22}
-\contentsline {subsubsection}{\numberline {3.2.3}Use Cases}{24}
-\contentsline {subsubsection}{\numberline {3.2.4}Sequence Diagrams}{37}
-\contentsline {subsubsection}{\numberline {3.2.5}Goal mapping on requirements}{37}
-\contentsline {subsection}{\numberline {3.3}Performance Requirements}{42}
-\contentsline {subsection}{\numberline {3.4}Design Constraints}{43}
-\contentsline {subsubsection}{\numberline {3.4.1}Standards compliance}{43}
-\contentsline {subsubsection}{\numberline {3.4.2}Hardware limitations}{43}
-\contentsline {subsection}{\numberline {3.5}Software System Attributes}{43}
-\contentsline {subsubsection}{\numberline {3.5.1}Availability}{43}
-\contentsline {subsubsection}{\numberline {3.5.2}Reliability}{44}
-\contentsline {subsubsection}{\numberline {3.5.3}Security}{44}
-\contentsline {subsubsection}{\numberline {3.5.4}Maintainability}{44}
-\contentsline {subsubsection}{\numberline {3.5.5}Portability}{44}
-\contentsline {section}{\numberline {4}Formal analysis with Alloy}{45}
-\contentsline {subsection}{\numberline {4.1}Overview}{45}
-\contentsline {subsection}{\numberline {4.2}Static Model}{45}
-\contentsline {subsection}{\numberline {4.3}Dynamic Model}{45}
+\contentsline {subsubsection}{\numberline {2.1.1}Class Diagrams}{13}
+\contentsline {subsubsection}{\numberline {2.1.2}State Charts}{16}
+\contentsline {subsection}{\numberline {2.2}Product functions}{17}
+\contentsline {subsection}{\numberline {2.3}User characteristics}{20}
+\contentsline {subsection}{\numberline {2.4}Assumptions, dependencies and constraints}{21}
+\contentsline {subsubsection}{\numberline {2.4.1}Constraints}{21}
+\contentsline {subsubsection}{\numberline {2.4.2}Dependencies}{21}
+\contentsline {subsubsection}{\numberline {2.4.3}Domain Assumptions}{21}
+\contentsline {section}{\numberline {3}Specific Requirements}{23}
+\contentsline {subsection}{\numberline {3.1}External Interface Requirements}{23}
+\contentsline {subsubsection}{\numberline {3.1.1}User Interfaces}{23}
+\contentsline {subsubsection}{\numberline {3.1.2}Hardware Interfaces}{40}
+\contentsline {subsubsection}{\numberline {3.1.3}Software Interfaces}{40}
+\contentsline {subsubsection}{\numberline {3.1.4}Communication Interfaces}{40}
+\contentsline {subsection}{\numberline {3.2}Functional Requirements}{41}
+\contentsline {subsubsection}{\numberline {3.2.1}Use Case Diagrams}{41}
+\contentsline {subsubsection}{\numberline {3.2.2}Scenarios}{42}
+\contentsline {subsubsection}{\numberline {3.2.3}Use Cases}{44}
+\contentsline {subsubsection}{\numberline {3.2.4}Sequence Diagrams}{57}
+\contentsline {subsubsection}{\numberline {3.2.5}Goal mapping on requirements}{57}
+\contentsline {subsection}{\numberline {3.3}Performance Requirements}{62}
+\contentsline {subsection}{\numberline {3.4}Design Constraints}{63}
+\contentsline {subsubsection}{\numberline {3.4.1}Standards compliance}{63}
+\contentsline {subsubsection}{\numberline {3.4.2}Hardware limitations}{63}
+\contentsline {subsection}{\numberline {3.5}Software System Attributes}{63}
+\contentsline {subsubsection}{\numberline {3.5.1}Availability}{63}
+\contentsline {subsubsection}{\numberline {3.5.2}Reliability}{64}
+\contentsline {subsubsection}{\numberline {3.5.3}Security}{64}
+\contentsline {subsubsection}{\numberline {3.5.4}Maintainability}{64}
+\contentsline {subsubsection}{\numberline {3.5.5}Portability}{64}
+\contentsline {section}{\numberline {4}Formal analysis with Alloy}{65}
+\contentsline {subsection}{\numberline {4.1}Overview}{65}
+\contentsline {subsection}{\numberline {4.2}Static Model}{66}
+\contentsline {subsection}{\numberline {4.3}Dynamic Model}{68}

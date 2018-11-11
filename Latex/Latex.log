@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.25)  10 NOV 2018 19:48
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.25)  11 NOV 2018 09:05
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -66,38 +66,81 @@ Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)
 \c@LT@chunks=\count92
 \LT@p@ftn=\toks15
 )
-(./Latex.aux
-
-LaTeX Warning: Label `fig:Logo' multiply defined.
-
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count93
+\float@exts=\toks16
+\float@box=\box30
+\@float@everytoks=\toks17
+\@floatcapt=\box31
 )
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/subfig/subfig.sty
+Package: subfig 2005/06/28 ver: 1.3 subfig package
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2016/05/22 v1.7-166 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 67.
+\captionmargin=\dimen106
+\captionmargin@=\dimen107
+\captionwidth=\dimen108
+\caption@tempdima=\dimen109
+\caption@indent=\dimen110
+\caption@parindent=\dimen111
+\caption@hangindent=\dimen112
+)
+\c@ContinuedFloat=\count94
+Package caption Info: float package is loaded.
+Package caption Info: longtable package is loaded.
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/caption/ltcaption.sty
+Package: ltcaption 2013/06/09 v1.4-94 longtable captions (AR)
+))
+\c@KVtest=\count95
+\sf@farskip=\skip47
+\sf@captopadj=\dimen113
+\sf@capskip=\skip48
+\sf@nearskip=\skip49
+\c@subfigure=\count96
+\c@subfigure@save=\count97
+\c@lofdepth=\count98
+\c@subtable=\count99
+\c@subtable@save=\count100
+\c@lotdepth=\count101
+\sf@top=\skip50
+\sf@bottom=\skip51
+)
+(./Latex.aux)
 \openout1 = `Latex.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
- (/usr/local/texlive/2018basic/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count93
-\scratchdimen=\dimen106
-\scratchbox=\box30
-\nofMPsegments=\count94
-\nofMParguments=\count95
-\everyMPshowfont=\toks16
-\MPscratchCnt=\count96
-\MPscratchDim=\dimen107
-\MPnumerator=\count97
-\makeMPintoPDFobject=\count98
-\everyMPtoPDFconversion=\toks17
+\scratchcounter=\count102
+\scratchdimen=\dimen114
+\scratchbox=\box32
+\nofMPsegments=\count103
+\nofMParguments=\count104
+\everyMPshowfont=\toks18
+\MPscratchCnt=\count105
+\MPscratchDim=\dimen115
+\MPnumerator=\count106
+\makeMPintoPDFobject=\count107
+\everyMPtoPDFconversion=\toks19
 ) (/usr/local/texlive/2018basic/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 (/usr/local/texlive/2018basic/texmf-dist/tex/generic/oberdiek/infwarerr.sty
@@ -153,10 +196,13 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: subfig package v1.3 is loaded.
+Package caption Info: End \AtBeginDocument code.
 <./images/logo.png, id=1, 666.49pt x 489.83pt>
 File: ./images/logo.png Graphic file (type png)
 <use ./images/logo.png>
-Package pdftex.def Info: ./images/logo.png  used on input line 18.
+Package pdftex.def Info: ./images/logo.png  used on input line 20.
 (pdftex.def)             Requested size: 345.0pt x 253.55457pt.
  [1
 
@@ -171,499 +217,656 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 \openout3 = `Latex.toc'.
 
  [2]
-Underfull \hbox (badness 10000) in paragraph at lines 50--66
+Underfull \hbox (badness 10000) in paragraph at lines 52--68
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 50--66
+Underfull \hbox (badness 10000) in paragraph at lines 52--68
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 50--66
+Underfull \hbox (badness 10000) in paragraph at lines 52--68
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 50--66
+Underfull \hbox (badness 10000) in paragraph at lines 52--68
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 50--66
+Underfull \hbox (badness 10000) in paragraph at lines 52--68
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 50--66
+Underfull \hbox (badness 10000) in paragraph at lines 52--68
 
  []
 
 [3]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 69.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 71.
  (/usr/local/texlive/2018basic/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 69.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 71.
 
-Underfull \hbox (badness 10000) in paragraph at lines 73--76
+Underfull \hbox (badness 10000) in paragraph at lines 75--78
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 76--79
+Underfull \hbox (badness 10000) in paragraph at lines 78--81
 
  []
 
 [4]
-Underfull \hbox (badness 10000) in paragraph at lines 85--89
+Underfull \hbox (badness 10000) in paragraph at lines 87--91
 
  []
 
 [5]
-Underfull \hbox (badness 10000) in paragraph at lines 113--114
+Underfull \hbox (badness 10000) in paragraph at lines 115--116
 
  []
 
 
-Underfull \vbox (badness 10000) detected at line 154
+Underfull \vbox (badness 10000) detected at line 156
  []
 
 
-Overfull \vbox (13.84973pt too high) has occurred while \output is active []
+Overfull \vbox (13.50533pt too high) has occurred while \output is active []
 
 
 [6] [7]
-Overfull \hbox (32.13979pt too wide) in paragraph at lines 211--212
+Overfull \hbox (32.13979pt too wide) in paragraph at lines 213--214
 []\OT1/cmr/m/n/10 Alloy Of-fi-cial Doc-u-men-ta-tion: http://alloy.lcs.mit.edu/
 alloy/documentation.html 
  []
 
 [8] [9]
-Underfull \hbox (badness 10000) in paragraph at lines 231--236
+Underfull \hbox (badness 10000) in paragraph at lines 233--278
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 231--236
+Underfull \hbox (badness 10000) in paragraph at lines 233--278
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 231--236
+Underfull \hbox (badness 10000) in paragraph at lines 233--278
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 237--239
+Underfull \hbox (badness 10000) in paragraph at lines 233--278
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 240--242
+Underfull \hbox (badness 10000) in paragraph at lines 233--278
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 243--245
+Underfull \hbox (badness 10000) in paragraph at lines 233--278
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 246--248
+Underfull \hbox (badness 10000) in paragraph at lines 233--278
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 249--251
+Underfull \hbox (badness 10000) in paragraph at lines 233--278
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 252--254
-
- []
-
-[10]
-Underfull \hbox (badness 10000) in paragraph at lines 255--257
+Underfull \hbox (badness 10000) in paragraph at lines 233--278
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 258--260
+Underfull \hbox (badness 10000) in paragraph at lines 233--278
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 261--263
+Underfull \hbox (badness 10000) in paragraph at lines 233--278
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 264--266
+Underfull \hbox (badness 10000) in paragraph at lines 233--278
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 267--269
+Underfull \hbox (badness 10000) in paragraph at lines 233--278
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 270--272
+Underfull \hbox (badness 10000) in paragraph at lines 233--278
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 273--275
+Underfull \hbox (badness 10000) in paragraph at lines 233--278
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 276--278
-
- []
-
-[11]
-Underfull \hbox (badness 10000) in paragraph at lines 279--281
+Underfull \hbox (badness 10000) in paragraph at lines 233--278
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 282--284
+Underfull \hbox (badness 10000) in paragraph at lines 233--278
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 285--287
+Underfull \hbox (badness 10000) in paragraph at lines 233--278
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 288--290
+Underfull \hbox (badness 10000) in paragraph at lines 233--278
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 291--293
+Underfull \hbox (badness 10000) in paragraph at lines 233--278
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 294--296
+Underfull \hbox (badness 10000) in paragraph at lines 233--278
 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 233--278
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 233--278
+
+ []
+
+[10] [11]
 <./images/Diagrammi/D4HClass.png, id=51, 1205.50375pt x 1606.0pt>
 File: ./images/Diagrammi/D4HClass.png Graphic file (type png)
 <use ./images/Diagrammi/D4HClass.png>
-Package pdftex.def Info: ./images/Diagrammi/D4HClass.png  used on input line 30
-1.
+Package pdftex.def Info: ./images/Diagrammi/D4HClass.png  used on input line 28
+3.
 (pdftex.def)             Requested size: 345.0pt x 459.6017pt.
 <./images/Diagrammi/SOSClass.png, id=52, 542.025pt x 797.98125pt>
 File: ./images/Diagrammi/SOSClass.png Graphic file (type png)
 <use ./images/Diagrammi/SOSClass.png>
-Package pdftex.def Info: ./images/Diagrammi/SOSClass.png  used on input line 30
-7.
+Package pdftex.def Info: ./images/Diagrammi/SOSClass.png  used on input line 28
+9.
 (pdftex.def)             Requested size: 345.0pt x 507.93008pt.
-<./images/Diagrammi/T4RClass.png, id=53, 1538.74875pt x 1606.0pt>
+ [12]
+<./images/Diagrammi/T4RClass.png, id=57, 1538.74875pt x 1606.0pt>
 File: ./images/Diagrammi/T4RClass.png Graphic file (type png)
 <use ./images/Diagrammi/T4RClass.png>
-Package pdftex.def Info: ./images/Diagrammi/T4RClass.png  used on input line 31
-3.
+Package pdftex.def Info: ./images/Diagrammi/T4RClass.png  used on input line 29
+5.
 (pdftex.def)             Requested size: 345.0pt x 360.06012pt.
-<./images/Diagrammi/groupStateChart.png, id=54, 1606.0pt x 1153.30875pt>
+ [13 <./images/Diagrammi/D4HClass.png>] [14 <./images/Diagrammi/SOSClass.png>]
+<./images/Diagrammi/groupStateChart.png, id=65, 1606.0pt x 1153.30875pt>
 File: ./images/Diagrammi/groupStateChart.png Graphic file (type png)
 <use ./images/Diagrammi/groupStateChart.png>
 Package pdftex.def Info: ./images/Diagrammi/groupStateChart.png  used on input 
-line 321.
+line 303.
 (pdftex.def)             Requested size: 345.0pt x 247.74538pt.
-<./images/Diagrammi/singleStateChart.png, id=55, 592.2125pt x 618.31pt>
+<./images/Diagrammi/singleStateChart.png, id=66, 592.2125pt x 618.31pt>
 File: ./images/Diagrammi/singleStateChart.png Graphic file (type png)
 <use ./images/Diagrammi/singleStateChart.png>
 Package pdftex.def Info: ./images/Diagrammi/singleStateChart.png  used on input
- line 327.
+ line 309.
 (pdftex.def)             Requested size: 345.0pt x 360.21451pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 333--334
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 336--341
+ [15 <./images/Diagrammi/T4RClass.png>] [16 <./images/Diagrammi/groupStateChart
+.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 315--316
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 336--341
-
- []
-
-[12]
-Underfull \hbox (badness 10000) in paragraph at lines 342--344
+Underfull \hbox (badness 10000) in paragraph at lines 318--323
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 345--347
+Underfull \hbox (badness 10000) in paragraph at lines 318--323
+
+ []
+
+[17 <./images/Diagrammi/singleStateChart.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 324--326
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 348--350
+Underfull \hbox (badness 10000) in paragraph at lines 327--329
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 351--356
-
- []
-
-[13]
-Underfull \hbox (badness 10000) in paragraph at lines 361--362
+Underfull \hbox (badness 10000) in paragraph at lines 330--332
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 363--364
+Underfull \hbox (badness 10000) in paragraph at lines 333--338
+
+ []
+
+[18]
+Underfull \hbox (badness 10000) in paragraph at lines 343--344
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 372--373
+Underfull \hbox (badness 10000) in paragraph at lines 345--346
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 374--375
+Underfull \hbox (badness 10000) in paragraph at lines 354--355
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 376--379
+Underfull \hbox (badness 10000) in paragraph at lines 356--357
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 380--385
+Underfull \hbox (badness 10000) in paragraph at lines 358--361
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 380--385
-
- []
-
-[14]
-Underfull \hbox (badness 10000) in paragraph at lines 388--399
+Underfull \hbox (badness 10000) in paragraph at lines 362--367
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 388--399
+Underfull \hbox (badness 10000) in paragraph at lines 362--367
 
  []
 
-[15] [16]
-Underfull \hbox (badness 10000) in paragraph at lines 442--443
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 444--447
-
- []
-
-[17]
-Underfull \hbox (badness 10000) in paragraph at lines 457--458
-
- []
-
-<./images/D4HLogo.jpg, id=75, 681.5061pt x 460.8417pt>
-File: ./images/D4HLogo.jpg Graphic file (type jpg)
-<use ./images/D4HLogo.jpg>
-Package pdftex.def Info: ./images/D4HLogo.jpg  used on input line 465.
-(pdftex.def)             Requested size: 241.49895pt x 163.30109pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<./images/Mockup/mockupRegisterSU.png, id=76, 376.40625pt x 672.01062pt>
-File: ./images/Mockup/mockupRegisterSU.png Graphic file (type png)
-<use ./images/Mockup/mockupRegisterSU.png>
-Package pdftex.def Info: ./images/Mockup/mockupRegisterSU.png  used on input li
-ne 472.
-(pdftex.def)             Requested size: 172.5pt x 307.98018pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 479--481
-
- []
-
-[18] [19]
-Underfull \hbox (badness 10000) in paragraph at lines 519--520
-
- []
-
-File: ./images/D4HLogo.jpg Graphic file (type jpg)
-<use ./images/D4HLogo.jpg>
-Package pdftex.def Info: ./images/D4HLogo.jpg  used on input line 527.
-(pdftex.def)             Requested size: 241.49895pt x 163.30109pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 536--538
-
- []
-
-[20]
-Underfull \hbox (badness 10000) in paragraph at lines 539--541
+[19]
+Underfull \hbox (badness 10000) in paragraph at lines 370--381
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 553--554
+Underfull \hbox (badness 10000) in paragraph at lines 370--381
 
  []
 
-[21]
-<./images/Diagrammi/SingleUserUseCase.png, id=90, 737.75626pt x 603.25375pt>
-File: ./images/Diagrammi/SingleUserUseCase.png Graphic file (type png)
-<use ./images/Diagrammi/SingleUserUseCase.png>
-Package pdftex.def Info: ./images/Diagrammi/SingleUserUseCase.png  used on inpu
-t line 591.
-(pdftex.def)             Requested size: 345.0pt x 282.10254pt.
-<./images/Diagrammi/ThirdPartyUseCase.png, id=91, 607.26875pt x 527.9725pt>
-File: ./images/Diagrammi/ThirdPartyUseCase.png Graphic file (type png)
-<use ./images/Diagrammi/ThirdPartyUseCase.png>
-Package pdftex.def Info: ./images/Diagrammi/ThirdPartyUseCase.png  used on inpu
-t line 597.
-(pdftex.def)             Requested size: 345.0pt x 299.95653pt.
+[20] [21]
+Underfull \hbox (badness 10000) in paragraph at lines 424--425
 
-Underfull \hbox (badness 10000) in paragraph at lines 605--608
-[]\OT1/cmr/bx/n/10 Scenario 1
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 426--429
+
  []
 
 [22]
-Underfull \hbox (badness 10000) in paragraph at lines 608--612
-[]\OT1/cmr/bx/n/10 Scenario 2
+<./images/D4HLogo.jpg, id=93, 681.5061pt x 460.8417pt>
+File: ./images/D4HLogo.jpg Graphic file (type jpg)
+<use ./images/D4HLogo.jpg>
+Package pdftex.def Info: ./images/D4HLogo.jpg  used on input line 447.
+(pdftex.def)             Requested size: 241.49895pt x 163.30109pt.
+<./images/Mockup/mockupLogin.png, id=94, 374.90062pt x 670.00313pt>
+File: ./images/Mockup/mockupLogin.png Graphic file (type png)
+<use ./images/Mockup/mockupLogin.png>
+Package pdftex.def Info: ./images/Mockup/mockupLogin.png  used on input line 45
+6.
+(pdftex.def)             Requested size: 142.26378pt x 254.24602pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 452--459
+
+ []
+
+[23 <./images/D4HLogo.jpg>]
+<./images/Mockup/mockupTutorial.png, id=98, 376.40625pt x 671.00688pt>
+File: ./images/Mockup/mockupTutorial.png Graphic file (type png)
+<use ./images/Mockup/mockupTutorial.png>
+Package pdftex.def Info: ./images/Mockup/mockupTutorial.png  used on input line
+ 465.
+(pdftex.def)             Requested size: 142.26378pt x 253.61328pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 461--468
+
+ []
+
+[24 <./images/Mockup/mockupLogin.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 470--472
+
+ []
+
+<./images/Mockup/mockupRegisterSU.png, id=104, 376.40625pt x 672.01062pt>
+File: ./images/Mockup/mockupRegisterSU.png Graphic file (type png)
+<use ./images/Mockup/mockupRegisterSU.png>
+Package pdftex.def Info: ./images/Mockup/mockupRegisterSU.png  used on input li
+ne 475.
+(pdftex.def)             Requested size: 142.26378pt x 253.99265pt.
+<./images/Mockup/mockupRegisterTP.png, id=105, 376.40625pt x 671.00688pt>
+File: ./images/Mockup/mockupRegisterTP.png Graphic file (type png)
+<use ./images/Mockup/mockupRegisterTP.png>
+Package pdftex.def Info: ./images/Mockup/mockupRegisterTP.png  used on input li
+ne 477.
+(pdftex.def)             Requested size: 142.26378pt x 253.61328pt.
+[25 <./images/Mockup/mockupTutorial.png>]
+<./images/Mockup/mockupMyHealth.png, id=110, 374.39874pt x 673.01437pt>
+File: ./images/Mockup/mockupMyHealth.png Graphic file (type png)
+<use ./images/Mockup/mockupMyHealth.png>
+Package pdftex.def Info: ./images/Mockup/mockupMyHealth.png  used on input line
+ 490.
+(pdftex.def)             Requested size: 142.26378pt x 255.72757pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 485--493
+
+ []
+
+[26 <./images/Mockup/mockupRegisterSU.png> <./images/Mockup/mockupRegisterTP.pn
+g>]
+<./images/Mockup/mockupSettingsSU.png, id=118, 376.40625pt x 675.02188pt>
+File: ./images/Mockup/mockupSettingsSU.png Graphic file (type png)
+<use ./images/Mockup/mockupSettingsSU.png>
+Package pdftex.def Info: ./images/Mockup/mockupSettingsSU.png  used on input li
+ne 500.
+(pdftex.def)             Requested size: 142.26378pt x 255.13078pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 495--503
+
+ []
+
+[27 <./images/Mockup/mockupMyHealth.png>]
+<./images/Mockup/mockupMyFollowers.png, id=123, 376.40625pt x 673.51625pt>
+File: ./images/Mockup/mockupMyFollowers.png Graphic file (type png)
+<use ./images/Mockup/mockupMyFollowers.png>
+Package pdftex.def Info: ./images/Mockup/mockupMyFollowers.png  used on input l
+ine 509.
+(pdftex.def)             Requested size: 142.26378pt x 254.5617pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 505--512
+
+ []
+
+[28 <./images/Mockup/mockupSettingsSU.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 519--521
+
+ []
+
+<./images/Mockup/mockupSingleRequest.png, id=128, 376.40625pt x 670.505pt>
+File: ./images/Mockup/mockupSingleRequest.png Graphic file (type png)
+<use ./images/Mockup/mockupSingleRequest.png>
+Package pdftex.def Info: ./images/Mockup/mockupSingleRequest.png  used on input
+ line 524.
+(pdftex.def)             Requested size: 142.26378pt x 253.42358pt.
+<./images/Mockup/mockupGroupRequest.png, id=129, 375.4025pt x 670.00313pt>
+File: ./images/Mockup/mockupGroupRequest.png Graphic file (type png)
+<use ./images/Mockup/mockupGroupRequest.png>
+Package pdftex.def Info: ./images/Mockup/mockupGroupRequest.png  used on input 
+line 526.
+(pdftex.def)             Requested size: 142.26378pt x 253.90865pt.
+[29 <./images/Mockup/mockupMyFollowers.png>]
+<./images/Mockup/mockupHistory.png, id=134, 376.40625pt x 671.50874pt>
+File: ./images/Mockup/mockupHistory.png Graphic file (type png)
+<use ./images/Mockup/mockupHistory.png>
+Package pdftex.def Info: ./images/Mockup/mockupHistory.png  used on input line 
+540.
+(pdftex.def)             Requested size: 142.26378pt x 253.80296pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 537--543
+
+ []
+
+[30 <./images/Mockup/mockupSingleRequest.png> <./images/Mockup/mockupGroupReque
+st.png>]
+<./images/Mockup/mockupSettingsTP.png, id=141, 376.40625pt x 672.01062pt>
+File: ./images/Mockup/mockupSettingsTP.png Graphic file (type png)
+<use ./images/Mockup/mockupSettingsTP.png>
+Package pdftex.def Info: ./images/Mockup/mockupSettingsTP.png  used on input li
+ne 552.
+(pdftex.def)             Requested size: 142.26378pt x 253.99265pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 547--555
+
+ []
+
+[31 <./images/Mockup/mockupHistory.png>]
+<./images/T4RLogo.jpg, id=146, 1606.0pt x 1086.0575pt>
+File: ./images/T4RLogo.jpg Graphic file (type jpg)
+<use ./images/T4RLogo.jpg>
+Package pdftex.def Info: ./images/T4RLogo.jpg  used on input line 567.
+(pdftex.def)             Requested size: 241.49895pt x 163.29932pt.
+ [32 <./images/Mockup/mockupSettingsTP.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 571--573
+
+ []
+
+<./images/Mockup/mockupMyRunSU.png, id=151, 376.90813pt x 670.505pt>
+File: ./images/Mockup/mockupMyRunSU.png Graphic file (type png)
+<use ./images/Mockup/mockupMyRunSU.png>
+Package pdftex.def Info: ./images/Mockup/mockupMyRunSU.png  used on input line 
+582.
+(pdftex.def)             Requested size: 142.26378pt x 253.07573pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 578--585
+
+ []
+
+[33 <./images/T4RLogo.jpg>]
+<./images/Mockup/mockupActiveRunsSU.png, id=155, 376.90813pt x 671.00688pt>
+File: ./images/Mockup/mockupActiveRunsSU.png Graphic file (type png)
+<use ./images/Mockup/mockupActiveRunsSU.png>
+Package pdftex.def Info: ./images/Mockup/mockupActiveRunsSU.png  used on input 
+line 591.
+(pdftex.def)             Requested size: 142.26378pt x 253.26515pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 587--594
+
+ []
+
+[34 <./images/Mockup/mockupMyRunSU.png>]
+Overfull \hbox (9.74646pt too wide) in paragraph at lines 597--599
+[]\OT1/cmr/bx/n/10 Third Party In-ter-faces \OT1/cmr/m/n/10 Also Third Par-ties
+ will ac-cess all \OT1/cmr/m/it/10 Track4Run\OT1/cmr/m/n/10 's
+ []
+
+<./images/Mockup/mockupNewRun.png, id=160, 374.90062pt x 669.50125pt>
+File: ./images/Mockup/mockupNewRun.png Graphic file (type png)
+<use ./images/Mockup/mockupNewRun.png>
+Package pdftex.def Info: ./images/Mockup/mockupNewRun.png  used on input line 6
+04.
+(pdftex.def)             Requested size: 142.26378pt x 254.05557pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 600--607
+
+ []
+
+[35 <./images/Mockup/mockupActiveRunsSU.png>]
+<./images/Mockup/mockupMyRuns.png, id=165, 375.90437pt x 670.505pt>
+File: ./images/Mockup/mockupMyRuns.png Graphic file (type png)
+<use ./images/Mockup/mockupMyRuns.png>
+Package pdftex.def Info: ./images/Mockup/mockupMyRuns.png  used on input line 6
+13.
+(pdftex.def)             Requested size: 142.26378pt x 253.76122pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 609--616
+
+ []
+
+[36 <./images/Mockup/mockupNewRun.png>]
+<./images/Mockup/mockupActiveRuns.png, id=171, 375.90437pt x 668.99937pt>
+File: ./images/Mockup/mockupActiveRuns.png Graphic file (type png)
+<use ./images/Mockup/mockupActiveRuns.png>
+Package pdftex.def Info: ./images/Mockup/mockupActiveRuns.png  used on input li
+ne 622.
+(pdftex.def)             Requested size: 142.26378pt x 253.19138pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 618--625
+
+ []
+
+[37 <./images/Mockup/mockupMyRuns.png>]
+<./images/Mockup/mockupResearch.png, id=176, 377.91188pt x 672.5125pt>
+File: ./images/Mockup/mockupResearch.png Graphic file (type png)
+<use ./images/Mockup/mockupResearch.png>
+Package pdftex.def Info: ./images/Mockup/mockupResearch.png  used on input line
+ 634.
+(pdftex.def)             Requested size: 142.26378pt x 253.16643pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 630--637
+
+ []
+
+[38 <./images/Mockup/mockupActiveRuns.png>]
+<./images/Mockup/mockupSelectedRun.png, id=181, 376.40625pt x 671.00688pt>
+File: ./images/Mockup/mockupSelectedRun.png Graphic file (type png)
+<use ./images/Mockup/mockupSelectedRun.png>
+Package pdftex.def Info: ./images/Mockup/mockupSelectedRun.png  used on input l
+ine 643.
+(pdftex.def)             Requested size: 142.26378pt x 253.61328pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 639--646
+
+ []
+
+[39 <./images/Mockup/mockupResearch.png>]
+<./images/Diagrammi/SingleUserUseCase.png, id=186, 737.75626pt x 603.25375pt>
+File: ./images/Diagrammi/SingleUserUseCase.png Graphic file (type png)
+<use ./images/Diagrammi/SingleUserUseCase.png>
+Package pdftex.def Info: ./images/Diagrammi/SingleUserUseCase.png  used on inpu
+t line 679.
+(pdftex.def)             Requested size: 345.0pt x 282.10254pt.
+ [40 <./images/Mockup/mockupSelectedRun.png>]
+<./images/Diagrammi/ThirdPartyUseCase.png, id=191, 607.26875pt x 527.9725pt>
+File: ./images/Diagrammi/ThirdPartyUseCase.png Graphic file (type png)
+<use ./images/Diagrammi/ThirdPartyUseCase.png>
+Package pdftex.def Info: ./images/Diagrammi/ThirdPartyUseCase.png  used on inpu
+t line 685.
+(pdftex.def)             Requested size: 345.0pt x 299.95653pt.
+ [41 <./images/Diagrammi/SingleUserUseCase.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 693--696
+[]\OT1/cmr/bx/n/10 Scenario 1
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 612--616
+Underfull \hbox (badness 10000) in paragraph at lines 696--700
+[]\OT1/cmr/bx/n/10 Scenario 2
+ []
+
+[42 <./images/Diagrammi/ThirdPartyUseCase.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 700--704
 []\OT1/cmr/bx/n/10 Scenario 3
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 616--618
+Underfull \hbox (badness 10000) in paragraph at lines 704--706
 []\OT1/cmr/bx/n/10 Scenario 4
  []
 
-[23]
-Overfull \hbox (48.88582pt too wide) in alignment at lines 625--678
+
+Overfull \hbox (48.88582pt too wide) in alignment at lines 713--766
+ [] [] 
+ []
+
+[43]
+Underfull \vbox (badness 10000) detected at line 766
+ []
+
+[44]
+Overfull \hbox (48.88582pt too wide) in alignment at lines 770--823
  [] [] 
  []
 
 
-Underfull \vbox (badness 10000) detected at line 678
+Underfull \vbox (badness 10000) detected at line 823
  []
 
-[24]
-Overfull \hbox (48.88582pt too wide) in alignment at lines 682--735
+[45] [46]
+Overfull \hbox (48.88582pt too wide) in alignment at lines 826--868
  [] [] 
  []
 
 
-Underfull \vbox (badness 10000) detected at line 735
+Underfull \vbox (badness 10000) detected at line 868
  []
 
-[25] [26]
-Overfull \hbox (48.88582pt too wide) in alignment at lines 738--780
+[47]
+Overfull \hbox (48.88582pt too wide) in alignment at lines 871--913
  [] [] 
  []
 
 
-Underfull \vbox (badness 10000) detected at line 780
+Underfull \vbox (badness 10000) detected at line 913
  []
 
-[27]
-Overfull \hbox (48.88582pt too wide) in alignment at lines 783--825
+
+Overfull \hbox (48.88582pt too wide) in alignment at lines 916--958
  [] [] 
  []
 
 
-Underfull \vbox (badness 10000) detected at line 825
+Underfull \vbox (badness 10000) detected at line 958
  []
 
-
-Overfull \hbox (48.88582pt too wide) in alignment at lines 828--870
+[48]
+Overfull \hbox (48.88582pt too wide) in alignment at lines 962--1008
  [] [] 
  []
 
 
-Underfull \vbox (badness 10000) detected at line 870
+Underfull \vbox (badness 10000) detected at line 1008
  []
 
-[28]
-Overfull \hbox (48.88582pt too wide) in alignment at lines 874--920
+[49]
+Overfull \hbox (48.88582pt too wide) in alignment at lines 1011--1050
  [] [] 
  []
 
 
-Underfull \vbox (badness 10000) detected at line 920
+Underfull \vbox (badness 10000) detected at line 1050
  []
 
-[29]
-Overfull \hbox (48.88582pt too wide) in alignment at lines 923--962
+[50]
+Overfull \hbox (48.88582pt too wide) in alignment at lines 1054--1102
  [] [] 
  []
 
 
-Underfull \vbox (badness 10000) detected at line 962
+Underfull \vbox (badness 10000) detected at line 1102
  []
 
-[30]
-Overfull \hbox (48.88582pt too wide) in alignment at lines 966--1014
+[51]
+Overfull \hbox (48.88582pt too wide) in alignment at lines 1105--1153
  [] [] 
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1014
+Underfull \vbox (badness 10000) detected at line 1153
  []
 
-[31]
-Overfull \hbox (48.88582pt too wide) in alignment at lines 1017--1065
- [] [] 
- []
-
-
-Underfull \vbox (badness 10000) detected at line 1065
- []
-
-[32]
-Overfull \hbox (48.88582pt too wide) in alignment at lines 1068--1108
- [] [] 
- []
-
-
-Underfull \vbox (badness 10000) detected at line 1108
- []
-
-[33]
-Overfull \hbox (48.88582pt too wide) in alignment at lines 1112--1154
- [] [] 
- []
-
-
-Underfull \vbox (badness 10000) detected at line 1154
- []
-
-[34]
-Overfull \hbox (48.88582pt too wide) in alignment at lines 1157--1196
+[52]
+Overfull \hbox (48.88582pt too wide) in alignment at lines 1156--1196
  [] [] 
  []
 
@@ -671,123 +874,193 @@ Overfull \hbox (48.88582pt too wide) in alignment at lines 1157--1196
 Underfull \vbox (badness 10000) detected at line 1196
  []
 
-[35]
-Overfull \hbox (48.88582pt too wide) in alignment at lines 1199--1239
+[53]
+Overfull \hbox (48.88582pt too wide) in alignment at lines 1200--1242
  [] [] 
  []
 
 
-Underfull \vbox (badness 10000) detected at line 1239
+Underfull \vbox (badness 10000) detected at line 1242
  []
 
-[36] [37] [38] [39] [40] [41]
-Underfull \hbox (badness 10000) in paragraph at lines 1396--1404
-
- []
-
-[42]
-Underfull \hbox (badness 10000) in paragraph at lines 1428--1430
-
+[54]
+Overfull \hbox (48.88582pt too wide) in alignment at lines 1245--1284
+ [] [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1431--1433
-
+Underfull \vbox (badness 10000) detected at line 1284
  []
 
-[43]
-Underfull \hbox (badness 10000) in paragraph at lines 1442--1443
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1444--1445
-
- []
-
-[44]
-Underfull \hbox (badness 10000) in paragraph at lines 1452--1461
-
+[55]
+Overfull \hbox (48.88582pt too wide) in alignment at lines 1287--1327
+ [] [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1452--1461
+Underfull \vbox (badness 10000) detected at line 1327
+ []
+
+[56] [57] [58] [59] [60] [61]
+Underfull \hbox (badness 10000) in paragraph at lines 1484--1492
+
+ []
+
+[62]
+Underfull \hbox (badness 10000) in paragraph at lines 1516--1518
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1452--1461
+Underfull \hbox (badness 10000) in paragraph at lines 1519--1521
+
+ []
+
+[63]
+Underfull \hbox (badness 10000) in paragraph at lines 1530--1531
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1452--1461
+Underfull \hbox (badness 10000) in paragraph at lines 1532--1533
 
  []
 
-<./images/Alloy/staticAlloy.png, id=165, 618.05907pt x 562.35094pt>
+[64]
+Underfull \hbox (badness 10000) in paragraph at lines 1540--1549
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1540--1549
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1540--1549
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1540--1549
+
+ []
+
+<./images/Alloy/staticAlloy.png, id=271, 618.05907pt x 562.35094pt>
 File: ./images/Alloy/staticAlloy.png Graphic file (type png)
 <use ./images/Alloy/staticAlloy.png>
-Package pdftex.def Info: ./images/Alloy/staticAlloy.png  used on input line 146
-5.
-(pdftex.def)             Requested size: 241.49895pt x 219.72786pt.
-<./images/Alloy/staticModel.png, id=166, 534.49687pt x 280.04625pt>
+Package pdftex.def Info: ./images/Alloy/staticAlloy.png  used on input line 155
+3.
+(pdftex.def)             Requested size: 345.0pt x 313.91043pt.
+[65]
+<./images/Alloy/staticCheck.png, id=275, 286.06876pt x 229.60782pt>
+File: ./images/Alloy/staticCheck.png Graphic file (type png)
+<use ./images/Alloy/staticCheck.png>
+Package pdftex.def Info: ./images/Alloy/staticCheck.png  used on input line 155
+9.
+(pdftex.def)             Requested size: 345.0pt x 276.9119pt.
+ [66 <./images/Alloy/staticAlloy.png>]
+<./images/Alloy/staticModel.png, id=280, 534.49687pt x 280.04625pt>
 File: ./images/Alloy/staticModel.png Graphic file (type png)
 <use ./images/Alloy/staticModel.png>
-Package pdftex.def Info: ./images/Alloy/staticModel.png  used on input line 147
-2.
+Package pdftex.def Info: ./images/Alloy/staticModel.png  used on input line 156
+5.
 (pdftex.def)             Requested size: 345.0pt x 180.7673pt.
+<./images/Alloy/Dynamic1.png, id=281, 709.14937pt x 694.84593pt>
+File: ./images/Alloy/Dynamic1.png Graphic file (type png)
+<use ./images/Alloy/Dynamic1.png>
+Package pdftex.def Info: ./images/Alloy/Dynamic1.png  used on input line 1582.
+(pdftex.def)             Requested size: 345.0pt x 338.04951pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1478--1487
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1478--1487
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1478--1487
+Underfull \hbox (badness 10000) in paragraph at lines 1571--1584
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1478--1487
+Underfull \hbox (badness 10000) in paragraph at lines 1571--1584
 
  []
 
-[45] [46] [47 <./images/Diagrammi/D4HClass.png>] [48 <./images/Diagrammi/SOSCla
-ss.png>] [49 <./images/Diagrammi/T4RClass.png>] [50 <./images/Diagrammi/groupSt
-ateChart.png>] [51 <./images/Diagrammi/singleStateChart.png>] [52 <./images/D4H
-Logo.jpg> <./images/Mockup/mockupRegisterSU.png>] [53 <./images/Diagrammi/Singl
-eUserUseCase.png>] [54 <./images/Diagrammi/ThirdPartyUseCase.png>] [55 <./image
-s/Alloy/staticAlloy.png> <./images/Alloy/staticModel.png>] (./Latex.aux)
 
-LaTeX Warning: There were multiply-defined labels.
+Underfull \hbox (badness 10000) in paragraph at lines 1571--1584
 
- ) 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1571--1584
+
+ []
+
+[67 <./images/Alloy/staticCheck.png> <./images/Alloy/staticModel.png>] [68]
+<./images/Alloy/Dynamic2.png, id=288, 709.90219pt x 621.07031pt>
+File: ./images/Alloy/Dynamic2.png Graphic file (type png)
+<use ./images/Alloy/Dynamic2.png>
+Package pdftex.def Info: ./images/Alloy/Dynamic2.png  used on input line 1588.
+(pdftex.def)             Requested size: 345.0pt x 301.83472pt.
+
+[69 <./images/Alloy/Dynamic1.png>]
+<./images/Alloy/Dynamic3.png, id=292, 703.87968pt x 666.99188pt>
+File: ./images/Alloy/Dynamic3.png Graphic file (type png)
+<use ./images/Alloy/Dynamic3.png>
+Package pdftex.def Info: ./images/Alloy/Dynamic3.png  used on input line 1594.
+(pdftex.def)             Requested size: 345.0pt x 326.92047pt.
+ [70 <./images/Alloy/Dynamic2.png>]
+<./images/Alloy/Dynamic4.png, id=296, 663.98062pt x 657.95813pt>
+File: ./images/Alloy/Dynamic4.png Graphic file (type png)
+<use ./images/Alloy/Dynamic4.png>
+Package pdftex.def Info: ./images/Alloy/Dynamic4.png  used on input line 1600.
+(pdftex.def)             Requested size: 345.0pt x 341.86913pt.
+ [71 <./images/Alloy/Dynamic3.png>]
+<./images/Alloy/Dynamic5.png, id=300, 702.37407pt x 526.21594pt>
+File: ./images/Alloy/Dynamic5.png Graphic file (type png)
+<use ./images/Alloy/Dynamic5.png>
+Package pdftex.def Info: ./images/Alloy/Dynamic5.png  used on input line 1606.
+(pdftex.def)             Requested size: 345.0pt x 258.48239pt.
+ [72 <./images/Alloy/Dynamic4.png>]
+<./images/Alloy/Dynamic6.png, id=305, 429.10312pt x 503.63156pt>
+File: ./images/Alloy/Dynamic6.png Graphic file (type png)
+<use ./images/Alloy/Dynamic6.png>
+Package pdftex.def Info: ./images/Alloy/Dynamic6.png  used on input line 1612.
+(pdftex.def)             Requested size: 345.0pt x 404.9269pt.
+ [73 <./images/Alloy/Dynamic5.png>]
+<./images/Alloy/singleRequest.png, id=309, 715.17188pt x 369.63094pt>
+File: ./images/Alloy/singleRequest.png Graphic file (type png)
+<use ./images/Alloy/singleRequest.png>
+Package pdftex.def Info: ./images/Alloy/singleRequest.png  used on input line 1
+618.
+(pdftex.def)             Requested size: 345.0pt x 178.31197pt.
+ [74 <./images/Alloy/Dynamic6.png>]
+<./images/Alloy/groupRequest.png, id=313, 809.27344pt x 447.92343pt>
+File: ./images/Alloy/groupRequest.png Graphic file (type png)
+<use ./images/Alloy/groupRequest.png>
+Package pdftex.def Info: ./images/Alloy/groupRequest.png  used on input line 16
+25.
+(pdftex.def)             Requested size: 345.0pt x 190.95615pt.
+ [75 <./images/Alloy/singleRequest.png> <./images/Alloy/groupRequest.png>] (./L
+atex.aux) ) 
 Here is how much of TeX's memory you used:
- 1629 strings out of 494091
- 24642 string characters out of 6163522
- 98850 words of memory out of 5000000
- 5288 multiletter control sequences out of 15000+600000
- 6748 words of font info for 24 fonts, out of 8000000 for 9000
+ 3095 strings out of 494091
+ 52639 string characters out of 6163522
+ 121794 words of memory out of 5000000
+ 6708 multiletter control sequences out of 15000+600000
+ 7746 words of font info for 27 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
- 41i,7n,25p,1071b,375s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx1
-0.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mbx12.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmr10.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmr12.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmr17.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmti10.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmti12.pfb>
-Output written on Latex.pdf (56 pages, 1085813 bytes).
+ 44i,9n,49p,1110b,535s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmbx10.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmbx12.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmr10.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmr12.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmr17.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018basic/texmf-dist/font
+s/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2018basic/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2018basic/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmti8.pfb>
+Output written on Latex.pdf (76 pages, 2854262 bytes).
 PDF statistics:
- 237 PDF objects out of 1000 (max. 8388607)
- 151 compressed objects within 2 object streams
+ 354 PDF objects out of 1000 (max. 8388607)
+ 201 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 61 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 196 words of extra memory for PDF output out of 10000 (max. 10000000)
 
