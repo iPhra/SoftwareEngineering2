@@ -62,7 +62,7 @@ Secondarily, {\it Third Parties} may also retrieve data concerning groups of use
 \\
 In addition to these functionalities, {\it Data4Help} allows {\it Single User}s to activate {\it AutomatedSOS}. This integrated service adds up as another feature preserving the users’ safety. Whenever a user’s health status results critical according to certain thresholds, if {\it AutomatedSOS} is enabled an ambulance is immediately called and sent to his location.\\
 \\
-{\it Data4Help} offers to its customers also an additional service: {\it Track4Run}. While relying on the solid architecture of {\it Data4Help}, this feature can be accessed by downloading its exclusive application. When a user downloads {\it Track4Run} he will login with his {\it Data4Help} account or will easily register to it at the moment. Those who will access {\it Track4Run} are runners, run organizers and spectators. This application is intended to enable {\it Third Parties} to organize runs, {\it Single User}s to join them and spectators to keep track of runners live during an active path. While runners will enjoy visualizing their position live in the path, organizers will be able to track all participants and, thanks to {\it Data4Help}’s underlying services, will access the runners’ health data. Spectators won’t need to create any account as they will simply scroll through the list of active runs and track the runners’ positions in the selected path.\\
+{\it Data4Help} offers to its customers also an additional service: {\it Track4Run}. While relying on the solid architecture of {\it Data4Help}, this feature can be accessed by downloading its exclusive application. When a user downloads {\it Track4Run} he will login with his {\it Data4Help} account or will easily register to it at the moment. Those who will access {\it Track4Run} are runners, run organizers and {\it Spectator}s. This application is intended to enable {\it Third Parties} to organize runs, {\it Single User}s to join them and {\it Spectator}s to keep track of runners live during an active path. While runners will enjoy visualizing their position live in the path, organizers will be able to track all participants and, thanks to {\it Data4Help}’s underlying services, will access the runners’ health data. {\it Spectator}s won’t need to create any account as they will simply scroll through the list of active runs and track the runners’ positions in the selected path.\\
 \\
 From this brief description of the functionalities we may extract the following goals for {\it Data4Help}: \\
 		
@@ -80,7 +80,7 @@ With regards to {\it {\it AutomatedSOS}}, we may identify one goal:
  Finally, for {\it Track4Run}, we extract the following goals:
 			  \item {\bf [G7]} Organizers can create and manage runs.
 			  \item {\bf [G8]} Runners can enroll in an existing run.
-			  \item {\bf [G9]} Spectators can track the position of runners during a run.
+			  \item {\bf [G9]} {\it Spectator}s can track the position of runners during a run.
 			\end{itemize}
 			
 	\subsection{Scope}
@@ -120,7 +120,7 @@ Concerning the second type:
 			\item The {\it System} shows the result of a request.
 			\item The {\it System} forwards a request notification to a user.
 			\item The {\it System} asks a runner to share his data.
-			\item The {\it System} shows to all spectators a user’s position during a run.
+			\item The {\it System} shows to all {\it Spectator}s a user’s position during a run.
 			\item The {\it System} shows data of participants of a run to its organizer.
 		\end{itemize}	
 		
@@ -265,8 +265,8 @@ After processing a group request, if some results have been obtained from the DB
 After receiving a request from a {\it Third Party} the {\it System} checks if the user specified in the parameters exists and if so proceeds to forward a notification request to him. The notification includes the generalities of the requesting {\it Third Party}, the type of request (subscription or not) and the kinds of health parameters asked.\\ \\
 {\bf The System asks a runner to share his data (SP2)}
 When the time of a run comes, the {\it System} sends a notification to all users asking for their permission to share Position and Health data.\\ \\
-{\bf The System shows to all spectators a user’s position during a run (SP2)} \\
-During a run the {\it System} constantly update its internal state with the position of all participants using the data they share. This information is then used to show to spectators where each runner is located using a map on the UI.\\ \\
+{\bf The System shows to all {\it Spectator}s a user’s position during a run (SP2)} \\
+During a run the {\it System} constantly update its internal state with the position of all participants using the data they share. This information is then used to show to {\it Spectator}s where each runner is located using a map on the UI.\\ \\
 {\bf The System shows data of participants of a run to its organizer (SP2)} \\
 The {\it System} constantly shows to an organizer data about the participants enrolled in a run he created. Said data includes the number of runners, their generalities and after the run starts their position and health data. \\ \\
 {\bf Retrieving result data for a group request (MP)} \\
@@ -359,11 +359,11 @@ If the request is valid according to the stated conditions, the {\it System} wil
 {\it Track4Run} gives organizers, using a {\it Third Party} account, the possibility to create a run and get data from participants. When creating a run, organizers have to define the path that the run will follow on a map, set the starting time and ending time of the event and the maximum number of participants. When a run is full no more runners can join it.\\
 Throughout the event, organizers have access to live data of all participants, and can save that data after the event has finished.\\
 
-	\item{\bf Spectator functions: }\\
+	\item{\bf {\it Spectator} functions: }\\
 	\\
 	{\bf Spectate a live run} \\
-	On the day of a run, any user can access {\it Track4Run} without creating any account, select a run from the list of active runs and follow it live. Spectators can visualize the position of the users and, at the end of the run, of the final statistics of every runner.\\
-During the run, spectators have the option to select which runner they want to track, filtering using email and FC.\\
+	On the day of a run, any user can access {\it Track4Run} without creating any account, select a run from the list of active runs and follow it live. {\it Spectator}s can visualize the position of the users and, at the end of the run, of the final statistics of every runner.\\
+During the run, {\it Spectator}s have the option to select which runner they want to track, filtering using email and FC.\\
 	\end{itemize}
 	
 	\subsection{User characteristics}
@@ -375,7 +375,7 @@ The second refers to any company that provides a valid P.IVA to the {\it System}
 Runners, in particular, generally range from 15 to 60 years old people, of all social categories. \\
 Organizers, on the other hand, must have a P.IVA, so they generally represent sport clubs or any company with medical interests.\\
 When signing-up in the application, runners are forced to create a private account on {\it Data4Help}, which shares the user database with {\it Track4Run}, while organizers are forced to create a {\it Third Party} account.\\
-Finally, spectators use the application with the sole purpose of spectating an existing run, and do not have to create an account on {\it Data4Help}.\\
+Finally, {\it Spectator}s use the application with the sole purpose of spectating an existing run, and do not have to create an account on {\it Data4Help}.\\
 \\
 We will now briefly precise which types of users the {\it System} encounters at different stages:
 \begin{itemize}
@@ -384,7 +384,7 @@ We will now briefly precise which types of users the {\it System} encounters at 
 	\item {\it {\it Third Party}: } a user who has created a “{\it Third Party}” account, but has yet to log in. Once he has inserted his credentials he may access all of the application’s functionalities.
 	\item {\it Logged-in {\it Single User}: } a user that has provided the credentials to his {\it Single User} account and that may access all application functionalities.
 	\item {\it Logged-in {\it Third Party}: } a user that has provided the credentials to his {\it Third Party} account and that may access all application functionalities.
-	\item {\it Spectator: } a user that has not logged-in into {\it Track4Run} but is spectating an existing run. 
+	\item {\it {\it Spectator}: } a user that has not logged-in into {\it Track4Run} but is spectating an existing run. 
 \end{itemize}	
 
 	\subsection{Assumptions, dependencies and constraints}
@@ -568,8 +568,8 @@ The logo is also used as the application’s icon and will be visible to whoever
   						\caption{{\it Track4Run} Logo}
  						\label{fig:Loogo}
 					\end{figure}
-				\item{\bf Login, Signup or access as Spectator}\\
-				Whenever a user downloads {\it Track4Run} for the first time, he will be immediately asked to login, sign up or access as a Spectator. A user can only login with his {\it Data4Help} account. If absent, he may create it at the moment and can therefore access all {\it Data4Help}’s services through its exclusive app. However, even without an account, a user will still be able to access one of {\it Track4Run}’s services, that look for an active run a follow its participants live on the track.\\
+				\item{\bf Login, Signup or access as {\it Spectator}}\\
+				Whenever a user downloads {\it Track4Run} for the first time, he will be immediately asked to login, sign up or access as a {\it Spectator}. A user can only login with his {\it Data4Help} account. If absent, he may create it at the moment and can therefore access all {\it Data4Help}’s services through its exclusive app. However, even without an account, a user will still be able to access one of {\it Track4Run}’s services, that look for an active run a follow its participants live on the track.\\
 		
 
 				\item{\bf Single User Interfaces}
@@ -585,7 +585,7 @@ The logo is also used as the application’s icon and will be visible to whoever
 					\end{figure}
 
 					\item[$\circ$] {\bf Active Runs tab} \\
-Active Runs tab is an interface in which a user can scroll through a list of all active runs and decide whether to monitor it as a spectator or to join it. When looking for a specific run, a user can either run through the entire list or research it by its unique identifier. Furthermore a user may also want to filter the list by location, in order to find the closest runs to his position.\\
+Active Runs tab is an interface in which a user can scroll through a list of all active runs and decide whether to monitor it as a {\it Spectator} or to join it. When looking for a specific run, a user can either run through the entire list or research it by its unique identifier. Furthermore a user may also want to filter the list by location, in order to find the closest runs to his position.\\
 					\begin{figure}[H]
 						\center
   						\includegraphics[width=5cm]{Mockup/mockupActiveRunsSU.png}
@@ -616,7 +616,7 @@ Active Runs tab is an interface in which a user can scroll through a list of all
 					\end{figure}
 
 					\item[$\circ$] {\bf Active Runs tab} \\
-					In this section a {\it Third Party} can check all active runs at the moment and will be able to monitor one as a Spectator. To look for a specific run the user can either scroll through the entire list or enter a specific run’s ID. Furthermore the user can also filter the list my entering a location.\\
+					In this section a {\it Third Party} can check all active runs at the moment and will be able to monitor one as a {\it Spectator}. To look for a specific run the user can either scroll through the entire list or enter a specific run’s ID. Furthermore the user can also filter the list my entering a location.\\
 					\begin{figure}[H]
 						\center
   						\includegraphics[width=5cm]{Mockup/mockupActiveRuns.png}
@@ -625,10 +625,10 @@ Active Runs tab is an interface in which a user can scroll through a list of all
 					\end{figure}
 
 				\end{itemize}
-				\item{\bf Spectator Interfaces} 
+				\item{\bf {\it Spectator} Interfaces} 
 				\begin{itemize}
 					\item[$\circ$] {\bf Research by identifier or in a list} \\
-					Whenever a user access the application as a Spectator, that is without logging in, he will be presented with a unique interface with a list of all active runs. The user can scroll through the entire list of active runs and select one to spectate. Furthermore a run can be researched by entering its unique ID or by filtering the list with a location.\\
+					Whenever a user access the application as a {\it Spectator}, that is without logging in, he will be presented with a unique interface with a list of all active runs. The user can scroll through the entire list of active runs and select one to spectate. Furthermore a run can be researched by entering its unique ID or by filtering the list with a location.\\
 					\begin{figure}[H]
 						\center
   						\includegraphics[width=5cm]{Mockup/mockupResearch.png}
@@ -637,7 +637,7 @@ Active Runs tab is an interface in which a user can scroll through a list of all
 					\end{figure}
 
 					\item[$\circ$] {\bf Selected run} \\
-					After having selected a run, the spectator will see its path and its participants’ locations live on the track. This view will be visible for the whole duration of the run.\\	
+					After having selected a run, the {\it Spectator} will see its path and its participants’ locations live on the track. This view will be visible for the whole duration of the run.\\	
 					\begin{figure}[H]
 						\center
   						\includegraphics[width=5cm]{Mockup/mockupSelectedRun.png}
@@ -700,7 +700,7 @@ These APIs are public and can be used by {\it Third Parties} to directly access 
 					\item {\bf Scenario 3} \linebreak
 					Politecnico di Milano wants to organize a new Polimirun open only to students, for free. The 						organizers decide to make use of the brand new {\it Track4Run} application released by three of its 					alumnis. They sign-up with an Organizer account, create an event for the 11th November 2018 in 					Lecco, and send the identification code to all students by email. More than 5000 students want to 					take part in the event, so they sign up with a Runner account and join the run after searching it with 					the identification code received.
 					Politecnico can now get rid of the sensors they placed on runner ids, as {\it Track4Run} allows the 						organizers to keep track of the path of each runner and provides in-depth statistics not only 						regarding running pace, but also heart rate for instance. 
-					Last but not least, all supportive parents at home can now follow and cheer for their sons in real-					time by joining the event as spectators, without having the need to sign-up on the service.
+					Last but not least, all supportive parents at home can now follow and cheer for their sons in real-					time by joining the event as {\it Spectator}s, without having the need to sign-up on the service.
 					\item {\bf Scenario 4} \linebreak
 					Federico was diagnosed with a severe cardiac disease for which he has been suffering for several 					years. Bob’s doctor decides to try a new a new medical cure that, alongside with a more healthy 					lifestyle, might improve Federico’s everyday life. In order to follow his patient’s progresses and 						recovery, Federico’s doctor decides to download {\it Data4Help} and suggests his patient do the same. 					While the doctor will create a {\it Third Party} account, Federico will create a {\it Single User} one. Thanks to 					this service Federico’s doctor is able to subscribe to Federico’s health data, monitor his heart rate 					on a daily basis and verify if he is increasing his active energy. All this gathered data will help him 					establish whether the cure shows any results and will allow Federico to feel safer when moving 					around. Furthermore Federico can also activate {\it AutomatedSOS}, so, whenever his disease 						threatens him the most, {\it Data4Help} will immediately discover his critical condition and call an 						ambulance.
 				\end{itemize}	
@@ -1226,7 +1226,7 @@ The {\it System} does not retrieve any data corresponding to that type
 			{\bf Postconditions} & 
 							\begin{itemize}
 								\item The new run is added to the list in the Active Runs tab
-\item The new run is visible to all {\it Single User}s and spectators
+\item The new run is visible to all {\it Single User}s and {\it Spectator}s
 
 							\end{itemize}
 			\\
@@ -1269,7 +1269,7 @@ The {\it System} does not retrieve any data corresponding to that type
 			{\bf Postconditions} & 
 							\begin{itemize}
 								\item The User can track his position live on the run’s map in the My Run section
-\item The User’s position is visible to all spectators 
+\item The User’s position is visible to all {\it Spectator}s 
 							\end{itemize}
 			\\
 			\hline
@@ -1288,21 +1288,21 @@ The {\it System} does not retrieve any data corresponding to that type
 			\hline
 			{\bf ID} & UC13\\
 			\hline
-			{\bf Description} & A Spectator looks for a specific run to spectate  \\
+			{\bf Description} & A {\it Spectator} looks for a specific run to spectate  \\
 			\hline
-			{\bf Actors} & {\it Spectator }\\
+			{\bf Actors} & {\it {\it Spectator} }\\
 			\hline
 			{\bf Preconditions} & 		
 							\begin{itemize}
-								\item The Spectator has downloaded the application {\it Track4Run}
+								\item The {\it Spectator} has downloaded the application {\it Track4Run}
 							\end{itemize}
 			\\
 			\hline
 			{\bf Flow of events} & 
 							\begin{enumerate}
 								\item The User opens {\it Track4Run}
-\item The {\it System} asks the user to login, register or access the service as a Spectator
-\item The User selects to access as a Spectator
+\item The {\it System} asks the user to login, register or access the service as a {\it Spectator}
+\item The User selects to access as a {\it Spectator}
 \item The {\it System} asks the User to find a run by its identifier or to search in the list of active runs
 \item The User inserts the run’s identifier
 \item The User submits its research
@@ -1329,6 +1329,63 @@ The {\it System} does not retrieve any data corresponding to that type
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%																								
 		
 			\subsubsection{Sequence Diagrams}
+			The first Sequence Diagrams models the creation of a new account on {\it Data4Help}. The two actors involved are a guest user and the {\it System}. We assume the guest to be a generic user as the same procedure is applicable to both users wanting to create a Third Party account and a {\it Single User} account. Furthermore, the same sequence of events occurs when registering through {\it Track4Run}.
+			\begin{figure}[H]
+			\center
+  			\includegraphics[width=\textwidth]{Diagrammi/sd1.png}
+			\caption{Create an account}
+			\label{fig:sd1}
+		\end{figure} 		
+The following diagram describes the sequence of events to be performed in order for a user to log into his account. As in the previous diagram, we shall consider a generic user since this procedure is the same for logging into a {\it Third Party} account or a {\it Single User} account. 
+\begin{figure}[H]
+			\center
+  			\includegraphics[width=\textwidth]{Diagrammi/sd2.png}
+			\caption{Log in}
+			\label{fig:sd2}
+\end{figure}
+The following diagram describes the procedure that occurs whenever a {\it Third Party} wants to send a request to a {\it Single User}. The actor involved in this scenario are a {\it Third Party}, a {\it Single User} and the {\it System}.
+\begin{figure}[H]
+			\center
+  			\includegraphics[width=\textwidth]{Diagrammi/sd3.png}
+			\caption{Send a {\it Single Request}}
+			\label{fig:sd3}
+\end{figure}
+In this diagram we describe the sequence of procedures that are activated when a {\it Third Party} sends a group request to the {\it System}. In this case no single users are involved, thus resulting in a two-actor scenario: a {\it Third Party} and the {\it System}.
+\begin{figure}[H]
+			\center
+  			\includegraphics[width=\textwidth]{Diagrammi/sd4.png}
+			\caption{Send a {\it Group Request}}
+			\label{fig:sd4}
+\end{figure}
+The following diagram describes the sequence of events to be performed in order for a single user to enable {\it AutomatedSOS}. While modeling this feature activation, we also describe how it works when critical parameters are observed by the {\it System}. Therefore in this case our actors are a {\it Logged-in Single User}, the {\it System} and the {\it Ambulance Service}.
+\begin{figure}[H]
+			\center
+  			\includegraphics[width=\textwidth]{Diagrammi/sd5.png}
+			\caption{Enable {\it AutomatedSOS}}
+			\label{fig:sd5}
+\end{figure}
+The next diagram describes the sequence of events that occur whenever a {\it Third Party} organizes a new run in {\it Track4Run}. The {\it Third Party} and the {\it System} are the only actors involved.
+\begin{figure}[H]
+			\center
+  			\includegraphics[width=\textwidth]{Diagrammi/sd6.png}
+			\caption{Organize a run}
+			\label{fig:sd6}
+\end{figure}
+The following digram represents the sequence of events that occur when a {\it Single User} decides to join an existing run in {\it Track4Run}. The actors involved in the scenario are only the {\it Single User} and the {\it System}.
+\begin{figure}[H]
+			\center
+  			\includegraphics[width=\textwidth]{Diagrammi/sd7.png}
+			\caption{Join a run}
+			\label{fig:sd7}
+\end{figure}
+The final diagram shows the sequence of events that occur when a {\it Spectator} uses {\it Track4Run} to spectate an existing run. The {\it Spectator} and the {\it System} are the only actors involved in the scenario.
+\begin{figure}[H]
+			\center
+  			\includegraphics[width=\textwidth]{Diagrammi/sd8.png}
+			\caption{Spectate a run a}
+			\label{fig:sd8}
+\end{figure}
+
 									
 			\subsubsection{Goal mapping on requirements}
 			
@@ -1472,7 +1529,7 @@ The {\it System} does not retrieve any data corresponding to that type
 					 	\item {\bf [R50]} An existing run can be spectated without logging in the {\it System}.
 \item {\bf [R43]} The S2B provides a list of all existing runs visible to everyone using {\it Track4Run}.
 \item {\bf [R51]} An existing run can be spectated by selecting it in the list of existing runs.
-\item {\bf [R52]} Spectators can see the live position of all runners participating in the run they are spectating.
+\item {\bf [R52]} {\it Spectator}s can see the live position of all runners participating in the run they are spectating.
 \item {\bf [D6]}Position data has an accuracy of 10 meters around the actual position.
 \item {\bf [D14]} Users’ smartphones always have internet access when the S2B needs it.
 					\end{itemize}

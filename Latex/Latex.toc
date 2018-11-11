@@ -32,18 +32,18 @@
 \contentsline {subsubsection}{\numberline {3.2.2}Scenarios}{42}
 \contentsline {subsubsection}{\numberline {3.2.3}Use Cases}{44}
 \contentsline {subsubsection}{\numberline {3.2.4}Sequence Diagrams}{57}
-\contentsline {subsubsection}{\numberline {3.2.5}Goal mapping on requirements}{57}
-\contentsline {subsection}{\numberline {3.3}Performance Requirements}{62}
-\contentsline {subsection}{\numberline {3.4}Design Constraints}{63}
-\contentsline {subsubsection}{\numberline {3.4.1}Standards compliance}{63}
-\contentsline {subsubsection}{\numberline {3.4.2}Hardware limitations}{63}
-\contentsline {subsection}{\numberline {3.5}Software System Attributes}{63}
-\contentsline {subsubsection}{\numberline {3.5.1}Availability}{63}
-\contentsline {subsubsection}{\numberline {3.5.2}Reliability}{64}
-\contentsline {subsubsection}{\numberline {3.5.3}Security}{64}
-\contentsline {subsubsection}{\numberline {3.5.4}Maintainability}{64}
-\contentsline {subsubsection}{\numberline {3.5.5}Portability}{64}
-\contentsline {section}{\numberline {4}Formal analysis with Alloy}{65}
-\contentsline {subsection}{\numberline {4.1}Overview}{65}
-\contentsline {subsection}{\numberline {4.2}Static Model}{66}
-\contentsline {subsection}{\numberline {4.3}Dynamic Model}{68}
+\contentsline {subsubsection}{\numberline {3.2.5}Goal mapping on requirements}{67}
+\contentsline {subsection}{\numberline {3.3}Performance Requirements}{72}
+\contentsline {subsection}{\numberline {3.4}Design Constraints}{73}
+\contentsline {subsubsection}{\numberline {3.4.1}Standards compliance}{73}
+\contentsline {subsubsection}{\numberline {3.4.2}Hardware limitations}{73}
+\contentsline {subsection}{\numberline {3.5}Software System Attributes}{74}
+\contentsline {subsubsection}{\numberline {3.5.1}Availability}{74}
+\contentsline {subsubsection}{\numberline {3.5.2}Reliability}{74}
+\contentsline {subsubsection}{\numberline {3.5.3}Security}{74}
+\contentsline {subsubsection}{\numberline {3.5.4}Maintainability}{74}
+\contentsline {subsubsection}{\numberline {3.5.5}Portability}{74}
+\contentsline {section}{\numberline {4}Formal analysis with Alloy}{75}
+\contentsline {subsection}{\numberline {4.1}Overview}{75}
+\contentsline {subsection}{\numberline {4.2}Static Model}{76}
+\contentsline {subsection}{\numberline {4.3}Dynamic Model}{78}
