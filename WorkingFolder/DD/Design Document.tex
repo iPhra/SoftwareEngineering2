@@ -1,0 +1,145 @@
+\documentclass[titlepage]{article}
+
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{subfig}
+\graphicspath{ {./images/} }
+			
+
+\title{{\Huge {\it Data4Help}}}
+\author{Lorenzo, Molteni, Negri}
+\date{December 10, 2018}
+
+\begin{document}
+
+\makeatletter
+    \begin{titlepage}
+        \begin{center}
+            \includegraphics[width=\linewidth]{logo.png}\\[20ex]
+            {\huge  \@title }\\[2ex] 
+            {\LARGE  \@author}\\[3ex] 
+            {\LARGE {\it DD} - Design Document}\\[3ex]
+            {\large \@date}\\[5ex]
+        \end{center}
+    \end{titlepage}
+\makeatother
+\thispagestyle{empty}
+\newpage
+
+%Add content for page two here (useful for two-sided printing)
+\thispagestyle{empty}
+\newpage
+
+
+	
+%Index	
+\pagebreak
+\tableofcontents{}
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+\subsection{Purpose}
+\subsection{Scope}
+\subsection{Definitions, Acronyms, Abbreviations}
+
+
+	\subsubsection{Definitions}
+	
+	\begin{itemize}
+				\item {\bf Client: } 
+				\item {\bf Server: } 
+				\item {\bf n-tier: } 
+				\item {\bf n-layer: } 
+				\item {\bf Design Pattern: } 
+	\end{itemize}
+	
+	
+	\subsubsection{Acronyms}
+	
+	\begin{longtable}{| p{2 cm} | p{7 cm} |} \hline
+		{\bf MVCS} & Model-View-Controller-Store \\\hline
+		{\bf DBMS} & Data Base Management System \\ \hline
+		{\bf REST} & REpresentational State Transfer \\ \hline
+		{\bf API} & Application Programming Interface \\ \hline
+		{\bf OS} & Operating System\\ \hline
+		{\bf UI} & User Interface \\ \hline
+		{\bf QA} & Quality Assurance \\ \hline				
+		\caption{Acronyms}	
+						
+	\end{longtable}
+
+	\subsubsection{Abbreviations}
+	
+	\begin{itemize}
+		\item {\bf (Rn):} n-th Requirement
+	\end{itemize}
+			
+			
+\subsection{Revision history}
+
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{ccc} 
+		Version & Date & Changes  \\ 
+		\hline
+		1.1 & 12/11/2018 & Initial draft \\
+		1.2 & 10/12/2018 & First deadline draft \\
+	\end{tabular}
+	\caption{Revision History}
+	\label{default}
+\end{table}
+	
+	
+\subsection{Reference Documents}
+
+\begin{itemize}
+   	\item ISO/IEC/IEEE 29148: https://www.iso.org/standard/45171.html
+	\item Alloy Official Documentation: http://alloy.lcs.mit.edu/alloy/documentation.html
+   	\item Four Dark Corners of Requirements Engineering – Jackson, Zave
+	\item Project Assignment
+\end{itemize}
+
+
+\subsection{Document Structure}
+\pagebreak
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Architectural Design}
+\subsection{Overview}
+\subsection{Component view}
+\subsection{Deployment view}
+\subsection{Runtime view}
+\subsection{Component interfaces}
+\subsection{Selected architectural styles and patterns}
+\subsection{Other design decisions}
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{User Interface Design}
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Requirements Traceability}
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Implementation, Integration and Test Plan}
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Effort Spent}
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{References}
+
+\end{document}
