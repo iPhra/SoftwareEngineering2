@@ -199,42 +199,41 @@ e
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: End \AtBeginDocument code.
-<./images/logo.png, id=1, 666.49pt x 489.83pt>
-File: ./images/logo.png Graphic file (type png)
-<use ./images/logo.png>
-Package pdftex.def Info: ./images/logo.png  used on input line 19.
-(pdftex.def)             Requested size: 345.0pt x 253.55457pt.
- [1
-
-{/usr/local/texlive/2018basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./
-images/logo.png>] (./Design Document.toc
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 2.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 2.
-)
-\tf@toc=\write3
-\openout3 = `"Design Document.toc"'.
-
- [1]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 51.
-
-(/usr/local/texlive/2018basic/texmf-dist/tex/latex/base/omscmr.fd
-File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 51.
-
-Underfull \vbox (badness 10000) detected at line 70
- []
 
 
-Overfull \hbox (32.13979pt too wide) in paragraph at lines 98--99
-[]\OT1/cmr/m/n/10 Alloy Of-fi-cial Doc-u-men-ta-tion: http://alloy.lcs.mit.edu/
-alloy/documentation.html 
- []
+LaTeX Warning: File `logo.png' not found on input line 19.
 
-[2] [3] [4] [5] [6] [7] [8] [9] (./Design Document.aux)
+
+./Design Document.tex:19: Package pdftex.def Error: File `logo.png' not found: 
+using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.19 ...ncludegraphics[width=\linewidth]{logo.png}
+                                                  \\[20ex]
+? 
+./Design Document.tex:19: Emergency stop.
+ ...                                              
+                                                  
+l.19 ...ncludegraphics[width=\linewidth]{logo.png}
+                                                  \\[20ex]
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+ 
+Here is how much of TeX's memory you used:
+ 2785 strings out of 494091
+ 44969 string characters out of 6163522
+ 103691 words of memory out of 5000000
+ 6460 multiletter control sequences out of 15000+600000
+ 3640 words of font info for 14 fonts, out of 8000000 for 9000
+ 319 hyphenation exceptions out of 8191
+ 44i,1n,42p,284b,130s stack positions out of 5000i,500n,10000p,200000b,80000s
+./Design Document.tex:19:  ==> Fatal error occurred, no output PDF file produce
+d!
+.aux)
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
