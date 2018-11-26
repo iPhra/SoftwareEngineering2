@@ -1,0 +1,1139 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.25)  11 NOV 2018 13:30
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**Latex.tex
+(./Latex.tex
+LaTeX2e <2018-04-01> patch level 2
+Babel <3.18> and hyphenation patterns for 22 language(s) loaded.
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 99.
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen103
+\Gin@req@width=\dimen104
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/tools/longtable.sty
+Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)
+\LTleft=\skip43
+\LTright=\skip44
+\LTpre=\skip45
+\LTpost=\skip46
+\LTchunksize=\count88
+\LTcapwidth=\dimen105
+\LT@head=\box26
+\LT@firsthead=\box27
+\LT@foot=\box28
+\LT@lastfoot=\box29
+\LT@cols=\count89
+\LT@rows=\count90
+\c@LT@tables=\count91
+\c@LT@chunks=\count92
+\LT@p@ftn=\toks15
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count93
+\float@exts=\toks16
+\float@box=\box30
+\@float@everytoks=\toks17
+\@floatcapt=\box31
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/subfig/subfig.sty
+Package: subfig 2005/06/28 ver: 1.3 subfig package
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2016/05/22 v1.7-166 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 67.
+\captionmargin=\dimen106
+\captionmargin@=\dimen107
+\captionwidth=\dimen108
+\caption@tempdima=\dimen109
+\caption@indent=\dimen110
+\caption@parindent=\dimen111
+\caption@hangindent=\dimen112
+)
+\c@ContinuedFloat=\count94
+Package caption Info: float package is loaded.
+Package caption Info: longtable package is loaded.
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/caption/ltcaption.sty
+Package: ltcaption 2013/06/09 v1.4-94 longtable captions (AR)
+))
+\c@KVtest=\count95
+\sf@farskip=\skip47
+\sf@captopadj=\dimen113
+\sf@capskip=\skip48
+\sf@nearskip=\skip49
+\c@subfigure=\count96
+\c@subfigure@save=\count97
+\c@lofdepth=\count98
+\c@subtable=\count99
+\c@subtable@save=\count100
+\c@lotdepth=\count101
+\sf@top=\skip50
+\sf@bottom=\skip51
+)
+(./Latex.aux)
+\openout1 = `Latex.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count102
+\scratchdimen=\dimen114
+\scratchbox=\box32
+\nofMPsegments=\count103
+\nofMParguments=\count104
+\everyMPshowfont=\toks18
+\MPscratchCnt=\count105
+\MPscratchDim=\dimen115
+\MPnumerator=\count106
+\makeMPintoPDFobject=\count107
+\everyMPtoPDFconversion=\toks19
+) (/usr/local/texlive/2018basic/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+)
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+)))
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2018/01/30 v0.27 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+38.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
+
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: subfig package v1.3 is loaded.
+Package caption Info: End \AtBeginDocument code.
+<./images/logo.png, id=1, 666.49pt x 489.83pt>
+File: ./images/logo.png Graphic file (type png)
+<use ./images/logo.png>
+Package pdftex.def Info: ./images/logo.png  used on input line 20.
+(pdftex.def)             Requested size: 345.0pt x 253.55457pt.
+ [1
+
+{/usr/local/texlive/2018basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./
+images/logo.png>] (./Latex.toc
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 2.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 2.
+ [1])
+\tf@toc=\write3
+\openout3 = `Latex.toc'.
+
+ [2]
+Underfull \hbox (badness 10000) in paragraph at lines 52--68
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 52--68
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 52--68
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 52--68
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 52--68
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 52--68
+
+ []
+
+[3]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 71.
+ (/usr/local/texlive/2018basic/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 71.
+
+Underfull \hbox (badness 10000) in paragraph at lines 75--78
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 78--81
+
+ []
+
+[4]
+Underfull \hbox (badness 10000) in paragraph at lines 87--91
+
+ []
+
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 115--116
+
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 156
+ []
+
+
+Overfull \vbox (13.50533pt too high) has occurred while \output is active []
+
+
+[6] [7]
+Overfull \hbox (32.13979pt too wide) in paragraph at lines 213--214
+[]\OT1/cmr/m/n/10 Alloy Of-fi-cial Doc-u-men-ta-tion: http://alloy.lcs.mit.edu/
+alloy/documentation.html 
+ []
+
+[8] [9]
+Underfull \hbox (badness 10000) in paragraph at lines 233--278
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 233--278
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 233--278
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 233--278
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 233--278
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 233--278
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 233--278
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 233--278
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 233--278
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 233--278
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 233--278
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 233--278
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 233--278
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 233--278
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 233--278
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 233--278
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 233--278
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 233--278
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 233--278
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 233--278
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 233--278
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 233--278
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 233--278
+
+ []
+
+[10] [11]
+<./images/Diagrammi/D4HClass.png, id=51, 1205.50375pt x 1606.0pt>
+File: ./images/Diagrammi/D4HClass.png Graphic file (type png)
+<use ./images/Diagrammi/D4HClass.png>
+Package pdftex.def Info: ./images/Diagrammi/D4HClass.png  used on input line 28
+3.
+(pdftex.def)             Requested size: 345.0pt x 459.6017pt.
+<./images/Diagrammi/SOSClass.png, id=52, 542.025pt x 797.98125pt>
+File: ./images/Diagrammi/SOSClass.png Graphic file (type png)
+<use ./images/Diagrammi/SOSClass.png>
+Package pdftex.def Info: ./images/Diagrammi/SOSClass.png  used on input line 28
+9.
+(pdftex.def)             Requested size: 345.0pt x 507.93008pt.
+ [12]
+<./images/Diagrammi/T4RClass.png, id=57, 1538.74875pt x 1606.0pt>
+File: ./images/Diagrammi/T4RClass.png Graphic file (type png)
+<use ./images/Diagrammi/T4RClass.png>
+Package pdftex.def Info: ./images/Diagrammi/T4RClass.png  used on input line 29
+5.
+(pdftex.def)             Requested size: 345.0pt x 360.06012pt.
+ [13 <./images/Diagrammi/D4HClass.png>] [14 <./images/Diagrammi/SOSClass.png>]
+<./images/Diagrammi/groupStateChart.png, id=65, 1606.0pt x 1153.30875pt>
+File: ./images/Diagrammi/groupStateChart.png Graphic file (type png)
+<use ./images/Diagrammi/groupStateChart.png>
+Package pdftex.def Info: ./images/Diagrammi/groupStateChart.png  used on input 
+line 303.
+(pdftex.def)             Requested size: 345.0pt x 247.74538pt.
+<./images/Diagrammi/singleStateChart.png, id=66, 592.2125pt x 618.31pt>
+File: ./images/Diagrammi/singleStateChart.png Graphic file (type png)
+<use ./images/Diagrammi/singleStateChart.png>
+Package pdftex.def Info: ./images/Diagrammi/singleStateChart.png  used on input
+ line 309.
+(pdftex.def)             Requested size: 345.0pt x 360.21451pt.
+ [15 <./images/Diagrammi/T4RClass.png>] [16 <./images/Diagrammi/groupStateChart
+.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 315--316
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 318--323
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 318--323
+
+ []
+
+[17 <./images/Diagrammi/singleStateChart.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 324--326
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 327--329
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 330--332
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 333--338
+
+ []
+
+[18]
+Underfull \hbox (badness 10000) in paragraph at lines 343--344
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 345--346
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 354--355
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 356--357
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 358--361
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 362--367
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 362--367
+
+ []
+
+[19]
+Underfull \hbox (badness 10000) in paragraph at lines 370--381
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 370--381
+
+ []
+
+[20] [21]
+Underfull \hbox (badness 10000) in paragraph at lines 424--425
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 426--429
+
+ []
+
+[22]
+<./images/D4HLogo.jpg, id=93, 681.5061pt x 460.8417pt>
+File: ./images/D4HLogo.jpg Graphic file (type jpg)
+<use ./images/D4HLogo.jpg>
+Package pdftex.def Info: ./images/D4HLogo.jpg  used on input line 447.
+(pdftex.def)             Requested size: 241.49895pt x 163.30109pt.
+<./images/Mockup/mockupLogin.png, id=94, 374.90062pt x 670.00313pt>
+File: ./images/Mockup/mockupLogin.png Graphic file (type png)
+<use ./images/Mockup/mockupLogin.png>
+Package pdftex.def Info: ./images/Mockup/mockupLogin.png  used on input line 45
+6.
+(pdftex.def)             Requested size: 142.26378pt x 254.24602pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 452--459
+
+ []
+
+[23 <./images/D4HLogo.jpg>]
+<./images/Mockup/mockupTutorial.png, id=98, 376.40625pt x 671.00688pt>
+File: ./images/Mockup/mockupTutorial.png Graphic file (type png)
+<use ./images/Mockup/mockupTutorial.png>
+Package pdftex.def Info: ./images/Mockup/mockupTutorial.png  used on input line
+ 465.
+(pdftex.def)             Requested size: 142.26378pt x 253.61328pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 461--468
+
+ []
+
+[24 <./images/Mockup/mockupLogin.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 470--472
+
+ []
+
+<./images/Mockup/mockupRegisterSU.png, id=104, 376.40625pt x 672.01062pt>
+File: ./images/Mockup/mockupRegisterSU.png Graphic file (type png)
+<use ./images/Mockup/mockupRegisterSU.png>
+Package pdftex.def Info: ./images/Mockup/mockupRegisterSU.png  used on input li
+ne 475.
+(pdftex.def)             Requested size: 142.26378pt x 253.99265pt.
+<./images/Mockup/mockupRegisterTP.png, id=105, 376.40625pt x 671.00688pt>
+File: ./images/Mockup/mockupRegisterTP.png Graphic file (type png)
+<use ./images/Mockup/mockupRegisterTP.png>
+Package pdftex.def Info: ./images/Mockup/mockupRegisterTP.png  used on input li
+ne 477.
+(pdftex.def)             Requested size: 142.26378pt x 253.61328pt.
+[25 <./images/Mockup/mockupTutorial.png>]
+<./images/Mockup/mockupMyHealth.png, id=110, 374.39874pt x 673.01437pt>
+File: ./images/Mockup/mockupMyHealth.png Graphic file (type png)
+<use ./images/Mockup/mockupMyHealth.png>
+Package pdftex.def Info: ./images/Mockup/mockupMyHealth.png  used on input line
+ 490.
+(pdftex.def)             Requested size: 142.26378pt x 255.72757pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 485--493
+
+ []
+
+[26 <./images/Mockup/mockupRegisterSU.png> <./images/Mockup/mockupRegisterTP.pn
+g>]
+<./images/Mockup/mockupSettingsSU.png, id=118, 376.40625pt x 675.02188pt>
+File: ./images/Mockup/mockupSettingsSU.png Graphic file (type png)
+<use ./images/Mockup/mockupSettingsSU.png>
+Package pdftex.def Info: ./images/Mockup/mockupSettingsSU.png  used on input li
+ne 500.
+(pdftex.def)             Requested size: 142.26378pt x 255.13078pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 495--503
+
+ []
+
+[27 <./images/Mockup/mockupMyHealth.png>]
+<./images/Mockup/mockupMyFollowers.png, id=123, 376.40625pt x 673.51625pt>
+File: ./images/Mockup/mockupMyFollowers.png Graphic file (type png)
+<use ./images/Mockup/mockupMyFollowers.png>
+Package pdftex.def Info: ./images/Mockup/mockupMyFollowers.png  used on input l
+ine 509.
+(pdftex.def)             Requested size: 142.26378pt x 254.5617pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 505--512
+
+ []
+
+[28 <./images/Mockup/mockupSettingsSU.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 519--521
+
+ []
+
+<./images/Mockup/mockupSingleRequest.png, id=128, 376.40625pt x 670.505pt>
+File: ./images/Mockup/mockupSingleRequest.png Graphic file (type png)
+<use ./images/Mockup/mockupSingleRequest.png>
+Package pdftex.def Info: ./images/Mockup/mockupSingleRequest.png  used on input
+ line 524.
+(pdftex.def)             Requested size: 142.26378pt x 253.42358pt.
+<./images/Mockup/mockupGroupRequest.png, id=129, 375.4025pt x 670.00313pt>
+File: ./images/Mockup/mockupGroupRequest.png Graphic file (type png)
+<use ./images/Mockup/mockupGroupRequest.png>
+Package pdftex.def Info: ./images/Mockup/mockupGroupRequest.png  used on input 
+line 526.
+(pdftex.def)             Requested size: 142.26378pt x 253.90865pt.
+[29 <./images/Mockup/mockupMyFollowers.png>]
+<./images/Mockup/mockupHistory.png, id=134, 376.40625pt x 671.50874pt>
+File: ./images/Mockup/mockupHistory.png Graphic file (type png)
+<use ./images/Mockup/mockupHistory.png>
+Package pdftex.def Info: ./images/Mockup/mockupHistory.png  used on input line 
+540.
+(pdftex.def)             Requested size: 142.26378pt x 253.80296pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 537--543
+
+ []
+
+[30 <./images/Mockup/mockupSingleRequest.png> <./images/Mockup/mockupGroupReque
+st.png>]
+<./images/Mockup/mockupSettingsTP.png, id=141, 376.40625pt x 672.01062pt>
+File: ./images/Mockup/mockupSettingsTP.png Graphic file (type png)
+<use ./images/Mockup/mockupSettingsTP.png>
+Package pdftex.def Info: ./images/Mockup/mockupSettingsTP.png  used on input li
+ne 552.
+(pdftex.def)             Requested size: 142.26378pt x 253.99265pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 547--555
+
+ []
+
+[31 <./images/Mockup/mockupHistory.png>]
+<./images/T4RLogo.jpg, id=146, 1606.0pt x 1086.0575pt>
+File: ./images/T4RLogo.jpg Graphic file (type jpg)
+<use ./images/T4RLogo.jpg>
+Package pdftex.def Info: ./images/T4RLogo.jpg  used on input line 567.
+(pdftex.def)             Requested size: 241.49895pt x 163.29932pt.
+ [32 <./images/Mockup/mockupSettingsTP.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 571--573
+
+ []
+
+<./images/Mockup/mockupMyRunSU.png, id=151, 376.90813pt x 670.505pt>
+File: ./images/Mockup/mockupMyRunSU.png Graphic file (type png)
+<use ./images/Mockup/mockupMyRunSU.png>
+Package pdftex.def Info: ./images/Mockup/mockupMyRunSU.png  used on input line 
+582.
+(pdftex.def)             Requested size: 142.26378pt x 253.07573pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 578--585
+
+ []
+
+[33 <./images/T4RLogo.jpg>]
+<./images/Mockup/mockupActiveRunsSU.png, id=155, 376.90813pt x 671.00688pt>
+File: ./images/Mockup/mockupActiveRunsSU.png Graphic file (type png)
+<use ./images/Mockup/mockupActiveRunsSU.png>
+Package pdftex.def Info: ./images/Mockup/mockupActiveRunsSU.png  used on input 
+line 591.
+(pdftex.def)             Requested size: 142.26378pt x 253.26515pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 587--594
+
+ []
+
+[34 <./images/Mockup/mockupMyRunSU.png>]
+Overfull \hbox (9.89041pt too wide) in paragraph at lines 597--599
+[]\OT1/cmr/bx/n/10 Third Party In-ter-faces \OT1/cmr/m/n/10 Also \OT1/cmr/m/it/
+10 Third Par-ties \OT1/cmr/m/n/10 will ac-cess all \OT1/cmr/m/it/10 Track4Run\O
+T1/cmr/m/n/10 's
+ []
+
+<./images/Mockup/mockupNewRun.png, id=160, 374.90062pt x 669.50125pt>
+File: ./images/Mockup/mockupNewRun.png Graphic file (type png)
+<use ./images/Mockup/mockupNewRun.png>
+Package pdftex.def Info: ./images/Mockup/mockupNewRun.png  used on input line 6
+04.
+(pdftex.def)             Requested size: 142.26378pt x 254.05557pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 600--607
+
+ []
+
+[35 <./images/Mockup/mockupActiveRunsSU.png>]
+<./images/Mockup/mockupMyRuns.png, id=165, 375.90437pt x 670.505pt>
+File: ./images/Mockup/mockupMyRuns.png Graphic file (type png)
+<use ./images/Mockup/mockupMyRuns.png>
+Package pdftex.def Info: ./images/Mockup/mockupMyRuns.png  used on input line 6
+13.
+(pdftex.def)             Requested size: 142.26378pt x 253.76122pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 609--616
+
+ []
+
+[36 <./images/Mockup/mockupNewRun.png>]
+<./images/Mockup/mockupActiveRuns.png, id=171, 375.90437pt x 668.99937pt>
+File: ./images/Mockup/mockupActiveRuns.png Graphic file (type png)
+<use ./images/Mockup/mockupActiveRuns.png>
+Package pdftex.def Info: ./images/Mockup/mockupActiveRuns.png  used on input li
+ne 622.
+(pdftex.def)             Requested size: 142.26378pt x 253.19138pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 618--625
+
+ []
+
+[37 <./images/Mockup/mockupMyRuns.png>]
+<./images/Mockup/mockupResearch.png, id=176, 377.91188pt x 672.5125pt>
+File: ./images/Mockup/mockupResearch.png Graphic file (type png)
+<use ./images/Mockup/mockupResearch.png>
+Package pdftex.def Info: ./images/Mockup/mockupResearch.png  used on input line
+ 634.
+(pdftex.def)             Requested size: 142.26378pt x 253.16643pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 630--637
+
+ []
+
+[38 <./images/Mockup/mockupActiveRuns.png>]
+<./images/Mockup/mockupSelectedRun.png, id=181, 376.40625pt x 671.00688pt>
+File: ./images/Mockup/mockupSelectedRun.png Graphic file (type png)
+<use ./images/Mockup/mockupSelectedRun.png>
+Package pdftex.def Info: ./images/Mockup/mockupSelectedRun.png  used on input l
+ine 643.
+(pdftex.def)             Requested size: 142.26378pt x 253.61328pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 639--646
+
+ []
+
+[39 <./images/Mockup/mockupResearch.png>]
+<./images/Diagrammi/SingleUserUseCase.png, id=186, 737.75626pt x 603.25375pt>
+File: ./images/Diagrammi/SingleUserUseCase.png Graphic file (type png)
+<use ./images/Diagrammi/SingleUserUseCase.png>
+Package pdftex.def Info: ./images/Diagrammi/SingleUserUseCase.png  used on inpu
+t line 679.
+(pdftex.def)             Requested size: 345.0pt x 282.10254pt.
+ [40 <./images/Mockup/mockupSelectedRun.png>]
+<./images/Diagrammi/ThirdPartyUseCase.png, id=191, 607.26875pt x 527.9725pt>
+File: ./images/Diagrammi/ThirdPartyUseCase.png Graphic file (type png)
+<use ./images/Diagrammi/ThirdPartyUseCase.png>
+Package pdftex.def Info: ./images/Diagrammi/ThirdPartyUseCase.png  used on inpu
+t line 685.
+(pdftex.def)             Requested size: 345.0pt x 299.95653pt.
+ [41 <./images/Diagrammi/SingleUserUseCase.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 693--696
+[]\OT1/cmr/bx/n/10 Scenario 1
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 696--700
+[]\OT1/cmr/bx/n/10 Scenario 2
+ []
+
+[42 <./images/Diagrammi/ThirdPartyUseCase.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 700--704
+[]\OT1/cmr/bx/n/10 Scenario 3
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 704--706
+[]\OT1/cmr/bx/n/10 Scenario 4
+ []
+
+
+Overfull \hbox (48.88582pt too wide) in alignment at lines 713--766
+ [] [] 
+ []
+
+[43]
+Underfull \vbox (badness 10000) detected at line 766
+ []
+
+[44]
+Overfull \hbox (48.88582pt too wide) in alignment at lines 770--823
+ [] [] 
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 823
+ []
+
+[45] [46]
+Overfull \hbox (48.88582pt too wide) in alignment at lines 826--868
+ [] [] 
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 868
+ []
+
+[47]
+Overfull \hbox (48.88582pt too wide) in alignment at lines 871--913
+ [] [] 
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 913
+ []
+
+
+Overfull \hbox (48.88582pt too wide) in alignment at lines 916--958
+ [] [] 
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 958
+ []
+
+[48]
+Overfull \hbox (48.88582pt too wide) in alignment at lines 962--1008
+ [] [] 
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 1008
+ []
+
+[49]
+Overfull \hbox (48.88582pt too wide) in alignment at lines 1011--1050
+ [] [] 
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 1050
+ []
+
+[50]
+Overfull \hbox (48.88582pt too wide) in alignment at lines 1054--1102
+ [] [] 
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 1102
+ []
+
+[51]
+Overfull \hbox (48.88582pt too wide) in alignment at lines 1105--1153
+ [] [] 
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 1153
+ []
+
+[52]
+Overfull \hbox (48.88582pt too wide) in alignment at lines 1156--1196
+ [] [] 
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 1196
+ []
+
+[53]
+Overfull \hbox (48.88582pt too wide) in alignment at lines 1200--1242
+ [] [] 
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 1242
+ []
+
+[54]
+Overfull \hbox (48.88582pt too wide) in alignment at lines 1245--1284
+ [] [] 
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 1284
+ []
+
+[55]
+Overfull \hbox (48.88582pt too wide) in alignment at lines 1287--1327
+ [] [] 
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 1327
+ []
+
+[56]
+<./images/Diagrammi/sd1.png, id=246, 603.25375pt x 860.21375pt>
+File: ./images/Diagrammi/sd1.png Graphic file (type png)
+<use ./images/Diagrammi/sd1.png>
+Package pdftex.def Info: ./images/Diagrammi/sd1.png  used on input line 1335.
+(pdftex.def)             Requested size: 345.0pt x 491.95453pt.
+ [57]
+<./images/Diagrammi/sd2.png, id=250, 603.25375pt x 840.13875pt>
+File: ./images/Diagrammi/sd2.png Graphic file (type png)
+<use ./images/Diagrammi/sd2.png>
+Package pdftex.def Info: ./images/Diagrammi/sd2.png  used on input line 1342.
+(pdftex.def)             Requested size: 345.0pt x 480.47368pt.
+ [58 <./images/Diagrammi/sd1.png>]
+<./images/Diagrammi/sd3.png, id=255, 683.55376pt x 1151.30125pt>
+File: ./images/Diagrammi/sd3.png Graphic file (type png)
+<use ./images/Diagrammi/sd3.png>
+Package pdftex.def Info: ./images/Diagrammi/sd3.png  used on input line 1349.
+(pdftex.def)             Requested size: 345.0pt x 581.09512pt.
+ [59 <./images/Diagrammi/sd2.png>]
+[60]
+Overfull \vbox (53.09512pt too high) has occurred while \output is active []
+
+
+[61 <./images/Diagrammi/sd3.png>]
+<./images/Diagrammi/sd4.png, id=268, 603.25375pt x 890.32625pt>
+File: ./images/Diagrammi/sd4.png Graphic file (type png)
+<use ./images/Diagrammi/sd4.png>
+Package pdftex.def Info: ./images/Diagrammi/sd4.png  used on input line 1356.
+(pdftex.def)             Requested size: 345.0pt x 509.17581pt.
+ [62]
+<./images/Diagrammi/sd5.png, id=272, 864.22874pt x 784.9325pt>
+File: ./images/Diagrammi/sd5.png Graphic file (type png)
+<use ./images/Diagrammi/sd5.png>
+Package pdftex.def Info: ./images/Diagrammi/sd5.png  used on input line 1363.
+(pdftex.def)             Requested size: 345.0pt x 313.34462pt.
+ [63 <./images/Diagrammi/sd4.png>]
+<./images/Diagrammi/sd6.png, id=277, 382.42876pt x 488.82625pt>
+File: ./images/Diagrammi/sd6.png Graphic file (type png)
+<use ./images/Diagrammi/sd6.png>
+Package pdftex.def Info: ./images/Diagrammi/sd6.png  used on input line 1370.
+(pdftex.def)             Requested size: 345.0pt x 441.00616pt.
+
+[64 <./images/Diagrammi/sd5.png>]
+<./images/Diagrammi/sd7.png, id=282, 563.10374pt x 779.91376pt>
+File: ./images/Diagrammi/sd7.png Graphic file (type png)
+<use ./images/Diagrammi/sd7.png>
+Package pdftex.def Info: ./images/Diagrammi/sd7.png  used on input line 1377.
+(pdftex.def)             Requested size: 345.0pt x 477.8412pt.
+ [65 <./images/Diagrammi/sd6.png>]
+<./images/Diagrammi/sd8.png, id=287, 613.29124pt x 784.9325pt>
+File: ./images/Diagrammi/sd8.png Graphic file (type png)
+<use ./images/Diagrammi/sd8.png>
+Package pdftex.def Info: ./images/Diagrammi/sd8.png  used on input line 1384.
+(pdftex.def)             Requested size: 345.0pt x 441.55937pt.
+ [66 <./images/Diagrammi/sd7.png>] [67 <./images/Diagrammi/sd8.png>] [68] [69] 
+[70]
+[71]
+Underfull \hbox (badness 10000) in paragraph at lines 1541--1549
+
+ []
+
+[72]
+Underfull \hbox (badness 10000) in paragraph at lines 1573--1575
+
+ []
+
+[73]
+Underfull \hbox (badness 10000) in paragraph at lines 1576--1578
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1587--1588
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1589--1590
+
+ []
+
+[74]
+Underfull \hbox (badness 10000) in paragraph at lines 1597--1606
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1597--1606
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1597--1606
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1597--1606
+
+ []
+
+<./images/Alloy/staticAlloy.png, id=319, 618.05907pt x 562.35094pt>
+File: ./images/Alloy/staticAlloy.png Graphic file (type png)
+<use ./images/Alloy/staticAlloy.png>
+Package pdftex.def Info: ./images/Alloy/staticAlloy.png  used on input line 161
+0.
+(pdftex.def)             Requested size: 345.0pt x 313.91043pt.
+[75]
+<./images/Alloy/staticCheck.png, id=323, 286.06876pt x 229.60782pt>
+File: ./images/Alloy/staticCheck.png Graphic file (type png)
+<use ./images/Alloy/staticCheck.png>
+Package pdftex.def Info: ./images/Alloy/staticCheck.png  used on input line 161
+6.
+(pdftex.def)             Requested size: 345.0pt x 276.9119pt.
+ [76 <./images/Alloy/staticAlloy.png>]
+<./images/Alloy/staticModel.png, id=327, 534.49687pt x 280.04625pt>
+File: ./images/Alloy/staticModel.png Graphic file (type png)
+<use ./images/Alloy/staticModel.png>
+Package pdftex.def Info: ./images/Alloy/staticModel.png  used on input line 162
+2.
+(pdftex.def)             Requested size: 345.0pt x 180.7673pt.
+<./images/Alloy/Dynamic1.png, id=328, 709.14937pt x 694.84593pt>
+File: ./images/Alloy/Dynamic1.png Graphic file (type png)
+<use ./images/Alloy/Dynamic1.png>
+Package pdftex.def Info: ./images/Alloy/Dynamic1.png  used on input line 1639.
+(pdftex.def)             Requested size: 345.0pt x 338.04951pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 1628--1641
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1628--1641
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1628--1641
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1628--1641
+
+ []
+
+[77 <./images/Alloy/staticCheck.png> <./images/Alloy/staticModel.png>] [78]
+<./images/Alloy/Dynamic2.png, id=336, 709.90219pt x 621.07031pt>
+File: ./images/Alloy/Dynamic2.png Graphic file (type png)
+<use ./images/Alloy/Dynamic2.png>
+Package pdftex.def Info: ./images/Alloy/Dynamic2.png  used on input line 1645.
+(pdftex.def)             Requested size: 345.0pt x 301.83472pt.
+
+[79 <./images/Alloy/Dynamic1.png>]
+<./images/Alloy/Dynamic3.png, id=340, 703.87968pt x 666.99188pt>
+File: ./images/Alloy/Dynamic3.png Graphic file (type png)
+<use ./images/Alloy/Dynamic3.png>
+Package pdftex.def Info: ./images/Alloy/Dynamic3.png  used on input line 1651.
+(pdftex.def)             Requested size: 345.0pt x 326.92047pt.
+ [80 <./images/Alloy/Dynamic2.png>]
+<./images/Alloy/Dynamic4.png, id=344, 663.98062pt x 657.95813pt>
+File: ./images/Alloy/Dynamic4.png Graphic file (type png)
+<use ./images/Alloy/Dynamic4.png>
+Package pdftex.def Info: ./images/Alloy/Dynamic4.png  used on input line 1657.
+(pdftex.def)             Requested size: 345.0pt x 341.86913pt.
+ [81 <./images/Alloy/Dynamic3.png>]
+<./images/Alloy/Dynamic5.png, id=348, 702.37407pt x 526.21594pt>
+File: ./images/Alloy/Dynamic5.png Graphic file (type png)
+<use ./images/Alloy/Dynamic5.png>
+Package pdftex.def Info: ./images/Alloy/Dynamic5.png  used on input line 1663.
+(pdftex.def)             Requested size: 345.0pt x 258.48239pt.
+ [82 <./images/Alloy/Dynamic4.png>]
+<./images/Alloy/Dynamic6.png, id=352, 429.10312pt x 503.63156pt>
+File: ./images/Alloy/Dynamic6.png Graphic file (type png)
+<use ./images/Alloy/Dynamic6.png>
+Package pdftex.def Info: ./images/Alloy/Dynamic6.png  used on input line 1669.
+(pdftex.def)             Requested size: 345.0pt x 404.9269pt.
+ [83 <./images/Alloy/Dynamic5.png>]
+<./images/Alloy/singleRequest.png, id=356, 715.17188pt x 369.63094pt>
+File: ./images/Alloy/singleRequest.png Graphic file (type png)
+<use ./images/Alloy/singleRequest.png>
+Package pdftex.def Info: ./images/Alloy/singleRequest.png  used on input line 1
+675.
+(pdftex.def)             Requested size: 345.0pt x 178.31197pt.
+ [84 <./images/Alloy/Dynamic6.png>]
+<./images/Alloy/groupRequest.png, id=361, 809.27344pt x 447.92343pt>
+File: ./images/Alloy/groupRequest.png Graphic file (type png)
+<use ./images/Alloy/groupRequest.png>
+Package pdftex.def Info: ./images/Alloy/groupRequest.png  used on input line 16
+82.
+(pdftex.def)             Requested size: 345.0pt x 190.95615pt.
+
+Underfull \hbox (badness 1430) in paragraph at lines 1706--1706
+[]|\OT1/cmr/m/n/10 Goals, Re-quire-ments and Do-
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 1715
+ []
+
+[85 <./images/Alloy/singleRequest.png> <./images/Alloy/groupRequest.png>]
+Underfull \vbox (badness 10000) detected at line 1741
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 1767
+ []
+
+[86] [87] (./Latex.aux) ) 
+Here is how much of TeX's memory you used:
+ 3146 strings out of 494091
+ 53769 string characters out of 6163522
+ 134021 words of memory out of 5000000
+ 6751 multiletter control sequences out of 15000+600000
+ 7746 words of font info for 27 fonts, out of 8000000 for 9000
+ 319 hyphenation exceptions out of 8191
+ 44i,9n,49p,1110b,535s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2018basic/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2018basic/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2018basic/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2018basic/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2018basic/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2018basic/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018basic/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2018bas
+ic/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/201
+8basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb>
+Output written on Latex.pdf (88 pages, 3083232 bytes).
+PDF statistics:
+ 408 PDF objects out of 1000 (max. 8388607)
+ 227 compressed objects within 3 object streams
+ 0 named destinations out of 1000 (max. 500000)
+ 236 words of extra memory for PDF output out of 10000 (max. 10000000)
+
