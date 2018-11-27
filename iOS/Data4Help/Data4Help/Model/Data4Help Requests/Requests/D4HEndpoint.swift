@@ -7,3 +7,10 @@
 //
 
 import Foundation
+
+enum D4HEndpoint: String {
+    case login
+    case register
+    
+    //TO-DO implement all endpoints
+}

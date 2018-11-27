@@ -7,3 +7,10 @@
 //
 
 import Foundation
+
+enum D4HEncodingType: String {
+    case NONE
+    case UTF8
+    case UTF16
+    case UTF32
+}

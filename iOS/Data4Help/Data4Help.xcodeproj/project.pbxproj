@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		28E5568F21ADE9890009D972 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E5568E21ADE9890009D972 /* NetworkManager.swift */; };
+		28E5569221ADF3AB0009D972 /* D4HRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E5569121ADF3AB0009D972 /* D4HRequest.swift */; };
+		28E5569621ADF5480009D972 /* D4HLoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E5569521ADF5480009D972 /* D4HLoginRequest.swift */; };
+		28E5569821ADF55A0009D972 /* D4HLoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E5569721ADF55A0009D972 /* D4HLoginResponse.swift */; };
+		28E5569A21ADF5C60009D972 /* D4HEncodingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E5569921ADF5C60009D972 /* D4HEncodingType.swift */; };
+		28E5569D21ADF8870009D972 /* D4HEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E5569C21ADF8870009D972 /* D4HEndpoint.swift */; };
 		CBADD0FB21AC197E00896705 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBADD0FA21AC197E00896705 /* AppDelegate.swift */; };
 		CBADD0FD21AC197E00896705 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBADD0FC21AC197E00896705 /* ViewController.swift */; };
 		CBADD10021AC197E00896705 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBADD0FE21AC197E00896705 /* Main.storyboard */; };
@@ -16,6 +22,7 @@
 		CBADD11B21AC197F00896705 /* Data4HelpUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBADD11A21AC197F00896705 /* Data4HelpUITests.swift */; };
 		CBADD12B21AC64A100896705 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBADD12A21AC64A100896705 /* HealthKit.framework */; };
 		CBADD12D21AD7FFB00896705 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBADD12C21AD7FFB00896705 /* DataManager.swift */; };
+		FD267AFDFFDC7E8D373A54EE /* libPods-Data4Help.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4407A3C7269CD8369E9C5C38 /* libPods-Data4Help.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +43,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		28E5568E21ADE9890009D972 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		28E5569121ADF3AB0009D972 /* D4HRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HRequest.swift; sourceTree = "<group>"; };
+		28E5569521ADF5480009D972 /* D4HLoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HLoginRequest.swift; sourceTree = "<group>"; };
+		28E5569721ADF55A0009D972 /* D4HLoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HLoginResponse.swift; sourceTree = "<group>"; };
+		28E5569921ADF5C60009D972 /* D4HEncodingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HEncodingType.swift; sourceTree = "<group>"; };
+		28E5569C21ADF8870009D972 /* D4HEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HEndpoint.swift; sourceTree = "<group>"; };
+		4407A3C7269CD8369E9C5C38 /* libPods-Data4Help.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Data4Help.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6DF053413FFA9AF08F79DE2C /* Pods-Data4Help.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Data4Help.release.xcconfig"; path = "Pods/Target Support Files/Pods-Data4Help/Pods-Data4Help.release.xcconfig"; sourceTree = "<group>"; };
 		CBADD0F721AC197E00896705 /* Data4Help.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Data4Help.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBADD0FA21AC197E00896705 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBADD0FC21AC197E00896705 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -52,6 +67,7 @@
 		CBADD12821AC64A100896705 /* Data4Help.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Data4Help.entitlements; sourceTree = "<group>"; };
 		CBADD12A21AC64A100896705 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		CBADD12C21AD7FFB00896705 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		EEFCA36DA50342053E87A1E4 /* Pods-Data4Help.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Data4Help.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Data4Help/Pods-Data4Help.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +76,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBADD12B21AC64A100896705 /* HealthKit.framework in Frameworks */,
+				FD267AFDFFDC7E8D373A54EE /* libPods-Data4Help.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				CBADD0FA21AC197E00896705 /* AppDelegate.swift */,
+				28E5568E21ADE9890009D972 /* NetworkManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -91,6 +109,7 @@
 		28678F8A21AC1C14004D6B9D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				28E5569021ADF3390009D972 /* Data4Help Requests */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -114,6 +133,34 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		28E5569021ADF3390009D972 /* Data4Help Requests */ = {
+			isa = PBXGroup;
+			children = (
+				28E5569421ADF3BE0009D972 /* Responses */,
+				28E5569321ADF3B40009D972 /* Requests */,
+			);
+			path = "Data4Help Requests";
+			sourceTree = "<group>";
+		};
+		28E5569321ADF3B40009D972 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				28E5569121ADF3AB0009D972 /* D4HRequest.swift */,
+				28E5569521ADF5480009D972 /* D4HLoginRequest.swift */,
+				28E5569921ADF5C60009D972 /* D4HEncodingType.swift */,
+				28E5569C21ADF8870009D972 /* D4HEndpoint.swift */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
+		28E5569421ADF3BE0009D972 /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				28E5569721ADF55A0009D972 /* D4HLoginResponse.swift */,
+			);
+			path = Responses;
+			sourceTree = "<group>";
+		};
 		CBADD0EE21AC197E00896705 = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +169,7 @@
 				CBADD11921AC197F00896705 /* Data4HelpUITests */,
 				CBADD0F821AC197E00896705 /* Products */,
 				CBADD12921AC64A100896705 /* Frameworks */,
+				FD84F7C1B2824557ABD337D8 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -170,8 +218,18 @@
 			isa = PBXGroup;
 			children = (
 				CBADD12A21AC64A100896705 /* HealthKit.framework */,
+				4407A3C7269CD8369E9C5C38 /* libPods-Data4Help.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FD84F7C1B2824557ABD337D8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EEFCA36DA50342053E87A1E4 /* Pods-Data4Help.debug.xcconfig */,
+				6DF053413FFA9AF08F79DE2C /* Pods-Data4Help.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,6 +239,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CBADD11F21AC198000896705 /* Build configuration list for PBXNativeTarget "Data4Help" */;
 			buildPhases = (
+				B9D5A2EC3D9850E78E9AC4AF /* [CP] Check Pods Manifest.lock */,
 				CBADD0F321AC197E00896705 /* Sources */,
 				CBADD0F421AC197E00896705 /* Frameworks */,
 				CBADD0F521AC197E00896705 /* Resources */,
@@ -305,13 +364,44 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		B9D5A2EC3D9850E78E9AC4AF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Data4Help-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CBADD0F321AC197E00896705 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28E5569621ADF5480009D972 /* D4HLoginRequest.swift in Sources */,
+				28E5569A21ADF5C60009D972 /* D4HEncodingType.swift in Sources */,
+				28E5568F21ADE9890009D972 /* NetworkManager.swift in Sources */,
 				CBADD12D21AD7FFB00896705 /* DataManager.swift in Sources */,
 				CBADD0FD21AC197E00896705 /* ViewController.swift in Sources */,
+				28E5569821ADF55A0009D972 /* D4HLoginResponse.swift in Sources */,
+				28E5569221ADF3AB0009D972 /* D4HRequest.swift in Sources */,
+				28E5569D21ADF8870009D972 /* D4HEndpoint.swift in Sources */,
 				CBADD0FB21AC197E00896705 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -485,6 +575,7 @@
 		};
 		CBADD12021AC198000896705 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EEFCA36DA50342053E87A1E4 /* Pods-Data4Help.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Data4Help/Data4Help.entitlements;
@@ -504,6 +595,7 @@
 		};
 		CBADD12121AC198000896705 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6DF053413FFA9AF08F79DE2C /* Pods-Data4Help.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Data4Help/Data4Help.entitlements;

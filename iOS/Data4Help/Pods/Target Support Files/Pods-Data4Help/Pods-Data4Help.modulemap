@@ -1,0 +1,6 @@
+module Pods_Data4Help {
+  umbrella header "Pods-Data4Help-umbrella.h"
+
+  export *
+  module * { export * }
+}

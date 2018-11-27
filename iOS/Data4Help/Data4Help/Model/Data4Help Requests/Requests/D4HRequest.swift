@@ -7,3 +7,27 @@
 //
 
 import Foundation
+import Alamofire
+
+class D4HRequest {
+    
+    // MARK: Properties
+    
+    let encodingType: D4HEncodingType
+    
+    // MARK: initialization
+    
+    init(encodingType: D4HEncodingType) {
+        self.encodingType = encodingType
+    }
+    
+    // MARK: Networking
+    
+    func getParams() -> Parameters {
+        let params: Parameters = [
+            "encodingType": encodingType.rawValue
+        ]
+        print(params)
+        return params
+    }
+}
