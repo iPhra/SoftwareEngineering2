@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D5ED11ED4C4AA86453AB757 /* Pods_Data4Help.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6698D8B24F51E95CD50F02E1 /* Pods_Data4Help.framework */; };
 		28E5568F21ADE9890009D972 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E5568E21ADE9890009D972 /* NetworkManager.swift */; };
 		28E5569221ADF3AB0009D972 /* D4HRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E5569121ADF3AB0009D972 /* D4HRequest.swift */; };
 		28E5569621ADF5480009D972 /* D4HLoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E5569521ADF5480009D972 /* D4HLoginRequest.swift */; };
@@ -22,7 +23,7 @@
 		CBADD11B21AC197F00896705 /* Data4HelpUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBADD11A21AC197F00896705 /* Data4HelpUITests.swift */; };
 		CBADD12B21AC64A100896705 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBADD12A21AC64A100896705 /* HealthKit.framework */; };
 		CBADD12D21AD7FFB00896705 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBADD12C21AD7FFB00896705 /* DataManager.swift */; };
-		FD267AFDFFDC7E8D373A54EE /* libPods-Data4Help.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4407A3C7269CD8369E9C5C38 /* libPods-Data4Help.a */; };
+		CBD7A89021B05E24004BB382 /* D4HResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD7A88F21B05E24004BB382 /* D4HResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,7 +50,7 @@
 		28E5569721ADF55A0009D972 /* D4HLoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HLoginResponse.swift; sourceTree = "<group>"; };
 		28E5569921ADF5C60009D972 /* D4HEncodingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HEncodingType.swift; sourceTree = "<group>"; };
 		28E5569C21ADF8870009D972 /* D4HEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HEndpoint.swift; sourceTree = "<group>"; };
-		4407A3C7269CD8369E9C5C38 /* libPods-Data4Help.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Data4Help.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6698D8B24F51E95CD50F02E1 /* Pods_Data4Help.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Data4Help.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DF053413FFA9AF08F79DE2C /* Pods-Data4Help.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Data4Help.release.xcconfig"; path = "Pods/Target Support Files/Pods-Data4Help/Pods-Data4Help.release.xcconfig"; sourceTree = "<group>"; };
 		CBADD0F721AC197E00896705 /* Data4Help.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Data4Help.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBADD0FA21AC197E00896705 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +68,7 @@
 		CBADD12821AC64A100896705 /* Data4Help.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Data4Help.entitlements; sourceTree = "<group>"; };
 		CBADD12A21AC64A100896705 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		CBADD12C21AD7FFB00896705 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		CBD7A88F21B05E24004BB382 /* D4HResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HResponse.swift; sourceTree = "<group>"; };
 		EEFCA36DA50342053E87A1E4 /* Pods-Data4Help.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Data4Help.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Data4Help/Pods-Data4Help.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -76,7 +78,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBADD12B21AC64A100896705 /* HealthKit.framework in Frameworks */,
-				FD267AFDFFDC7E8D373A54EE /* libPods-Data4Help.a in Frameworks */,
+				1D5ED11ED4C4AA86453AB757 /* Pods_Data4Help.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				28E5569721ADF55A0009D972 /* D4HLoginResponse.swift */,
+				CBD7A88F21B05E24004BB382 /* D4HResponse.swift */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -218,7 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				CBADD12A21AC64A100896705 /* HealthKit.framework */,
-				4407A3C7269CD8369E9C5C38 /* libPods-Data4Help.a */,
+				6698D8B24F51E95CD50F02E1 /* Pods_Data4Help.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -243,6 +246,7 @@
 				CBADD0F321AC197E00896705 /* Sources */,
 				CBADD0F421AC197E00896705 /* Frameworks */,
 				CBADD0F521AC197E00896705 /* Resources */,
+				0B1B507D6C3F154E97A91342 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -365,6 +369,30 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0B1B507D6C3F154E97A91342 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Data4Help/Pods-Data4Help-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Data4Help/Pods-Data4Help-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		B9D5A2EC3D9850E78E9AC4AF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -395,6 +423,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				28E5569621ADF5480009D972 /* D4HLoginRequest.swift in Sources */,
+				CBD7A89021B05E24004BB382 /* D4HResponse.swift in Sources */,
 				28E5569A21ADF5C60009D972 /* D4HEncodingType.swift in Sources */,
 				28E5568F21ADE9890009D972 /* NetworkManager.swift in Sources */,
 				CBADD12D21AD7FFB00896705 /* DataManager.swift in Sources */,

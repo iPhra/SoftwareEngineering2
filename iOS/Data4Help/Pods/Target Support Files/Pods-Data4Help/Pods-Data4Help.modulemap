@@ -1,4 +1,4 @@
-module Pods_Data4Help {
+framework module Pods_Data4Help {
   umbrella header "Pods-Data4Help-umbrella.h"
 
   export *

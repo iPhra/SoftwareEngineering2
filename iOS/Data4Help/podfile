@@ -1,3 +1,8 @@
-target 'Data4Help' 
-pod ‘Alamofire’, ‘~> 3.0.0’
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '10.0'
+use_frameworks!
 
+target 'Data4Help' do
+    pod 'Alamofire'
+    pod 'SwiftyJSON'
+end

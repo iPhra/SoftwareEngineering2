@@ -41,6 +41,8 @@ class DataManager: NSObject {
         {
             (success,error) -> Void in
             print("Read Write Authorization succeded")
+            
+            
         }
     }
     
@@ -70,6 +72,19 @@ class DataManager: NSObject {
         }
         
         healthStore.execute(tHeartRateQuery)
-    }
+        
+        /*
+        healthStore.enableBackgroundDeliveryForType(sampleType, frequency: .Hourly, withCompletion: {(succeeded: Bool, error: NSError!) in
+            
+            if succeeded{
+                println("Enabled background delivery of sampleType data changes")
+            } else {
+                if let theError = error{
+                    print("Failed to enable background delivery of sampleType data changes. ")
+                    println("Error = \(theError)")
+                }
+            }
+        })*/
+    }    
     
 }
