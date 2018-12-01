@@ -14,6 +14,11 @@
 		28E5569821ADF55A0009D972 /* D4HLoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E5569721ADF55A0009D972 /* D4HLoginResponse.swift */; };
 		28E5569A21ADF5C60009D972 /* D4HEncodingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E5569921ADF5C60009D972 /* D4HEncodingType.swift */; };
 		28E5569D21ADF8870009D972 /* D4HEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E5569C21ADF8870009D972 /* D4HEndpoint.swift */; };
+		CB17279A21B1543500AC9D36 /* SURegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB17279921B1543500AC9D36 /* SURegisterViewController.swift */; };
+		CB17279C21B1545300AC9D36 /* TPRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB17279B21B1545300AC9D36 /* TPRegisterViewController.swift */; };
+		CB17279E21B1D5C800AC9D36 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB17279D21B1D5C800AC9D36 /* TutorialViewController.swift */; };
+		CB1727A021B1DCAA00AC9D36 /* ThirdParty.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB17279F21B1DCAA00AC9D36 /* ThirdParty.storyboard */; };
+		CB1727A221B1DCD100AC9D36 /* SingleUser.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB1727A121B1DCD100AC9D36 /* SingleUser.storyboard */; };
 		CBADD0FB21AC197E00896705 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBADD0FA21AC197E00896705 /* AppDelegate.swift */; };
 		CBADD0FD21AC197E00896705 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBADD0FC21AC197E00896705 /* ViewController.swift */; };
 		CBADD10021AC197E00896705 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBADD0FE21AC197E00896705 /* Main.storyboard */; };
@@ -52,6 +57,11 @@
 		28E5569C21ADF8870009D972 /* D4HEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HEndpoint.swift; sourceTree = "<group>"; };
 		6698D8B24F51E95CD50F02E1 /* Pods_Data4Help.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Data4Help.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DF053413FFA9AF08F79DE2C /* Pods-Data4Help.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Data4Help.release.xcconfig"; path = "Pods/Target Support Files/Pods-Data4Help/Pods-Data4Help.release.xcconfig"; sourceTree = "<group>"; };
+		CB17279921B1543500AC9D36 /* SURegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SURegisterViewController.swift; sourceTree = "<group>"; };
+		CB17279B21B1545300AC9D36 /* TPRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPRegisterViewController.swift; sourceTree = "<group>"; };
+		CB17279D21B1D5C800AC9D36 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
+		CB17279F21B1DCAA00AC9D36 /* ThirdParty.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ThirdParty.storyboard; sourceTree = "<group>"; };
+		CB1727A121B1DCD100AC9D36 /* SingleUser.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SingleUser.storyboard; sourceTree = "<group>"; };
 		CBADD0F721AC197E00896705 /* Data4Help.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Data4Help.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBADD0FA21AC197E00896705 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBADD0FC21AC197E00896705 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -122,6 +132,8 @@
 				CBADD0FE21AC197E00896705 /* Main.storyboard */,
 				CBADD10121AC197F00896705 /* Assets.xcassets */,
 				CBADD10321AC197F00896705 /* LaunchScreen.storyboard */,
+				CB17279F21B1DCAA00AC9D36 /* ThirdParty.storyboard */,
+				CB1727A121B1DCD100AC9D36 /* SingleUser.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -131,6 +143,9 @@
 			children = (
 				CBADD0FC21AC197E00896705 /* ViewController.swift */,
 				CBADD12C21AD7FFB00896705 /* DataManager.swift */,
+				CB17279921B1543500AC9D36 /* SURegisterViewController.swift */,
+				CB17279B21B1545300AC9D36 /* TPRegisterViewController.swift */,
+				CB17279D21B1D5C800AC9D36 /* TutorialViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -306,6 +321,9 @@
 					CBADD0F621AC197E00896705 = {
 						CreatedOnToolsVersion = 10.1;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.HealthKit = {
 								enabled = 1;
 							};
@@ -347,6 +365,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBADD10521AC197F00896705 /* LaunchScreen.storyboard in Resources */,
+				CB1727A021B1DCAA00AC9D36 /* ThirdParty.storyboard in Resources */,
+				CB1727A221B1DCD100AC9D36 /* SingleUser.storyboard in Resources */,
 				CBADD10221AC197F00896705 /* Assets.xcassets in Resources */,
 				CBADD10021AC197E00896705 /* Main.storyboard in Resources */,
 			);
@@ -427,11 +447,14 @@
 				28E5569A21ADF5C60009D972 /* D4HEncodingType.swift in Sources */,
 				28E5568F21ADE9890009D972 /* NetworkManager.swift in Sources */,
 				CBADD12D21AD7FFB00896705 /* DataManager.swift in Sources */,
+				CB17279C21B1545300AC9D36 /* TPRegisterViewController.swift in Sources */,
+				CB17279E21B1D5C800AC9D36 /* TutorialViewController.swift in Sources */,
 				CBADD0FD21AC197E00896705 /* ViewController.swift in Sources */,
 				28E5569821ADF55A0009D972 /* D4HLoginResponse.swift in Sources */,
 				28E5569221ADF3AB0009D972 /* D4HRequest.swift in Sources */,
 				28E5569D21ADF8870009D972 /* D4HEndpoint.swift in Sources */,
 				CBADD0FB21AC197E00896705 /* AppDelegate.swift in Sources */,
+				CB17279A21B1543500AC9D36 /* SURegisterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

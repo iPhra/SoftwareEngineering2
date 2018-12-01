@@ -27,7 +27,8 @@ class DataManager: NSObject {
         let hkTypesToRead:Set<HKObjectType> = [
             HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)!,
             HKObjectType.characteristicType(forIdentifier: HKCharacteristicTypeIdentifier.biologicalSex)!,
-            HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceWalkingRunning)!
+            HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceWalkingRunning)!,
+            HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.height)!
         ]
         
         
@@ -74,17 +75,17 @@ class DataManager: NSObject {
         healthStore.execute(tHeartRateQuery)
         
         /*
-        healthStore.enableBackgroundDeliveryForType(sampleType, frequency: .Hourly, withCompletion: {(succeeded: Bool, error: NSError!) in
+        healthStore.enableBackgroundDelivery(for: tHeartRate!, frequency: .hourly, withCompletion: {(succeeded: Bool, error: NSError?) in
             
             if succeeded{
-                println("Enabled background delivery of sampleType data changes")
+                print("Enabled background delivery of heart rate changes")
             } else {
                 if let theError = error{
-                    print("Failed to enable background delivery of sampleType data changes. ")
-                    println("Error = \(theError)")
+                    print("Failed to enable background delivery of weight changes. ")
+                    print("Error = \(theError)")
                 }
             }
-        })*/
-    }    
-    
+            } as! (Bool, Error?) -> Void)
+ */
+    }
 }
