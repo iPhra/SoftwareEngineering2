@@ -22,6 +22,12 @@
 		CB1727A821B3347B00AC9D36 /* ResearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1727A721B3347B00AC9D36 /* ResearchViewController.swift */; };
 		CB1727AC21B3C89B00AC9D36 /* SRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1727AB21B3C89B00AC9D36 /* SRequest.swift */; };
 		CB1727AE21B3C8B000AC9D36 /* GRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1727AD21B3C8B000AC9D36 /* GRequest.swift */; };
+		CB1727B021B3E2CD00AC9D36 /* SUViewSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1727AF21B3E2CD00AC9D36 /* SUViewSettings.swift */; };
+		CB1727B221B3E2DF00AC9D36 /* SUEditSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1727B121B3E2DF00AC9D36 /* SUEditSettings.swift */; };
+		CB1727B421B3E2EF00AC9D36 /* SUSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1727B321B3E2EF00AC9D36 /* SUSettings.swift */; };
+		CB1727B621B3EB8200AC9D36 /* TPSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1727B521B3EB8200AC9D36 /* TPSettings.swift */; };
+		CB1727B821B3EB9600AC9D36 /* TPViewSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1727B721B3EB9600AC9D36 /* TPViewSettings.swift */; };
+		CB1727BA21B3EBA700AC9D36 /* TPEditSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1727B921B3EBA700AC9D36 /* TPEditSettings.swift */; };
 		CBADD0FB21AC197E00896705 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBADD0FA21AC197E00896705 /* AppDelegate.swift */; };
 		CBADD0FD21AC197E00896705 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBADD0FC21AC197E00896705 /* ViewController.swift */; };
 		CBADD10021AC197E00896705 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBADD0FE21AC197E00896705 /* Main.storyboard */; };
@@ -68,6 +74,12 @@
 		CB1727A721B3347B00AC9D36 /* ResearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResearchViewController.swift; sourceTree = "<group>"; };
 		CB1727AB21B3C89B00AC9D36 /* SRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRequest.swift; sourceTree = "<group>"; };
 		CB1727AD21B3C8B000AC9D36 /* GRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GRequest.swift; sourceTree = "<group>"; };
+		CB1727AF21B3E2CD00AC9D36 /* SUViewSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUViewSettings.swift; sourceTree = "<group>"; };
+		CB1727B121B3E2DF00AC9D36 /* SUEditSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUEditSettings.swift; sourceTree = "<group>"; };
+		CB1727B321B3E2EF00AC9D36 /* SUSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUSettings.swift; sourceTree = "<group>"; };
+		CB1727B521B3EB8200AC9D36 /* TPSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPSettings.swift; sourceTree = "<group>"; };
+		CB1727B721B3EB9600AC9D36 /* TPViewSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPViewSettings.swift; sourceTree = "<group>"; };
+		CB1727B921B3EBA700AC9D36 /* TPEditSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPEditSettings.swift; sourceTree = "<group>"; };
 		CBADD0F721AC197E00896705 /* Data4Help.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Data4Help.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBADD0FA21AC197E00896705 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBADD0FC21AC197E00896705 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -198,6 +210,9 @@
 		CB1727A421B3323B00AC9D36 /* SUControllers */ = {
 			isa = PBXGroup;
 			children = (
+				CB1727AF21B3E2CD00AC9D36 /* SUViewSettings.swift */,
+				CB1727B121B3E2DF00AC9D36 /* SUEditSettings.swift */,
+				CB1727B321B3E2EF00AC9D36 /* SUSettings.swift */,
 			);
 			path = SUControllers;
 			sourceTree = "<group>";
@@ -205,9 +220,8 @@
 		CB1727A521B3324300AC9D36 /* TPControllers */ = {
 			isa = PBXGroup;
 			children = (
-				CB1727A721B3347B00AC9D36 /* ResearchViewController.swift */,
-				CB1727AB21B3C89B00AC9D36 /* SRequest.swift */,
-				CB1727AD21B3C8B000AC9D36 /* GRequest.swift */,
+				CB1727BC21B3ED8000AC9D36 /* TPResearchControllers */,
+				CB1727BB21B3ED7000AC9D36 /* TPSettingsControllers */,
 			);
 			path = TPControllers;
 			sourceTree = "<group>";
@@ -218,6 +232,26 @@
 				CBADD12C21AD7FFB00896705 /* DataManager.swift */,
 			);
 			path = HealthControllers;
+			sourceTree = "<group>";
+		};
+		CB1727BB21B3ED7000AC9D36 /* TPSettingsControllers */ = {
+			isa = PBXGroup;
+			children = (
+				CB1727B521B3EB8200AC9D36 /* TPSettings.swift */,
+				CB1727B721B3EB9600AC9D36 /* TPViewSettings.swift */,
+				CB1727B921B3EBA700AC9D36 /* TPEditSettings.swift */,
+			);
+			path = TPSettingsControllers;
+			sourceTree = "<group>";
+		};
+		CB1727BC21B3ED8000AC9D36 /* TPResearchControllers */ = {
+			isa = PBXGroup;
+			children = (
+				CB1727A721B3347B00AC9D36 /* ResearchViewController.swift */,
+				CB1727AB21B3C89B00AC9D36 /* SRequest.swift */,
+				CB1727AD21B3C8B000AC9D36 /* GRequest.swift */,
+			);
+			path = TPResearchControllers;
 			sourceTree = "<group>";
 		};
 		CBADD0EE21AC197E00896705 = {
@@ -484,9 +518,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				28E5569621ADF5480009D972 /* D4HLoginRequest.swift in Sources */,
+				CB1727B821B3EB9600AC9D36 /* TPViewSettings.swift in Sources */,
 				CBD7A89021B05E24004BB382 /* D4HResponse.swift in Sources */,
+				CB1727B021B3E2CD00AC9D36 /* SUViewSettings.swift in Sources */,
 				CB1727A821B3347B00AC9D36 /* ResearchViewController.swift in Sources */,
+				CB1727B621B3EB8200AC9D36 /* TPSettings.swift in Sources */,
+				CB1727B221B3E2DF00AC9D36 /* SUEditSettings.swift in Sources */,
 				28E5569A21ADF5C60009D972 /* D4HEncodingType.swift in Sources */,
+				CB1727BA21B3EBA700AC9D36 /* TPEditSettings.swift in Sources */,
 				28E5568F21ADE9890009D972 /* NetworkManager.swift in Sources */,
 				CBADD12D21AD7FFB00896705 /* DataManager.swift in Sources */,
 				CB17279C21B1545300AC9D36 /* TPRegisterViewController.swift in Sources */,
@@ -499,6 +538,7 @@
 				28E5569D21ADF8870009D972 /* D4HEndpoint.swift in Sources */,
 				CBADD0FB21AC197E00896705 /* AppDelegate.swift in Sources */,
 				CB17279A21B1543500AC9D36 /* SURegisterViewController.swift in Sources */,
+				CB1727B421B3E2EF00AC9D36 /* SUSettings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
