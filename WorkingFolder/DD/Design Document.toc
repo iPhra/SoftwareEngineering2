@@ -18,6 +18,6 @@
 \contentsline {subsection}{\numberline {2.7}Other design decisions}{4}
 \contentsline {section}{\numberline {3}User Interface Design}{5}
 \contentsline {section}{\numberline {4}Requirements Traceability}{6}
-\contentsline {section}{\numberline {5}Implementation, Integration and Test Plan}{7}
-\contentsline {section}{\numberline {6}Effort Spent}{8}
-\contentsline {section}{\numberline {7}References}{9}
+\contentsline {section}{\numberline {5}Implementation, Integration and Test Plan}{10}
+\contentsline {section}{\numberline {6}Effort Spent}{11}
+\contentsline {section}{\numberline {7}References}{12}
