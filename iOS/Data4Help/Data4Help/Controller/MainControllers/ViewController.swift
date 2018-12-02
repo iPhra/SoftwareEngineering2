@@ -16,6 +16,7 @@ class ViewController: UIViewController {
         let dataManager:DataManager = DataManager()
         dataManager.authorizeHKinApp()
         dataManager.getHeartRates()
+        //dataManager.enableBackgroundData()
     }
 
 }

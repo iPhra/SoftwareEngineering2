@@ -28,6 +28,7 @@
 		CB1727B621B3EB8200AC9D36 /* TPSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1727B521B3EB8200AC9D36 /* TPSettings.swift */; };
 		CB1727B821B3EB9600AC9D36 /* TPViewSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1727B721B3EB9600AC9D36 /* TPViewSettings.swift */; };
 		CB1727BA21B3EBA700AC9D36 /* TPEditSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1727B921B3EBA700AC9D36 /* TPEditSettings.swift */; };
+		CB1727BE21B4496800AC9D36 /* MyHealth.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1727BD21B4496800AC9D36 /* MyHealth.swift */; };
 		CBADD0FB21AC197E00896705 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBADD0FA21AC197E00896705 /* AppDelegate.swift */; };
 		CBADD0FD21AC197E00896705 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBADD0FC21AC197E00896705 /* ViewController.swift */; };
 		CBADD10021AC197E00896705 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBADD0FE21AC197E00896705 /* Main.storyboard */; };
@@ -80,6 +81,7 @@
 		CB1727B521B3EB8200AC9D36 /* TPSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPSettings.swift; sourceTree = "<group>"; };
 		CB1727B721B3EB9600AC9D36 /* TPViewSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPViewSettings.swift; sourceTree = "<group>"; };
 		CB1727B921B3EBA700AC9D36 /* TPEditSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPEditSettings.swift; sourceTree = "<group>"; };
+		CB1727BD21B4496800AC9D36 /* MyHealth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyHealth.swift; sourceTree = "<group>"; };
 		CBADD0F721AC197E00896705 /* Data4Help.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Data4Help.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBADD0FA21AC197E00896705 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBADD0FC21AC197E00896705 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -210,9 +212,8 @@
 		CB1727A421B3323B00AC9D36 /* SUControllers */ = {
 			isa = PBXGroup;
 			children = (
-				CB1727AF21B3E2CD00AC9D36 /* SUViewSettings.swift */,
-				CB1727B121B3E2DF00AC9D36 /* SUEditSettings.swift */,
-				CB1727B321B3E2EF00AC9D36 /* SUSettings.swift */,
+				CB1727BF21B449A900AC9D36 /* SUSettings */,
+				CB1727BD21B4496800AC9D36 /* MyHealth.swift */,
 			);
 			path = SUControllers;
 			sourceTree = "<group>";
@@ -252,6 +253,16 @@
 				CB1727AD21B3C8B000AC9D36 /* GRequest.swift */,
 			);
 			path = TPResearchControllers;
+			sourceTree = "<group>";
+		};
+		CB1727BF21B449A900AC9D36 /* SUSettings */ = {
+			isa = PBXGroup;
+			children = (
+				CB1727AF21B3E2CD00AC9D36 /* SUViewSettings.swift */,
+				CB1727B121B3E2DF00AC9D36 /* SUEditSettings.swift */,
+				CB1727B321B3E2EF00AC9D36 /* SUSettings.swift */,
+			);
+			path = SUSettings;
 			sourceTree = "<group>";
 		};
 		CBADD0EE21AC197E00896705 = {
@@ -474,6 +485,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Data4Help/Pods-Data4Help-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -481,6 +493,7 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -533,6 +546,7 @@
 				CBADD0FD21AC197E00896705 /* ViewController.swift in Sources */,
 				CB1727AE21B3C8B000AC9D36 /* GRequest.swift in Sources */,
 				CB1727AC21B3C89B00AC9D36 /* SRequest.swift in Sources */,
+				CB1727BE21B4496800AC9D36 /* MyHealth.swift in Sources */,
 				28E5569821ADF55A0009D972 /* D4HLoginResponse.swift in Sources */,
 				28E5569221ADF3AB0009D972 /* D4HRequest.swift in Sources */,
 				28E5569D21ADF8870009D972 /* D4HEndpoint.swift in Sources */,

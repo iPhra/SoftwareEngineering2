@@ -73,8 +73,14 @@ class DataManager: NSObject {
         }
         
         healthStore.execute(tHeartRateQuery)
+    }
+    
+    
+    
+    public func enableBackgroundData(){
         
-        /*
+        let tHeartRate = HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)
+        
         healthStore.enableBackgroundDelivery(for: tHeartRate!, frequency: .hourly, withCompletion: {(succeeded: Bool, error: NSError?) in
             
             if succeeded{
@@ -86,6 +92,6 @@ class DataManager: NSObject {
                 }
             }
             } as! (Bool, Error?) -> Void)
- */
+
     }
 }

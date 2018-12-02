@@ -5,4 +5,5 @@ use_frameworks!
 target 'Data4Help' do
     pod 'Alamofire'
     pod 'SwiftyJSON'
+    pod 'Charts' 
 end
