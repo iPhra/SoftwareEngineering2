@@ -10,6 +10,13 @@ import UIKit
 
 class SURegisterViewController: UIViewController {
     
+    // MARK: Outlets
+    
+    @IBOutlet weak var fullnameTextView: UITextField!
+    @IBOutlet weak var EmailTextView: UITextField!
+    @IBOutlet weak var passwordTextView: UITextField!
+    @IBOutlet weak var cfTextView: UITextField!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +29,15 @@ class SURegisterViewController: UIViewController {
     
     @IBAction func CreateAccount(_ sender: Any) {
         //send request throw Network Manager with registration details
-        //NetworkManager.sendRequest(<#T##NetworkManager#>)
+        NetworkManager.sharedInstance.sendRequest(input: D4HRegisterRequest(email: EmailTextView.text!, password: passwordTextView.text!, FC: cfTextView.text!, fullname: fullnameTextView.text!, birthday: "", sex: ""), endpoint: D4HEndpoint.registerSingle) { (response, error) in
+            if response != nil {
+                let myres = D4HRegisterSingleResponse(fromJson: response!)
+                print(myres.message)
+            }
+            else if let error = error {
+                print(error)
+            }
+        }
     }
     
     /*

@@ -22,7 +22,7 @@ class NetworkManager {
     func sendRequest(
         input: D4HRequest,
         endpoint: D4HEndpoint,
-        completionHandler: @escaping(D4HResponse?, Error?) -> Void
+        completionHandler: @escaping(JSON?, Error?) -> Void
         ) {
         os_log("NetworkManager request: %@endpoint", log: OSLog.default, type: .debug)
         
@@ -31,11 +31,11 @@ class NetworkManager {
             // Manage response
             
             if let data = dataResponse.data {
-                print("analyzeEntitySentiment: SUCCESS")
+                print("Response: SUCCESS")
                 let json = JSON(data)
-                //completionHandler(D4HResponse(fromJson: json), nil)
+                completionHandler(json, nil)
             } else if let error = dataResponse.error {
-                print("analyzeEntitySentiment: ERROR")
+                print("Response: ERROR")
                 completionHandler(nil,error)
             }
         }

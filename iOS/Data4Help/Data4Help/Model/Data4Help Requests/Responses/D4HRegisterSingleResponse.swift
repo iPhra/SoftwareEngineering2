@@ -1,30 +1,27 @@
 //
-//  D4HLoginResponse.swift
+//  D4HRegisterSingleResponse.swift
 //  Data4Help
 //
-//  Created by Luca Molteni on 27/11/18.
+//  Created by Luca Molteni on 03/12/18.
 //  Copyright © 2018 Lorenzo Molteni Negri. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import SwiftyJSON
 
-class D4HLoginResponse: D4HResponse {
+class D4HRegisterSingleResponse: D4HResponse {
     
     // MARK: - Properties
     
     var message: String
-    let authToken: String
     
     // MARK: - initialization
     
-    init(message: String, authToken: String) {
+    init(message: String) {
         self.message = message
-        self.authToken = authToken
     }
     
     init(fromJson json: JSON) {
         self.message = json["message"].stringValue
-        self.authToken = json["authToken"].stringValue
     }
 }

@@ -9,8 +9,9 @@
 import Foundation
 
 enum D4HEndpoint: String {
-    case login
-    case register
+    case login = "/auth/login"
+    case registerSingle = "/auth/reg/single"
+    case registerGroup = "/auth/reg/group"
     
     //TO-DO implement all endpoints
 }
