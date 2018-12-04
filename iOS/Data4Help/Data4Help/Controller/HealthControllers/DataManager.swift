@@ -9,19 +9,29 @@
 import UIKit
 import HealthKit
 
-let healthStore:HKHealthStore = HKHealthStore()
+
 
 /*
  * Handles health data access thorugh HKHealthStore object
  */
 class DataManager: NSObject {
     
+    //MARK: Properties
     
-
+    let healthStore:HKHealthStore = HKHealthStore()
+    
+    //MARK: Singleton Instance
+    
+    class var sharedInstance: DataManager {
+        struct Singleton {
+            static let instance = DataManager()
+        }
+        return Singleton.instance
+    }
+    
+    
     //MARK: functions
-    
     func authorizeHKinApp(){
-        
         
         // Health data to read
         let hkTypesToRead:Set<HKObjectType> = [
@@ -43,11 +53,8 @@ class DataManager: NSObject {
             (success,error) -> Void in
             print("Read Write Authorization succeded")
             
-            
         }
     }
-    
-    
     
     
     func getHeartRates()
@@ -75,23 +82,57 @@ class DataManager: NSObject {
         healthStore.execute(tHeartRateQuery)
     }
     
+    public func enableAutomatedSOS(){
+        //
+    }
     
     
     public func enableBackgroundData(){
         
-        let tHeartRate = HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)
+        let sampleType = HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)
         
-        healthStore.enableBackgroundDelivery(for: tHeartRate!, frequency: .hourly, withCompletion: {(succeeded: Bool, error: NSError?) in
-            
-            if succeeded{
-                print("Enabled background delivery of heart rate changes")
-            } else {
-                if let theError = error{
-                    print("Failed to enable background delivery of weight changes. ")
-                    print("Error = \(theError)")
-                }
+        self.healthStore.enableBackgroundDelivery(for: sampleType!, frequency: .immediate) { (success, error) in
+            if let unwrappedError = error {
+                print("could not enable background delivery: \(unwrappedError)")
             }
-            } as! (Bool, Error?) -> Void)
+            if success {
+                print("background delivery enabled")
+            }
+        }
+        //2.  open observer query
+        let query = HKObserverQuery(sampleType: sampleType!, predicate: nil) { (query, completionHandler, error) in
+            
+            self.updateHeartRates() {
+                completionHandler()
+            }
+            
+            
+        }
+        healthStore.execute(query)
 
+    }
+    func updateHeartRates(completionHandler: @escaping () -> Void) {
+        
+        var anchor: HKQueryAnchor?
+        
+        let sampleType =  HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)
+        
+        let anchoredQuery = HKAnchoredObjectQuery(type: sampleType!, predicate: nil, anchor: anchor, limit: HKObjectQueryNoLimit) { [unowned self] query, newSamples, deletedSamples, newAnchor, error in
+            
+            self.handleNewSamples(new: newSamples! as! [HKQuantitySample], deleted: deletedSamples!)
+            
+            anchor = newAnchor
+            
+            completionHandler()
+        }
+        healthStore.execute(anchoredQuery)
+    }
+    
+    func handleNewSamples(new: [HKQuantitySample], deleted: [HKDeletedObject]) {
+        print("last sample = \(String(describing: new.last!.quantity))")
+        /*
+        for sample in new{
+            print("new sample added = \(sample.quantity)")
+        }*/
     }
 }
