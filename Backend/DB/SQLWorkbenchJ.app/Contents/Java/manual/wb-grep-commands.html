@@ -1,0 +1,245 @@
+<html><head><META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>24.&nbsp;Search data and code in the database</title><link href="html-publish.css" type="text/css" rel="stylesheet"><meta content="DocBook XSL Stylesheets V1.78.1" name="generator"><link rel="home" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="up" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="prev" href="compare-commands.html" title="23.&nbsp;Comparing databases"><link rel="next" href="script-generation.html" title="25.&nbsp;SQL Workbench/J to generate DDL commands"><link rel="article" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="subsection" href="wb-grep-commands.html#command-search-source" title="24.1.&nbsp;Search source of database objects - WbGrepSource"><link rel="subsection" href="wb-grep-commands.html#command-search-data" title="24.2.&nbsp;Search data in multiple tables - WbGrepData"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">24.&nbsp;Search data and code in the database</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="compare-commands.html">Prev</a>&nbsp;</td><th align="center" width="60%">&nbsp;</th><td align="right" width="20%">&nbsp;<a accesskey="n" href="script-generation.html">Next</a></td></tr></table><hr></div><div class="section" id="wb-grep-commands"><div class="titlepage"><div><div><h2 class="title" style="clear: both">24.&nbsp;Search data and code in the database</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="wb-grep-commands.html#command-search-source">24.1. Search source of database objects - WbGrepSource</a></span></dt><dt><span class="section"><a href="wb-grep-commands.html#command-search-data">24.2. Search data in multiple tables - WbGrepData</a></span></dt></dl></div><div class="important" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Important"><tr><td valign="top" align="center" rowspan="2" width="25"><img alt="[Important]" src="./images/important.png"></td><th align="left"></th></tr><tr><td valign="top" align="left"><p>
+    All SQL Workbench/J specific command can <span class="bold"><strong>only</strong></span> be used from within SQL Workbench/J
+  </p></td></tr></table></div><div class="section" id="command-search-source"><div class="titlepage"><div><div><h3 class="title">24.1.&nbsp;Search source of database objects - WbGrepSource</h3></div></div></div><p>
+      The command <code class="literal">WbGrepSource</code> can be used to search
+      in the source code of the specified database objects.
+    </p><p>
+      The command basically retrieves the source code for all selected
+      objects and does a simple search on that source code.
+      The source code that is searched is identical to the source code
+      that is displayed in the "Source" tab in the various DbExplorer
+      panels.
+    </p><p>
+      The search values can be regular expressions. When searching the source
+      code the specified expression must be found somewhere in the source.
+      The regex is <span class="emphasis"><em>not</em></span> used to match the <span class="emphasis"><em>entire</em></span>  source.
+    </p><p>
+			The command supports the following parameters:
+		</p><div class="informaltable"><table style="border-collapse: collapse;border-top: 1px solid ; border-bottom: 1px solid ; border-left: 1px solid ; border-right: 1px solid ; "><colgroup><col width="4cm" align="left" class="c1"><col align="left" class="c2"></colgroup><thead><tr><th style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left">Parameter</th><th style="border-bottom: 1px solid ; " align="left">Description</th></tr></thead><tbody valign="top"><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-searchValues</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+              <p>
+                A comma separated list of values to be searched for.
+              </p>
+            </td></tr><tr id="command-grepsrc-regex"><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-useRegex</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+						  <p>Valid values are <code class="literal">true</code>, <code class="literal">false</code>.</p>
+              <p>
+                If this parameter is set to true, the values specified with <code class="literal">-searchValues</code> are
+                treated as regular expression
+              </p>
+              <p>
+                The default for this parameter is <code class="literal">false</code>.
+              </p>
+            </td></tr><tr id="command-grepsrc-matchall"><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-matchAll</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+						  <p>Valid values are <code class="literal">true</code>, <code class="literal">false</code>.</p>
+              <p>
+                This specifies if all values specified with <code class="literal">-searchValues</code>
+                have to match or only one.
+              </p>
+              <p>
+                The default for this parameter is <code class="literal">false</code>.
+              </p>
+            </td></tr><tr id="command-grepsrc-ignorecase"><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-ignoreCase</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+						  <p>Valid values are <code class="literal">true</code>, <code class="literal">false</code>.</p>
+              <p>
+                When set to true, the comparison is be done case-insesitive ("ARTHUR" will
+                match "Arthur" or "arthur").
+              </p>
+              <p>
+                The default for this parameter is <code class="literal">true</code>.
+              </p>
+            </td></tr><tr id="command-grepsrc-types"><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-types</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+              <p>
+                Specifies if the object types to be searched. The values for this
+                parameter are the same as in the "Type" drop down of DbExplorer's
+                table list. Additionally the types <code class="literal">function</code>,
+                <code class="literal">procedure</code> and <code class="literal">trigger</code> are
+                supported.
+              </p>
+              <p>
+                When specifying a type that contains a space, the type name neeeds to be
+                enclosed in quotes, e.g. <code class="literal">-types="materialized view"</code>. When specifying multiple types,
+                the whole argument needs to be enclosed in quotes: <code class="literal">-types='table, materialized view'</code>
+              </p>
+              <p>
+                The default for this parameter is <code class="literal">view, procedure, function, trigger, materialized view</code>.
+                To search in all available object types, use <code class="literal">-types=*</code>.
+              </p>
+              <p>
+                This parameter supports auto-completion.
+              </p>
+            </td></tr><tr id="command-grepsrc-objects"><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-objects</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+              <p>
+                A list of object names to be searched. These names may contain SQL wildcards, e.g. <code class="literal">-objects=PER%,NO%</code>
+              </p>
+              <p>
+                This parameter supports auto-completion.
+              </p>
+            </td></tr><tr id="command-grepsrc-schemas"><td style="border-right: 1px solid ; " align="left" valign="top">-schemas</td><td style="" align="left" valign="top">
+              <p>
+                Specifies a list of schemas to be searched (for DBMS that
+                support schemas). If this parameter is not specified the
+                current schema is searched.
+              </p>
+              <p>
+                This parameter supports auto-completion.
+              </p>
+            </td></tr></tbody></table></div><p>
+      The functionality of the <code class="literal">WbGrepSource</code> command is also
+      available through a GUI at
+      <span class="guimenu">Tools</span> &rarr; <span class="guimenuitem">Search in object source</span>
+    </p></div><div class="section" id="command-search-data"><div class="titlepage"><div><div><h3 class="title">24.2.&nbsp;Search data in multiple tables - WbGrepData</h3></div></div></div><p>
+      The command <code class="literal">WbGrepData</code> can be used to search
+      for occurrences of a certain value in all columns of multiple tables.
+      It is the command line version of the (client side) <a class="link" href="dbexplorer.html#table-search-client" title="31.10.2.&nbsp;Client side search">Search Table Data</a> tab
+      in the DbExplorer. A more detailed description on how the searching is performed is available that chapter.
+    </p><p>
+      </p><div class="important" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Important"><tr><td valign="top" align="center" rowspan="2" width="25"><img alt="[Important]" src="./images/important.png"></td><th align="left"></th></tr><tr><td valign="top" align="left">
+        To search the data of a table a <code class="literal">SELECT * FROM the_table</code> is executed and
+        processed on a row-by-row basis. Although SQL Workbench/J only keeps one row at a time in memory
+        it is possible that the JDBC drivers caches the full result set in memory. Please see the chapter
+        <a class="link" href="troubleshooting.html" title="33.&nbsp;Common problems">Common problems</a> for your DBMS to check if the JDBC driver you are using
+        caches result sets.
+      </td></tr></table></div><p>
+    </p><p>
+			The command supports the following parameters:
+		</p><div class="informaltable"><table style="border-collapse: collapse;border-top: 1px solid ; border-bottom: 1px solid ; border-left: 1px solid ; border-right: 1px solid ; "><colgroup><col width="4cm" align="left" class="c1"><col align="left" class="c2"></colgroup><thead><tr><th style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left">Parameter</th><th style="border-bottom: 1px solid ; " align="left">Description</th></tr></thead><tbody valign="top"><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-searchValue</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+              <p>
+                The value to be searched for
+              </p>
+              <p>
+                This parameter is ignored when using <code class="literal">isNull</code> for the compare type.
+              </p>
+            </td></tr><tr id="command-grepdata-ignorecase"><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-ignoreCase</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+						  <p>Valid values are <code class="literal">true</code>, <code class="literal">false</code>.</p>
+              <p>
+                When set to true, the comparison is be done case-insensitive ("ARTHUR" will
+                match "Arthur" or "arthur").
+              </p>
+              <p>
+                The default for this parameter is <code class="literal">true</code>.
+              </p>
+            </td></tr><tr id="command-grepdata-comparetype"><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-compareType</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+						  <p>
+                Valid values are <code class="literal">contains</code>, <code class="literal">equals</code>,
+                <code class="literal">matches</code>, <code class="literal">startsWith</code>, <code class="literal">isNull</code>
+              </p>
+              <p>
+                When specifying <code class="literal">matches</code>, the search value
+                is used as a regular expression. A column is included in the
+                search result if the regular expression is <span class="emphasis"><em>contained</em></span> in the
+                column value (not when the column value completely matches the regular
+                expression entirely).
+              </p>
+              <p>
+                The default for this parameter is <code class="literal">contains</code>.
+              </p>
+            </td></tr><tr id="command-grepdata-tables"><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-tables</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+              <p>
+                A list of table names to be searched. These names may contain
+                SQL wildcards, e.g. <code class="literal">-tables=PER%,NO%</code>.
+                If you want to search in different schemas, you need to prefix the
+                table names, e.g. <code class="literal">-tables=schema1.p%,schema2.n%</code>.
+              </p>
+              <p>
+                This parameter supports auto-completion.
+              </p>
+            </td></tr><tr id="command-grepdata-types"><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-types</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+              <p>
+                By default <code class="literal">WbGrepData</code> will search all
+                tables and views (including materialized views). If you want
+                to search only one of those types, this can be specified with
+                the <code class="literal">-types</code> parameter. Using <code class="literal">-types=table</code>
+                will only search table data and skip views in the database.
+              </p>
+              <p>
+                This parameter supports auto-completion.
+              </p>
+            </td></tr><tr id="command-grepdata-exclude-tables"><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-excludeTables</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+              <p>
+                A list of table names to be excluded from the search. If e.g.
+                the wildcard for -tables would select too many tables, you can
+                exclude individual tables with this parameter. The parameter values
+                may include SQL wildcards.
+              </p>
+              <p>
+                <code class="literal">-tables=p% -excludeTables=product_details,product_images</code>
+                would process all tables starting with P but not the <code class="literal">product_detail</code>
+                and the <code class="literal">product_images</code> tables.
+              </p>
+            </td></tr><tr id="command-grepdata-columns"><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-columns</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+              <p>
+                By default <code class="literal">WbGrepData</code> will search all
+                columns of a table (or view). If you want to limit the search
+                to some columns only, you can define a list of column names to
+                be included. Wildcards are not supported.
+              </p>
+            </td></tr><tr id="command-grepdata-clob"><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-retrieveCLOB</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+              <p>
+                By default <code class="literal">CLOB</code> columns will be retrieved and searched.
+                If this parameter is set to <code class="literal">false</code>, CLOB columns will not be retrieved.
+              </p>
+              <p>
+                If the search value is not expected in columns of that type, excluding them from the search
+                will speed up data retrieval (and thus the searching).
+              </p>
+              <p>
+                Only columns reported as <code class="literal">CLOB</code> by the JDBC driver will be excluded.
+                If the driver reports a column as <code class="literal">VARCHAR</code> this parameter will
+                not exclude that column.
+              </p>
+            </td></tr><tr id="command-grepdata-blob"><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-retrieveBLOB</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+              <p>
+                By default <code class="literal">BLOB</code> columns will not be retrieved for those rows
+                that match the criteria to avoid excessive memory usage.
+              </p>
+              <p>
+                If <code class="literal">BLOB</code> columns should be retrieved, this parameter needs to be
+                set to <code class="literal">true</code>. Enabling this will not search inside the binary
+                data. If <code class="literal">BLOB</code> columns should be searched (and treated as character
+                data), use the <code class="literal">-treatBlobAs</code> parameter
+              </p>
+            </td></tr><tr id="command-grepdata-blobhandling"><td style="border-right: 1px solid ; " align="left" valign="top">-treatBlobAs</td><td style="" align="left" valign="top">
+              <p>
+                If this parameter specifies a valid encoding, binary (aka "BLOB") columns will
+                be retrieved and converted to a character value using the specified encoding.
+                That character value is then searched.
+              </p>
+              <p>
+                <code class="literal">-treatBlobAs="UTF-8"</code> would convert <span class="bold"><strong>all</strong></span>
+                <code class="literal">BLOB</code> columns in <span class="bold"><strong>all</strong></span> tables that are
+                searched to a character value using UTF-8 as the encoding. Therefore using this option usually
+                only makes sense if a single table is searched.
+              </p>
+            </td></tr></tbody></table></div><div class="section" id="grep-data-examples"><div class="titlepage"><div><div><h4 class="title">24.2.1.&nbsp;Examples</h4></div></div></div><div class="section" id="grep-data-example-simple"><div class="titlepage"><div><div><h5 class="title">24.2.1.1.&nbsp;Search for a specific value in a single table</h5></div></div></div><p>
+          The following statement will search for the text <code class="literal">Arthur</code> in all columns
+          and all rows of the table <code class="literal">person</code>. It will find values <code class="literal">foobar</code>,
+          <code class="literal">somefoo</code> or <code class="literal">notfoobar</code>:
+        </p><pre class="programlisting">WbGrepData -searchValue=foo -tables=person -ignoreCase=true</pre><p>
+          <code class="literal">-ignoreCase=true</code> is the default behavior and can be omitted.
+        </p></div><div class="section" id="grep-data-example-alltables"><div class="titlepage"><div><div><h5 class="title">24.2.1.2.&nbsp;Search for a specific value in all tables</h5></div></div></div><p>
+          The following statement will search for the text <code class="literal">foobar</code> in all columns
+          and all tables.
+        </p><pre class="programlisting">WbGrepData -searchValue=foobar -tables=*</pre></div><div class="section" id="grep-data-example-startwith"><div class="titlepage"><div><div><h5 class="title">24.2.1.3.&nbsp;Search for a specific value at the beginning of a column value</h5></div></div></div><p>
+          The following statement will search for the text <code class="literal">foo</code> in all columns
+          and all tables. It will match the value <code class="literal">foobar</code>, but not <code class="literal">barfoo</code>
+        </p><pre class="programlisting">WbGrepData -searchValue=foo -compareType=startsWith -tables=*</pre></div><div class="section" id="grep-data-example-equals"><div class="titlepage"><div><div><h5 class="title">24.2.1.4.&nbsp;Search for a specific value with an exact match</h5></div></div></div><p>
+          The following statement will search for the text <code class="literal">foo</code> in all columns
+          and all tables. It will only match the value <code class="literal">foo</code> or <code class="literal">FOO</code> but not <code class="literal">somefoobar</code>
+        </p><pre class="programlisting">WbGrepData -searchValue=foo -compareType=equals -tables=*</pre></div><div class="section" id="grep-data-example-regex1"><div class="titlepage"><div><div><h5 class="title">24.2.1.5.&nbsp;Search for patterns</h5></div></div></div><p>
+          The following statement will search for any value where three characters are followed by two numbers.
+          It will match <code class="literal">foo42</code>, <code class="literal">bar12</code>
+        </p><pre class="programlisting">WbGrepData -searchValue="[a-z]{2}[0-9]{2}" -compareType=contains -tables=person</pre><p>
+          As the column values are only tested if the regular expression is <span class="emphasis"><em>contained</em></span>, not if
+          it is an exact match. The above search will also return <code class="literal">foo999</code>.
+        </p><p>
+          To get an exact match using the <code class="literal">contains</code> type, the regular expression needs to be anchored at the start and
+          the end. The following will only find only values that start with (exactly) two characters and are
+          followed by (exactly) two digits.
+        </p><pre class="programlisting">WbGrepData -searchValue="^[a-z]{2}[0-9]{2}$" -compareType=contains -tables=person</pre></div><div class="section" id="grep-data-example-regex2"><div class="titlepage"><div><div><h5 class="title">24.2.1.6.&nbsp;Search for multiple values</h5></div></div></div><p>
+          The following statement will return rows where any column either contains the value <code class="literal">foo</code> or
+          the value <code class="literal">bar</code>:
+        </p><pre class="programlisting">WbGrepData -searchValue="foo|bar" -compareType=contains -tables=person</pre><p>
+          As the column values are only tested if the regular expression is <span class="emphasis"><em>contained</em></span>, not if
+          it is an exact match. The above search will also return <code class="literal">foo999</code>.
+        </p><p>
+          For more information about regular expressions please visit: <a class="ulink" href="http://www.regular-expressions.info/" target="_blank">Regular-Expressions.info</a>
+        </p></div></div></div></div><div class="navfooter"><hr><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="compare-commands.html">Prev</a>&nbsp;</td><td align="center" width="20%">&nbsp;</td><td align="right" width="40%">&nbsp;<a accesskey="n" href="script-generation.html">Next</a></td></tr><tr><td valign="top" align="left" width="40%">23.&nbsp;Comparing databases&nbsp;</td><td align="center" width="20%"><a accesskey="h" href="workbench-manual.html">Home</a></td><td valign="top" align="right" width="40%">&nbsp;25.&nbsp;SQL Workbench/J to generate DDL commands</td></tr></table></div></body></html>

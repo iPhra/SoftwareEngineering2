@@ -1,0 +1,774 @@
+<html><head><META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>29.&nbsp;Other SQL Workbench/J specific commands</title><link href="html-publish.css" type="text/css" rel="stylesheet"><meta content="DocBook XSL Stylesheets V1.78.1" name="generator"><link rel="home" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="up" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="prev" href="wb-var-commands.html" title="28.&nbsp;Manage variables with SQL Workbench/J"><link rel="next" href="data-pumper.html" title="30.&nbsp;DataPumper"><link rel="article" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="subsection" href="wb-commands.html#command-wbconfirm" title="29.1.&nbsp;Confirm script execution - WbConfirm"><link rel="subsection" href="wb-commands.html#command-wbmessage" title="29.2.&nbsp;Display a message box - WbMessage"><link rel="subsection" href="wb-commands.html#command-echo" title="29.3.&nbsp;Print a text - WbEcho"><link rel="subsection" href="wb-commands.html#command-wbcall" title="29.4.&nbsp;Run a stored procedure with OUT parameters - WbCall"><link rel="subsection" href="wb-commands.html#command-wbinclude" title="29.5.&nbsp;Execute a SQL script - WbInclude (@)"><link rel="subsection" href="wb-commands.html#conditional-exec" title="29.6.&nbsp;Conditional execution"><link rel="subsection" href="wb-commands.html#command-wbrunlb" title="29.7.&nbsp;Extract and run SQL from a Liquibase ChangeLog - WbRunLB"><link rel="subsection" href="wb-commands.html#pk-handling" title="29.8.&nbsp;Handling tables or updateable views without primary keys"><link rel="subsection" href="wb-commands.html#command-fetchsize" title="29.9.&nbsp;Change the default fetch size - WbFetchSize"><link rel="subsection" href="wb-commands.html#command-run-batch" title="29.10.&nbsp;Run statements as a single batch - WbStartBatch, WbEndBatch"><link rel="subsection" href="wb-commands.html#command-selectblob" title="29.11.&nbsp;Extracting BLOB content - WbSelectBlob"><link rel="subsection" href="wb-commands.html#command-wbfeedback" title="29.12.&nbsp;Control feedback messages - WbFeedback"><link rel="subsection" href="wb-commands.html#command-set" title="29.13.&nbsp;Setting connection properties - SET"><link rel="subsection" href="wb-commands.html#set-oracle" title="29.14.&nbsp;Changing Oracle session behavior - SET"><link rel="subsection" href="wb-commands.html#command-wbmode" title="29.15.&nbsp;Changing read only mode - WbMode"><link rel="subsection" href="wb-commands.html#command-rowcount" title="29.16.&nbsp;Count rows for all tables - WbRowcCount"><link rel="subsection" href="wb-commands.html#command-connect" title="29.17.&nbsp;Change the connection for a script - WbConnect"><link rel="subsection" href="wb-commands.html#command-history" title="29.18.&nbsp;Show the history of SQL statements - WbHistory"><link rel="subsection" href="wb-commands.html#command-xslt" title="29.19.&nbsp;Run an XSLT transformation - WbXslt"><link rel="subsection" href="wb-commands.html#command-wbexec" title="29.20.&nbsp;Running operating system commands - WbSysExec"><link rel="subsection" href="wb-commands.html#command-sysopen" title="29.21.&nbsp;Opening a file with the default application - WbSysOpen"><link rel="subsection" href="wb-commands.html#command-setconfig" title="29.22.&nbsp;Change an internal configuration parameter - WbSetConfig"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">29.&nbsp;Other SQL Workbench/J specific commands</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="wb-var-commands.html">Prev</a>&nbsp;</td><th align="center" width="60%">&nbsp;</th><td align="right" width="20%">&nbsp;<a accesskey="n" href="data-pumper.html">Next</a></td></tr></table><hr></div><div class="section" id="wb-commands"><div class="titlepage"><div><div><h2 class="title" style="clear: both">29.&nbsp;Other SQL Workbench/J specific commands</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="wb-commands.html#command-wbconfirm">29.1. Confirm script execution - WbConfirm</a></span></dt><dt><span class="section"><a href="wb-commands.html#command-wbmessage">29.2. Display a message box - WbMessage</a></span></dt><dt><span class="section"><a href="wb-commands.html#command-echo">29.3. Print a text - WbEcho</a></span></dt><dt><span class="section"><a href="wb-commands.html#command-wbcall">29.4. Run a stored procedure with OUT parameters - WbCall</a></span></dt><dt><span class="section"><a href="wb-commands.html#command-wbinclude">29.5. Execute a SQL script - WbInclude (@)</a></span></dt><dt><span class="section"><a href="wb-commands.html#conditional-exec">29.6. Conditional execution</a></span></dt><dt><span class="section"><a href="wb-commands.html#command-wbrunlb">29.7. Extract and run SQL from a Liquibase ChangeLog - WbRunLB</a></span></dt><dt><span class="section"><a href="wb-commands.html#pk-handling">29.8. Handling tables or updateable views without primary keys</a></span></dt><dt><span class="section"><a href="wb-commands.html#command-fetchsize">29.9. Change the default fetch size - WbFetchSize</a></span></dt><dt><span class="section"><a href="wb-commands.html#command-run-batch">29.10. Run statements as a single batch - WbStartBatch, WbEndBatch</a></span></dt><dt><span class="section"><a href="wb-commands.html#command-selectblob">29.11. Extracting BLOB content - WbSelectBlob</a></span></dt><dt><span class="section"><a href="wb-commands.html#command-wbfeedback">29.12. Control feedback messages - WbFeedback</a></span></dt><dt><span class="section"><a href="wb-commands.html#command-set">29.13. Setting connection properties - SET</a></span></dt><dt><span class="section"><a href="wb-commands.html#set-oracle">29.14. Changing Oracle session behavior - SET</a></span></dt><dt><span class="section"><a href="wb-commands.html#command-wbmode">29.15. Changing read only mode - WbMode</a></span></dt><dt><span class="section"><a href="wb-commands.html#command-rowcount">29.16. Count rows for all tables - WbRowcCount</a></span></dt><dt><span class="section"><a href="wb-commands.html#command-connect">29.17. Change the connection for a script - WbConnect</a></span></dt><dt><span class="section"><a href="wb-commands.html#command-history">29.18. Show the history of SQL statements - WbHistory</a></span></dt><dt><span class="section"><a href="wb-commands.html#command-xslt">29.19. Run an XSLT transformation - WbXslt</a></span></dt><dt><span class="section"><a href="wb-commands.html#command-wbexec">29.20. Running operating system commands - WbSysExec</a></span></dt><dt><span class="section"><a href="wb-commands.html#command-sysopen">29.21. Opening a file with the default application - WbSysOpen</a></span></dt><dt><span class="section"><a href="wb-commands.html#command-setconfig">29.22. Change an internal configuration parameter - WbSetConfig</a></span></dt></dl></div><div class="important" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Important"><tr><td valign="top" align="center" rowspan="2" width="25"><img alt="[Important]" src="./images/important.png"></td><th align="left"></th></tr><tr><td valign="top" align="left"><p>
+    All SQL Workbench/J specific command can <span class="bold"><strong>only</strong></span> be used from within SQL Workbench/J
+  </p></td></tr></table></div><div class="section" id="command-wbconfirm"><div class="titlepage"><div><div><h3 class="title">29.1.&nbsp;Confirm script execution - WbConfirm</h3></div></div></div><p>
+      The <code class="literal">WbConfirm</code> command pauses the execution of the
+      current script and displays a message. You can then choose to stop
+      the script or continue.
+    </p><p>
+      <code class="literal">WbConfirm</code> can be called in three different ways:
+			</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>Without any parameter, then a default message will be displayed</p></li><li class="listitem"><p>With just a message text, e.g. <code class="literal">WbConfirm Do you really want to drop everything?</code></p></li><li class="listitem"><p>
+            Supplying parameters for the message, the text for the "Yes" choice and the text for the "No" choice using standard SQL Workbench/J parameters:
+            </p><p>
+              <code class="literal">WbConfirm -message="Do you really want to drop everything?" -yesText="OK, go ahead" -noText="No, please stop"</code>
+            </p><p>
+          </p></li></ul></div><p>
+    </p><p>
+      When using <code class="literal">WbConfirm</code> in console (or interactive batch) mode, the check if the "Yes" choice was
+      typed by the user is done by testing if the "Yes" value starts with the text the user enters (ignoring upper/lowercase
+      differences). So if the "Yes text" is set to <code class="literal">"Continue"</code>, the user can enter <code class="literal">c</code>,
+      <code class="literal">co</code>, <code class="literal">cont</code> and so on. Because of that, the "No" text should not start with
+      the same letters as the "Yes" text. When using <code class="literal">-yesText=Continue and -noText=Cancel</code> and the user
+      enters <code class="literal">C</code>, this would be regarded as a "Yes".
+    </p><p>
+      This command can be used to prevent accidental execution of a script
+      even if <a class="link" href="profiles.html#profile-confirm-updates" title="7.6.8.&nbsp;Confirm updates">confirm updates</a> is not enabled.
+    </p><p>
+      This command has no effect in batch mode unless the <a class="link" href="using-scripting.html#script-interactive" title="18.13.&nbsp;Running batch scripts interactively"><code class="literal">-interactive</code></a> parameter was specified.
+    </p></div><div class="section" id="command-wbmessage"><div class="titlepage"><div><div><h3 class="title">29.2.&nbsp;Display a message box - WbMessage</h3></div></div></div><p>
+      The <code class="literal">WbMessages</code> command pauses the execution of the
+      current script and displays a message and waits until the dialog is closed.
+      Unlike <code class="literal">WbConfirm</code> the script will always continue once the message dialog is closed.
+    </p><p>
+      <code class="literal">WbMessage</code> can be called in two different ways:
+			</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>With just a message text, e.g. <code class="literal">WbMessage Done!</code></p></li><li class="listitem"><p>
+            Supplying parameters for the message and the dialog title:
+            </p><p>
+              <code class="literal">WbConfirm -message="Script finished" -title="SQL Script"</code>
+            </p><p>
+          </p></li></ul></div><p>
+    </p><p>
+      This command has no effect in batch or console mode.
+    </p></div><div class="section" id="command-echo"><div class="titlepage"><div><div><h3 class="title">29.3.&nbsp;Print a text - WbEcho</h3></div></div></div><p>
+      The command <code class="literal">WbEcho</code> can be used to print messages. The following statement:
+    </p><pre class="programlisting">WbEcho The answer is: 42</pre><p>
+      will print the text "The answer is: 42" to the message pane in GUI mode, or to the console in batch or console mode.
+    </p></div><div class="section" id="command-wbcall"><div class="titlepage"><div><div><h3 class="title">29.4.&nbsp;Run a stored procedure with OUT parameters - WbCall</h3></div></div></div><p>
+        If you want to run a stored procedure that has <code class="literal">OUT</code> parameters, you have to use the <code class="literal">WbCall</code>
+        command to correctly see the returned value of the parameters.
+      </p><p>
+        Consider the following (Oracle) procedure:
+      </p><pre class="programlisting">CREATE OR REPLACE procedure return_answer(answer OUT integer)
+IS
+BEGIN
+  answer := 42;
+END;
+/</pre><p>
+        To call this procedure you need to supply a placeholder indicating that
+        a parameter is needed.
+      </p><pre class="screen">SQL&gt; WbCall return_answer(?);
+PARAMETER | VALUE
+----------+------
+ANSWER    | 42
+
+(1 Row)
+Converted procedure call to JDBC syntax: {call return_answer(?)}
+Execution time: 0.453s
+SQL&gt;</pre><div class="simplesect" id="N153B9"><div class="titlepage"><div><div><h4 class="title">Stored procedures with REF CURSORS</h4></div></div></div><p>
+        If the stored procedure has a REF CURSOR (as an output parameter), <code class="literal">WbCall</code>
+        will detect this, and retrieve the result of the ref cursors.
+      </p><p>
+        Consider the following (Oracle) stored procedure:
+      </p><pre class="programlisting">CREATE PROCEDURE ref_cursor_example(pid number, person_result out sys_refcursor, addr_result out sys_refcursor) is
+BEGIN
+    OPEN person_result FOR
+      SELECT *
+      FROM person
+      WHERE person_id = pid;
+
+    OPEN addr_result FOR
+      SELECT a.*
+      FROM address a JOIN person p ON a.address_id = p.address_id
+      WHERE p.person_id = pid;
+END;
+/</pre><p>
+        To call this procedure you use the same syntax as with a regular OUT parameter:
+       </p><pre class="programlisting">WbCall ref_cursor_example(42, ?, ?);</pre><p>
+        SQL Workbench/J will display two result tabs, one for each cursor returned by the procedure. If you use
+        <code class="literal">WbCall ref_cursor_example(?, ?, ?)</code> you will be prompted to enter a
+        value for the first parameter (because that is an IN parameter).
+      </p></div><div class="simplesect" id="N153D2"><div class="titlepage"><div><div><h4 class="title">PostgreSQL functions that return a refcursor</h4></div></div></div><p>
+        When using ref cursors in PostgreSQL, normally such a function can simply be used inside a SELECT
+        statement, e.g. <code class="literal">SELECT * FROM refcursorfunc();</code>. Unfortunately the PostgreSQL JDBC driver
+        does not handle this correctly and you will not see the result set returned by the function.
+      </p><p>
+        To display the result set returned by such a function, you have to use <code class="literal">WbCall</code> as well
+      </p><pre class="programlisting">CREATE OR REPLACE FUNCTION refcursorfunc()
+  RETURNS refcursor
+AS
+$$
+DECLARE
+    mycurs refcursor;
+ BEGIN
+    OPEN mycurs FOR SELECT * FROM PERSON;
+    RETURN mycurs;
+ END;
+$$ LANGUAGE plpgsql;
+/</pre><p>
+        You can call this function using
+      </p><pre class="programlisting">WbCall refcursorfunc();</pre><p>
+       This will then display the result from the SELECT inside the function.
+      </p></div></div><div class="section" id="command-wbinclude"><div class="titlepage"><div><div><h3 class="title">29.5.&nbsp;Execute a SQL script - WbInclude (@)</h3></div></div></div><p>
+      With the <code class="literal">WbInclude</code> command you run SQL scripts without
+      actually loading them into the editor, or call other scripts from within
+      a script. The format of the command is <code class="literal">WbInclude -file=filename;</code>.
+      For DBMS other then MS SQL, the command can be abbreviated using the @ sign: <code class="literal">@filename;</code>
+      is equivalent to <code class="literal">WbInclude -file=filename;</code>.
+      The called script way may also include other scripts. Relative filenames (e.g. as parameters
+      for SQL Workbench/J commands) in the script are always resolved to the directory
+      where the script is located, not the current directory of the application.
+    </p><p>
+      The reason for excluding MS SQL is, that when creating stored procedures in MS SQL, the procedure
+      parameters are identified using the @ sign, thus SQL Workbench/J would interpret the lines
+      with the variable definition as the WbInclude command. If you want to use the @ command
+      with MS SQL, you can <a class="link" href="settings.html#options-enable-shortinclude" title="Enabling short WbInclude">configure</a> this in your
+      <code class="literal">workbench.settings</code> configuration file.
+    </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td valign="top" align="center" rowspan="2" width="25"><img alt="[Note]" src="./images/note.png"></td><th align="left"></th></tr><tr><td valign="top" align="left"><p>
+      If the included SQL script contains <code class="literal">SELECT</code> queries, the result
+      of those queries will <span class="bold"><strong>not</strong></span> be displayed in the GUI unless <code class="literal">-displayResult=true</code>
+      is used.
+    </p></td></tr></table></div><p>The long version of the command accepts additional parameters.
+      When using the long version, the filename needs to be passed as a parameter as well.
+    </p><p>
+      Only files up to a <a class="link" href="settings.html#options-max-script-size" title="Maximum script size for in-memory script execution">certain size</a> will be read into memory. Files exceeding
+      that size will be processed statement by statement. In this case the automatic
+      detection of the <a class="link" href="understand-alternate-delim.html#alternate-delimiter-usage">alternate delimiter</a> will
+      <span class="bold"><strong>not work</strong></span>. If your scripts exceed the maximum size and you do use the alternate delimiter
+      you will have to use the long version of the command using the <code class="literal">-file</code> and <code class="literal">-delimiter</code>
+      parameters.
+    </p><p>
+      <code class="literal">WbInclude</code> supports <a class="link" href="wb-commands.html#conditional-exec" title="29.6.&nbsp;Conditional execution">conditional execution</a>
+    </p><p>The command supports the following parameters:</p><div class="informaltable"><table style="border-collapse: collapse;border-top: 1px solid ; border-bottom: 1px solid ; border-left: 1px solid ; border-right: 1px solid ; "><colgroup><col width="4cm" align="left" class="c1"><col align="left" class="c2"></colgroup><thead><tr><th style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left">Parameter</th><th style="border-bottom: 1px solid ; " align="left">Description</th></tr></thead><tbody valign="top"><tr><td id="include-param-file" style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-file</td><td style="border-bottom: 1px solid ; " align="left" valign="top">The filename of the file to be included.</td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-continueOnError</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+              Defines the behavior if an error occurs in one of the statements.
+              If this is set to <code class="literal">true</code> then script execution will continue
+              even if one statement fails. If set to <code class="literal">false</code> script execution
+      	      will be halted on the first error. The default value is <code class="literal">false</code>
+            </td></tr><tr><td id="include-param-delimiter" style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-delimiter</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+              <p>
+              Specify a delimiter to be used that is different from the standard <code class="literal">;</code> delimiter.
+              </p>
+              <p>
+              A non-standard delimiter will be required to be on a line of its own.
+              If you specify <code class="literal">-delimiter=/</code> the following will work:
+</p><pre class="programlisting">select *
+from person
+/
+</pre><p>
+              but putting the delimiter at the end of a line will <span class="bold"><strong>not</strong></span> work:
+</p><pre class="programlisting">select *
+from person/
+</pre><p>
+              </p>
+              <p>
+                If this parameter is not specified, the SQL standard <code class="literal">;</code> delimiter will be used.
+              </p>
+            </td></tr><tr><td id="include-param-encoding" style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-encoding</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+              Specify the encoding of the input file. If no encoding is specified,
+              the default encoding for the current platform (operating system) is used.
+            </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-verbose</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+              Controls the logging level of the executed commands.
+              <code class="literal">-verbose=true</code> has the same effect as adding a
+              <code class="literal">WbFeedback on</code> inside the called script.
+              <code class="literal">-verbose=false</code> has the same effect as adding
+              the statement <code class="literal">WbFeedback off</code> to the called script.
+            </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-displayResult</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+              <p>
+              By default any result set that is returned e.g. by a <code class="literal">SELECT</code> statement in the script will not be
+              displayed. By specfying <code class="literal">-displayResult=true</code> those results will be displayed.
+              </p>
+            </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-printStatements</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+              <p>
+                If true, every SQL statement will be printed before execution. This is mainly intended for console
+                usage, but works in the GUI as well.
+              </p>
+            </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-showTiming</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+              <p>
+                If true, display the execution time of every SQL statement and the overall execution time of the script.
+              </p>
+            </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-useSavepoint</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+              Control if each statement from the file should be guarded with a savepoint
+              when executing the script. Setting this to <code class="literal">true</code> will make
+              execution of the script more robust, but also slows down the processing
+              of the SQL statements.
+            </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-ignoreDropErrors</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+							Controls if errors resulting from DROP statements should be treated as an error or as a warning.
+            </td></tr><tr><td style="border-right: 1px solid ; " align="left" valign="top"><div class="literallayout"><p>-searchFor<br>
+-replaceWith<br>
+-ignoreCase<br>
+-useRegex</p></div></td><td style="" align="left" valign="top">
+              <p>
+              Defines search and replace parameters to change the SQL statements before they are sent to the
+              database. This can e.g. be used to replace the schema name in DDL script that uses
+              fully qualified table names.
+              </p>
+              <p>
+                The replacement is done without checking the syntax of the statements. If the search value is
+                contained in a string literal or a SQL comment, it is also replaced.
+              </p>
+            </td></tr></tbody></table></div><div class="section" id="command-include-examples"><div class="titlepage"><div><div><h4 class="title">29.5.1.&nbsp;Examples</h4></div></div></div><p>Execute <code class="literal">my_script.sql</code></p><pre class="programlisting">@my_script.sql;</pre><p>Execute <code class="literal">my_script.sql</code> but abort on the first error</p><pre class="programlisting">WbInclude -file="my_script.sql" -continueOnError=false;</pre><p>
+        Execute the script <code class="literal">create_tables.sql</code> and change all occurances of <code class="literal">oldschema</code>
+        to <code class="literal">new_schema</code>
+      </p><pre class="programlisting">WbInclude -file=create_tables.sql -searchFor="oldschema." -replaceWith="new_schema."</pre><p>
+        Execute a large script that uses a non-standard statement delimiter:
+      </p><pre class="programlisting">WbInclude -file=insert_10million_rows.sql -delimiter='/';</pre></div></div><div class="section" id="conditional-exec"><div class="titlepage"><div><div><h3 class="title">29.6.&nbsp;Conditional execution</h3></div></div></div><p>
+      The following SQL Workbench/J commands support conditional execution based on variables:
+			</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><code class="literal"><a class="link" href="wb-commands.html#command-wbinclude" title="29.5.&nbsp;Execute a SQL script - WbInclude (@)">WbInclude</a></code></li><li class="listitem"><code class="literal"><a class="link" href="command-copy.html" title="22.&nbsp;Copy data across databases">WbCopy</a></code></li><li class="listitem"><code class="literal"><a class="link" href="command-import.html" title="21.&nbsp;Import data using WbImport">WbImport</a></code></li><li class="listitem"><code class="literal"><a class="link" href="command-export.html" title="20.&nbsp;Export data using WbExport">WbExport</a></code></li><li class="listitem"><code class="literal"><a class="link" href="wb-commands.html#command-wbexec" title="29.20.&nbsp;Running operating system commands - WbSysExec">WbSysExec</a></code></li></ul></div><p>
+    </p><p>
+      Conditional execution is controlled using the following parameters:
+    </p><div class="informaltable"><table style="border-collapse: collapse;border-top: 1px solid ; border-bottom: 1px solid ; border-left: 1px solid ; border-right: 1px solid ; "><colgroup><col width="4cm" align="left" class="c1"><col align="left" class="c2"></colgroup><thead><tr><th style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left">Parameter</th><th style="border-bottom: 1px solid ; " align="left">Description</th></tr></thead><tbody><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left">-ifDefined</td><td style="border-bottom: 1px solid ; " align="left">
+          <p>
+            The command is only executed if the variable with the specified name is defined.
+            <code class="literal">-ifDefined=some_var</code>
+          </p>
+        </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left">-ifNotDefined</td><td style="border-bottom: 1px solid ; " align="left">
+          <p>
+            The command is only executed if the variable with the specified name is defined.
+            <code class="literal">-ifNotDefined=some_var</code>
+          </p>
+        </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left">-ifEquals</td><td style="border-bottom: 1px solid ; " align="left">
+          <p>
+            The command is only executed if the specified variable has a specific value
+            <code class="literal">-ifEquals='some_var=42'</code>
+          </p>
+        </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left">-ifNotEquals</td><td style="border-bottom: 1px solid ; " align="left">
+          <p>
+            The command is only executed if the specified variable has a specific value
+            <code class="literal">-ifNotEquals='some_var=42'</code>
+          </p>
+        </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left">-ifEmpty</td><td style="border-bottom: 1px solid ; " align="left">
+          <p>
+            The command is only executed if the specified variable is defined but has an empty value
+            <code class="literal">-ifEmpty=some_var</code>. This is essentially a shorthand for
+            <code class="literal">-ifEquals="some_var=''"</code>
+          </p>
+        </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left">-ifNotEmpty</td><td style="border-bottom: 1px solid ; " align="left">
+          <p>
+            The command is only executed if the specified variable is defined and has a a non empty value
+            <code class="literal">-ifNotEmpty=some_var</code>. This is essentially a shorthand for
+            <code class="literal">-ifNotEquals="some_var=''"</code>
+          </p>
+        </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left">-isDBMS</td><td style="border-bottom: 1px solid ; " align="left">
+          <p>
+            The command is only executed if the current connection is against the specified DBMS. The value supplied
+            is the <a class="link" href="settings.html#dbid" title="37.1.&nbsp;DBID">DBID</a> that is used internally by SQL Workbench/J, e.g. <code class="literal">-isDBMS=postgresql</code>
+          </p>
+          <p>
+            This parameter supports auto-completion.
+          </p>
+        </td></tr><tr><td style="border-right: 1px solid ; " align="left">-isNotDBMS</td><td style="" align="left">
+          <p>
+            The command is only executed if the current connection is not against the specified DBMS. The value supplied
+            is the <a class="link" href="settings.html#dbid" title="37.1.&nbsp;DBID">DBID</a> that is used internally by SQL Workbench/J e.g. <code class="literal">-isNotDBMS=postgresql</code>
+          </p>
+          <p>
+            This parameter supports auto-completion.
+          </p>
+        </td></tr></tbody></table></div></div><div class="section" id="command-wbrunlb"><div class="titlepage"><div><div><h3 class="title">29.7.&nbsp;Extract and run SQL from a Liquibase ChangeLog - WbRunLB</h3></div></div></div><a name="N155C3" class="indexterm"></a><p>
+       If you manage your stored procedures in Liquibase ChangeLogs, you can use this command to run the
+       necessary SQL directly from the XML file, without the need to copy and paste it into SQL Workbench/J.
+       This is useful when testing and developing stored procedures that are managed by a Liquibase changeLog.
+     </p><div class="important" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Important"><tr><td valign="top" align="center" rowspan="2" width="25"><img alt="[Important]" src="./images/important.png"></td><th align="left"></th></tr><tr><td valign="top" align="left"><p>
+         This is NOT a replacement for Liquibase.
+       </p><p>
+         <code class="literal">WbRunLB</code> will only extract SQL statements stored in <code class="literal">&lt;sql&gt;</code> or
+         <code class="literal">&lt;createProcedure&gt;</code> tags or scripts referenced through the <code class="literal">&lt;sqlFile&gt;</code> tag.
+       </p><p>
+         It will not convert any of the Liquibase tags to "real" SQL.
+       </p><p>
+         <code class="literal">WbRunLB</code> will <span class="bold"><strong>NOT</strong></span> update
+         the Liquibase log table (<code class="literal">DATABASECHANGELOG</code>) nor will it check if the specified changeSet(s) have
+         already been applied to the database.
+       </p><p>
+         It is merely a convenient way to extract and run SQL statements stored in a Liquibase XML file!
+       </p></td></tr></table></div><p>
+        The attribute <code class="literal">splitStatements</code> for the <code class="literal">sql</code>
+        tag is evaluated. The delimiter used to split the statements follows the usual SQL Workbench/J rules (including the use
+        of the <a class="link" href="understand-alternate-delim.html" title="11.&nbsp;Creating stored procedures and triggers">alternate delimiter</a>).
+     </p><p><code class="literal">WbRunLB</code> supports the following parameters:</p><div class="informaltable"><table style="border-collapse: collapse;border-top: 1px solid ; border-bottom: 1px solid ; border-left: 1px solid ; border-right: 1px solid ; "><colgroup><col width="4cm" align="left" class="c1"><col align="left" class="c2"></colgroup><thead><tr><th style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left">Parameter</th><th style="border-bottom: 1px solid ; " align="left">Description</th></tr></thead><tbody valign="top"><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-file</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+              The filename of the Liquibase changeLog (XML) file. The <code class="literal">&lt;include&gt;</code> tag is NOT supported! SQL statements stored in files
+              that are referenced using Liquibase's <code class="literal">include</code> tag will not be processed.
+            </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-changeSet</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+              <p>
+                A list of changeSet ids to be run. If this is omitted, then the SQL from all changesets (containing supported tags) are executed. The value
+                specified can include the value for the author and the id, <code class="literal">-changeSet="Arthur::42"</code> selects the changeSet
+                where <code class="literal">author="Arthur"</code> and <code class="literal">id="42"</code>. This parameter can be repeated in order to select
+                multiple changesets: <code class="literal">-changeSet="Arthur::42" -changeSet="Arthur::43"</code>.
+              </p>
+              <p>
+                You can specify wildcards before or after the double colon: <code class="literal">-changeSet="*::42"</code> will select all
+                changesets with the id=42. <code class="literal">-changeSet="Author::*"</code> will select all changesets from "Arthur"
+              </p>
+              <p>
+                If the parameter value does not contain the double colon it is assumed to be an ID only: <code class="literal">-changeSet="42"</code> is the same
+                as <code class="literal">-changeSet="*::42"</code>
+              </p>
+              <p>
+                If this parameter is omitted, all changesets are executed.
+              </p>
+              <p>
+                This parameter supports auto-completion if the <code class="literal">-file</code> argument is specified.
+              </p>
+            </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-continueOnError</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+              Defines the behaviour if an error occurs in one of the statements.
+              If this is set to <code class="literal">true</code> then script execution will continue
+              even if one statement fails. If set to <code class="literal">false</code> script execution
+      	      will be halted on the first error. The default value is <code class="literal">false</code>
+            </td></tr><tr><td style="border-right: 1px solid ; " align="left" valign="top">-encoding</td><td style="" align="left" valign="top">
+              Specify the encoding of the input file. If no encoding is specified, UTF-8 is used.
+            </td></tr></tbody></table></div></div><div class="section" id="pk-handling"><div class="titlepage"><div><div><h3 class="title">29.8.&nbsp;Handling tables or updateable views without primary keys</h3></div></div></div><div class="section" id="command-define-pk"><div class="titlepage"><div><div><h4 class="title">29.8.1.&nbsp;Define primary key columns - WbDefinePK</h4></div></div></div><p>
+				To be able to directly edit data in the result set (grid) SQL Workbench/J needs
+				a primary key on the underlying table. In some cases these primary keys are not present or
+				cannot be retrieved from the database (e.g. when using updateable views).
+				To still be able to automatically update a result based on those tables (without always
+				manually defining the primary key) you can manually define a primary
+				key using the <code class="literal">WbDefinePk</code> command.
+			</p><p>
+				Assuming you have an updateable view called <code class="literal">v_person</code> where
+				the primary key is the column <code class="literal">person_id</code>. When you simply do a
+				<code class="literal">SELECT * FROM v_person</code>, SQL Workbench/J will prompt you for the
+				primary key when you try to save changes to the data. If you run
+			</p><pre class="programlisting">WbDefinePk v_person=person_id</pre><p>
+				before retrieving the result, SQL Workbench/J will automatically
+				use the <code class="literal">person_id</code> as the primary key (just as if this
+				information had been retrieved from the database).
+			</p><p>To delete a definition simply call the command with an empty column list:</p><pre class="programlisting">WbDefinePk v_person=</pre><p>
+				If you want to define certain mappings permanently, this can be done using
+				a mapping file that is specified in the <a class="link" href="options.html#options-pkmapping" title="Default PK Map">configuration file</a>.
+				The file specified has to be a text file with each line containing one
+				primary key definition in the same format as passed to this command. The global mapping will
+				automatically be saved when you exit the application if a filename has been defined.
+				If no file is defined, then all PK mappings that you define are lost when
+				exiting the application (unless you explicitely save them using
+				<a class="link" href="wb-commands.html#command-save-pkmap" title="29.8.4.&nbsp;Save primary key mappings - WbSavePKMap">WbSavePkMap</a>
+			</p><pre class="programlisting">v_person=person_id
+v_data=id1,id2</pre><p>
+				will define a primary key for the view <code class="literal">v_person</code> and one for
+				the view <code class="literal">v_data</code>. The definitions stored in that file can
+				be overwritten using the <code class="literal">WbDefinePk</code> command, but those changes
+				won't be saved to the file. This file will be read for all database connections and
+				is not profile specific. If you have conflicting primary key definitions for
+				different databases, you'll need to execute the <code class="literal">WbDefinePk</code> command
+				each time, rather then specifying the keys in the mapping file.
+			</p><p>
+				When you define the key columns for a table through the GUI, you have the option
+				to remember the defined mapping. If this option is checked, then that mapping
+				will be added to the global map (just as if you had executed <code class="literal">WbDefinePk</code>
+				manually.
+			</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td valign="top" align="center" rowspan="2" width="25"><img alt="[Note]" src="./images/note.png"></td><th align="left"></th></tr><tr><td valign="top" align="left"><p>
+		The mappings will be stored with lowercase table names internally, regardless how you specify them.
+			</p></td></tr></table></div></div><div class="section" id="command-list-pk"><div class="titlepage"><div><div><h4 class="title">29.8.2.&nbsp;List defined primary key columns - WbListPKDef</h4></div></div></div><p>To view the currently defined primary keys, execute the command
+			<code class="literal">WbListPkDef</code>.</p></div><div class="section" id="command-load-pkmap"><div class="titlepage"><div><div><h4 class="title">29.8.3.&nbsp;Load primary key mappings - WbLoadPKMap</h4></div></div></div><p>
+				To load the additional primary key definitions from a file, you can
+				use the the <code class="literal">WbLoadPKMap</code> command. If a filename is defined
+				in the <a class="link" href="options.html#options-pkmapping" title="Default PK Map">configuration file</a> then that
+				file is loaded. Alternatively if no file is configured, or if you want to
+				load a different file, you can specify the filename using the <code class="literal">-file</code>
+				parameter.
+			</p></div><div class="section" id="command-save-pkmap"><div class="titlepage"><div><div><h4 class="title">29.8.4.&nbsp;Save primary key mappings - WbSavePKMap</h4></div></div></div><p>
+				To save the current primary key definitions to a file, you can
+				use the the <code class="literal">WbSavePKMap</code> command. If a filename is defined
+				in the <a class="link" href="options.html#options-pkmapping" title="Default PK Map">configuration file</a> then the
+				definition is stored in that file. Alternatively if no file is configured, or if you want to
+				store the current mapping into a different file, you can specify the filename
+				using the <code class="literal">-file</code> parameter.
+			</p></div></div><div class="section" id="command-fetchsize"><div class="titlepage"><div><div><h3 class="title">29.9.&nbsp;Change the default fetch size - WbFetchSize</h3></div></div></div><p>
+       The default fetch size for a connection can be defined in the <a class="link" href="profiles.html#profile-fetch-size" title="7.3.6.&nbsp;Fetch size">connection profile</a>. Using the
+       command <code class="literal">WbFetchSize</code> you can change the fetch size without changing the connection profile.
+     </p><p>
+       The following script changes the default fetch size to 2500 rows and then runs a <code class="literal">WbExport</code> command.
+     </p><pre class="programlisting">WbFetchSize 2500;
+WbExport -sourceTable=person -type=text -file=/temp/person.txt;
+</pre><p>
+       <code class="literal">WbFetchSize</code> will not change the current connection profile.
+     </p></div><div class="section" id="command-run-batch"><div class="titlepage"><div><div><h3 class="title">29.10.&nbsp;Run statements as a single batch - WbStartBatch, WbEndBatch</h3></div></div></div><p>
+       To send several SQL Statements as a single "batch" to the database server, the two commands WbStartBatch and WbEndBatch can be used.
+       All statements between these two will be sent as a single statement (using <code class="literal">executeBatch()</code>) to the server.
+     </p><p>
+       Note that not all JDBC drivers support batched statements, and the flexibility what kind of statements can be batched varies between the
+       drivers as well. Most drivers will not accept different types of statements e.g. mixing DELETE and INSERT in the same batch.
+     </p><p>
+       To send a group of statements as a single batch, simply use the command <code class="literal">WbStartBatch</code> to mark the beginning and
+       <code class="literal">WbEndBatch</code> to mark the end. You have to run all statements together either by using "Execute all" or by selecting all
+       statements (including WbStartBatch and WbEndBatch) and then using "Execute selected". The following example sends all INSERT statements
+       as a single batch to the database server:
+     </p><pre class="programlisting">WbStartBatch;
+INSERT INTO person (id, firstname, lastname) VALUES (1, 'Arthur', 'Dent');
+INSERT INTO person (id, firstname, lastname) VALUES (2, 'Ford', 'Prefect');
+INSERT INTO person (id, firstname, lastname) VALUES (3, 'Zaphod', 'Beeblebrox');
+INSERT INTO person (id, firstname, lastname) VALUES (4, 'Tricia', 'McMillian');
+WbEndBatch;
+COMMIT;
+</pre></div><div class="section" id="command-selectblob"><div class="titlepage"><div><div><h3 class="title">29.11.&nbsp;Extracting BLOB content - WbSelectBlob</h3></div></div></div><p>
+			To save the contents of a <code class="literal">BLOB</code> or <code class="literal">CLOB</code> column
+      into an external file the <code class="literal">WbSelectBlob</code> command can be used. Most DBMS
+      support reading of <code class="literal">CLOB</code> (character data) columns directly, so depending
+      on your DBMS (and JDBC driver) this command might only be needed for binary data.
+    </p><p>
+			The syntax is very similar to the regular <code class="literal">SELECT</code> statement, an additional
+      <code class="literal">INTO</code> keyword specifies the name of the external file into which the
+      data should be written:
+    </p><pre class="programlisting">WbSelectBlob blob_column
+INTO c:/temp/image.bmp
+FROM theTable
+WHERE id=42;</pre><p>
+      Even if you specify more then one column in the column list, SQL Workbench/J will only
+      use the first column. If the SELECT returns more then one row, then one
+      output file will be created for each row. Additional files will be created with
+      a counter indicating the row number from the result. In the above
+      example, image.bmp, image_1.bmp, image_3.bmp and so on, would be created.
+    </p><p>
+			<code class="literal">WbSelectBlob</code> is intended for an ad-hoc retrieval of a single LOB column.
+			If you need to extract the contents of several LOB rows and columns it is recommended to
+			use the <a class="link" href="command-export.html" title="20.&nbsp;Export data using WbExport">WbExport</a> command.
+		</p><p>
+			You can also manipulate (save, view, upload) the contents of BLOB columns in a result set.
+			Please refer to <a class="xref" href="using.html#blob-support" title="12.5.&nbsp;Dealing with BLOB and CLOB columns">BLOB support</a> for details.
+    </p></div><div class="section" id="command-wbfeedback"><div class="titlepage"><div><div><h3 class="title">29.12.&nbsp;Control feedback messages - WbFeedback</h3></div></div></div><p>
+      Normally SQL Workbench/J prints the results for each statement
+      into the message panel. As this feedback can slow down the execution
+      of large scripts, you can disable the feedback using the <code class="literal">WbFeedback</code>
+      command. When <code class="literal">WbFeedback OFF</code> is executed, only a summary of the
+      number of executed statements will be displayed, once the script execution has
+      finished. This is the same behaviour as selecting "Consolidate script log" in the
+      options window. The only difference is, that the setting through <code class="literal">WbFeedback</code>
+      is temporary and does not affect the global setting.
+    </p><p>
+      <code class="literal">WbFeedback traceOn</code> can be used to enable printing of every executed statement
+      to the screen. The SQL statement printed will be the one after variable substitution and macro expansion.
+      <code class="literal">WbFeedback traceOff</code> will turn tracing of statements off.
+    </p></div><div class="section" id="command-set"><div class="titlepage"><div><div><h3 class="title">29.13.&nbsp;Setting connection properties - SET</h3></div></div></div><p>
+      The <code class="literal">SET</code> command is passed on directly to the driver,
+      except for the parameters described in this chapter because they
+      have an equivalent JDBC call which will be executed instead.
+    </p><p>
+      Oracle does not have a SQL set command. The SET command that is available
+      in SQL*Plus is a specific SQL*Plus command and will not work with other client software.
+      Most of the SQL*Plus SET commands only make sense within SQL*Plus (e.g. formatting of the results).
+      To be able to run SQL scripts that are intended for Oracle SQL*PLus, any error reported
+      from the SET command when running against an Oracle database will silently be ignored and
+      only logged as a warning.
+    </p><div class="section" id="command-set-feedback"><div class="titlepage"><div><div><h4 class="title">29.13.1.&nbsp;FEEDBACK</h4></div></div></div><p>
+				<code class="literal">SET feedback ON/OFF</code> is equivalent to the <a class="link" href="wb-commands.html#command-wbfeedback" title="29.12.&nbsp;Control feedback messages - WbFeedback">WbFeedback</a>
+				command, but mimics the syntax of Oracle's SQL*Plus utility.
+      </p></div><div class="section" id="command-set-autocommit"><div class="titlepage"><div><div><h4 class="title">29.13.2.&nbsp;AUTOCOMMIT</h4></div></div></div><p>
+				With the command <code class="literal">SET autocommit ON/OFF</code> autocommit can be turned on or
+				off for the current connection. This is equivalent to setting the autocommit property
+				in the <a class="link" href="profiles.html#profile-jdbc-properties" title="7.3.&nbsp;JDBC related profile settings">connection profile</a> or toggling
+				the state of the
+				<span class="guimenu">SQL</span> &rarr; <span class="guimenuitem">Autocommit</span>
+				menu item.
+      </p></div><div class="section" id="command-set-maxrows"><div class="titlepage"><div><div><h4 class="title">29.13.3.&nbsp;MAXROWS</h4></div></div></div><p>
+        Limits the number of rows returned by the next statement. The behaviour of this command
+        is a bit different between the console mode and the GUI mode. In console mode, the maxrows
+        stay in effect until you explicitely change it back using <code class="literal">SET maxrows</code> again.
+      </p><p>
+        In GUI mode, the maxrows setting is only in effect for the script currently being executed and
+        will only temporarily overwrite any value entered in the "Max. Rows" field.
+      </p></div></div><div class="section" id="set-oracle"><div class="titlepage"><div><div><h3 class="title">29.14.&nbsp;Changing Oracle session behavior - SET</h3></div></div></div><p>
+      The following options for the SET command are only available when being connected to an Oracle database.
+    </p><div class="section" id="command-set-serveroutput"><div class="titlepage"><div><div><h4 class="title">29.14.1.&nbsp;SERVEROUTPUT</h4></div></div></div><p>
+        <code class="literal">SET serveroutput on</code> is equivalent to the <a class="link" href="dbms-specific.html#command-dbms-output" title="16.2.4.&nbsp;Using Oracle's DBMS_OUTPUT package">ENABLEOUT</a>
+        command and <code class="literal">SET serveroutput off</code> is equivalent to <a class="link" href="dbms-specific.html#command-dbms-output" title="16.2.4.&nbsp;Using Oracle's DBMS_OUTPUT package">DISABLEOUT</a> command.
+      </p></div><div class="section" id="command-set-autotrace"><div class="titlepage"><div><div><h4 class="title">29.14.2.&nbsp;AUTOTRACE</h4></div></div></div><p>
+        This enables or disables the <a class="ulink" href="http://docs.oracle.com/cd/E11882_01/server.112/e16604/ch_twelve040.htm#i2698680" target="_blank">"autotrace"</a> feature similar to the one in SQL*Plus.
+        The syntax is equivalent to the SQL*Plus command and supports the following options:
+        </p><div class="informaltable"><table style="border-collapse: collapse;border-top: 1px solid ; border-bottom: 1px solid ; border-left: 1px solid ; border-right: 1px solid ; "><colgroup><col width="2.5cm" align="left" class="c1"><col align="left" class="c2"></colgroup><thead><tr><th style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left">Option</th><th style="border-bottom: 1px solid ; " align="left">Description</th></tr></thead><tbody valign="top"><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">ON</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+                  <p>
+                    Turns on autotrace mode. After running a statement, the statement result (if it
+                    is a query), the statistics and the execution plan for that statement are displayed as separate result tabs.
+                  </p>
+                </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">OFF</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+                  <p>
+                    Turns off the autotrace mode.
+                  </p>
+                </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">TRACEONLY</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+                  <p>
+                    Like <code class="literal">ON</code>, but does not display the result of a  query.
+                  </p>
+                </td></tr><tr><td style="border-right: 1px solid ; " align="left" valign="top">REALPLAN</td><td style="" align="left" valign="top">
+                  <p>
+                    This is an extension to the SQL*Plus <code class="literal">EXPLAIN</code> mode. Using <code class="literal">EXPLAIN</code>, SQL Workbench/J will
+                    simply run an <code class="literal">EXPLAIN PLAN</code> for the statement (and the statement will not be executed) - this is the same
+                    behavior as SQL*Plus' <code class="literal">EXPLAIN</code> mode.
+                  </p>
+                  <p>
+                    Using <code class="literal">REALPLAN</code>, SQL Workbench/J will run the statement and then retrieve the execution plan
+                    that was generated while running the statement. This might yield a different result than regular <code class="literal">EXPLAIN</code>
+                    mode. The actual plan also contains more details about estimated and actual row counts. This plan is retrieved
+                    using <code class="literal">dbms_xplan.display_cursor()</code>. If <code class="literal">REALPLAN</code> is used, the actual SQL statement
+                    sent to the server will be changed to include the <code class="literal">GATHER_PLAN_STATISTICS</code> hint.
+                  </p>
+                </td></tr></tbody></table></div><p>
+        </p><p>
+        The information shown in autotrace mode can be controlled with two options after the <code class="literal">ON</code> or <code class="literal">TRACEONLY</code>
+        parameter. <code class="literal">STATISTICS</code> will fetch the statistics about the execution and <code class="literal">EXPLAIN</code>
+        which will display the execution plan for the statement. If not additional parameter is specified, <code class="literal">EXPLAIN STATISTICS</code> is used.
+      </p><p>
+        If statistics are requested, query results will be fetched from the database server but they will not be displayed.
+      </p><p>
+        Unlike SQL*Plus, the keywords (<code class="literal">AUTOTRACE, STATISTICS, EXPLAIN</code>) cannot be abbreviated!
+      </p><p>
+        For more information about the prerequisites for the autotrace mode, see the description of
+        <a class="link" href="dbms-specific.html#oracle-autotrace" title="16.2.2.&nbsp;SQL*Plus autotrace mode">DBMS specific features</a>.
+      </p></div></div><div class="section" id="command-wbmode"><div class="titlepage"><div><div><h3 class="title">29.15.&nbsp;Changing read only mode - WbMode</h3></div></div></div><p>
+      In the <a class="link" href="profiles.html#profile-confirm-updates" title="7.6.8.&nbsp;Confirm updates">connection profile</a> two options can be specified
+      to define the behavior when running commands that might change or update the database: a "read only" mode
+      that ignores such commands and a "confirm all" mode, where you need to confirm any statement that might change
+      the database.
+    </p><p>
+      These states can temporarily be changed without changing the profile using the <code class="literal">WbMode</code> command.
+    </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td valign="top" align="center" rowspan="2" width="25"><img alt="[Note]" src="./images/note.png"></td><th align="left"></th></tr><tr><td valign="top" align="left"><p>This changes the mode for all editor tabs, not only for the
+      one where you run the command.</p></td></tr></table></div><p>
+      Parameters for the <code class="literal">WbMode</code> command are:
+			</p><div class="informaltable"><table style="border-collapse: collapse;border-top: 1px solid ; border-bottom: 1px solid ; border-left: 1px solid ; border-right: 1px solid ; "><colgroup><col width="2.5cm" align="left" class="c1"><col align="left" class="c2"></colgroup><thead><tr><th style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left">Parameter</th><th style="border-bottom: 1px solid ; " align="left">Description</th></tr></thead><tbody valign="top"><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">reset</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+								<p>
+									Resets the flags to the profile's definition
+								</p>
+							</td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">normal</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+								<p>
+									Makes all changes possible (turns off read only and confirmations)
+								</p>
+							</td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">confirm</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+								<p>
+									Enables confirmation for all updating commands
+								</p>
+							</td></tr><tr><td style="border-right: 1px solid ; " align="left" valign="top">readonly</td><td style="" align="left" valign="top">
+								<p>
+									Turns on the read only mode
+								</p>
+							</td></tr></tbody></table></div><p>
+    </p><p>
+      The following example will turn on read only mode for the current connection, so that any
+      subsequent statement that updates the database will be ignored
+    </p><pre class="programlisting">WbMode readonly;</pre><p>
+      To change the current connection back to the settings from the profile use:
+    </p><pre class="programlisting">WbMode reset;</pre></div><div class="section" id="command-rowcount"><div class="titlepage"><div><div><h3 class="title">29.16.&nbsp;Count rows for all tables - WbRowcCount</h3></div></div></div><p>
+      This command retrieves the row counts for several tables at once. If called without parameters
+      the row counts for all tables accessible to the current user are counted.
+    </p><p>
+			The command supports the following parameters to specify the tables (or views) to be counted.
+			</p><div class="informaltable"><table style="border-collapse: collapse;border-top: 1px solid ; border-bottom: 1px solid ; border-left: 1px solid ; border-right: 1px solid ; "><colgroup><col width="2.5cm" align="left" class="c1"><col align="left" class="c2"></colgroup><thead><tr><th style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left">Parameter</th><th style="border-bottom: 1px solid ; " align="left">Description</th></tr></thead><tbody valign="top"><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-schema</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+								<p>
+									Count the rows for tables from the given schemas, e.g. <code class="literal">-schema=public,local</code>
+								</p>
+                <p>
+                  The parameter supports auto-completion and will show a list of available schemas.
+                </p>
+							</td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-catalog</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+								<p>
+									Show only indexes for the specified catalog e.g. <code class="literal">-catalog=other_db</code>
+								</p>
+							</td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-objects</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+								<p>
+                  Show only the row counts for the tables (or views) specified by the parameter. The parameter value
+                  can contain wildcards, e.g. <code class="literal">-objects=PR%,ORD%</code> will count the rows
+                  for all tables with names that either start with <code class="literal">PR</code> or <code class="literal">ORD</code>
+								</p>
+                <p>
+                  The parameter supports auto-completion and will show a list of available tables.
+                </p>
+							</td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-types</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+								<p>
+                  Define the types of objects which should be selected. By default only tables are considered.
+                  If you also want to count the rows for views, use <code class="literal">-types=table,view</code>
+								</p>
+                <p>
+                  The parameter supports auto-completion and will show a list of available object types.
+                </p>
+							</td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-orderBy</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+								<p>
+                  Defines how the resulting table should be sorted. By default it will be sorted
+                  alphabetically by table name. The <code class="literal">-orderBy</code> parameter specifies the columns to sort the result by.
+                  By default, sorting is done ascending, if you want a descending sort, append <code class="literal">:desc</code>
+                  to the column name, e.g.: <code class="literal">-orderBy="rowcount:desc"</code>.
+                </p>
+                <p>
+                  So sort by multiple columns separate the column names with a comma: <code class="literal">-orderBy="rowcount:desc,name:desc"</code>
+                  or <code class="literal">-orderBy="rowcount,name:desc"</code>
+								</p>
+							</td></tr><tr><td style="border-right: 1px solid ; " align="left" valign="top">-excludeColumns</td><td style="" align="left" valign="top">
+                <p>Possible values: <code class="literal">catalog</code>, <code class="literal">schema</code>, <code class="literal">type</code></p>
+                <p>
+                  By default <code class="literal">WbRowCount</code> will display the same columns as the table list in the
+                  DbExplorer. If not all columns are needed or wanted, this parameter can be used to exclude
+                  certain columns.
+                </p>
+								<p>
+                  You can specify a comma separated list of columns to be excluded, e.g. <code class="literal">-excludeColumns=type,catalog</code>.
+                  The columns <code class="literal">ROWCOUNT</code> and <code class="literal">NAME</code> can not be excluded.
+								</p>
+                <p>
+                  The name <code class="literal">database</code> can be used instead of <code class="literal">catalog</code>.
+                </p>
+							</td></tr></tbody></table></div><p>
+		</p><p>
+      If none of the above parameters are used, <code class="literal">WbRowCount</code> assumes that a list ot table names was specified.
+      <code class="literal">WbRowCount person,address,orders</code>is equivalent to <code class="literal">WbRowCount -objects=person,address,orders</code>. When
+      called without any parameters the row counts for all tables accessible to the current user will be displayed.
+    </p><p>
+      Unlike the <a class="link" href="dbexplorer.html#dbexplorer-rowcount" title="Count rows">Count rows</a> item in the DbExplorer, <code class="literal">WbRowCount</code>
+      displays the result for all tables once it is finished. It does not incrementally update the output.
+    </p></div><div class="section" id="command-connect"><div class="titlepage"><div><div><h3 class="title">29.17.&nbsp;Change the connection for a script - WbConnect</h3></div></div></div><p>
+			With the <code class="literal">WbConnect</code> command, the connection for the currently running script can be changed.
+		</p><p>
+			When this command is run in GUI mode, the connection is <span class="bold"><strong>only</strong></span>
+			changed for the remainder of the script execution. Therefor at least one other statement should be
+			executed together with the <code class="literal">WbConnect</code> command. Either by running
+			the complete script of the editor or selecting the <code class="literal">WbConnect</code> command
+			together with other statements. Once the script has finished, the connection is closed
+			and the "global" connection (selected in the connect dialog) is active again. This also applies
+			to scripts that are run in <a class="link" href="using-scripting.html" title="18.&nbsp;Using SQL Workbench/J in batch files">batch mode</a> or
+			scripts that are started from within the console using
+			<code class="literal"><a class="link" href="wb-commands.html#command-wbinclude" title="29.5.&nbsp;Execute a SQL script - WbInclude (@)">WbInclude</a></code>.
+		</p><p>
+			When this command is entered directly in the command line of the
+			<a class="link" href="console-mode.html" title="19.&nbsp;Using SQL Workbench/J in console mode">console mode</a>, the current connection is closed and the
+			new connection is kept open until the application ends, or a new connection is established
+			using <code class="literal">WbConnect</code> on the command line again.
+		</p><p>
+			There are three different ways to specify a connection:
+		</p><div class="section" id="command-connect-profile-arg"><div class="titlepage"><div><div><h4 class="title">29.17.1.&nbsp;By specifying a profile</h4></div></div></div><div class="informaltable"><table style="border-collapse: collapse;border-top: 1px solid ; border-bottom: 1px solid ; border-left: 1px solid ; border-right: 1px solid ; "><colgroup><col width="3.6cm" class="c1"><col class="c2"></colgroup><thead><tr><th style="border-right: 1px solid ; border-bottom: 1px solid ; ">Parameter</th><th style="border-bottom: 1px solid ; ">Description</th></tr></thead><tbody valign="top"><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " valign="top">-profile</td><td style="border-bottom: 1px solid ; " valign="top">
+              <p>Specifies the profile name to connect to.</p>
+              <p>
+                This parameter is ignored if either <code class="literal">-connection</code> or the detailed connection informations
+                are supplied individually.
+              </p>
+            </td></tr><tr><td style="border-right: 1px solid ; " valign="top">-profileGroup</td><td style="" valign="top">Specifies the group in which the profile is stored. This is only required if the profile name is not unique</td></tr></tbody></table></div></div><div class="section" id="command-connect-descriptor-arg"><div class="titlepage"><div><div><h4 class="title">29.17.2.&nbsp;By specifying a simple connection string</h4></div></div></div><div class="informaltable"><table style="border-collapse: collapse;border-top: 1px solid ; border-bottom: 1px solid ; border-left: 1px solid ; border-right: 1px solid ; "><colgroup><col width="3.6cm" class="c1"><col class="c2"></colgroup><thead><tr><th style="border-right: 1px solid ; border-bottom: 1px solid ; ">Parameter</th><th style="border-bottom: 1px solid ; ">Description</th></tr></thead><tbody valign="top"><tr id="connect-descriptor"><td style="border-right: 1px solid ; " valign="top">-connection</td><td style="" valign="top">
+                <p>
+  Allows to specify a full connection definition as a single parameter (and thus does not require
+  a pre-defined connection profile).
+</p>
+<p>
+  The connection is specified with a comma separated list of key value pairs:
+  </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><code class="literal">username</code> - the username for the connection</li><li class="listitem"><code class="literal">password</code> - the password for the connection</li><li class="listitem"><code class="literal">url</code> - the JDBC URL</li><li class="listitem"><code class="literal">driver</code> - the class name for the JDBC driver. If this is not specified, SQL Workbench/J
+      will try to determine the driver from the JDBC URL
+    </li><li class="listitem"><code class="literal">driverJar</code> - the full path to the JDBC driver. This not required if a driver
+      for the specified class is already configured
+    </li></ul></div><p>
+  e.g.: <code class="literal">"username=foo,password=bar,url=jdbc:postgresql://localhost/mydb"</code>
+</p>
+
+                <p>
+                  If an appropriate driver is already configured the driver's classname or the JAR file don't have to be specified.
+                </p>
+                <p>
+                  If an appropriate driver is not configured, the driver's jar file must be specified:
+                  </p><p>
+                  <code class="literal">"username=foo,password=bar,url=jdbc:postgresql://localhost/mydb,driverjar=/etc/drivers/postgresql.jar"</code>
+                  </p><p>
+                  SQL Workbench/J will try to detect the driver's classname automatically (based on the JDBC URL).
+                </p>
+                <p>
+                  If this parameter is specified, <code class="literal">-profile</code> is ignored.
+                </p>
+                <p>
+                  The individual parameters controlling the connection <span class="emphasis"><em>behavior</em></span>
+                  can be used together with <code class="literal">-connection</code>, e.g. <code class="literal">-autocommit</code> or <code class="literal">-fetchSize</code>
+                </p>
+              </td></tr></tbody></table></div></div><div class="section" id="command-connect-args"><div class="titlepage"><div><div><h4 class="title">29.17.3.&nbsp;By specifying all connection attributes</h4></div></div></div><div class="informaltable"><table style="border-collapse: collapse;border-top: 1px solid ; border-bottom: 1px solid ; border-left: 1px solid ; border-right: 1px solid ; "><colgroup><col width="3.6cm" class="c1"><col class="c2"></colgroup><thead><tr><th style="border-right: 1px solid ; border-bottom: 1px solid ; ">Parameter</th><th style="border-bottom: 1px solid ; ">Description</th></tr></thead><tbody valign="top"><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " valign="top">-url</td><td style="border-bottom: 1px solid ; " valign="top">The JDBC connection URL</td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " valign="top">-username</td><td style="border-bottom: 1px solid ; " valign="top">Specify the username for the DBMS</td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " valign="top">-password</td><td style="border-bottom: 1px solid ; " valign="top">
+    <p>Specify the password for the user</p>
+    <p>
+      If this parameter is not specified (but <code class="literal">-url</code> and <code class="literal">-username</code>) then
+      you will be prompted to enter the password. To supply an empty password use <code class="literal">-password=</code>
+      in the command line when starting SQL Workbench/J
+    </p>
+  </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " valign="top">-driver</td><td style="border-bottom: 1px solid ; " valign="top">Specify the full class name of the JDBC driver</td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " valign="top">-driverJar</td><td style="border-bottom: 1px solid ; " valign="top">Specify the full pathname to the .jar file containing the JDBC driver</td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " valign="top">-autocommit</td><td style="border-bottom: 1px solid ; " valign="top">Set the autocommit property for this connection. You can also
+	control the autocommit mode from within your script by using the
+    <a class="link" href="wb-commands.html#command-set-autocommit" title="29.13.2.&nbsp;AUTOCOMMIT">
+      <code class="literal">SET AUTOCOMMIT</code>
+    </a> command.
+  </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " valign="top">-rollbackOnDisconnect</td><td style="border-bottom: 1px solid ; " valign="top">If this parameter is set to true, a
+    <code class="literal">ROLLBACK</code> will
+	be sent to the DBMS before the connection is closed. This setting is
+	also available in the <a class="link" href="profiles.html#profile-rollback-before-disconnect" title="7.6.10.&nbsp;Rollback before disconnect">connection profile</a>.
+  </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " valign="top">-checkUncommitted</td><td style="border-bottom: 1px solid ; " valign="top">
+    If this parameter is set to true, SQL Workbench/J will try to <a class="link" href="profiles.html#profile-open-trans" title="7.6.13.&nbsp;Check for uncommitted changes">detect uncommitted changes</a>
+    in the current transaction when the main window (or an editor panel) is closed. If the DBMS
+    does not support this, this argument is ignored. It also has no effect when running in batch or
+    console mode.
+  </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " valign="top">-trimCharData</td><td style="border-bottom: 1px solid ; " valign="top">
+		Turns on right-trimming of values retrieved from
+    <code class="literal">CHAR</code>
+		columns. See the
+    <a class="link" href="profiles.html#profile-trim-char-data" title="7.6.5.&nbsp;Trim CHAR data">description</a> of the
+		profile properties for details.
+  </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " valign="top">-removeComments</td><td style="border-bottom: 1px solid ; " valign="top">This parameter corresponds to the
+    <a class="link" href="profiles.html#profile-remove-comments" title="7.6.7.&nbsp;Remove comments">Remove comments</a>
+	setting of the connection profile.
+  </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " valign="top">-fetchSize</td><td style="border-bottom: 1px solid ; " valign="top">This parameter corresponds to the
+    <a class="link" href="profiles.html#profile-fetch-size" title="7.3.6.&nbsp;Fetch size">Fetch size</a>
+	setting of the connection profile.
+  </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " valign="top">-ignoreDropError</td><td style="border-bottom: 1px solid ; " valign="top">This parameter corresponds to the
+    <a class="link" href="profiles.html#profile-ignore-drop-error" title="7.6.4.&nbsp;Ignore DROP errors">Ignore DROP errors</a>
+	setting of the connection profile.
+  </td></tr><tr><td style="border-right: 1px solid ; " valign="top">-altDelimiter</td><td style="" valign="top">
+      This parameter corresponds to the <a class="link" href="profiles.html#profile-alternate-delimiter" title="7.6.17.&nbsp;Alternate delimiter">Alternate delimiter</a> setting of the connection profile.
+  </td></tr></tbody></table></div></div><p>
+			If none of the parameters is supplied when running the command, it is assumed that any value
+			after <code class="literal">WbConnect</code> is the name of a connection profile, e.g.:
+		</p><pre class="programlisting">WbConnect production</pre><p>
+			will connect using the profile name <code class="literal">production</code>, and is equivalent to
+		</p><pre class="programlisting">WbConnect -profile=production</pre></div><div class="section" id="command-history"><div class="titlepage"><div><div><h3 class="title">29.18.&nbsp;Show the history of SQL statements - WbHistory</h3></div></div></div><p>
+      This command is primarily intended for <a class="link" href="console-mode.html" title="19.&nbsp;Using SQL Workbench/J in console mode">console mode</a> to show the statements
+      that have been executed. In console mode the number of any of the listed statements can be
+      entered to re-execute that statement from the history directly.
+    </p></div><div class="section" id="command-xslt"><div class="titlepage"><div><div><h3 class="title">29.19.&nbsp;Run an XSLT transformation - WbXslt</h3></div></div></div><p>
+      Transforms an XML file via a XSLT stylesheet. This can be used to format
+      XML input files into the correct format for SQL Workbench/J or to transform
+      the output files that are generated by the various SQL Workbench/J commands.
+    </p><p>Parameters for the XSLT command:</p><div class="informaltable"><table style="border-collapse: collapse;border-top: 1px solid ; border-bottom: 1px solid ; border-left: 1px solid ; border-right: 1px solid ; "><colgroup><col width="4cm" align="left" class="c1"><col align="left" class="c2"></colgroup><thead><tr><th style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left">Parameter</th><th style="border-bottom: 1px solid ; " align="left">Description</th></tr></thead><tbody valign="top"><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-inputfile</td><td style="border-bottom: 1px solid ; " align="left" valign="top">The name of the XML source file.</td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-xsltoutput</td><td style="border-bottom: 1px solid ; " align="left" valign="top">The name of the generated output file.</td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-stylesheet</td><td style="border-bottom: 1px solid ; " align="left" valign="top">The name of the XSLT stylesheet to be used.</td></tr><tr><td style="border-right: 1px solid ; " align="left" valign="top">-xsltParameter</td><td style="" align="left" valign="top">
+    A list of parameters (key/value pairs) that should be passed to the XSLT processor. When using e.g. the <code class="literal">wbreport2liquibase.xslt</code>
+    stylesheet, the value of the <code class="literal">author</code> attribute can be set using <code class="literal">-xsltParameter="authorName=42"</code>. This parameter
+    can be provided multiple times for multiple parameters, e.g. when using <code class="literal">wbreport2pg.xslt</code>: <code class="literal">-xsltParameter="makeLowerCase=42" -xsltParameter="useJdbcTypes=true"</code>
+  </td></tr></tbody></table></div></div><div class="section" id="command-wbexec"><div class="titlepage"><div><div><h3 class="title">29.20.&nbsp;Running operating system commands - WbSysExec</h3></div></div></div><p>
+      To run an operating system command use <code class="literal">WbSysExec</code> followed by a valid command for your operating system.
+    </p><p>
+      To run the program <code class="literal">ls</code> the following call can be used: </p><pre class="programlisting">WbSysExec ls</pre><p>
+    </p><p>
+      To run Windows commands that are internal to <code class="literal">cmd.exe</code> such as <code class="literal">DIR</code>, you
+      must call <code class="literal">cmd.exe</code> with the <code class="literal">/c</code> switch to make sure cmd.exe is terminated:
+      </p><pre class="programlisting">WbSysExec cmd /c dir /n</pre><p>
+    </p><p>
+      If you need to specify a working directory for the program, or want to specify the command line arguments
+      individually, a second format is available using the standard SQL Workbench/J parameter handling:
+    </p><p>
+      <code class="literal">WbSysExec</code> supports <a class="link" href="wb-commands.html#conditional-exec" title="29.6.&nbsp;Conditional execution">conditional execution</a>
+    </p><div class="informaltable"><table style="border-collapse: collapse;border-top: 1px solid ; border-bottom: 1px solid ; border-left: 1px solid ; border-right: 1px solid ; "><colgroup><col width="4cm" align="left" class="c1"><col align="left" class="c2"></colgroup><thead><tr><th style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left">Parameter</th><th style="border-bottom: 1px solid ; " align="left">Description</th></tr></thead><tbody valign="top"><tr><td id="wbexec-param-prg" style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-program</td><td style="border-bottom: 1px solid ; " align="left" valign="top">The name of the executable program</td></tr><tr><td id="wbexec-param-args" style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-argument</td><td style="border-bottom: 1px solid ; " align="left" valign="top">One command line argument for the program. This parameter can be repeated multiple times.</td></tr><tr><td id="wbexec-param-dir" style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-dir</td><td style="border-bottom: 1px solid ; " align="left" valign="top">The working directory to be used when calling the external program</td></tr><tr><td id="wbexec-param-env" style="border-right: 1px solid ; " align="left" valign="top">-env</td><td style="" align="left" valign="top">
+              <p>A definition for an environment variable for the process running the program.
+                This parameter can be repeated multiple times.</p>
+            </td></tr></tbody></table></div><p>
+      To run an internal Windows command using the second format, use the following syntax:
+    </p><pre class="programlisting">WbSysExec -program='cmd.exe' -argument='/c' -argument='dir /n' -dir='c:\temp\'</pre><p>
+      To define multiple environment variables for the process, repeat the <code class="literal">-env</code> parameter for each variable
+      e.g. <code class="literal">-env="var_one=value_one" -env="var_two=value_two"</code>
+    </p></div><div class="section" id="command-sysopen"><div class="titlepage"><div><div><h3 class="title">29.21.&nbsp;Opening a file with the default application - WbSysOpen</h3></div></div></div><p>
+      <code class="literal">WbSyOpen</code> can be used to open a file with the default application of the operating system.
+    </p><pre class="programlisting">WbExport -file=c:/temp/person.txt -sourceTable=person -type=text -header=true;
+WbSysOpen c:/temp/person.txt;</pre><div class="note" id="console-external-editor" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td valign="top" align="center" rowspan="2" width="25"><img alt="[Note]" src="./images/note.png"></td><th align="left"></th></tr><tr><td valign="top" align="left"><p>
+        Due to limitations of the Java console mode, neither <code class="literal">WbSysExec</code> nor <code class="literal">WbSysOpen</code> can be used to
+        run a text editor (vi, vim) in console mode (and putting SQL Workbench/J into the background).
+      </p></td></tr></table></div></div><div class="section" id="command-setconfig"><div class="titlepage"><div><div><h3 class="title">29.22.&nbsp;Change an internal configuration parameter - WbSetConfig</h3></div></div></div><a name="N15BB8" class="indexterm"></a><p>
+      Not all configuration parameters are available through the <a class="link" href="options.html" title="35.&nbsp;Options dialog">Options Dialog</a> and have
+      to be changed manually in the file <a class="link" href="install.html#config-dir" title="4.7.&nbsp;Configuration directory">workbench.settings</a>. Editing the file requires
+      to close the application.
+    </p><p>
+      When using <code class="literal">WbSetConfig</code> configuration properties can be changed permanently without restarting SQL Workbench/J.
+    </p><p>
+      Any value that is changed through this command will be saved automatically in <code class="literal">workbench.settings</code>
+      when the application is closed.
+    </p><p>
+      If you want to e.g. disable the use of Savepoints in the SQL statements entered interactively, the following
+      command will turn this off for PostgreSQL:
+    </p><pre class="programlisting">WbSetConfig workbench.db.postgresql.sql.usesavepoint=false</pre><p>
+      For a list of configuration properties that can be changed, please refer to <a class="link" href="settings.html" title="37.&nbsp;Advanced configuration options">Advanced configuration options</a>
+    </p><p>
+      If you supply only the property key, the current value will be displayed. If no argument is supplied for <code class="literal">WbSetConfig</code> all
+      properties are displayed. You can also supply a partial property key. <code class="literal">WbSetConfig workbench.db.postgresql</code> will list
+      all PostgreSQL related properties. You can directly edit the properties in the result set.
+    </p><p>
+      The value <code class="literal">[dbid]</code> inside the property name will get replaced with the current
+      <a class="link" href="settings.html#dbid" title="37.1.&nbsp;DBID">DBID</a>.
+    </p><p>
+      The following command changes the property named <code class="literal">workbench.db.postgresql.ddlneedscommit</code>
+      if the current connection is against a PostgreSQL database:
+      </p><pre class="programlisting">WbSetConfig workbench.db.[dbid].ddlneedscommit=true</pre><p>
+    </p></div></div><div class="navfooter"><hr><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="wb-var-commands.html">Prev</a>&nbsp;</td><td align="center" width="20%">&nbsp;</td><td align="right" width="40%">&nbsp;<a accesskey="n" href="data-pumper.html">Next</a></td></tr><tr><td valign="top" align="left" width="40%">28.&nbsp;Manage variables with SQL Workbench/J&nbsp;</td><td align="center" width="20%"><a accesskey="h" href="workbench-manual.html">Home</a></td><td valign="top" align="right" width="40%">&nbsp;30.&nbsp;DataPumper</td></tr></table></div></body></html>

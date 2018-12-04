@@ -1,0 +1,278 @@
+<html><head><META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>26.&nbsp;Show information about database objects</title><link href="html-publish.css" type="text/css" rel="stylesheet"><meta content="DocBook XSL Stylesheets V1.78.1" name="generator"><link rel="home" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="up" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="prev" href="script-generation.html" title="25.&nbsp;SQL Workbench/J to generate DDL commands"><link rel="next" href="wb-macro-commands.html" title="27.&nbsp;Manage macros with SQL Workbench/J command"><link rel="article" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="subsection" href="wb-info-commands.html#command-schema-report" title="26.1.&nbsp;Create a report of the database objects - WbSchemaReport"><link rel="subsection" href="wb-info-commands.html#command-desc" title="26.2.&nbsp;Show table structure - DESCRIBE"><link rel="subsection" href="wb-info-commands.html#command-list" title="26.3.&nbsp;List tables - WbList"><link rel="subsection" href="wb-info-commands.html#command-listindexes" title="26.4.&nbsp;List indexes - WbListIndexes"><link rel="subsection" href="wb-info-commands.html#command-listprocs" title="26.5.&nbsp;List stored procedures - WbListProcs"><link rel="subsection" href="wb-info-commands.html#command-listtriggers" title="26.6.&nbsp;List triggers - WbListTriggers"><link rel="subsection" href="wb-info-commands.html#command-listcat" title="26.7.&nbsp;List catalogs - WbListCat"><link rel="subsection" href="wb-info-commands.html#command-listschema" title="26.8.&nbsp;List schemas - WbListSchemas"><link rel="subsection" href="wb-info-commands.html#command-listdeps" title="26.9.&nbsp;Show dependency information - WbListDependencies"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">26.&nbsp;Show information about database objects</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="script-generation.html">Prev</a>&nbsp;</td><th align="center" width="60%">&nbsp;</th><td align="right" width="20%">&nbsp;<a accesskey="n" href="wb-macro-commands.html">Next</a></td></tr></table><hr></div><div class="section" id="wb-info-commands"><div class="titlepage"><div><div><h2 class="title" style="clear: both">26.&nbsp;Show information about database objects</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="wb-info-commands.html#command-schema-report">26.1. Create a report of the database objects - WbSchemaReport</a></span></dt><dt><span class="section"><a href="wb-info-commands.html#command-desc">26.2. Show table structure - DESCRIBE</a></span></dt><dt><span class="section"><a href="wb-info-commands.html#command-list">26.3. List tables - WbList</a></span></dt><dt><span class="section"><a href="wb-info-commands.html#command-listindexes">26.4. List indexes - WbListIndexes</a></span></dt><dt><span class="section"><a href="wb-info-commands.html#command-listprocs">26.5. List stored procedures - WbListProcs</a></span></dt><dt><span class="section"><a href="wb-info-commands.html#command-listtriggers">26.6. List triggers - WbListTriggers</a></span></dt><dt><span class="section"><a href="wb-info-commands.html#command-listcat">26.7. List catalogs - WbListCat</a></span></dt><dt><span class="section"><a href="wb-info-commands.html#command-listschema">26.8. List schemas - WbListSchemas</a></span></dt><dt><span class="section"><a href="wb-info-commands.html#command-listdeps">26.9. Show dependency information - WbListDependencies</a></span></dt></dl></div><div class="important" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Important"><tr><td valign="top" align="center" rowspan="2" width="25"><img alt="[Important]" src="./images/important.png"></td><th align="left"></th></tr><tr><td valign="top" align="left"><p>
+    All SQL Workbench/J specific command can <span class="bold"><strong>only</strong></span> be used from within SQL Workbench/J
+  </p></td></tr></table></div><div class="section" id="command-schema-report"><div class="titlepage"><div><div><h3 class="title">26.1.&nbsp;Create a report of the database objects - WbSchemaReport</h3></div></div></div><p>
+      Creates an XML report of selected tables. This report could be used
+      to generate an HTML documentation of the database (e.g. using the <a class="link" href="wb-commands.html#command-xslt" title="29.19.&nbsp;Run an XSLT transformation - WbXslt">XSLT</a>
+      command). This report can also be generated from within the <a class="link" href="dbexplorer.html" title="31.&nbsp;Database Object Explorer">Database Object Explorer</a>
+    </p><p>
+      The resulting XML file can  be transformed into a HTML documentation of your database schema.
+      Sample stylesheets can be downloaded from   <a class="ulink" href="https://www.sql-workbench.eu/xstl.html" target="_blank">https://www.sql-workbench.eu/xstl.html</a>.
+      If you have XSLT stylsheets that you would like to share, please send them to
+      <code class="email">&lt;<a class="email" href=mailto:&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#64;&#115;&#113;&#108;&#45;&#119;&#111;&#114;&#107;&#98;&#101;&#110;&#99;&#104;&#46;&#110;&#101;&#116;>&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#64;&#115;&#113;&#108;&#45;&#119;&#111;&#114;&#107;&#98;&#101;&#110;&#99;&#104;&#46;&#110;&#101;&#116;</a>&gt;</code>.
+    </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td valign="top" align="center" rowspan="2" width="25"><img alt="[Note]" src="./images/note.png"></td><th align="left"></th></tr><tr><td valign="top" align="left"><p>
+      To see table and column comments with an Oracle database, you need to
+      <a class="link" href="dbms-problems.html#oracle-enable-remarks" title="34.1.4.&nbsp;Table and column comments are not displayed">enable remarks reporting</a> for the JDBC
+      driver, otherwise the driver will not return comments. To see the "comment" values
+      from SQL Server's extended properties, please setup the property retrieval as described <a class="link" href="settings.html#dbexplorer-ms-remarks-prop" title="Microsoft SQL Server extended property for remarks">here</a>
+    </p></td></tr></table></div><p>The command supports the following parameters:</p><div class="informaltable"><table style="border-collapse: collapse;border-top: 1px solid ; border-bottom: 1px solid ; border-left: 1px solid ; border-right: 1px solid ; "><colgroup><col width="4cm" align="left" class="c1"><col align="left" class="c2"></colgroup><thead><tr><th style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left">Parameter</th><th style="border-bottom: 1px solid ; " align="left">Description</th></tr></thead><tbody valign="top"><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-file</td><td style="border-bottom: 1px solid ; " align="left" valign="top">The filename of the output file.</td></tr><tr id="schema-report-objects"><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-objects</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+            <p>
+              A (comma separated) list of objects to report. Default is all objects that are "tables" or views.
+              The list of possible objects corresponds to the objects shown in the "Objects" tab of the DbExplorer.
+            </p>
+            <p>
+              If you want to generate the report on tables from different schemas you have
+              to use fully qualified names in the list (e.g. <code class="literal">-tables=shop.orders,accounting.invoices</code>)
+              You can also specify wildcards in the table name: <code class="literal">-table=CONTRACT_%</code> will create
+              an XML report for all tables that start with <code class="literal">CONTRACT_</code>.
+            </p>
+            <p>
+              This parameter supports auto-completion.
+            </p>
+          </td></tr><tr id="schema-report-schemas"><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-schemas</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+            <p>
+              A (comma separated) list of schemas to generate the report from.
+              For each user/schema all tables are included in the report. e.g.
+              <code class="literal">-schemas=public,accounting</code> would generate a report
+              for all tables in the schemas <code class="literal">public</code> and <code class="literal">accounting</code>.
+            </p>
+            <p>
+              If you combine <code class="literal">-schemas</code> with <code class="literal">-objects</code>, the list of objects
+              will be applied to every schema unless the object names are supplied <span class="bold"><strong>with</strong></span> a schema:
+              <code class="literal">-schemas=accounting,invoices -objects=o*,customers.c*</code> will select all objects starting
+              with <code class="literal">O</code> from the schemas <code class="literal">accounting,invoices</code> and all objects
+              starting with <code class="literal">C</code> from the schema <code class="literal">customers</code>.
+            </p>
+            <p>
+              The possible values for this parameter correspond to the "Schema" dropdown in the
+              <a class="link" href="dbexplorer.html" title="31.&nbsp;Database Object Explorer">DbExplorer</a>. The parameter supports auto-completion
+              and will show a list of available schemas.
+            </p>
+          </td></tr><tr id="schema-report-types"><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-types</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+            <p>
+              A (comma separated) list of "table like" object types to include. By default <code class="literal">TABLE</code>s and
+              <code class="literal">VIEW</code>s are included. To include e.g. <code class="literal">SYSTEM VIEW</code>s and
+              <code class="literal">TEMPORARY TABLE</code>s, use the following option:
+              <code class="literal">-types='TABLE,VIEW,SYSTEM VIEW,TEMPORARY TABLE'</code>. If you include type names that contain
+              a space (or e.g. a dash) you have to quote the whole list, not just the single value.
+            </p>
+            <p>
+              The default for this parameter is <code class="literal">TABLE,VIEW</code>
+            </p>
+            <p>
+              The values for this parameter correspond to the values shown in the "types" dropdown in the
+              <a class="link" href="dbexplorer.html#dbexplorer-objectlist" title="31.1.&nbsp;Objects tab">"Objects"</a> tab of the DbExplorer. The parameter
+              supports auto-completion and will show a list of the available object types for the current DBMS.
+            </p>
+            <p>
+              You can include any type shown in the DbExplorer's Objects tab. To e.g. include <code class="literal">domain</code>
+              and <code class="literal">enum</code> definitions for PostgreSQL use: <code class="literal">-types=table,view,sequence,domain,enum</code>
+            </p>
+            <p>
+              This parameter supports auto-completion.
+            </p>
+          </td></tr><tr id="schema-report-exclude-names"><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-excludeObjectNames</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+            A (comma separated) list of tables to exclude from reporting. This is only used if
+            -tables is also specified. To create a report on all tables, but exclude those that start
+            with 'DEV', use <code class="literal">-tables=* -excludeTableNames=DEV*</code>
+					</td></tr><tr id="schema-report-object-typenames"><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-objectTypeNames</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+            <p>
+              This parameter can be repeated several times to define the object names per object type to be retrieved.
+              The format of the argument is <code class="literal">-objectTypeNames=typename:namepattern</code>
+            </p>
+            <p>
+              The following will select the tables <code class="literal">person</code> and <code class="literal">address</code>,
+              all sequences starting with "T" and the view <code class="literal">v_person</code>. If the list of object names
+              contains a comma, the whole parameter value needs to be quoted:
+              </p><pre class="programlisting">-objectTypeNames='table:person,address' -objectTypeNames=sequence:t* -objectTypeNames=view:v_person</pre><p>
+              The type names are the same ones that can be used with the <code class="literal">-types</code> parameter. This can be combined
+              with schema qualified names:
+              </p><pre class="programlisting">-objectTypeNames='table:cust.person,accounting.address' -objectTypeNames=view:public.*</pre><p>
+            </p>
+            <p>
+              This can also be used to restrict the retrieval of stored procedures: <code class="literal">-objectNameTypes=procedure:P*</code>
+              will include all stored procedures (or functions) that start with a "P". In this case the parameter <code class="literal">-includeProcedures</code>
+              is ignored.
+            </p>
+            <p>
+              If this parameter is used at least once, all of the following parameters
+              are ignored: <code class="literal">-types</code> and <code class="literal">-objects</code>, <code class="literal">-includeSequences</code>,
+              <code class="literal">-includeTables</code> and <code class="literal">-includeViews</code>
+              are ignored.
+            </p>
+            <p>
+              The exclusion pattern defined through <code class="literal">-excludeObjectNames</code> is applied to <span class="emphasis"><em>all</em></span> object types.
+            </p>
+					</td></tr><tr id="schema-report-include-tables"><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-includeTables</td><td style="border-bottom: 1px solid ; " align="left" valign="top">Controls the output of table information for the report. The default is
+						<code class="literal">true</code>. Valid values are <code class="literal">true</code>, <code class="literal">false</code>.
+					</td></tr><tr id="schema-report-include-sequences"><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-includeSequences</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+            <p>
+              Control the output of sequence information for the report. The default is
+              <code class="literal">false</code>. Valid values are <code class="literal">true</code>, <code class="literal">false</code>.
+            </p>
+            <p>
+              Adding <code class="literal">sequence</code> to the list of types specified with the <code class="literal">-types</code>
+              parameter has the same effect.
+            </p>
+					</td></tr><tr id="schema-report-include-grants"><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-includeTableGrants</td><td style="border-bottom: 1px solid ; " align="left" valign="top">If tables are included in the output, the grants for each table can also be included with
+						this parameter. The default value is <code class="literal">false</code>.
+					</td></tr><tr id="schema-report-include-procs"><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-includeProcedures</td><td style="border-bottom: 1px solid ; " align="left" valign="top">Control the output of stored procedure information for the report. The default is
+						<code class="literal">false</code>. Valid values are <code class="literal">true</code>, <code class="literal">false</code>.
+					</td></tr><tr id="schema-report-include-triggers"><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-includeTriggers</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+            This parameter controls if table triggers are added to the output.
+						The default value is <code class="literal">true</code>.
+					</td></tr><tr id="schema-report-title"><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-reportTitle</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+						Defines the title for the generated XML file. The specified title is written
+						into the tag <code class="literal">&lt;report-title&gt;</code> and can be used when
+						transforming the XML e.g. into a HTML file.
+					</td></tr><tr id="schema-report-full-source"><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-writeFullSource</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+            <p>
+            By default the source code for views is written as retrieved from the DBMS into the XML file.
+            This might not be a complete <code class="literal">create view</code> statement though. When <code class="literal">-writeFullSource=true</code>
+            is specified SQL Workbench/J will generate a complete <code class="literal">create view</code> statement, similar to the code
+            that is shown in the DbExplorer.
+            </p>
+            <p>
+              The default is <code class="literal">false</code>. Valid values are: <code class="literal">true</code>, <code class="literal">false</code>.
+            </p>
+					</td></tr><tr id="schema-report-stylesheet"><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-styleSheet</td><td style="border-bottom: 1px solid ; " align="left" valign="top">Apply a XSLT transformation to the generated XML file.</td></tr><tr id="schema-report-xslt-output"><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-xsltOutput</td><td style="border-bottom: 1px solid ; " align="left" valign="top">The name of the generated output file when applying the XSLT transformation.</td></tr><tr><td style="border-right: 1px solid ; " align="left" valign="top">-xsltParameter</td><td style="" align="left" valign="top">
+    A list of parameters (key/value pairs) that should be passed to the XSLT processor. When using e.g. the <code class="literal">wbreport2liquibase.xslt</code>
+    stylesheet, the value of the <code class="literal">author</code> attribute can be set using <code class="literal">-xsltParameter="authorName=42"</code>. This parameter
+    can be provided multiple times for multiple parameters, e.g. when using <code class="literal">wbreport2pg.xslt</code>: <code class="literal">-xsltParameter="makeLowerCase=42" -xsltParameter="useJdbcTypes=true"</code>
+  </td></tr></tbody></table></div></div><div class="section" id="command-desc"><div class="titlepage"><div><div><h3 class="title">26.2.&nbsp;Show table structure - DESCRIBE</h3></div></div></div><p>
+			Describe shows the definition of the given table. It can be
+			abbreviated with DESC. The command expects the table name as a parameter.
+			The output of the command will be several result tabs to show the table
+			structure, indexes and triggers (if present).
+			If the "described" object is a view, the message tab will additionally contain
+			the view source (if available).
+		</p><pre class="programlisting">DESC person;</pre><p>
+			If you want to show the structure of a table from a different user, you need
+			to prefix the table name with the desired user <code class="literal">DESCRIBE otheruser.person;</code>
+		</p></div><div class="section" id="command-list"><div class="titlepage"><div><div><h3 class="title">26.3.&nbsp;List tables - WbList</h3></div></div></div><p>
+			This command lists all available tables (including views and
+      synonyms). This output is equivalent to the left part of the Database
+      Object Explorer's Table tab.
+    </p><p>
+			You can limit the displayed objects by either specifying a wildcard for the
+			names to be retrieved: <code class="literal">WbList P%</code> will list all tables or
+			views starting with the letter "P"
+    </p><p>
+			The command supports two parameters to specify the tables and objects to be listed. If you want to
+      limit the result by specifying a wildcard for the name <span class="bold"><strong>and</strong></span> the object type,
+			you have to use the parameter switches:
+			</p><div class="informaltable"><table style="border-collapse: collapse;border-top: 1px solid ; border-bottom: 1px solid ; border-left: 1px solid ; border-right: 1px solid ; "><colgroup><col width="2.5cm" align="left" class="c1"><col align="left" class="c2"></colgroup><thead><tr><th style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left">Parameter</th><th style="border-bottom: 1px solid ; " align="left">Description</th></tr></thead><tbody valign="top"><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-objects</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+								<p>
+									Select the objects to be returned using a wildcard name, e.g. <code class="literal">-objects=P%</code>
+								</p>
+							</td></tr><tr><td style="border-right: 1px solid ; " align="left" valign="top">-types</td><td style="" align="left" valign="top">
+								<p>
+									Limit the result to specific object types, e.g. <code class="literal">WbList -objects=V% -types=VIEW</code>
+									will return all views starting with the letter "V".
+								</p>
+							</td></tr></tbody></table></div><p>
+		</p></div><div class="section" id="command-listindexes"><div class="titlepage"><div><div><h3 class="title">26.4.&nbsp;List indexes - WbListIndexes</h3></div></div></div><p>
+			This command will list all indexes defined on tables available to the
+      current user.
+		</p><p>
+			The command supports two parameters to specify the tables and objects to be listed. If you want to
+      limit the result by specifying a wildcard for the name <span class="bold"><strong>and</strong></span> the object type,
+			you have to use the parameter switches:
+			</p><div class="informaltable"><table style="border-collapse: collapse;border-top: 1px solid ; border-bottom: 1px solid ; border-left: 1px solid ; border-right: 1px solid ; "><colgroup><col width="2.5cm" align="left" class="c1"><col align="left" class="c2"></colgroup><thead><tr><th style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left">Parameter</th><th style="border-bottom: 1px solid ; " align="left">Description</th></tr></thead><tbody valign="top"><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-schema</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+								<p>
+									Show only indexes for the specified schema, e.g. <code class="literal">-schema=somethingelse</code>
+								</p>
+							</td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-catalog</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+								<p>
+									Show only indexes for the specified catalog e.g. <code class="literal">-catalog=other_db</code>
+								</p>
+							</td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-tableName</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+								<p>
+                  Show only indexes for the tables specified by the parameter. The parameter value
+                  can contain a wildcard, e.g. <code class="literal">-tableName=VP%</code> lists the indexes
+                  for all tables starting with VP
+								</p>
+							</td></tr><tr><td style="border-right: 1px solid ; " align="left" valign="top">-indexName</td><td style="" align="left" valign="top">
+								<p>
+                  Show only indexes with the specified name. The parameter value
+                  can contain a wildcard, e.g. <code class="literal">-indexName=PK%</code> lists only indexes
+                  that start with <code class="literal">PK</code>
+								</p>
+							</td></tr></tbody></table></div><p>
+		</p></div><div class="section" id="command-listprocs"><div class="titlepage"><div><div><h3 class="title">26.5.&nbsp;List stored procedures - WbListProcs</h3></div></div></div><p>
+			This command will list all stored procedures available to the
+      current user. The output of this command is equivalent to the Database
+			Explorer's Procedure tab.
+		</p><p>
+			You can limit the list by supplying a wildcard search for the name, e.g.:
+			</p><pre class="programlisting">WbListProcs public.p%</pre><p>
+		</p></div><div class="section" id="command-listtriggers"><div class="titlepage"><div><div><h3 class="title">26.6.&nbsp;List triggers - WbListTriggers</h3></div></div></div><p>
+			This command will list all stored triggers available to the
+      current user. The output of this command is equivalent to the Database
+			Explorer's Triggers tab (if enabled)
+		</p></div><div class="section" id="command-listcat"><div class="titlepage"><div><div><h3 class="title">26.7.&nbsp;List catalogs - WbListCat</h3></div></div></div><p>
+      Lists the available catalogs (or databases). It is the same information
+      that is shown in the DbExplorer's "Database" drop down.
+    </p><p>
+      The output of this command depends on the underlying JDBC driver and DBMS.
+      For MS SQL Server this lists the available databases (which then could be changed
+      with the command <code class="literal">USE &lt;dbname&gt;</code>)
+    </p><p>
+			For Oracle this command returns nothing as Oracle does not
+			implement the concept of catalogs.
+		</p><p>
+			This command calls the JDBC driver's <code class="literal">getCatalogs()</code> method and will
+      return its result. If on your database system this command does not display
+      a list, it is most likely that your DBMS does not support catalogs (e.g. Oracle)
+      or the driver does not implement this feature.
+    </p><p>
+      This command ignores the filter defined for catalogs in the <a class="link" href="profiles.html" title="7.&nbsp;Connecting to the database">connection profile</a>
+      and always returns all databases.
+    </p></div><div class="section" id="command-listschema"><div class="titlepage"><div><div><h3 class="title">26.8.&nbsp;List schemas - WbListSchemas</h3></div></div></div><p>
+      Lists the available schemas from the current connection. The output of this
+      command depends on the underlying JDBC driver and DBMS. It is the same information
+      that is shown in the DbExplorer's "Schema" drop down.
+    </p><p>
+      This command ignores the filter defined for schemas in the <a class="link" href="profiles.html" title="7.&nbsp;Connecting to the database">connection profile</a>
+      and always returns all schemas.
+    </p></div><div class="section" id="command-listdeps"><div class="titlepage"><div><div><h3 class="title">26.9.&nbsp;Show dependency information - WbListDependencies</h3></div></div></div><p>
+      Lists dependency information about database objects. It is the command line version
+      of the "Used by" and "Uses" information in the DbExplorer and DbTree.
+    </p><p>The command supports the following parameters:</p><div class="informaltable"><table style="border-collapse: collapse;border-top: 1px solid ; border-bottom: 1px solid ; border-left: 1px solid ; border-right: 1px solid ; "><colgroup><col width="4cm" align="left" class="c1"><col align="left" class="c2"></colgroup><thead><tr><th style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left">Parameter</th><th style="border-bottom: 1px solid ; " align="left">Description</th></tr></thead><tbody valign="top"><tr id="list-deps-name"><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-name</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+              <p>
+                Then name of the database object for which the dependencies should be displayed.
+                This parameter supports wildcards, e.g. <code class="literal">-name=p%</code> to display dependencies
+                for all objects that start with a <code class="literal">P</code>.
+              </p>
+              <p>
+                This parameter supports auto-completion.
+              </p>
+            </td></tr><tr id="list-deps-schema"><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-schema</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+              <p>
+                Search objects in the specified schema.
+              </p>
+              <p>
+                This parameter supports auto-completion.
+              </p>
+            </td></tr><tr id="list-deps-catalog"><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-catalog</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+              <p>
+                Search objects in the specified catalog (database).
+              </p>
+              <p>
+                This parameter supports auto-completion.
+              </p>
+            </td></tr><tr id="list-deps-objecttype"><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-objectType</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+              <p>
+                A (comma separated) list of objects to report. Default is all objects that are "tables" or views.
+                The list of possible objects corresponds to the objects shown in the "Objects" tab of the DbExplorer.
+              </p>
+              <p>
+                This parameter supports auto-completion.
+              </p>
+            </td></tr><tr id="list-deps-type"><td style="border-right: 1px solid ; " align="left" valign="top">-dependency</td><td style="" align="left" valign="top">
+              <p>
+                Define the type of dependency to display. Valid values are <code class="literal">uses</code> and <code class="literal">using</code>.
+              </p>
+              <p>
+                This parameter supports auto-completion.
+              </p>
+            </td></tr></tbody></table></div></div></div><div class="navfooter"><hr><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="script-generation.html">Prev</a>&nbsp;</td><td align="center" width="20%">&nbsp;</td><td align="right" width="40%">&nbsp;<a accesskey="n" href="wb-macro-commands.html">Next</a></td></tr><tr><td valign="top" align="left" width="40%">25.&nbsp;SQL Workbench/J to generate DDL commands&nbsp;</td><td align="center" width="20%"><a accesskey="h" href="workbench-manual.html">Home</a></td><td valign="top" align="right" width="40%">&nbsp;27.&nbsp;Manage macros with SQL Workbench/J command</td></tr></table></div></body></html>
