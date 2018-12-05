@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class SURegisterViewController: UIViewController {
     
@@ -28,7 +29,14 @@ class SURegisterViewController: UIViewController {
     
     
     @IBAction func CreateAccount(_ sender: Any) {
+        print("sending request")
+        /*let parameters: Parameters = [ "name" : "Luca",
+                           "surname" : "Molteni"]
+        Alamofire.request("http://127.0.0.1:3000/", method: .get, parameters : parameters, encoding: URLEncoding.default).response { response in
+            print(response.data as Any)
+        }*/
         //send request throw Network Manager with registration details
+        print(D4HEndpoint.registerSingle)
         NetworkManager.sharedInstance.sendRequest(input: D4HRegisterRequest(email: EmailTextView.text!, password: passwordTextView.text!, FC: cfTextView.text!, fullname: fullnameTextView.text!, birthday: "", sex: ""), endpoint: D4HEndpoint.registerSingle) { (response, error) in
             if response != nil {
                 let myres = D4HRegisterSingleResponse(fromJson: response!)

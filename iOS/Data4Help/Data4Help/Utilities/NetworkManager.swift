@@ -44,7 +44,7 @@ class NetworkManager {
     // MARK: - Private implementation
     
     private struct GCP {
-        static let D4HAPIbaseURL = "TBD"
+        static let D4HAPIbaseURL = "http://127.0.0.1:3000"
     }
     
     private func getD4HUrlWithKey(endpoint: D4HEndpoint) -> URL {
