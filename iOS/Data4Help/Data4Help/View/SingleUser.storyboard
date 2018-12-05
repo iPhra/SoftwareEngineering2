@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -26,9 +25,8 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="156-Ll-zJp">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="156-Ll-zJp">
                                 <rect key="frame" x="2" y="89" width="373" height="261"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WbY-S0-lNr">
                                 <rect key="frame" x="0.0" y="323" width="375" height="406"/>
@@ -49,6 +47,9 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="156-Ll-zJp" firstAttribute="width" secondItem="mfi-bK-WRz" secondAttribute="height" multiplier="373:812" id="b55-gt-ioa"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Jhs-7q-R7M"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="MySettings" image="Settings" selectedImage="Settings" id="sFu-Eq-9a4"/>
@@ -140,6 +141,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.92246448989999996" green="0.40818893909999998" blue="0.39214158059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="onTintColor" red="0.92246448989999996" green="0.40818893909999998" blue="0.39214158059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="toggleAutomatedSOSON:" destination="KyL-8m-lQ7" eventType="valueChanged" id="CMw-5M-Dgt"/>
+                                </connections>
                             </switch>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LBr-av-nUc">
                                 <rect key="frame" x="-4" y="184" width="383" height="576"/>

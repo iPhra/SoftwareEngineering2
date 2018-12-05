@@ -13,6 +13,8 @@ class MyHealth: UIViewController {
     
     //MARK: Properties
     
+    var AutomatedSOSON:Bool = false
+    
     var xvals: [String]!
     
     @IBOutlet weak var scrollView: UIScrollView!
@@ -121,7 +123,18 @@ class MyHealth: UIViewController {
         //bubbleChartView!.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .EaseInBounce)
         
     }
-
+    
+    
+    @IBAction func toggleAutomatedSOSON(_ sender: Any) {
+        if(AutomatedSOSON){
+            AutomatedSOSON=false
+        }
+        else{
+            AutomatedSOSON=true
+            //DataManager.enableAutomatedSOS()
+        }
+    }
+    
     
 }
 
