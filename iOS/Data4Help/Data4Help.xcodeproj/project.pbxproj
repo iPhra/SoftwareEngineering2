@@ -10,6 +10,8 @@
 		1D5ED11ED4C4AA86453AB757 /* Pods_Data4Help.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6698D8B24F51E95CD50F02E1 /* Pods_Data4Help.framework */; };
 		28121FCE21B5A1FD00AF6CCE /* D4HRegisterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28121FCD21B5A1FD00AF6CCE /* D4HRegisterRequest.swift */; };
 		28121FD021B5A41600AF6CCE /* D4HRegisterSingleResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28121FCF21B5A41600AF6CCE /* D4HRegisterSingleResponse.swift */; };
+		283B263521B98D9E00C939A9 /* D4HThirdPartyRegistrationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283B263421B98D9E00C939A9 /* D4HThirdPartyRegistrationRequest.swift */; };
+		283B263721B98F6500C939A9 /* D4HRegisterThirdPartyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283B263621B98F6500C939A9 /* D4HRegisterThirdPartyResponse.swift */; };
 		28E5568F21ADE9890009D972 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E5568E21ADE9890009D972 /* NetworkManager.swift */; };
 		28E5569221ADF3AB0009D972 /* D4HRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E5569121ADF3AB0009D972 /* D4HRequest.swift */; };
 		28E5569621ADF5480009D972 /* D4HLoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E5569521ADF5480009D972 /* D4HLoginRequest.swift */; };
@@ -33,7 +35,7 @@
 		CB1727BE21B4496800AC9D36 /* MyHealth.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1727BD21B4496800AC9D36 /* MyHealth.swift */; };
 		CB18F00921B6F76500BBFAAD /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB18F00821B6F76500BBFAAD /* CacheManager.swift */; };
 		CBADD0FB21AC197E00896705 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBADD0FA21AC197E00896705 /* AppDelegate.swift */; };
-		CBADD0FD21AC197E00896705 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBADD0FC21AC197E00896705 /* ViewController.swift */; };
+		CBADD0FD21AC197E00896705 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBADD0FC21AC197E00896705 /* LoginViewController.swift */; };
 		CBADD10021AC197E00896705 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBADD0FE21AC197E00896705 /* Main.storyboard */; };
 		CBADD10221AC197F00896705 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBADD10121AC197F00896705 /* Assets.xcassets */; };
 		CBADD10521AC197F00896705 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBADD10321AC197F00896705 /* LaunchScreen.storyboard */; };
@@ -64,6 +66,8 @@
 /* Begin PBXFileReference section */
 		28121FCD21B5A1FD00AF6CCE /* D4HRegisterRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HRegisterRequest.swift; sourceTree = "<group>"; };
 		28121FCF21B5A41600AF6CCE /* D4HRegisterSingleResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HRegisterSingleResponse.swift; sourceTree = "<group>"; };
+		283B263421B98D9E00C939A9 /* D4HThirdPartyRegistrationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HThirdPartyRegistrationRequest.swift; sourceTree = "<group>"; };
+		283B263621B98F6500C939A9 /* D4HRegisterThirdPartyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HRegisterThirdPartyResponse.swift; sourceTree = "<group>"; };
 		28E5568E21ADE9890009D972 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		28E5569121ADF3AB0009D972 /* D4HRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HRequest.swift; sourceTree = "<group>"; };
 		28E5569521ADF5480009D972 /* D4HLoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HLoginRequest.swift; sourceTree = "<group>"; };
@@ -90,7 +94,7 @@
 		CB18F00821B6F76500BBFAAD /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		CBADD0F721AC197E00896705 /* Data4Help.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Data4Help.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBADD0FA21AC197E00896705 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CBADD0FC21AC197E00896705 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CBADD0FC21AC197E00896705 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CBADD0FF21AC197E00896705 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CBADD10121AC197F00896705 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CBADD10421AC197F00896705 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -193,6 +197,7 @@
 				28E5569921ADF5C60009D972 /* D4HEncodingType.swift */,
 				28E5569C21ADF8870009D972 /* D4HEndpoint.swift */,
 				28121FCD21B5A1FD00AF6CCE /* D4HRegisterRequest.swift */,
+				283B263421B98D9E00C939A9 /* D4HThirdPartyRegistrationRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -203,6 +208,7 @@
 				28E5569721ADF55A0009D972 /* D4HLoginResponse.swift */,
 				CBD7A88F21B05E24004BB382 /* D4HResponse.swift */,
 				28121FCF21B5A41600AF6CCE /* D4HRegisterSingleResponse.swift */,
+				283B263621B98F6500C939A9 /* D4HRegisterThirdPartyResponse.swift */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -210,7 +216,7 @@
 		CB1727A321B3323000AC9D36 /* MainControllers */ = {
 			isa = PBXGroup;
 			children = (
-				CBADD0FC21AC197E00896705 /* ViewController.swift */,
+				CBADD0FC21AC197E00896705 /* LoginViewController.swift */,
 				CB17279921B1543500AC9D36 /* SURegisterViewController.swift */,
 				CB17279B21B1545300AC9D36 /* TPRegisterViewController.swift */,
 				CB17279D21B1D5C800AC9D36 /* TutorialViewController.swift */,
@@ -554,8 +560,9 @@
 				CBADD12D21AD7FFB00896705 /* DataManager.swift in Sources */,
 				CB17279C21B1545300AC9D36 /* TPRegisterViewController.swift in Sources */,
 				28121FD021B5A41600AF6CCE /* D4HRegisterSingleResponse.swift in Sources */,
+				283B263721B98F6500C939A9 /* D4HRegisterThirdPartyResponse.swift in Sources */,
 				CB17279E21B1D5C800AC9D36 /* TutorialViewController.swift in Sources */,
-				CBADD0FD21AC197E00896705 /* ViewController.swift in Sources */,
+				CBADD0FD21AC197E00896705 /* LoginViewController.swift in Sources */,
 				CB1727AE21B3C8B000AC9D36 /* GRequest.swift in Sources */,
 				CB1727AC21B3C89B00AC9D36 /* SRequest.swift in Sources */,
 				CB1727BE21B4496800AC9D36 /* MyHealth.swift in Sources */,
@@ -564,6 +571,7 @@
 				28E5569D21ADF8870009D972 /* D4HEndpoint.swift in Sources */,
 				CBADD0FB21AC197E00896705 /* AppDelegate.swift in Sources */,
 				CB17279A21B1543500AC9D36 /* SURegisterViewController.swift in Sources */,
+				283B263521B98D9E00C939A9 /* D4HThirdPartyRegistrationRequest.swift in Sources */,
 				CB1727B421B3E2EF00AC9D36 /* SUSettings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
