@@ -31,6 +31,7 @@
 		CB1727B821B3EB9600AC9D36 /* TPViewSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1727B721B3EB9600AC9D36 /* TPViewSettings.swift */; };
 		CB1727BA21B3EBA700AC9D36 /* TPEditSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1727B921B3EBA700AC9D36 /* TPEditSettings.swift */; };
 		CB1727BE21B4496800AC9D36 /* MyHealth.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1727BD21B4496800AC9D36 /* MyHealth.swift */; };
+		CB18F00921B6F76500BBFAAD /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB18F00821B6F76500BBFAAD /* CacheManager.swift */; };
 		CBADD0FB21AC197E00896705 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBADD0FA21AC197E00896705 /* AppDelegate.swift */; };
 		CBADD0FD21AC197E00896705 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBADD0FC21AC197E00896705 /* ViewController.swift */; };
 		CBADD10021AC197E00896705 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBADD0FE21AC197E00896705 /* Main.storyboard */; };
@@ -86,6 +87,7 @@
 		CB1727B721B3EB9600AC9D36 /* TPViewSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPViewSettings.swift; sourceTree = "<group>"; };
 		CB1727B921B3EBA700AC9D36 /* TPEditSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPEditSettings.swift; sourceTree = "<group>"; };
 		CB1727BD21B4496800AC9D36 /* MyHealth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyHealth.swift; sourceTree = "<group>"; };
+		CB18F00821B6F76500BBFAAD /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		CBADD0F721AC197E00896705 /* Data4Help.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Data4Help.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBADD0FA21AC197E00896705 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBADD0FC21AC197E00896705 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				CB1727A521B3324300AC9D36 /* TPControllers */,
 				CB1727A421B3323B00AC9D36 /* SUControllers */,
 				CB1727A321B3323000AC9D36 /* MainControllers */,
+				CB18F00821B6F76500BBFAAD /* CacheManager.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -536,6 +539,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB18F00921B6F76500BBFAAD /* CacheManager.swift in Sources */,
 				28E5569621ADF5480009D972 /* D4HLoginRequest.swift in Sources */,
 				CB1727B821B3EB9600AC9D36 /* TPViewSettings.swift in Sources */,
 				CBD7A89021B05E24004BB382 /* D4HResponse.swift in Sources */,
