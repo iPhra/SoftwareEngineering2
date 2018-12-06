@@ -9,6 +9,19 @@
 import UIKit
 import Alamofire
 
+// Allow to hide in all UIControllers by tapping out of the screen
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}
+
 class SURegisterViewController: UIViewController {
     
     // MARK: Outlets
@@ -21,20 +34,17 @@ class SURegisterViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        // Hide keyboard when tap out
+        self.hideKeyboardWhenTappedAround()
         // Do any additional setup after loading the view.
     }
     
-    //MARK: Actions
-    
+    //MARK: Actions    
     
     @IBAction func CreateAccount(_ sender: Any) {
         print("sending request")
-        /*let parameters: Parameters = [ "name" : "Luca",
-                           "surname" : "Molteni"]
-        Alamofire.request("http://127.0.0.1:3000/", method: .get, parameters : parameters, encoding: URLEncoding.default).response { response in
-            print(response.data as Any)
-        }*/
+
         //send request throw Network Manager with registration details
         print(D4HEndpoint.registerSingle)
         NetworkManager.sharedInstance.sendRequest(input: D4HRegisterRequest(email: EmailTextView.text!, password: passwordTextView.text!, FC: cfTextView.text!, fullname: fullnameTextView.text!, birthday: "", sex: ""), endpoint: D4HEndpoint.registerSingle) { (response, error) in
