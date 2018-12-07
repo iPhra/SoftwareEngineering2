@@ -14,6 +14,7 @@
     "joi": "^14.3.0",
     "lodash": "latest",
     "morgan": "~1.9.0",
+    "nodemailer": "^4.7.0",
     "pg": "^7.7.1",
     "pug": "2.0.0-beta11"
   }

@@ -1,6 +1,7 @@
 const Router = require('express-promise-router');
 const Validator = require('../schemas/validator');
 const db = require('../settings/dbconnection');
+const mailer = require('../settings/mailer');
 const _ = require('lodash');
 
 const validateRequest = Validator();
@@ -11,6 +12,10 @@ let text;
 let values;
 let rows;
 let loggedUsers = [];
+
+let transporter = mailer.transporter;
+var mailOptions = mailer.mailOptions;
+
 
 router.post('/reg/single', validateRequest, async (req, res) => {
     try {
@@ -31,6 +36,17 @@ router.post('/reg/single', validateRequest, async (req, res) => {
 
         res.status(200).send("Registration successful, check your email to complete the creation of your account")
         //@todo send email
+
+        // Set receiver address as req address
+        mailOptions.to = req.body.email;
+
+        transporter.sendMail(mailOptions, function(error, info){
+            if (error) {
+                console.log(error);
+            } else {
+                console.log('Email sent: ' + info.response);
+            }
+        });
     }
     catch(error) {
         userID--;
