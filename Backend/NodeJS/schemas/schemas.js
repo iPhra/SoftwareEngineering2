@@ -1,16 +1,16 @@
 const Joi = require('joi');
 
-//@todo validate birthdate so it's only a DD-MM-YYY format
+//@todo Aggiungere validation a birthdate per controllare sia nel formato DDMMYYYY
 
-const email = Joi.string().email().required();
-const password = Joi.string().min(8).required();
+const email = Joi.string().email().max(40).required();
+const password = Joi.string().min(8).max(20).required();
 
 const singleRegSchema = {
     email: email,
     password: password,
     fc: Joi.string().length(9).required(),
-    full_name: Joi.string().required(),
-    birthdate:  Joi.date().required(),
+    full_name: Joi.string().max(30).required(),
+    birthdate:  Joi.date().min("1-1-1900").required(),
     sex: Joi.string().valid(['M','F','U']).required(),
 };
 
@@ -18,8 +18,8 @@ const thirdRegSchema = {
     email: email,
     password: password,
     piva: Joi.string().length(11).required(),
-    company_name: Joi.string().required(),
-    company_description:  Joi.string().max(30),
+    company_name: Joi.string().max(20).required(),
+    company_description:  Joi.string().max(100),
 };
 
 const login = {
