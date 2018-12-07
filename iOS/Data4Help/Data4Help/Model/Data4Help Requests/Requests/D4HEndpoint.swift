@@ -9,9 +9,29 @@
 import Foundation
 
 enum D4HEndpoint: String {
+    
+    // Authentication
+    
     case login = "/auth/login"
     case registerSingle = "/auth/reg/single"
-    case registerGroup = "/auth/reg/group"
+    case registerThirdParty = "/auth/reg/tp"
+    case activation = "/auth/activ"
+    // Settings
     
-    //TO-DO implement all endpoints
+    case setInfoSingle = "/settings/single/info"
+    case setDataSingle = "/settings/single/data"
+    case setInfoThirdParty = "/settings/tp/info"
+    
+    // Request
+    case requestListSingle = "/req/single/list"
+    case requestListThirdParty = "/req/tp/list"
+    case singleRequest = "/req/tp/sendSingle"
+    case groupRequest = "/req/tp/sendGroup"
+    case requestAnswer = "/req/single/choice"
+    
+    // Data
+    
+    case uploadData = "/data/upload"
+    case statistics = "/data/stats"
+
 }
