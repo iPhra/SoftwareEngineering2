@@ -9,11 +9,12 @@
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "express": "~4.16.0",
+    "express-promise-router": "^3.0.3",
     "http-errors": "~1.6.2",
     "joi": "^14.3.0",
+    "lodash": "latest",
     "morgan": "~1.9.0",
     "pg": "^7.7.1",
-    "pug": "2.0.0-beta11",
-    "lodash": "latest"
+    "pug": "2.0.0-beta11"
   }
 }

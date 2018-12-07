@@ -1,19 +1,16 @@
 const express = require('express');
 const logger = require('morgan');
 
-const indexRouter = require('./routes/index');
-const authRouter = require('./routes/auth');
+const mountRoutes = require('./routes/index');
 
 const app = express();
-const client = require('./settings/dbconnection');
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+mountRoutes(app);
 
 
-app.use('/', indexRouter);
-app.use('/auth', authRouter);
 
 
 module.exports = app;
