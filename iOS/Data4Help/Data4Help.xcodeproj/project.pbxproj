@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1D5ED11ED4C4AA86453AB757 /* Pods_Data4Help.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6698D8B24F51E95CD50F02E1 /* Pods_Data4Help.framework */; };
-		28121FCE21B5A1FD00AF6CCE /* D4HRegisterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28121FCD21B5A1FD00AF6CCE /* D4HRegisterRequest.swift */; };
+		28121FCE21B5A1FD00AF6CCE /* D4HSingleRegisterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28121FCD21B5A1FD00AF6CCE /* D4HSingleRegisterRequest.swift */; };
 		28121FD021B5A41600AF6CCE /* D4HRegisterSingleResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28121FCF21B5A41600AF6CCE /* D4HRegisterSingleResponse.swift */; };
 		283B263521B98D9E00C939A9 /* D4HThirdPartyRegistrationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283B263421B98D9E00C939A9 /* D4HThirdPartyRegistrationRequest.swift */; };
 		283B263721B98F6500C939A9 /* D4HRegisterThirdPartyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283B263621B98F6500C939A9 /* D4HRegisterThirdPartyResponse.swift */; };
@@ -63,7 +63,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		28121FCD21B5A1FD00AF6CCE /* D4HRegisterRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HRegisterRequest.swift; sourceTree = "<group>"; };
+		28121FCD21B5A1FD00AF6CCE /* D4HSingleRegisterRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HSingleRegisterRequest.swift; sourceTree = "<group>"; };
 		28121FCF21B5A41600AF6CCE /* D4HRegisterSingleResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HRegisterSingleResponse.swift; sourceTree = "<group>"; };
 		283B263421B98D9E00C939A9 /* D4HThirdPartyRegistrationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HThirdPartyRegistrationRequest.swift; sourceTree = "<group>"; };
 		283B263621B98F6500C939A9 /* D4HRegisterThirdPartyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HRegisterThirdPartyResponse.swift; sourceTree = "<group>"; };
@@ -193,7 +193,7 @@
 				28E5569521ADF5480009D972 /* D4HLoginRequest.swift */,
 				28E5569921ADF5C60009D972 /* D4HEncodingType.swift */,
 				28E5569C21ADF8870009D972 /* D4HEndpoint.swift */,
-				28121FCD21B5A1FD00AF6CCE /* D4HRegisterRequest.swift */,
+				28121FCD21B5A1FD00AF6CCE /* D4HSingleRegisterRequest.swift */,
 				283B263421B98D9E00C939A9 /* D4HThirdPartyRegistrationRequest.swift */,
 			);
 			path = Requests;
@@ -551,7 +551,7 @@
 				CB1727B221B3E2DF00AC9D36 /* SUEditSettings.swift in Sources */,
 				28E5569A21ADF5C60009D972 /* D4HEncodingType.swift in Sources */,
 				CB1727BA21B3EBA700AC9D36 /* TPEditSettings.swift in Sources */,
-				28121FCE21B5A1FD00AF6CCE /* D4HRegisterRequest.swift in Sources */,
+				28121FCE21B5A1FD00AF6CCE /* D4HSingleRegisterRequest.swift in Sources */,
 				28E5568F21ADE9890009D972 /* NetworkManager.swift in Sources */,
 				CBADD12D21AD7FFB00896705 /* DataManager.swift in Sources */,
 				CB17279C21B1545300AC9D36 /* TPRegisterViewController.swift in Sources */,

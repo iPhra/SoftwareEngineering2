@@ -1,5 +1,5 @@
 //
-//  D4HRegisterRequest.swift
+//  D4HSingleRegisterRequest.swift
 //  Data4Help
 //
 //  Created by Luca Molteni on 03/12/18.
@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class D4HRegisterRequest: D4HRequest {
+class D4HSingleRegisterRequest: D4HRequest {
     
     // MARK: - Properties
     
