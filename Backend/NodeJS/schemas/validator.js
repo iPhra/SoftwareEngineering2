@@ -30,14 +30,14 @@ module.exports = () => {
                 return Joi.validate(req.body, _schema, _validationOptions, (err) => {
 
                     if (err) {
-                        res.status(401).json("Malformed Request");
+                        console.log(err);
+                        res.status(400).json("Malformed Request");
 
                     } else {
                         next();
                     }
 
                 });
-
             }
         }
 
