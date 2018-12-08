@@ -1,0 +1,128 @@
+<html><head><META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>11.&nbsp;Creating stored procedures and triggers</title><link href="html-publish.css" type="text/css" rel="stylesheet"><meta content="DocBook XSL Stylesheets V1.78.1" name="generator"><link rel="home" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="up" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="prev" href="editor-bookmarks.html" title="10.&nbsp;Working with bookmarks"><link rel="next" href="using.html" title="12.&nbsp;Using SQL Workbench/J"><link rel="article" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="subsection" href="understand-alternate-delim.html#delimiter-postgres" title="11.1.&nbsp;PostgreSQL"><link rel="subsection" href="understand-alternate-delim.html#delimiter-oracle" title="11.2.&nbsp;Oracle PL/SQL"><link rel="subsection" href="understand-alternate-delim.html#delimiter-other" title="11.3.&nbsp;Other DBMS"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">11.&nbsp;Creating stored procedures and triggers</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="editor-bookmarks.html">Prev</a>&nbsp;</td><th align="center" width="60%">&nbsp;</th><td align="right" width="20%">&nbsp;<a accesskey="n" href="using.html">Next</a></td></tr></table><hr></div><div class="section" id="understand-alternate-delim"><div class="titlepage"><div><div><h2 class="title" style="clear: both">11.&nbsp;Creating stored procedures and triggers</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="understand-alternate-delim.html#delimiter-postgres">11.1. PostgreSQL</a></span></dt><dt><span class="section"><a href="understand-alternate-delim.html#delimiter-oracle">11.2. Oracle PL/SQL</a></span></dt><dt><span class="section"><a href="understand-alternate-delim.html#delimiter-other">11.3. Other DBMS</a></span></dt></dl></div><a name="N11108" class="indexterm"></a><a name="N1110E" class="indexterm"></a><a name="N11114" class="indexterm"></a><a name="N1111A" class="indexterm"></a><a name="N11120" class="indexterm"></a><p>
+    SQL Workbench/J will split statements based on the SQL terminator <code class="literal">;</code> and send each statement unaltered to the DBMS.
+  </p><p>
+    When executing statements such as <code class="literal">CREATE PROCEDURE</code> which in turn contain valid SQL statements, delimited with a <code class="literal">;</code>
+    the SQL Workbench/J will send everything up to the first semicolon to the  backend (because the <code class="literal">;</code> terminates the SQL statement)
+    In case of a <code class="literal">CREATE PROCEDURE</code> statement this will obviously result in an error as the statement is not complete.
+  </p><p>
+    To be able to run DDL statements with embedded <code class="literal">;</code> characters, SQL Workbench/J needs to
+    know where a statements ends. To specify the end of a statement with embedded <code class="literal">;</code> the so called
+    "alternate delimiter" is used. This chapter describes how the alternate delimiter is used by SQL Workbench/J
+  </p><div class="section" id="delimiter-postgres"><div class="titlepage"><div><div><h3 class="title">11.1.&nbsp;PostgreSQL</h3></div></div></div><p>
+      The body of a function in Postgres is a character literal. Because a delimiter inside
+      a character literal does not define the end of the statement, no special treatment is needed for Postgres.
+    </p></div><div class="section" id="delimiter-oracle"><div class="titlepage"><div><div><h3 class="title">11.2.&nbsp;Oracle PL/SQL</h3></div></div></div><p>
+      This is an example of a <code class="literal">CREATE PROCEDURE</code> which will
+      <span class="bold"><strong>NOT</strong></span> work due to the embedded semicolon in
+      the procedure source itself.
+    </p><pre class="programlisting">CREATE OR REPLACE FUNCTION proc_sample RETURN INTEGER
+IS
+  l_result INTEGER;
+BEGIN
+  SELECT max(col1) INTO l_result FROM sometable;
+  RETURN l_result;
+END;</pre><p>
+      When executing this script, Oracle would return an error because SQL Workbench/J will
+      send everything up to the keyword <code class="literal">INTEGER</code> to the database. Obviously that
+      fragment would not be correct.
+    </p><p>
+      The solution is to terminate the script with a character sequence that is called the "<a class="link" href="profiles.html#profile-alternate-delimiter" title="7.6.17.&nbsp;Alternate delimiter">alternate delimiter</a>"
+      which can be defined in the connection profile. To be compatible with SQL Developer and SQL*Plus it is recommended to set the
+      alternate delimiter to a forward slash (<code class="literal">/</code>).
+    </p><p>The script needs to be written like this:</p><pre class="programlisting">CREATE OR REPLACE FUNCTION proc_sample RETURN INTEGER
+IS
+  l_result INTEGER;
+BEGIN
+  SELECT max(col1) INTO l_result FROM sometable;
+  RETURN l_result;
+END;
+/</pre><p>
+      Note the trailing forward slash (<code class="literal">/</code>) at the end in order to "turn on" the
+      use of the alternate delimiter. If you run scripts with embedded semicolons and you get
+      an error, please verify the setting for your alternate delimiter.
+    </p><p>
+      The standard delimiter (the semicolon) and the alternate delimiter
+      can be mixed in a single script. Whenever a PL/SQL block (either a stored procedure or
+      an anonymous block) is encountered, SQL Workbench/J expects the alternated delimiter to
+      terminate that block. This follows the same rules
+      <a class="ulink" href="http://docs.oracle.com/cd/E11882_01/server.112/e16604/ch_four.htm#i1039663" target="_blank">as used in SQL*Plus</a>.
+    </p><p>
+      The following script will therefore work when connected to an Oracle database:
+    </p><pre class="programlisting">drop table sometable cascade constraints;
+create table sometable
+(
+  col1 integer not null
+);
+
+create or replace function proc_sample return integer
+is
+  l_result integer;
+begin
+  select max(col1) into l_result from sometable;
+  return l_result;
+end;
+/</pre></div><div class="section" id="delimiter-other"><div class="titlepage"><div><div><h3 class="title">11.3.&nbsp;Other DBMS</h3></div></div></div><p id="alternate-delimiter-usage"><span class="bold"><strong>When is the alternate delimiter used?</strong></span></p><p>
+      For all other DBMS, the use of the alternate delimiter is defined by the <span class="bold"><strong>last delimiter</strong></span>
+      used in the script.
+    </p><p>
+      As soon as the statement (or script) that you execute ends with the alternate delimiter, the alternate delimiter
+      is used to separate all SQL statements. When you execute selected text from the editor, be sure to select the
+      alternate delimiter as well, otherwise it will not be recognized (if the alternate delimiter is not selected,
+      the statement to be executed does not end with the alternate delimiter).
+    </p><p>
+      This means a script must use the alternate delimiter for <span class="bold"><strong>all</strong></span> statements in the
+      script. The following script will not work, because the last statement is terminated with the alternate
+      delimiter and thus SQL Workbench/J assumes <span class="emphasis"><em>all</em></span> statements are delimited with that.
+      As the <code class="literal">CREATE TABLES</code> statements are delimited with the standard delimiter, they are
+      not recognized as a separate statement and thus the script is sent as a single statement to the server.
+    </p><pre class="programlisting">create table orders
+(
+  order_id    integer not null primary key,
+  customer_id integer not null,
+  product_id  integer not null,
+  pieces      integer not null,
+  order_date  date    not null
+);
+
+create table orders_audit_log
+(
+  order_id    integer not null,
+  delete_date timestamp not null
+);
+
+create trigger orders_audit_log
+  for orders
+  before delete
+as
+begin
+  insert into audit_log (id, delete_date) values (old.order_id, current_timestamp);
+end;
+/
+</pre><p>
+    The solution is to terminate <span class="bold"><strong>every</strong></span> statement with the alternate delimiter:
+  </p><pre class="programlisting">create table orders
+(
+  order_id    integer not null primary key,
+  customer_id integer not null,
+  product_id  integer not null,
+  pieces      integer not null,
+  order_date  date    not null
+)
+/
+
+create table orders_audit_log
+(
+  order_id    integer not null,
+  delete_date timestamp not null
+)
+/
+
+create trigger orders_audit_log
+  for orders
+  before delete
+as
+begin
+  insert into audit_log (id, delete_date) values (old.order_id, current_timestamp);
+end;
+/
+</pre></div></div><div class="navfooter"><hr><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="editor-bookmarks.html">Prev</a>&nbsp;</td><td align="center" width="20%">&nbsp;</td><td align="right" width="40%">&nbsp;<a accesskey="n" href="using.html">Next</a></td></tr><tr><td valign="top" align="left" width="40%">10.&nbsp;Working with bookmarks&nbsp;</td><td align="center" width="20%"><a accesskey="h" href="workbench-manual.html">Home</a></td><td valign="top" align="right" width="40%">&nbsp;12.&nbsp;Using SQL Workbench/J</td></tr></table></div></body></html>

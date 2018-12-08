@@ -1,0 +1,118 @@
+<html><head><META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>30.&nbsp;DataPumper</title><link href="html-publish.css" type="text/css" rel="stylesheet"><meta content="DocBook XSL Stylesheets V1.78.1" name="generator"><link rel="home" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="up" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="prev" href="wb-commands.html" title="29.&nbsp;Other SQL Workbench/J specific commands"><link rel="next" href="dbexplorer.html" title="31.&nbsp;Database Object Explorer"><link rel="article" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="subsection" href="data-pumper.html#data-pumper-overview" title="30.1.&nbsp;Overview"><link rel="subsection" href="data-pumper.html#data-pumper-connecting" title="30.2.&nbsp;Selecting source and target connection"><link rel="subsection" href="data-pumper.html#data-pumper-simple-task" title="30.3.&nbsp;Copying a complete table"><link rel="subsection" href="data-pumper.html#data-pumper-advanced-tasks" title="30.4.&nbsp;Advanced copy tasks"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">30.&nbsp;DataPumper</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="wb-commands.html">Prev</a>&nbsp;</td><th align="center" width="60%">&nbsp;</th><td align="right" width="20%">&nbsp;<a accesskey="n" href="dbexplorer.html">Next</a></td></tr></table><hr></div><div class="section" id="data-pumper"><div class="titlepage"><div><div><h2 class="title" style="clear: both">30.&nbsp;DataPumper</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="data-pumper.html#data-pumper-overview">30.1. Overview</a></span></dt><dt><span class="section"><a href="data-pumper.html#data-pumper-connecting">30.2. Selecting source and target connection</a></span></dt><dt><span class="section"><a href="data-pumper.html#data-pumper-simple-task">30.3. Copying a complete table</a></span></dt><dt><span class="section"><a href="data-pumper.html#data-pumper-advanced-tasks">30.4. Advanced copy tasks</a></span></dt></dl></div><div class="section" id="data-pumper-overview"><div class="titlepage"><div><div><h3 class="title">30.1.&nbsp;Overview</h3></div></div></div><p>The export and import features are useful if you cannot connect to
+			the source and the target database at once. If your source and target
+			are both reachable at the same time, it is more efficient to use the DataPumper
+			to copy data between two systems. With the DataPumper no intermediate
+			files are necessary. Especially with large tables this can be an advantage.
+		</p><p>
+			To open the DataPumper, select <span class="guimenu">Tools</span> &rarr; <span class="guimenuitem">DataPumper</span>
+		</p><p>The DataPumper lets you copy data from a single table (or SELECT
+		query) to a table in the target database. The mapping between source columns
+		and target columns can be specified as well</p><p>Everything that can be done with the DataPumper, can also be accomplished
+			with the <a class="link" href="command-copy.html" title="22.&nbsp;Copy data across databases"><code class="literal">WbCopy</code></a> command. The DataPumper can
+			also generate a script which executes the <code class="literal">WbCopy</code> command with the correct parameters
+			according to the current settings in the window. This can be used to create
+			scripts which copy several tables.
+		</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td valign="top" align="center" rowspan="2" width="25"><img alt="[Note]" src="./images/note.png"></td><th align="left"></th></tr><tr><td valign="top" align="left"><p>The DataPumper can also be started as a stand-alone application - without the
+			main window - by specifying -datapumper=true in the command line when starting SQL Workbench/J.
+		</p></td></tr></table></div><p>When opening the DatPumper from the main window, the main window's current connection
+			will be used as the initial source connection. You can disable the automatic connection upon
+			startup with the property <code class="literal">workbench.datapumper.autoconnect</code> in the <code class="filename">workbench.settings</code> file.
+		</p></div><div class="section" id="data-pumper-connecting"><div class="titlepage"><div><div><h3 class="title">30.2.&nbsp;Selecting source and target connection</h3></div></div></div><p>The DataPumper window is divided in three parts: the upper left part for
+			defining the source of the data, the upper right part for defining the target, and
+			the lower part to adjust various settings which influence the way, the data is copied.
+		</p><p>After you have opened the DataPumper window it will automatically connect
+		the source to the currently selected connection from the main window. If the DataPumper
+		is started as a separate application, no initial connection will be made.</p><p>To select the source connection, press the ellipsis right next to the
+		source profile label. The standard connection dialog will appear. Select the
+		connection you want to use as the source, and click OK. The DataPumper will then
+		connect to the database. Connecting to the target database works similar. Simply
+		click on the ellipsis next to the target profile box.</p><p>Instead of a database connection as the source, you can also select
+			a text or XML file as the source for the DataPumper. Thus it can also
+			be used as a replacement of the <a class="link" href="command-import.html" title="21.&nbsp;Import data using WbImport">WbImport</a> command.
+		</p><p>The drop down for the target table includes an entry labeled "(Create new table)". For details
+		on how to create a new table during the copy process please refer to the
+		<a class="link" href="data-pumper.html#data-pumper-advanced-tasks" title="30.4.&nbsp;Advanced copy tasks">advanced tasks</a> section.</p><p>After source and target connection are established you can specify the tables and
+		define the column mapping between the tables.</p></div><div class="section" id="data-pumper-simple-task"><div class="titlepage"><div><div><h3 class="title">30.3.&nbsp;Copying a complete table</h3></div></div></div><p>To copy a single table select the source and target table in the dropdowns (which
+		are filled as soon as the connection is established)</p><p>After both tables are selected, the middle part of the window will
+		display the available columns from the source and target table. This grid display
+		represents the column mapping between source and target table.</p><div class="section" id="column-mapping"><div class="titlepage"><div><div><h4 class="title">30.3.1.&nbsp;Mapping source to target columns</h4></div></div></div><p>Each row in the display maps a source column to a target column. Initially the DataPumper
+				tries to match those columns which have the same name and data type. If no match is found
+				for a target column, the source column will display <code class="literal">(Skip target column)</code>
+				This means that the column from the target table will not be included when
+				inserting data into the target table (technically speaking: it will be excluded from the column
+				list in the INSERT statement).
+			</p></div><div class="section" id="source-where"><div class="titlepage"><div><div><h4 class="title">30.3.2.&nbsp;Restricting the data to be copied</h4></div></div></div><p>You can restrict the number of rows to be copied by specifying a
+				<code class="literal">WHERE</code> clause which will be used when retrieving the data from the source table.
+				The <code class="literal">WHERE</code> clause can be entered in the SQL editor in the lower part
+				of the window.
+			</p></div><div class="section" id="delete-target"><div class="titlepage"><div><div><h4 class="title">30.3.3.&nbsp;Deleting all rows from the target table</h4></div></div></div><p>When you select the option "Delete target table", all rows from
+				the target table will be deleted before the copy process is started.
+				This is done with a <code class="literal">DELETE FROM &lt;tablename&gt;;</code>
+				When you select this option, make sure the data can be deleted in this way,
+				otherwise the copy process will fail.
+			</p><p>The <code class="literal">DELETE</code> will not be committed right away, but
+				at the end of the copy process. This is obviously only of interest if
+				the connection is not done with autocommit = true
+			</p></div><div class="section" id="continue-error"><div class="titlepage"><div><div><h4 class="title">30.3.4.&nbsp;Continuing when an insert fails</h4></div></div></div><p>In some cases inserting of individual rows in the target table might
+				fail (e.g. a primary key violation if the table is not empty). When selecting the
+				option "Continue on error", the copy process will continue even if rows fail
+				to insert
+			</p></div><div class="section" id="commit-every"><div class="titlepage"><div><div><h4 class="title">30.3.5.&nbsp;Committing changes</h4></div></div></div><p>By default all changes are committed at the end, when all rows
+			have been copied. By supplying a value in the field "Commit every"
+			SQL Workbench/J will commit changes every time the specified number of
+			rows has been inserted into the target. When a value of 50 rows has been
+			specified, and the source table contains 175 rows, SQL Workbench/J will send
+			4 <code class="literal">COMMIT</code>s to the target database. After inserting
+			row 50, row 100, row 150 and after the last row.</p></div><div class="section" id="data-pumper-batchupdate"><div class="titlepage"><div><div><h4 class="title">30.3.6.&nbsp;Batch execution</h4></div></div></div><p>If the JDBC driver supports batch updates, you can enable the use of batch updates with
+				this check box. The check box will be disabled, if the JDBC driver does not support batch updates,
+				or if a combined update mode (insert,update, update,insert) is selected.
+			</p><p>Batch execution is only available if either INSERT or UPDATE mode is selected.</p></div><div class="section" id="data-pumper-update-mode"><div class="titlepage"><div><div><h4 class="title">30.3.7.&nbsp;Update mode</h4></div></div></div><p>Just like the <a class="link" href="command-import.html" title="21.&nbsp;Import data using WbImport">WbImport</a> and
+				<a class="link" href="command-copy.html" title="22.&nbsp;Copy data across databases">WbCopy</a> commands, the data pumper can
+				optionally update the data in the target table. Select the approriate
+				update strategy from the <code class="literal">Mode</code> drop down. The DataPumper
+				will use the key columns defined in the column mapper to generate the <code class="literal">UPDATE</code>
+				command. When using update you have to select at least one key column.
+			</p><p>You cannot use the update mode, if you select <span class="strong"><strong>only</strong></span> key columns,
+				The values from the source are used to build up the <code class="literal">WHERE</code> clause for the
+				<code class="literal">UPDATE</code> statement. If ony key columns are defined, then there would be nothing to
+				update.
+			</p><p>
+				For maximum performance, choose the update strategy that will result in a successful
+				first statement more often. As a rule of thumb:
+				</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">Use <code class="literal">-mode=insert,update</code>, if you expect more rows to be inserted then updated.</li><li class="listitem">Use <code class="literal">-mode=update,insert</code>, if you expect more rows to be updated then inserted.</li></ul></div><p>
+			</p></div></div><div class="section" id="data-pumper-advanced-tasks"><div class="titlepage"><div><div><h3 class="title">30.4.&nbsp;Advanced copy tasks</h3></div></div></div><div class="section" id="dp-constants"><div class="titlepage"><div><div><h4 class="title">30.4.1.&nbsp;Populating a column with a constant</h4></div></div></div><p>To populate a target column with a constant value. The name
+			of the source columns can be edited in order to supply a constant
+			value instead of a column name. Any expression understood by the
+			source database can be entered there. Note that if (Skip target column) is
+			selected, the field cannot be edited.</p></div><div class="section" id="create-target-table"><div class="titlepage"><div><div><h4 class="title">30.4.2.&nbsp;Creating the target table</h4></div></div></div><p>You can create the target table "on the fly" by selecting
+				<code class="literal">(Create&nbsp;target&nbsp;table)</code> from the list of target tables.
+				You will be prompted for the name of the new table. If you later want to use a different
+				name for the table, click on the button to the right of the drop down.
+			</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td valign="top" align="center" rowspan="2" width="25"><img alt="[Note]" src="./images/note.png"></td><th align="left"></th></tr><tr><td valign="top" align="left"><p>The target table will be created without any primary key definitions, indexes
+			of foreign key constraints.</p></td></tr></table></div><p>The DataPumper tries to map the column types from the source columns to
+				data types available on the target database. For this mapping it relies on information
+				returned from the JDBC driver. The functions used for this may not be implemented fully
+				in the driver. If you experience problems during the creation of the target tables, please
+				create the tables manually before copying the data. It will work best if the source
+				and target system are the same (e.g. PostgreSQL to PostgreSQL, Oracle to Oracle, etc).
+			</p><p>
+				Most JDBC drivers map a single JDBC data type to more then one native datatype. MySql
+				maps its <code class="literal">VARCHAR</code>, <code class="literal">ENUM</code> and <code class="literal">SET</code>
+				type to java.sql.Types.VARCHAR. The DataPumper will take the first mapping
+				which is returned by the driver and will ignore all subsequent ones. Any datatype
+				that is returned twice by the driver is logged as a warning in the log file.
+				The actual mappings used, are logged with type INFO.
+			</p><p>
+        To customize the mapping of generic JDBC datatypes to DBMS specific datatypes, please
+        refer to <a class="link" href="settings.html#db-custom-type-map" title="Customizing data type mapping">Customizing data type mapping</a>
+      </p></div><div class="section" id="source-query"><div class="titlepage"><div><div><h4 class="title">30.4.3.&nbsp;Using a query as the source</h4></div></div></div><p>If you want to copy the data from several tables into one
+				table, you can use a SELECT query as the source of your data. To do this,
+				select the option <code class="literal">Use SQL query as source</code> below the SQL editor.
+				After you have entered you query into the editor, click the button
+				<span class="guibutton">Retrieve columns from query</span>. The columns resulting from the
+				query will then be put into the source part of the column mapping.
+				Make sure, the columns are named uniquely when creating the query. If you select
+				columns from different tables with the same name, make sure you use a column alias
+				to rename the columns.
+			</p><p>Creating the target table "on the fly" is not available when using a SQL
+			query as the source of the data</p></div></div></div><div class="navfooter"><hr><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="wb-commands.html">Prev</a>&nbsp;</td><td align="center" width="20%">&nbsp;</td><td align="right" width="40%">&nbsp;<a accesskey="n" href="dbexplorer.html">Next</a></td></tr><tr><td valign="top" align="left" width="40%">29.&nbsp;Other SQL Workbench/J specific commands&nbsp;</td><td align="center" width="20%"><a accesskey="h" href="workbench-manual.html">Home</a></td><td valign="top" align="right" width="40%">&nbsp;31.&nbsp;Database Object Explorer</td></tr></table></div></body></html>

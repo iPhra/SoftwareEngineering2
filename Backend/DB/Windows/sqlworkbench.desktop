@@ -1,0 +1,15 @@
+[Desktop Entry]
+Comment=DBMS independent SQL query tool
+Encoding=UTF-8
+Exec=java -jar sqlworkbench.jar
+Categories=Development;Database;Java;
+Icon=workbench32.png
+MimeType=
+Name=SQL Workbench/J
+GenericName=Database Administration Tool
+Path=
+StartupNotify=false
+Terminal=false
+TerminalOptions=
+Type=Application
+Keywords=SQL Query Tool

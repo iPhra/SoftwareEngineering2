@@ -1,0 +1,234 @@
+<html><head><META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>18.&nbsp;Using SQL Workbench/J in batch files</title><link href="html-publish.css" type="text/css" rel="stylesheet"><meta content="DocBook XSL Stylesheets V1.78.1" name="generator"><link rel="home" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="up" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="prev" href="using-variables.html" title="17.&nbsp;Variable substitution in SQL statements"><link rel="next" href="console-mode.html" title="19.&nbsp;Using SQL Workbench/J in console mode"><link rel="article" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="subsection" href="using-scripting.html#scripting-connecting" title="18.1.&nbsp;Specifying the connection"><link rel="subsection" href="using-scripting.html#scripting-scriptfile" title="18.2.&nbsp;Specifying the script file(s)"><link rel="subsection" href="using-scripting.html#scripting-command" title="18.3.&nbsp;Specifying a SQL command directly"><link rel="subsection" href="using-scripting.html#scripting-delimiter" title="18.4.&nbsp;Specifying a delimiter"><link rel="subsection" href="using-scripting.html#scripting-encoding" title="18.5.&nbsp;Specifying an encoding for the file(s)"><link rel="subsection" href="using-scripting.html#scripting-logfile" title="18.6.&nbsp;Specifying a logfile"><link rel="subsection" href="using-scripting.html#scripting-handling-errors" title="18.7.&nbsp;Handling errors"><link rel="subsection" href="using-scripting.html#script-success" title="18.8.&nbsp;Specify a script to be executed on successful completion"><link rel="subsection" href="using-scripting.html#script-failure" title="18.9.&nbsp;Specify a script to be executed after an error"><link rel="subsection" href="using-scripting.html#script-ignoredrop" title="18.10.&nbsp;Ignoring errors from DROP statements"><link rel="subsection" href="using-scripting.html#script-change-connection" title="18.11.&nbsp;Changing the connection"><link rel="subsection" href="using-scripting.html#script-display" title="18.12.&nbsp;Controlling console output during batch execution"><link rel="subsection" href="using-scripting.html#script-interactive" title="18.13.&nbsp;Running batch scripts interactively"><link rel="subsection" href="using-scripting.html#script-vardef" title="18.14.&nbsp;Defining variables"><link rel="subsection" href="using-scripting.html#script-properties" title="18.15.&nbsp;Setting configuration properties"><link rel="subsection" href="using-scripting.html#scripting-examples" title="18.16.&nbsp;Examples"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">18.&nbsp;Using SQL Workbench/J in batch files</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="using-variables.html">Prev</a>&nbsp;</td><th align="center" width="60%">&nbsp;</th><td align="right" width="20%">&nbsp;<a accesskey="n" href="console-mode.html">Next</a></td></tr></table><hr></div><div class="section" id="using-scripting"><div class="titlepage"><div><div><h2 class="title" style="clear: both">18.&nbsp;Using SQL Workbench/J in batch files</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="using-scripting.html#scripting-connecting">18.1. Specifying the connection</a></span></dt><dt><span class="section"><a href="using-scripting.html#scripting-scriptfile">18.2. Specifying the script file(s)</a></span></dt><dt><span class="section"><a href="using-scripting.html#scripting-command">18.3. Specifying a SQL command directly</a></span></dt><dt><span class="section"><a href="using-scripting.html#scripting-delimiter">18.4. Specifying a delimiter</a></span></dt><dt><span class="section"><a href="using-scripting.html#scripting-encoding">18.5. Specifying an encoding for the file(s)</a></span></dt><dt><span class="section"><a href="using-scripting.html#scripting-logfile">18.6. Specifying a logfile</a></span></dt><dt><span class="section"><a href="using-scripting.html#scripting-handling-errors">18.7. Handling errors</a></span></dt><dt><span class="section"><a href="using-scripting.html#script-success">18.8. Specify a script to be executed on successful completion</a></span></dt><dt><span class="section"><a href="using-scripting.html#script-failure">18.9. Specify a script to be executed after an error</a></span></dt><dt><span class="section"><a href="using-scripting.html#script-ignoredrop">18.10. Ignoring errors from DROP statements</a></span></dt><dt><span class="section"><a href="using-scripting.html#script-change-connection">18.11. Changing the connection</a></span></dt><dt><span class="section"><a href="using-scripting.html#script-display">18.12. Controlling console output during batch execution</a></span></dt><dt><span class="section"><a href="using-scripting.html#script-interactive">18.13. Running batch scripts interactively</a></span></dt><dt><span class="section"><a href="using-scripting.html#script-vardef">18.14. Defining variables</a></span></dt><dt><span class="section"><a href="using-scripting.html#script-properties">18.15. Setting configuration properties</a></span></dt><dt><span class="section"><a href="using-scripting.html#scripting-examples">18.16. Examples</a></span></dt></dl></div><a name="N12150" class="indexterm"></a><p>
+		SQL Workbench/J can also be used from batch files to execute SQL scripts.
+		This can be used to e.g. automatically extract data from a database or run
+		other SQL queries or statements.
+	</p><p>
+		To start SQL Workbench/J in batch mode, either the
+		<a class="link" href="using-scripting.html#scripting-scriptfile" title="18.2.&nbsp;Specifying the script file(s)">-script</a> or
+		<a class="link" href="using-scripting.html#scripting-command" title="18.3.&nbsp;Specifying a SQL command directly">-command</a> must be passed as an argument on
+		the command line.
+	</p><p>
+		If neither of these parameters is present, SQL Workbench/J will run in GUI mode.
+	</p><div class="important" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Important"><tr><td valign="top" align="center" rowspan="2" width="25"><img alt="[Important]" src="./images/important.png"></td><th align="left"></th></tr><tr><td valign="top" align="left"><p>
+		When running SQL Workbench/J on Windows, you either need to use <code class="literal">sqlwbconsole</code>
+    or start SQL Workbench/J using the <a class="link" href="install.html#starting" title="4.4.&nbsp;Starting the program from the commandline"><code class="literal">java</code> command.</a>
+		You can <span class="bold"><strong>not</strong></span> use the <a class="link" href="install.html#launcher-using" title="4.6.&nbsp;Starting the program using the Windows&reg; launcher">Windows launcher</a>
+    <code class="literal">SQLWorkbench.exe</code> (or <code class="literal">SQLWorkbench64.exe)</code>,
+    as it will run in the background without a console window, and thus
+    you will not see any output from the batch run.
+	</p></td></tr></table></div><p>
+		Please refer to <a class="link" href="install.html#starting" title="4.4.&nbsp;Starting the program from the commandline">Starting SQL Workbench/J</a> for details
+		on how to start SQL Workbench/J with the <code class="literal">java</code> command.
+	</p><p>
+		When you need to quote parameters inside batch or shell scripts, you have to use single quotes
+		(<code class="literal">'test-script.sql'</code>) to quote these values. Most command line shells
+		(including Windows&reg;) do not pass double quotes to the application and thus the parameters would not
+		be evaluated correctly by SQL Workbench/J
+	</p><p>
+		If you want to start the application from within another program (e.g. an
+		<code class="literal"><a class="ulink" href="http://ant.apache.org" target="_blank">Ant</a></code> script or your own program),
+		you will need to start SQL Workbench/J's main class directly.
+	</p><pre class="programlisting">java -cp sqlworkbench.jar workbench.WbStarter</pre><p>
+		Inside an Ant build script this would need to be done like this:
+	</p><pre class="programlisting">
+&lt;java classname="workbench.WbStarter" classpath="sqlworkbench.jar" fork="true"&gt;
+  &lt;arg value="-profile='my profile'"/&gt;
+  &lt;arg value="-script=load_data.sql"/&gt;
+&lt;/java&gt;</pre><p>
+		The parameters to specify the connection and the SQL script to be executed have
+		to be passed on the command line.
+	</p><div class="section" id="scripting-connecting"><div class="titlepage"><div><div><h3 class="title">18.1.&nbsp;Specifying the connection</h3></div></div></div><a name="N121A8" class="indexterm"></a><p>
+			When running SQL Workbench/J in batch mode, you can define the connection
+			using a <a class="link" href="commandline.html#commandline-connect-profile" title="5.6.&nbsp;Connect using a pre-defined connection profile">profile name</a> or specifying the connection
+			properties <a class="link" href="commandline.html#commandline-connect-noprofile" title="5.7.&nbsp;Connect without a profile">directly </a>.
+		</p></div><div class="section" id="scripting-scriptfile"><div class="titlepage"><div><div><h3 class="title">18.2.&nbsp;Specifying the script file(s)</h3></div></div></div><a name="N121BC" class="indexterm"></a><p>
+			The script that should be run is specified with the parameter <code class="literal">-script=&lt;filename&gt;</code>
+			Multiple scripts can be specified by separating them with a comma. The scripts will then be executed in the
+			order in which they appear in the commandline. If the filenames contain spaces
+			or dashes (i.e. <code class="literal">test-1.sql</code>) the names have to be quoted.
+		</p><p>
+			You can also execute several scripts by using the <a class="link" href="wb-commands.html#command-wbinclude" title="29.5.&nbsp;Execute a SQL script - WbInclude (@)"><code class="literal">WbInclude</code></a>
+			command inside a script.
+		</p></div><div class="section" id="scripting-command"><div class="titlepage"><div><div><h3 class="title">18.3.&nbsp;Specifying a SQL command directly</h3></div></div></div><p>
+			If you do not want to create an extra SQL script just to run one or more short SQL commands, you
+			can specify the commands to be executed directly with the <code class="literal">-command</code> parameter.
+			To specifiy more than on SQL statement use the standard delimiter to delimit them, e.g.
+			<code class="literal">-command='delete from person; commit;'</code>
+		</p><p>
+			If a script has been specified using the <code class="literal">-script</code> parameter, the <code class="literal">-command</code>
+			parameter is ignored.
+		</p><p>
+      When using Linux (or Unix-Based operating systems) the command can also be passed using a "Here Document". In this
+      case the <code class="literal">-command</code> parameter has be be used without a value:
+    </p><pre class="screen">
+$ java -jar sqlworkbench.jar -profile=PostgresProduction -command &lt;&lt;SQLCMD
+insert into some_table values (42);
+delete from other_table where id = 42;
+commit;
+SQLCMD</pre><p>
+      The position of the <code class="literal">-command</code> parameter does not matter. The following will also work:
+    </p><pre class="screen">
+$ java -jar sqlworkbench.jar \
+     -profile=PostgresProduction \
+     -command \
+     -displayResult=true \
+     -showTiming=true &lt;&lt;SQLCMD
+select *
+from person;
+SQLCMD</pre></div><div class="section" id="scripting-delimiter"><div class="titlepage"><div><div><h3 class="title">18.4.&nbsp;Specifying a delimiter</h3></div></div></div><p>
+			If your script files use a non-standard delimiter for the statements, you can
+			specify an <a class="link" href="understand-alternate-delim.html" title="11.&nbsp;Creating stored procedures and triggers">alternate delimiter</a>
+      through the profile or through the <code class="literal">-altDelimiter</code>
+			parameter. The alternate delimiter should be used if you have several scripts that use
+			the regular semicolon and the alternate delimiter. If your scripts exceed a certain size,
+			they won't be processed in memory and detecting the alternate delimiter does not work in that case.
+			If this is the case you can use the <code class="literal">-delimiter</code> switch to change
+			the default delimiter for all scripts. The usage of the alternate delimiter will be
+			disabled if this parameter is specified.
+		</p></div><div class="section" id="scripting-encoding"><div class="titlepage"><div><div><h3 class="title">18.5.&nbsp;Specifying an encoding for the file(s)</h3></div></div></div><p>
+			In case your script files are not using the default encoding, you can specify the
+			encoding of your script files with the <code class="literal">-encoding</code> parameter. Note that this will set for all
+			script files passed on the command line. If you need to run several script files with different encodings,
+			you have to create one "master" file, which calls the individual files using the <a class="link" href="wb-commands.html#command-wbinclude" title="29.5.&nbsp;Execute a SQL script - WbInclude (@)">WbInclude</a>
+			command together with its <code class="literal">-encoding</code> parameter.
+		</p></div><div class="section" id="scripting-logfile"><div class="titlepage"><div><div><h3 class="title">18.6.&nbsp;Specifying a logfile</h3></div></div></div><p>
+			If you don't want to write the messages to the default logfile
+			which is defined in <code class="filename">workbench.settings</code>
+			an alternate logfile can be specified with <code class="literal">-logfile</code>
+		</p></div><div class="section" id="scripting-handling-errors"><div class="titlepage"><div><div><h3 class="title">18.7.&nbsp;Handling errors</h3></div></div></div><p>
+			To control the behavior when errors occur during
+			script execution, you can use the parameter <code class="literal">-abortOnError=[true|false]</code>.
+			If any error occurs, and <code class="literal">-abortOnError</code> is <code class="literal">true</code>,
+			script processing is completely stopped (i.e. SQL Workbench/J will be stopped).
+			The only script which will be executed after that point is the script specified
+			with the parameter <code class="literal">-cleanupError</code>.
+		</p><p>
+			If <code class="literal">-abortOnError</code> is false all statements in all
+			scripts are executed regardless of any errors. As no error information is
+			evaluated the script specified in -cleanupSuccess will be executed at
+			the end.
+		</p><p>
+			If this parameter is not supplied it defaults to true, meaning
+			that the script will be aborted when an error occurs.
+		</p><p>
+			You can also specify whether errors from <code class="literal">DROP</code> commands
+			should be ignored. To enable this, pass the parameter <code class="literal">-ignoreDropErrors=true</code>
+			on the command line. This works when connecting through a profile or through a full
+			connection specification. If this parameter is set to <code class="literal">true</code>
+			only a warning will be issued, but any error reported from the DBMS when
+			executing a DROP command will be ignored.
+		</p><p>
+			Note that this will not always have the desired effect. When using e.g. PostgreSQL
+			with autocommit off, the current transaction will be aborted by PostgreSQL until
+			a <code class="literal">COMMIT</code> or <code class="literal">ROLLBACK</code> is issued. So even if the
+			error during the <code class="literal">DROP</code> is ignored, subsequent statements will
+			fail nevertheless.
+		</p></div><div class="section" id="script-success"><div class="titlepage"><div><div><h3 class="title">18.8.&nbsp;Specify a script to be executed on successful completion</h3></div></div></div><p>
+			The script specified with the parameter <code class="literal">-cleanupSuccess=&lt;filename&gt;</code>
+			is executed as the last script if either no error occurred or AbortOnError is set to false.
+		</p><p>
+			If you update data in the database, this script usually contains a <code class="literal">COMMIT</code>
+			command to make all changes permanent.
+		</p><p>
+      If the filename is specified as a relative file, it is assumed to be in the current working directory.
+    </p></div><div class="section" id="script-failure"><div class="titlepage"><div><div><h3 class="title">18.9.&nbsp;Specify a script to be executed after an error</h3></div></div></div><p>
+			The script specified with the parameter <code class="literal">-cleanupError=&lt;filename&gt;</code>
+			is executed as the last script if <code class="literal">AbortOnError</code> is set to true and an error occurred
+			during script execution.
+		</p><p>
+			The failure script usually contains a <code class="literal">ROLLBACK</code> command to undo any changes to the database in
+      case an error occured.
+		</p><p>
+      If the filename is specified as a relative file, it is assumed to be in the current working directory.
+    </p></div><div class="section" id="script-ignoredrop"><div class="titlepage"><div><div><h3 class="title">18.10.&nbsp;Ignoring errors from DROP statements</h3></div></div></div><p>
+			When connecting <a class="link" href="commandline.html#commandline-connect-noprofile" title="5.7.&nbsp;Connect without a profile">without a profile</a>,
+			you can use the switch <code class="literal">-ignoreDropErrors=[true|false]</code> to ignore errors that are reported from <code class="literal">DROP</code>
+			statements. This has the same effect as connecting with a profile where the
+			<a class="link" href="profiles.html#profile-ignore-drop-error" title="7.6.4.&nbsp;Ignore DROP errors">Ignore DROP errors</a> property is enabled.
+		</p></div><div class="section" id="script-change-connection"><div class="titlepage"><div><div><h3 class="title">18.11.&nbsp;Changing the connection</h3></div></div></div><p>
+			You can change the current connection inside a script using the command
+			<a class="link" href="wb-commands.html#command-connect" title="29.17.&nbsp;Change the connection for a script - WbConnect"><code class="literal">WbConnect</code></a>.
+		</p></div><div class="section" id="script-display"><div class="titlepage"><div><div><h3 class="title">18.12.&nbsp;Controlling console output during batch execution</h3></div></div></div><p>
+			Any output generated by SQL Workbench/J during batch execution is sent to the standard
+			output (stdout, System.out) and can be redirected if desired.
+		</p><div class="section" id="script-resultset-display"><div class="titlepage"><div><div><h4 class="title">18.12.1.&nbsp;Displaying result sets</h4></div></div></div><p>
+				If you are running <code class="literal">SELECT</code> statements in your script without "consuming"
+				the data through an <a class="link" href="command-export.html" title="20.&nbsp;Export data using WbExport"><code class="literal">WbExport</code></a>,
+				you can optionally display the results to the console using the parameter
+				<code class="literal">-displayResult=true</code>. If this parameter is not passed or set
+				to false, results sets will not be visible. For a <code class="literal">SELECT</code> statement
+				you will simply see the message </p><pre class="screen">SELECT executed successfully</pre><p>
+			</p></div><div class="section" id="cmdline-parameter-feedback"><div class="titlepage"><div><div><h4 class="title">18.12.2.&nbsp;Controlling execution feedback</h4></div></div></div><p>
+				When running statements, SQL Workbench/J reports success or failure
+				of each statement. Inside a SQL script the <a class="link" href="wb-commands.html#command-wbfeedback" title="29.12.&nbsp;Control feedback messages - WbFeedback">WbFeedback</a> command
+				can be used to control this feedback. If you don't want to add a <code class="literal">WbFeedback</code> command
+				to your scripts, you can control the feedback using the <code class="literal">-feedback</code> switch on the
+				command line. Passing <code class="literal">-feedback=false</code> has the same effect as putting a
+				<code class="literal">WbFeedback off</code> in your script.
+			</p><p>
+				As displaying the feedback can be quite some overhead especially when executing
+				thousands of statements in a script file, it is recommended to turn off the result logging
+				using <code class="literal">WbFeedback off</code> or <code class="literal">-feedback=false</code>
+			</p><p>
+				To only log a summary of the script execution (per script file), specify
+				the parameter <code class="literal">-consolidateMessages=true</code>. This will then display
+				the number of statements executed, the number of failed statements and the total
+				number of rows affected (updated, deleted or inserted).
+			</p><p>
+				When using <code class="literal">-feedback=false</code>, informational messages like the total
+				number of statements executed, or a successful connection are not logged either.
+			</p></div><div class="section" id="cmdline-parameter-showtiming"><div class="titlepage"><div><div><h4 class="title">18.12.3.&nbsp;Show timing information</h4></div></div></div><p>
+        The parameter <code class="literal">-showTiming=true</code> can be used to display the execution time of each query.
+        This is applicable for batch and console mode.
+      </p></div><div class="section" id="cmdline-parameter-progress"><div class="titlepage"><div><div><h4 class="title">18.12.4.&nbsp;Controlling statement progress information</h4></div></div></div><p>
+				Several commands (like <code class="literal">WbExport</code>) show progress information in the statusbar.
+				When running in batch mode, this information is usually not shown. When you specify <code class="literal">-showProgress=true</code>
+				these messages will also be displayed on the console.
+			</p></div></div><div class="section" id="script-interactive"><div class="titlepage"><div><div><h3 class="title">18.13.&nbsp;Running batch scripts interactively</h3></div></div></div><p>
+			By default neither parameter prompts nor execution confirmations (<a class="link" href="profiles.html#profile-confirm-updates" title="7.6.8.&nbsp;Confirm updates">"Confirm Updates"</a>)
+			are processed when running in batch mode. If you have batch scripts that contain
+			<a class="link" href="using-variables.html#prompt-variable" title="17.6.&nbsp;Prompting for values during execution">parameter prompts</a> and you want to enter values
+			for the parameters while running the batch file, you have to start SQL Workbench/J
+			using the parameter <code class="literal">-interactive=true</code>.
+		</p></div><div class="section" id="script-vardef"><div class="titlepage"><div><div><h3 class="title">18.14.&nbsp;Defining variables</h3></div></div></div><a name="N12332" class="indexterm"></a><a name="N12338" class="indexterm"></a><p>
+        The definition of variables can be read from a properties file, either by specifying
+        <code class="literal">-file=filename</code> for the <code class="literal">WbVarDef</code> command,
+        or by passing the <code class="literal">-varFile</code> or <code class="literal">-variable</code> parameter when starting SQL Workbench/J.
+        Please see the description for the <a class="link" href="commandline.html#cmdline-vardef" title="5.4.&nbsp;Defining variables">command line parameters</a> for details.
+      </p></div><div class="section" id="script-properties"><div class="titlepage"><div><div><h3 class="title">18.15.&nbsp;Setting configuration properties</h3></div></div></div><a name="N12358" class="indexterm"></a><p>
+			When running SQL Workbench/J in batch mode, with no <code class="literal">workbench.settings</code>
+			file, you can set any property by passing the property as a system property
+			when starting the JVM. To change the loglevel to <code class="literal">DEBUG</code> you need
+			to pass <code class="literal">-Dworkbench.log.level=DEBUG</code> when starting the application:
+		</p><pre class="programlisting">java -Dworkbench.log.level=DEBUG -jar sqlworkbench.jar </pre></div><div class="section" id="scripting-examples"><div class="titlepage"><div><div><h3 class="title">18.16.&nbsp;Examples</h3></div></div></div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td valign="top" align="center" rowspan="2" width="25"><img alt="[Note]" src="./images/note.png"></td><th align="left"></th></tr><tr><td valign="top" align="left"><p>
+			For readability the examples in this section are displayed on several lines. If
+			you enter them manually on the command line you will need to put everything
+			in one line, or use the escape character for your operating system to
+			extend a single command over more then one input line.
+		</p></td></tr></table></div><p><span class="bold"><strong>Connect to the database without specifying a connection profile:</strong></span></p><pre class="programlisting">java -jar sqlworkbench.jar -url=jdbc:postgresql:/dbserver/mydb
+     -driver=org.postgresql.Driver
+     -username=zaphod
+     -password=vogsphere
+     -driverjar=C:/Programme/pgsql/pg73jdbc3.jar
+     -script='test-script.sql'</pre><p id="batch-quote">
+			This will start SQL Workbench/J, connect to the database server
+			as specified in the connection parameters and execute the script
+			<code class="filename">test-script.sql</code>. As the script's filename contains
+			a dash, it has to be quoted. This is also necessary when the filename contains spaces.
+		</p><p><span class="bold"><strong>Executing several scripts with a cleanup and failure script:</strong></span></p><pre class="programlisting">java -jar sqlworkbench.jar
+     -script='c:/scripts/script-1.sql','c:/scripts/script-2.sql',c:/scripts/script3.sql
+     -profile=PostgreSQL
+     -abortOnError=false
+     -cleanupSuccess=commit.sql
+     -cleanupError=rollback.sql</pre><p>
+			Note that you need to quote each file individually (where it's needed) and not the value for the
+			<code class="literal">-script</code> parameter
+		</p><p><span class="bold"><strong>Run a SQL command in batch mode without using a script file</strong></span></p><p>
+			The following example exports the table "person" without using the -script parameter:
+		</p><pre class="programlisting">java -jar sqlworkbench.jar
+     -profile='TestData'
+     -command='WbExport -file=person.txt -type=text -sourceTable=person'</pre><p>
+			The following example shows how to run two different SQL statements without using the -script parameter:
+		</p><pre class="programlisting">java -jar sqlworkbench.jar
+     -profile='TestData'
+     -command='delete from person; commit;'</pre></div></div><div class="navfooter"><hr><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="using-variables.html">Prev</a>&nbsp;</td><td align="center" width="20%">&nbsp;</td><td align="right" width="40%">&nbsp;<a accesskey="n" href="console-mode.html">Next</a></td></tr><tr><td valign="top" align="left" width="40%">17.&nbsp;Variable substitution in SQL statements&nbsp;</td><td align="center" width="20%"><a accesskey="h" href="workbench-manual.html">Home</a></td><td valign="top" align="right" width="40%">&nbsp;19.&nbsp;Using SQL Workbench/J in console mode</td></tr></table></div></body></html>
