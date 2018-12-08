@@ -1,0 +1,149 @@
+<html><head><META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>17.&nbsp;Variable substitution in SQL statements</title><link href="html-publish.css" type="text/css" rel="stylesheet"><meta content="DocBook XSL Stylesheets V1.78.1" name="generator"><link rel="home" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="up" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="prev" href="dbms-specific.html" title="16.&nbsp;DBMS specific features"><link rel="next" href="using-scripting.html" title="18.&nbsp;Using SQL Workbench/J in batch files"><link rel="article" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="subsection" href="using-variables.html#define-variable" title="17.1.&nbsp;Defining variables"><link rel="subsection" href="using-variables.html#vardef-select" title="17.2.&nbsp;Populate a variable from a SELECT statement"><link rel="subsection" href="using-variables.html#vardef-read-content" title="17.3.&nbsp;Populate a variable from a file"><link rel="subsection" href="using-variables.html#edit-variable" title="17.4.&nbsp;Editing variables"><link rel="subsection" href="using-variables.html#access-variable" title="17.5.&nbsp;Using variables in SQL statements"><link rel="subsection" href="using-variables.html#prompt-variable" title="17.6.&nbsp;Prompting for values during execution"><link rel="subsection" href="using-variables.html#sort-var-prompt" title="17.7.&nbsp;Controlling the order of variables during prompting"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">17.&nbsp;Variable substitution in SQL statements</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="dbms-specific.html">Prev</a>&nbsp;</td><th align="center" width="60%">&nbsp;</th><td align="right" width="20%">&nbsp;<a accesskey="n" href="using-scripting.html">Next</a></td></tr></table><hr></div><div class="section" id="using-variables"><div class="titlepage"><div><div><h2 class="title" style="clear: both">17.&nbsp;Variable substitution in SQL statements</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="using-variables.html#define-variable">17.1. Defining variables</a></span></dt><dt><span class="section"><a href="using-variables.html#vardef-select">17.2. Populate a variable from a SELECT statement</a></span></dt><dt><span class="section"><a href="using-variables.html#vardef-read-content">17.3. Populate a variable from a file</a></span></dt><dt><span class="section"><a href="using-variables.html#edit-variable">17.4. Editing variables</a></span></dt><dt><span class="section"><a href="using-variables.html#access-variable">17.5. Using variables in SQL statements</a></span></dt><dt><span class="section"><a href="using-variables.html#prompt-variable">17.6. Prompting for values during execution</a></span></dt><dt><span class="section"><a href="using-variables.html#sort-var-prompt">17.7. Controlling the order of variables during prompting</a></span></dt></dl></div><a name="N11FAD" class="indexterm"></a><div class="section" id="define-variable"><div class="titlepage"><div><div><h3 class="title">17.1.&nbsp;Defining variables</h3></div></div></div><p>
+        You can define variables within SQL Workbench/J that can be referenced in your
+				SQL statements. This is done through the internal command <a class="link" href="wb-var-commands.html#wb-define-var" title="28.1.&nbsp;Define a script variable - WbVarDef"><code class="literal">WbVarDef</code></a>.
+      </p><p>
+				<code class="literal">WbVarDef myvar=42</code> defines a variable with the name <code class="literal">myvar</code> and the value
+        <code class="literal">42</code>. If the variable does not exist, it will be created. If it exists
+        its value will be overwritten with the new value. To remove a variable simply set its value
+        to nothing: <code class="literal">WbVarDef myvar=</code>. Alternatevily you can use the command
+        <code class="literal">WbVarDelete myvar</code> to remove a variable definition.
+      </p><p>
+        Variable substitution is also done within <a class="link" href="macros.html" title="14.&nbsp;Using macros and text clips">Macros</a>. If your macro definition
+        contains a reference to a SQL Workbench/J variable, this will be treated the same way as in regular
+        statements.
+      </p><p>
+        The definition of variables can also be read from a properties file. This can be done by specifying
+        <code class="literal">-file=filename</code> for the <code class="literal">WbVarDef</code> command,
+        or by passing the <code class="literal">-vardef</code> parameter when starting SQL Workbench/J.
+        Please see the description for the <a class="link" href="commandline.html#cmdline-vardef" title="5.4.&nbsp;Defining variables">command line parameters</a>
+        for details.
+      </p><pre class="programlisting">WbVarDef -file=/temp/myvars.def</pre><p>
+        This file has to be a standard Java "properties" file. Each variable
+        is listed on a single line in the format <code class="literal">variable=value</code>.
+        Lines starting with a <code class="literal">#</code> character are ignored (comments). Assuming
+        the file <code class="literal">myvars.def</code> had the following content:
+			</p><pre class="programlisting">#Define the ID that we need later
+var_id=42
+person_name=Dent
+another_variable=24</pre><p>After executing
+      <code class="literal">WbVarDef -file=/temp/myvars.def</code> there would be
+      three variables available in the system:
+      <code class="literal">var_id, person_name, another_variable</code>, that
+			could be used e.g. in a SELECT query:
+    </p><pre class="programlisting">SELECT * FROM person where name='$[person_name]' or id=$[var_id];</pre><p>
+      SQL Workbench/J would expand the variables and send the following statement to the server:
+    </p><pre class="programlisting">SELECT * FROM person where name='Dent' or id=42;</pre></div><div class="section" id="vardef-select"><div class="titlepage"><div><div><h3 class="title">17.2.&nbsp;Populate a variable from a SELECT statement</h3></div></div></div><a name="N12017" class="indexterm"></a><p>
+      A variable can also be defined as the result of a <code class="literal">SELECT</code> statement. This indicated
+      by using @ as the first character after the equal sign. The <code class="literal">SELECT</code> needs
+      to be enclosed in double quotes, if you are using single quotes e.g. in the where clause:
+    </p><pre class="programlisting">WbVarDef myvar=@"SELECT id FROM person WHERE name='Dent'"</pre><p>
+      If the <code class="literal">SELECT</code> returns more than one column, multiple variables can be defined
+      by specifying a comma separated list of variable names. The following statement will define the
+      variables <code class="literal">id</code> and <code class="literal">name</code> based on the values returned from the <code class="literal">SELECT</code>
+      statement:
+    </p><pre class="programlisting">WbVarDef id,name=@"SELECT id,firstname FROM person WHERE lastname='Dent'"</pre><p>
+      When executing the statement, SQL Workbench/J only retrieves the first row of
+      the result set. Subsequent rows are ignored. If the select returns more columns than
+      variable names, the additional values are ignored. If more variables are listed
+      than columns are present in the result set, the additional variables will be undefined.
+    </p></div><div class="section" id="vardef-read-content"><div class="titlepage"><div><div><h3 class="title">17.3.&nbsp;Populate a variable from a file</h3></div></div></div><a name="N12045" class="indexterm"></a><p>
+      A variable can also be defined by reading the content of a file (this is different from
+      reading the variable definition from a file).
+    </p><pre class="programlisting">WbVarDef -variable=somevar -contentFile=/temp/mydata.txt</pre><p>
+      When executing the statement, SQL Workbench/J will read the content of the file <code class="literal">mydata.txt</code>
+      and use that as the value for the variable <code class="literal">somevar</code>.
+    </p><p>
+      If the file contents contains references to variables, these are replaced after the content as been loaded.
+      To disable replacement, use the parameter <code class="literal">-replaceVars=false</code>.
+    </p><p>
+      Consider the following sequence of statements, where the file <code class="literal">select.txt</code>
+      contains the statement <code class="literal">SELECT * FROM person WHERE id = $[person_id]</code>
+    </p><pre class="programlisting">
+WbVarDef person_id=42;
+WbVarDef -variable=my_select -contentFile=select.txt;
+$[my_select];</pre><p>
+      After running the above script, the variable <code class="literal">my_select</code>, will have the value of <code class="literal">SELECT * FROM person WHERE id = 42</code>.
+      When "running" <code class="literal">$[my_select]</code>, the row with id=42 will be retrieved.
+    </p></div><div class="section" id="edit-variable"><div class="titlepage"><div><div><h3 class="title">17.4.&nbsp;Editing variables</h3></div></div></div><a name="N1207F" class="indexterm"></a><p>
+      To view a list of currently defined variables execute the command <code class="literal">WbVarList</code>.
+      This will display a list of currently defined variables and their values. You can edit
+      the resulting list similar to editing the result of a <code class="literal">SELECT</code> statement.
+      You can add new variables by adding a row to the result, remove existing variables by deleting
+      rows from the result, or edit the value of a variable.
+      If you change the name of a variable, this is the same as removing the old, and
+      creating a new one.
+    </p></div><div class="section" id="access-variable"><div class="titlepage"><div><div><h3 class="title">17.5.&nbsp;Using variables in SQL statements</h3></div></div></div><a name="N12093" class="indexterm"></a><p>
+      The defined variables can be used by enclosing them in special characters inside the SQL
+      statement. The default is set to <code class="literal">$[</code> and <code class="literal">]</code>, you can use a variable this way:
+    </p><pre class="programlisting">SELECT firstname, lastname FROM person WHERE id=$[id_variable];</pre><p>
+      If you have a variable with the name <code class="literal">id_variable</code> defined, the sequence
+      <code class="literal">$[id_variable]</code> will be replaced with the current value of the
+      variable.
+     </p><p>
+      Variables will be replaced <span class="emphasis"><em>after</em></span> replacing
+      macro <a class="link" href="macros.html#macro-parameters">parameters</a>.
+    </p><p>
+      If the SQL statement requires quotes for the SQL literal, you can either put
+      the quotes into the value of the variable (e.g. <code class="literal">WbVarDef name="'Arthur'"</code>)
+      or you put the quotes around the variable's placeholder, e.g.: <code class="literal">WHERE name='$[name]';</code>
+    </p><div class="important" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Important"><tr><td valign="top" align="center" rowspan="2" width="25"><img alt="[Important]" src="./images/important.png"></td><th align="left"></th></tr><tr><td valign="top" align="left"><p>
+        Variables will be replaced inside string literals (e.g. <code class="literal">'$[foo]'</code>)
+        and comments (e.g. <code class="literal">-- $[foo]</code> or <code class="literal">/* $[foo] */</code>)
+      </p></td></tr></table></div><p>
+      If you are using values in your regular statements that actually need the prefix (<code class="literal">$[</code> or
+      suffix <code class="literal">]</code>) characters, please make sure that you have no variables defined.
+      Otherwise you will have unpredictable results. If you want to use variables but need to use
+      the default prefix for marking variables in your statements, you can configure a different
+      prefix and suffix for flagging variables. To change the prefix e.g. to <code class="literal">%#</code> and
+      the suffix (i.e end of the variable name) to <code class="literal">#</code>, add the following lines to
+      your <code class="literal">workbench.settings</code> file:
+    </p><pre class="programlisting">workbench.sql.parameter.prefix=%#
+workbench.sql.parameter.suffix=#</pre><p>
+      You may leave the suffix empty, but the prefix definition may not be empty.
+    </p></div><div class="section" id="prompt-variable"><div class="titlepage"><div><div><h3 class="title">17.6.&nbsp;Prompting for values during execution</h3></div></div></div><a name="N120F1" class="indexterm"></a><p>
+      You can also use variables in a way that SQL Workbench/J will prompt you
+      during execution of a SQL statement that contains a variable.
+    </p><p>
+      If you want to be prompted for a value, simply reference the value with a quotation mark
+      in front of its name:
+    </p><pre class="programlisting">SELECT id FROM person WHERE name like '$[?search_name]%'</pre><p>
+      If you execute this statement, SQL Workbench/J will prompt you for the value
+      of the variable <code class="literal">search_name</code>. If the variable is already defined
+      you will see the current value of the variable. If the variable is not yet defined
+      it will be implicitly defined with an empty value.
+    </p><p>
+      If you use a variable more then once in your statement it is sufficient to
+      define it once as a prompt variable. Prompting for a variable value is especially
+      useful inside a macro definition.
+    </p><p>
+      You can also define a conditional prompt with using an ampersand instead of
+      a quotation mark. In this case you will only be prompted if no value is assigned
+      for the variable:
+    </p><pre class="programlisting">SELECT id FROM person WHERE name like '$[&amp;search_name]%'</pre><p>
+      The first time you execute this statement (and no value has been assigned to <code class="literal">search_name</code>
+      before using <code class="literal">WBVARDEF</code> or on the command line) you will be prompted for a value for
+      <code class="literal">search_name</code>. Any subsequent execution of the statement (or any other
+      statement referencing <code class="literal">$[&amp;search_name]</code>) will re-use the value
+      you entered.
+    </p><p>
+      When defining a variable, you can specify a list of values that should be entered in the dialog.
+    </p><pre class="programlisting">WbVardef -variable=status -values='active,pending,closed';</pre></div><div class="section" id="sort-var-prompt"><div class="titlepage"><div><div><h3 class="title">17.7.&nbsp;Controlling the order of variables during prompting</h3></div></div></div><p>
+      By default the variables shown in the prompt dialog are sorted alphabetically. This behavior can be
+      changed by setting the configuration property <code class="literal">workbench.sql.parameter.prompt.sort</code> to true,
+      e.g. using <a class="link" href="wb-commands.html#command-setconfig" title="29.22.&nbsp;Change an internal configuration parameter - WbSetConfig">WbSetConfig</a>
+      </p><pre class="programlisting">WbSetConfig workbench.sql.parameter.prompt.sort=false</pre><p>
+    </p><p>
+      If the property is set to <code class="literal">false</code>, the variables are shown in the order they were
+      declared:
+      </p><pre class="programlisting">
+WbVarDef zzz='';
+WbVarDef vvv='';
+WbVarDef aaa='';
+
+select *
+from foobar
+where col1 = $[?aaa]
+  and col2 = $[?vvv]
+  and col3 &gt; $[?zzz]</pre><p>
+  The dialog to enter the variables will show them in the order <code class="literal">zzz</code>, <code class="literal">vvv</code>, <code class="literal">aaa</code>
+    </p></div></div><div class="navfooter"><hr><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="dbms-specific.html">Prev</a>&nbsp;</td><td align="center" width="20%">&nbsp;</td><td align="right" width="40%">&nbsp;<a accesskey="n" href="using-scripting.html">Next</a></td></tr><tr><td valign="top" align="left" width="40%">16.&nbsp;DBMS specific features&nbsp;</td><td align="center" width="20%"><a accesskey="h" href="workbench-manual.html">Home</a></td><td valign="top" align="right" width="40%">&nbsp;18.&nbsp;Using SQL Workbench/J in batch files</td></tr></table></div></body></html>
