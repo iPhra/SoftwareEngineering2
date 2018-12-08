@@ -1,0 +1,261 @@
+<html><head><META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>9.&nbsp;Editing SQL Statements</title><link href="html-publish.css" type="text/css" rel="stylesheet"><meta content="DocBook XSL Stylesheets V1.78.1" name="generator"><link rel="home" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="up" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="prev" href="workspace-usage.html" title="8.&nbsp;Using workspaces"><link rel="next" href="editor-bookmarks.html" title="10.&nbsp;Working with bookmarks"><link rel="article" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="subsection" href="editor.html#editing-files" title="9.1.&nbsp;Editing files"><link rel="subsection" href="editor.html#command-completion" title="9.2.&nbsp;Code completion"><link rel="subsection" href="editor.html#insert-value-hinting" title="9.3.&nbsp;Show hints for INSERT statements"><link rel="subsection" href="editor.html#editor-custom-keywords" title="9.4.&nbsp;Customizing keyword highlighting"><link rel="subsection" href="editor.html#editor-reformat-sql" title="9.5.&nbsp;Reformat SQL"><link rel="subsection" href="editor.html#editor-make-in-list" title="9.6.&nbsp;Create SQL value lists"><link rel="subsection" href="editor.html#editor-java-tools" title="9.7.&nbsp;Programming related editor functions"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">9.&nbsp;Editing SQL Statements</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="workspace-usage.html">Prev</a>&nbsp;</td><th align="center" width="60%">&nbsp;</th><td align="right" width="20%">&nbsp;<a accesskey="n" href="editor-bookmarks.html">Next</a></td></tr></table><hr></div><div class="section" id="editor"><div class="titlepage"><div><div><h2 class="title" style="clear: both">9.&nbsp;Editing SQL Statements</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="editor.html#editing-files">9.1. Editing files</a></span></dt><dt><span class="section"><a href="editor.html#command-completion">9.2. Code completion</a></span></dt><dt><span class="section"><a href="editor.html#insert-value-hinting">9.3. Show hints for INSERT statements</a></span></dt><dt><span class="section"><a href="editor.html#editor-custom-keywords">9.4. Customizing keyword highlighting</a></span></dt><dt><span class="section"><a href="editor.html#editor-reformat-sql">9.5. Reformat SQL</a></span></dt><dt><span class="section"><a href="editor.html#editor-make-in-list">9.6. Create SQL value lists</a></span></dt><dt><span class="section"><a href="editor.html#editor-java-tools">9.7. Programming related editor functions</a></span></dt></dl></div><div class="section" id="editing-files"><div class="titlepage"><div><div><h3 class="title">9.1.&nbsp;Editing files</h3></div></div></div><p>You can load and save the editor's content into external files (e.g. for re-using)
+			them in other SQL tools.
+		</p><p>
+			To load a file use <span class="guimenu">File</span> &rarr; <span class="guimenuitem">Open...</span>
+			or right click on the tab's label and choose <span class="guimenuitem">Open...</span> from the popup
+			menu.
+		</p><p>
+			The association between an editor tab and the external file will be saved
+			in the workspace that is used for the current connection. When opening the
+			workspace (e.g. by connecting using a profile that is linked to that workspace) the
+			external file will be loaded as well.
+		</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td valign="top" align="center" rowspan="2" width="25"><img alt="[Note]" src="./images/note.png"></td><th align="left"></th></tr><tr><td valign="top" align="left"><p>
+			If you want to run very large SQL scripts (e.g. over 15MB) it is recommended
+			to execute them using <a class="link" href="wb-commands.html#command-wbinclude" title="29.5.&nbsp;Execute a SQL script - WbInclude (@)">WbInclude</a> rather
+			than loading them completely into the editor. <code class="literal">WbInclude</code>
+			will not load the script into memory, thus you can even run scripts that would not fit into memory.
+		</p></td></tr></table></div></div><div class="section" id="command-completion"><div class="titlepage"><div><div><h3 class="title">9.2.&nbsp;Code completion</h3></div></div></div><p>
+			The editor can show a popup window with a list of available tables (and views) or
+			a list of available columns for a table. Which list is displayed depends on the position
+			of the cursor inside the statement.
+		</p><p>
+			If the cursor is located in the column list of a <code class="literal">SELECT</code> statement
+			and the <code class="literal">FROM</code> part already contains the necessary tables, the window
+			will show the columns available in the table. Assuming you are editing the following
+			statement ( the <code class="literal">|</code> indicating the position of the caret):
+		</p><pre class="programlisting">SELECT p.|, p.firstname, a.zip, a.city
+FROM person p
+  JOIN address a ON p.id = a.person_id;</pre><p>
+			then pressing the <span class="keycap"><strong>Ctrl-Space</strong></span> key will show a list of columns available
+			in the <code class="literal">PERSON</code> table (because the cursor is located after the <code class="literal">p.</code>
+			alias). If you put the cursor after the <code class="literal">a.city</code> column and press the
+			<span class="keycap"><strong>Ctrl-Space</strong></span> the popup window will list the two tables that are referenced
+			in the <code class="literal">FROM</code> part of the statement. The behavior when editing the
+			<code class="literal">WHERE</code> part of an statement is similar.
+		</p><p>
+			When editing the list of tables in the <code class="literal">FROM</code> part of the statement,
+			pressing the <span class="keycap"><strong>Ctrl-Space</strong></span> will pop up a list of available tables.
+		</p><p>
+      If the cursor is located inside the assignment of an <code class="literal">UPDATE</code> statement (<code class="literal">set foo = |, </code>)
+      or in the <code class="literal">VALUES</code> part of an <code class="literal">INSERT</code> statement, the popup will contain
+      an item <code class="literal">(Select FK value)</code>. When selecting this item <a class="link" href="using-fk.html#edit-fk-lookup" title="15.3.1.&nbsp;Editing foreign key values">the dialog</a>
+      to select a value from a referenced table will be displayed if the current column is referencing another
+      table. For performance reasons the check if the current column is referencing another table is only
+      done <span class="emphasis"><em>after</em></span> the item has been selected. If no foreign key could be found, a message
+      is displayed in the status bar.
+    </p><p>
+			The editor assumes that the standard semicolon is used to separate statements when doing auto-completion
+      or using the "Execute current" function. This can be changed to a non-standard behaviour through
+      the <a class="link" href="options.html#options-empty-line-delimiter" title="Allow empty lines as statement delimiter">options dialog </a> so that the editor also recognizes empty
+      lines as a statement delimiter.
+		</p><p>
+			Parameters for SQL Workbench/J specific commands are also supported by the command completion.
+			The parameters will only be shown, if you have already typed the leading dash, e.g.
+			<code class="literal">WbImport -</code>. If you press the shortcut for the command completion while
+			the cursor is located after the dash, a list of available options for the current comand is
+			shown. Once the parameter has been added, you can display a list of possible values
+			for the parameter if the cursor is located after the equals sign.
+			for <code class="literal">WbImport -mode=</code> will display a list of allowed values for the
+			<code class="literal">-mode</code> parameter. For parameters where table names can be supplied
+			the usual table list will be shown.
+		</p></div><div class="section" id="insert-value-hinting"><div class="titlepage"><div><div><h3 class="title">9.3.&nbsp;Show hints for INSERT statements</h3></div></div></div><p>
+      When writing (long) <code class="literal">INSERT</code> statements it is often helpful to check if a specific value
+      is actually written into the intended column. To check the column a value corresponds to (or the vice versa),
+      press <span class="keycap"><strong>Ctrl-#</strong></span> while in the column or values list. A tool tip will appear to show the corresponding
+      element from the "other" part of the statement. Consider the following statement:
+    </p><pre class="programlisting">
+INSERT INTO some_table (column1, column2, column3)
+VALUES
+('hello', 'world', 42, 'foobar');
+</pre><p>
+      When the cursor is located at <code class="literal">column1</code>, pressing <span class="keycap"><strong>Ctrl-#</strong></span> will show a tool tip containing the text
+      <code class="literal">'hello'</code> as that is the value that corresponds to column1. When the cursor is located at the number <code class="literal">42</code>
+      pressing <span class="keycap"><strong>Ctrl-#</strong></span> will show the text <code class="literal">column3</code> in the tool tip.
+    </p><p>
+      When no matching column or value can be found, the tool tip will contain a hint that the "other" element is missing.
+    </p><p>
+      If the values inserted are the result of a <code class="literal">SELECT</code> statement, the tool tip in the
+      insert column list will show the corresponding column name from the SELECT statement.
+    </p></div><div class="section" id="editor-custom-keywords"><div class="titlepage"><div><div><h3 class="title">9.4.&nbsp;Customizing keyword highlighting</h3></div></div></div><p>
+			The keywords that the editor can highlight are based on an internal list of keywords
+			and information obtained from the JDBC driver. You can extend the list of known keywords
+			using text files located in the <a class="link" href="install.html#config-dir" title="4.7.&nbsp;Configuration directory">config directory</a>.
+		</p><p>
+			SQL Workbench/J reads four different types of keywords: regular keywords (e.g. SELECT),
+			data types (e.g. VARCHAR), functions (e.g. upper()) and operators (e.g. JOIN). Each keyword type
+			is read from a separate file: <code class="literal">keywords.wb</code>, <code class="literal">datatypes.wb</code>,
+			<code class="literal">functions.wb</code> and <code class="literal">operators.wb</code>.
+		</p><p>
+			The files contain one keyword per line. Case does not matter (<code class="literal">SELECT</code>
+			and <code class="literal">select</code> are treated identically).
+			If you want to add a specific word to the list of global keywords, simply create a plain
+			text file <code class="literal">keywords.wb</code> in the <a class="link" href="install.html#config-dir" title="4.7.&nbsp;Configuration directory">config directory</a>
+			and put one keyword per line into the file, e.g:
+		</p><pre class="programlisting">ALIAS
+ADD
+ALTER</pre><p>
+			If you want to define keywords specific for a DBMS, you need to add the <a class="link" href="settings.html#dbid" title="37.1.&nbsp;DBID">DBID</a>
+			as a prefix to the filename, e.g. <code class="literal">oracle.datatypes.wb</code>.
+		</p><p>
+			To add the word <code class="literal">geometry</code> as a datatype for the editor when connected to a PostgreSQL
+			database, create the file <code class="literal">postgresql.datatypes.wb</code> in the config directory with the
+			following contents:</p><pre class="programlisting">geometry</pre><p>
+			The words defined for a specific database are added to the globally recognized keywords, so you
+			don't need to repeat all existing words in the file.
+		</p><p>
+			The color for each type of keyword can be changed in the options dialog.
+		</p></div><div class="section" id="editor-reformat-sql"><div class="titlepage"><div><div><h3 class="title">9.5.&nbsp;Reformat SQL</h3></div></div></div><p>When you analyze statements from e.g. a log file, they are not necessarily formatted in a way that
+			can be easily read, let alone understood. The editor of the SQL Workbench/J can reformat SQL statements
+			into a format that's easier to read and understand for a human being. This feature is often called pretty-printing.
+			Suppose you have the following statement (pasted from a log file)
+		</p><pre class="programlisting">select user.* from user, user_profile, user_data
+where user.user_id = user_profile.user_id and
+user_profile.user_id = uprof.user_id and user_data.user_role = 1
+and user_data.delete_flag = 'F' and not exists
+(select 1 from data_detail where data_detail.id = user_data.id and
+data_detail.flag = 'X' and data_detail.value &gt; 42)</pre><p>this will be reformatted to look like this:</p><pre class="programlisting">SELECT user.*
+FROM user,
+     user_profile,
+     user_data
+WHERE user.user_id = user_profile.user_id
+AND   user_profile.user_id = uprof.user_id
+AND   user_data.user_role = 1
+AND   user_data.delete_flag = 'F'
+AND   NOT EXISTS (SELECT 1
+                  FROM data_detail
+                  WHERE data_detail.id = user_data.id
+                  AND   data_detail.flag = 'x'
+                  AND   data_detail.value &gt; 42)</pre><p>You can configure a threshold up to which sub-<code class="literal">SELECT</code>s will not be reformatted but
+			put into one single line. The default for this threshold is 80 characters. Meaning that any
+			subselect that is shorter than 80 characters will not be reformatted as the sub-<code class="literal">SELECT</code>
+			in the above example. Please refer to <a class="link" href="options.html#options-sql-formatting" title="35.17.&nbsp;SQL Formatting">Formatting options</a> for details.
+		</p></div><div class="section" id="editor-make-in-list"><div class="titlepage"><div><div><h3 class="title">9.6.&nbsp;Create SQL value lists</h3></div></div></div><p>
+			Sometimes when you Copy &amp; Paste lines of text from e.g. a spreadsheet, you might want to use those values
+			as a condition for a SQL <code class="literal">IN</code> expression. Suppose you a have a list of ID's in your
+			spreadsheet each in one row of the same column. If you copy and paste this into the editor, each ID
+			will be put on a separate line.
+			If you select the text, and then choose <span class="guimenu">SQL</span> &rarr; <span class="guimenuitem">Code tools</span> &rarr; <span class="guimenuitem">Create SQL List</span>
+			the selected text will be converted into a format that can be used as an expression for an <code class="literal">IN</code> condition:
+		</p><pre class="programlisting">Dent
+Beeblebrox
+Prefect
+Trillian
+Marvin
+</pre><p>will be converted to:</p><pre class="programlisting">('Dent',
+ 'Beeblebrox',
+ 'Trillian',
+ 'Prefect',
+ 'Marvin')</pre><p>
+			The function <span class="guimenu">SQL</span> &rarr; <span class="guimenuitem">Code tools</span> &rarr; <span class="guimenuitem">Create non-char SQL List</span>
+			is basically the same. The only difference is, that it assumes that each item in the list is a numeric value, and no
+			single quotes are placed around the values.
+		</p><p>The following list:</p><pre class="programlisting">42
+43
+44
+45</pre><p>will be converted to:</p><pre class="programlisting">(42, 43, 44, 45)</pre><p>
+			These two functions will only be available when text is selected which spans
+			more then one line.
+		</p></div><div class="section" id="editor-java-tools"><div class="titlepage"><div><div><h3 class="title">9.7.&nbsp;Programming related editor functions</h3></div></div></div><p>
+			The editor of the SQL Workbench/J offers two functions to aid in developing
+			SQL statements which should be used inside your programming language (e.g. for SQL statements inside a Java program).
+		</p><div class="section" id="editor-copy-java-code-snippet"><div class="titlepage"><div><div><h4 class="title">9.7.1.&nbsp;Copy Code Snippet</h4></div></div></div><p>
+				Suppose you have created the SQL statement that you wish to use inside
+				your application to access your DBMS. The menu item <span class="guimenu">SQL</span> &rarr; <span class="guimenuitem">Code tools</span> &rarr; <span class="guimenuitem">Copy Code Snippet</span>
+				will create a piece of code that defines a String variable which contains the current SQL statement (or
+				the currently selected statement if any text is selected).
+			</p><p>If you have the following SQL statement in your editor:</p><pre class="programlisting">SELECT p.name,
+       p.firstname,
+       a.street,
+       a.zipcode,
+       a.phone
+FROM person p,
+     address a
+WHERE p.person_id = a.person_id;</pre><p>When copying the code snippet, the following text will be placed into the clipboard</p><pre class="programlisting">
+String sql="SELECT p.name, \n" +
+"       p.firstname, \n" +
+"       a.street, \n" +
+"       a.zipcode, \n" +
+"       a.phone \n" +
+"FROM person p, \n" +
+"     address a \n" +
+"WHERE p.person_id = a.person_id; \n";</pre><p>You can now paste this code into your application.</p><p>
+				If you don't like the <code class="literal">\n</code> character in
+				your code, you can disable the generation of the newline characters
+				in you <code class="literal">workbench.settings</code> file.
+				See <a class="link" href="settings.html#manual-setting-snippet-no-newline" title="Controlling newlines in code snippets">Manual settings</a>
+				for details. You can also customize the <a class="link" href="settings.html#manual-setting-snippet-prefix" title="Controlling the prefix for code snippets">prefix</a> (<code class="literal">String sql =</code>) and
+				the <a class="link" href="settings.html#manual-setting-snippet-concat" title="Controlling the concatenation character for code snippets">concatenation character</a> that is used,
+				in order to support the programming language that you use.
+			</p></div><div class="section" id="editor-clean-java-code"><div class="titlepage"><div><div><h4 class="title">9.7.2.&nbsp;Clean Java code</h4></div></div></div><p>
+				When using the <a class="xref" href="editor.html#editor-copy-java-code-snippet" title="9.7.1.&nbsp;Copy Code Snippet">Copy Code Snippet</a> feature during
+				development, the SQL statement usually needs refinement after testing the Java class.
+				You can Copy &amp; Paste the generated Java code into SQL Workbench/J, then when you select
+				the pasted text, and call <span class="guimenu">SQL</span> &rarr; <span class="guimenuitem">Code tools</span> &rarr; <span class="guimenuitem">Clean Java Code</span>
+				the selected text will be "cleaned" from the Java stuff around it. The algorithm behind that is as
+				follows: remove everything up to the first " at the beginning of the line. Delete everything
+				up to the first " searching backwards from the end of the line. Any trailing white-space including
+				escaped characters such as \n will be removed as well. Lines starting with // will be converted to
+				SQL single line comments starting with -- (keeping existing quotes!). The following code:
+			</p><pre class="programlisting">String sql="SELECT p.name, \n" +
+"       p.firstname, \n" +
+"       a.street, \n" +
+//"       a.county, \n" +
+"       a.zipcode, \n" +
+"       a.phone \n" +
+"FROM person p, \n" +
+"     address a \n" +
+"WHERE p.person_id = a.person_id; \n"</pre><p>will be converted to:</p><pre class="programlisting">SELECT p.name,
+       p.firstname,
+       a.street,
+--"       a.county, " +
+       a.zipcode,
+       a.phone
+FROM person p,
+     address a
+WHERE p.person_id = a.person_id;</pre></div><div class="section" id="editor-prepared-statement"><div class="titlepage"><div><div><h4 class="title">9.7.3.&nbsp;Support for prepared statements</h4></div></div></div><p>
+				For better performance Java applications usually make use of
+				<a class="ulink" href="http://java.sun.com/javase/7/docs/api/java/sql/PreparedStatement.html" target="_blank">prepared statements</a>.
+				The SQL for a prepared statement does not contain the actual values that should be used e.g.
+				in the WHERE clause, but uses quotation marks instead. Let's assume the above example should be
+				enhanced to retrieve the person information for a specific ID. The code could look like
+				this:
+			</p><pre class="programlisting">String sql="SELECT p.name, \n" +
+"       p.firstname, \n" +
+"       a.street, \n" +
+"       a.zipcode, \n" +
+"       a.phone \n" +
+"FROM person p, \n" +
+"     address a \n" +
+"WHERE p.person_id = a.person_id; \n" +
+"  AND p.person_id = ?";</pre><p>
+				You can copy and <a class="link" href="editor.html#editor-clean-java-code" title="9.7.2.&nbsp;Clean Java code">clean</a> the SQL statement
+				but you will not be able to execute it, because there is no value available for the parameter
+				denoted by the question mark. To run this kind of statements, you need to enable the prepared statement
+				detection using <span class="guimenu">SQL</span> &rarr; <span class="guimenuitem">Settings</span> &rarr; <span class="guimenuitem">Detect prepared statements</span>
+			</p><p>
+				Once the prepared statement detection is enabled, SQL Workbench/J will examine
+				each statement to check whether it is a prepared statement. This examination
+				is delegated to the JDBC driver and does cause some overhead when running the statement.
+				For performance reasons you should disable the detection, if you are not using
+				prepared statements in the editor (especially when running large scripts).
+			</p><p>If a prepared statement is detected, you will be prompted to enter a value for each defined
+				parameter. The dialog will list all parameters of the statement together with their type as returned
+				by the JDBC driver. Once you have entered a value for each parameter, clicking OK
+				will execute the statement using those values. When you execute the SQL statement
+				the next time, the old values will be preserved, and you can either use them again
+				or modify them before running the statement.
+			</p><p>Once you are satisfied with your SQL statement, you can <a class="link" href="editor.html#editor-copy-java-code-snippet" title="9.7.1.&nbsp;Copy Code Snippet">copy</a>
+				the statement and paste the Java code into your program.
+			</p><p>Prepared statements are supported for <code class="literal">SELECT</code>, <code class="literal">INSERT</code>,
+				<code class="literal">UPDATE</code> and <code class="literal">DELETE</code> statements.
+			</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td valign="top" align="center" rowspan="2" width="25"><img alt="[Note]" src="./images/note.png"></td><th align="left"></th></tr><tr><td valign="top" align="left"><p>
+					This feature requires that the <a class="ulink" href="http://java.sun.com/javase/7/docs/api/java/sql/ParameterMetaData.html#getParameterCount()" target="_blank">getParameterCount()</a> and
+					<a class="ulink" href="http://java.sun.com/javase/7/docs/api/java/sql/ParameterMetaData.html#getParameterType(int)" target="_blank">getParameterType()</a>
+					methods of the <code class="literal">ParameterMetaData</code> class are implemented by the JDBC driver and return the correct
+					information about the available parameters.
+				</p></td></tr></table></div><p>The following drivers have been found to support (at least partially) this feature:
+				</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><a class="ulink" href="http://www.postgresql.org" target="_blank">PostgreSQL</a>, driver version 8.1-build 405</li><li class="listitem"><a class="ulink" href="http://www.h2database.com" target="_blank">H2 Database Engine</a>, Version 1.0.73</li><li class="listitem"><a class="ulink" href="http://db.apache.org/derby/" target="_blank">Apache Derby</a>, Version 10.2</li><li class="listitem"><a class="ulink" href="http://www.firebirdsql.org/" target="_blank">Firebird SQL</a>, Jaybird 2.0 driver</li><li class="listitem"><a class="ulink" href="http://hsqldb.sourceforge.net" target="_blank">HSQLDB</a>, version 1.8.0</li></ul></div><p>
+			</p><p>
+				Drivers known to <span class="bold"><strong>not</strong></span> support this feature:
+				</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">Oracle 11g driver (<code class="literal">ojdbc6.jar</code>, <code class="literal">ojdbc7.jar</code>)</li><li class="listitem">Microsoft SQL Server 2000/2005 driver (<code class="literal">sqljdbc4.jar</code>)</li></ul></div><p>
+			</p></div></div></div><div class="navfooter"><hr><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="workspace-usage.html">Prev</a>&nbsp;</td><td align="center" width="20%">&nbsp;</td><td align="right" width="40%">&nbsp;<a accesskey="n" href="editor-bookmarks.html">Next</a></td></tr><tr><td valign="top" align="left" width="40%">8.&nbsp;Using workspaces&nbsp;</td><td align="center" width="20%"><a accesskey="h" href="workbench-manual.html">Home</a></td><td valign="top" align="right" width="40%">&nbsp;10.&nbsp;Working with bookmarks</td></tr></table></div></body></html>

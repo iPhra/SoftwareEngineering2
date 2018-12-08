@@ -2,14 +2,76 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a14b45b-392b-4467-8519-f46c515ef585" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/NodeJS/settings/users.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodeJS/.idea/jsLibraryMappings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NodeJS/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/NodeJS/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NodeJS/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/NodeJS/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NodeJS/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/NodeJS/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NodeJS/routes/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/NodeJS/routes/auth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NodeJS/schemas/schemas.js" beforeDir="false" afterPath="$PROJECT_DIR$/NodeJS/schemas/schemas.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NodeJS/settings/mailer.js" beforeDir="false" afterPath="$PROJECT_DIR$/NodeJS/settings/mailer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Info.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/SQLWorkbench-Manual.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/history.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/manual/annotations.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/manual/command-copy.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/manual/command-export.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/manual/command-import.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/manual/commandline.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/manual/compare-commands.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/manual/console-mode.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/manual/data-pumper.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/manual/db-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/manual/dbexplorer.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/manual/dbms-problems.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/manual/dbms-specific.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/manual/editor-bookmarks.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/manual/editor.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/manual/history.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/manual/html-publish.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/manual/images/append_result16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/manual/images/caution.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/manual/images/caution.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/manual/images/colfilter16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/manual/images/copy-profile16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/manual/images/delete16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/manual/images/execute_sel16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/manual/images/filter16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/manual/images/folder_new16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/manual/images/important.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/manual/images/important.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/manual/images/new-profile16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/manual/images/note.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/manual/images/note.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/manual/images/open16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/manual/information.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/manual/install.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/manual/ix01.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/manual/jdbc-setup.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/manual/license.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/manual/macros.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/manual/options.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/manual/plain-profile-file.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/manual/profiles.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/manual/script-generation.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/manual/settings.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/manual/shortcuts.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/manual/troubleshooting.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/manual/understand-alternate-delim.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/manual/using-fk.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/manual/using-scripting.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/manual/using-variables.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/manual/using.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/manual/wb-commands.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/manual/wb-grep-commands.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/manual/wb-info-commands.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/manual/wb-macro-commands.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/manual/wb-var-commands.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/manual/workbench-manual-single.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/manual/workbench-manual.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/manual/workspace-usage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Java/sqlworkbench.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/MacOS/JavaAppLauncher" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/PkgInfo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Resources/Workbench.icns" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DB/SQLWorkbenchJ.app/Contents/Resources/en.lproj/Localizable.strings" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NodeJS/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/NodeJS/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NodeJS/settings/users.json" beforeDir="false" afterPath="$PROJECT_DIR$/NodeJS/settings/users.json" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -25,17 +87,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/NodeJS/bin/www">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-526">
+            <state relative-caret-position="442">
               <caret line="26" column="14" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/NodeJS/routes/auth.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
-              <caret line="179" selection-start-line="179" selection-end-line="179" />
+            <state relative-caret-position="170">
+              <caret line="10" selection-start-line="10" selection-end-line="10" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -43,20 +105,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_CONFIG_DIR$/javascript/nodejs/8.12.0/node-typings/node_modules/@types/node/index.d.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="167">
-              <caret line="98" column="4" selection-start-line="98" selection-start-column="4" selection-end-line="98" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/NodeJS/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" selection-start-line="11" selection-end-line="11" />
+            <state relative-caret-position="238">
+              <caret line="14" selection-start-line="14" selection-end-line="14" />
             </state>
           </provider>
         </entry>
@@ -73,7 +126,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/NodeJS/routes/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
+            <state relative-caret-position="85">
               <caret line="5" selection-start-line="5" selection-end-line="5" />
             </state>
           </provider>
@@ -82,7 +135,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/NodeJS/settings/mailer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
+            <state relative-caret-position="289">
               <caret line="17" selection-start-line="17" selection-end-line="17" />
             </state>
           </provider>
@@ -91,7 +144,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/NodeJS/schemas/schemas.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
+            <state relative-caret-position="459">
               <caret line="27" column="2" selection-start-line="27" selection-start-column="2" selection-end-line="27" selection-end-column="2" />
             </state>
           </provider>
@@ -100,7 +153,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/NodeJS/settings/dbconnection.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
+            <state relative-caret-position="204">
               <caret line="12" column="2" selection-start-line="12" selection-start-column="2" selection-end-line="12" selection-end-column="2" />
             </state>
           </provider>
@@ -149,7 +202,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="44" />
     <option name="y" value="23" />
     <option name="width" value="1396" />
@@ -161,6 +214,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -183,12 +237,12 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="javascript.nodejs.core.library.configured.version" value="8.12.0" />
+    <property name="javascript.nodejs.core.library.configured.version" value="10.13.0" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -233,7 +287,8 @@
       <workItem from="1544110463065" duration="7615000" />
       <workItem from="1544171005345" duration="14705000" />
       <workItem from="1544203380924" duration="4753000" />
-      <workItem from="1544214358051" duration="5350000" />
+      <workItem from="1544214358051" duration="5508000" />
+      <workItem from="1544272035117" duration="449000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;Created first draft&quot;">
       <created>1543918835888</created>
@@ -277,24 +332,31 @@
       <option name="project" value="LOCAL" />
       <updated>1544193647201</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Complete authManager">
+      <created>1544221269852</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1544221269852</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38969000" />
+    <option name="totallyTimeSpent" value="39576000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="44" y="23" width="1396" height="877" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24436364" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1743941" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
-      <window_info anchor="bottom" id="TypeScript" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3299363" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3299363" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.4" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32936078" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -303,6 +365,7 @@
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="10" />
       <window_info anchor="bottom" id="Inspection Results" order="11" weight="0.3299363" />
+      <window_info anchor="bottom" id="TypeScript" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -319,19 +382,8 @@
     <MESSAGE value="Remove views and define first routes" />
     <MESSAGE value="Add first schemas and controllers" />
     <MESSAGE value="Fix to dbconnection, remove managers" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix to dbconnection, remove managers" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/NodeJS/routes/auth.js</url>
-          <line>151</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Complete authManager" />
+    <option name="LAST_COMMIT_MESSAGE" value="Complete authManager" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/routes/users.js" />
@@ -374,27 +426,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/javascript/nodejs/8.12.0/core-modules/events.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="207" column="6" selection-start-line="207" selection-start-column="6" selection-end-line="207" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/javascript/nodejs/8.12.0/core-modules/_stream_readable.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="1063" column="11" selection-start-line="1063" selection-start-column="11" selection-end-line="1063" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/javascript/nodejs/8.12.0/core-modules/internal/process/next_tick.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="138" column="10" selection-start-line="138" selection-start-column="10" selection-end-line="138" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/javascript/nodejs/8.12.0/core-modules/events.js" />
+    <entry file="file://$APPLICATION_CONFIG_DIR$/javascript/nodejs/8.12.0/core-modules/_stream_readable.js" />
+    <entry file="file://$APPLICATION_CONFIG_DIR$/javascript/nodejs/8.12.0/core-modules/internal/process/next_tick.js" />
     <entry file="file://$PROJECT_DIR$/NodeJS/node_modules/body-parser/lib/read.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1740">
@@ -431,6 +465,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/javascript/nodejs/8.12.0/node-typings/node_modules/@types/node/index.d.ts" />
+    <entry file="file://$PROJECT_DIR$/NodeJS/bin/www">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="14" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/NodeJS/settings/users.json">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -440,28 +482,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/NodeJS/settings/mailer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
+        <state relative-caret-position="289">
           <caret line="17" selection-start-line="17" selection-end-line="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/NodeJS/schemas/schemas.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
+        <state relative-caret-position="459">
           <caret line="27" column="2" selection-start-line="27" selection-start-column="2" selection-end-line="27" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/NodeJS/bin/www">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-526">
-          <caret line="26" column="14" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/NodeJS/settings/dbconnection.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
+        <state relative-caret-position="204">
           <caret line="12" column="2" selection-start-line="12" selection-start-column="2" selection-end-line="12" selection-end-column="2" />
         </state>
       </provider>
@@ -469,34 +504,27 @@
     <entry file="file://$PROJECT_DIR$/NodeJS/package.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/NodeJS/app.js">
+    <entry file="file://$PROJECT_DIR$/NodeJS/routes/auth.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        <state relative-caret-position="170">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/NodeJS/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
+        <state relative-caret-position="85">
           <caret line="5" selection-start-line="5" selection-end-line="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/javascript/nodejs/8.12.0/node-typings/node_modules/@types/node/index.d.ts">
+    <entry file="file://$PROJECT_DIR$/NodeJS/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="98" column="4" selection-start-line="98" selection-start-column="4" selection-end-line="98" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/NodeJS/routes/auth.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="179" selection-start-line="179" selection-end-line="179" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
+        <state relative-caret-position="238">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
         </state>
       </provider>
     </entry>

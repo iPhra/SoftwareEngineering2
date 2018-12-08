@@ -1,0 +1,193 @@
+<html><head><META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>16.&nbsp;DBMS specific features</title><link href="html-publish.css" type="text/css" rel="stylesheet"><meta content="DocBook XSL Stylesheets V1.78.1" name="generator"><link rel="home" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="up" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="prev" href="using-fk.html" title="15.&nbsp;Working with foreign keys"><link rel="next" href="using-variables.html" title="17.&nbsp;Variable substitution in SQL statements"><link rel="article" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="subsection" href="dbms-specific.html#dbms-specific-postgres" title="16.1.&nbsp;PostgreSQL specific features"><link rel="subsection" href="dbms-specific.html#dbms-specific-oracle" title="16.2.&nbsp;Oracle specific features"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">16.&nbsp;DBMS specific features</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="using-fk.html">Prev</a>&nbsp;</td><th align="center" width="60%">&nbsp;</th><td align="right" width="20%">&nbsp;<a accesskey="n" href="using-variables.html">Next</a></td></tr></table><hr></div><div class="section" id="dbms-specific"><div class="titlepage"><div><div><h2 class="title" style="clear: both">16.&nbsp;DBMS specific features</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="dbms-specific.html#dbms-specific-postgres">16.1. PostgreSQL specific features</a></span></dt><dt><span class="section"><a href="dbms-specific.html#dbms-specific-oracle">16.2. Oracle specific features</a></span></dt></dl></div><div class="section" id="dbms-specific-postgres"><div class="titlepage"><div><div><h3 class="title">16.1.&nbsp;PostgreSQL specific features</h3></div></div></div><div class="section" id="postgres-open-trans"><div class="titlepage"><div><div><h4 class="title">16.1.1.&nbsp;Checking for un-committed changes</h4></div></div></div><a name="N11C7D" class="indexterm"></a><p>
+         Before a SQL panel (or the application) is closed, SQL Workbench/J will check if the current connection
+         has any un-committed changes (e.g. an <code class="literal">INSERT</code> without a <code class="literal">COMMIT</code>).
+         This is done by checking the <a class="ulink" href="http://www.postgresql.org/docs/current/static/view-pg-locks.html" target="_blank"><code class="literal">pg_locks</code></a>
+         system view. The information in this view might not always be 100% correct and can report open transactions even though
+         there are none.
+       </p><p>
+         The checking for un-committed changes can be controlled through the <a class="link" href="profiles.html#profile-open-trans" title="7.6.13.&nbsp;Check for uncommitted changes">connection profile</a>.
+       </p></div><div class="section" id="postgres-copy-api"><div class="titlepage"><div><div><h4 class="title">16.1.2.&nbsp;Using the COPY API for client side files</h4></div></div></div><a name="N11C9D" class="indexterm"></a><p>
+         <a class="link" href="command-import.html" title="21.&nbsp;Import data using WbImport">WbImport</a> can make use of PostgreSQL's <code class="literal">COPY</code> API
+         to send client side files to the server. The SQL statement <code class="literal">COPY from stdin</code> does not work when
+         executed using the JDBC driver. But <code class="literal">WbImport</code> can make use of the <a class="link" href="command-import.html#import-pg-copy">COPY API</a>
+         by using the parameter <code class="literal">-usePgCopy</code>
+       </p></div><div class="section" id="postgres-pgpass"><div class="titlepage"><div><div><h4 class="title">16.1.3.&nbsp;Using .pgpass</h4></div></div></div><a name="N11CC1" class="indexterm"></a><a name="N11CC7" class="indexterm"></a><p>
+         If username, password or both are empty in a <a class="link" href="profiles.html" title="7.&nbsp;Connecting to the database">connection profile</a>, SQL Workbench/J will
+         try to use the information stored in the <a class="ulink" href="http://www.postgresql.org/docs/current/static/libpq-pgpass.html" target="_blank">password file</a> file
+         or the <a class="ulink" href="http://www.postgresql.org/docs/current/static/libpq-envars.html" target="_blank">environment variables</a>
+         (<code class="literal">PGPASS</code>,  <code class="literal">PGUSER</code>) the same way as libpq uses them.
+       </p></div><div class="section" id="pg-statement-savepoint"><div class="titlepage"><div><div><h4 class="title">16.1.4.&nbsp;Using savepoints for single statements</h4></div></div></div><p>
+				PostgreSQL marks a complete transaction as failed if a only single statement fails.
+        In such a case the transaction cannot be committed, e.g.
+				consider the following script:
+			</p><pre class="programlisting">INSERT INTO person (id, firstname, lastname) VALUES (1, 'Arthur', 'Dent');
+INSERT INTO person (id, firstname, lastname) VALUES (2, 'Zaphod', 'Beeblebrox');
+INSERT INTO person (id, firstname, lastname) VALUES (2, 'Ford', 'Prefect');
+COMMIT;</pre><p>
+				As the ID column is the primary key, the third insert will fail with a unique key violation.
+				In PostgreSQL you cannot commit anyway and thus persist the first two <code class="literal">INSERT</code>s.
+			</p><p>
+				This problem can only be solved by using a SAVEPOINT before and after each
+				statement. In case that statement fails, the transaction can be rolled back to the state
+				before the statement and the reminder of the script can execute.
+			</p><p>
+				Doing this manually is quite tedious, so you can tell SQL Workbench/J to do this
+				automatically for you by setting the properties:
+			</p><pre class="programlisting">workbench.db.postgresql.ddl.usesavepoint=true
+workbench.db.postgresql.sql.usesavepoint=true
+</pre><p>
+				in the file <a class="link" href="settings.html" title="37.&nbsp;Advanced configuration options">workbench.settings</a>. If this is enabled,
+        SQL Workbench/J will issue a <code class="literal">SET SAVEPOINT</code> before running each statement
+        and will release the savepoint after the statement. If the statement failed, a rollback to the
+        savepoint will be issued that will mark the transaction as "clean" again. So in the above
+        example (with <code class="literal">sql.usesavepoint</code> set to <code class="literal">true</code>), the last
+        statement would be rolled back automatically but the first two <code class="literal">INSERT</code>s
+        can be committed (this will also required to turn on the "Ignore errors" option is enabled).
+      </p><p>
+        If you want to use the modes <a class="link" href="command-import.html#import-update-mode" title="21.7.&nbsp;Update mode"><code class="literal">update/insert</code></a> or
+				<a class="link" href="command-import.html#import-update-mode" title="21.7.&nbsp;Update mode"><code class="literal">insert/update</code></a>
+				for <a class="link" href="command-import.html" title="21.&nbsp;Import data using WbImport">WbImport</a>, you should also add the
+				property:
+			</p><pre class="programlisting">workbench.db.postgresql.import.usesavepoint=true</pre><p>
+        to enable the usage of savepoints during imports. This setting also affects
+        the <code class="literal">WbCopy</code> command.
+      </p><p>
+        This is not necessary when the using the mode <a class="link" href="command-import.html#import-native-upsert" title="21.8.&nbsp;Native UPSERT mode"><code class="literal">upsert</code></a>
+        or <a class="link" href="command-import.html#import-native-insert-ignore" title="21.9.&nbsp;Native insertIgnore mode"><code class="literal">insertIgnore</code></a> with Postgres 9.5
+      </p><p>
+        You can also use the parameter <code class="literal">-useSavepoint</code> for the
+        <code class="literal">WbImport</code> and <code class="literal">WbCopy</code> commands to control the use of
+        savepoints for each import.
+      </p><p>
+        </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td valign="top" align="center" rowspan="2" width="25"><img alt="[Note]" src="./images/note.png"></td><th align="left"></th></tr><tr><td valign="top" align="left">
+        Using savepoints can slow down the import substantially.
+        </td></tr></table></div><p>
+      </p></div><div class="section" id="pg-idle-transaction"><div class="titlepage"><div><div><h4 class="title">16.1.5.&nbsp;Preventing connections with "idle in transaction" state</h4></div></div></div><p>
+        Postgres has a very strict transaction concept which means that even a simple <code class="literal">SELECT</code> statement
+        starts a transaction. This has some implications on concurrency, the most obvious one is that
+        tables that are "used" in a transaction (because a query has retrieved some values) cannot be modified
+        using DDL statements (<code class="literal">ALTER TABLE</code>). Connections to the server that do this have the status
+        <code class="literal">idle in transaction</code> as opposed to just "idle".
+      </p><p>
+        There are two ways to prevent this:
+         </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">Working with auto-commit enabled, so that each query is automatically committed. This is how pgAdmin and psql work by default</li><li class="listitem">If you don't want to work with auto-commit enabled, these transactions need to be ended properly by running
+             a <code class="literal">rollback</code> or <code class="literal">commit</code> when the query is finished</li></ul></div><p>
+      </p><p>
+        SQL Workbench/J can be configured to do the second approach automatically, by <a class="link" href="wb-commands.html#command-setconfig" title="29.22.&nbsp;Change an internal configuration parameter - WbSetConfig">setting the configuration property</a>
+        <code class="literal">workbench.db.postgresql.transaction.readonly.end</code> to one of the following values:
+      </p><p>
+         </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">never</li><li class="listitem">rollback</li><li class="listitem">commit</li></ul></div><p>
+         The feature is disabled if the value <code class="literal">never</code> is configured. The other two values control how
+         the transaction is ended: either by running a <code class="literal">rollback</code> or a <code class="literal">commit</code>
+      </p><p>
+        The statement to end the transaction will <span class="bold"><strong>only</strong></span> be sent to the server,
+        if the current transaction has not modified anything in the database. Once a real change has been done
+        by running an DML or DDL statement, nothing will be sent automatically.
+      </p></div></div><div class="section" id="dbms-specific-oracle"><div class="titlepage"><div><div><h3 class="title">16.2.&nbsp;Oracle specific features</h3></div></div></div><div class="section" id="oracle-open-trans"><div class="titlepage"><div><div><h4 class="title">16.2.1.&nbsp;Checking for un-committed changes</h4></div></div></div><a name="N11D9B" class="indexterm"></a><p>
+         Before a SQL panel (or the application) is closed, SQL Workbench/J will check if the current connection
+         has any un-committed changes (e.g. an <code class="literal">INSERT</code> without a <code class="literal">COMMIT</code>).
+         This is done by checking the <a class="ulink" href="http://docs.oracle.com/cd/E11882_01/server.112/e25513/dynviews_3114.htm" target="_blank"><code class="literal">V$TRANSACTION</code></a>
+         system view.
+       </p><p>
+         </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td valign="top" align="center" rowspan="2" width="25"><img alt="[Note]" src="./images/note.png"></td><th align="left"></th></tr><tr><td valign="top" align="left">By default a regular user does not have <code class="literal">SELECT</code> privilege on <code class="literal">V$TRANSACTION</code>,
+         please grant the privilege before enabling this feature.</td></tr></table></div><p>
+       </p><p>
+         The checking for un-committed changes can be controlled through the <a class="link" href="profiles.html#profile-open-trans" title="7.6.13.&nbsp;Check for uncommitted changes">connection profile</a>.
+       </p></div><div class="section" id="oracle-autotrace"><div class="titlepage"><div><div><h4 class="title">16.2.2.&nbsp;SQL*Plus autotrace mode</h4></div></div></div><a name="N11DC8" class="indexterm"></a><p>
+         SQL Workbench/J supports the a mode similar to <a class="ulink" href="http://docs.oracle.com/cd/E11882_01/server.112/e16604/ch_twelve040.htm#i2698680" target="_blank">"autotrace"</a> mode in SQL*Plus.
+         The command to turn on autotrace is the same as in SQL*Plus and supports the same options.
+         For details see the description of the <a class="link" href="wb-commands.html#command-set-autotrace" title="29.14.2.&nbsp;AUTOTRACE">SET</a> command.
+       </p><p>
+         The current user needs to have the <a class="ulink" href="http://docs.oracle.com/cd/E11882_01/server.112/e16604/ch_eight.htm#i1037226" target="_blank"><code class="literal">PLUSTRACE</code></a>
+         role in order to be able to see statement statistics (which is required by SQL*Plus as well).
+         The <code class="literal">PLUSTRACE</code> role grants the <code class="literal">SELECT</code>
+         privilege on the system views: <code class="literal">V$SESSTAT</code>, <code class="literal">V$STATNAME</code> and <code class="literal">V$MYSTAT</code>. The role
+         is not required for the <code class="literal">traceonly explain</code> option.
+       </p><p>
+         As an extension to the Oracle syntax, SQL Workbench/J supports the keyword <code class="literal">realplan</code> as a
+         substitute for <code class="literal">explain</code>. In that case the execution plan is also displayed but not by
+         using <code class="literal">EXPLAIN PLAN</code> but by retrieving the actual execution plan that is available
+         via <code class="literal">dbms_xplan.display_cursor()</code>. In order to use that package, the execute SQL
+         will be changed by SQL Workbench/J. It will prepend it with a unique identifier so that the SQL can be
+         found again in Oracle's system views and it will add the <code class="literal">gather_plan_statistics</code> hint
+         to the statement in order to get more detailed statistics in the execution plan.
+       </p><p>
+         In order to see the "real" execution plan, use <code class="literal">set autotrace traceonly realplan</code> instead
+         of <code class="literal">set autotrace traceonly explain</code>.
+       </p><p>
+         When using <code class="literal">statistics</code> together with <code class="literal">explain</code> or <code class="literal">realplan</code>,
+         SQL Workbench/J will have to retrieve the generated <code class="literal">SQL_ID</code> in order to get the
+         execution plan using <code class="literal">dbms_xplan.display_cursor()</code>. To use that function the SQL_ID is required
+         which is retrieved from <code class="literal">V$SQL</code> using a unique comment that is added to the SQL statement
+         before it is sent to the database. Querying <code class="literal">V$SQL</code> based on the column <code class="literal">SQL_TEXT</code>
+         is quite an expensive operation and might create unwanted latch contention on the server. If you want to
+         avoid that overhead do not use the <code class="literal">statistics</code> option when also displaying the execution plan.
+       </p><div class="section" id="ora-autotrace-examples"><div class="titlepage"><div><div><h5 class="title">16.2.2.1.&nbsp;Examples</h5></div></div></div><p>
+           Show statistics without retrieving the actual data:
+         </p><pre class="programlisting">set autotrace traceonly statistics</pre><p>
+           Retrieve the data and show statistics
+         </p><pre class="programlisting">set autotrace on statistics</pre><p>
+           Display the statistics and the execution plan but do not retrieve the data
+         </p><pre class="programlisting">set autotrace traceonly explain statistics</pre><p>
+           Display the statistics and the actual execution plan but do not retrieve the data
+         </p><pre class="programlisting">set autotrace traceonly realplan statistics</pre></div></div><div class="section" id="oracle-show"><div class="titlepage"><div><div><h4 class="title">16.2.3.&nbsp;Using SQL*Plus' SHOW command</h4></div></div></div><a name="N11E5A" class="indexterm"></a><p>
+         SQL Workbench/J supports most of the parameters and options the <code class="literal">SHOW</code> from SQL*Plus does.
+
+        </p><div class="informaltable"><table style="border-collapse: collapse;border-top: 1px solid ; border-bottom: 1px solid ; border-left: 1px solid ; border-right: 1px solid ; "><colgroup><col align="left" class="c1"><col align="left" class="c2"></colgroup><thead><tr><th style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left">SHOW&nbsp;option</th><th style="border-bottom: 1px solid ; " align="left">Description</th></tr></thead><tbody valign="top"><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">ERRORS</td><td style="border-bottom: 1px solid ; " align="left" valign="top">Displays errors from the last PL/SQL compilation.</td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">PARAMETERS</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+                  <p>Displays configuration parameters.
+                    Unlike SQL*Plus you can supply multiple parameters separated with a comma: <code class="literal">show parameter memory,sga</code> will show
+                    the values for all parameters that contain the string <code class="literal">memory</code> or <code class="literal">sga</code>.
+                  </p>
+                  <p>As with SQL*Plus, you need the <code class="literal">SELECT</code> privilege on <code class="literal">V_$PARAMETER</code>
+                  to use the <code class="literal">PARAMETERS</code> option.</p>
+                </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">SGA</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+                  <p>Displays memory information.</p>
+                  <p>
+                    As with SQL*Plus, you need <code class="literal">SELECT</code> privilege on
+                    <code class="literal">V_$SGA</code> to use the <code class="literal">sga</code> (or <code class="literal">sgainfo</code> option.
+                  </p>
+                </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">SGAINFO</td><td style="border-bottom: 1px solid ; " align="left" valign="top">Displays extended memory information not available in SQL*Plus.</td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">RECYCLEBIN</td><td style="border-bottom: 1px solid ; " align="left" valign="top">Shows the content of the recyclebin.</td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">USER</td><td style="border-bottom: 1px solid ; " align="left" valign="top">Shows the current user.</td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">AUTOCOMMIT</td><td style="border-bottom: 1px solid ; " align="left" valign="top">Shows the state of the autocommit property.</td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">LOGSOURCE</td><td style="border-bottom: 1px solid ; " align="left" valign="top">Displays the location of the archive logs.</td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">EDITION</td><td style="border-bottom: 1px solid ; " align="left" valign="top">Shows the edition of the current database.</td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">CON_ID</td><td style="border-bottom: 1px solid ; " align="left" valign="top">Displays the id of the current container database (only for 12c)</td></tr><tr><td style="border-right: 1px solid ; " align="left" valign="top">PDBS</td><td style="" align="left" valign="top">Displays the list of pluggable databases (only for 12c)</td></tr></tbody></table></div><p>
+       </p></div><div class="section" id="command-dbms-output"><div class="titlepage"><div><div><h4 class="title">16.2.4.&nbsp;Using Oracle's DBMS_OUTPUT package</h4></div></div></div><a name="N11EEA" class="indexterm"></a><p>
+        To turn on support for Oracle's <code class="literal">DBMS_OUTPUT</code> package you have to use the
+        (SQL Workbench/J specific) command <code class="literal">ENABLEOUT</code>. As an alternative you can
+        also use the SQL*Plus command <code class="literal">set serveroutput on</code>.
+      </p><p>
+        After running <code class="literal">ENABLEOUT</code> the <code class="literal">DBMS_OUTPUT</code> package is enabled,
+        and any message written with <code class="literal">dbms_output.put_line()</code> is displayed in the message
+        panel after executing a SQL statement. It is equivalent to calling the dbms_output.enable() procedure.
+      </p><p>
+        You can control the buffer size of the <code class="literal">DBMS_OUTPUT</code> package by passing the
+        desired buffer size as a parameter to the <code class="literal">ENABLEOUT</code> command:
+        <code class="literal">ENABLEOUT 32000;</code>
+      </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td valign="top" align="center" rowspan="2" width="25"><img alt="[Note]" src="./images/note.png"></td><th align="left"></th></tr><tr><td valign="top" align="left"><p>
+        Due to a bug in Oracle's JDBC driver, you cannot retrieve columns with
+        the <code class="literal">LONG</code> or <code class="literal">LONG RAW</code> data type if the <code class="literal">DBMS_OUTPUT</code>
+        package is enabled.
+        In order to be able to display these columns, support for <code class="literal">DBMS_OUTPUT</code> has
+        to be switched off.
+      </p></td></tr></table></div><p>
+        To disable the <code class="literal">DBMS_OUTPUT</code> package again, use the (SQL Workbench/J specific)
+        command <code class="literal">DISABLEOUT</code>. This is equivalent to calling
+        <code class="literal">dbms_output.disable()</code> procedure or using <code class="literal">set serveroutput off</code>
+      </p><p>
+        <code class="literal">ENABLEOUT</code> and <code class="literal">DISABLEOUT</code> support an additional parameter <code class="literal">quiet</code>
+        to suppress the feedback message that the support for <code class="literal">DBMS_OUTPUT</code> has been enabled or disabled.
+        <code class="literal">set serveroutput off</code> never gives a feedback message.
+      </p></div><div class="section" id="oracle-source-dbms-metadata"><div class="titlepage"><div><div><h4 class="title">16.2.5.&nbsp;Using DBMS_METADATA for source retrieval</h4></div></div></div><a name="N11F57" class="indexterm"></a><p>
+        SQL Workbench/J uses the information returned by the JDBC driver to re-create the source
+        of database objects (tables, views, ...). The source generated this way will not always match
+        the source generated by the Oracle.
+       </p><p>
+         The use of <code class="literal"><a class="ulink" href="http://docs.oracle.com/cd/E11882_01/appdev.112/e40758/d_metada.htm" target="_blank">DBMS_METADATA</a></code>
+         for object source retrieval is controlled by configuration properties.
+       </p><p>
+         The property <code class="literal">workbench.db.oracle.use.dbmsmeta</code>
+         can be used to controll the use for all object types. When set to <code class="literal">true </code>
+         the source for all objects will be retrieved using <code class="literal">DBMS_METADATA</code>.
+       </p><p>
+         The use of <code class="literal">DBMS_METADATA</code> can also be controlled for a specific object type by appending
+         the type name to the property name <code class="literal">workbench.db.oracle.use.dbmsmeta</code>. The following types
+         can be configured:
+         </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><code class="literal">workbench.db.oracle.use.dbmsmeta.table</code></li><li class="listitem"><code class="literal">workbench.db.oracle.use.dbmsmeta.mview</code> (for MATERIALIZED VIEWs)</li><li class="listitem"><code class="literal">workbench.db.oracle.use.dbmsmeta.index</code></li><li class="listitem"><code class="literal">workbench.db.oracle.use.dbmsmeta.view</code></li><li class="listitem"><code class="literal">workbench.db.oracle.use.dbmsmeta.sequence</code></li><li class="listitem"><code class="literal">workbench.db.oracle.use.dbmsmeta.synonynm</code></li><li class="listitem"><code class="literal">workbench.db.oracle.use.dbmsmeta.procedure</code> (includes packages)</li><li class="listitem"><code class="literal">workbench.db.oracle.use.dbmsmeta.trigger</code></li><li class="listitem"><code class="literal">workbench.db.oracle.use.dbmsmeta.constraint</code> (for FK and PK constraints)</li></ul></div><p>
+         The value of a specific object type overrides the global setting.
+       </p></div></div></div><div class="navfooter"><hr><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="using-fk.html">Prev</a>&nbsp;</td><td align="center" width="20%">&nbsp;</td><td align="right" width="40%">&nbsp;<a accesskey="n" href="using-variables.html">Next</a></td></tr><tr><td valign="top" align="left" width="40%">15.&nbsp;Working with foreign keys&nbsp;</td><td align="center" width="20%"><a accesskey="h" href="workbench-manual.html">Home</a></td><td valign="top" align="right" width="40%">&nbsp;17.&nbsp;Variable substitution in SQL statements</td></tr></table></div></body></html>

@@ -1,0 +1,98 @@
+<html><head><META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>38.&nbsp;Simple properties based profile storage</title><link href="html-publish.css" type="text/css" rel="stylesheet"><meta content="DocBook XSL Stylesheets V1.78.1" name="generator"><link rel="home" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="up" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="prev" href="settings.html" title="37.&nbsp;Advanced configuration options"><link rel="next" href="ix01.html" title="Index"><link rel="article" href="workbench-manual.html" title="SQL Workbench/J User's Manual"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">38.&nbsp;Simple properties based profile storage</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="settings.html">Prev</a>&nbsp;</td><th align="center" width="60%">&nbsp;</th><td align="right" width="20%">&nbsp;<a accesskey="n" href="ix01.html">Next</a></td></tr></table><hr></div><div class="section" id="plain-profile-file"><div class="titlepage"><div><div><h2 class="title" style="clear: both">38.&nbsp;Simple properties based profile storage</h2></div></div></div><p>
+    The default file format for saving connection profiles is XML, however when using SQL Workbench/J
+    in <a class="link" href="using-scripting.html" title="18.&nbsp;Using SQL Workbench/J in batch files">batch mode</a> or as a <a class="link" href="console-mode.html" title="19.&nbsp;Using SQL Workbench/J in console mode">console application</a>
+    editing the XML format is tedious. Therefor it is possible to store the profiles in a "plain" properties file.
+  </p><div class="important" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Important"><tr><td valign="top" align="center" rowspan="2" width="25"><img alt="[Important]" src="./images/important.png"></td><th align="left"></th></tr><tr><td valign="top" align="left"><p>
+    The properties file <span class="bold"><strong>must</strong></span> have the extension <code class="literal">.properties</code>,
+    otherwise it will not treated as a properties file by SQL Workbench/J
+  </p></td></tr></table></div><p>
+    The properties file can contain multiple profiles, each property key has to start with the prefix
+    <code class="literal">profile</code>. The second element of the key is a unique identifier for the profile
+    that is used to combine the keys for one profile together. This identifier can be any combination
+    of digits and characters. The identifier is <span class="bold"><strong>case sensitive</strong></span>.
+  </p><p>
+    The last element of the key is the actual profile property.
+  </p><p>
+    A minimal definition of a profile in a properties file, could look like this:
+    </p><pre class="programlisting">profile.042.name=Local Postgres
+profile.042.driverclass=org.postgresql.Driver
+profile.042.url=jdbc:postgresql://localhost/postgres
+profile.042.username=arthur
+profile.042.password=dent
+profile.042.driverjar=postgresql-9.4-1203.jdbc41.jar
+</pre><p>
+    In the above example the identifier <code class="literal">042</code> is used. The actual value is irrelevant.
+    It is only important that all properties for one profile have the same identifier. You can also
+    use any other combination of digits and characters.
+  </p><p>
+    For each profile the following properties can be defined. The property name listed in the following table
+    is the last element for each key in the properties file.
+  </p><div class="informaltable"><table style="border-collapse: collapse;border-top: 1px solid ; border-bottom: 1px solid ; border-left: 1px solid ; border-right: 1px solid ; "><colgroup><col align="left" class="c1"><col align="left" class="c2"></colgroup><thead><tr><th style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left">Key</th><th style="border-bottom: 1px solid ; " align="left">Value</th></tr></thead><tbody valign="top"><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">
+            <code class="literal">name</code>
+          </td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+            <p>
+              This defines the name of the connection profile which can e.g. be used with the <code class="literal">-profile</code>
+              command line parameter.
+            </p>
+            <p>
+              This parameter is mandatory.
+            </p>
+          </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">
+            <code class="literal">url</code>
+          </td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+            <p>
+              This defines the JDBC URL for the connection
+            </p>
+            <p>
+              This parameter is mandatory.
+            </p>
+          </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">
+            <code class="literal">username</code>
+          </td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+            <p>
+              This defines the username that should be used to connect to the database
+            </p>
+            <p>
+              This parameter is mandatory.
+            </p>
+          </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">
+            <code class="literal">password</code>
+          </td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+            <p>
+              This defines the password that should be used to connect to the database
+            </p>
+            <p>
+              This parameter is mandatory.
+            </p>
+          </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">
+            <code class="literal">drivername</code>
+          </td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+            <p>
+              This defines the named JDBC driver as registered within SQL Workbench/J.
+              If this is specified the corresponding driver needs to be defined and
+              available in the <code class="literal">WbDrivers.xml</code> file.
+            </p>
+            <p>
+              Either this parameter or <code class="literal">driverjar</code> is mandatory.
+            </p>
+          </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">
+            <code class="literal">driverjar</code>
+          </td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+            <p>
+              This specifies the jar file that contains the JDBC driver. If <code class="literal">driverjar</code>
+              is specified <code class="literal">drivername</code> is ignored.
+            </p>
+            <p>
+              If the filename is not specified as an absolute file, it is assumed to be relative
+              to the location of the properties file.
+            </p>
+            <p>
+              Either this parameter or <code class="literal">drivername</code> is mandatory.
+            </p>
+            <p>
+              Defining the driver jar in this way is not supported when running in GUI mode. Drivers managed
+              through the GUI will always be saved in <code class="literal">WbDrivers.xml</code>
+            </p>
+          </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top"><code class="literal">autocommit</code></td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+            <p>Defines the autocommit behaviour of the connection. This defaults to <code class="literal">false</code></p>
+          </td></tr><tr><td style="border-right: 1px solid ; " align="left" valign="top"><code class="literal">fetchsize</code></td><td style="" align="left" valign="top"><p>Defines the fetchsize attribute of the connection.</p></td></tr></tbody></table></div></div><div class="navfooter"><hr><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="settings.html">Prev</a>&nbsp;</td><td align="center" width="20%">&nbsp;</td><td align="right" width="40%">&nbsp;<a accesskey="n" href="ix01.html">Next</a></td></tr><tr><td valign="top" align="left" width="40%">37.&nbsp;Advanced configuration options&nbsp;</td><td align="center" width="20%"><a accesskey="h" href="workbench-manual.html">Home</a></td><td valign="top" align="right" width="40%">&nbsp;Index</td></tr></table></div></body></html>
