@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.25)  9 DEC 2018 11:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.25)  9 DEC 2018 21:23
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -136,18 +136,18 @@ Package: ltcaption 2013/06/09 v1.4-94 longtable captions (AR)
 No file "Design Document".aux.
 \openout1 = `"Design Document.aux"'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
 (/usr/local/texlive/2018basic/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count103
@@ -222,7 +222,7 @@ Package caption Info: End \AtBeginDocument code.
 <./images/logo.png, id=1, 666.49pt x 489.83pt>
 File: ./images/logo.png Graphic file (type png)
 <use ./images/logo.png>
-Package pdftex.def Info: ./images/logo.png  used on input line 21.
+Package pdftex.def Info: ./images/logo.png  used on input line 20.
 (pdftex.def)             Requested size: 345.0pt x 253.55457pt.
  [1
 
@@ -233,82 +233,671 @@ No file "Design Document".toc.
 \openout3 = `"Design Document.toc"'.
 
 [1]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 68.
- (/usr/local/texlive/2018basic/texmf-dist/tex/latex/base/omscmr.fd
+Underfull \hbox (badness 10000) in paragraph at lines 53--60
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 53--60
+
+ []
+
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 67.
+(/usr/local/texlive/2018basic/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 68.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 67.
  [2]
+Underfull \vbox (badness 10000) detected at line 91
+ []
+
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 104.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 104.
 
+Overfull \hbox (32.13979pt too wide) in paragraph at lines 119--120
+[]\OT1/cmr/m/n/10 Alloy Of-fi-cial Doc-u-men-ta-tion: http://alloy.lcs.mit.edu/
+alloy/documentation.html 
+ []
+
 [3] [4]
 <./images/Overview.png, id=29, 908.39375pt x 758.835pt>
 File: ./images/Overview.png Graphic file (type png)
 <use ./images/Overview.png>
-Package pdftex.def Info: ./images/Overview.png  used on input line 147.
-(pdftex.def)             Requested size: 284.52756pt x 237.67957pt.
- [5 <./images/Overview.png>]
-<./images/ComponentDiagram.png, id=34, 2514.39375pt x 1389.19pt>
+Package pdftex.def Info: ./images/Overview.png  used on input line 146.
+(pdftex.def)             Requested size: 426.79134pt x 356.52513pt.
+
+Overfull \hbox (81.79134pt too wide) in paragraph at lines 146--147
+ [] 
+ []
+
+[5 <./images/Overview.png>] [6]
+<./images/ComponentDiagram.png, id=38, 2514.39375pt x 1389.19pt>
 File: ./images/ComponentDiagram.png Graphic file (type png)
 <use ./images/ComponentDiagram.png>
-Package pdftex.def Info: ./images/ComponentDiagram.png  used on input line 163.
+Package pdftex.def Info: ./images/ComponentDiagram.png  used on input line 161.
 
-(pdftex.def)             Requested size: 284.52756pt x 157.19922pt.
- [6 <./images/ComponentDiagram.png>]
-[7] [8] [9] [10]
-<./images/DeploymentView.png, id=52, 2763.32375pt x 1731.46875pt>
-File: ./images/DeploymentView.png Graphic file (type png)
-<use ./images/DeploymentView.png>
-Package pdftex.def Info: ./images/DeploymentView.png  used on input line 245.
-(pdftex.def)             Requested size: 284.52756pt x 178.25609pt.
- [11 <./images/DeploymentView.png>] [12]
-File: ./images/Overview.png Graphic file (type png)
-<use ./images/Overview.png>
-Package pdftex.def Info: ./images/Overview.png  used on input line 281.
-(pdftex.def)             Requested size: 284.52756pt x 237.67957pt.
- [13]
-File: ./images/Overview.png Graphic file (type png)
-<use ./images/Overview.png>
-Package pdftex.def Info: ./images/Overview.png  used on input line 294.
-(pdftex.def)             Requested size: 284.52756pt x 237.67957pt.
- [14]
-File: ./images/Overview.png Graphic file (type png)
-<use ./images/Overview.png>
-Package pdftex.def Info: ./images/Overview.png  used on input line 306.
-(pdftex.def)             Requested size: 284.52756pt x 237.67957pt.
- [15]
-File: ./images/Overview.png Graphic file (type png)
-<use ./images/Overview.png>
-Package pdftex.def Info: ./images/Overview.png  used on input line 318.
-(pdftex.def)             Requested size: 284.52756pt x 237.67957pt.
-File: ./images/Overview.png Graphic file (type png)
-<use ./images/Overview.png>
-Package pdftex.def Info: ./images/Overview.png  used on input line 330.
-(pdftex.def)             Requested size: 284.52756pt x 237.67957pt.
+(pdftex.def)             Requested size: 426.79134pt x 235.79883pt.
 
-[16]
-File: ./images/Overview.png Graphic file (type png)
-<use ./images/Overview.png>
-Package pdftex.def Info: ./images/Overview.png  used on input line 343.
-(pdftex.def)             Requested size: 284.52756pt x 237.67957pt.
- [17]
-File: ./images/Overview.png Graphic file (type png)
-<use ./images/Overview.png>
-Package pdftex.def Info: ./images/Overview.png  used on input line 356.
-(pdftex.def)             Requested size: 284.52756pt x 237.67957pt.
- [18]
-File: ./images/Overview.png Graphic file (type png)
-<use ./images/Overview.png>
-Package pdftex.def Info: ./images/Overview.png  used on input line 370.
-(pdftex.def)             Requested size: 284.52756pt x 237.67957pt.
- [19]
-File: ./images/Overview.png Graphic file (type png)
-<use ./images/Overview.png>
-Package pdftex.def Info: ./images/Overview.png  used on input line 383.
-(pdftex.def)             Requested size: 284.52756pt x 237.67957pt.
- [20] [21]
-<./images/Compon
+Overfull \hbox (81.79134pt too wide) in paragraph at lines 161--162
+ [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 166--169
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 170--176
+
+ []
+
+[7 <./images/ComponentDiagram.png>] [8]
+Underfull \hbox (badness 10000) in paragraph at lines 200--202
+
+ []
+
+[9]
+Underfull \hbox (badness 10000) in paragraph at lines 214--216
+
+ []
+
+[10] [11]
+<./images/Deployment.png, id=55, 2763.32375pt x 1731.46875pt>
+File: ./images/Deployment.png Graphic file (type png)
+<use ./images/Deployment.png>
+Package pdftex.def Info: ./images/Deployment.png  used on input line 241.
+(pdftex.def)             Requested size: 426.79134pt x 267.39734pt.
+
+Overfull \hbox (81.79134pt too wide) in paragraph at lines 241--242
+ [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 245--246
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 247--249
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 250--252
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 253--255
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 256--258
+
+ []
+
+[12 <./images/Deployment.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 259--261
+
+ []
+
+[13]
+<./images/Proxy.png, id=64, 899.36pt x 583.17876pt>
+File: ./images/Proxy.png Graphic file (type png)
+<use ./images/Proxy.png>
+Package pdftex.def Info: ./images/Proxy.png  used on input line 276.
+(pdftex.def)             Requested size: 369.88582pt x 239.84341pt.
+
+Overfull \hbox (24.88582pt too wide) in paragraph at lines 276--277
+ [] 
+ []
+
+[14 <./images/Proxy.png>]
+<./images/Registration.png, id=69, 1275.76625pt x 1245.65375pt>
+File: ./images/Registration.png Graphic file (type png)
+<use ./images/Registration.png>
+Package pdftex.def Info: ./images/Registration.png  used on input line 288.
+(pdftex.def)             Requested size: 426.79134pt x 416.71213pt.
+
+Overfull \hbox (81.79134pt too wide) in paragraph at lines 288--289
+ [] 
+ []
+
+[15]
+Underfull \hbox (badness 10000) in paragraph at lines 293--296
+
+ []
+
+[16 <./images/Registration.png>]
+<./images/Login.png, id=77, 1245.65375pt x 866.23625pt>
+File: ./images/Login.png Graphic file (type png)
+<use ./images/Login.png>
+Package pdftex.def Info: ./images/Login.png  used on input line 299.
+(pdftex.def)             Requested size: 426.79134pt x 296.78987pt.
+
+Overfull \hbox (81.79134pt too wide) in paragraph at lines 299--300
+ [] 
+ []
+
+[17 <./images/Login.png>]
+<./images/SingleRequest.png, id=82, 1201.48875pt x 1506.62875pt>
+File: ./images/SingleRequest.png Graphic file (type png)
+<use ./images/SingleRequest.png>
+Package pdftex.def Info: ./images/SingleRequest.png  used on input line 310.
+(pdftex.def)             Requested size: 426.79134pt x 535.19029pt.
+
+Overfull \hbox (81.79134pt too wide) in paragraph at lines 310--311
+ [] 
+ []
+
+[18]
+Overfull \vbox (8.19029pt too high) has occurred while \output is active []
+
+
+[19 <./images/SingleRequest.png>]
+<./images/GroupRequest.png, id=91, 974.64125pt x 1115.16624pt>
+File: ./images/GroupRequest.png Graphic file (type png)
+<use ./images/GroupRequest.png>
+Package pdftex.def Info: ./images/GroupRequest.png  used on input line 322.
+(pdftex.def)             Requested size: 426.79134pt x 488.32645pt.
+
+Overfull \hbox (81.79134pt too wide) in paragraph at lines 322--323
+ [] 
+ []
+
+[20] [21 <./images/GroupRequest.png>]
+<./images/SOS.png, id=99, 623.32875pt x 793.96625pt>
+File: ./images/SOS.png Graphic file (type png)
+<use ./images/SOS.png>
+Package pdftex.def Info: ./images/SOS.png  used on input line 335.
+(pdftex.def)             Requested size: 369.88582pt x 471.14978pt.
+
+Overfull \hbox (24.88582pt too wide) in paragraph at lines 335--336
+ [] 
+ []
+
+[22] [23 <./images/SOS.png>]
+<./images/Organize.png, id=107, 1295.84125pt x 924.45375pt>
+File: ./images/Organize.png Graphic file (type png)
+<use ./images/Organize.png>
+Package pdftex.def Info: ./images/Organize.png  used on input line 348.
+(pdftex.def)             Requested size: 426.79134pt x 304.47823pt.
+
+Overfull \hbox (81.79134pt too wide) in paragraph at lines 348--349
+ [] 
+ []
+
+[24 <./images/Organize.png>]
+<./images/Join.png, id=113, 1486.55376pt x 1888.05376pt>
+File: ./images/Join.png Graphic file (type png)
+<use ./images/Join.png>
+Package pdftex.def Info: ./images/Join.png  used on input line 362.
+(pdftex.def)             Requested size: 426.79134pt x 542.0478pt.
+
+Overfull \hbox (81.79134pt too wide) in paragraph at lines 362--363
+ [] 
+ []
+
+[25]
+Overfull \vbox (15.0478pt too high) has occurred while \output is active []
+
+
+[26 <./images/Join.png>]
+<./images/Spectate.png, id=121, 1295.84125pt x 924.45375pt>
+File: ./images/Spectate.png Graphic file (type png)
+<use ./images/Spectate.png>
+Package pdftex.def Info: ./images/Spectate.png  used on input line 375.
+(pdftex.def)             Requested size: 426.79134pt x 304.47823pt.
+
+Overfull \hbox (81.79134pt too wide) in paragraph at lines 375--376
+ [] 
+ []
+
+[27 <./images/Spectate.png>]
+<./images/ComponentInterfaces.png, id=126, 2514.39375pt x 1389.19pt>
+File: ./images/ComponentInterfaces.png Graphic file (type png)
+<use ./images/ComponentInterfaces.png>
+Package pdftex.def Info: ./images/ComponentInterfaces.png  used on input line 3
+92.
+(pdftex.def)             Requested size: 426.79134pt x 235.79883pt.
+
+Overfull \hbox (81.79134pt too wide) in paragraph at lines 392--393
+ [] 
+ []
+
+[28 <./images/ComponentInterfaces.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 399--400
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 422--422
+
+ []
+
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 422--423
+[][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 446--446
+
+ []
+
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 446--447
+[][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 470--470
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 470--470
+
+ []
+
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 470--471
+[][] 
+ []
+
+[29]
+Underfull \hbox (badness 10000) in paragraph at lines 489--489
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 489--489
+
+ []
+
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 489--490
+[][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 513--513
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 513--513
+
+ []
+
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 513--514
+[][] 
+ []
+
+[30]
+Underfull \hbox (badness 10000) in paragraph at lines 535--535
+
+ []
+
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 535--536
+[][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 558--558
+
+ []
+
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 558--559
+[][] 
+ []
+
+[31]
+Underfull \hbox (badness 10000) in paragraph at lines 586--586
+
+ []
+
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 586--587
+[][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 614--614
+
+ []
+
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 614--615
+[][] 
+ []
+
+[32]
+Underfull \hbox (badness 10000) in paragraph at lines 640--640
+
+ []
+
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 640--641
+[][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 665--665
+
+ []
+
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 665--666
+[][] 
+ []
+
+[33]
+Underfull \hbox (badness 10000) in paragraph at lines 687--687
+
+ []
+
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 687--688
+[][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 710--710
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 710--710
+
+ []
+
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 710--711
+[][] 
+ []
+
+[34]
+Underfull \hbox (badness 10000) in paragraph at lines 737--737
+
+ []
+
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 737--738
+[][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 762--762
+
+ []
+
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 762--763
+[][] 
+ []
+
+[35]
+Underfull \hbox (badness 10000) in paragraph at lines 793--793
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 793--793
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 793--793
+
+ []
+
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 793--794
+[][] 
+ []
+
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 814--815
+[][] 
+ []
+
+[36]
+Underfull \hbox (badness 10000) in paragraph at lines 837--837
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 837--837
+
+ []
+
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 837--838
+[][] 
+ []
+
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 857--858
+[][] 
+ []
+
+[37]
+Overfull \hbox (15.0pt too wide) in paragraph at lines 878--879
+[][] 
+ []
+
+[38]
+Underfull \hbox (badness 10000) in paragraph at lines 888--890
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 891--894
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 895--900
+
+ []
+
+
+Overfull \hbox (9.97278pt too wide) in paragraph at lines 901--902
+[]\OT1/cmr/m/n/10 In the third tier there are the Ap-pli-ca-tion Servers of Dat
+a4Help and Track4Run.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 901--902
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 903--905
+
+ []
+
+[39]
+Underfull \hbox (badness 10000) in paragraph at lines 906--910
+
+ []
+
+
+Overfull \hbox (3.32353pt too wide) in paragraph at lines 911--913
+\OT1/cmr/m/n/10 The soft-ware sys-tem's ar-chi-tec-ture will fol-low the MVCS p
+aradigm. The acronym
+ []
+
+[40]
+Underfull \hbox (badness 10000) in paragraph at lines 925--929
+
+ []
+
+<./images/ER.png, id=169, 609.77812pt x 685.20993pt>
+File: ./images/ER.png Graphic file (type png)
+<use ./images/ER.png>
+Package pdftex.def Info: ./images/ER.png  used on input line 937.
+(pdftex.def)             Requested size: 426.79134pt x 479.60185pt.
+
+Overfull \hbox (81.79134pt too wide) in paragraph at lines 937--938
+ [] 
+ []
+
+[41] [42 <./images/ER.png>]
+<./images/UXD4HDiagram.png, id=178, 1165.35374pt x 791.95876pt>
+File: ./images/UXD4HDiagram.png Graphic file (type png)
+<use ./images/UXD4HDiagram.png>
+Package pdftex.def Info: ./images/UXD4HDiagram.png  used on input line 952.
+(pdftex.def)             Requested size: 398.33858pt x 270.70045pt.
+
+Overfull \hbox (53.33858pt too wide) in paragraph at lines 952--953
+ [] 
+ []
+
+<./images/UXT4RDiagram.png, id=179, 1423.3175pt x 1213.53375pt>
+File: ./images/UXT4RDiagram.png Graphic file (type png)
+<use ./images/UXT4RDiagram.png>
+Package pdftex.def Info: ./images/UXT4RDiagram.png  used on input line 958.
+(pdftex.def)             Requested size: 398.33858pt x 339.62048pt.
+
+Overfull \hbox (53.33858pt too wide) in paragraph at lines 958--959
+ [] 
+ []
+
+[43 <./images/UXD4HDiagram.png>] [44 <./images/UXT4RDiagram.png>]
+Overfull \hbox (50.0858pt too wide) in alignment at lines 970--1075
+ [] [] 
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 1075
+ []
+
+[45] [46] [47] [48] [49]
+Underfull \hbox (badness 10000) in paragraph at lines 1100--1106
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1100--1106
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1113--1117
+
+ []
+
+[50]
+<./images/UnitTest.png, id=208, 372.39125pt x 279.0425pt>
+File: ./images/UnitTest.png Graphic file (type png)
+<use ./images/UnitTest.png>
+Package pdftex.def Info: ./images/UnitTest.png  used on input line 1130.
+(pdftex.def)             Requested size: 142.26378pt x 106.60353pt.
+<./images/serverSubsystemTesting.png, id=209, 743.77875pt x 589.20125pt>
+File: ./images/serverSubsystemTesting.png Graphic file (type png)
+<use ./images/serverSubsystemTesting.png>
+Package pdftex.def Info: ./images/serverSubsystemTesting.png  used on input lin
+e 1145.
+(pdftex.def)             Requested size: 142.26378pt x 112.6956pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 1136--1148
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1136--1148
+
+ []
+
+
+Overfull \hbox (22.22284pt too wide) in paragraph at lines 1136--1148
+\OT1/cmr/m/n/10 The fol-low-ing di-a-gram rep-re-sents the use hi-er-ar-chy of 
+mod-ules within the Data4Help's
+ []
+
+[51 <./images/UnitTest.png>]
+<./images/clientSubsystemTesting.png, id=214, 342.27875pt x 272.01625pt>
+File: ./images/clientSubsystemTesting.png Graphic file (type png)
+<use ./images/clientSubsystemTesting.png>
+Package pdftex.def Info: ./images/clientSubsystemTesting.png  used on input lin
+e 1152.
+(pdftex.def)             Requested size: 142.26378pt x 113.06311pt.
+
+Overfull \hbox (7.61171pt too wide) in paragraph at lines 1149--1155
+[]\OT1/cmr/m/n/10 The fol-low-ing di-a-gram in-stead con-tains the use hi-er-ar
+-chy within the Data4Help
+ []
+
+[52 <./images/serverSubsystemTesting.png>]
+<./images/systemTesting.png, id=219, 542.025pt x 211.79124pt>
+File: ./images/systemTesting.png Graphic file (type png)
+<use ./images/systemTesting.png>
+Package pdftex.def Info: ./images/systemTesting.png  used on input line 1167.
+(pdftex.def)             Requested size: 142.26378pt x 55.58795pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 1156--1170
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1156--1170
+
+ []
+
+[53 <./images/clientSubsystemTesting.png> <./images/systemTesting.png>]
+[54]
+Underfull \hbox (badness 1424) in paragraph at lines 1192--1192
+[]|\OT1/cmr/m/n/10 Review Com-po-nent View and
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 1208
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 1235
+ []
+
+[55]
+Underfull \vbox (badness 10000) detected at line 1262
+ []
+
+[56] (./Design Document.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 3061 strings out of 494091
+ 49720 string characters out of 6163522
+ 141616 words of memory out of 5000000
+ 6701 multiletter control sequences out of 15000+600000
+ 7095 words of font info for 25 fonts, out of 8000000 for 9000
+ 319 hyphenation exceptions out of 8191
+ 44i,9n,46p,834b,302s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx1
+0.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mbx12.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmr10.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmr12.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmr17.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmti10.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmti12.pfb>
+Output written on "Design Document.pdf" (57 pages, 1284482 bytes).
+PDF statistics:
+ 264 PDF objects out of 1000 (max. 8388607)
+ 153 compressed objects within 2 object streams
+ 0 named destinations out of 1000 (max. 500000)
+ 106 words of extra memory for PDF output out of 10000 (max. 10000000)
+

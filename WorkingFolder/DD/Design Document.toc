@@ -1,0 +1,26 @@
+\contentsline {section}{\numberline {1}Introduction}{2}
+\contentsline {subsection}{\numberline {1.1}Purpose}{2}
+\contentsline {subsection}{\numberline {1.2}Scope}{2}
+\contentsline {subsection}{\numberline {1.3}Definitions, Acronyms, Abbreviations}{2}
+\contentsline {subsubsection}{\numberline {1.3.1}Definitions}{2}
+\contentsline {subsubsection}{\numberline {1.3.2}Acronyms}{3}
+\contentsline {subsubsection}{\numberline {1.3.3}Abbreviations}{3}
+\contentsline {subsection}{\numberline {1.4}Revision history}{3}
+\contentsline {subsection}{\numberline {1.5}Reference Documents}{3}
+\contentsline {subsection}{\numberline {1.6}Document Structure}{4}
+\contentsline {section}{\numberline {2}Architectural Design}{5}
+\contentsline {subsection}{\numberline {2.1}Overview}{5}
+\contentsline {subsection}{\numberline {2.2}Component view}{7}
+\contentsline {subsection}{\numberline {2.3}Deployment view}{12}
+\contentsline {subsection}{\numberline {2.4}Runtime view}{14}
+\contentsline {subsection}{\numberline {2.5}Component interfaces}{28}
+\contentsline {subsection}{\numberline {2.6}Selected architectural styles and patterns}{39}
+\contentsline {subsection}{\numberline {2.7}Other design decisions}{41}
+\contentsline {section}{\numberline {3}User Interface Design}{43}
+\contentsline {section}{\numberline {4}Requirements Traceability}{45}
+\contentsline {section}{\numberline {5}Implementation, Integration and Test Plan}{50}
+\contentsline {subsection}{\numberline {5.1}Overview}{50}
+\contentsline {subsection}{\numberline {5.2}Implementation}{50}
+\contentsline {subsection}{\numberline {5.3}Unit testing}{51}
+\contentsline {subsection}{\numberline {5.4}Integration testing}{52}
+\contentsline {section}{\numberline {6}Effort Spent}{55}
