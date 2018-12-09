@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.25)  9 DEC 2018 21:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.25)  9 DEC 2018 21:25
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -133,7 +133,7 @@ Package: ltcaption 2013/06/09 v1.4-94 longtable captions (AR)
 \sf@top=\skip52
 \sf@bottom=\skip53
 )
-No file "Design Document".aux.
+(./Design Document.aux)
 \openout1 = `"Design Document.aux"'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
@@ -148,6 +148,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
 LaTeX Font Info:    ... okay on input line 15.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
 LaTeX Font Info:    ... okay on input line 15.
+
 (/usr/local/texlive/2018basic/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count103
@@ -227,12 +228,16 @@ Package pdftex.def Info: ./images/logo.png  used on input line 20.
  [1
 
 {/usr/local/texlive/2018basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./
-images/logo.png>]
-No file "Design Document".toc.
+images/logo.png>] (./Design Document.toc
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 2.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 2.
+)
 \tf@toc=\write3
 \openout3 = `"Design Document.toc"'.
 
-[1]
+ [1]
 Underfull \hbox (badness 10000) in paragraph at lines 53--60
 
  []
@@ -252,10 +257,6 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 Underfull \vbox (badness 10000) detected at line 91
  []
 
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 104.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 104.
 
 Overfull \hbox (32.13979pt too wide) in paragraph at lines 119--120
 []\OT1/cmr/m/n/10 Alloy Of-fi-cial Doc-u-men-ta-tion: http://alloy.lcs.mit.edu/
@@ -872,29 +873,25 @@ Underfull \vbox (badness 10000) detected at line 1235
 Underfull \vbox (badness 10000) detected at line 1262
  []
 
-[56] (./Design Document.aux)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
+[56] (./Design Document.aux) ) 
 Here is how much of TeX's memory you used:
- 3061 strings out of 494091
- 49720 string characters out of 6163522
- 141616 words of memory out of 5000000
+ 3065 strings out of 494091
+ 49800 string characters out of 6163522
+ 142034 words of memory out of 5000000
  6701 multiletter control sequences out of 15000+600000
  7095 words of font info for 25 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
- 44i,9n,46p,834b,302s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx1
-0.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mbx12.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmr10.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmr12.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmr17.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmti10.pfb></usr/local/texlive/2018basic/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmti12.pfb>
-Output written on "Design Document.pdf" (57 pages, 1284482 bytes).
+ 44i,9n,46p,834b,301s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2018basic/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2018basic/texmf-dist/font
+s/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2018basic/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2018basic/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2018basic/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2018basic/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018basi
+c/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2018
+basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on "Design Document.pdf" (57 pages, 1285277 bytes).
 PDF statistics:
  264 PDF objects out of 1000 (max. 8388607)
  153 compressed objects within 2 object streams
