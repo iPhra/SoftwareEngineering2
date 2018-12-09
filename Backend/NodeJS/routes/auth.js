@@ -1,5 +1,6 @@
 //@todo Mettere una funzione sicura per creare l'userID
 //@todo Differenziare userID da activToken
+//@todo Possibili problemi di concorrenza con userID?
 //@todo Rivedere la gestione degli errori e rollback
 
 const Router = require('express-promise-router');
@@ -8,6 +9,7 @@ const db = require('../settings/dbconnection');
 const sendEmail = require('../settings/mailer');
 const _ = require('lodash');
 const fs = require('fs');
+const logError = require("./errorHandler").logError;
 
 const validateRequest = Validator();
 const router = new Router();
@@ -15,15 +17,9 @@ let text;
 let values;
 let rows;
 let loggedUsers = [];
-let authToken = 0;
 let rawdata = fs.readFileSync('./NodeJS/settings/users.json');
 let userID = JSON.parse(rawdata).userID;
 
-//Logs an error thrown when a query fails, and sends a HTTP 400 response
-function logError(error, res) {
-    console.log(error);
-    res.status(400).send('Query error');
-}
 
 router.post('/reg/single', validateRequest, async (req, res) => {
     //Look in the database to find if the email or fiscal code are already associated to an account
@@ -116,8 +112,8 @@ router.post('/reg/tp', validateRequest, async (req, res) => {
 router.post('/login', validateRequest, async (req, res) => {
     //Look into the database to find for an existing account with the provided credentials
     try {
-        text = 'SELECT userID FROM PrivateUser WHERE email = $1 AND password = $2' +
-            'UNION SELECT userID FROM ThirdParty WHERE email = $1 AND password = $2';
+        text = 'SELECT userid FROM PrivateUser WHERE email = $1 AND password = $2' +
+            'UNION SELECT userid FROM ThirdParty WHERE email = $1 AND password = $2';
         values = [req.body.email, req.body.password];
         rows = await db.query(text, values);
     }
@@ -132,17 +128,16 @@ router.post('/login', validateRequest, async (req, res) => {
     }
 
     //If the user is already logged in, i.e. in the list of logged users
-    if(_.includes(loggedUsers, rows.rows[0].userID)) {
+    if(isLogged(rows.rows[0].userid)) {
         res.status(403).send('Already logged in');
         return;
     }
 
-    //Add the user to the logged users list, increment authToken and send it back to the client
-    loggedUsers.push(rows.rows[0].userID);
-    authToken++;
+    //Add the user to the logged users list and send the userID back to the client
+    loggedUsers.push(rows.rows[0].userid);
     res.status(200).send({
         "message" : 'Login successful',
-        "authToken" : authToken
+        "authToken" : rows.rows[0].userid
     })
 });
 
@@ -190,8 +185,13 @@ async function insertIntoRegistration() {
     await db.query(text, values)
 }
 
+function isLogged(userID) {
+    return _.includes(loggedUsers, userID)
+}
+
 
 module.exports = router;
+module.exports.isLogged = isLogged;
 
 
 

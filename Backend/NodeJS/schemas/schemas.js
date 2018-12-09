@@ -27,9 +27,18 @@ const login = {
     password: password
 };
 
+const singleSettings = {
+    authToken : Joi.string().required(),
+    password : Joi.string().min(8).max(20),
+    full_name : Joi.string().max(30),
+    birthdate : Joi.date().min("1-1-1900"),
+    sex: Joi.string().valid(['M','F','U']),
+};
+
 module.exports = {
     '/reg/single' : singleRegSchema,
     '/reg/tp' : thirdRegSchema,
-    '/login' : login
+    '/login' : login,
+    '/single/info' : singleSettings
 };
 
