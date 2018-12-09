@@ -44,4 +44,51 @@ router.post('/single/info', validateRequest, async (req, res) => {
     }
 });
 
+router.post('/tp/info', validateRequest, async (req, res) => {
+    if (!isLogged(req.body.authToken)) {
+        res.status(403).send("You are not logged in");
+        return
+    }
+
+    try {
+        if(req.body.password) {
+            text = "UPDATE ThirdParty SET password=$1 WHERE userID=$2";
+            values = [req.body.password, req.body.authToken];
+            await db.query(text, values);
+        }
+
+        if(req.body.company_name) {
+            text = "UPDATE ThirdParty SET company_name=$1 WHERE userID=$2";
+            values = [req.body.company_name, req.body.authToken];
+            await db.query(text, values);
+        }
+
+        if(req.body.company_description) {
+            text = "UPDATE ThirdParty SET company_description=$1 WHERE userID=$2";
+            values = [req.body.company_description, req.body.authToken];
+            await db.query(text, values);
+        }
+
+        res.status(200).send("Settings Updated");
+    } catch(error) {
+        return logError(error, res)
+    }
+});
+
+router.post('/single/data', validateRequest, async (req, res) => {
+    if (!isLogged(req.body.authToken)) {
+        res.status(403).send("You are not logged in");
+        return
+    }
+
+    try {
+        console.log(req.body);
+        res.status(200).send("Settings Updated");
+    } catch(error) {
+        return logError(error, res)
+    }
+});
+
+
+
 module.exports = router;
