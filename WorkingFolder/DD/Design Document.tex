@@ -165,15 +165,13 @@ Finally also all external services are included in the diagram, both those acces
 
 The purpose of this UML diagram is to show the internal architecture of the system’s software. It is globally divided into five components: the Data4Help and Track4Run Client Applications, their Business Logic components and the shared external Database. Both business logic components communicate directly with a unique database. However Track4Run’s business layer also accesses Data4Help’s services through its APIs. These main layers are internally organized in modular components, each providing specific services. 
 Components communicate with one another other by providing interfaces where they produce information that is used by the required interface of other components. In our diagram, this is represented internally to a component by assembly connectors ball-and-socket and externally by delegation connectors, required interfaces and provided interfaces.
-We will now focus on one component at a time and describe its functionalities and relationships with others. \\ 
-
-{\bf Data4Help Client Application }\\ 
+We will now focus on one component at a time and describe its functionalities and relationships with others. \\ \\
+{\bf Data4Help Client Application }\\
 This component is located on the user’s device. Its modules are the Network Manager, the Presentation Component, the Data Manager and AutomatedSOS. 
 The first component is committed to dispatching all incoming and outgoing communications with the application server. Whenever it receives a request to show to the user, before forwarding it to its handler, the Network Manager sends a push notification.
 The Presentation Component corresponds to the “View” in the MVCS Pattern. It requires data provided by the business logic component to project it on the User Interface and does not add further functionalities. 
 The Data Manager is the module that calls Heath Monitoring Services APIs to import the user’s health data. It gathers data of the required type and forwards it to the requesting application server.
-Finally, the last component contains the only portion of logic on the Client Application. It functions in background only if enabled by the user, otherwise remains inactive. Each time the client application imports new health data from the user’s device, before forwarding it to the business component, AutomatedSOS performs a set of controls in order to decide whether an ambulance must be called. \\
-
+Finally, the last component contains the only portion of logic on the Client Application. It functions in background only if enabled by the user, otherwise remains inactive. Each time the client application imports new health data from the user’s device, before forwarding it to the business component, AutomatedSOS performs a set of controls in order to decide whether an ambulance must be called. \\ \\
 {\bf Data4Help Business Logic }\\ 
 This component is devoted to the implementation of Data4Help’s core logic. It is a stateless module that lies between the Client application and the central Database. It gathers all components that interact with each other to provide the system’s functionalities. We will now detail how each component is structure and what is its purpose.
 \begin{itemize}
@@ -195,11 +193,9 @@ This component is devoted to the implementation of Data4Help’s core logic. It 
 		The Privacy Manager exposes methods to encrypt sensitive data. This operation is needed in order to store information about users in a secure way in order to reduce the effects of data leaks and to prevent Third Parties from accessing sensitive data with group requests. 
 		\item {\bf Data Storage Manager }\\
 		The Data Storage Manager provides all methods to interact with the central Database such as data retrieval, storage and update.
-    \end{itemize} 
-    
+    \end{itemize}    
 {\bf Track4Run Client Application }\\ 
-This component consists of the client side of Track4Run’s application. Its architecture is that of a thin client as it doesn’t contain any logic of the system. It is composed of three modules: the Network Manager, that dispatches all incoming and outgoing messages, the Presentation component and the Data Manager, committed to import GPS data required to access the application’s functionalities. \\
-
+This component consists of the client side of Track4Run’s application. Its architecture is that of a thin client as it doesn’t contain any logic of the system. It is composed of three modules: the Network Manager, that dispatches all incoming and outgoing messages, the Presentation component and the Data Manager, committed to import GPS data required to access the application’s functionalities. \\ \\
 {\bf Track4Run Business Logic }\\ 
 This component is devoted to the implementation of Track4Run’s core logic. While relying on Data4Helps main services such as authentication and account management and its request protocol, Track4Run adds further functionalities to its users thanks to the interaction of Run Manager and Active Runs Manager. 
 Interaction with Client Applications and the central Database are handled respectively by the Network Manager and the Data Storage Manager.
@@ -214,7 +210,6 @@ We will now detail each component’s inner implementation:
 		\item {\bf Data Storage Manager }\\
 		This component is the unique point of access to the Database in this tier. It handles all data management operations such as data storage, retrieval and update.\\
     \end{itemize}
-
 {\bf External Interfaces }\\ 
 Some of the described components in our System are also dedicated to communicating with external services through specific interfaces. These communications are bilateral and essential to guarantee the application’s functionalities. These components are both on the Client side and on the server side. We will now describe how each external service used by the system is accessed:
 \begin{itemize}
@@ -242,23 +237,17 @@ Some of the described components in our System are also dedicated to communicati
   	\caption{Deployment View}
  	\label{fig:DEPVIEW}
 \end{figure}
-The system presents a multitier architecture in which the role of each node will be specified in the next paragraphs. \\
-
+The system presents a multitier architecture in which the role of each node will be specified in the next paragraphs. \\ \\
 {\bf Smartphone }\\ 
-This node acts as a client machine and could hosts Data4Help and Track4Run native applications. \\
-
+This node acts as a client machine and could hosts Data4Help and Track4Run native applications. \\ \\
 {\bf PC }\\ 
-This node works as well as a client and grants third parties access to Data4Help functionalities through the use of a web browser.\\
-
+This node works as well as a client and grants third parties access to Data4Help functionalities through the use of a web browser.\\ \\
 {\bf Firewall }\\ 
-This component filters the access to the Reverse Proxy and is used to protect a trusted network from an untrusted network. A firewall provides protection from unauthorised requests or from various types of malicious attacks like DDoS.\\
-
+This component filters the access to the Reverse Proxy and is used to protect a trusted network from an untrusted network. A firewall provides protection from unauthorised requests or from various types of malicious attacks like DDoS.\\ \\
 {\bf Application Servers }\\ 
-This level of the architecture encloses all the business logic of the systems. Data4Help and Track4Run Application Servers are fully replicated to balance the workload. Track4Run Application Servers communicate with Data4Help ones in order to make use of their APIs.\\
-
+This level of the architecture encloses all the business logic of the systems. Data4Help and Track4Run Application Servers are fully replicated to balance the workload. Track4Run Application Servers communicate with Data4Help ones in order to make use of their APIs.\\ \\
 {\bf Reverse Proxy }\\ 
-This node helps to achieve increased parallelism and scalability. It is responsible for the load balancing as it distributes requests between all Application Servers. The Reverse Proxy also increases security and anonymity by protecting the identity of our backend servers and acting as an additional shield against security attacks.\\
-
+This node helps to achieve increased parallelism and scalability. It is responsible for the load balancing as it distributes requests between all Application Servers. The Reverse Proxy also increases security and anonymity by protecting the identity of our backend servers and acting as an additional shield against security attacks.\\ \\
 {\bf Database Server }\\ 
 This machine is equipped with a relational DBMS and it is used to store and retrieve all data needed by the Application Servers. 
 
@@ -277,7 +266,6 @@ In all the diagrams following this one, the proxy will not be included for reada
   	\caption{Proxy Runtime View}
  	\label{fig:PROXY}
 \end{figure}
-
 {\bf Registration Runtime View }\\ 
 The following sequence diagram describes the order of events that occur whenever a user registers to Data4Help. The procedure is equivalent for both registering as a Single User and as a Third Party. The actors involved in this scenario are the Presentation and Network Manager components on the Client side and the Network Manager, Authentication Manager, Data Storage Manager on the Server Side. External services that are invoked are the DBMS and the Mailing System.
 The sequence of events is guided by the user’s HTTP registration request, filled with the user’s email, password, FC, full name, birthdate and sex, all forming the “registration form”. The request is either malformed, such as having empty parameters, either structurally correct and defining the information to store in a new account in the database. However a request may still be invalid as it provides an already used email or FC, thus receiving an HTTP ERROR 403 response (Already Registered) or contains information violating the databases integrity constraints, thus receiving an HTTP ERROR 400 response (Malformed Request).
@@ -886,28 +874,22 @@ Also, all methods shown in the Runtime Views that are self-calls are obviously n
 \subsection{Selected architectural styles and patterns}
 
 {\bf Multi-tier Architecture }\\ 
-As stated in the Overview, the chosen architecture for the System is a multi-tier architecture, with three partially distributed layers. This division guarantees that each tier only deals with a specific task, so that computation is correctly spread amongst the System and there isn’t a central node in charge of everything. Also, modifications to a specific layer won’t affect the others, so the overall maintenance of the System is much easier.\\
-
+As stated in the Overview, the chosen architecture for the System is a multi-tier architecture, with three partially distributed layers. This division guarantees that each tier only deals with a specific task, so that computation is correctly spread amongst the System and there isn’t a central node in charge of everything. Also, modifications to a specific layer won’t affect the others, so the overall maintenance of the System is much easier.\\ \\
 In the first tier there is the Client’s physical device, which can be a mobile device or a desktop PC, in the case of Third Parties directly accessing the Application Server.
 The Presentation layer is completely managed by this tier, with the aim of displaying to the user all informations received by the Application Server. This is done through a dynamic GUI on the mobile device, which also displays services offered by third parties such as the Map visualization service, used by Track4Run. Desktop PCs, on the other hand, do not implement the Presentation layer, as their only use of Data4Help and Track4Run is to query their APIs inside specific environments defined by the users.
-Mobile devices also implement part of the business logic to guarantee the fulfillment of AutomatedSOS's nonfunctional requirements, and part of the data storage, as they hold a cache for data collected in the last week. Since these contributions to the Business and Data Storage layer are minimal, we will consider the Client tier to only implement the Presentation layer, thus being a Thin Client.\\
-
+Mobile devices also implement part of the business logic to guarantee the fulfillment of AutomatedSOS's nonfunctional requirements, and part of the data storage, as they hold a cache for data collected in the last week. Since these contributions to the Business and Data Storage layer are minimal, we will consider the Client tier to only implement the Presentation layer, thus being a Thin Client.\\ \\
 In the second tier there is have the Nginx Web Server, functioning both as a reverse proxy and as a load balancer. The purposes of these machines, used by Data4Help and Track4Run, is:
 To retrieve data from the Application Servers and provide it to the Client as if the proxy were the server itself.
 To redirect requests to the idle servers, avoiding congestions on each one.
 Nginx was chosen over Apache for its flexibility in handling requests and its efficient use of main memory, thanks to the event-driven approach used.
-This tier contributes to the implementation of the Business Logic layer, even though it doesn’t do it directly, but it helps the Application Servers in doing it.\\
-
-In the third tier there are the Application Servers of Data4Help and Track4Run. The deployment will be done by replicating each server as many times as necessary to guarantee the nonfunctional requirements expressed in the RASD. In case of a sudden increase in the number of requests, we could seamlessly add more machines to handle the traffic, as each one is stateless. In fact, this tier only implements the Business and Domain Logic layer, but not the Data Storage layer. \\
-
+This tier contributes to the implementation of the Business Logic layer, even though it doesn’t do it directly, but it helps the Application Servers in doing it.\\ \\
+In the third tier there are the Application Servers of Data4Help and Track4Run. The deployment will be done by replicating each server as many times as necessary to guarantee the nonfunctional requirements expressed in the RASD. In case of a sudden increase in the number of requests, we could seamlessly add more machines to handle the traffic, as each one is stateless. In fact, this tier only implements the Business and Domain Logic layer, but not the Data Storage layer. \\ \\
 In the fourth and final tier we have the Database, shared by Data4Help and Track4Run. This tier is not handled by TrackMe directly, as a cloud solution was preferred to one on premises, sparing the company from having to ensure the reliability of the DB and its management. 
-This tier fully implements the Data Storage layer.\\
-
+This tier fully implements the Data Storage layer.\\ \\
 {\bf REST}\\
 The Representational State Transfer style has been used as a guideline to implement the services offered by the Application Servers, and their interaction with the Clients. All services are accessible through stateless operations, so that together with the servers being stateless themselves allow for a scalable System.
 HTTP is the communication protocol used underneath, so CRUD operations are implemented through GET, POST, DELETE and PUT primitives. 
-Using HTTP and complying with REST guidelines allows to provide clear and complete APIs to the Clients, usable by both mobile devices and desktop PCs, thus ensuring Portability.\\
-
+Using HTTP and complying with REST guidelines allows to provide clear and complete APIs to the Clients, usable by both mobile devices and desktop PCs, thus ensuring Portability.\\ \\
 {\bf MVCS}\\
 The software system’s architecture will follow the MVCS paradigm. The acronym stands for Model View Controller Store.
 \begin{itemize}
@@ -925,8 +907,7 @@ This best practice design pattern is commonly used in client server applications
 {\bf Firewall}\\
 The systems architecture includes two network firewalls that keep a separation between the reverse proxies and the external network. The external network is regarded as untrusted and may represent a menace to the internal, trusted, network of the system.
 Network firewalls operate by filtering the packets trying to pass through them.
-The reverse proxies may have been used to perform firewall functions as well but it has been preferred to decouple packet filtering from packet dispatchment.\\
-
+The reverse proxies may have been used to perform firewall functions as well but it has been preferred to decouple packet filtering from packet dispatchment.\\ \\
 {\bf Database}\\
 It was decided to use a relational database model for both Data4Help and Track4Run, as opposed to a non-relational model, because it allows to represent the intrinsic relationships present in the data needed to be stored. Also, many complex operations will be made on the database, including Joins and Updates, which are not well handled by a non-relational model. 
 A viable alternative would have been to use a relational database for Data4Help, and a non-relational one for Track4Run, since most of the data is just append-only made of couples <key,value>, containing the runnerID and its coordinates. Nonetheless, this hybrid option was discarded in order to be cohesive with Data4Help.
@@ -1152,7 +1133,7 @@ The following diagram instead contains the use hierarchy within the Data4Help cl
   	\includegraphics[width=5cm]{clientSubsystemTesting.png}
   	\caption{Client Subsystem testing}
  	\label{fig:clientSubsystemTesting}
-\end{figure}
+\end{figure} 
 As mentioned above, the same approach will be adopted with Track4Run’s subsystems.
 \newline
 \newline
@@ -1164,7 +1145,7 @@ Finally, when performing system integration, we will also include external servi
 The following diagram represents how our system test will be performed. It is true both for Data4Help and Track4Run. Arrows represent the use hierarchy, meaning that the arrows start from modules that use those corresponding to the end points. As mentioned before, our integration procedure will begin from the leaves to the root.
 \begin{figure}[H]
 	\center
-  	\includegraphics[width=5cm]{systemTesting.png}
+  	\includegraphics[width=7cm]{systemTesting.png}
   	\caption{System testing}
  	\label{fig:systemTesting}
 \end{figure}
