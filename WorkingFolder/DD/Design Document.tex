@@ -104,8 +104,7 @@ Companies can access data of private users by sending them requests or retrieve 
 	\begin{tabular}{ccc} 
 		Version & Date & Changes  \\ 
 		\hline
-		1.1 & 12/11/2018 & Initial draft \\
-		1.2 & 10/12/2018 & First deadline draft \\
+		1.1 & 10/12/2018 & First deadline draft \\
 	\end{tabular}
 	\caption{Revision History}
 	\label{default}
@@ -337,7 +336,6 @@ The sequence of events begins with the user opening the New Run tab on his mobil
  	\label{fig:ORG}
 \end{figure}
 \noindent
-
 {\bf Join a Run Runtime View }\\ 
 The following diagram describes the sequence of events that occur when a logged-in Private User wants to join a run using {\it Track4Run}.
 The components involved are the Private User presentation and the Network Manager for the client, and the Network Manager, Active Runs Manager and Data Storage Manager for the Application Server, who in turn interacts with the DB.
@@ -351,7 +349,6 @@ When the day of the run comes, the server pushes a request to {\it Data4Help} di
  	\label{fig:JOIN}
 \end{figure}
 \noindent
-
 {\bf Spectate a Run Runtime View }\\ 
 The following diagram describes the sequence of events that occur whenever a user wants to spectate a run using {\it Track4Run}, without having to be logged in.
 The components involved are the User presentation and the Network Manager for the client, and the Network Manager, Active Runs Manager and Data Storage Manager for the Application Server, who in turn interacts with the DB.
@@ -496,7 +493,7 @@ Also, all methods shown in the Runtime Views that are self-calls are obviously n
         code: 400 \newline
         body : \{ "error" : "Malformed request" \} \newline \newline
         code: 403 \newline
-        body : \{ "error" : "You are not logged in" \} \\ \hline
+        body : \{ "error" : "Wrong authentication" \} \\ \hline
 \end{tabularx}
 		
 \vspace{\baselineskip}
@@ -518,7 +515,7 @@ Also, all methods shown in the Runtime Views that are self-calls are obviously n
         code: 400 \newline
         body : \{ "error" : "Malformed request" \} \newline \newline
         code: 403 \newline
-        body : \{ "error" : "You are not logged in" \}\\  \hline
+        body : \{ "error" : "Wrong authentication" \}\\  \hline
 \end{tabularx}
 		
 \vspace{\baselineskip}
@@ -541,7 +538,7 @@ Also, all methods shown in the Runtime Views that are self-calls are obviously n
         code: 400 \newline
         body : \{ "error" : "Malformed request" \} \newline \newline
         code: 403 \newline
-        body : \{ "error" : "You are not logged in" \} \\ \hline
+        body : \{ "error" : "Wrong authentication" \} \\ \hline
 \end{tabularx}
 		
 \vspace{\baselineskip}
