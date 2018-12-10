@@ -12,6 +12,7 @@ const sex = Joi.string().valid(['M','F','U']);
 const dataTypes = Joi.string().valid(['standinghours','heartrate','runningdistance','sleepinghours', 'walkingdistance', 'weight', 'height', 'age', 'activeenergy', 'steps']);
 const company_name = Joi.string().max(20);
 const company_description = Joi.string().max(100);
+
 const singleRegSchema = {
     email: email,
     password: password.required(),
