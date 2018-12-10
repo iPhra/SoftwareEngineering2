@@ -39,9 +39,9 @@ class D4HSingleRegisterRequest: D4HRequest {
         let params: Parameters = [
             "email": email,
             "password": password,
-            "FC": FC,
-            "fullname": fullname,
-            "birthday": birthday,
+            "fc": FC,
+            "full_name": fullname,
+            "birthdate": birthday,
             "sex": sex,
         ]
         print(params)
