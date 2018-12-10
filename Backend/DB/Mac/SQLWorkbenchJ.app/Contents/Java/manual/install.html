@@ -1,0 +1,195 @@
+<html><head><META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>4.&nbsp;Installing and starting SQL Workbench/J</title><link href="html-publish.css" type="text/css" rel="stylesheet"><meta content="DocBook XSL Stylesheets V1.78.1" name="generator"><link rel="home" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="up" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="prev" href="history.html" title="3.&nbsp;Change log"><link rel="next" href="commandline.html" title="5.&nbsp;Command line parameters"><link rel="article" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="subsection" href="install.html#install-prereq" title="4.1.&nbsp;Pre-requisites"><link rel="subsection" href="install.html#first-time-install" title="4.2.&nbsp;First time installation"><link rel="subsection" href="install.html#upgrade-install" title="4.3.&nbsp;Upgrade installation"><link rel="subsection" href="install.html#starting" title="4.4.&nbsp;Starting the program from the commandline"><link rel="subsection" href="install.html#shell-using" title="4.5.&nbsp;Starting the program using the shell script"><link rel="subsection" href="install.html#launcher-using" title="4.6.&nbsp;Starting the program using the Windows&reg; launcher"><link rel="subsection" href="install.html#config-dir" title="4.7.&nbsp;Configuration directory"><link rel="subsection" href="install.html#move-installation" title="4.8.&nbsp;Copying an installation"><link rel="subsection" href="install.html#install-increase-memory" title="4.9.&nbsp;Increasing the memory available to the application"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">4.&nbsp;Installing and starting SQL Workbench/J</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="history.html">Prev</a>&nbsp;</td><th align="center" width="60%">&nbsp;</th><td align="right" width="20%">&nbsp;<a accesskey="n" href="commandline.html">Next</a></td></tr></table><hr></div><div class="section" id="install"><div class="titlepage"><div><div><h2 class="title" style="clear: both">4.&nbsp;Installing and starting SQL Workbench/J</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="install.html#install-prereq">4.1. Pre-requisites</a></span></dt><dt><span class="section"><a href="install.html#first-time-install">4.2. First time installation</a></span></dt><dt><span class="section"><a href="install.html#upgrade-install">4.3. Upgrade installation</a></span></dt><dt><span class="section"><a href="install.html#starting">4.4. Starting the program from the commandline</a></span></dt><dt><span class="section"><a href="install.html#shell-using">4.5. Starting the program using the shell script</a></span></dt><dt><span class="section"><a href="install.html#launcher-using">4.6. Starting the program using the Windows&reg; launcher</a></span></dt><dt><span class="section"><a href="install.html#config-dir">4.7. Configuration directory</a></span></dt><dt><span class="section"><a href="install.html#move-installation">4.8. Copying an installation</a></span></dt><dt><span class="section"><a href="install.html#install-increase-memory">4.9. Increasing the memory available to the application</a></span></dt></dl></div><div class="section" id="install-prereq"><div class="titlepage"><div><div><h3 class="title">4.1.&nbsp;Pre-requisites</h3></div></div></div><p>
+      To run SQL Workbench/J a <a class="ulink" href="http://www.java.com/" target="_blank">Java 8 runtime environment</a>
+      or higher is required. You can either use a JRE ("Runtime") or a JDK ("Development Kit") to run SQL Workbench/J.
+    </p><p>
+      SQL Workbench/J does not need a "fully installed" runtime environment, you can also copy
+      the <code class="literal">jre</code> directory from an existing Java installation or use the no-installer
+      packages from the Oracle home page
+    </p><p>
+      The "local" Java installation in the <code class="literal">jre</code> subdirectory will <span class="bold"><strong>not</strong></span>
+      be used by the Windows&reg; launcher if a Java runtime has been installed and <span class="emphasis"><em>is registered</em></span>
+      in the system (i.e. the Windows&reg; registry)
+    </p><p id="download-jre-zip">
+      If you cannot (or do not want to) do a regular installation of a Java 8 runtime, you can download
+      a ZIP distribution from <a class="ulink" href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank">Oracle's home page</a>.
+      Under <a class="ulink" href="http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html" target="_blank">"JRE Download"</a>
+      you can download <code class="literal">tar.gz</code> archives for Windows&reg; and Linux (32bit and 64bit versions are available).
+    </p><p>
+      The archive just needs to be unpacked. Inside the archive the actual JRE is stored in a directory named e.g.
+      <code class="literal">jre1.8.0_xx</code> where <code class="literal">xx</code> is the build number of the Java runtime.
+      When moving this directory to the installation directory of SQL Workbench/J you have to rename it to <code class="literal">jre</code>
+      in order for the Windows&reg; launcher or the batch files to recognize it.
+    </p><p>
+      Maven central also offers ZIP archives of the Java runtime: <a class="ulink" href="http://maven.nuiton.org/nexus/content/repositories/jvm/com/oracle/jre/" target="_blank">http://maven.nuiton.org/nexus/content/repositories/jvm/com/oracle/jre/</a>
+    </p></div><div class="section" id="first-time-install"><div class="titlepage"><div><div><h3 class="title">4.2.&nbsp;First time installation</h3></div></div></div><p>
+      Once you have downloaded the application's distribution package, unzip the archive into a directory
+      of your choice. Apart from that, no special installation procedure is needed.
+    </p><p>
+      You will need to configure the necessary JDBC driver(s) for your database before you
+      can connect to a database. Please refer to the chapter <a class="link" href="jdbc-setup.html" title="6.&nbsp;JDBC Drivers">JDBC Drivers</a>
+      for details on how to make the JDBC driver available to SQL Workbench/J
+    </p><p>
+      When starting SQL Workbench/J for the first time, it will create a directory
+      called <code class="literal">.sqlworkbench</code> in the current user's home folder to
+      store all its configuration information.
+    </p><p>
+      The "user's home directory" is <code class="literal">$HOME</code> on a Linux or Unix based system,
+      and <code class="literal">%HOMEPATH%</code> on a Windows&reg; system. (Technically speaking
+      it is using the contents of Java system property <code class="literal">user.home</code> to
+      find the user's home directory)
+    </p></div><div class="section" id="upgrade-install"><div class="titlepage"><div><div><h3 class="title">4.3.&nbsp;Upgrade installation</h3></div></div></div><p>
+      When upgrading to a newer version of SQL Workbench/J simply overwrite the old
+      <code class="literal">sqlworkbench.jar</code>, the <code class="literal">exe</code> files and shell scripts that
+      start the application. If you are using the bundle that includes the libraries for
+      reading and writing OpenOffice and Microsoft Office files, replace all existing <code class="literal">jar</code> files
+      with those from the distribution archive as well.
+    </p></div><div class="section" id="starting"><div class="titlepage"><div><div><h3 class="title">4.4.&nbsp;Starting the program from the commandline</h3></div></div></div><p>
+      sqlworkbench.jar is a self executing JAR file. This means, that if
+      your Java runtime is installed and registered with the system, a double click
+      on <code class="literal">sqlworkbench.jar</code> will execute the application. To run the application
+      manually use the command:
+    </p><pre class="programlisting">java -jar sqlworkbench.jar</pre><p>
+      Native executables for Windows&reg; and Mac OSX are supplied that start SQL Workbench/J by
+      using the default Java runtime installed on your system. Details on using
+      the <a class="link" href="install.html#launcher-using" title="4.6.&nbsp;Starting the program using the Windows&reg; launcher">Windows&reg; launcher</a> can be found
+      <a class="link" href="install.html#launcher-using" title="4.6.&nbsp;Starting the program using the Windows&reg; launcher">here</a>.
+    </p></div><div class="section" id="shell-using"><div class="titlepage"><div><div><h3 class="title">4.5.&nbsp;Starting the program using the shell script</h3></div></div></div><p>
+      To run SQL Workbench/J under an Unix-type operating system, the supplied shell script
+      <code class="literal">sqlworkbench.sh</code> can be used. For Linux desktops a sample ".desktop"
+      file is available.
+    </p><div class="section" id="jdk-shell"><div class="titlepage"><div><div><h4 class="title">4.5.1.&nbsp;Specifying the Java runtime for the shell script</h4></div></div></div><p>
+        The shell scripts (and the batch files) first check if a Java runtime is available in the sub-directory <code class="literal">jre</code>.
+        If that is available it will be used.
+      </p><p>
+        If no "local" Java runtime is found, the environment variable <code class="literal">WORKBENCH_JDK</code>
+        is checked. If that variable is defined and points to a Java runtime installation, the shell script will
+        use <code class="literal">$WORKBENCH_JDK/bin/java</code> to run the application.
+      </p><p>
+        If <code class="literal">WORKBENCH_JDK</code> is not defined, the shell script will check
+        for the environment variable <code class="literal">JAVA_HOME</code>. If that is defined, the script
+        will use <code class="literal">$JAVA_HOME/bin/java</code> to run the application.
+      </p><p>
+        If neither <code class="literal">WORKBENCH_JDK</code> nor <code class="literal">JAVA_HOME</code> is defined,
+        the shell script will simply use <code class="literal">java</code> to start the application,
+        assuming that a valid Java runtime is available on the path.
+      </p><p>
+        All parameters that are passed to the shell scripts are passed to the application, not to the
+        Java runtime. If you want to change the memory or other system settings for the JVM, you need to
+        edit the shell script.
+      </p></div></div><div class="section" id="launcher-using"><div class="titlepage"><div><div><h3 class="title">4.6.&nbsp;Starting the program using the Windows&reg; launcher</h3></div></div></div><a name="N1029E" class="indexterm"></a><a name="N102A4" class="indexterm"></a><a name="N102AA" class="indexterm"></a><a name="N102B0" class="indexterm"></a><p>
+      To start SQL Workbench/J on the Windows&reg; platform, the supplied <code class="literal">SQLWorkbench.exe</code> (32bit Windows)
+      or <code class="literal">SQLWorkbench64.exe</code> (64bit Windows) can be used to start the program when using an installed
+      Oracle Java runtime. The file <code class="literal">sqlworkbench.jar</code> has to be located in the same directory as the
+      exe files, otherwise it does not work.
+    </p><p>
+      SQL Workbench/J does not need a "fully installed" runtime environment, you can also copy
+      the <code class="literal">jre</code> directory from an existing Java installation.
+      Note that the "local" Java installation in the <code class="literal">jre</code> subdirectory will not be used by the Windows&reg; launcher
+      if a Java runtime has been installed and registered in the system.
+    </p><p>
+      If you cannot (or don't want to) do a regular installation of a Java 8 runtime, you can download
+      a ZIP distribution for Windows&reg; from Oracle's homepage: <a class="ulink" href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank">http://www.oracle.com/technetwork/java/javase/downloads/index.html</a>.
+      Under <a class="ulink" href="http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html" target="_blank">"JRE Download"</a> there is also
+      an option to download a no-installer version. These downloads are offered as <code class="literal">tar.gz</code> archives, so a tool
+      that can handle Unix/Linux that format is needed for unpacking the archive (e.g.
+      <a class="ulink" href="http://www.ghisler.com/" target="_blank">TotalCommander</a> or <a class="ulink" href="http://www.7-zip.org/" target="_blank">7-Zip</a>).
+    </p><p>
+      When using a 32bit Java runtime the default memory available to the application is set to 1GB. When using a 64bit Java runtime
+      the default is set to 65% of the available physical memory.
+    </p><div class="section" id="launcher-parameters"><div class="titlepage"><div><div><h4 class="title">4.6.1.&nbsp;Parameters for the Windows&reg; launcher</h4></div></div></div><p id="launcher-ini-file">
+        Additional parameters to the Windows&reg; launcher can be defined in a <code class="literal">INI</code> file that needs to be created
+        in the directory where the <code class="literal">.exe</code> is located. The name of the <code class="literal">INI</code> has to match the
+        name of the used executable. To specify parameters for the 64bit executable, use <code class="literal">SQLWorkbench64.ini</code>.
+        To specify parameters for the 32bit executable, use <code class="literal">SQLWorkbench.ini</code>
+      </p><div class="section" id="launcher-jvm-location"><div class="titlepage"><div><div><h5 class="title">4.6.1.1.&nbsp;Specifying the Java location</h5></div></div></div><p>
+          The launcher executables are based on <a class="ulink" href="http://winrun4j.sourceforge.net/" target="_blank">WinRun4J</a>, further documentation on
+          the format of the configuration file and parameters can also be found there.
+        </p><p>
+          If the launcher cannot find your installed Java runtime, you can specify the location of the JRE in the <a class="link" href="">INI</a> file
+          with the following parameter:
+        </p><pre class="programlisting">vm.location=c:\Program Files\Java\jdk8\jre\bin\server\jvm.dll</pre><p>
+          You need to specify the <span class="bold"><strong>full path</strong></span> to the <code class="literal">jvm.dll</code>,
+          <span class="bold"><strong>not</strong></span> the <span class="emphasis"><em>directory</em></span> where the Java runtime is installed.
+          Note that the 32bit Java runtime has both a <code class="literal">server\jvm.dll</code> <span class="emphasis"><em>and</em></span> <code class="literal">client\jvm.dll</code>
+          A 64bit Java runtime only has a <code class="literal">server\jvm.dll</code>.
+        </p></div><div class="section" id="launcher-memory-parameter"><div class="titlepage"><div><div><h5 class="title">4.6.1.2.&nbsp;Defining the memory for the application</h5></div></div></div><a name="N10337" class="indexterm"></a><p>
+          The memory that is available to the Java runtime is defined through the parameter <code class="literal">vm.heapsize.preferred</code>
+          in the <code class="literal">INI</code> file. The unit is bytes. To start SQL Workbench/J with 12GB of available memory (which is only possible
+          on a 64bit system!) add the following line to the <code class="literal">INI</code> file:
+        </p><pre class="programlisting">vm.heapsize.preferred=12000</pre><p>
+          You can verify the available memory in the about dialog: <span class="guimenu">Help</span> &rarr; <span class="guimenuitem">About</span>
+        </p></div></div></div><div class="section" id="config-dir"><div class="titlepage"><div><div><h3 class="title">4.7.&nbsp;Configuration directory</h3></div></div></div><p>
+      The configuration directory is the directory where all config (<code class="literal">workbench.settings</code>,
+      <code class="literal">WbProfiles.xml</code>, <code class="literal">WbDrivers.xml</code>) files are stored.
+    </p><p>
+      If no configuration directory has been specified on the commandline,
+      SQL Workbench/J will identify the configuration directory by looking at the following places
+      </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">The current directory</li><li class="listitem">The directory where <code class="literal">sqlworkbench.jar</code> is located</li><li class="listitem">
+            In the user's home direcotry
+            (e.g. <code class="literal">$HOME/.sqlworkbench</code> on Unix based systems
+            or <code class="literal">%HOMEPATH%\.sqlworkbench</code> on Windows&reg; systems)
+          </li></ol></div><p>
+      If the file <code class="literal">workbench.settings</code> is found in one of those directories, that
+      directory is considered the configuration directory.
+    </p><p>
+      If no configuration directory can be identified, it will be created in the user's home directory (as <code class="literal">.sqlworkbench</code>).
+    </p><p>
+      The above mentioned search can be overridden by supplying the configuration directory
+      <a class="link" href="commandline.html#cmdline-parameter-configdir" title="5.1.&nbsp;Specify the directory for configuration settings">on the commandline</a> when starting the application.
+    </p><p>The following files are stored in the configuration directory:
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">General configuration settings (<code class="filename">workbench.settings</code>)</li><li class="listitem">Connection profiles (<code class="filename">WbProfiles.xml</code>)</li><li class="listitem">JDBC Driver definitions (<code class="filename">WbDrivers.xml</code>)</li><li class="listitem">Customized shortcut definitions (<code class="filename">WbShortcuts.xml</code>).
+          If you did not customize any of the shortcuts, this file does not exist</li><li class="listitem">Macro definitions (<code class="filename">WbMacros.xml</code>)</li><li class="listitem"><a class="link" href="options.html#dbexp-options-remember-col-order" title="Remember column order">Saved column orders</a> from the DbExplorer(<code class="filename">WbColumnOrder.xml</code>)</li><li class="listitem">Log file (<code class="filename">workbench.log</code>)</li><li class="listitem">Workspace files (<code class="filename">*.wksp</code>)</li><li class="listitem">The cache directory for the <a class="link" href="profiles.html#profile-local-completion-cache" title="7.6.15.&nbsp;Store completion cache locally">code completion</a></li></ul></div><p>
+    </p><p>
+      If you want to use a different file for the connection profile than WbProfiles.xml then you can specify the
+      location of the profiles with the <code class="literal">-profileStorage</code> parameter on the command line.
+      Thus you can create different shortcuts on your desktop pointing to different sets of profiles.
+      The different shortcuts can still use the same main configuration file.
+    </p><p>
+      </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td valign="top" align="center" rowspan="2" width="25"><img alt="[Note]" src="./images/note.png"></td><th align="left"></th></tr><tr><td valign="top" align="left">
+        The location of the settings file (and therefor the configuration directory)
+        is shown through <span class="guimenu">Help</span> &rarr; <span class="guimenuitem">About</span> and
+        on the "General" page of the Options dialog which can be displayed using <span class="guimenu">Tools</span> &rarr; <span class="guimenuitem">Options</span>.
+      </td></tr></table></div><p>
+    </p></div><div class="section" id="move-installation"><div class="titlepage"><div><div><h3 class="title">4.8.&nbsp;Copying an installation</h3></div></div></div><p>
+      To copy an installation to a different computer, simply copy all the files from the configuration directory
+      to the other computer (the log file does not need to be copied).
+      When a profile is connected to a workspace, the workspace file should be specified
+      without a directory name (or using the <code class="literal">%ConfigDir%</code> placeholder).
+      In that case it is always loaded from the configuration directory.
+      If the workspace file is given with an absolute directory, this needs to be adjusted
+      after the copying the files.
+    </p><p>
+      You will need to edit the driver definitions (stored in <code class="filename">WbDrivers.xml</code>)
+      because the <span class="emphasis"><em>full path</em></span> to the driver's jar file(s) is stored in the file.
+    </p><p>
+      If you store all JDBC drivers in a common directory (or below a common root directory)
+      you can define the <a class="link" href="settings.html#settings-libdir" title="Defining a base directory for JDBC libraries">libdir variable</a>. In that case the paths to the
+      driver's jar file are stored relative to the <code class="literal">%LibDir%</code> directory.
+      After copying the installation you only need to adjust the <code class="literal">%LibDir%</code> variable
+      on the other computer.
+    </p></div><div class="section" id="install-increase-memory"><div class="titlepage"><div><div><h3 class="title">4.9.&nbsp;Increasing the memory available to the application</h3></div></div></div><p>
+      SQL Workbench/J is a Java application and thus runs inside a virtual machine (JVM).
+      The virtual machine limits the memory of the application independently from the installed
+      memory that is available to the operating system.
+    </p><p>
+      SQL Workbench/J reads <span class="bold"><strong>all</strong></span> the data that is
+      returned by a SQL statement into memory. When retrieving large result sets, you might
+      get an error message, indicating that not enough memory is available. In this
+      case you need to increase the memory that the JVM requests from the operating
+      system (or change your statement to return fewer rows).
+    </p><p>
+      When using the Windows launcher (e.g. <code class="literal">SQLWorkbench64.exe</code>), the available memory is defined
+      in the <a class="link" href="install.html#launcher-memory-parameter" title="4.6.1.2.&nbsp;Defining the memory for the application">INI</a> file.
+    </p><p>
+      When using the shell or batch scripts, the available memory is defined through the <code class="literal">-Xmx</code>
+      parameter for the <code class="literal">java</code> command. In the following example, the parameter <code class="literal">-Xmx4g</code>
+      sets the available memory to 4GB
+    </p><pre class="programlisting">java -Xmx4g -jar sqlworkbench.jar</pre><p>
+      If you are using the supplied shell scripts to start SQL Workbench/J, you can
+      edit the scripts and change the value for the -Xmx parameter in there.
+    </p><p>
+      </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td valign="top" align="center" rowspan="2" width="25"><img alt="[Note]" src="./images/note.png"></td><th align="left"></th></tr><tr><td valign="top" align="left">
+        With a 32bit Java runtime, you can not use (or assign) more than approx. 1.5GB for the application. If you need
+        to process results that require more memory that that, you will have to use a 64bit Java runtime.
+      </td></tr></table></div><p>
+    </p></div></div><div class="navfooter"><hr><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="history.html">Prev</a>&nbsp;</td><td align="center" width="20%">&nbsp;</td><td align="right" width="40%">&nbsp;<a accesskey="n" href="commandline.html">Next</a></td></tr><tr><td valign="top" align="left" width="40%">3.&nbsp;Change log&nbsp;</td><td align="center" width="20%"><a accesskey="h" href="workbench-manual.html">Home</a></td><td valign="top" align="right" width="40%">&nbsp;5.&nbsp;Command line parameters</td></tr></table></div></body></html>

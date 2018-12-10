@@ -1,0 +1,517 @@
+<html><head><META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>23.&nbsp;Comparing databases</title><link href="html-publish.css" type="text/css" rel="stylesheet"><meta content="DocBook XSL Stylesheets V1.78.1" name="generator"><link rel="home" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="up" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="prev" href="command-copy.html" title="22.&nbsp;Copy data across databases"><link rel="next" href="wb-grep-commands.html" title="24.&nbsp;Search data and code in the database"><link rel="article" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="subsection" href="compare-commands.html#command-schema-diff" title="23.1.&nbsp;Compare two database schemas - WbSchemaDiff"><link rel="subsection" href="compare-commands.html#command-data-diff" title="23.2.&nbsp;Compare data across databases - WbDataDiff"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">23.&nbsp;Comparing databases</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="command-copy.html">Prev</a>&nbsp;</td><th align="center" width="60%">&nbsp;</th><td align="right" width="20%">&nbsp;<a accesskey="n" href="wb-grep-commands.html">Next</a></td></tr></table><hr></div><div class="section" id="compare-commands"><div class="titlepage"><div><div><h2 class="title" style="clear: both">23.&nbsp;Comparing databases</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="compare-commands.html#command-schema-diff">23.1. Compare two database schemas - WbSchemaDiff</a></span></dt><dt><span class="section"><a href="compare-commands.html#command-data-diff">23.2. Compare data across databases - WbDataDiff</a></span></dt></dl></div><div class="important" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Important"><tr><td valign="top" align="center" rowspan="2" width="25"><img alt="[Important]" src="./images/important.png"></td><th align="left"></th></tr><tr><td valign="top" align="left"><p>
+    All SQL Workbench/J specific command can <span class="bold"><strong>only</strong></span> be used from within SQL Workbench/J
+  </p></td></tr></table></div><p>
+    There are two SQL Workbench/J specific commands that can compare either the structure of two databases or
+    the data contained in them.
+  </p><p>
+		These commands (<code class="literal">WbSchemaDiff</code> and <code class="literal">WbDataDiff</code>) can be used like
+    any other SQL command as long as they are run using SQL Workbench/J This includes the usage in scripts
+    that are run in <a class="link" href="using-scripting.html" title="18.&nbsp;Using SQL Workbench/J in batch files">batch mode</a>.
+	</p><div class="section" id="command-schema-diff"><div class="titlepage"><div><div><h3 class="title">23.1.&nbsp;Compare two database schemas - WbSchemaDiff</h3></div></div></div><p>
+      <code class="literal">WbSchemaDiff</code> analyzes two schemas (or a list of tables)
+      and outputs the differences between those schemas as an XML file. The XML file
+      describes the changes that need to be applied to the target schema to have
+      the same structure as the reference schema, e.g. modify column definitions,
+      remove or add tables, remove or add indexes.
+    </p><p>
+      The output is intended to be transformed using XSLT (e.g. with the
+      <a class="link" href="wb-commands.html#command-xslt" title="29.19.&nbsp;Run an XSLT transformation - WbXslt">WbXSLT Command</a>).
+
+      Sample XSLT transformations are stored in the <code class="literal">xslt</code> subdirectory of the SQL Workbench/J installation
+      directory. All scripts that are part of the download can also be found on the
+      <a class="ulink" href="https://www.sql-workbench.eu/xslt.html" target="_blank">SQL Workbench/J homepage</a>
+    </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td valign="top" align="center" rowspan="2" width="25"><img alt="[Note]" src="./images/note.png"></td><th align="left"></th></tr><tr><td valign="top" align="left"><p>
+      This feature should only be considered as a one-off solution to quickly compare two database schemas. Is not intended
+      to replace a proper schema (script) management. You should consider tools like <a class="ulink" href="http://liquibase.org/" target="_blank">Liquibase</a>
+      or <a class="ulink" href="http://flywaydb.org/" target="_blank">Flyway</a> to manage a database schema.
+      Those scripts should also be stored in a version control system (Subversion, Git, ...)
+    </p></td></tr></table></div><p>The command supports the following parameters:</p><div class="informaltable"><table style="border-collapse: collapse;border-top: 1px solid ; border-bottom: 1px solid ; border-left: 1px solid ; border-right: 1px solid ; "><colgroup><col width="4cm" align="left" class="c1"><col align="left" class="c2"></colgroup><thead><tr><th style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left">Parameter</th><th style="border-bottom: 1px solid ; " align="left">Description</th></tr></thead><tbody valign="top"><tr><td id="schema-diff-refprof" style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-referenceProfile</td><td style="border-bottom: 1px solid ; " align="left" valign="top">The name of the connection profile for the reference
+            connection. If this is not specified, then the current connection is
+          used.</td></tr><tr><td id="schema-diff-refgroup" style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-referenceGroup</td><td style="border-bottom: 1px solid ; " align="left" valign="top">If the name of your reference profile is not unique across
+            all profiles, you will need to specify the group in which the profile
+            is located with this parameter.
+          </td></tr><tr><td id="schema-diff-refconn" style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-referenceConnection</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+            <p>
+  Allows to specify a full connection definition as a single parameter (and thus does not require
+  a pre-defined connection profile).
+</p>
+<p>
+  The connection is specified with a comma separated list of key value pairs:
+  </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><code class="literal">username</code> - the username for the connection</li><li class="listitem"><code class="literal">password</code> - the password for the connection</li><li class="listitem"><code class="literal">url</code> - the JDBC URL</li><li class="listitem"><code class="literal">driver</code> - the class name for the JDBC driver. If this is not specified, SQL Workbench/J
+      will try to determine the driver from the JDBC URL
+    </li><li class="listitem"><code class="literal">driverJar</code> - the full path to the JDBC driver. This not required if a driver
+      for the specified class is already configured
+    </li></ul></div><p>
+  e.g.: <code class="literal">"username=foo,password=bar,url=jdbc:postgresql://localhost/mydb"</code>
+</p>
+
+            <p>
+              For a sample connection string please see the <a class="link" href="command-copy.html#copy-source-con-descriptor">documentation for WbCopy</a>.
+            </p>
+            <p>
+              If this parameter is specified <code class="literal">-referenceProfile</code> will be ignored.
+            </p>
+          </td></tr><tr><td id="schema-diff-targetprof" style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-targetProfile</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+            <p>
+              The name of the connection profile for the target
+              connection (the one that needs to be migrated). If this is not
+              specified, then the current connection is used.
+            </p>
+            <p>
+              If you use the current connection for reference and target,
+              then you should prefix the table names with schema/user or
+              use the <code class="literal">-referenceschema</code> and
+              <code class="literal">-targetschema</code> parameters.
+            </p>
+          </td></tr><tr><td id="schema-diff-targetgroup" style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-targetGroup</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+            If the name of your target profile is not unique across
+            all profiles, you will need to specify the group in which the profile
+            is located with this parameter.
+          </td></tr><tr><td id="schema-diff-targetconn" style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-targetConnection</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+            <p>
+  Allows to specify a full connection definition as a single parameter (and thus does not require
+  a pre-defined connection profile).
+</p>
+<p>
+  The connection is specified with a comma separated list of key value pairs:
+  </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><code class="literal">username</code> - the username for the connection</li><li class="listitem"><code class="literal">password</code> - the password for the connection</li><li class="listitem"><code class="literal">url</code> - the JDBC URL</li><li class="listitem"><code class="literal">driver</code> - the class name for the JDBC driver. If this is not specified, SQL Workbench/J
+      will try to determine the driver from the JDBC URL
+    </li><li class="listitem"><code class="literal">driverJar</code> - the full path to the JDBC driver. This not required if a driver
+      for the specified class is already configured
+    </li></ul></div><p>
+  e.g.: <code class="literal">"username=foo,password=bar,url=jdbc:postgresql://localhost/mydb"</code>
+</p>
+
+            <p>
+              For a sample connection string please see the <a class="link" href="wb-commands.html#command-connect-descriptor-arg" title="29.17.2.&nbsp;By specifying a simple connection string">documentation for WbConnect</a>.
+            </p>
+            <p>
+              If this parameter is specified <code class="literal">-targetProfile</code> will be ignored.
+            </p>
+          </td></tr><tr><td id="schema-diff-file" style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-file</td><td style="border-bottom: 1px solid ; " align="left" valign="top">The filename of the output file. If this
+          is not supplied the output will be written to the message area</td></tr><tr><td id="schema-diff-reftables" style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-referenceTables</td><td style="border-bottom: 1px solid ; " align="left" valign="top">A (comma separated) list of tables that are the reference
+            tables, to be checked.
+          </td></tr><tr><td id="schema-diff-targettables" style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-targetTables</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+            <p>
+              A (comma separated) list of tables in the target
+              connection to be compared to the source tables. The tables
+              are "matched" by their position in the list. The first table in the
+              <code class="literal">-referenceTables</code> parameter is compared to the
+              first table in the <code class="literal">-targetTables</code> parameter, and so
+              on. Using this parameter you can compare tables that do not have the
+              same name.
+            </p>
+            <p>
+              If you omit this parameter, then all tables from the
+              target connection with the same names as those listed in
+              <code class="literal">-referenceTables</code> are compared.
+            </p>
+            <p>
+              If you omit both parameters, then all tables that the
+              user can access are retrieved from the source connection
+              and compared to the tables with the same name in the target
+              connection.
+            </p>
+          </td></tr><tr><td id="schema-diff-refschemas" style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-referenceSchema</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+            Compare all tables from the specified schema (user)
+          </td></tr><tr><td id="schema-diff-targetschema" style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-targetSchema</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+            A schema in the target connection to be compared to the tables from the reference schema.
+          </td></tr><tr><td id="schema-diff-excludetables" style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-excludeTables</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+            A comma separated list of tables or views that should not be compared. If tables from
+            several schemas are compared (using <code class="literal">-referenceTables=schema_one.*, schema_two.*</code>) then
+            the listed tables must be qualified with a schema, e.g. <code class="literal">-excludeTables=schema_one.foobar, schema_two.fubar</code>
+          </td></tr><tr><td id="schema-diff-encodig" style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-encoding</td><td style="border-bottom: 1px solid ; " align="left" valign="top">The encoding to be used for the XML file. The default is UTF-8</td></tr><tr><td id="schema-diff-includepk" style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-includePrimaryKeys</td><td style="border-bottom: 1px solid ; " align="left" valign="top">Select whether primary key constraint definitions should be compared as well.
+            The default is <code class="literal">true</code>.
+            Valid values are <code class="literal">true</code> or <code class="literal">false</code>.
+          </td></tr><tr><td id="schema-diff-includefk" style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-includeForeignKeys</td><td style="border-bottom: 1px solid ; " align="left" valign="top">Select whether foreign key constraint definitions should be compared as well.
+            The default is <code class="literal">true</code>.
+            Valid values are <code class="literal">true</code> or <code class="literal">false</code>.
+          </td></tr><tr><td id="schema-diff-includegrants" style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-includeTableGrants</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+            Select whether table grants should be compared as well.
+            The default is <code class="literal">false</code>.
+          </td></tr><tr><td id="schema-diff-includetrg" style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-includeTriggers</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+            Select whether table triggers are compared as well.
+            The default value is <code class="literal">true</code>.
+          </td></tr><tr><td id="schema-diff-includecons" style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-includeConstraints</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+            <p>
+              Select whether table and column (check) constraints
+              should be compared as well. SQL Workbench/J compares the constraint
+              definition (SQL) as stored in the database.
+            </p>
+            <p>
+              The default is to compare table constraints (<code class="literal">true</code>)
+              Valid values are <code class="literal">true</code> or <code class="literal">false</code>.
+            </p>
+          </td></tr><tr><td id="schema-diff-useconsnames" style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-useConstraintNames</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+            <p>
+              When including check constraints this parameter controls whether constraints
+              should be matched by name, or only by their expression. If comparing by names
+              the diff output will contain elements for constraint modification
+              otherwise only drop and add entries will be available.
+            </p>
+            <p>
+              The default is to compare by names(<code class="literal">true</code>)
+              Valid values are <code class="literal">true</code> or <code class="literal">false</code>.
+            </p>
+          </td></tr><tr><td id="schema-diff-includeviews" style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-includeViews</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+            <p>
+              Select whether views should also be compared.
+            </p>
+            <p>
+              Note that this comparison is very unreliable, because this compares
+              the source code, not the logical representation of the view definition.
+            </p>
+            <p>
+              The source code is compared the way it is returned by the DBMS is compared.
+              This comparison is case-sensitiv, which means <code class="literal">SELECT * FROM foo;</code>
+              will be reported as a difference to <code class="literal">select * from foo;</code> even
+              if they are logically the same. Aslo different indention or empty lines
+              will result in the views being reported as "different".
+            </p>
+            <p>
+              A comparison across different DBMS will not work.
+            </p>
+            <p>
+              The default is <code class="literal">true</code>
+              Valid values are <code class="literal">true</code> or <code class="literal">false</code>.
+            </p>
+          </td></tr><tr><td id="schema-diff-includeprocs" style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-includeProcedures</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+            <p>
+              Select whether stored procedures should also be compared. When comparing
+              procedures the source as it is stored in the DBMS is compared. This comparison
+              is case-sensitive. A comparison across different DBMS will also not work!
+            </p>
+            <p>
+              The default is <code class="literal">false</code>
+              Valid values are <code class="literal">true</code> or <code class="literal">false</code>.
+            </p>
+          </td></tr><tr><td id="schema-diff-includeidx" style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-includeIndex</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+            Select whether indexes should be compared as well.  The default
+            is to not compare index definitions.
+            Valid values are <code class="literal">true</code> or <code class="literal">false</code>.
+          </td></tr><tr><td id="schema-diff-includeseq" style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-includeSequences</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+            Select whether sequences should be compared as well. The default is
+            to not compare sequences. Valid values are <code class="literal">true</code>, <code class="literal">false</code>.
+          </td></tr><tr><td id="schema-diff-jdbctypes" style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-useJdbcTypes</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+            <p>
+              Define whether to compare the DBMS specific data types, or
+              the JDBC data type returned by the driver. When comparing
+              tables from two different DBMS it is recommended to use
+              <code class="literal">-useJdbcType=true</code> as this will make the
+              comparison a bit more DBMS-independent. When comparing e.g.
+              Oracle vs. PostgreSQL a column defined as
+              <code class="literal">VARCHAR2(100)</code> in Oracle would be reported as being different
+              to a <code class="literal">VARCHAR(100)</code> column in PostgreSQL which is not really true
+              As both drivers report the column as java.sql.Types.VARCHAR,
+              they would be considered as identical when using <code class="literal">-useJdbcType=true</code>.
+            </p>
+            <p>
+              Valid values are <code class="literal">true</code> or <code class="literal">false</code>.
+            </p>
+          </td></tr><tr><td id="schema-diff-addtypes" style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-additionalTypes</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+              <p>
+                Select additional object types that are not compared by default (using the <code class="literal">-includeXXX</code> parameters)
+                such as Oracle <code class="literal">TYPE</code> definitions. Those objects are compared on source code level (like procedures)
+                rather than on attribute level.
+              </p>
+              <p>
+                Valid values are object type names as shown in the "Type" drop down in the DbExplorer.
+              </p>
+          </td></tr><tr><td style="border-right: 1px solid ; " align="left" valign="top">-xsltParameter</td><td style="" align="left" valign="top">
+    A list of parameters (key/value pairs) that should be passed to the XSLT processor. When using e.g. the <code class="literal">wbreport2liquibase.xslt</code>
+    stylesheet, the value of the <code class="literal">author</code> attribute can be set using <code class="literal">-xsltParameter="authorName=42"</code>. This parameter
+    can be provided multiple times for multiple parameters, e.g. when using <code class="literal">wbreport2pg.xslt</code>: <code class="literal">-xsltParameter="makeLowerCase=42" -xsltParameter="useJdbcTypes=true"</code>
+  </td></tr></tbody></table></div><div class="simplesect" id="schema-diff-examples"><div class="titlepage"><div><div><h4 class="title">WbSchemaDiff Examples</h4></div></div></div><p>
+        Compare all tables between two connections, and write the output to the
+        file <code class="literal">migrate_prod.xml</code> and convert the XML to a series
+        of SQL statements for PostgreSQL
+      </p><pre class="programlisting">WbSchemaDiff -referenceProfile="Staging"
+             -targetProfile="Production"
+             -file=migrate_prod.xml
+             -styleSheet=wbdiff2pg.xslt
+             -xsltOutput=migrate_prod.sql</pre><p>
+        Compare a list of matching tables between two databases and write the output to the
+        file <code class="literal">migrate_staging.xml</code> ignoring all tables that start with <code class="literal">TMP_</code>
+        and exclude any index definition from the comparison. Convert the output to a SQL script for Oracle
+      </p><pre class="programlisting">WbSchemaDiff -referenceProfile="Development"
+             -targetProfile="Staging"
+             -file=migrate_stage.xml
+             -excludeTables=TMP_*
+             -includeIndex=false
+             -styleSheet=wbdiff2oracle.xslt
+             -xsltOutput=migrate_stage.sql</pre></div></div><div class="section" id="command-data-diff"><div class="titlepage"><div><div><h3 class="title">23.2.&nbsp;Compare data across databases - WbDataDiff</h3></div></div></div><p>
+      The <code class="literal">WbDataDiff</code> command can be used to generate SQL scripts
+      that update a target database such that the data is identical to a reference
+      database. This is similar to the <code class="literal">WbSchemaDiff</code> but compares
+      the actual data in the tables rather than the table structure.
+    </p><p>
+      For each table the command will create up to three script files, depending on
+      the needed statements to migrate the data. One file for <code class="literal">UPDATE</code> statements,
+      one file for <code class="literal">INSERT</code> statements and one file for <code class="literal">DELETE</code>
+      statements (if <code class="literal">-includeDelete=true</code> is specified)
+    </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td valign="top" align="center" rowspan="2" width="25"><img alt="[Note]" src="./images/note.png"></td><th align="left"></th></tr><tr><td valign="top" align="left"><p>
+      As this command needs to read every row from the reference and the target
+      table, processing large tables can take quite some time, especially if <code class="literal">DELETE</code>
+      statements should also be generated.
+    </p></td></tr></table></div><p>
+      <code class="literal">WbDataDiff</code> requires that all involved tables have a primary key
+      defined. If a table does not have a primary key, <code class="literal">WbDataDiff</code> will
+      stop the processing.
+    </p><p>
+      To improve performance (a bit), the rows are retrieved in chunks from the
+      target table by dynamically constructing a WHERE clause for the rows
+      that were retrieved from the reference table. The chunk size
+      can be controlled using the property <code class="literal">workbench.sql.sync.chunksize</code>
+      The chunk size defaults to 25. This is a conservative setting to avoid
+      problems with long SQL statements when processing tables that have
+      a PK with multiple columns. If you know that your primary keys
+      consist only of a single column and the values won't be too long, you
+      can increase the chunk size, possibly increasing the performance when
+      generating the SQL statements. As most DBMS have a limit on the length
+      of a single SQL statement, be careful when setting the chunksize too high.
+      The same chunk size is applied when generating <code class="literal">DELETE</code>
+      statements by the <a class="link" href="command-copy.html" title="22.&nbsp;Copy data across databases"><code class="literal">WbCopy</code></a> command,
+      when <a class="link" href="command-copy.html#copy-sync-delete">syncDelete</a> mode is enabled.
+    </p><p>
+      The command supports the following parameters:
+    </p><div class="informaltable"><table style="border-collapse: collapse;border-top: 1px solid ; border-bottom: 1px solid ; border-left: 1px solid ; border-right: 1px solid ; "><colgroup><col width="4cm" align="left" class="c1"><col align="left" class="c2"></colgroup><thead><tr><th style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left">Parameter</th><th style="border-bottom: 1px solid ; " align="left">Description</th></tr></thead><tbody valign="top"><tr><td id="data-diff-refprof" style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-referenceProfile</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+            The name of the connection profile for the reference connection.
+            If this is not specified, then the current connection is used.
+          </td></tr><tr><td id="data-diff-refgroup" style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-referenceGroup</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+            If the name of your reference profile is not unique across
+            all profiles, you will need to specify the group in which the profile
+            is located with this parameter. If the profile's name is unique
+            you can omit this parameter
+          </td></tr><tr><td id="data-diff-refconn" style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-referenceConnection</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+            <p>
+  Allows to specify a full connection definition as a single parameter (and thus does not require
+  a pre-defined connection profile).
+</p>
+<p>
+  The connection is specified with a comma separated list of key value pairs:
+  </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><code class="literal">username</code> - the username for the connection</li><li class="listitem"><code class="literal">password</code> - the password for the connection</li><li class="listitem"><code class="literal">url</code> - the JDBC URL</li><li class="listitem"><code class="literal">driver</code> - the class name for the JDBC driver. If this is not specified, SQL Workbench/J
+      will try to determine the driver from the JDBC URL
+    </li><li class="listitem"><code class="literal">driverJar</code> - the full path to the JDBC driver. This not required if a driver
+      for the specified class is already configured
+    </li></ul></div><p>
+  e.g.: <code class="literal">"username=foo,password=bar,url=jdbc:postgresql://localhost/mydb"</code>
+</p>
+
+            <p>
+              For a sample connection string please see the <a class="link" href="command-copy.html#copy-source-con-descriptor">documentation for WbCopy</a>.
+            </p>
+            <p>
+              If this parameter is specified <code class="literal">-referenceProfile</code> will be ignored.
+            </p>
+          </td></tr><tr><td id="data-diff-targetprof" style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-targetProfile</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+            <p>
+              The name of the connection profile for the target
+              connection (the one that needs to be migrated). If this is not
+              specified, then the current connection is used.
+            </p>
+            <p>
+              If you use the current connection for reference and target,
+              then you should prefix the table names with schema/user or
+              use the <code class="literal">-referenceschema</code> and
+              <code class="literal">-targetschema</code> parameters.
+            </p>
+          </td></tr><tr><td id="data-diff-targetgrp" style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-targetGroup</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+            If the name of your target profile is not unique across
+            all profiles, you will need to specify the group in which the profile
+            is located with this parameter.
+          </td></tr><tr><td id="data-diff-targetconn" style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-targetConnection</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+            <p>
+  Allows to specify a full connection definition as a single parameter (and thus does not require
+  a pre-defined connection profile).
+</p>
+<p>
+  The connection is specified with a comma separated list of key value pairs:
+  </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><code class="literal">username</code> - the username for the connection</li><li class="listitem"><code class="literal">password</code> - the password for the connection</li><li class="listitem"><code class="literal">url</code> - the JDBC URL</li><li class="listitem"><code class="literal">driver</code> - the class name for the JDBC driver. If this is not specified, SQL Workbench/J
+      will try to determine the driver from the JDBC URL
+    </li><li class="listitem"><code class="literal">driverJar</code> - the full path to the JDBC driver. This not required if a driver
+      for the specified class is already configured
+    </li></ul></div><p>
+  e.g.: <code class="literal">"username=foo,password=bar,url=jdbc:postgresql://localhost/mydb"</code>
+</p>
+
+            <p>
+              For a sample connection string please see the <a class="link" href="wb-commands.html#command-connect-descriptor-arg" title="29.17.2.&nbsp;By specifying a simple connection string">documentation for WbConnect</a>.
+            </p>
+            <p>
+              If this parameter is specified <code class="literal">-targetProfile</code> will be ignored.
+            </p>
+          </td></tr><tr><td id="data-diff-fname" style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-file</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+            The filename of the main script file. The command creates two
+            scripts per table. One script named <code class="literal">update_&lt;tablename&gt;.sql</code>
+            that contains all needed <code class="literal">UPDATE</code> or <code class="literal">INSERT</code>
+            statements. The second script is named <code class="literal">delete_&lt;tablename&gt;.sql</code>
+            and will contain all <code class="literal">DELETE</code> statements for the target table.
+            The main script merely calls (using <a class="link" href="wb-commands.html#command-wbinclude" title="29.5.&nbsp;Execute a SQL script - WbInclude (@)">WbInclude</a>)
+            the generated scripts for each table.
+            You can enable writing a single file that includes all statements for all tables by using the parameter
+            <code class="literal">-singleFile=true</code>
+          </td></tr><tr><td id="data-diff-singlefile" style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-singleFile</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+            If this parameter's value is <code class="literal">true</code>, then only one single file
+            containing all statements will be written.
+          </td></tr><tr><td id="data-diff-reftables" style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-referenceTables</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+            A (comma separated) list of tables that are the reference
+            tables, to be checked. You can specify the table with wildcards,
+            e.g. <code class="literal">-referenceTables=P%</code> to compare all tables
+            that start with the letter <code class="literal">P</code>.
+          </td></tr><tr><td id="data-diff-targettables" style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-targetTables</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+            <p>
+              A (comma separated) list of tables in the target
+              connection to be compared to the source tables. The tables
+              are "matched" by their position in the list. The first table in the
+              <code class="literal">-referenceTables</code> parameter is compared to the
+              first table in the <code class="literal">-targetTables</code> parameter, and so
+              on. Using this parameter you can compare tables that do not have the
+              same name.
+            </p>
+            <p>
+              If you omit this parameter, then all tables from the
+              target connection with the same names as those listed in
+              <code class="literal">-referenceTables</code> are compared.
+            </p>
+            <p>
+              If you omit both parameters, then all tables that the
+              user can access are retrieved from the source connection
+              and compared to the tables with the same name in the target
+              connection.
+            </p>
+          </td></tr><tr><td id="data-diff-refschemas" style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-referenceSchema</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+            Compare all tables from the specified schema (user)
+          </td></tr><tr><td id="data-diff-targetschema" style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-targetSchema</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+            A schema in the target connection to be compared to the tables from the reference schema.
+          </td></tr><tr><td id="data-diff-excltables" style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-excludeTables</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+            A comma separated list of tables that should not be compared. If tables from
+            several schemas are compared (using <code class="literal">-referenceTables=schema_one.*, schema_two.*</code>) then
+            the listed tables must be qualified with a schema, e.g. <code class="literal">-excludeTables=schema_one.foobar, schema_two.fubar</code>
+          </td></tr><tr><td id="data-diff-ignore-missing" style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-ignoreMissing</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+            If this parameter is true, <code class="literal">WbDataDiff</code> will still generate INSERT statements for tables that are not found
+            in the target database.
+          </td></tr><tr><td id="data-diff-checkdeps" style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-checkDependencies</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+            <p>Valid values are <code class="literal">true</code>, <code class="literal">false</code>.</p>
+            <p>
+              Sorts the generated scripts in order to respect foreign key dependencies
+              for deleting and inserting rows.
+            </p>
+            <p>
+              The default is <code class="literal">true</code>.
+            </p>
+          </td></tr><tr><td id="data-diff-incldelete" style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-includeDelete</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+            <p>Valid values are <code class="literal">true</code>, <code class="literal">false</code>.</p>
+            <p>
+              Generates <code class="literal">DELETE</code> statements for rows that are present
+              in the target table, but not in the reference table. Note that enabling this
+              option will result in additional overhead reading the target table's data and
+              will slow down the overal comparison speed.
+            </p>
+            <p>
+              The default is <code class="literal">false</code>.
+            </p>
+          </td></tr><tr><td id="data-diff-outtype" style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-type</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+            <p>Valid values are <code class="literal">sql</code>, <code class="literal">xml</code></p>
+            <p>Defines the type of the generated files.</p>
+          </td></tr><tr><td id="data-diff-encoding" style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-encoding</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+            <p>
+            The encoding to be used for the SQL scripts. The default depends
+            on your operating system. It will be displayed when you run
+            <code class="literal">WbDataDiff</code> without any parameters. You can overwrite
+            the platform default with the property <code class="literal">workbench.encoding</code>
+            in the file <code class="literal">workbench.settings</code>
+            </p>
+            <p>
+              XML files are always stored in UTF-8
+            </p>
+          </td></tr><tr><td id="data-diff-dateliterals" style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-sqlDateLiterals</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+            <p>Valid values: <code class="literal">jdbc</code>, <code class="literal">ansi</code>, <code class="literal">dbms</code>, <code class="literal">default</code></p>
+            <p>
+              Controls the format in which the values of DATE, TIME and TIMESTAMP columns
+              are written into the generated SQL statements.
+              For a detailed description of the possible values, please refer to the
+              <a class="link" href="command-export.html#export-sql-literal-formats">WbExport</a>
+              command.
+            </p>
+          </td></tr><tr><td id="data-diff-ignorecols" style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-ignoreColumns</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+            <p>
+              With this parameter you can define a list of column names that should not be considered when comparing
+              data. You can e.g. exclude columns that store the last access time of a row, or the last update time if
+              that should not be taken into account when checking for changes.
+            </p>
+            <p>
+              They will however be part of generated <code class="literal">INSERT</code> or <code class="literal">UPDATE</code> statements
+              unless <code class="literal">-exclueIgnored=true</code> is also specified.
+            </p>
+          </td></tr><tr><td id="data-diff-exclignored" style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-excludeIgnored</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+            <p>Valid values: <code class="literal">true</code>, <code class="literal">false</code></p>
+            <p>
+              If this is set to <code class="literal">true</code>, the ignored columns will also be removed from any
+              <code class="literal">INSERT</code> or <code class="literal">UPDATE</code> statement
+            </p>
+            <p>
+              The default is <code class="literal">false</code>.
+            </p>
+          </td></tr><tr><td id="data-diff-altkey" style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-alternateKey</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+            <p>
+              With this parameter alternate keys can be defined for the tables that are compared. The parameter
+              can be repeated multiple times to set the keys for multiple tables in the following format:
+              <code class="literal">-alternateKey='table_1=column_1,column_2'</code>
+            </p>
+            <p>
+              Note that each value has to be enclosed in either single or double quotes to mask the equals sign
+              embedded in the parameter value.
+            </p>
+            <p>
+              Once an alternate (primary) key has been defined, the primary key columns defined on the tables
+              are ignored. By default the real PK columns will however be included in <code class="literal">INSERT</code> statement that are generated.
+              To avoid this, set the parameter <code class="literal">-excludeRealPK</code> to true.
+            </p>
+          </td></tr><tr><td id="data-diff-excludepk" style="border-right: 1px solid ; border-bottom: 1px solid ; " align="left" valign="top">-excludeRealPK</td><td style="border-bottom: 1px solid ; " align="left" valign="top">
+            <p>Valid values are <code class="literal">true</code>, <code class="literal">false</code>.</p>
+            <p>
+              This parameter controls the usage of the real PK columns in case alternate PK columns are defined.
+              If set to <code class="literal">true</code> the real PK columns are excluded from generated <code class="literal">INSERT</code>
+              statements (assuming that a new PK value will be generated during inserting the rows).
+            </p>
+            <p>
+              Note that this parameter will enable/disable the use of the real PK columns for <span class="bold"><strong>all</strong></span>
+              tables for which alternate key columns were defined.
+            </p>
+            <p>
+              This parameter has no effect if no alternate keys were specified using the <code class="literal">-alternateKey</code> option.
+            </p>
+          </td></tr><tr><td style="border-right: 1px solid ; " align="left" valign="top">-showProgress</td><td style="" align="left" valign="top">
+    <p>Valid values: <code class="literal">true</code>, <code class="literal">false</code>, <code class="literal">&lt;numeric value&gt;</code></p>
+		<p>
+			Control the update frequence in the status bar (when running in
+			GUI mode). The default is every 10th row is reported. To disable
+			the display of the progress specify a value of 0 (zero) or the
+			value <code class="literal">false</code>. <code class="literal">true</code> will
+			set the progress interval to 1 (one).
+		</p>
+	</td></tr></tbody></table></div><div class="simplesect" id="data-diff-examples"><div class="titlepage"><div><div><h4 class="title">WbDataDiff Examples</h4></div></div></div><p>
+        Compare all tables between two connections, and write the output to the
+        file <code class="literal">migrate_staging.sql</code>, but do not generate
+        <code class="literal">DELETE</code> statements.
+      </p><pre class="programlisting">WbDataDiff -referenceProfile="Production"
+           -targetProfile="Staging"
+           -file=migrate_staging.sql
+           -includeDelete=false</pre><p>
+        Compare a list of matching tables between two databases and write the output to the
+        file <code class="literal">migrate_staging.sql</code> including <code class="literal">DELETE</code> statements.
+      </p><pre class="programlisting">WbDataDiff -referenceProfile="Production"
+           -targetProfile="Staging"
+           -referenceTables=person,address,person_address
+           -file=migrate_staging.sql
+           -includeDelete=true</pre><p>
+      Compare three tables that are differently named in the target database and
+      ignore all columns (regardless in which table they appear) that are named
+      <code class="literal">LAST_ACCESS</code> or <code class="literal">LAST_UPDATE</code>
+    </p><pre class="programlisting">WbDataDiff -referenceProfile="Production"
+           -targetProfile="Staging"
+           -referenceTables=person,address,person_address
+           -targetTables=t_person,t_address,t_person_address
+           -ignoreColumns=last_access,last_update
+           -file=migrate_staging.sql
+           -includeDelete=true</pre></div></div></div><div class="navfooter"><hr><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="command-copy.html">Prev</a>&nbsp;</td><td align="center" width="20%">&nbsp;</td><td align="right" width="40%">&nbsp;<a accesskey="n" href="wb-grep-commands.html">Next</a></td></tr><tr><td valign="top" align="left" width="40%">22.&nbsp;Copy data across databases&nbsp;</td><td align="center" width="20%"><a accesskey="h" href="workbench-manual.html">Home</a></td><td valign="top" align="right" width="40%">&nbsp;24.&nbsp;Search data and code in the database</td></tr></table></div></body></html>

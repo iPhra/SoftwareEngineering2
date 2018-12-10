@@ -1,7 +1,8 @@
 //@todo Mettere una funzione sicura per creare l'userID
-//@todo Differenziare userID da activToken
+//@todo Differenziare userID da activToken ed authToken
 //@todo Possibili problemi di concorrenza con userID?
 //@todo Rivedere la gestione degli errori e rollback
+//@todo Aggiungere encryption ed EncryptionManager
 
 const Router = require('express-promise-router');
 const Validator = require('../schemas/validator');
@@ -9,14 +10,14 @@ const db = require('../settings/dbconnection');
 const sendEmail = require('../settings/mailer');
 const _ = require('lodash');
 const fs = require('fs');
-const logError = require("./errorHandler").logError;
+const logError = require("./utils").logError;
 
 const validateRequest = Validator();
 const router = new Router();
 let text;
 let values;
 let rows;
-let loggedUsers = [];
+let loggedUsers = {}; //hashmap authToken : userID
 let rawdata = fs.readFileSync('./NodeJS/settings/users.json');
 let userID = JSON.parse(rawdata).userID;
 
@@ -127,17 +128,17 @@ router.post('/login', validateRequest, async (req, res) => {
         return;
     }
 
-    //If the user is already logged in, i.e. in the list of logged users
-    if(isLogged(rows.rows[0].userid)) {
+    //If the user is already logged in, i.e. he is a value (not key!) in the list of logged users
+    if(Object.values(loggedUsers).indexOf(rows.rows[0].userid) > -1) {
         res.status(403).send('Already logged in');
         return;
     }
 
     //Add the user to the logged users list and send the userID back to the client
-    loggedUsers.push(rows.rows[0].userid);
+    loggedUsers[rows.rows[0].userid] = rows.rows[0].userid; //cambiare! la chiave della hashmap deve essere authToken!
     res.status(200).send({
         "message" : 'Login successful',
-        "authToken" : rows.rows[0].userid
+        "authToken" : rows.rows[0].userid //cambiare! questo deve essere authToken
     })
 });
 
@@ -185,13 +186,19 @@ async function insertIntoRegistration() {
     await db.query(text, values)
 }
 
-function isLogged(userID) {
-    return _.includes(loggedUsers, userID)
+//true if the authToken is present in the hasmap
+function isLogged(authToken) {
+    return authToken in loggedUsers
+}
+
+function getUserID(authToken) {
+    return loggedUsers[authToken]
 }
 
 
 module.exports = router;
 module.exports.isLogged = isLogged;
+module.exports.getUserID = getUserID;
 
 
 

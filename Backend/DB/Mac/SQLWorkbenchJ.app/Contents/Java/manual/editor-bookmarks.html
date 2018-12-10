@@ -1,0 +1,39 @@
+<html><head><META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>10.&nbsp;Working with bookmarks</title><link href="html-publish.css" type="text/css" rel="stylesheet"><meta content="DocBook XSL Stylesheets V1.78.1" name="generator"><link rel="home" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="up" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="prev" href="editor.html" title="9.&nbsp;Editing SQL Statements"><link rel="next" href="understand-alternate-delim.html" title="11.&nbsp;Creating stored procedures and triggers"><link rel="article" href="workbench-manual.html" title="SQL Workbench/J User's Manual"><link rel="subsection" href="editor-bookmarks.html#define-bookmark" title="10.1.&nbsp;Defining bookmarks"><link rel="subsection" href="editor-bookmarks.html#jump-bookmark" title="10.2.&nbsp;Jumping to a bookmark"><link rel="subsection" href="editor-bookmarks.html#bookmark-config" title="10.3.&nbsp;Configuring the display of the bookmark list"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">10.&nbsp;Working with bookmarks</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="editor.html">Prev</a>&nbsp;</td><th align="center" width="60%">&nbsp;</th><td align="right" width="20%">&nbsp;<a accesskey="n" href="understand-alternate-delim.html">Next</a></td></tr></table><hr></div><div class="section" id="editor-bookmarks"><div class="titlepage"><div><div><h2 class="title" style="clear: both">10.&nbsp;Working with bookmarks</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="section"><a href="editor-bookmarks.html#define-bookmark">10.1. Defining bookmarks</a></span></dt><dt><span class="section"><a href="editor-bookmarks.html#jump-bookmark">10.2. Jumping to a bookmark</a></span></dt><dt><span class="section"><a href="editor-bookmarks.html#bookmark-config">10.3. Configuring the display of the bookmark list</a></span></dt></dl></div><div class="section" id="define-bookmark"><div class="titlepage"><div><div><h3 class="title">10.1.&nbsp;Defining bookmarks</h3></div></div></div><p>
+      A bookmark inside the editor is defined by adding the keyword <code class="literal">@WbTag</code> followed by the name
+      of the bookmark into a SQL comment:
+    </p><pre class="programlisting">-- @WbTag delete everything
+truncate table orders,order_line,customers;
+commit;
+    </pre><p>
+      The keyword is not case sensitive, <code class="literal">@wbtag</code> will work just as wel as <code class="literal">@WBTAG</code>,
+      or <code class="literal">@WbTag</code>. A multiline comment can be used as well as a single line comment.
+    </p><p>
+      The annotations for <a class="link" href="annotations.html#result-names" title="13.1.&nbsp;Naming result tabs">naming a result</a> can additionally be
+      included in the bookmark list. This is enabled in the <a class="link" href="options.html#option-result-name" title="Use table name for result tabs">options panel for the editor</a>.
+    </p><p>
+      The names of procedures and functions can also be used as bookmarks if enabled in the <a class="link" href="options.html#bookmark-options" title="35.5.&nbsp;Bookmark options">bookmark options</a>
+    </p></div><div class="section" id="jump-bookmark"><div class="titlepage"><div><div><h3 class="title">10.2.&nbsp;Jumping to a bookmark</h3></div></div></div><p>
+      To jump to a bookmark select <span class="guimenu">Tools</span> &rarr; <span class="guimenuitem">Bookmarks</span>.
+      A dialog box with all defined bookmarks will be displayed. You can filter the list of displayed bookmarks
+      by entering a value in the input field. Depending on the option <span class="guimenu">Filter on name only</span>
+      the value will either be compared only against the bookmark name. If that option is disabled then
+      the bookmark name and the name of the SQL tab will be checked for the entered value.
+    </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td valign="top" align="center" rowspan="2" width="25"><img alt="[Note]" src="./images/note.png"></td><th align="left"></th></tr><tr><td valign="top" align="left"><p>
+      The selection in the bookmark list can be moved with the <span class="keycap"><strong>UP/DOWN</strong></span> keys even when
+      the cursor is located in the filter input field.
+    </p></td></tr></table></div><p>
+      If the option <span class="guimenu">Only for current tab</span> is enabled, then the dialog will open showing
+      only bookmarks for the current tab.
+    </p></div><div class="section" id="bookmark-config"><div class="titlepage"><div><div><h3 class="title">10.3.&nbsp;Configuring the display of the bookmark list</h3></div></div></div><p>
+      There are two options to influence how the list of bookmarks is displayed. Both options
+      are available when displaying the context menu for the list header (usually through a
+      click with the right mouse button):
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+            Remember column widths - if this is enabled, the columns are not automatically adjusted to the
+            width of the content. Instead the list remembers whatever width was adjusted.
+          </li><li class="listitem">
+            Remember sort order - by default the list is sorted by the name of the bookmark.
+            When this option is selected, whatever sort order is selected (by clicking on the
+            column headers) will be saved and restored the next time the dialog is opened.
+          </li></ul></div><p>
+    </p></div></div><div class="navfooter"><hr><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="editor.html">Prev</a>&nbsp;</td><td align="center" width="20%">&nbsp;</td><td align="right" width="40%">&nbsp;<a accesskey="n" href="understand-alternate-delim.html">Next</a></td></tr><tr><td valign="top" align="left" width="40%">9.&nbsp;Editing SQL Statements&nbsp;</td><td align="center" width="20%"><a accesskey="h" href="workbench-manual.html">Home</a></td><td valign="top" align="right" width="40%">&nbsp;11.&nbsp;Creating stored procedures and triggers</td></tr></table></div></body></html>
