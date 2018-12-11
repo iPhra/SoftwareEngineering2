@@ -15,6 +15,7 @@ let userID;
 
 router.post('/single/info', validateRequest, async (req, res) => {
     userID = getUserID(req.body.authToken);
+
     //if he's not logged in or he's not a PrivateUser
     if (!isLogged(req.body.authToken) || !(await isPrivateUser(userID))) {
         res.status(403).send("Wrong authentication");
@@ -54,6 +55,7 @@ router.post('/single/info', validateRequest, async (req, res) => {
 
 router.post('/tp/info', validateRequest, async (req, res) => {
     userID = getUserID(req.body.authToken);
+
     //if he's not logged in or he's not a ThirdParty
     if (!isLogged(req.body.authToken) || !(await isThirdParty(userID))) {
         res.status(403).send("Wrong authentication");
@@ -88,6 +90,7 @@ router.post('/tp/info', validateRequest, async (req, res) => {
 
 router.post('/single/data', validateRequest, async (req, res) => {
     userID = getUserID(req.body.authToken);
+
     //if he's not logged in or he's not a PrivateUser
     if (!isLogged(req.body.authToken) || !(await isPrivateUser(userID))) {
         res.status(403).send("Wrong authentication");

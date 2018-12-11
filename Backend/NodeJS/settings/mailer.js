@@ -1,3 +1,4 @@
+//@todo Mettere dominio della mail al posto di 127.0.0.1
 const nodemailer = require('nodemailer');
 
 const transporter = nodemailer.createTransport({
