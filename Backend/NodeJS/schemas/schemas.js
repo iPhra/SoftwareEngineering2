@@ -60,7 +60,7 @@ const dataImport = {
     authToken : authToken,
     types : Joi.array().items(dataTypes).required(),
     values : Joi.array().items(Joi.number()).required(),
-    timestamps: Joi.array().items(Joi.date().timestamp('unix')).required(),
+    timestamps: Joi.array().items(Joi.date().iso()).required(),
 };
 
 

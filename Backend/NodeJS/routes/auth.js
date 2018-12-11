@@ -3,6 +3,7 @@
 //@todo Possibili problemi di concorrenza con userID?
 //@todo Rivedere la gestione degli errori e rollback
 //@todo Aggiungere encryption ed EncryptionManager
+//@todo Non salvare userID sul server ma sul database
 
 const Router = require('express-promise-router');
 const Validator = require('../schemas/validator');
@@ -30,7 +31,7 @@ router.post('/reg/single', validateRequest, async (req, res) => {
         values = [req.body.email, req.body.fc];
         rows = await db.query(text, values);
         if (rows.rowCount !== 0) {
-            res.status(401).send({error: 'Already registered'});
+            res.status(401).send('Already registered');
             return;
         }
     } catch(error) {
