@@ -1,7 +1,7 @@
 const Joi = require('joi');
 
 //@todo Aggiungere validation a birthdate per controllare sia nel formato DDMMYYYY
-//@todo Aggiungere validation che i due array in singleData siano lunghi uguali
+//@todo Aggiungere validation che i due array in dataSettings siano lunghi uguali
 
 const email = Joi.string().email().max(40).required();
 const password = Joi.string().min(8).max(20);
@@ -50,10 +50,17 @@ const tpSettings = {
     company_description : company_description,
 };
 
-const singleData = {
+const dataSettings = {
     authToken : authToken,
     types : Joi.array().items(dataTypes).required(),
     enabled : Joi.array().items(Joi.boolean()).required(),
+};
+
+const dataImport = {
+    authToken : authToken,
+    types : Joi.array().items(dataTypes).required(),
+    values : Joi.array().items(Joi.number()).required(),
+    timestamps: Joi.array().items(Joi.date().timestamp('unix')).required(),
 };
 
 
@@ -64,6 +71,7 @@ module.exports = {
     '/login' : login,
     '/single/info' : singleSettings,
     '/tp/info' : tpSettings,
-    '/single/data' : singleData
+    '/single/data' : dataSettings,
+    '/upload' : dataImport
 };
 

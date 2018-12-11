@@ -95,7 +95,19 @@ router.post('/single/data', validateRequest, async (req, res) => {
     }
     try {
         for(i=0; i<req.body.types.length; i++) {
-            console.log(req.body.types[i])
+            text = "SELECT * FROM usersettings WHERE userid=$1 and datatype=$2";
+            values = [userID, req.body.types[i]];
+            rows = await db.query(text, values);
+            if(rows.rowCount===1) {
+                text = "UPDATE usersettings SET enabled=$1 WHERE userid=$2 AND datatype=$3";
+                values = [req.body.enabled[i], userID, req.body.types[i]];
+                await db.query(text, values)
+            }
+            else {
+                text = "INSERT INTO usersettings VALUES($1, $2, $3)";
+                values = [userID, req.body.types[i], req.body.enabled[i]]
+                await db.query(text, values)
+            }
         }
         res.status(200).send("Settings Updated");
     } catch(error) {

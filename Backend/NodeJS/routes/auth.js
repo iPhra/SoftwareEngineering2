@@ -30,7 +30,7 @@ router.post('/reg/single', validateRequest, async (req, res) => {
         values = [req.body.email, req.body.fc];
         rows = await db.query(text, values);
         if (rows.rowCount !== 0) {
-            res.status(401).send('Already registered');
+            res.status(401).send({error: 'Already registered'});
             return;
         }
     } catch(error) {
