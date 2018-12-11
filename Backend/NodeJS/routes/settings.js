@@ -18,7 +18,7 @@ router.post('/single/info', validateRequest, async (req, res) => {
 
     //if he's not logged in or he's not a PrivateUser
     if (!isLogged(req.body.authToken) || !(await isPrivateUser(userID))) {
-        res.status(403).send("Wrong authentication");
+        res.status(403).send({error: "Wrong authentication"});
         return
     }
 
@@ -47,7 +47,7 @@ router.post('/single/info', validateRequest, async (req, res) => {
             await db.query(text, values);
         }
 
-        res.status(200).send("Settings Updated");
+        res.status(200).send({message: "Settings updated"});
     } catch(error) {
         return logError(error, res)
     }
@@ -58,7 +58,7 @@ router.post('/tp/info', validateRequest, async (req, res) => {
 
     //if he's not logged in or he's not a ThirdParty
     if (!isLogged(req.body.authToken) || !(await isThirdParty(userID))) {
-        res.status(403).send("Wrong authentication");
+        res.status(403).send({error: "Wrong authentication"});
         return
     }
 
@@ -82,7 +82,7 @@ router.post('/tp/info', validateRequest, async (req, res) => {
             await db.query(text, values);
         }
 
-        res.status(200).send("Settings Updated");
+        res.status(200).send({message: "Settings updated"});
     } catch(error) {
         return logError(error, res)
     }
@@ -93,7 +93,7 @@ router.post('/single/data', validateRequest, async (req, res) => {
 
     //if he's not logged in or he's not a PrivateUser
     if (!isLogged(req.body.authToken) || !(await isPrivateUser(userID))) {
-        res.status(403).send("Wrong authentication");
+        res.status(403).send({error: "Wrong authentication"});
         return
     }
     try {
@@ -112,7 +112,7 @@ router.post('/single/data', validateRequest, async (req, res) => {
                 await db.query(text, values)
             }
         }
-        res.status(200).send("Settings Updated");
+        res.status(200).send({message: "Settings updated"});
     } catch(error) {
         return logError(error, res)
     }

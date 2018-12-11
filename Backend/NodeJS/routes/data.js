@@ -1,3 +1,5 @@
+//@todo controllare che i dati che ho importato siano abilitati per quell'utente nella tabella usersettings
+
 const Router = require('express-promise-router');
 const Validator = require('../schemas/validator');
 const db = require('../settings/dbconnection');
@@ -17,7 +19,7 @@ router.post('/upload', validateRequest, async (req, res) => {
 
     //if he's not logged in or he's not a PrivateUser
     if (!isLogged(req.body.authToken) || !(await isPrivateUser(userID))) {
-        res.status(403).send("Wrong authentication");
+        res.status(403).send({error: "Wrong authentication"});
         return
     }
 
@@ -27,7 +29,7 @@ router.post('/upload', validateRequest, async (req, res) => {
             values = [userID, req.body.timestamps[i], req.body.types[i], req.body.values[i]];
             await db.query(text, values);
         }
-        res.status(200).send("Data Imported");
+        res.status(200).send({message: "Data Imported"});
     } catch(error) {
         return logError(error, res)
     }
