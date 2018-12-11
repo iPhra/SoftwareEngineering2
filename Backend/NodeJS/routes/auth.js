@@ -8,10 +8,11 @@ const Validator = require('../schemas/validator');
 const db = require('../settings/dbconnection');
 const sendEmail = require('../settings/mailer');
 const _ = require('lodash');
-const logError = require("./utils").logError;
 
+const logError = require("./utils").logError;
 const validateRequest = Validator();
 const router = new Router();
+
 let text;
 let values;
 let rows_tp;

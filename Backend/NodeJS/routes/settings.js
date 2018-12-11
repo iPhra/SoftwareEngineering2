@@ -2,15 +2,16 @@ const Router = require('express-promise-router');
 const Validator = require('../schemas/validator');
 const db = require('../settings/dbconnection');
 const auth = require('./auth');
+const utils = require('./utils');
+
 const isLogged = auth.isLogged;
 const getUserID = auth.getUserID;
-const utils = require('./utils');
 const logError = utils.logError;
 const isThirdParty = utils.isThirdParty;
 const isPrivateUser = utils.isPrivateUser;
-
 const validateRequest = Validator();
 const router = new Router();
+
 let userID;
 
 router.post('/single/info', validateRequest, async (req, res) => {
@@ -108,7 +109,7 @@ router.post('/single/data', validateRequest, async (req, res) => {
             }
             else {
                 text = "INSERT INTO usersettings VALUES($1, $2, $3)";
-                values = [userID, req.body.types[i], req.body.enabled[i]]
+                values = [userID, req.body.types[i], req.body.enabled[i]];
                 await db.query(text, values)
             }
         }
