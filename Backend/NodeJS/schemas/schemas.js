@@ -12,6 +12,7 @@ const sex = Joi.string().valid(['M','F','U']);
 const dataTypes = Joi.string().valid(['standinghours','heartrate','runningdistance','sleepinghours', 'walkingdistance', 'weight', 'height', 'age', 'activeenergy', 'steps']);
 const company_name = Joi.string().max(20);
 const company_description = Joi.string().max(100);
+const types = Joi.array().items(dataTypes).required();
 
 
 const singleRegSchema = {
@@ -53,15 +54,20 @@ const tpSettings = {
 
 const dataSettings = {
     authToken : authToken,
-    types : Joi.array().items(dataTypes).required(),
+    types : types,
     enabled : Joi.array().items(Joi.boolean()).required(),
 };
 
 const dataImport = {
     authToken : authToken,
-    types : Joi.array().items(dataTypes).required(),
+    types : types,
     values : Joi.array().items(Joi.number()).required(),
     timestamps: Joi.array().items(Joi.date().iso()).required(),
+};
+
+const dataStats = {
+    authToken : authToken,
+    types : types,
 };
 
 
@@ -73,6 +79,7 @@ module.exports = {
     '/single/info' : singleSettings,
     '/tp/info' : tpSettings,
     '/single/data' : dataSettings,
-    '/upload' : dataImport
+    '/upload' : dataImport,
+    '/stats' : dataStats
 };
 
