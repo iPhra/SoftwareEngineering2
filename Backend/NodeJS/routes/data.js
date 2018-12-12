@@ -1,3 +1,5 @@
+//@todo Controllo ogni volta che importo nuovi dati se c'è un subscriber da notificare
+
 const Router = require('express-promise-router');
 const Validator = require('../schemas/validator');
 const db = require('../settings/dbconnection');
@@ -5,23 +7,15 @@ const auth = require('./auth');
 const utils = require('./utils');
 
 const isLogged = auth.isLogged;
-const getUserID = auth.getUserID;
+const getUserIDByToken = auth.getUserIDByToken;
 const logError = utils.logError;
 const isPrivateUser = utils.isPrivateUser;
 const validateRequest = Validator();
 const router = new Router();
 
-let userID;
-let text;
-let values;
-let res;
-let i;
-let j;
-let rows;
-let response;
 
 router.post('/upload', validateRequest, async (req, res) => {
-    userID = getUserID(req.body.authToken);
+    let userID = getUserIDByToken(req.body.authToken);
 
     try {
 
@@ -31,16 +25,19 @@ router.post('/upload', validateRequest, async (req, res) => {
             return
         }
 
-        //check that every data he's trying to import is enabled for that user
-        if (!(await checkValidity(userID, req))) {
+        //check that every data he's trying to import is enabled for that user, and that data points are not already imported
+        if (!(await checkEnabled(userID, req)) || !(await checkUniqueness(userID, req))) {
             res.status(403).send({error: "Imported invalid data"});
             return;
         }
 
         //import each observation into the database
+        let i;
+        let text;
+        let values;
         for(i=0; i<req.body.types.length; i++) {
             text = "INSERT INTO userdata VALUES($1, $2, $3, $4)";
-            values = [userID, req.body.timestamps[i], req.body.types[i], req.body.values[i]];
+            values = [userID, req.body.types[i], req.body.timestamps[i], req.body.values[i]];
             await db.query(text, values);
         }
 
@@ -50,8 +47,9 @@ router.post('/upload', validateRequest, async (req, res) => {
     }
 });
 
+
 router.post('/stats', validateRequest, async (req, res) => {
-    userID = getUserID(req.body.authToken);
+    let userID = getUserIDByToken(req.body.authToken);
 
     try {
 
@@ -61,14 +59,18 @@ router.post('/stats', validateRequest, async (req, res) => {
             return
         }
 
-        //check that every data he's trying to import is enabled for that user
-        if (!(await checkValidity(userID, req))) {
+        //check that every data he's trying to get statistics for is enabled
+        if (!(await checkEnabled(userID, req))) {
             res.status(403).send({error: "Getting statistics for invalid data"});
             return;
         }
 
         //get datapoints from the database
-        response = {};
+        let response = {};
+        let i;
+        let text;
+        let values;
+        let rows;
         for(i=0; i<req.body.types.length; i++) {
 
             text = "SELECT avg(value) as avg, date_part('month', timest) as month, date_part('year', timest) as year " +
@@ -77,10 +79,13 @@ router.post('/stats', validateRequest, async (req, res) => {
             values = [userID, req.body.types[i]];
             rows = await db.query(text, values);
 
+            //convert each value for the mean from string to float
+            let j;
             for(j=0; j<rows.rows.length; j++) {
                 rows.rows[j].avg = parseFloat(rows.rows[j].avg)
             }
 
+            //append observation to the response
             response[req.body.types[i]] = rows.rows
         }
 
@@ -93,19 +98,45 @@ router.post('/stats', validateRequest, async (req, res) => {
     }
 });
 
+
 //checks that every data a user is trying to import is enabled for that user
-async function checkValidity(id, req) {
+async function checkEnabled(id, req) {
+    let i;
+    let text;
+    let values;
+    let rows;
 
     for(i=0; i<req.body.types.length; i++) {
         text = "SELECT enabled FROM usersettings WHERE userid=$1 AND datatype=$2";
         values = [id, req.body.types[i]];
-        res = await db.query(text, values);
+        rows = await db.query(text, values);
 
         //if enable is false or the datatype is not present at all in the database for that user
-        if (!((res.rowCount===1) && (res.rows[0].enabled===true))) return false;
+        if (!((rows.rowCount>0) && (rows.rows[0].enabled===true))) return false;
     }
 
     //if all dataType is enabled for that user, return true
+    return true;
+}
+
+
+//checks that every data a user is trying to import is not already in the database
+async function checkUniqueness(id, req) {
+    let i;
+    let text;
+    let values;
+    let rows;
+
+    for(i=0; i<req.body.types.length; i++) {
+        text = "SELECT * FROM userdata WHERE userid=$1 AND datatype=$2 AND timest=$3";
+        values = [id, req.body.types[i], req.body.timestamps[i]];
+        rows = await db.query(text, values);
+
+        //if the data point is already in the database
+        if (rows.rowCount>0) return false;
+    }
+
+    //if all data is not already in the database, return true
     return true;
 }
 

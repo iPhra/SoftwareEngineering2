@@ -12,14 +12,9 @@ const isPrivateUser = utils.isPrivateUser;
 const validateRequest = Validator();
 const router = new Router();
 
-let userID;
-let i;
-let text;
-let values;
-let rows;
 
 router.post('/single/info', validateRequest, async (req, res) => {
-    userID = getUserID(req.body.authToken);
+    let userID = getUserID(req.body.authToken);
 
     try {
 
@@ -28,6 +23,9 @@ router.post('/single/info', validateRequest, async (req, res) => {
             res.status(403).send({error: "Wrong authentication"});
             return
         }
+
+        let text;
+        let values;
 
         if(req.body.password) {
             text = "UPDATE PrivateUser SET password=$1 WHERE userID=$2";
@@ -60,7 +58,7 @@ router.post('/single/info', validateRequest, async (req, res) => {
 });
 
 router.post('/tp/info', validateRequest, async (req, res) => {
-    userID = getUserID(req.body.authToken);
+    let userID = getUserID(req.body.authToken);
 
     try {
 
@@ -69,6 +67,9 @@ router.post('/tp/info', validateRequest, async (req, res) => {
             res.status(403).send({error: "Wrong authentication"});
             return
         }
+
+        let text;
+        let values;
 
         if(req.body.password) {
             text = "UPDATE ThirdParty SET password=$1 WHERE userID=$2";
@@ -95,7 +96,7 @@ router.post('/tp/info', validateRequest, async (req, res) => {
 });
 
 router.post('/single/data', validateRequest, async (req, res) => {
-    userID = getUserID(req.body.authToken);
+    let userID = getUserID(req.body.authToken);
 
     try {
 
@@ -105,6 +106,11 @@ router.post('/single/data', validateRequest, async (req, res) => {
             return
         }
 
+        let i;
+        let text;
+        let values;
+        let rows;
+
         //for each value i'm trying to insert
         for(i=0; i<req.body.types.length; i++) {
 
@@ -113,7 +119,7 @@ router.post('/single/data', validateRequest, async (req, res) => {
             rows = await db.query(text, values);
 
             //if the datatype is already present in the database, i just update the column 'enabled'
-            if(rows.rowCount===1) {
+            if(rows.rowCount>0) {
                 text = "UPDATE usersettings SET enabled=$1 WHERE userid=$2 AND datatype=$3";
                 values = [req.body.enabled[i], userID, req.body.types[i]];
                 await db.query(text, values)

@@ -13,14 +13,21 @@ function logError(error, res) {
 async function isThirdParty(userID) {
     text = 'SELECT * FROM ThirdParty WHERE userID = $1';
     res = await db.query(text, [userID]);
-    return res.rowCount===1
+    return res.rowCount>0
 }
 
 //true if the given userID is a PrivateUser
 async function isPrivateUser(userID) {
     text = 'SELECT * FROM PrivateUser WHERE userID = $1';
     res = await db.query(text, [userID]);
-    return res.rowCount===1
+    return res.rowCount>0
+}
+
+//returns the userID of the PrivateUser associated to the email
+async function getUserByEmail(email) {
+    text = 'SELECT userid FROM PrivateUser WHERE email = $1';
+    res = await db.query(text, [email]);
+    return res.rows[0].userid;
 }
 
 
@@ -28,3 +35,4 @@ async function isPrivateUser(userID) {
 module.exports.logError = logError;
 module.exports.isThirdParty = isThirdParty;
 module.exports.isPrivateUser = isPrivateUser;
+module.exports.getUserByEmail = getUserByEmail;

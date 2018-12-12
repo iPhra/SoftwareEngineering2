@@ -13,16 +13,14 @@ const logError = require("./utils").logError;
 const validateRequest = Validator();
 const router = new Router();
 
-let text;
-let values;
-let rows_tp;
-let rows_private;
-let rows;
 let loggedUsers = {}; //hashmap authToken : userID
-let userID;
 
 
 router.post('/reg/single', validateRequest, async (req, res) => {
+    let text;
+    let values;
+    let rows;
+    let userID;
 
     //query the database to find if the email or fiscal code are already associated to an account
     try {
@@ -31,7 +29,7 @@ router.post('/reg/single', validateRequest, async (req, res) => {
         values = [req.body.email, req.body.fc];
         rows = await db.query(text, values);
 
-        if (rows.rowCount !== 0) {
+        if (rows.rowCount>0) {
             res.status(401).send({error: 'Already registered'});
             return;
         }
@@ -56,15 +54,20 @@ router.post('/reg/single', validateRequest, async (req, res) => {
         console.log(error);
 
         //rollback the db by deleting the rows i possibly inserted
-        await db.query("DELETE FROM Registration WHERE userID=$1",userID);
-        await db.query("DELETE FROM PrivateUser WHERE email=$1",req.body.email);
+        await db.query("DELETE FROM Registration WHERE userID=$1",[userID]);
+        await db.query("DELETE FROM PrivateUser WHERE email=$1",[req.body.email]);
 
         res.status(400).send({error: 'Query error'});
     }
 
 });
 
+
 router.post('/reg/tp', validateRequest, async (req, res) => {
+    let text;
+    let values;
+    let rows;
+    let userID;
 
     //query the database to find if the email or piva are already associated to an account
     try {
@@ -73,7 +76,7 @@ router.post('/reg/tp', validateRequest, async (req, res) => {
         values = [req.body.email, req.body.piva];
         rows = await db.query(text, values);
 
-        if (rows.rowCount !== 0) {
+        if (rows.rowCount>0) {
             res.status(401).send({error: 'Already registered'});
             return;
         }
@@ -98,15 +101,21 @@ router.post('/reg/tp', validateRequest, async (req, res) => {
         console.log(error);
 
         //rollback the db by deleting the rows i possibly inserted
-        await db.query("DELETE FROM Registration WHERE userID=$1",userID);
-        await db.query("DELETE FROM ThirdParty WHERE email=$1",req.body.email);
+        await db.query("DELETE FROM Registration WHERE userID=$1",[userID]);
+        await db.query("DELETE FROM ThirdParty WHERE email=$1",[req.body.email]);
 
         res.status(400).send({error: 'Query error'});
     }
 
 });
 
+
 router.post('/login', validateRequest, async (req, res) => {
+    let text;
+    let values;
+    let userID;
+    let rows_private;
+    let rows_tp;
 
     //query the database to find an existing account with the provided credentials
     try {
@@ -128,7 +137,7 @@ router.post('/login', validateRequest, async (req, res) => {
     }
 
     //get the userID from the right table, based on whether he's a third party or private user
-    userID = rows_tp.rowCount!==0? rows_tp.rows[0].userid : rows_private.rows[0].userid;
+    userID = rows_tp.rowCount>0? rows_tp.rows[0].userid : rows_private.rows[0].userid;
 
     //if the user is already logged in, i.e. his userid is a value (not key!) in the hashmap of logged users
     if(Object.values(loggedUsers).indexOf(userID) > -1) {
@@ -141,9 +150,10 @@ router.post('/login', validateRequest, async (req, res) => {
     res.status(200).send({
         "message" : "Login successful",
         "authToken" : userID, //@todo cambiare! questo deve essere authToken
-        "userType" :  rows_tp.rowCount!==0 ? "ThirdParty" : "PrivateUser"
+        "userType" :  rows_tp.rowCount>0 ? "ThirdParty" : "PrivateUser"
     })
 });
+
 
 router.get('/logout', async (req, res) => {
 
@@ -157,11 +167,12 @@ router.get('/logout', async (req, res) => {
     res.status(200).send({message: "Logged out"});
 });
 
+
 router.get('/activ', async (req, res) => {
 
     //query the database to see if the account is already activated
     try {
-        rows = await db.query('SELECT activated FROM Registration WHERE userID = $1', [req.query.activToken]);
+        const rows = await db.query('SELECT activated FROM Registration WHERE userID = $1', [req.query.activToken]);
 
         //if there is no registration associated to the token in the database
         if(rows.rowCount===0) {
@@ -181,8 +192,8 @@ router.get('/activ', async (req, res) => {
 
     //set activated to true in the database
     try {
-        text = 'UPDATE Registration SET activated=$1 WHERE userid=$2 RETURNING *';
-        values = [true, req.query.activToken];
+        const text = 'UPDATE Registration SET activated=$1 WHERE userid=$2 RETURNING *';
+        const values = [true, req.query.activToken];
         await db.query(text, values);
     } catch(error) {
         return logError(error, res)
@@ -195,30 +206,33 @@ router.get('/activ', async (req, res) => {
 async function insertIntoRegistration() {
 
     //evaluates the total number of registered users from the database, and generates the userID based on that value
-    rows = await db.query( text = 'SELECT count(*) as userID FROM Registration');
+    const rows = await db.query('SELECT count(*) as userID FROM Registration');
     const id = (+rows.rows[0].userid +1).toString(); //@todo generarlo in modo intelligente dato questo valore
 
     //insert the userID into the Registration table
-    text = 'INSERT INTO Registration(userID, activated) VALUES($1, $2)';
-    values = [id, false];
+    const text = 'INSERT INTO Registration(userID, activated) VALUES($1, $2)';
+    const values = [id, false];
     await db.query(text, values);
     return id;
 }
+
 
 //true if the authToken of the user is present in the hasmap, ie he's logged in the server
 function isLogged(authToken) {
     return authToken in loggedUsers
 }
 
+
 //given the authToken of a user, returns its userID from the hashmap of logged users
-function getUserID(authToken) {
+function getUserIDByToken(authToken) {
     return loggedUsers[authToken]
 }
 
 
+
 module.exports = router;
 module.exports.isLogged = isLogged;
-module.exports.getUserID = getUserID;
+module.exports.getUserIDByToken = getUserIDByToken;
 
 
 
