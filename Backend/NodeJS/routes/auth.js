@@ -145,6 +145,18 @@ router.post('/login', validateRequest, async (req, res) => {
     })
 });
 
+router.get('/logout', async (req, res) => {
+
+    //if the user is not logged in
+    if (!(req.query.authToken in loggedUsers)) {
+        res.status(403).send({error: 'Not logged in'});
+        return;
+    }
+
+    delete loggedUsers[req.query.authToken];
+    res.status(200).send({message: "Logged out"});
+});
+
 router.get('/activ', async (req, res) => {
 
     //query the database to see if the account is already activated

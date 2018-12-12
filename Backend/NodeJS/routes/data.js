@@ -16,6 +16,9 @@ let text;
 let values;
 let res;
 let i;
+let j;
+let rows;
+let response;
 
 router.post('/upload', validateRequest, async (req, res) => {
     userID = getUserID(req.body.authToken);
@@ -64,14 +67,27 @@ router.post('/stats', validateRequest, async (req, res) => {
             return;
         }
 
-        //import each observation into the database
+        //get datapoints from the database
+        response = {};
         for(i=0; i<req.body.types.length; i++) {
-            text = "SELECT (value, timestp) FROM userdata WHERE userid=$1 and datatype=$2";
+
+            text = "SELECT avg(value) as avg, date_part('month', timest) as month, date_part('year', timest) as year " +
+                "FROM userdata WHERE userid=$1 and datatype=$2 " +
+                "GROUP BY date_part('year', timest), date_part('month', timest);";
             values = [userID, req.body.types[i]];
-            await db.query(text, values);
+            rows = await db.query(text, values);
+
+            for(j=0; j<rows.rows.length; j++) {
+                rows.rows[j].avg = parseFloat(rows.rows[j].avg)
+            }
+
+            response[req.body.types[i]] = rows.rows
         }
 
-
+        res.status(200).send({
+            messsage: "Data retrieved",
+            data : response
+        })
     } catch(error) {
         return logError(error, res)
     }
