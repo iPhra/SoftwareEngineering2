@@ -30,6 +30,7 @@ class SURegisterViewController: UIViewController {
     @IBOutlet weak var EmailTextView: UITextField!
     @IBOutlet weak var passwordTextView: UITextField!
     @IBOutlet weak var cfTextView: UITextField!
+    @IBOutlet weak var birthdateTextView: UITextField!
     
 
     override func viewDidLoad() {
@@ -44,13 +45,14 @@ class SURegisterViewController: UIViewController {
     
     @IBAction func CreateAccount(_ sender: Any) {
         print("sending request")
-
+        
         //send request throw Network Manager with registration details
         print(D4HEndpoint.registerSingle)
-        NetworkManager.sharedInstance.sendPostRequest(input: D4HSingleRegisterRequest(email: EmailTextView.text!, password: passwordTextView.text!, FC: cfTextView.text!, fullname: fullnameTextView.text!, birthday: "", sex: "M"), endpoint: D4HEndpoint.registerSingle) { (response, error) in
+        NetworkManager.sharedInstance.sendPostRequest(input: D4HSingleRegisterRequest(email: EmailTextView.text!, password: passwordTextView.text!, FC: cfTextView.text!, fullname: fullnameTextView.text!, birthday: birthdateTextView.text!, sex: "M"), endpoint: D4HEndpoint.registerSingle) { (response, error) in
             if response != nil {
                 let myres = D4HRegisterSingleResponse(fromJson: response!)
                 print(myres.message)
+                self.performSegue(withIdentifier: "LoginFromSU", sender: self)
             }
             else if let error = error {
                 print(error)

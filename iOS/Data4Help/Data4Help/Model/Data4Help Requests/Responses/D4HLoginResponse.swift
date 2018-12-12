@@ -15,16 +15,19 @@ class D4HLoginResponse: D4HResponse {
     
     var message: String
     let authToken: String
+    let userType: String
     
     // MARK: - initialization
     
-    init(message: String, authToken: String) {
+    init(message: String, authToken: String, userType: String) {
         self.message = message
         self.authToken = authToken
+        self.userType = userType
     }
     
     init(fromJson json: JSON) {
         self.message = json["message"].stringValue
         self.authToken = json["authToken"].stringValue
+        self.userType = json["userType"].stringValue
     }
 }

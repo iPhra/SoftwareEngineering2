@@ -16,6 +16,8 @@ enum D4HEndpoint: String {
     case registerSingle = "/auth/reg/single"
     case registerThirdParty = "/auth/reg/tp"
     case activation = "/auth/activ"
+    case logout = "/auth/logout"
+    
     // Settings
     
     case setInfoSingle = "/settings/single/info"

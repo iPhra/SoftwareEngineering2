@@ -75,6 +75,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        
+        print("i'm done")
+        //LOG OUT
+        NetworkManager.sharedInstance.sendGetRequest(endpoint: D4HEndpoint.logout, headers: ["authToken": "3"]) { (response, error) in
+            print(response)
+        }
     }
     
     

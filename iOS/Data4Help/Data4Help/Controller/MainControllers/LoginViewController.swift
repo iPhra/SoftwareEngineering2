@@ -39,6 +39,12 @@ class LoginViewController: UIViewController {
             if response != nil {
                 let myres = D4HLoginResponse(fromJson: response!)
                 print(myres.message)
+                if myres.userType == "PrivateUser" {
+                    self.performSegue(withIdentifier: "GoToSingleUser", sender: self)
+                } else {
+                    self.performSegue(withIdentifier: "GoToThirdParty", sender: self)
+                }
+                
             }
             else if let error = error {
                 print(error)
