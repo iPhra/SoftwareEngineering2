@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import HealthKit
 
-enum dataTypes: String {
+enum dataType: String {    
     
     case standingHours = "standinghours"
     case heartrate = "heartrate"

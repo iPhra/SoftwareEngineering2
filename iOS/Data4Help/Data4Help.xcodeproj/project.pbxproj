@@ -34,10 +34,11 @@
 		CB1727B821B3EB9600AC9D36 /* TPViewSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1727B721B3EB9600AC9D36 /* TPViewSettings.swift */; };
 		CB1727BA21B3EBA700AC9D36 /* TPEditSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1727B921B3EBA700AC9D36 /* TPEditSettings.swift */; };
 		CB1727BE21B4496800AC9D36 /* MyHealth.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1727BD21B4496800AC9D36 /* MyHealth.swift */; };
-		CB18F00921B6F76500BBFAAD /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB18F00821B6F76500BBFAAD /* CacheManager.swift */; };
-		CB98264821C102FB00932CE6 /* properties.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB98264721C102FB00932CE6 /* properties.plist */; };
+		CB18F00921B6F76500BBFAAD /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB18F00821B6F76500BBFAAD /* StorageManager.swift */; };
 		CB98264A21C103A600932CE6 /* D4HDataUploadRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB98264921C103A600932CE6 /* D4HDataUploadRequest.swift */; };
-		CB98264C21C1048B00932CE6 /* dataTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB98264B21C1048B00932CE6 /* dataTypes.swift */; };
+		CB98264C21C1048B00932CE6 /* dataType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB98264B21C1048B00932CE6 /* dataType.swift */; };
+		CB98264F21C164ED00932CE6 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CB98264D21C164EC00932CE6 /* Model.xcdatamodeld */; };
+		CB98265121C1674A00932CE6 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB98265021C1674A00932CE6 /* CoreData.framework */; };
 		CBADD0FB21AC197E00896705 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBADD0FA21AC197E00896705 /* AppDelegate.swift */; };
 		CBADD0FD21AC197E00896705 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBADD0FC21AC197E00896705 /* LoginViewController.swift */; };
 		CBADD10021AC197E00896705 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBADD0FE21AC197E00896705 /* Main.storyboard */; };
@@ -96,10 +97,11 @@
 		CB1727B721B3EB9600AC9D36 /* TPViewSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPViewSettings.swift; sourceTree = "<group>"; };
 		CB1727B921B3EBA700AC9D36 /* TPEditSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPEditSettings.swift; sourceTree = "<group>"; };
 		CB1727BD21B4496800AC9D36 /* MyHealth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyHealth.swift; sourceTree = "<group>"; };
-		CB18F00821B6F76500BBFAAD /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
-		CB98264721C102FB00932CE6 /* properties.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = properties.plist; sourceTree = "<group>"; };
+		CB18F00821B6F76500BBFAAD /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		CB98264921C103A600932CE6 /* D4HDataUploadRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HDataUploadRequest.swift; sourceTree = "<group>"; };
-		CB98264B21C1048B00932CE6 /* dataTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dataTypes.swift; sourceTree = "<group>"; };
+		CB98264B21C1048B00932CE6 /* dataType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dataType.swift; sourceTree = "<group>"; };
+		CB98264E21C164EC00932CE6 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		CB98265021C1674A00932CE6 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		CBADD0F721AC197E00896705 /* Data4Help.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Data4Help.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBADD0FA21AC197E00896705 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBADD0FC21AC197E00896705 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB98265121C1674A00932CE6 /* CoreData.framework in Frameworks */,
 				CBADD12B21AC64A100896705 /* HealthKit.framework in Frameworks */,
 				1D5ED11ED4C4AA86453AB757 /* Pods_Data4Help.framework in Frameworks */,
 			);
@@ -159,6 +162,7 @@
 		28678F8A21AC1C14004D6B9D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CB98264D21C164EC00932CE6 /* Model.xcdatamodeld */,
 				28E5569021ADF3390009D972 /* Data4Help Requests */,
 			);
 			path = Model;
@@ -183,7 +187,7 @@
 				CB1727A521B3324300AC9D36 /* TPControllers */,
 				CB1727A421B3323B00AC9D36 /* SUControllers */,
 				CB1727A321B3323000AC9D36 /* MainControllers */,
-				CB18F00821B6F76500BBFAAD /* CacheManager.swift */,
+				CB18F00821B6F76500BBFAAD /* StorageManager.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -207,7 +211,7 @@
 				28121FCD21B5A1FD00AF6CCE /* D4HSingleRegisterRequest.swift */,
 				283B263421B98D9E00C939A9 /* D4HThirdPartyRegistrationRequest.swift */,
 				CB98264921C103A600932CE6 /* D4HDataUploadRequest.swift */,
-				CB98264B21C1048B00932CE6 /* dataTypes.swift */,
+				CB98264B21C1048B00932CE6 /* dataType.swift */,
 				28B67D0321C10E0500FCA356 /* D4HLogoutRequest.swift */,
 			);
 			path = Requests;
@@ -294,7 +298,6 @@
 		CBADD0EE21AC197E00896705 = {
 			isa = PBXGroup;
 			children = (
-				CB98264721C102FB00932CE6 /* properties.plist */,
 				CBADD0F921AC197E00896705 /* Data4Help */,
 				CBADD10E21AC197F00896705 /* Data4HelpTests */,
 				CBADD11921AC197F00896705 /* Data4HelpUITests */,
@@ -348,6 +351,7 @@
 		CBADD12921AC64A100896705 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CB98265021C1674A00932CE6 /* CoreData.framework */,
 				CBADD12A21AC64A100896705 /* HealthKit.framework */,
 				6698D8B24F51E95CD50F02E1 /* Pods_Data4Help.framework */,
 			);
@@ -478,7 +482,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBADD10521AC197F00896705 /* LaunchScreen.storyboard in Resources */,
-				CB98264821C102FB00932CE6 /* properties.plist in Resources */,
 				CB1727A021B1DCAA00AC9D36 /* ThirdParty.storyboard in Resources */,
 				CB1727A221B1DCD100AC9D36 /* SingleUser.storyboard in Resources */,
 				CBADD10221AC197F00896705 /* Assets.xcassets in Resources */,
@@ -558,7 +561,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB18F00921B6F76500BBFAAD /* CacheManager.swift in Sources */,
+				CB18F00921B6F76500BBFAAD /* StorageManager.swift in Sources */,
 				28E5569621ADF5480009D972 /* D4HLoginRequest.swift in Sources */,
 				CB1727B821B3EB9600AC9D36 /* TPViewSettings.swift in Sources */,
 				CBD7A89021B05E24004BB382 /* D4HResponse.swift in Sources */,
@@ -573,7 +576,7 @@
 				28E5568F21ADE9890009D972 /* NetworkManager.swift in Sources */,
 				CBADD12D21AD7FFB00896705 /* DataManager.swift in Sources */,
 				CB17279C21B1545300AC9D36 /* TPRegisterViewController.swift in Sources */,
-				CB98264C21C1048B00932CE6 /* dataTypes.swift in Sources */,
+				CB98264C21C1048B00932CE6 /* dataType.swift in Sources */,
 				28121FD021B5A41600AF6CCE /* D4HRegisterSingleResponse.swift in Sources */,
 				283B263721B98F6500C939A9 /* D4HRegisterThirdPartyResponse.swift in Sources */,
 				CB17279E21B1D5C800AC9D36 /* TutorialViewController.swift in Sources */,
@@ -585,6 +588,7 @@
 				28E5569221ADF3AB0009D972 /* D4HRequest.swift in Sources */,
 				28E5569D21ADF8870009D972 /* D4HEndpoint.swift in Sources */,
 				CBADD0FB21AC197E00896705 /* AppDelegate.swift in Sources */,
+				CB98264F21C164ED00932CE6 /* Model.xcdatamodeld in Sources */,
 				CB17279A21B1543500AC9D36 /* SURegisterViewController.swift in Sources */,
 				283B263521B98D9E00C939A9 /* D4HThirdPartyRegistrationRequest.swift in Sources */,
 				CB1727B421B3E2EF00AC9D36 /* SUSettings.swift in Sources */,
@@ -919,6 +923,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		CB98264D21C164EC00932CE6 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CB98264E21C164EC00932CE6 /* Model.xcdatamodel */,
+			);
+			currentVersion = CB98264E21C164EC00932CE6 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = CBADD0EF21AC197E00896705 /* Project object */;
 }

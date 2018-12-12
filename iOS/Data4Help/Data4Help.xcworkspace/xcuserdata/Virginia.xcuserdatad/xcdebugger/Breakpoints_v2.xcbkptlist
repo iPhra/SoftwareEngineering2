@@ -210,27 +210,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Data4Help/Controller/SUControllers/MyHealth.swift"
-            timestampString = "566295837.829438"
+            timestampString = "566340086.217518"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "160"
-            endingLineNumber = "160"
-            landmarkName = "toggleAutomatedSOSON(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Data4Help/Controller/SUControllers/MyHealth.swift"
-            timestampString = "566295837.8294851"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "171"
-            endingLineNumber = "171"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
             landmarkName = "toggleAutomatedSOSON(_:)"
             landmarkType = "7">
          </BreakpointContent>

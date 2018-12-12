@@ -16,11 +16,11 @@ import HealthKit
  */
 class DataManager: NSObject {
     
-    //MARK: Properties
+    // MARK: Properties
     
     let healthStore:HKHealthStore = HKHealthStore()
     
-    //MARK: Singleton Instance
+    // MARK: Singleton Instance
     
     class var sharedInstance: DataManager {
         struct Singleton {
@@ -30,7 +30,8 @@ class DataManager: NSObject {
     }
     
     
-    //MARK: functions
+    // MARK: functions
+    
     func authorizeHKinApp(){
         
         // Health data to read
@@ -57,34 +58,13 @@ class DataManager: NSObject {
         }
     }
     
-    /*
-     func getHeartRates()
-     {
-     //print("Debug print")
-     let tHeartRate = HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)
-     let tHeartRateQuery = HKSampleQuery(sampleType: tHeartRate!, predicate:.none, limit: 0, sortDescriptors: nil) { query, results, error in
-     
-     if (results?.count)! > 0
-     {
-     var string:String = ""
-     for result in results as! [HKQuantitySample]
-     {
-     let HeartRate = result.quantity
-     string = "\(HeartRate)"
-     
-     let delimiter = "c" //remove "count/min"
-     var token = string.components(separatedBy: delimiter)
-     print (token[0]) //print only heart rate
-     //print(string)
-     }
-     }
-     }
-     
-     healthStore.execute(tHeartRateQuery)
-     }
-     */
-    public func enableAutomatedSOS(){
-        //
+    public func setAutomatedSOS(enable: Bool){
+        if(enable){
+            
+        }
+        else{
+            
+        }
     }
     
     public func sampleTypesToRead() -> [HKSampleType] {
@@ -142,15 +122,31 @@ class DataManager: NSObject {
     func handleNewSamples(new: [HKQuantitySample], deleted: [HKDeletedObject]) {
         print("last sample = \(String(describing: new.last!.quantity))")
         //print(new.last!.startDate)
-        print(new.last!.endDate.description)
+        //print(new.last!.endDate.description)
         let delimiter = "+" //remove "count/min"
         var token = new.last!.endDate.description.components(separatedBy: delimiter)
-        var string = token[0]
-        string.popLast()
-        print (string) //print date-time
+        var timestamp = token[0]
+        timestamp.popLast()
+        print (timestamp) //print date-time
         
+        //Save data
+        StorageManager.sharedInstance.addData(entityName: "Data", type: dataType.heartrate.rawValue, timestamp: timestamp, value: (new.last?.quantity.doubleValue(for: HKUnit.count().unitDivided(by: HKUnit.minute())))!)
+        print("Added last sample")
+        print("Show all records:")
+        let results = StorageManager.sharedInstance.getAllData(entityName: "Data")
+        for data in results{
+            print(data.value(forKey: "type") as! String)
+            print(data.value(forKey: "timestamp") as! String)
+        }
+        StorageManager.sharedInstance.deleteAllData(entityName: "Data")
+            
+            // Send data to server
+            /*
         let typesString: [dataTypes] = [dataTypes.heartrate]
         let samples:Double = (new.last?.quantity.doubleValue(for: HKUnit.count().unitDivided(by: HKUnit.minute())))!
+        
+        
+        }
         
         NetworkManager.sharedInstance.sendPostRequest(input: D4HDataUploadRequest(authToken:"6", types: typesString ,values:[samples], timestamps:[string]), endpoint: D4HEndpoint.login) { (response, error) in
             if response != nil {
@@ -160,11 +156,6 @@ class DataManager: NSObject {
             else if let error = error {
                 print(error)
             }
-        }
-        //print(new.last!.metadata!)
-        /*
-         for sample in new{
-         print("new sample added = \(sample.quantity)")
-         }*/
+        }*/
     }
 }

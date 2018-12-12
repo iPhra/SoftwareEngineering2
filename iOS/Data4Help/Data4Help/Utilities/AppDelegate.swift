@@ -8,14 +8,24 @@
 
 import UIKit
 import HealthKit
+import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    var plistPathInDocument: String?
     
-    var path: String?
+    lazy var persistentContainer: NSPersistentContainer = {
+        
+        let container = NSPersistentContainer(name: "Model")
+        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            if let error = error {
+                
+                fatalError("Unresolved error, \((error as NSError).userInfo)")
+            }
+        })
+        return container
+    }()
     
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -28,30 +38,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         /*
          for sample in sampleTypes {
          dataManager.enableBackgroundData(input: sample)
-         }
-         dataManager.enableBackgroundData(input: HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)!)*/
-        
-        self.preparePlistForUse()
+         }*/
+         dataManager.enableBackgroundData(input: HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)!)
         
         return true
-    }
-    
-    func preparePlistForUse(){
-        let rootPath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, .userDomainMask, true)[0]
-        // 2
-        plistPathInDocument = rootPath.appendingFormat("/properties.plist")
-        print(plistPathInDocument)
-        if !FileManager.default.fileExists(atPath: plistPathInDocument!){
-            let plistPathInBundle = Bundle.main.path(forResource: "properties", ofType: "plist") as String!
-            // 3
-            do {
-                try FileManager.default.copyItem(atPath: plistPathInBundle!, toPath: plistPathInDocument!)
-                print("Document created")
-            }catch{
-                print("Error occurred while copying file to document \(error)")
-            }
-        }
-        print("Document found")
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
@@ -70,7 +60,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        self.preparePlistForUse()
     }
     
     func applicationWillTerminate(_ application: UIApplication) {

@@ -14,13 +14,13 @@ class D4HDataUploadRequest: D4HRequest {
     // MARK: - Properties
     
     let authToken: String
-    let types: [dataTypes]
+    let types: [dataType]
     let values: [Double]
     let timestamps: [String]
     
     // MARK: Initialisation
     
-    init(authToken: String, types: [dataTypes],values: [Double], timestamps: [String]) {
+    init(authToken: String, types: [dataType],values: [Double], timestamps: [String]) {
         self.authToken = authToken
         self.types = types
         self.values = values
