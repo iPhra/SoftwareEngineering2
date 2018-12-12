@@ -245,7 +245,7 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="Wmf-wu-ryr">
-                                <rect key="frame" x="60" y="375" width="255" height="246"/>
+                                <rect key="frame" x="60" y="346" width="255" height="246"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Full name" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c3S-zk-fyt">
                                         <rect key="frame" x="0.0" y="0.0" width="255" height="30"/>
@@ -299,7 +299,7 @@
                         <constraints>
                             <constraint firstItem="Wmf-wu-ryr" firstAttribute="leading" secondItem="vwR-77-6Hb" secondAttribute="leading" constant="60" id="5or-92-04g"/>
                             <constraint firstItem="uFl-U8-fv7" firstAttribute="top" secondItem="jYj-EU-6pa" secondAttribute="bottom" constant="2" id="EeK-lS-d6t"/>
-                            <constraint firstItem="Wmf-wu-ryr" firstAttribute="top" secondItem="uFl-U8-fv7" secondAttribute="bottom" constant="30" id="GSy-Nj-Bf9"/>
+                            <constraint firstItem="Wmf-wu-ryr" firstAttribute="top" secondItem="uFl-U8-fv7" secondAttribute="bottom" constant="1" id="GSy-Nj-Bf9"/>
                             <constraint firstItem="vwR-77-6Hb" firstAttribute="trailing" secondItem="jYj-EU-6pa" secondAttribute="trailing" constant="10" id="GbU-AO-5XT"/>
                             <constraint firstItem="k9M-wh-MHf" firstAttribute="centerX" secondItem="jYj-EU-6pa" secondAttribute="centerX" id="XX6-tk-gSO"/>
                             <constraint firstItem="jYj-EU-6pa" firstAttribute="leading" secondItem="vwR-77-6Hb" secondAttribute="leading" constant="10" id="YT4-70-Qsv"/>
@@ -352,7 +352,7 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="vr5-Ik-nPt">
-                                <rect key="frame" x="60" y="375" width="255" height="192"/>
+                                <rect key="frame" x="60" y="346" width="255" height="192"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Organisation name" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UDX-El-YOQ">
                                         <rect key="frame" x="0.0" y="0.0" width="255" height="30"/>
@@ -407,7 +407,7 @@
                             <constraint firstItem="PKl-ga-FjH" firstAttribute="centerX" secondItem="uhq-cS-5sd" secondAttribute="centerX" id="USb-Te-b2Y"/>
                             <constraint firstItem="uhq-cS-5sd" firstAttribute="top" secondItem="PMF-Bu-jTj" secondAttribute="top" constant="10" id="beE-2D-4SJ"/>
                             <constraint firstItem="vr5-Ik-nPt" firstAttribute="leading" secondItem="PMF-Bu-jTj" secondAttribute="leading" constant="60" id="hsU-LI-qU2"/>
-                            <constraint firstItem="vr5-Ik-nPt" firstAttribute="top" secondItem="4jg-yu-5mR" secondAttribute="bottom" constant="30" id="oKs-2K-wVO"/>
+                            <constraint firstItem="vr5-Ik-nPt" firstAttribute="top" secondItem="4jg-yu-5mR" secondAttribute="bottom" constant="1" id="oKs-2K-wVO"/>
                             <constraint firstAttribute="trailing" secondItem="4jg-yu-5mR" secondAttribute="trailing" id="oNI-JG-qif"/>
                             <constraint firstItem="4jg-yu-5mR" firstAttribute="leading" secondItem="PMF-Bu-jTj" secondAttribute="leading" id="vsm-n0-Zxd"/>
                             <constraint firstItem="PMF-Bu-jTj" firstAttribute="bottom" secondItem="PKl-ga-FjH" secondAttribute="bottom" constant="30" id="wZZ-i8-jAy"/>
