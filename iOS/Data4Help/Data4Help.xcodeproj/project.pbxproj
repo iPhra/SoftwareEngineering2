@@ -34,6 +34,9 @@
 		CB1727BA21B3EBA700AC9D36 /* TPEditSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1727B921B3EBA700AC9D36 /* TPEditSettings.swift */; };
 		CB1727BE21B4496800AC9D36 /* MyHealth.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1727BD21B4496800AC9D36 /* MyHealth.swift */; };
 		CB18F00921B6F76500BBFAAD /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB18F00821B6F76500BBFAAD /* CacheManager.swift */; };
+		CB98264821C102FB00932CE6 /* properties.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB98264721C102FB00932CE6 /* properties.plist */; };
+		CB98264A21C103A600932CE6 /* D4HDataUploadRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB98264921C103A600932CE6 /* D4HDataUploadRequest.swift */; };
+		CB98264C21C1048B00932CE6 /* dataTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB98264B21C1048B00932CE6 /* dataTypes.swift */; };
 		CBADD0FB21AC197E00896705 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBADD0FA21AC197E00896705 /* AppDelegate.swift */; };
 		CBADD0FD21AC197E00896705 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBADD0FC21AC197E00896705 /* LoginViewController.swift */; };
 		CBADD10021AC197E00896705 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBADD0FE21AC197E00896705 /* Main.storyboard */; };
@@ -92,6 +95,9 @@
 		CB1727B921B3EBA700AC9D36 /* TPEditSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPEditSettings.swift; sourceTree = "<group>"; };
 		CB1727BD21B4496800AC9D36 /* MyHealth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyHealth.swift; sourceTree = "<group>"; };
 		CB18F00821B6F76500BBFAAD /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
+		CB98264721C102FB00932CE6 /* properties.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = properties.plist; sourceTree = "<group>"; };
+		CB98264921C103A600932CE6 /* D4HDataUploadRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HDataUploadRequest.swift; sourceTree = "<group>"; };
+		CB98264B21C1048B00932CE6 /* dataTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dataTypes.swift; sourceTree = "<group>"; };
 		CBADD0F721AC197E00896705 /* Data4Help.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Data4Help.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBADD0FA21AC197E00896705 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBADD0FC21AC197E00896705 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -198,6 +204,8 @@
 				28E5569C21ADF8870009D972 /* D4HEndpoint.swift */,
 				28121FCD21B5A1FD00AF6CCE /* D4HSingleRegisterRequest.swift */,
 				283B263421B98D9E00C939A9 /* D4HThirdPartyRegistrationRequest.swift */,
+				CB98264921C103A600932CE6 /* D4HDataUploadRequest.swift */,
+				CB98264B21C1048B00932CE6 /* dataTypes.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -283,6 +291,7 @@
 		CBADD0EE21AC197E00896705 = {
 			isa = PBXGroup;
 			children = (
+				CB98264721C102FB00932CE6 /* properties.plist */,
 				CBADD0F921AC197E00896705 /* Data4Help */,
 				CBADD10E21AC197F00896705 /* Data4HelpTests */,
 				CBADD11921AC197F00896705 /* Data4HelpUITests */,
@@ -466,6 +475,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBADD10521AC197F00896705 /* LaunchScreen.storyboard in Resources */,
+				CB98264821C102FB00932CE6 /* properties.plist in Resources */,
 				CB1727A021B1DCAA00AC9D36 /* ThirdParty.storyboard in Resources */,
 				CB1727A221B1DCD100AC9D36 /* SingleUser.storyboard in Resources */,
 				CBADD10221AC197F00896705 /* Assets.xcassets in Resources */,
@@ -553,12 +563,14 @@
 				CB1727A821B3347B00AC9D36 /* ResearchViewController.swift in Sources */,
 				CB1727B621B3EB8200AC9D36 /* TPSettings.swift in Sources */,
 				CB1727B221B3E2DF00AC9D36 /* SUEditSettings.swift in Sources */,
+				CB98264A21C103A600932CE6 /* D4HDataUploadRequest.swift in Sources */,
 				28E5569A21ADF5C60009D972 /* D4HEncodingType.swift in Sources */,
 				CB1727BA21B3EBA700AC9D36 /* TPEditSettings.swift in Sources */,
 				28121FCE21B5A1FD00AF6CCE /* D4HSingleRegisterRequest.swift in Sources */,
 				28E5568F21ADE9890009D972 /* NetworkManager.swift in Sources */,
 				CBADD12D21AD7FFB00896705 /* DataManager.swift in Sources */,
 				CB17279C21B1545300AC9D36 /* TPRegisterViewController.swift in Sources */,
+				CB98264C21C1048B00932CE6 /* dataTypes.swift in Sources */,
 				28121FD021B5A41600AF6CCE /* D4HRegisterSingleResponse.swift in Sources */,
 				283B263721B98F6500C939A9 /* D4HRegisterThirdPartyResponse.swift in Sources */,
 				CB17279E21B1D5C800AC9D36 /* TutorialViewController.swift in Sources */,

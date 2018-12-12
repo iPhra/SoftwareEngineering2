@@ -206,49 +206,33 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Data4Help/Controller/HealthControllers/DataManager.swift"
-            timestampString = "565637334.697932"
+            filePath = "Data4Help/Controller/SUControllers/MyHealth.swift"
+            timestampString = "566295837.829438"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
-            landmarkName = "enableBackgroundData()"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
+            landmarkName = "toggleAutomatedSOSON(_:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Data4Help.DataManager.enableBackgroundData() -&gt; ()"
-                  moduleName = "Data4Help"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Virginia/Documents/Politecnico/Software%20Engineering%202/LorenzoMolteniNegri/iOS/Data4Help/Data4Help/Controller/HealthControllers/DataManager.swift"
-                  timestampString = "565630650.86746"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "117"
-                  endingLineNumber = "117"
-                  offsetFromSymbolStart = "119">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Bool, Swift.Optional&lt;__C.NSError&gt;) -&gt; () in Data4Help.DataManager.enableBackgroundData() -&gt; ()"
-                  moduleName = "Data4Help"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Virginia/Documents/Politecnico/Software%20Engineering%202/LorenzoMolteniNegri/iOS/Data4Help/Data4Help/Controller/HealthControllers/DataManager.swift"
-                  timestampString = "565630650.869361"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "119"
-                  endingLineNumber = "119"
-                  offsetFromSymbolStart = "42">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Data4Help/Controller/SUControllers/MyHealth.swift"
+            timestampString = "566295837.8294851"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
+            landmarkName = "toggleAutomatedSOSON(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

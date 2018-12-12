@@ -36,6 +36,7 @@ class DataManager: NSObject {
         // Health data to read
         let hkTypesToRead:Set<HKObjectType> = [
             HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)!,
+            HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)!,
             HKObjectType.characteristicType(forIdentifier: HKCharacteristicTypeIdentifier.biologicalSex)!,
             HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceWalkingRunning)!,
             HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.height)!
@@ -56,42 +57,52 @@ class DataManager: NSObject {
         }
     }
     
-    
-    func getHeartRates()
-    {
-        //print("Debug print")
-        let tHeartRate = HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)
-        let tHeartRateQuery = HKSampleQuery(sampleType: tHeartRate!, predicate:.none, limit: 0, sortDescriptors: nil) { query, results, error in
-            
-            if (results?.count)! > 0
-            {
-                var string:String = ""
-                for result in results as! [HKQuantitySample]
-                {
-                    let HeartRate = result.quantity
-                    string = "\(HeartRate)"
-                    
-                    let delimiter = "c" //remove "count/min"
-                    var token = string.components(separatedBy: delimiter)
-                    print (token[0]) //print only heart rate
-                    //print(string)
-                }
-            }
-        }
-        
-        healthStore.execute(tHeartRateQuery)
-    }
-    
+    /*
+     func getHeartRates()
+     {
+     //print("Debug print")
+     let tHeartRate = HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)
+     let tHeartRateQuery = HKSampleQuery(sampleType: tHeartRate!, predicate:.none, limit: 0, sortDescriptors: nil) { query, results, error in
+     
+     if (results?.count)! > 0
+     {
+     var string:String = ""
+     for result in results as! [HKQuantitySample]
+     {
+     let HeartRate = result.quantity
+     string = "\(HeartRate)"
+     
+     let delimiter = "c" //remove "count/min"
+     var token = string.components(separatedBy: delimiter)
+     print (token[0]) //print only heart rate
+     //print(string)
+     }
+     }
+     }
+     
+     healthStore.execute(tHeartRateQuery)
+     }
+     */
     public func enableAutomatedSOS(){
         //
     }
     
+    public func sampleTypesToRead() -> [HKSampleType] {
+        var sampleTypes = [HKSampleType]()
+        sampleTypes.append(HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)!)
+        //sampleTypes.append(HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)!)
+        sampleTypes.append(HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceWalkingRunning)!)
+        /*sampleTypes.append(HKSampleType.characteristicType(forIdentifier: HKCharacteristicTypeIdentifier.biologicalSex))*/
+        sampleTypes.append(HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.height)!)
+        return sampleTypes
+    }
     
-    public func enableBackgroundData(){
+    public func enableBackgroundData(input: HKSampleType){
         
-        let sampleType = HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)
+        //let s = HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)
+        let sampleType = input
         
-        self.healthStore.enableBackgroundDelivery(for: sampleType!, frequency: .immediate) { (success, error) in
+        self.healthStore.enableBackgroundDelivery(for: sampleType, frequency: .immediate) { (success, error) in
             if let unwrappedError = error {
                 print("could not enable background delivery: \(unwrappedError)")
             }
@@ -100,24 +111,24 @@ class DataManager: NSObject {
             }
         }
         //2.  open observer query
-        let query = HKObserverQuery(sampleType: sampleType!, predicate: nil) { (query, completionHandler, error) in
+        let query = HKObserverQuery(sampleType: sampleType, predicate: nil) { (query, completionHandler, error) in
             
-            self.updateHeartRates() {
+            self.updateHealthData(sampleType: input) {
                 completionHandler()
             }
             
-            
         }
         healthStore.execute(query)
-
+        
     }
-    func updateHeartRates(completionHandler: @escaping () -> Void) {
+    
+    func updateHealthData(sampleType: HKSampleType, completionHandler: @escaping () -> Void) {
         
         var anchor: HKQueryAnchor?
         
-        let sampleType =  HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)
+        //let sampleType =  HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceWalkingRunning)
         
-        let anchoredQuery = HKAnchoredObjectQuery(type: sampleType!, predicate: nil, anchor: anchor, limit: HKObjectQueryNoLimit) { [unowned self] query, newSamples, deletedSamples, newAnchor, error in
+        let anchoredQuery = HKAnchoredObjectQuery(type: sampleType, predicate: nil, anchor: anchor, limit: HKObjectQueryNoLimit) { [unowned self] query, newSamples, deletedSamples, newAnchor, error in
             
             self.handleNewSamples(new: newSamples! as! [HKQuantitySample], deleted: deletedSamples!)
             
@@ -130,9 +141,30 @@ class DataManager: NSObject {
     
     func handleNewSamples(new: [HKQuantitySample], deleted: [HKDeletedObject]) {
         print("last sample = \(String(describing: new.last!.quantity))")
+        //print(new.last!.startDate)
+        print(new.last!.endDate.description)
+        let delimiter = "+" //remove "count/min"
+        var token = new.last!.endDate.description.components(separatedBy: delimiter)
+        var string = token[0]
+        string.popLast()
+        print (string) //print date-time
+        
+        let typesString: [dataTypes] = [dataTypes.heartrate]
+        let samples:Double = (new.last?.quantity.doubleValue(for: HKUnit.count().unitDivided(by: HKUnit.minute())))!
+        
+        NetworkManager.sharedInstance.sendPostRequest(input: D4HDataUploadRequest(authToken:"6", types: typesString ,values:[samples], timestamps:[string]), endpoint: D4HEndpoint.login) { (response, error) in
+            if response != nil {
+                let myres = D4HLoginResponse(fromJson: response!)
+                print(myres.message)
+            }
+            else if let error = error {
+                print(error)
+            }
+        }
+        //print(new.last!.metadata!)
         /*
-        for sample in new{
-            print("new sample added = \(sample.quantity)")
-        }*/
+         for sample in new{
+         print("new sample added = \(sample.quantity)")
+         }*/
     }
 }

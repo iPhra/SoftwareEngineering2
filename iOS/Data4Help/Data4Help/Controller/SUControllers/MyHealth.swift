@@ -8,6 +8,7 @@
 
 import UIKit
 import Charts
+import HealthKit
 
 class MyHealth: UIViewController {
     
@@ -15,12 +16,15 @@ class MyHealth: UIViewController {
     
     var AutomatedSOSON:Bool = false
     
+    var propertiesDictionary: NSMutableDictionary?
+    var propertiesDictionaryPath: String?
+    
     var xvals: [String]!
     
     @IBOutlet weak var scrollView: UIScrollView!
     
     weak var axisFormatDelegate: IAxisValueFormatter?
-
+    
     @IBOutlet weak var barChartView: BarChartView!
     
     @IBOutlet weak var bubbleChartView: BubbleChartView!
@@ -29,6 +33,18 @@ class MyHealth: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Load properties file
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        propertiesDictionaryPath = appDelegate.plistPathInDocument
+        // Extract the content of the file as NSData
+        let data:NSData =  FileManager.default.contents(atPath: propertiesDictionaryPath!)! as NSData
+        //print("Reading NSData"+, data)
+        do{
+            propertiesDictionary = try PropertyListSerialization.propertyList(from: data as Data, options: PropertyListSerialization.MutabilityOptions.mutableContainersAndLeaves, format: nil) as? NSMutableDictionary
+        }catch{
+            print("Error occured while reading from the plist file")
+        }
         
         //Setup scroll view
         
@@ -43,7 +59,12 @@ class MyHealth: UIViewController {
         setChart(dataEntryX: xvals, dataEntryY: bpmValues)
         
         setChartBubble(dataPoints: xvals, values1: bpmValues, values2: bpmValues, values3: bpmValues, sortIndex: 3)
-
+        
+        /*
+         let dataManager:DataManager = DataManager()
+         dataManager.authorizeHKinApp()
+         dataManager.enableBackgroundData(input: HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)!)*/
+        
     }
     
     func setChart(dataEntryX forX:[String],dataEntryY forY: [Double]) {
@@ -127,10 +148,26 @@ class MyHealth: UIViewController {
     
     @IBAction func toggleAutomatedSOSON(_ sender: Any) {
         if(AutomatedSOSON){
-            AutomatedSOSON=false
+            propertiesDictionaryPath = Bundle.main.path(forResource: "properties", ofType: "plist")!
+            propertiesDictionary = NSMutableDictionary(contentsOfFile: propertiesDictionaryPath!)
+            propertiesDictionary?.setValue(false, forKey: "AutomatedSOSON")
+            propertiesDictionary?.write(toFile: propertiesDictionaryPath!, atomically: true)
+            /*
+             propertiesDictionary?.setValue(false, forKey: "AutomatedSOS")
+             
+             if let autoOn = propertiesDictionary?.object(forKey: "AutomatedSOSON"){
+             AutomatedSOSON = autoOn as! Bool
+             }
+             AutomatedSOSON=false*/
         }
         else{
-            AutomatedSOSON=true
+            propertiesDictionaryPath = Bundle.main.path(forResource: "properties", ofType: "plist")!
+            propertiesDictionary = NSMutableDictionary(contentsOfFile: propertiesDictionaryPath!)
+            propertiesDictionary?.setValue(true, forKey: "AutomatedSOSON")
+            propertiesDictionary?.write(toFile: propertiesDictionaryPath!, atomically: true)
+            print(propertiesDictionary?.object(forKey: "AutomatedSOSON"))
+            //propertiesDictionary?.setValue(true, forKey: "AutomatedSOS")
+            //AutomatedSOSON=true
             //DataManager.enableAutomatedSOS()
         }
     }
