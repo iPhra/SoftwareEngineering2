@@ -39,6 +39,7 @@
 		CB98264C21C1048B00932CE6 /* dataType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB98264B21C1048B00932CE6 /* dataType.swift */; };
 		CB98264F21C164ED00932CE6 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CB98264D21C164EC00932CE6 /* Model.xcdatamodeld */; };
 		CB98265121C1674A00932CE6 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB98265021C1674A00932CE6 /* CoreData.framework */; };
+		CB98265721C28D9E00932CE6 /* MyFollowers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB98265621C28D9E00932CE6 /* MyFollowers.swift */; };
 		CBADD0FB21AC197E00896705 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBADD0FA21AC197E00896705 /* AppDelegate.swift */; };
 		CBADD0FD21AC197E00896705 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBADD0FC21AC197E00896705 /* LoginViewController.swift */; };
 		CBADD10021AC197E00896705 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBADD0FE21AC197E00896705 /* Main.storyboard */; };
@@ -102,6 +103,7 @@
 		CB98264B21C1048B00932CE6 /* dataType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dataType.swift; sourceTree = "<group>"; };
 		CB98264E21C164EC00932CE6 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		CB98265021C1674A00932CE6 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		CB98265621C28D9E00932CE6 /* MyFollowers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFollowers.swift; sourceTree = "<group>"; };
 		CBADD0F721AC197E00896705 /* Data4Help.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Data4Help.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBADD0FA21AC197E00896705 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBADD0FC21AC197E00896705 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 			children = (
 				CB1727BF21B449A900AC9D36 /* SUSettings */,
 				CB1727BD21B4496800AC9D36 /* MyHealth.swift */,
+				CB98265621C28D9E00932CE6 /* MyFollowers.swift */,
 			);
 			path = SUControllers;
 			sourceTree = "<group>";
@@ -565,6 +568,7 @@
 				28E5569621ADF5480009D972 /* D4HLoginRequest.swift in Sources */,
 				CB1727B821B3EB9600AC9D36 /* TPViewSettings.swift in Sources */,
 				CBD7A89021B05E24004BB382 /* D4HResponse.swift in Sources */,
+				CB98265721C28D9E00932CE6 /* MyFollowers.swift in Sources */,
 				CB1727B021B3E2CD00AC9D36 /* SUViewSettings.swift in Sources */,
 				CB1727A821B3347B00AC9D36 /* ResearchViewController.swift in Sources */,
 				CB1727B621B3EB8200AC9D36 /* TPSettings.swift in Sources */,

@@ -32,14 +32,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         let dataManager:DataManager = DataManager()
         dataManager.authorizeHKinApp()
-        //dataManager.initHealthKit()
-        //dataManager.getHeartRates()
+        
+        //Clean all data for debugging
+        StorageManager.sharedInstance.deleteAllData(entityName: "Data")
+        StorageManager.sharedInstance.deleteAllData(entityName: "AutomatedSOS")
+        
+        
+        StorageManager.sharedInstance.initAutomatedSOS()
+
         let sampleTypes = dataManager.sampleTypesToRead()
         /*
          for sample in sampleTypes {
          dataManager.enableBackgroundData(input: sample)
          }*/
-         dataManager.enableBackgroundData(input: HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)!)
+        
+        dataManager.enableBackgroundData(input: HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)!)
         
         return true
     }

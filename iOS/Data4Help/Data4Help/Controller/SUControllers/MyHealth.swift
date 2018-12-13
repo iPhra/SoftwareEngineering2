@@ -15,8 +15,6 @@ class MyHealth: UIViewController {
     
     //MARK: Properties
     
-    var AutomatedSOSON:Bool = false
-    
     var xvals: [String]!
     
     @IBOutlet weak var scrollView: UIScrollView!
@@ -141,14 +139,7 @@ class MyHealth: UIViewController {
     
     
     @IBAction func toggleAutomatedSOSON(_ sender: Any) {
-        if(AutomatedSOSON){
-            DataManager.sharedInstance.setAutomatedSOS(enable: false)
-            AutomatedSOSON = false
-        }
-        else{
-            DataManager.sharedInstance.setAutomatedSOS(enable: true)
-            AutomatedSOSON = true
-        }
+        DataManager.sharedInstance.toggleAutomatedSOS();
     }
     
     

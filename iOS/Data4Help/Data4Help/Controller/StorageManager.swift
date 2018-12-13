@@ -64,7 +64,7 @@ class StorageManager: NSObject {
     }
     
     func setAutomatedSOSValue(value: Bool){        
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Data")
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "AutomatedSOS")
         request.returnsObjectsAsFaults = false
         do {
             let results = try context.fetch(request)
@@ -73,6 +73,28 @@ class StorageManager: NSObject {
             print("Failed fetching data")
         }
         
+        do {
+            try context.save()
+        }
+        catch {
+            print("Saving Core Data Failed: \(error)")
+        }
+    }
+    
+    func initAutomatedSOS(){
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "AutomatedSOS")
+        request.returnsObjectsAsFaults = false
+        do {
+            let result = try context.fetch(request)
+            if (result.count>0){
+                return;
+            }
+        } catch {
+            //No action
+        }
+        let entity = NSEntityDescription.entity(forEntityName: "AutomatedSOS", in: context)
+        let newData = NSManagedObject(entity: entity!, insertInto: context)
+        newData.setValue(false, forKey: "enabled")
         do {
             try context.save()
         }
@@ -90,7 +112,7 @@ class StorageManager: NSObject {
             try self.context.execute(deleteRequest)
             try self.context.save()
         } catch {
-            print ("There was an error")
+            print ("Could not delete all data")
         }
     }
     

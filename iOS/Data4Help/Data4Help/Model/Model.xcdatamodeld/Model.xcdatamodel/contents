@@ -8,8 +8,24 @@
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="value" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
+    <entity name="RequestContent" representedClassName="RequestContent" syncable="YES" codeGenerationType="class">
+        <attribute name="requestID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="contained" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TPRequest" inverseName="content" inverseEntity="TPRequest" syncable="YES"/>
+    </entity>
+    <entity name="TPRequest" representedClassName="TPRequest" syncable="YES" codeGenerationType="class">
+        <attribute name="duration" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="reqdate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="requestID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="senderID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="subscribing" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="content" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RequestContent" inverseName="contained" inverseEntity="RequestContent" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="AutomatedSOS" positionX="-63" positionY="-18" width="128" height="60"/>
+        <element name="AutomatedSOS" positionX="-79.50390625" positionY="-26.8125" width="128" height="60"/>
         <element name="Data" positionX="115.15625" positionY="-28.28125" width="128" height="88"/>
+        <element name="TPRequest" positionX="108.84375" positionY="145.6796875" width="128" height="148"/>
+        <element name="RequestContent" positionX="305.58984375" positionY="205.5234375" width="128" height="90"/>
     </elements>
 </model>

@@ -10,13 +10,14 @@ import UIKit
 import HealthKit
 
 
-
 /*
  * Handles health data access thorugh HKHealthStore object
  */
 class DataManager: NSObject {
     
     // MARK: Properties
+    
+    var AutomatedSOSON = false
     
     let healthStore:HKHealthStore = HKHealthStore()
     
@@ -58,13 +59,14 @@ class DataManager: NSObject {
         }
     }
     
-    public func setAutomatedSOS(enable: Bool){
-        if(enable){
-            
+    public func toggleAutomatedSOS(){
+        if(AutomatedSOSON){
+            AutomatedSOSON = false;
         }
         else{
-            
+            AutomatedSOSON = true;
         }
+        StorageManager.sharedInstance.setAutomatedSOSValue(value: AutomatedSOSON)
     }
     
     public func sampleTypesToRead() -> [HKSampleType] {
@@ -106,8 +108,6 @@ class DataManager: NSObject {
         
         var anchor: HKQueryAnchor?
         
-        //let sampleType =  HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceWalkingRunning)
-        
         let anchoredQuery = HKAnchoredObjectQuery(type: sampleType, predicate: nil, anchor: anchor, limit: HKObjectQueryNoLimit) { [unowned self] query, newSamples, deletedSamples, newAnchor, error in
             
             self.handleNewSamples(new: newSamples! as! [HKQuantitySample], deleted: deletedSamples!)
@@ -120,9 +120,9 @@ class DataManager: NSObject {
     }
     
     func handleNewSamples(new: [HKQuantitySample], deleted: [HKDeletedObject]) {
+        
         print("last sample = \(String(describing: new.last!.quantity))")
-        //print(new.last!.startDate)
-        //print(new.last!.endDate.description)
+
         let delimiter = "+" //remove "count/min"
         var token = new.last!.endDate.description.components(separatedBy: delimiter)
         var timestamp = token[0]
@@ -137,8 +137,9 @@ class DataManager: NSObject {
         for data in results{
             print(data.value(forKey: "type") as! String)
             print(data.value(forKey: "timestamp") as! String)
-        }
-        StorageManager.sharedInstance.deleteAllData(entityName: "Data")
+            print(data.value(forKey: "value") as! Double)
+        };
+        //StorageManager.sharedInstance.deleteAllData(entityName: "Data")
             
             // Send data to server
             /*
