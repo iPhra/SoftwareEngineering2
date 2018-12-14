@@ -1,6 +1,5 @@
 //@todo Rivedere codici d'errore (anche sul resto del progetto!)
 //@todo Gestire i rollback!
-//@todo Per i countdown si può usare l'idea di far scaricare sempre i dati fino alla scadenza del countdown
 
 const Router = require('express-promise-router');
 const Validator = require('../schemas/validator');
@@ -28,8 +27,10 @@ router.post('/tp/sendSingle', validateRequest, async (req, res) => {
             return
         }
 
+        const receiver_id = await getUserIDByEmail(req);
+
         //if the receiving user does not exist
-        if ((await getUserIDByEmail(req)).rowCount===0) {
+        if (receiver_id.rowCount===0) {
             res.status(403).send({error: "User does not exist"});
             return
         }
@@ -44,10 +45,10 @@ router.post('/tp/sendSingle', validateRequest, async (req, res) => {
         let i;
         const reqID = await getReqID();
         const today = new Date().toISOString().slice(0, 10);
-        const receiver_id = (await getUserIDByEmail(req)).rows[0].userid;
+        //if the user is subscribing and the duration is not specified, then it's one month by default, otherwhise it's the given value
         const duration = req.body.subscribing ? (req.body.duration? req.body.duration : 30) : null;
         let text = 'INSERT INTO singlerequest VALUES($1, $2, $3, $4, $5, $6, $7)';
-        let values = [reqID, userID, receiver_id, req.body.subscribing, "pending", duration, today];
+        let values = [reqID, userID, receiver_id.rows[0].userid, req.body.subscribing, "pending", duration, today];
         await db.query(text, values);
 
         //for each type, insert the type into RequestContent table
@@ -123,7 +124,7 @@ router.post('/single/choice', validateRequest, async (req, res) => {
 
     try {
 
-        //if he's not logged in or he's not a ThirdParty
+        //if he's not logged in or he's not a PrivateUser
         if (!isLogged(req.body.authToken) || !(await isPrivateUser(userID))) {
             res.status(403).send({error: "Wrong authentication"});
             return
@@ -141,6 +142,59 @@ router.post('/single/choice', validateRequest, async (req, res) => {
         await db.query(text, values);
 
         res.status(200).send({message: "Action successful"});
+    } catch(error) {
+        return logError(error, res)
+    }
+});
+
+
+router.get('/single/list', async (req, res) => {
+    let userID = getUserIDByToken(req.query.authToken);
+
+    try {
+
+        //if he's not logged in or he's not a PrivateUser
+        if (!isLogged(req.query.authToken) || !(await isPrivateUser(userID))) {
+            res.status(403).send({error: "Wrong authentication"});
+            return
+        }
+
+        //get all the requests
+        let text = 'SELECT * FROM singlerequest WHERE receiver_id = $1';
+        let values = [userID];
+        let requests = await db.query(text, values);
+        let datatypes;
+        let thirdparty;
+        let i;
+        let obj;
+        let result = [];
+
+        //for every request
+        for(i=0; i<requests.rowCount; i++) {
+
+            text = 'SELECT * FROM thirdparty WHERE userid = $1';
+            values = [requests.rows[i].sender_id];
+            thirdparty = await db.query(text, values);
+
+            text = 'SELECT datatype FROM requestcontent WHERE req_id = $1';
+            values = [requests.rows[i].req_id];
+            datatypes = await db.query(text, values);
+
+            obj = {
+                "reqid" : requests.rows[i].req_id,
+                "email" : thirdparty.rows[0].email,
+                "piva" : thirdparty.rows[0].piva,
+                "company_name" : thirdparty.rows[0].company_name,
+                "types" : datatypes.rows,
+                "status" : requests.rows[i].status,
+                "subscribing" : requests.rows[i].subscribing,
+                "duration" : requests.rows[i].duration
+            };
+
+            result.push(obj);
+        }
+
+        res.status(200).send({requests: result});
     } catch(error) {
         return logError(error, res)
     }

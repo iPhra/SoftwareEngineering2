@@ -45,12 +45,6 @@ router.post('/single/info', validateRequest, async (req, res) => {
             await db.query(text, values);
         }
 
-        if(req.body.sex) {
-            text = "UPDATE PrivateUser SET sex=$1 WHERE userID=$2";
-            values = [req.body.sex, userID];
-            await db.query(text, values);
-        }
-
         res.status(200).send({message: "Settings updated"});
     } catch(error) {
         return logError(error, res)

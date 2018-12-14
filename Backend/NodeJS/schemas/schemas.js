@@ -44,7 +44,6 @@ const singleSettings = {
     password : password,
     full_name : full_name,
     birthdate : birthdate,
-    sex: sex,
 };
 
 const tpSettings = {
