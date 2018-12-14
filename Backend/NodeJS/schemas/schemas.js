@@ -15,6 +15,7 @@ const dataTypes = Joi.string().valid(['standinghours','heartrate','distancewalki
 const company_name = Joi.string().max(20);
 const company_description = Joi.string().max(100);
 const types = Joi.array().items(dataTypes).required();
+const subscribing = Joi.boolean().default(false);
 
 
 const singleRegSchema = {
@@ -76,7 +77,16 @@ const singleReq = {
     email: email,
     fc: fc,
     types: types,
-    subscribing: Joi.boolean().default(false),
+    subscribing: subscribing,
+    duration: Joi.number(),
+};
+
+const groupReq = {
+    authToken : authToken,
+    types: types,
+    parameters: Joi.array().items(dataTypes).required(),
+    bounds : Joi.array().items(Joi.array().items(Joi.number())).required(),
+    subscribing: subscribing,
     duration: Joi.number(),
 };
 
@@ -108,6 +118,7 @@ module.exports = {
     '/upload' : dataImport,
     '/stats' : dataStats,
     '/tp/sendSingle' : singleReq,
+    '/tp/sendGroup' : groupReq,
     '/single/choice' : acceptReq,
     '/tp/downloadSingle' : downloadReq,
     '/tp/downloadGroup' : downloadReq

@@ -36,7 +36,7 @@ router.post('/tp/sendSingle', validateRequest, async (req, res) => {
         }
 
         //if there's a pending request already from the TP to the PU
-        if(await checkPendingRequests(userID, req)) {
+        if(await checkPendingSingleRequests(userID, req)) {
             res.status(403).send({error: "There already is a pending request"});
             return
         }
@@ -55,6 +55,54 @@ router.post('/tp/sendSingle', validateRequest, async (req, res) => {
         for(i=0; i<req.body.types.length; i++) {
             text = "INSERT INTO requestcontent VALUES($1, $2)";
             values = [reqID, req.body.types[i]];
+            await db.query(text, values);
+        }
+
+        res.status(200).send({message: "Request sent"});
+    } catch(error) {
+        return logError(error, res)
+    }
+});
+
+
+router.post('/tp/sendGroup', validateRequest, async (req, res) => {
+    let userID = getUserIDByToken(req.body.authToken);
+
+    try {
+
+        //if he's not logged in or he's not a ThirdParty
+        if (!isLogged(req.body.authToken) || !(await isThirdParty(userID))) {
+            res.status(403).send({error: "Wrong authentication"});
+            return
+        }
+
+        //if there's a pending request already from the TP to the PU
+        if(await checkPendingGroupRequests(userID)) {
+            res.status(403).send({error: "There already is a pending request"});
+            return
+        }
+
+        //insert request into GroupRequest table
+        let i;
+        const reqID = await getReqID();
+        const today = new Date().toISOString().slice(0, 10);
+        //if the user is subscribing and the duration is not specified, then it's one month by default, otherwhise it's the given value
+        const duration = req.body.subscribing ? (req.body.duration? req.body.duration : 30) : null;
+        let text = 'INSERT INTO grouprequest VALUES($1, $2, $3, $4, $5, $6)';
+        let values = [reqID, userID, req.body.subscribing, "pending", duration, today];
+        await db.query(text, values);
+
+        //for each type, insert the type into RequestContent table
+        for(i=0; i<req.body.types.length; i++) {
+            text = "INSERT INTO requestcontent VALUES($1, $2)";
+            values = [reqID, req.body.types[i]];
+            await db.query(text, values);
+        }
+
+        //for each type, insert the parameters and the bounds into SearchParameter table
+        for(i=0; i<req.body.parameters.length; i++) {
+            text = "INSERT INTO searchparameter VALUES($1, $2, $3, $4)";
+            values = [reqID, req.body.parameters[i], req.body.bounds[i][0], req.body.bounds[i][1]];
             await db.query(text, values);
         }
 
@@ -87,30 +135,66 @@ router.post('/tp/downloadSingle', validateRequest, async (req, res) => {
             return
         }
 
-        //for each type, retrieve values from the user
-        let dataTypes = await getRequestContent(req);
-        let i;
-        let req_date;
-        let response = {};
+        //retrieve data types
+        let types = await getRequestTypes(req);
+
+        const final_date = getFinalDate(rows);
         const receiver_id = rows.rows[0].receiver_id;
+        let response = [];
+        let i;
 
-        //if the ThirdParty is subscribed, i return all data availabe until the end of the subscription (duration + date)
-        if(rows.rows[0].subscribing) {
+        //retrieve the value imported by the user for each datatype, and build the response
+        for(i=0; i<types.length; i++) {
             text = "SELECT value, timest FROM userdata WHERE userid = $1 and datatype = $2 and timest::date <= $3";
-            req_date = addDays(rows.rows[0].req_date, rows.rows[0].duration);
-        }
-        //otherwise, i return all data available until the day of the subscription
-        else {
-            text = "SELECT value, timest FROM userdata WHERE userid = $1 AND datatype = $2 and timest::date <= $3";
-            req_date = rows.rows[0].req_date;
-        }
-
-        for(i=0; i<dataTypes.length; i++) {
-            values = [receiver_id, dataTypes[i].datatype, req_date];
+            values = [receiver_id, types[i].datatype, final_date];
             rows = await db.query(text, values);
 
-            response[dataTypes[i].datatype] = rows.rows
+            response[types[i].datatype] = rows.rows
         }
+
+        res.status(200).send({data: response});
+    } catch(error) {
+        return logError(error, res)
+    }
+});
+
+
+router.post('/tp/downloadGroup', validateRequest, async (req, res) => {
+    let userID = getUserIDByToken(req.body.authToken);
+
+    try {
+
+        //if he's not logged in or he's not a ThirdParty
+        if (!isLogged(req.body.authToken) || !(await isThirdParty(userID))) {
+            res.status(403).send({error: "Wrong authentication"});
+            return
+        }
+
+        //retrieve the request
+        let text = "SELECT * FROM grouprequest WHERE req_id = $1";
+        let values = [req.body.reqID];
+        let rows = await db.query(text, values);
+
+        //if the request is not present or if it was not approved
+        if(rows.rowCount===0) {
+            res.status(403).send({error: "Request does not exist"});
+            return
+        }
+
+        //retrieve data types and search parameters
+        let types = await getRequestTypes(req);
+        let parameters = await getRequestParameters(req);
+
+        let i;
+        const final_date = getFinalDate(rows);
+
+        //check that at least 1000 users exist matching the search parameters
+        if(!(await checkGroupCondition(parameters, final_date))) {
+            res.status(403).send({error: "Less than 1000 users match the search parameters"});
+            return;
+        }
+
+        //@todo add data retrieval
 
         res.status(200).send({data: response});
     } catch(error) {
@@ -132,7 +216,7 @@ router.post('/single/choice', validateRequest, async (req, res) => {
 
         //if the request doesn't exist or if it's not pending
         if (!(await checkReqExistance(req))) {
-            res.status(403).send({error: "User does not exist"});
+            res.status(403).send({error: "Request does not exist or is not pending"});
             return
         }
 
@@ -159,17 +243,18 @@ router.get('/single/list', async (req, res) => {
             return
         }
 
-        //get all the requests
+        //get all the requests addressing the user
         let text = 'SELECT * FROM singlerequest WHERE receiver_id = $1';
         let values = [userID];
         let requests = await db.query(text, values);
+
         let datatypes;
         let thirdparty;
         let i;
         let obj;
         let result = [];
 
-        //for every request
+        //for every request get the sender and the datatype requested, and build the response
         for(i=0; i<requests.rowCount; i++) {
 
             text = 'SELECT * FROM thirdparty WHERE userid = $1';
@@ -201,6 +286,97 @@ router.get('/single/list', async (req, res) => {
 });
 
 
+router.get('/tp/list', async (req, res) => {
+    let userID = getUserIDByToken(req.query.authToken);
+
+    try {
+
+        //if he's not logged in or he's not a ThirdParty
+        if (!isLogged(req.query.authToken) || !(await isThirdParty(userID))) {
+            res.status(403).send({error: "Wrong authentication"});
+            return
+        }
+
+        //get all the single requests of the user
+        let text = 'SELECT * FROM singlerequest WHERE sender_id = $1';
+        let values = [userID];
+        let singlerequests = await db.query(text, values);
+
+        let datatypes;
+        let privateuser;
+        let i;
+        let obj;
+        let single = [];
+
+        //for every single request get the receiver and the datatype requested, and build the response
+        for(i=0; i<singlerequests.rowCount; i++) {
+
+            //receiver
+            text = 'SELECT * FROM privateuser WHERE userid = $1';
+            values = [singlerequests.rows[i].receiver_id];
+            privateuser = await db.query(text, values);
+
+            //datatype
+            text = 'SELECT datatype FROM requestcontent WHERE req_id = $1';
+            values = [singlerequests.rows[i].req_id];
+            datatypes = await db.query(text, values);
+
+            obj = {
+                "reqid" : singlerequests.rows[i].req_id,
+                "email" : privateuser.rows[0].email,
+                "fc" : privateuser.rows[0].fc,
+                "types" : datatypes.rows,
+                "status" : singlerequests.rows[i].status,
+                "subscribing" : singlerequests.rows[i].subscribing,
+                "duration" : singlerequests.rows[i].duration
+            };
+
+            single.push(obj);
+        }
+
+        //get all the group requests of the user
+        text = 'SELECT * FROM grouprequest WHERE sender_id = $1';
+        values = [userID];
+        let grouprequests = await db.query(text, values);
+
+        let searchparameters;
+        let group = [];
+
+        //for every group request get the search parameters and the data types requested, and build the response
+        for(i=0; i<grouprequests.rowCount; i++) {
+
+            //datatype
+            text = 'SELECT datatype FROM requestcontent WHERE req_id = $1';
+            values = [grouprequests.rows[i].req_id];
+            datatypes = await db.query(text, values);
+
+            //search parameters
+            text = 'SELECT datatype, upperbound, lowerbound FROM searchparameter WHERE req_id = $1';
+            values = [grouprequests.rows[i].req_id];
+            searchparameters = await db.query(text, values);
+
+            obj = {
+                "reqid" : grouprequests.rows[i].req_id,
+                "types" : datatypes.rows,
+                "parameters" : searchparameters.rows,
+                "status" : grouprequests.rows[i].status,
+                "subscribing" : grouprequests.rows[i].subscribing,
+                "duration" : grouprequests.rows[i].duration
+            };
+
+            group.push(obj);
+        }
+
+        res.status(200).send({requests: {
+            "single" : single,
+                "group" : group
+            }});
+    } catch(error) {
+        return logError(error, res)
+    }
+});
+
+
 //checks if a given PrivateUser exists in the db, given his email and fc, and returns the result of the query
 async function getUserIDByEmail(req) {
     const text = "SELECT userid FROM privateuser WHERE email=$1 AND fc=$2";
@@ -220,12 +396,39 @@ async function checkReqExistance(req) {
 
 
 //checks if there is a pending request from a given ThirdParty to a given PrivateUser
-async function checkPendingRequests(userID, req) {
+async function checkPendingSingleRequests(userID, req) {
     const text = "SELECT * FROM singlerequest WHERE sender_id=$1 AND receiver_id=$2 AND status=$3";
     const values = [userID, (await getUserIDByEmail(req)).rows[0].userid, 'pending'];
     const rows = await db.query(text, values);
 
     return rows.rowCount>0
+}
+
+
+//checks if there is a pending request from a given ThirdParty to a given PrivateUser
+async function checkPendingGroupRequests(userID) {
+    const text = "SELECT * FROM grouprequest WHERE sender_id=$1 AND status=$2";
+    const values = [userID, 'pending'];
+    const rows = await db.query(text, values);
+
+    return rows.rowCount>0
+}
+
+
+//checks that at least 1000 users exist matching the search parameters
+async function checkGroupCondition(parameters, req_date) {
+    let unique = 0;
+    let i;
+    let text;
+    let values;
+
+    for(i=0; i<parameters.length; i++) {
+        text = "SELECT count(distinct(userid)) as n FROM userdata WHERE datatype=$1 and timest::date<=$2 and value>$3 and value<$4 ";
+        values = [parameters[i].datatype, req_date, parameters[i].lowerbound, parameters[i].upperbound];
+        unique += (await db.query(text, values)).rows[0].n;
+    }
+
+    return unique>=1000
 }
 
 
@@ -244,17 +447,39 @@ async function getReqID() {
 
 
 //retrieve dataTypes of the request
-async function getRequestContent(req) {
+async function getRequestTypes(req) {
     const text = "SELECT datatype FROM requestcontent WHERE req_id = $1";
     const values = [req.body.reqID];
     return (await db.query(text, values)).rows;
 }
 
 
+//retrieve search parameters of the request
+async function getRequestParameters(req) {
+    const text = "SELECT datatype, lowerbound, upperbound FROM searchparameter WHERE req_id = $1";
+    const values = [req.body.reqID];
+    return (await db.query(text, values)).rows;
+}
+
+
+//given a date, adds the given number of days to that date
 function addDays(date, days) {
     date = new Date(date);
     date.setDate(date.getDate() + days);
     return date;
+}
+
+
+//if the ThirdParty is subscribed, the requests lasts until the end of the subscription (duration + date), otherwhise until the day of the request
+function getFinalDate(rows) {
+    let final_date;
+    if(rows.rows[0].subscribing) {
+        final_date = addDays(rows.rows[0].req_date, rows.rows[0].duration);
+    }
+    else {
+        final_date = rows.rows[0].req_date;
+    }
+    return final_date
 }
 
 
