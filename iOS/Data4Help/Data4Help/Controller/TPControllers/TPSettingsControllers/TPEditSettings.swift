@@ -10,6 +10,13 @@ import UIKit
 
 class TPEditSettings: UIViewController {
 
+    // MARK: Outlets
+    
+    @IBOutlet weak var companyNameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var companyDescriptionTextField: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -91,11 +91,17 @@ const downloadReq = {
     reqID : Joi.string().required(),
 };
 
+const log = {
+    authToken : authToken,
+};
+
+
 
 module.exports = {
     '/reg/single' : singleRegSchema,
     '/reg/tp' : thirdRegSchema,
     '/login' : login,
+    '/logout' : log,
     '/single/info' : singleSettings,
     '/tp/info' : tpSettings,
     '/single/data' : dataSettings,
