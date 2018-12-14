@@ -1,7 +1,6 @@
 //@todo Rivedere codici d'errore (anche sul resto del progetto!)
 //@todo Gestire i rollback!
-//@todo Devo notificare la Third Party del risultato di una richiesta?
-//@todo Ogni volta che apro il server devo controllare se i countdown delle richieste sono scaduti
+//@todo Per i countdown si può usare l'idea di far scaricare sempre i dati fino alla scadenza del countdown
 
 const Router = require('express-promise-router');
 const Validator = require('../schemas/validator');
@@ -46,8 +45,9 @@ router.post('/tp/sendSingle', validateRequest, async (req, res) => {
         const reqID = await getReqID();
         const today = new Date().toISOString().slice(0, 10);
         const receiver_id = (await getUserIDByEmail(req)).rows[0].userid;
+        const duration = req.body.subscribing ? (req.body.duration? req.body.duration : 30) : null;
         let text = 'INSERT INTO singlerequest VALUES($1, $2, $3, $4, $5, $6, $7)';
-        let values = [reqID, userID, receiver_id, req.body.subscribing, "pending", req.body.subscribing? req.body.duration : null, today];
+        let values = [reqID, userID, receiver_id, req.body.subscribing, "pending", duration, today];
         await db.query(text, values);
 
         //for each type, insert the type into RequestContent table
@@ -89,17 +89,29 @@ router.post('/tp/downloadSingle', validateRequest, async (req, res) => {
         //for each type, retrieve values from the user
         let dataTypes = await getRequestContent(req);
         let i;
+        let req_date;
+        let response = {};
+        const receiver_id = rows.rows[0].receiver_id;
 
-        for(i=0; i<dataTypes.length; i++) {
-            text = "SELECT value FROM userdata WHERE userid = $1 AND datatype = $2 and timest::date <= $3";
-            values = [rows.rows[0].receiver_id, dataTypes[i].datatype, rows.rows[0].req_date];
-            rows = await db.query(text, values);
-
-            //@todo add values to response
+        //if the ThirdParty is subscribed, i return all data availabe until the end of the subscription (duration + date)
+        if(rows.rows[0].subscribing) {
+            text = "SELECT value, timest FROM userdata WHERE userid = $1 and datatype = $2 and timest::date <= $3";
+            req_date = addDays(rows.rows[0].req_date, rows.rows[0].duration);
+        }
+        //otherwise, i return all data available until the day of the subscription
+        else {
+            text = "SELECT value, timest FROM userdata WHERE userid = $1 AND datatype = $2 and timest::date <= $3";
+            req_date = rows.rows[0].req_date;
         }
 
+        for(i=0; i<dataTypes.length; i++) {
+            values = [receiver_id, dataTypes[i].datatype, req_date];
+            rows = await db.query(text, values);
 
-        res.status(200).send({message: "Request sent"});
+            response[dataTypes[i].datatype] = rows.rows
+        }
+
+        res.status(200).send({data: response});
     } catch(error) {
         return logError(error, res)
     }
@@ -127,8 +139,6 @@ router.post('/single/choice', validateRequest, async (req, res) => {
         let text = 'UPDATE singlerequest SET status=$1 WHERE req_id = $2';
         let values = [req.body.choice? 'accepted' : 'refused', req.body.reqID];
         await db.query(text, values);
-
-        //@todo notificare la third party?
 
         res.status(200).send({message: "Action successful"});
     } catch(error) {
@@ -184,6 +194,13 @@ async function getRequestContent(req) {
     const text = "SELECT datatype FROM requestcontent WHERE req_id = $1";
     const values = [req.body.reqID];
     return (await db.query(text, values)).rows;
+}
+
+
+function addDays(date, days) {
+    date = new Date(date);
+    date.setDate(date.getDate() + days);
+    return date;
 }
 
 

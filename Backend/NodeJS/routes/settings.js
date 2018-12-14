@@ -5,7 +5,7 @@ const auth = require('./auth');
 const utils = require('./utils');
 
 const isLogged = auth.isLogged;
-const getUserID = auth.getUserID;
+const getUserIDByToken = auth.getUserIDByToken;
 const logError = utils.logError;
 const isThirdParty = utils.isThirdParty;
 const isPrivateUser = utils.isPrivateUser;
@@ -14,7 +14,7 @@ const router = new Router();
 
 
 router.post('/single/info', validateRequest, async (req, res) => {
-    let userID = getUserID(req.body.authToken);
+    let userID = getUserIDByToken(req.body.authToken);
 
     try {
 
@@ -58,7 +58,7 @@ router.post('/single/info', validateRequest, async (req, res) => {
 });
 
 router.post('/tp/info', validateRequest, async (req, res) => {
-    let userID = getUserID(req.body.authToken);
+    let userID = getUserIDByToken(req.body.authToken);
 
     try {
 
@@ -96,7 +96,7 @@ router.post('/tp/info', validateRequest, async (req, res) => {
 });
 
 router.post('/single/data', validateRequest, async (req, res) => {
-    let userID = getUserID(req.body.authToken);
+    let userID = getUserIDByToken(req.body.authToken);
 
     try {
 

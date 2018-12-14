@@ -1,4 +1,5 @@
 //@todo Controllo ogni volta che importo nuovi dati se c'è un subscriber da notificare
+//@todo Come notifico i subscriber che ci sono dati nuovi? (potrei aggiungere un campo quando chiedo tutte le mie richieste)
 
 const Router = require('express-promise-router');
 const Validator = require('../schemas/validator');
@@ -16,6 +17,9 @@ const router = new Router();
 
 router.post('/upload', validateRequest, async (req, res) => {
     let userID = getUserIDByToken(req.body.authToken);
+    let i;
+    let text;
+    let values;
 
     try {
 
@@ -32,14 +36,13 @@ router.post('/upload', validateRequest, async (req, res) => {
         }
 
         //import each observation into the database
-        let i;
-        let text;
-        let values;
         for(i=0; i<req.body.types.length; i++) {
             text = "INSERT INTO userdata VALUES($1, $2, $3, $4)";
             values = [userID, req.body.types[i], req.body.timestamps[i], req.body.values[i]];
             await db.query(text, values);
         }
+
+        //@todo controlla se ci sono subscribers e notificali
 
         res.status(200).send({message: "Data Imported"});
     } catch(error) {
