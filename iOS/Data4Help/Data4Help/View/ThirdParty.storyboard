@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LCu-yW-ALz">
-    <device id="retina5_9" orientation="portrait">
+    <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,7 +15,7 @@
             <objects>
                 <viewController id="Xca-p5-Xgf" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZIR-qM-3EI">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="History" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ePr-UV-ATL">
@@ -31,7 +31,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </scrollView>
                             <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="94a-n8-Wgv">
-                                <rect key="frame" x="0.0" y="80" width="375" height="56"/>
+                                <rect key="frame" x="0.0" y="80" width="414" height="56"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -65,7 +65,7 @@
             <objects>
                 <viewController id="3e2-YU-OH8" customClass="ResearchViewController" customModule="Data4Help" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lmp-ZE-fwy">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Research" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ef-f6-Z6H">
@@ -77,7 +77,7 @@
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0ru-30-otE">
-                                <rect key="frame" x="0.0" y="132" width="375" height="558"/>
+                                <rect key="frame" x="0.0" y="216" width="414" height="558"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="OM9-nT-43Q" kind="embed" id="GTg-pT-eM8"/>
@@ -141,7 +141,7 @@
             <objects>
                 <viewController storyboardIdentifier="GRequest" title="GRequest" id="H30-Oh-xOz" customClass="GRequest" customModule="Data4Help" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DnR-FS-Ezh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DDk-3T-rLz">
@@ -357,7 +357,7 @@
             <objects>
                 <viewController storyboardIdentifier="SRequest" title="SRequest" id="N1p-X3-xKq" customClass="SRequest" customModule="Data4Help" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nu1-w0-Dxt">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4JV-8G-zYw">
@@ -508,11 +508,11 @@
             <objects>
                 <viewController storyboardIdentifier="TPSettings" id="oOP-dH-1fW" customClass="TPSettings" customModule="Data4Help" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SKy-d6-9lF">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MySettings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XnU-zM-8F0">
-                                <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <color key="backgroundColor" red="0.92156862745098034" green="0.40784313725490196" blue="0.39215686274509803" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="9rb-Pm-5D2"/>
@@ -521,14 +521,14 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cgV-Ws-7bR">
-                                <rect key="frame" x="0.0" y="288" width="375" height="391"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cgV-Ws-7bR">
+                                <rect key="frame" x="0.0" y="288" width="414" height="475"/>
                                 <connections>
                                     <segue destination="vpi-Wu-I1C" kind="embed" id="8B5-9K-BFD"/>
                                 </connections>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0EL-q1-aAW">
-                                <rect key="frame" x="305" y="51" width="54" height="30"/>
+                                <rect key="frame" x="305" y="51" width="89" height="30"/>
                                 <state key="normal" title="Edit">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -537,7 +537,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QOz-kq-eY7">
-                                <rect key="frame" x="0.0" y="679" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="763" width="414" height="50"/>
                                 <color key="backgroundColor" red="0.92156862745098034" green="0.40784313725490196" blue="0.39215686274509803" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="hJn-Db-Wrx"/>
@@ -550,7 +550,7 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LogoSmall" translatesAutoresizingMaskIntoConstraints="NO" id="ZBf-st-9wC">
-                                <rect key="frame" x="0.0" y="88" width="375" height="200"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="vWf-At-Bw7"/>
                                 </constraints>
@@ -566,7 +566,6 @@
                             <constraint firstItem="0EL-q1-aAW" firstAttribute="trailing" secondItem="SKy-d6-9lF" secondAttribute="trailingMargin" id="KcI-2r-l0J"/>
                             <constraint firstItem="ZBf-st-9wC" firstAttribute="leading" secondItem="cgV-Ws-7bR" secondAttribute="leading" id="LvD-as-uGy"/>
                             <constraint firstItem="QOz-kq-eY7" firstAttribute="leading" secondItem="cgV-Ws-7bR" secondAttribute="leading" id="PC0-Ze-SJd"/>
-                            <constraint firstItem="QOz-kq-eY7" firstAttribute="top" secondItem="cgV-Ws-7bR" secondAttribute="bottom" id="SRg-kn-jbl"/>
                             <constraint firstAttribute="trailing" secondItem="ZBf-st-9wC" secondAttribute="trailing" id="WYt-wc-SnV"/>
                             <constraint firstItem="XnU-zM-8F0" firstAttribute="centerY" secondItem="0EL-q1-aAW" secondAttribute="centerY" id="dMg-OU-eOE"/>
                             <constraint firstItem="ZBf-st-9wC" firstAttribute="top" secondItem="XnU-zM-8F0" secondAttribute="bottom" id="gEj-Fy-whr"/>
@@ -594,7 +593,7 @@
             <objects>
                 <viewController storyboardIdentifier="TPEditSettings" id="FQC-v1-ymS" customClass="TPEditSettings" customModule="Data4Help" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aYH-Di-EW8">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Organisation name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pPR-cH-zVF">
@@ -672,6 +671,11 @@
                         <viewLayoutGuide key="safeArea" id="v6b-m0-o6X"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="MySettings" image="Settings" selectedImage="Settings" id="ogG-4X-s8D"/>
+                    <connections>
+                        <outlet property="companyDescriptionTextField" destination="S7Q-HA-hfS" id="sg4-ej-Na8"/>
+                        <outlet property="companyNameTextField" destination="EUQ-So-acH" id="kxM-pN-hLg"/>
+                        <outlet property="passwordTextField" destination="irw-kx-k9K" id="sFh-sQ-NNz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0DU-Vn-TQv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -682,7 +686,7 @@
             <objects>
                 <viewController id="vpi-Wu-I1C" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="m6R-Dl-iVZ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="391"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="475"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="PVA-eU-auK"/>
@@ -697,7 +701,7 @@
             <objects>
                 <viewController storyboardIdentifier="TPViewSettings" id="DgM-Cf-bLF" customClass="TPViewSettings" customModule="Data4Help" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4XD-bV-eN3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Organisation name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bP3-Ns-yxd">
@@ -783,7 +787,7 @@
     </scenes>
     <resources>
         <image name="History" width="14" height="15"/>
-        <image name="LogoSmall" width="936" height="453"/>
+        <image name="LogoSmall" width="1404" height="680"/>
         <image name="Search" width="15" height="15"/>
         <image name="Settings" width="15" height="15"/>
     </resources>

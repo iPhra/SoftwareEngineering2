@@ -14,6 +14,8 @@
 		283B263721B98F6500C939A9 /* D4HRegisterThirdPartyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283B263621B98F6500C939A9 /* D4HRegisterThirdPartyResponse.swift */; };
 		28B67D0421C10E0500FCA356 /* D4HLogoutRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B67D0321C10E0500FCA356 /* D4HLogoutRequest.swift */; };
 		28D938B821C3C3AB00DC7785 /* D4HLogoutResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D938B721C3C3AB00DC7785 /* D4HLogoutResponse.swift */; };
+		28D938BA21C3F79C00DC7785 /* D4HThirdPartySettingsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D938B921C3F79C00DC7785 /* D4HThirdPartySettingsRequest.swift */; };
+		28D938BC21C40BAC00DC7785 /* D4HSingleUserSettingsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D938BB21C40BAC00DC7785 /* D4HSingleUserSettingsRequest.swift */; };
 		28E5568F21ADE9890009D972 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E5568E21ADE9890009D972 /* NetworkManager.swift */; };
 		28E5569221ADF3AB0009D972 /* D4HRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E5569121ADF3AB0009D972 /* D4HRequest.swift */; };
 		28E5569621ADF5480009D972 /* D4HLoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E5569521ADF5480009D972 /* D4HLoginRequest.swift */; };
@@ -78,6 +80,8 @@
 		283B263621B98F6500C939A9 /* D4HRegisterThirdPartyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HRegisterThirdPartyResponse.swift; sourceTree = "<group>"; };
 		28B67D0321C10E0500FCA356 /* D4HLogoutRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HLogoutRequest.swift; sourceTree = "<group>"; };
 		28D938B721C3C3AB00DC7785 /* D4HLogoutResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HLogoutResponse.swift; sourceTree = "<group>"; };
+		28D938B921C3F79C00DC7785 /* D4HThirdPartySettingsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HThirdPartySettingsRequest.swift; sourceTree = "<group>"; };
+		28D938BB21C40BAC00DC7785 /* D4HSingleUserSettingsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HSingleUserSettingsRequest.swift; sourceTree = "<group>"; };
 		28E5568E21ADE9890009D972 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		28E5569121ADF3AB0009D972 /* D4HRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HRequest.swift; sourceTree = "<group>"; };
 		28E5569521ADF5480009D972 /* D4HLoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HLoginRequest.swift; sourceTree = "<group>"; };
@@ -199,6 +203,35 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		28D938BD21C40D2800DC7785 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				28E5569521ADF5480009D972 /* D4HLoginRequest.swift */,
+				28121FCD21B5A1FD00AF6CCE /* D4HSingleRegisterRequest.swift */,
+				283B263421B98D9E00C939A9 /* D4HThirdPartyRegistrationRequest.swift */,
+				28B67D0321C10E0500FCA356 /* D4HLogoutRequest.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		28D938BE21C40D4600DC7785 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				28D938BB21C40BAC00DC7785 /* D4HSingleUserSettingsRequest.swift */,
+				28D938B921C3F79C00DC7785 /* D4HThirdPartySettingsRequest.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		28D938BF21C40D6E00DC7785 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				CB98264B21C1048B00932CE6 /* dataType.swift */,
+				CB98264921C103A600932CE6 /* D4HDataUploadRequest.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		28E5569021ADF3390009D972 /* Data4Help Requests */ = {
 			isa = PBXGroup;
 			children = (
@@ -211,15 +244,12 @@
 		28E5569321ADF3B40009D972 /* Requests */ = {
 			isa = PBXGroup;
 			children = (
+				28D938BF21C40D6E00DC7785 /* Data */,
+				28D938BE21C40D4600DC7785 /* Settings */,
+				28D938BD21C40D2800DC7785 /* Authentication */,
 				28E5569121ADF3AB0009D972 /* D4HRequest.swift */,
-				28E5569521ADF5480009D972 /* D4HLoginRequest.swift */,
 				28E5569921ADF5C60009D972 /* D4HEncodingType.swift */,
 				28E5569C21ADF8870009D972 /* D4HEndpoint.swift */,
-				28121FCD21B5A1FD00AF6CCE /* D4HSingleRegisterRequest.swift */,
-				283B263421B98D9E00C939A9 /* D4HThirdPartyRegistrationRequest.swift */,
-				CB98264921C103A600932CE6 /* D4HDataUploadRequest.swift */,
-				CB98264B21C1048B00932CE6 /* dataType.swift */,
-				28B67D0321C10E0500FCA356 /* D4HLogoutRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -572,6 +602,7 @@
 			files = (
 				CB18F00921B6F76500BBFAAD /* StorageManager.swift in Sources */,
 				28E5569621ADF5480009D972 /* D4HLoginRequest.swift in Sources */,
+				28D938BA21C3F79C00DC7785 /* D4HThirdPartySettingsRequest.swift in Sources */,
 				CB1727B821B3EB9600AC9D36 /* TPViewSettings.swift in Sources */,
 				CBD7A89021B05E24004BB382 /* D4HResponse.swift in Sources */,
 				CB98265721C28D9E00932CE6 /* MyFollowers.swift in Sources */,
@@ -603,6 +634,7 @@
 				CB17279A21B1543500AC9D36 /* SURegisterViewController.swift in Sources */,
 				28D938B821C3C3AB00DC7785 /* D4HLogoutResponse.swift in Sources */,
 				283B263521B98D9E00C939A9 /* D4HThirdPartyRegistrationRequest.swift in Sources */,
+				28D938BC21C40BAC00DC7785 /* D4HSingleUserSettingsRequest.swift in Sources */,
 				CB1727B421B3E2EF00AC9D36 /* SUSettings.swift in Sources */,
 				28B67D0421C10E0500FCA356 /* D4HLogoutRequest.swift in Sources */,
 			);

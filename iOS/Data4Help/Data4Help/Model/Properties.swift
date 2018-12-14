@@ -20,7 +20,7 @@ struct Properties {
     }
     
     static func logout(controller: UIViewController) {
-        NetworkManager.sharedInstance.sendGetRequest(input: D4HLogoutRequest(authToken: self.authToken), endpoint: D4HEndpoint.logout) { (response, error) in
+        NetworkManager.sharedInstance.sendPostRequest(input: D4HLogoutRequest(authToken: self.authToken), endpoint: D4HEndpoint.logout) { (response, error) in
             if response != nil {
                 let myres = D4HLogoutResponse(fromJson: response!)
                 // Reset authToken

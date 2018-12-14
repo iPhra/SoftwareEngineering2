@@ -10,6 +10,12 @@ import UIKit
 
 class SUEditSettings: UIViewController {
 
+    // MARK: Outlets
+    @IBOutlet weak var fullNameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var birthdateTextField: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

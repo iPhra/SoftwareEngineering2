@@ -14,13 +14,12 @@ class TPSettings: UIViewController {
 
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var bottomActionButton: UIButton!
-    
     @IBOutlet weak var containerView: UIView!
     
     // MARK: Properties
     
-    var TPViewSettings:TPViewSettings? = nil
-    var TPEditSettings:TPEditSettings? = nil
+    var TPViewSettings: TPViewSettings? = nil
+    var TPEditSettings: TPEditSettings? = nil
     var edit = 0
     
     override func viewDidLoad() {
@@ -75,10 +74,30 @@ class TPSettings: UIViewController {
         }
         // Save edited settings on DataBase
         else {
-            // TODO Save new settings onto DB
+            // Send setting update request to the backend
+            updateSettings()
         }
     }
     
     // MARK: Private implementation
+    
+    // Send D4HThirdPartySettingsRequest to the Backend to update preferences
+    private func updateSettings() {
+        
+        let password = TPEditSettings?.passwordTextField.text
+        let companyName = TPEditSettings?.companyNameTextField.text
+        let companyDescription = TPEditSettings?.companyDescriptionTextField.text
+        
+        NetworkManager.sharedInstance.sendPostRequest(input: D4HThirdPartySettingsRequest(authToken: Properties.authToken, password: password!, company_name: companyName!, company_description: companyDescription!), endpoint: D4HEndpoint.setInfoThirdParty) { (response, error) in
+            if response != nil {
+                let myres = D4HRegisterSingleResponse(fromJson: response!)
+                print(myres.message)
+                self.startEditing(self)
+            }
+            else if let error = error {
+                print(error)
+            }
+        }
+    }
 
 }
