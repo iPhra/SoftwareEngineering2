@@ -45,13 +45,13 @@ class NetworkManager {
     }
     
     func sendGetRequest(
+        input: D4HRequest,
         endpoint: D4HEndpoint,
-        headers: HTTPHeaders,
         completionHandler: @escaping(JSON?, Error?) -> Void
         ) {
         os_log("NetworkManager request: %@endpoint", log: OSLog.default, type: .debug)
         
-        Alamofire.request(self.getD4HUrlWithKey(endpoint: endpoint), method: HTTPMethod.get, encoding: JSONEncoding.default, headers: headers).responseJSON { (dataResponse) in
+        Alamofire.request(self.getD4HUrlWithKey(endpoint: endpoint), method: HTTPMethod.get, parameters: input.getParams()).responseJSON { (dataResponse) in
             
             // Manage response
             

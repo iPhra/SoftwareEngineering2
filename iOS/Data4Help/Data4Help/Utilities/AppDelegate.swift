@@ -74,7 +74,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         print("i'm done")
         //LOG OUT
-        NetworkManager.sharedInstance.sendGetRequest(endpoint: D4HEndpoint.logout, headers: ["authToken": "3"]) { (response, error) in
+        NetworkManager.sharedInstance.sendGetRequest(input: D4HLogoutRequest(authToken: Properties.authToken), endpoint: D4HEndpoint.logout) { (response, error) in
             print(response)
         }
     }

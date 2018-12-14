@@ -39,6 +39,11 @@ class LoginViewController: UIViewController {
             if response != nil {
                 let myres = D4HLoginResponse(fromJson: response!)
                 print(myres.message)
+                
+                // Set authToken for the logged user
+                Properties.authToken = myres.authToken
+                print(Properties.authToken)
+                // Perform segue either to Single user or Third Party interface
                 if myres.userType == "PrivateUser" {
                     self.performSegue(withIdentifier: "GoToSingleUser", sender: self)
                 } else {
