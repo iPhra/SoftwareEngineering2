@@ -142,15 +142,15 @@ router.post('/login', validateRequest, async (req, res) => {
 });
 
 
-router.get('/logout', async (req, res) => {
+router.post('/logout', validateRequest, async (req, res) => {
 
     //if the user is not logged in
-    if (!(req.query.authToken in loggedUsers)) {
+    if (!(req.body.authToken in loggedUsers)) {
         res.status(403).send({error: 'Not logged in'});
         return;
     }
 
-    delete loggedUsers[req.query.authToken];
+    delete loggedUsers[req.body.authToken];
     res.status(200).send({message: "Logged out"});
 });
 
