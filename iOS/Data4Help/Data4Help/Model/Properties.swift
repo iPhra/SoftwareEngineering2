@@ -26,7 +26,7 @@ struct Properties {
                 // Reset authToken
                         self.authToken = ""
                 print(myres.message)
-                controller.performSegue(withIdentifier: "ToLogin", sender: controller)
+                controller.performSegue(withIdentifier: "BackToLogin", sender: controller)
             }
             else if let error = error {
                 print(error)

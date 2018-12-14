@@ -70,20 +70,8 @@ class TPSettings: UIViewController {
     @IBAction func pressBottomAction(_ sender: UIButton) {
         // Logout and go back to Login View
         if (bottomActionButton.titleLabel?.text == "Logout") {
-            // Send Logout request to backend
-            print(Properties.authToken)
-            NetworkManager.sharedInstance.sendGetRequest(input: D4HLogoutRequest(authToken: Properties.authToken) ,endpoint: D4HEndpoint.logout) { (response, error) in
-                if response != nil {
-                    let myres = D4HLogoutResponse(fromJson: response!)
-                    // Reset authToken
-                    Properties.logout()
-                    print(myres.message)
-                    //TODO perform segue to login view
-                }
-                else if let error = error {
-                    print(error)
-                }
-            }
+            // See implementation in Properties
+            Properties.logout(controller: self)
         }
         // Save edited settings on DataBase
         else {
@@ -92,10 +80,5 @@ class TPSettings: UIViewController {
     }
     
     // MARK: Private implementation
-    
-    private func logout()  {
-        
-    }
-    
 
 }

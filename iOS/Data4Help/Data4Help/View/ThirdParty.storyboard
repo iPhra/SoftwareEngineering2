@@ -495,6 +495,14 @@
             </objects>
             <point key="canvasLocation" x="1857" y="-1453"/>
         </scene>
+        <!--Main-->
+        <scene sceneID="ryj-qW-QKi">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="jy8-rX-jqU" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3F1-EF-hiH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-145" y="1007"/>
+        </scene>
         <!--MySettings-->
         <scene sceneID="9Xx-uv-tC2">
             <objects>
@@ -574,6 +582,7 @@
                         <outlet property="bottomActionButton" destination="QOz-kq-eY7" id="4Jn-QE-hqr"/>
                         <outlet property="containerView" destination="cgV-Ws-7bR" id="GDF-Of-DYl"/>
                         <outlet property="editButton" destination="0EL-q1-aAW" id="eFl-em-A08"/>
+                        <segue destination="jy8-rX-jqU" kind="show" identifier="BackToLogin" id="N9t-pi-Wd7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iQE-px-hEe" userLabel="First Responder" sceneMemberID="firstResponder"/>
