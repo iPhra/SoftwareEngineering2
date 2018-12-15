@@ -40,6 +40,8 @@
 		CB98264F21C164ED00932CE6 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CB98264D21C164EC00932CE6 /* Model.xcdatamodeld */; };
 		CB98265121C1674A00932CE6 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB98265021C1674A00932CE6 /* CoreData.framework */; };
 		CB98265721C28D9E00932CE6 /* MyFollowers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB98265621C28D9E00932CE6 /* MyFollowers.swift */; };
+		CB98265921C2FE6200932CE6 /* RequestsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB98265821C2FE6200932CE6 /* RequestsController.swift */; };
+		CB98265B21C3B3A300932CE6 /* MyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB98265A21C3B3A300932CE6 /* MyCell.swift */; };
 		CBADD0FB21AC197E00896705 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBADD0FA21AC197E00896705 /* AppDelegate.swift */; };
 		CBADD0FD21AC197E00896705 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBADD0FC21AC197E00896705 /* LoginViewController.swift */; };
 		CBADD10021AC197E00896705 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBADD0FE21AC197E00896705 /* Main.storyboard */; };
@@ -104,6 +106,8 @@
 		CB98264E21C164EC00932CE6 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		CB98265021C1674A00932CE6 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		CB98265621C28D9E00932CE6 /* MyFollowers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFollowers.swift; sourceTree = "<group>"; };
+		CB98265821C2FE6200932CE6 /* RequestsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsController.swift; sourceTree = "<group>"; };
+		CB98265A21C3B3A300932CE6 /* MyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyCell.swift; path = "/Users/Virginia/Documents/Politecnico/Software Engineering 2/LorenzoMolteniNegri/iOS/Data4Help/Data4Help/View/MyCell.swift"; sourceTree = "<absolute>"; };
 		CBADD0F721AC197E00896705 /* Data4Help.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Data4Help.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBADD0FA21AC197E00896705 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBADD0FC21AC197E00896705 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -246,7 +250,7 @@
 			children = (
 				CB1727BF21B449A900AC9D36 /* SUSettings */,
 				CB1727BD21B4496800AC9D36 /* MyHealth.swift */,
-				CB98265621C28D9E00932CE6 /* MyFollowers.swift */,
+				CB98265C21C505BE00932CE6 /* MyFollowers */,
 			);
 			path = SUControllers;
 			sourceTree = "<group>";
@@ -296,6 +300,16 @@
 				CB1727B321B3E2EF00AC9D36 /* SUSettings.swift */,
 			);
 			path = SUSettings;
+			sourceTree = "<group>";
+		};
+		CB98265C21C505BE00932CE6 /* MyFollowers */ = {
+			isa = PBXGroup;
+			children = (
+				CB98265621C28D9E00932CE6 /* MyFollowers.swift */,
+				CB98265821C2FE6200932CE6 /* RequestsController.swift */,
+				CB98265A21C3B3A300932CE6 /* MyCell.swift */,
+			);
+			path = MyFollowers;
 			sourceTree = "<group>";
 		};
 		CBADD0EE21AC197E00896705 = {
@@ -575,6 +589,7 @@
 				CB1727B221B3E2DF00AC9D36 /* SUEditSettings.swift in Sources */,
 				CB98264A21C103A600932CE6 /* D4HDataUploadRequest.swift in Sources */,
 				28E5569A21ADF5C60009D972 /* D4HEncodingType.swift in Sources */,
+				CB98265B21C3B3A300932CE6 /* MyCell.swift in Sources */,
 				CB1727BA21B3EBA700AC9D36 /* TPEditSettings.swift in Sources */,
 				28121FCE21B5A1FD00AF6CCE /* D4HSingleRegisterRequest.swift in Sources */,
 				28E5568F21ADE9890009D972 /* NetworkManager.swift in Sources */,
@@ -592,6 +607,7 @@
 				28E5569221ADF3AB0009D972 /* D4HRequest.swift in Sources */,
 				28E5569D21ADF8870009D972 /* D4HEndpoint.swift in Sources */,
 				CBADD0FB21AC197E00896705 /* AppDelegate.swift in Sources */,
+				CB98265921C2FE6200932CE6 /* RequestsController.swift in Sources */,
 				CB98264F21C164ED00932CE6 /* Model.xcdatamodeld in Sources */,
 				CB17279A21B1543500AC9D36 /* SURegisterViewController.swift in Sources */,
 				283B263521B98D9E00C939A9 /* D4HThirdPartyRegistrationRequest.swift in Sources */,
