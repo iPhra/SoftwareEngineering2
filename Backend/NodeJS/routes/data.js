@@ -18,6 +18,7 @@ const router = new Router();
 router.post('/upload', validateRequest, async (req, res) => {
     let userID = getUserIDByToken(req.body.authToken);
     let i;
+    let j;
     let text;
     let values;
 
@@ -37,12 +38,12 @@ router.post('/upload', validateRequest, async (req, res) => {
 
         //import each observation into the database
         for(i=0; i<req.body.types.length; i++) {
-            text = "INSERT INTO userdata VALUES($1, $2, $3, $4)";
-            values = [userID, req.body.types[i], req.body.timestamps[i], req.body.values[i]];
-            await db.query(text, values);
+            for(j=0; j<req.body.values[i].length; j++) {
+                text = "INSERT INTO userdata VALUES($1, $2, $3, $4)";
+                values = [userID, req.body.types[i], req.body.timestamps[i][j], req.body.values[i][j]];
+                await db.query(text, values);
+            }
         }
-
-        //@todo controlla se ci sono subscribers e notificali
 
         res.status(200).send({message: "Data Imported"});
     } catch(error) {
@@ -126,17 +127,20 @@ async function checkEnabled(id, req) {
 //checks that every data a user is trying to import is not already in the database
 async function checkUniqueness(id, req) {
     let i;
+    let j;
     let text;
     let values;
     let rows;
 
     for(i=0; i<req.body.types.length; i++) {
-        text = "SELECT * FROM userdata WHERE userid=$1 AND datatype=$2 AND timest=$3";
-        values = [id, req.body.types[i], req.body.timestamps[i]];
-        rows = await db.query(text, values);
+        for(j=0; j<req.body.values[i].length; j++) {
+            text = "SELECT * FROM userdata WHERE userid=$1 AND datatype=$2 AND timest=$3";
+            values = [id, req.body.types[i], req.body.timestamps[i][j]];
+            rows = await db.query(text, values);
 
-        //if the data point is already in the database
-        if (rows.rowCount>0) return false;
+            //if the data point is already in the database
+            if (rows.rowCount>0) return false;
+        }
     }
 
     //if all data is not already in the database, return true

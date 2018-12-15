@@ -63,8 +63,8 @@ const dataSettings = {
 const dataImport = {
     authToken : authToken,
     types : types,
-    values : Joi.array().items(Joi.number()).required(),
-    timestamps: Joi.array().items(Joi.date().iso()).required(),
+    values : Joi.array().items(Joi.array().items(Joi.number())).required(),
+    timestamps: Joi.array().items(Joi.array().items(Joi.date().iso())).required(),
 };
 
 const dataStats = {
