@@ -179,6 +179,7 @@
 		28678F8921AC1BF7004D6B9D /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				CB18F00821B6F76500BBFAAD /* StorageManager.swift */,
 				CBADD0FA21AC197E00896705 /* AppDelegate.swift */,
 				28E5568E21ADE9890009D972 /* NetworkManager.swift */,
 			);
@@ -215,7 +216,6 @@
 				CB1727A521B3324300AC9D36 /* TPControllers */,
 				CB1727A421B3323B00AC9D36 /* SUControllers */,
 				CB1727A321B3323000AC9D36 /* MainControllers */,
-				CB18F00821B6F76500BBFAAD /* StorageManager.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
