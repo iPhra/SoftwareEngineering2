@@ -33,6 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let dataManager:DataManager = DataManager()
         dataManager.authorizeHKinApp()
         
+        dataManager.storeBiologicalSex()
+        
         //Clean all data for debugging
         StorageManager.sharedInstance.deleteAllData(entityName: "Data")
         StorageManager.sharedInstance.deleteAllData(entityName: "AutomatedSOS")
@@ -40,13 +42,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         StorageManager.sharedInstance.initAutomatedSOS()
 
-        let sampleTypes = dataManager.sampleTypesToRead()
+        //let sampleTypes = dataManager.sampleTypesToRead()
         /*
          for sample in sampleTypes {
          dataManager.enableBackgroundData(input: sample)
          }*/
+        //dataManager.enableBackgroundData(input: HKSampleType.categoryType(forIdentifier: HKCategoryTypeIdentifier.sleepAnalysis)!, datatype: dataType.sleepingHours)
         
-        dataManager.enableBackgroundData(input: HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)!)
+        //dataManager.enableBackgroundData(input: HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.height)!, datatype: dataType.height)
         
         return true
     }

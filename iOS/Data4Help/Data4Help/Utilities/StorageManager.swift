@@ -63,6 +63,17 @@ class StorageManager: NSObject {
         }
     }
     
+    func storeBiologicalSex(biologicalSex: String){
+        let entity = NSEntityDescription.entity(forEntityName: "BiologicalSex", in: context)
+        let newData = NSManagedObject(entity: entity!, insertInto: context)
+        newData.setValue(biologicalSex, forKey: "biologicalSex")
+        do {
+            try context.save()
+        } catch {
+            print("Failed saving")
+        }
+    }
+    
     func setAutomatedSOSValue(value: Bool){        
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "AutomatedSOS")
         request.returnsObjectsAsFaults = false

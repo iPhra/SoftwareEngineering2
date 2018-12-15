@@ -31,17 +31,22 @@ class DataManager: NSObject {
     }
     
     
-    // MARK: functions
+    // MARK: Authorization requests
     
     func authorizeHKinApp(){
         
         // Health data to read
         let hkTypesToRead:Set<HKObjectType> = [
             HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)!,
+            HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.activeEnergyBurned)!,
+            HKObjectType.categoryType(forIdentifier: HKCategoryTypeIdentifier.sleepAnalysis)!,
+            HKObjectType.categoryType(forIdentifier: HKCategoryTypeIdentifier.appleStandHour)!,
             HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)!,
             HKObjectType.characteristicType(forIdentifier: HKCharacteristicTypeIdentifier.biologicalSex)!,
             HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceWalkingRunning)!,
-            HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.height)!
+            HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.height)!,
+            HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.bodyMass)!,
+            HKObjectType.characteristicType(forIdentifier: HKCharacteristicTypeIdentifier.dateOfBirth)!
         ]
         
         
@@ -59,6 +64,8 @@ class DataManager: NSObject {
         }
     }
     
+    // Mark: functions
+    
     public func toggleAutomatedSOS(){
         if(AutomatedSOSON){
             AutomatedSOSON = false;
@@ -71,17 +78,43 @@ class DataManager: NSObject {
     
     public func sampleTypesToRead() -> [HKSampleType] {
         var sampleTypes = [HKSampleType]()
+        sampleTypes.append(HKSampleType.categoryType(forIdentifier: HKCategoryTypeIdentifier.appleStandHour)!)
+        sampleTypes.append(HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.activeEnergyBurned)!)
         sampleTypes.append(HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)!)
-        //sampleTypes.append(HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)!)
+        sampleTypes.append(HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)!)
         sampleTypes.append(HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceWalkingRunning)!)
-        /*sampleTypes.append(HKSampleType.characteristicType(forIdentifier: HKCharacteristicTypeIdentifier.biologicalSex))*/
+        //sampleTypes.append(HKSampleType.characteristicType(forIdentifier: HKCharacteristicTypeIdentifier.biologicalSex))
         sampleTypes.append(HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.height)!)
+        sampleTypes.append(HKSampleType.categoryType(forIdentifier: HKCategoryTypeIdentifier.sleepAnalysis)!)
+        
         return sampleTypes
     }
     
-    public func enableBackgroundData(input: HKSampleType){
+    // Mark: Background activities
+    
+    public func storeBiologicalSex(){
+        do{
+            let biologicalSex = try self.healthStore.biologicalSex().biologicalSex.rawValue
+            var sex: String = ""
+            switch biologicalSex {
+            case 1:
+                sex = "F"
+            case 2:
+                sex = "M"
+            case 3:
+                sex = "U"
+            default:
+                break
+            }
+            StorageManager.sharedInstance.storeBiologicalSex(biologicalSex: sex)
+        }
+        catch{
+            print("Could not retrieve biological sex")
+        }        
+    }
+    
+    public func enableBackgroundData(input: HKSampleType, datatype: dataType){
         
-        //let s = HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)
         let sampleType = input
         
         self.healthStore.enableBackgroundDelivery(for: sampleType, frequency: .immediate) { (success, error) in
@@ -95,7 +128,7 @@ class DataManager: NSObject {
         //2.  open observer query
         let query = HKObserverQuery(sampleType: sampleType, predicate: nil) { (query, completionHandler, error) in
             
-            self.updateHealthData(sampleType: input) {
+            self.updateHealthData(sampleType: input, datatype: datatype) {
                 completionHandler()
             }
             
@@ -103,14 +136,35 @@ class DataManager: NSObject {
         healthStore.execute(query)
         
     }
+
+
     
-    func updateHealthData(sampleType: HKSampleType, completionHandler: @escaping () -> Void) {
+    func updateHealthData(sampleType: HKSampleType, datatype: dataType, completionHandler: @escaping () -> Void) {
         
         var anchor: HKQueryAnchor?
         
         let anchoredQuery = HKAnchoredObjectQuery(type: sampleType, predicate: nil, anchor: anchor, limit: HKObjectQueryNoLimit) { [unowned self] query, newSamples, deletedSamples, newAnchor, error in
             
-            self.handleNewSamples(new: newSamples! as! [HKQuantitySample], deleted: deletedSamples!)
+            switch(datatype.rawValue){
+            case(dataType.heartrate.rawValue):
+                self.handleQuantitySample(new: newSamples! as! [HKQuantitySample], deleted: deletedSamples!, dataType: datatype, unit: HKUnit.count().unitDivided(by: HKUnit.minute()))
+            case(dataType.sleepingHours.rawValue):
+                self.handleSleepingHours(new: newSamples! as! [HKCategorySample], deleted: deletedSamples!)
+            case(dataType.standingHours.rawValue):
+                self.handleStangingHours(new: newSamples! as! [HKCategorySample], deleted: deletedSamples!)
+            case(dataType.distanceWalkingRunning.rawValue):
+                self.handleQuantitySample(new: newSamples! as! [HKQuantitySample], deleted: deletedSamples!, dataType: datatype,unit: HKUnit.mile())
+            case(dataType.activeEnergy.rawValue):
+                self.handleQuantitySample(new: newSamples! as! [HKQuantitySample], deleted: deletedSamples!,dataType: datatype, unit: HKUnit.kilocalorie())
+            case(dataType.steps.rawValue):
+                self.handleQuantitySample(new: newSamples! as! [HKQuantitySample], deleted: deletedSamples!,dataType: datatype, unit: HKUnit.count())
+            case(dataType.weight.rawValue):
+                self.handleQuantitySample(new: newSamples! as! [HKQuantitySample], deleted: deletedSamples!, dataType: datatype,unit: HKUnit.pound())
+            case(dataType.height.rawValue):
+                self.handleQuantitySample(new: newSamples! as! [HKQuantitySample], deleted: deletedSamples!, dataType: datatype,unit: HKUnit.foot())
+            default:
+                break
+            }
             
             anchor = newAnchor
             
@@ -118,45 +172,73 @@ class DataManager: NSObject {
         }
         healthStore.execute(anchoredQuery)
     }
-    
-    func handleNewSamples(new: [HKQuantitySample], deleted: [HKDeletedObject]) {
-        
-        print("last sample = \(String(describing: new.last!.quantity))")
 
-        let delimiter = "+" //remove "count/min"
-        var token = new.last!.endDate.description.components(separatedBy: delimiter)
-        var timestamp = token[0]
-        timestamp.popLast()
+    func handleSleepingHours(new: [HKCategorySample], deleted:[HKDeletedObject]) {
+        
+        let sample = new.last!
+        let sleepType = (sample.value == HKCategoryValueSleepAnalysis.inBed.rawValue) ? "InBed" : "Asleep"
+        let timestamp = getTimestamp(sample: sample)
+        let sleptHours: Double = (sample.endDate.timeIntervalSince(sample.startDate))/3600
+        print(sleptHours)
+        
         print (timestamp) //print date-time
+        print("hours \(sleepType) = \(sleptHours)")
         
-        //Save data
-        StorageManager.sharedInstance.addData(entityName: "Data", type: dataType.heartrate.rawValue, timestamp: timestamp, value: (new.last?.quantity.doubleValue(for: HKUnit.count().unitDivided(by: HKUnit.minute())))!)
-        print("Added last sample")
-        print("Show all records:")
-        let results = StorageManager.sharedInstance.getAllData(entityName: "Data")
-        for data in results{
-            print(data.value(forKey: "type") as! String)
-            print(data.value(forKey: "timestamp") as! String)
-            print(data.value(forKey: "value") as! Double)
-        };
+        StorageManager.sharedInstance.addData(entityName: "Data", type: dataType.sleepingHours.rawValue, timestamp: timestamp, value: sleptHours)
+    
+    }
+    
+    func handleStangingHours(new: [HKCategorySample], deleted:[HKDeletedObject]) {
+        //
+    }
+    
+    func getTimestamp(sample: HKSample)-> String{
+        let delimiter = "+" //remove "count/min"
+        var token = sample.endDate.description.components(separatedBy: delimiter)
+        var timestamp = token[0]
+        _ = timestamp.popLast()
+        return timestamp
+    }
+    
+    
+    func handleQuantitySample(new: [HKQuantitySample], deleted:[HKDeletedObject], dataType: dataType, unit: HKUnit){
+        let sample = new.last!
+        let timestamp = getTimestamp(sample: sample)
+        
+        print(timestamp)
+        print("last sample = \(String(describing: new.last!.quantity))")
+        
+        StorageManager.sharedInstance.addData(entityName: "Data", type: dataType.rawValue, timestamp: timestamp, value: (((new.last?.quantity.doubleValue(for: unit))!)))
+        
+        /*
+         print("Added last sample")
+         print("Show all records:")
+         let results = StorageManager.sharedInstance.getAllData(entityName: "Data")
+         for data in results{
+         print(data.value(forKey: "type") as! String)
+         print(data.value(forKey: "timestamp") as! String)
+         print(data.value(forKey: "value") as! Double)
+         };*/
+        
+        
         //StorageManager.sharedInstance.deleteAllData(entityName: "Data")
-            
-            // Send data to server
-            /*
-        let typesString: [dataTypes] = [dataTypes.heartrate]
-        let samples:Double = (new.last?.quantity.doubleValue(for: HKUnit.count().unitDivided(by: HKUnit.minute())))!
         
-        
-        }
-        
-        NetworkManager.sharedInstance.sendPostRequest(input: D4HDataUploadRequest(authToken:"6", types: typesString ,values:[samples], timestamps:[string]), endpoint: D4HEndpoint.login) { (response, error) in
-            if response != nil {
-                let myres = D4HLoginResponse(fromJson: response!)
-                print(myres.message)
-            }
-            else if let error = error {
-                print(error)
-            }
-        }*/
+        // Send data to server
+        /*
+         let typesString: [dataTypes] = [dataTypes.heartrate]
+         let samples:Double = (new.last?.quantity.doubleValue(for: HKUnit.count().unitDivided(by: HKUnit.minute())))!
+         
+         
+         }
+         
+         NetworkManager.sharedInstance.sendPostRequest(input: D4HDataUploadRequest(authToken:"6", types: typesString ,values:[samples], timestamps:[string]), endpoint: D4HEndpoint.login) { (response, error) in
+         if response != nil {
+         let myres = D4HLoginResponse(fromJson: response!)
+         print(myres.message)
+         }
+         else if let error = error {
+         print(error)
+         }
+         }*/
     }
 }
