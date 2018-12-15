@@ -425,7 +425,7 @@ async function checkGroupCondition(parameters, req_date) {
     for(i=0; i<parameters.length; i++) {
         text = "SELECT count(distinct(userid)) as n FROM userdata WHERE datatype=$1 and timest::date<=$2 and value>$3 and value<$4 ";
         values = [parameters[i].datatype, req_date, parameters[i].lowerbound, parameters[i].upperbound];
-        unique += (await db.query(text, values)).rows[0].n;
+        unique += +((await db.query(text, values)).rows[0].n);
     }
 
     return unique>=1000
