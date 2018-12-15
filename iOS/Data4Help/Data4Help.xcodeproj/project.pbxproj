@@ -16,6 +16,12 @@
 		28D938B821C3C3AB00DC7785 /* D4HLogoutResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D938B721C3C3AB00DC7785 /* D4HLogoutResponse.swift */; };
 		28D938BA21C3F79C00DC7785 /* D4HThirdPartySettingsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D938B921C3F79C00DC7785 /* D4HThirdPartySettingsRequest.swift */; };
 		28D938BC21C40BAC00DC7785 /* D4HSingleUserSettingsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D938BB21C40BAC00DC7785 /* D4HSingleUserSettingsRequest.swift */; };
+		28E0143D21C56716004FA60F /* D4HSingleListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E0143C21C56716004FA60F /* D4HSingleListRequest.swift */; };
+		28E0143F21C567EC004FA60F /* D4HThirdPartyListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E0143E21C567EC004FA60F /* D4HThirdPartyListRequest.swift */; };
+		28E0144121C56865004FA60F /* D4HSingleRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E0144021C56865004FA60F /* D4HSingleRequest.swift */; };
+		28E0144321C569BB004FA60F /* D4HGroupRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E0144221C569BB004FA60F /* D4HGroupRequest.swift */; };
+		28E0144521C56B20004FA60F /* D4HDownloadSingleRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E0144421C56B20004FA60F /* D4HDownloadSingleRequest.swift */; };
+		28E0144721C56C24004FA60F /* D4HDownloadGroupRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E0144621C56C24004FA60F /* D4HDownloadGroupRequest.swift */; };
 		28E5568F21ADE9890009D972 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E5568E21ADE9890009D972 /* NetworkManager.swift */; };
 		28E5569221ADF3AB0009D972 /* D4HRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E5569121ADF3AB0009D972 /* D4HRequest.swift */; };
 		28E5569621ADF5480009D972 /* D4HLoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E5569521ADF5480009D972 /* D4HLoginRequest.swift */; };
@@ -84,6 +90,12 @@
 		28D938B721C3C3AB00DC7785 /* D4HLogoutResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HLogoutResponse.swift; sourceTree = "<group>"; };
 		28D938B921C3F79C00DC7785 /* D4HThirdPartySettingsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HThirdPartySettingsRequest.swift; sourceTree = "<group>"; };
 		28D938BB21C40BAC00DC7785 /* D4HSingleUserSettingsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HSingleUserSettingsRequest.swift; sourceTree = "<group>"; };
+		28E0143C21C56716004FA60F /* D4HSingleListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HSingleListRequest.swift; sourceTree = "<group>"; };
+		28E0143E21C567EC004FA60F /* D4HThirdPartyListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HThirdPartyListRequest.swift; sourceTree = "<group>"; };
+		28E0144021C56865004FA60F /* D4HSingleRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HSingleRequest.swift; sourceTree = "<group>"; };
+		28E0144221C569BB004FA60F /* D4HGroupRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HGroupRequest.swift; sourceTree = "<group>"; };
+		28E0144421C56B20004FA60F /* D4HDownloadSingleRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HDownloadSingleRequest.swift; sourceTree = "<group>"; };
+		28E0144621C56C24004FA60F /* D4HDownloadGroupRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HDownloadGroupRequest.swift; sourceTree = "<group>"; };
 		28E5568E21ADE9890009D972 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		28E5569121ADF3AB0009D972 /* D4HRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HRequest.swift; sourceTree = "<group>"; };
 		28E5569521ADF5480009D972 /* D4HLoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HLoginRequest.swift; sourceTree = "<group>"; };
@@ -237,6 +249,19 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
+		28E0143B21C566BD004FA60F /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				28E0143C21C56716004FA60F /* D4HSingleListRequest.swift */,
+				28E0143E21C567EC004FA60F /* D4HThirdPartyListRequest.swift */,
+				28E0144021C56865004FA60F /* D4HSingleRequest.swift */,
+				28E0144221C569BB004FA60F /* D4HGroupRequest.swift */,
+				28E0144421C56B20004FA60F /* D4HDownloadSingleRequest.swift */,
+				28E0144621C56C24004FA60F /* D4HDownloadGroupRequest.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
 		28E5569021ADF3390009D972 /* Data4Help Requests */ = {
 			isa = PBXGroup;
 			children = (
@@ -249,6 +274,7 @@
 		28E5569321ADF3B40009D972 /* Requests */ = {
 			isa = PBXGroup;
 			children = (
+				28E0143B21C566BD004FA60F /* Request */,
 				28D938BF21C40D6E00DC7785 /* Data */,
 				28D938BE21C40D4600DC7785 /* Settings */,
 				28D938BD21C40D2800DC7785 /* Authentication */,
@@ -610,6 +636,8 @@
 				28E5569621ADF5480009D972 /* D4HLoginRequest.swift in Sources */,
 				28D938BA21C3F79C00DC7785 /* D4HThirdPartySettingsRequest.swift in Sources */,
 				CB1727B821B3EB9600AC9D36 /* TPViewSettings.swift in Sources */,
+				28E0144721C56C24004FA60F /* D4HDownloadGroupRequest.swift in Sources */,
+				28E0144521C56B20004FA60F /* D4HDownloadSingleRequest.swift in Sources */,
 				CBD7A89021B05E24004BB382 /* D4HResponse.swift in Sources */,
 				CB98265721C28D9E00932CE6 /* MyFollowers.swift in Sources */,
 				CB1727B021B3E2CD00AC9D36 /* SUViewSettings.swift in Sources */,
@@ -617,6 +645,7 @@
 				CB1727B621B3EB8200AC9D36 /* TPSettings.swift in Sources */,
 				CB1727B221B3E2DF00AC9D36 /* SUEditSettings.swift in Sources */,
 				CB98264A21C103A600932CE6 /* D4HDataUploadRequest.swift in Sources */,
+				28E0143F21C567EC004FA60F /* D4HThirdPartyListRequest.swift in Sources */,
 				28E5569A21ADF5C60009D972 /* D4HEncodingType.swift in Sources */,
 				CB80992121C52837001E2EB8 /* MyCell.swift in Sources */,
 				CB1727BA21B3EBA700AC9D36 /* TPEditSettings.swift in Sources */,
@@ -625,7 +654,10 @@
 				CBADD12D21AD7FFB00896705 /* DataManager.swift in Sources */,
 				CB17279C21B1545300AC9D36 /* TPRegisterViewController.swift in Sources */,
 				CB98264C21C1048B00932CE6 /* dataType.swift in Sources */,
+				28E0144321C569BB004FA60F /* D4HGroupRequest.swift in Sources */,
 				28121FD021B5A41600AF6CCE /* D4HRegisterSingleResponse.swift in Sources */,
+				28E0143D21C56716004FA60F /* D4HSingleListRequest.swift in Sources */,
+				28E0144121C56865004FA60F /* D4HSingleRequest.swift in Sources */,
 				283B263721B98F6500C939A9 /* D4HRegisterThirdPartyResponse.swift in Sources */,
 				CB17279E21B1D5C800AC9D36 /* TutorialViewController.swift in Sources */,
 				CBADD0FD21AC197E00896705 /* LoginViewController.swift in Sources */,
