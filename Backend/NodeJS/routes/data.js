@@ -1,6 +1,3 @@
-//@todo Controllo ogni volta che importo nuovi dati se c'è un subscriber da notificare
-//@todo Come notifico i subscriber che ci sono dati nuovi? (potrei aggiungere un campo quando chiedo tutte le mie richieste)
-
 const Router = require('express-promise-router');
 const Validator = require('../schemas/validator');
 const db = require('../settings/dbconnection');
@@ -26,7 +23,7 @@ router.post('/upload', validateRequest, async (req, res) => {
 
         //if he's not logged in or he's not a PrivateUser he can't access this endpoint
         if (!isLogged(req.body.authToken) || !(await isPrivateUser(userID))) {
-            res.status(403).send({error: "Wrong authentication"});
+            res.status(401).send({error: "Wrong authentication"});
             return
         }
 
@@ -35,6 +32,8 @@ router.post('/upload', validateRequest, async (req, res) => {
             res.status(403).send({error: "Imported invalid data"});
             return;
         }
+
+        await(db.query('BEGIN'));
 
         //import each observation into the database
         for(i=0; i<req.body.types.length; i++) {
@@ -45,8 +44,10 @@ router.post('/upload', validateRequest, async (req, res) => {
             }
         }
 
+        await(db.query('COMMIT'));
         res.status(200).send({message: "Data Imported"});
     } catch(error) {
+        await(db.query('ROLLBACK'));
         return logError(error, res)
     }
 });
@@ -59,7 +60,7 @@ router.post('/stats', validateRequest, async (req, res) => {
 
         //if he's not logged in or he's not a PrivateUser he can't access this endpoint
         if (!isLogged(req.body.authToken) || !(await isPrivateUser(userID))) {
-            res.status(403).send({error: "Wrong authentication"});
+            res.status(401).send({error: "Wrong authentication"});
             return
         }
 

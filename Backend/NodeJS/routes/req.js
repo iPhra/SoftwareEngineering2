@@ -1,6 +1,3 @@
-//@todo Rivedere codici d'errore (anche sul resto del progetto!)
-//@todo Gestire i rollback!
-
 const Router = require('express-promise-router');
 const Validator = require('../schemas/validator');
 const db = require('../settings/dbconnection');
@@ -10,8 +7,10 @@ const utils = require('./utils');
 const isLogged = auth.isLogged;
 const getUserIDByToken = auth.getUserIDByToken;
 const logError = utils.logError;
+const getUserIDByEmail = utils.getUserIDByEmail;
 const isThirdParty = utils.isThirdParty;
 const isPrivateUser = utils.isPrivateUser;
+const addDays = utils.addDays;
 const validateRequest = Validator();
 const router = new Router();
 
@@ -23,7 +22,7 @@ router.post('/tp/sendSingle', validateRequest, async (req, res) => {
 
         //if he's not logged in or he's not a ThirdParty
         if (!isLogged(req.body.authToken) || !(await isThirdParty(userID))) {
-            res.status(403).send({error: "Wrong authentication"});
+            res.status(401).send({error: "Wrong authentication"});
             return
         }
 
@@ -41,14 +40,14 @@ router.post('/tp/sendSingle', validateRequest, async (req, res) => {
             return
         }
 
+        await(db.query('BEGIN'));
+
         //insert request into SingleRequest table
         let i;
         const reqID = await getReqID();
         const today = new Date().toISOString().slice(0, 10);
-        //if the user is subscribing and the duration is not specified, then it's one month by default, otherwhise it's the given value
-        const duration = req.body.subscribing ? (req.body.duration? req.body.duration : 30) : null;
         let text = 'INSERT INTO singlerequest VALUES($1, $2, $3, $4, $5, $6, $7)';
-        let values = [reqID, userID, receiver_id.rows[0].userid, req.body.subscribing, "pending", duration, today];
+        let values = [reqID, userID, receiver_id.rows[0].userid, req.body.subscribing, "pending", req.body.duration, today];
         await db.query(text, values);
 
         //for each type, insert the type into RequestContent table
@@ -58,8 +57,10 @@ router.post('/tp/sendSingle', validateRequest, async (req, res) => {
             await db.query(text, values);
         }
 
+        await(db.query('COMMIT'));
         res.status(200).send({message: "Request sent"});
     } catch(error) {
+        await(db.query('ROLLBACK'));
         return logError(error, res)
     }
 });
@@ -72,7 +73,7 @@ router.post('/tp/sendGroup', validateRequest, async (req, res) => {
 
         //if he's not logged in or he's not a ThirdParty
         if (!isLogged(req.body.authToken) || !(await isThirdParty(userID))) {
-            res.status(403).send({error: "Wrong authentication"});
+            res.status(401).send({error: "Wrong authentication"});
             return
         }
 
@@ -82,14 +83,14 @@ router.post('/tp/sendGroup', validateRequest, async (req, res) => {
             return
         }
 
+        await(db.query('BEGIN'));
+
         //insert request into GroupRequest table
         let i;
         const reqID = await getReqID();
         const today = new Date().toISOString().slice(0, 10);
-        //if the user is subscribing and the duration is not specified, then it's one month by default, otherwhise it's the given value
-        const duration = req.body.subscribing ? (req.body.duration? req.body.duration : 30) : null;
         let text = 'INSERT INTO grouprequest VALUES($1, $2, $3, $4, $5, $6)';
-        let values = [reqID, userID, req.body.subscribing, "pending", duration, today];
+        let values = [reqID, userID, req.body.subscribing, "pending", req.body.duration, today];
         await db.query(text, values);
 
         //for each type, insert the type into RequestContent table
@@ -102,12 +103,14 @@ router.post('/tp/sendGroup', validateRequest, async (req, res) => {
         //for each type, insert the parameters and the bounds into SearchParameter table
         for(i=0; i<req.body.parameters.length; i++) {
             text = "INSERT INTO searchparameter VALUES($1, $2, $3, $4)";
-            values = [reqID, req.body.parameters[i], req.body.bounds[i][0], req.body.bounds[i][1]];
+            values = [reqID, req.body.parameters[i], req.body.bounds[i].lowerbound, req.body.bounds[i].upperbound];
             await db.query(text, values);
         }
 
+        await(db.query('COMMIT'));
         res.status(200).send({message: "Request sent"});
     } catch(error) {
+        await(db.query('ROLLBACK'));
         return logError(error, res)
     }
 });
@@ -120,7 +123,7 @@ router.post('/tp/downloadSingle', validateRequest, async (req, res) => {
 
         //if he's not logged in or he's not a ThirdParty
         if (!isLogged(req.body.authToken) || !(await isThirdParty(userID))) {
-            res.status(403).send({error: "Wrong authentication"});
+            res.status(401).send({error: "Wrong authentication"});
             return
         }
 
@@ -166,7 +169,7 @@ router.post('/tp/downloadGroup', validateRequest, async (req, res) => {
 
         //if he's not logged in or he's not a ThirdParty
         if (!isLogged(req.body.authToken) || !(await isThirdParty(userID))) {
-            res.status(403).send({error: "Wrong authentication"});
+            res.status(401).send({error: "Wrong authentication"});
             return
         }
 
@@ -175,7 +178,7 @@ router.post('/tp/downloadGroup', validateRequest, async (req, res) => {
         let values = [req.body.reqID];
         let rows = await db.query(text, values);
 
-        //if the request is not present or if it was not approved
+        //if the request is not present
         if(rows.rowCount===0) {
             res.status(403).send({error: "Request does not exist"});
             return
@@ -210,7 +213,7 @@ router.post('/single/choice', validateRequest, async (req, res) => {
 
         //if he's not logged in or he's not a PrivateUser
         if (!isLogged(req.body.authToken) || !(await isPrivateUser(userID))) {
-            res.status(403).send({error: "Wrong authentication"});
+            res.status(401).send({error: "Wrong authentication"});
             return
         }
 
@@ -220,13 +223,17 @@ router.post('/single/choice', validateRequest, async (req, res) => {
             return
         }
 
+        await(db.query('BEGIN'));
+
         //update the request, if choice is true then the request is accepted
         let text = 'UPDATE singlerequest SET status=$1 WHERE req_id = $2';
         let values = [req.body.choice? 'accepted' : 'refused', req.body.reqID];
         await db.query(text, values);
 
+        await(db.query('COMMIT'));
         res.status(200).send({message: "Action successful"});
     } catch(error) {
+        await(db.query('ROLLBACK'));
         return logError(error, res)
     }
 });
@@ -239,7 +246,7 @@ router.get('/single/list', async (req, res) => {
 
         //if he's not logged in or he's not a PrivateUser
         if (!isLogged(req.query.authToken) || !(await isPrivateUser(userID))) {
-            res.status(403).send({error: "Wrong authentication"});
+            res.status(401).send({error: "Wrong authentication"});
             return
         }
 
@@ -293,7 +300,7 @@ router.get('/tp/list', async (req, res) => {
 
         //if he's not logged in or he's not a ThirdParty
         if (!isLogged(req.query.authToken) || !(await isThirdParty(userID))) {
-            res.status(403).send({error: "Wrong authentication"});
+            res.status(401).send({error: "Wrong authentication"});
             return
         }
 
@@ -377,14 +384,6 @@ router.get('/tp/list', async (req, res) => {
 });
 
 
-//checks if a given PrivateUser exists in the db, given his email and fc, and returns the result of the query
-async function getUserIDByEmail(req) {
-    const text = "SELECT userid FROM privateuser WHERE email=$1 AND fc=$2";
-    const values = [req.body.email, req.body.fc];
-    return await db.query(text, values);
-}
-
-
 //checks if a given request exists in the db
 async function checkReqExistance(req) {
     const text = "SELECT status FROM singlerequest WHERE req_id=$1";
@@ -459,14 +458,6 @@ async function getRequestParameters(req) {
     const text = "SELECT datatype, lowerbound, upperbound FROM searchparameter WHERE req_id = $1";
     const values = [req.body.reqID];
     return (await db.query(text, values)).rows;
-}
-
-
-//given a date, adds the given number of days to that date
-function addDays(date, days) {
-    date = new Date(date);
-    date.setDate(date.getDate() + days);
-    return date;
 }
 
 

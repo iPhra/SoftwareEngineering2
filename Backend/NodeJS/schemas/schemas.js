@@ -1,5 +1,4 @@
 //@todo Aggiungere validation a birthdate per controllare sia nel formato DDMMYYYY
-//@todo Aggiungere validation che i due array in dataSettings siano lunghi uguali
 //@todo Aggiungere che duration può esserci solo se c'è subscribing a true
 
 
@@ -14,8 +13,9 @@ const sex = Joi.string().valid(['M','F','U']);
 const dataTypes = Joi.string().valid(['standinghours','heartrate','distancewalkingrunning','sleepinghours', 'weight', 'height', 'age', 'activeenergy', 'steps']);
 const company_name = Joi.string().max(20);
 const company_description = Joi.string().max(100);
-const types = Joi.array().items(dataTypes).required();
+const types = Joi.array().items(dataTypes).max(50).required();
 const subscribing = Joi.boolean().default(false);
+const duration = Joi.any().when('subscribing', { is: true, then: Joi.number().integer().default(1), otherwise: Joi.any().forbidden()}); //by default it's a one day subscription
 
 
 const singleRegSchema = {
@@ -54,18 +54,18 @@ const tpSettings = {
     company_description : company_description,
 };
 
-const dataSettings = {
+const dataSettings = Joi.object({
     authToken : authToken,
     types : types,
     enabled : Joi.array().items(Joi.boolean()).required(),
-};
+}).assert('types.length',Joi.ref('enabled.length'));
 
-const dataImport = {
+const dataImport = Joi.object({
     authToken : authToken,
     types : types,
     values : Joi.array().items(Joi.array().items(Joi.number())).required(),
     timestamps: Joi.array().items(Joi.array().items(Joi.date().iso())).required(),
-};
+}).assert('types.length',Joi.ref('values.length')).assert('types.length',Joi.ref('timestamps.length'));
 
 const dataStats = {
     authToken : authToken,
@@ -78,22 +78,25 @@ const singleReq = {
     fc: fc,
     types: types,
     subscribing: subscribing,
-    duration: Joi.number(),
+    duration: duration,
 };
 
-const groupReq = {
+const groupReq = Joi.object({
     authToken : authToken,
     types: types,
     parameters: Joi.array().items(dataTypes).required(),
-    bounds : Joi.array().items(Joi.array().items(Joi.number())).required(),
+    bounds : Joi.array().items(Joi.object().keys({
+        lowerbound: Joi.number(),
+        upperbound: Joi.number()
+    })).required(),
     subscribing: subscribing,
-    duration: Joi.number(),
-};
+    duration: duration,
+}).assert('parameters.length',Joi.ref('bounds.length'));
 
 const acceptReq = {
     authToken : authToken,
     reqID : Joi.string().required(),
-    choice : Joi.boolean(),
+    choice : Joi.boolean().required(),
 };
 
 const downloadReq = {

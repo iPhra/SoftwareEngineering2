@@ -20,9 +20,11 @@ router.post('/single/info', validateRequest, async (req, res) => {
 
         //if he's not logged in or he's not a PrivateUser
         if (!isLogged(req.body.authToken) || !(await isPrivateUser(userID))) {
-            res.status(403).send({error: "Wrong authentication"});
+            res.status(401).send({error: "Wrong authentication"});
             return
         }
+
+        await(db.query('BEGIN'));
 
         let text;
         let values;
@@ -45,11 +47,14 @@ router.post('/single/info', validateRequest, async (req, res) => {
             await db.query(text, values);
         }
 
+        await(db.query('COMMIT'));
         res.status(200).send({message: "Settings updated"});
     } catch(error) {
+        await(db.query('ROLLBACK'));
         return logError(error, res)
     }
 });
+
 
 router.post('/tp/info', validateRequest, async (req, res) => {
     let userID = getUserIDByToken(req.body.authToken);
@@ -58,9 +63,11 @@ router.post('/tp/info', validateRequest, async (req, res) => {
 
         //if he's not logged in or he's not a ThirdParty
         if (!isLogged(req.body.authToken) || !(await isThirdParty(userID))) {
-            res.status(403).send({error: "Wrong authentication"});
+            res.status(401).send({error: "Wrong authentication"});
             return
         }
+
+        await(db.query('BEGIN'));
 
         let text;
         let values;
@@ -83,11 +90,14 @@ router.post('/tp/info', validateRequest, async (req, res) => {
             await db.query(text, values);
         }
 
+        await(db.query('COMMIT'));
         res.status(200).send({message: "Settings updated"});
     } catch(error) {
+        await(db.query('ROLLBACK'));
         return logError(error, res)
     }
 });
+
 
 router.post('/single/data', validateRequest, async (req, res) => {
     let userID = getUserIDByToken(req.body.authToken);
@@ -96,9 +106,11 @@ router.post('/single/data', validateRequest, async (req, res) => {
 
         //if he's not logged in or he's not a PrivateUser
         if (!isLogged(req.body.authToken) || !(await isPrivateUser(userID))) {
-            res.status(403).send({error: "Wrong authentication"});
+            res.status(401).send({error: "Wrong authentication"});
             return
         }
+
+        await(db.query('BEGIN'));
 
         let i;
         let text;
@@ -127,8 +139,10 @@ router.post('/single/data', validateRequest, async (req, res) => {
             }
         }
 
+        await(db.query('COMMIT'));
         res.status(200).send({message: "Settings updated"});
     } catch(error) {
+        await(db.query('ROLLBACK'));
         return logError(error, res)
     }
 });

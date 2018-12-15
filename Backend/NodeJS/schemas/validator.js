@@ -31,7 +31,7 @@ module.exports = () => {
 
                     if (err) {
                         console.log(err);
-                        res.status(400).json({error: "Malformed Request"});
+                        res.status(400).send({error: "Malformed Request"});
 
                     } else {
                         next();

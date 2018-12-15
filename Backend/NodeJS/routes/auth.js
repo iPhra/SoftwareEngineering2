@@ -1,13 +1,11 @@
 //@todo Mettere una funzione sicura per creare l'userID
 //@todo Differenziare userID da activToken ed authToken
-//@todo Rivedere la gestione degli errori e rollback
 //@todo Aggiungere encryption ed EncryptionManager
 
 const Router = require('express-promise-router');
 const Validator = require('../schemas/validator');
 const db = require('../settings/dbconnection');
 const sendEmail = require('../settings/mailer');
-const _ = require('lodash');
 
 const logError = require("./utils").logError;
 const validateRequest = Validator();
@@ -30,7 +28,7 @@ router.post('/reg/single', validateRequest, async (req, res) => {
         rows = await db.query(text, values);
 
         if (rows.rowCount>0) {
-            res.status(401).send({error: 'Already registered'});
+            res.status(403).send({error: 'Already registered'});
             return;
         }
     } catch(error) {
@@ -38,6 +36,8 @@ router.post('/reg/single', validateRequest, async (req, res) => {
     }
 
     try {
+        await(db.query('BEGIN'));
+
         //generate userID and insert into the database the new registration
         userID = await insertIntoRegistration();
 
@@ -49,8 +49,10 @@ router.post('/reg/single', validateRequest, async (req, res) => {
         //send an email to activate the new account
         sendEmail(req, userID); //@todo diversificare authToken da userID
 
+        await(db.query('COMMIT'));
         res.status(200).send({message: "Registration successful, check your email to complete the creation of your account"})
     } catch(error) {
+        await db.query('ROLLBACK');
         return logError(error, res)
     }
 
@@ -71,7 +73,7 @@ router.post('/reg/tp', validateRequest, async (req, res) => {
         rows = await db.query(text, values);
 
         if (rows.rowCount>0) {
-            res.status(401).send({error: 'Already registered'});
+            res.status(403).send({error: 'Already registered'});
             return;
         }
     } catch(error) {
@@ -79,6 +81,8 @@ router.post('/reg/tp', validateRequest, async (req, res) => {
     }
 
     try {
+        await(db.query('BEGIN'));
+
         //generate userID and insert into the database the new registration
         userID = await insertIntoRegistration();
 
@@ -90,8 +94,10 @@ router.post('/reg/tp', validateRequest, async (req, res) => {
         //send an email to activate the new account
         sendEmail(req, userID); //@todo diversificare authToken da userID
 
+        await(db.query('COMMIT'));
         res.status(200).send({message: "Registration successful, check your email to complete the creation of your account"})
     } catch(error) {
+        await(db.query('ROLLBACK'));
         return logError(error, res)
     }
 
@@ -146,7 +152,7 @@ router.post('/logout', validateRequest, async (req, res) => {
 
     //if the user is not logged in
     if (!(req.body.authToken in loggedUsers)) {
-        res.status(403).send({error: 'Not logged in'});
+        res.status(401).send({error: 'Not logged in'});
         return;
     }
 
@@ -183,7 +189,7 @@ router.get('/activ', async (req, res) => {
         const values = [true, req.query.activToken];
         await db.query(text, values);
     } catch(error) {
-        //no need to rollback, as the database can't have been updated if the query failed
+        //no need to rollback, as the database can't have been updated if the query failed, since it's the only one
         return logError(error, res)
     }
 

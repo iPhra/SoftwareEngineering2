@@ -24,11 +24,19 @@ async function isPrivateUser(userID) {
 }
 
 
-//returns the userID of the PrivateUser associated to the email
-async function getUserByEmail(email) {
-    const text = 'SELECT userid FROM PrivateUser WHERE email = $1';
-    const res = await db.query(text, [email]);
-    return res.rows[0].userid;
+//checks if a given PrivateUser exists in the db, given his email and fc, and returns the result of the query
+async function getUserIDByEmail(req) {
+    const text = "SELECT userid FROM privateuser WHERE email=$1 AND fc=$2";
+    const values = [req.body.email, req.body.fc];
+    return await db.query(text, values);
+}
+
+
+//given a date, adds the given number of days to that date
+function addDays(date, days) {
+    date = new Date(date);
+    date.setDate(date.getDate() + days);
+    return date;
 }
 
 
@@ -36,4 +44,5 @@ async function getUserByEmail(email) {
 module.exports.logError = logError;
 module.exports.isThirdParty = isThirdParty;
 module.exports.isPrivateUser = isPrivateUser;
-module.exports.getUserByEmail = getUserByEmail;
+module.exports.getUserIDByEmail = getUserIDByEmail;
+module.exports.addDays = addDays;
