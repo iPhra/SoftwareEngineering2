@@ -51,13 +51,7 @@ router.post('/reg/single', validateRequest, async (req, res) => {
 
         res.status(200).send({message: "Registration successful, check your email to complete the creation of your account"})
     } catch(error) {
-        console.log(error);
-
-        //rollback the db by deleting the rows i possibly inserted
-        await db.query("DELETE FROM Registration WHERE userID=$1",[userID]);
-        await db.query("DELETE FROM PrivateUser WHERE email=$1",[req.body.email]);
-
-        res.status(400).send({error: 'Query error'});
+        return logError(error, res)
     }
 
 });
@@ -98,13 +92,7 @@ router.post('/reg/tp', validateRequest, async (req, res) => {
 
         res.status(200).send({message: "Registration successful, check your email to complete the creation of your account"})
     } catch(error) {
-        console.log(error);
-
-        //rollback the db by deleting the rows i possibly inserted
-        await db.query("DELETE FROM Registration WHERE userID=$1",[userID]);
-        await db.query("DELETE FROM ThirdParty WHERE email=$1",[req.body.email]);
-
-        res.status(400).send({error: 'Query error'});
+        return logError(error, res)
     }
 
 });
@@ -112,15 +100,14 @@ router.post('/reg/tp', validateRequest, async (req, res) => {
 
 router.post('/login', validateRequest, async (req, res) => {
     let text;
-    let values;
-    let userID;
     let rows_private;
     let rows_tp;
 
     //query the database to find an existing account with the provided credentials
     try {
+        let values = [req.body.email, req.body.password];
+
         text = 'SELECT userid FROM PrivateUser WHERE email = $1 AND password = $2';
-        values = [req.body.email, req.body.password];
         rows_private = await db.query(text, values);
 
         text = 'SELECT userid FROM ThirdParty WHERE email = $1 AND password = $2';
@@ -137,7 +124,7 @@ router.post('/login', validateRequest, async (req, res) => {
     }
 
     //get the userID from the right table, based on whether he's a third party or private user
-    userID = rows_tp.rowCount>0? rows_tp.rows[0].userid : rows_private.rows[0].userid;
+    let userID = rows_tp.rowCount>0? rows_tp.rows[0].userid : rows_private.rows[0].userid;
 
     //if the user is already logged in, i.e. his userid is a value (not key!) in the hashmap of logged users
     if(Object.values(loggedUsers).indexOf(userID) > -1) {
@@ -155,15 +142,15 @@ router.post('/login', validateRequest, async (req, res) => {
 });
 
 
-router.get('/logout', async (req, res) => {
+router.post('/logout', validateRequest, async (req, res) => {
 
     //if the user is not logged in
-    if (!(req.query.authToken in loggedUsers)) {
+    if (!(req.body.authToken in loggedUsers)) {
         res.status(403).send({error: 'Not logged in'});
         return;
     }
 
-    delete loggedUsers[req.query.authToken];
+    delete loggedUsers[req.body.authToken];
     res.status(200).send({message: "Logged out"});
 });
 
@@ -196,6 +183,7 @@ router.get('/activ', async (req, res) => {
         const values = [true, req.query.activToken];
         await db.query(text, values);
     } catch(error) {
+        //no need to rollback, as the database can't have been updated if the query failed
         return logError(error, res)
     }
 

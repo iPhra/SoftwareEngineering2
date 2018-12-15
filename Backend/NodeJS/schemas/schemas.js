@@ -15,6 +15,7 @@ const dataTypes = Joi.string().valid(['standinghours','heartrate','distancewalki
 const company_name = Joi.string().max(20);
 const company_description = Joi.string().max(100);
 const types = Joi.array().items(dataTypes).required();
+const subscribing = Joi.boolean().default(false);
 
 
 const singleRegSchema = {
@@ -44,7 +45,6 @@ const singleSettings = {
     password : password,
     full_name : full_name,
     birthdate : birthdate,
-    sex: sex,
 };
 
 const tpSettings = {
@@ -77,7 +77,16 @@ const singleReq = {
     email: email,
     fc: fc,
     types: types,
-    subscribing: Joi.boolean().default(false),
+    subscribing: subscribing,
+    duration: Joi.number(),
+};
+
+const groupReq = {
+    authToken : authToken,
+    types: types,
+    parameters: Joi.array().items(dataTypes).required(),
+    bounds : Joi.array().items(Joi.array().items(Joi.number())).required(),
+    subscribing: subscribing,
     duration: Joi.number(),
 };
 
@@ -92,17 +101,24 @@ const downloadReq = {
     reqID : Joi.string().required(),
 };
 
+const log = {
+    authToken : authToken,
+};
+
+
 
 module.exports = {
     '/reg/single' : singleRegSchema,
     '/reg/tp' : thirdRegSchema,
     '/login' : login,
+    '/logout' : log,
     '/single/info' : singleSettings,
     '/tp/info' : tpSettings,
     '/single/data' : dataSettings,
     '/upload' : dataImport,
     '/stats' : dataStats,
     '/tp/sendSingle' : singleReq,
+    '/tp/sendGroup' : groupReq,
     '/single/choice' : acceptReq,
     '/tp/downloadSingle' : downloadReq,
     '/tp/downloadGroup' : downloadReq
