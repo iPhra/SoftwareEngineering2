@@ -8,52 +8,44 @@
 
 import UIKit
 
-class RequestCell: UITableViewCell{
-    var reqID: String = ""
-    var senderID: String = ""
-    var types: [dataType] = []
-    var subscribing: Bool = false
-    var duration: Float = 0
-    
-    func initRequest(reqID: String, senderID: String, types: [dataType], subscribing: Bool, duration: Float){
-        self.reqID = reqID
-        self.senderID = senderID
-        self.types = types
-        self.subscribing = subscribing
-        self.duration = duration
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
-    }
-
-}
-
 
 class MyFollowers: UIViewController {
-
+    
+    @IBOutlet weak var requestsContainer: UIView!
+    
+    var RequestsController: Data4Help.RequestsController? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        // load child view controllers
+        
+        let storyboard = UIStoryboard(name: "SingleUser", bundle: Bundle.main)
+        
+        // Instantiate View Controller
+        let controller = storyboard.instantiateViewController(withIdentifier: "RequestsController") as! Data4Help.RequestsController
+        
+        self.RequestsController = controller
+        
+        //set current view controller
+        
+        addChild(controller)
+        
+        self.requestsContainer.addSubview(controller.view)
+        
+        controller.didMove(toParent: self)
         // Do any additional setup after loading the view.
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
