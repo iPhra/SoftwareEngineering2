@@ -13,12 +13,16 @@
 		283B263521B98D9E00C939A9 /* D4HThirdPartyRegistrationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283B263421B98D9E00C939A9 /* D4HThirdPartyRegistrationRequest.swift */; };
 		283B263721B98F6500C939A9 /* D4HRegisterThirdPartyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283B263621B98F6500C939A9 /* D4HRegisterThirdPartyResponse.swift */; };
 		28B67D0421C10E0500FCA356 /* D4HLogoutRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B67D0321C10E0500FCA356 /* D4HLogoutRequest.swift */; };
+		28D938B821C3C3AB00DC7785 /* D4HLogoutResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D938B721C3C3AB00DC7785 /* D4HLogoutResponse.swift */; };
+		28D938BA21C3F79C00DC7785 /* D4HThirdPartySettingsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D938B921C3F79C00DC7785 /* D4HThirdPartySettingsRequest.swift */; };
+		28D938BC21C40BAC00DC7785 /* D4HSingleUserSettingsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D938BB21C40BAC00DC7785 /* D4HSingleUserSettingsRequest.swift */; };
 		28E5568F21ADE9890009D972 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E5568E21ADE9890009D972 /* NetworkManager.swift */; };
 		28E5569221ADF3AB0009D972 /* D4HRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E5569121ADF3AB0009D972 /* D4HRequest.swift */; };
 		28E5569621ADF5480009D972 /* D4HLoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E5569521ADF5480009D972 /* D4HLoginRequest.swift */; };
 		28E5569821ADF55A0009D972 /* D4HLoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E5569721ADF55A0009D972 /* D4HLoginResponse.swift */; };
 		28E5569A21ADF5C60009D972 /* D4HEncodingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E5569921ADF5C60009D972 /* D4HEncodingType.swift */; };
 		28E5569D21ADF8870009D972 /* D4HEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E5569C21ADF8870009D972 /* D4HEndpoint.swift */; };
+		28FF1AA821C3B1E300456B4F /* Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FF1AA721C3B1E300456B4F /* Properties.swift */; };
 		CB17279A21B1543500AC9D36 /* SURegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB17279921B1543500AC9D36 /* SURegisterViewController.swift */; };
 		CB17279C21B1545300AC9D36 /* TPRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB17279B21B1545300AC9D36 /* TPRegisterViewController.swift */; };
 		CB17279E21B1D5C800AC9D36 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB17279D21B1D5C800AC9D36 /* TutorialViewController.swift */; };
@@ -40,8 +44,6 @@
 		CB98264F21C164ED00932CE6 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CB98264D21C164EC00932CE6 /* Model.xcdatamodeld */; };
 		CB98265121C1674A00932CE6 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB98265021C1674A00932CE6 /* CoreData.framework */; };
 		CB98265721C28D9E00932CE6 /* MyFollowers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB98265621C28D9E00932CE6 /* MyFollowers.swift */; };
-		CB98265921C2FE6200932CE6 /* RequestsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB98265821C2FE6200932CE6 /* RequestsController.swift */; };
-		CB98265B21C3B3A300932CE6 /* MyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB98265A21C3B3A300932CE6 /* MyCell.swift */; };
 		CBADD0FB21AC197E00896705 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBADD0FA21AC197E00896705 /* AppDelegate.swift */; };
 		CBADD0FD21AC197E00896705 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBADD0FC21AC197E00896705 /* LoginViewController.swift */; };
 		CBADD10021AC197E00896705 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBADD0FE21AC197E00896705 /* Main.storyboard */; };
@@ -77,12 +79,16 @@
 		283B263421B98D9E00C939A9 /* D4HThirdPartyRegistrationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HThirdPartyRegistrationRequest.swift; sourceTree = "<group>"; };
 		283B263621B98F6500C939A9 /* D4HRegisterThirdPartyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HRegisterThirdPartyResponse.swift; sourceTree = "<group>"; };
 		28B67D0321C10E0500FCA356 /* D4HLogoutRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HLogoutRequest.swift; sourceTree = "<group>"; };
+		28D938B721C3C3AB00DC7785 /* D4HLogoutResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HLogoutResponse.swift; sourceTree = "<group>"; };
+		28D938B921C3F79C00DC7785 /* D4HThirdPartySettingsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HThirdPartySettingsRequest.swift; sourceTree = "<group>"; };
+		28D938BB21C40BAC00DC7785 /* D4HSingleUserSettingsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HSingleUserSettingsRequest.swift; sourceTree = "<group>"; };
 		28E5568E21ADE9890009D972 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		28E5569121ADF3AB0009D972 /* D4HRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HRequest.swift; sourceTree = "<group>"; };
 		28E5569521ADF5480009D972 /* D4HLoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HLoginRequest.swift; sourceTree = "<group>"; };
 		28E5569721ADF55A0009D972 /* D4HLoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HLoginResponse.swift; sourceTree = "<group>"; };
 		28E5569921ADF5C60009D972 /* D4HEncodingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HEncodingType.swift; sourceTree = "<group>"; };
 		28E5569C21ADF8870009D972 /* D4HEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HEndpoint.swift; sourceTree = "<group>"; };
+		28FF1AA721C3B1E300456B4F /* Properties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Properties.swift; sourceTree = "<group>"; };
 		6698D8B24F51E95CD50F02E1 /* Pods_Data4Help.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Data4Help.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DF053413FFA9AF08F79DE2C /* Pods-Data4Help.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Data4Help.release.xcconfig"; path = "Pods/Target Support Files/Pods-Data4Help/Pods-Data4Help.release.xcconfig"; sourceTree = "<group>"; };
 		CB17279921B1543500AC9D36 /* SURegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SURegisterViewController.swift; sourceTree = "<group>"; };
@@ -106,8 +112,6 @@
 		CB98264E21C164EC00932CE6 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		CB98265021C1674A00932CE6 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		CB98265621C28D9E00932CE6 /* MyFollowers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFollowers.swift; sourceTree = "<group>"; };
-		CB98265821C2FE6200932CE6 /* RequestsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsController.swift; sourceTree = "<group>"; };
-		CB98265A21C3B3A300932CE6 /* MyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyCell.swift; path = "/Users/Virginia/Documents/Politecnico/Software Engineering 2/LorenzoMolteniNegri/iOS/Data4Help/Data4Help/View/MyCell.swift"; sourceTree = "<absolute>"; };
 		CBADD0F721AC197E00896705 /* Data4Help.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Data4Help.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBADD0FA21AC197E00896705 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBADD0FC21AC197E00896705 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -170,6 +174,7 @@
 			children = (
 				CB98264D21C164EC00932CE6 /* Model.xcdatamodeld */,
 				28E5569021ADF3390009D972 /* Data4Help Requests */,
+				28FF1AA721C3B1E300456B4F /* Properties.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -198,6 +203,35 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		28D938BD21C40D2800DC7785 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				28E5569521ADF5480009D972 /* D4HLoginRequest.swift */,
+				28121FCD21B5A1FD00AF6CCE /* D4HSingleRegisterRequest.swift */,
+				283B263421B98D9E00C939A9 /* D4HThirdPartyRegistrationRequest.swift */,
+				28B67D0321C10E0500FCA356 /* D4HLogoutRequest.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		28D938BE21C40D4600DC7785 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				28D938BB21C40BAC00DC7785 /* D4HSingleUserSettingsRequest.swift */,
+				28D938B921C3F79C00DC7785 /* D4HThirdPartySettingsRequest.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		28D938BF21C40D6E00DC7785 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				CB98264B21C1048B00932CE6 /* dataType.swift */,
+				CB98264921C103A600932CE6 /* D4HDataUploadRequest.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		28E5569021ADF3390009D972 /* Data4Help Requests */ = {
 			isa = PBXGroup;
 			children = (
@@ -210,15 +244,12 @@
 		28E5569321ADF3B40009D972 /* Requests */ = {
 			isa = PBXGroup;
 			children = (
+				28D938BF21C40D6E00DC7785 /* Data */,
+				28D938BE21C40D4600DC7785 /* Settings */,
+				28D938BD21C40D2800DC7785 /* Authentication */,
 				28E5569121ADF3AB0009D972 /* D4HRequest.swift */,
-				28E5569521ADF5480009D972 /* D4HLoginRequest.swift */,
 				28E5569921ADF5C60009D972 /* D4HEncodingType.swift */,
 				28E5569C21ADF8870009D972 /* D4HEndpoint.swift */,
-				28121FCD21B5A1FD00AF6CCE /* D4HSingleRegisterRequest.swift */,
-				283B263421B98D9E00C939A9 /* D4HThirdPartyRegistrationRequest.swift */,
-				CB98264921C103A600932CE6 /* D4HDataUploadRequest.swift */,
-				CB98264B21C1048B00932CE6 /* dataType.swift */,
-				28B67D0321C10E0500FCA356 /* D4HLogoutRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -230,6 +261,7 @@
 				CBD7A88F21B05E24004BB382 /* D4HResponse.swift */,
 				28121FCF21B5A41600AF6CCE /* D4HRegisterSingleResponse.swift */,
 				283B263621B98F6500C939A9 /* D4HRegisterThirdPartyResponse.swift */,
+				28D938B721C3C3AB00DC7785 /* D4HLogoutResponse.swift */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -250,7 +282,7 @@
 			children = (
 				CB1727BF21B449A900AC9D36 /* SUSettings */,
 				CB1727BD21B4496800AC9D36 /* MyHealth.swift */,
-				CB98265C21C505BE00932CE6 /* MyFollowers */,
+				CB98265621C28D9E00932CE6 /* MyFollowers.swift */,
 			);
 			path = SUControllers;
 			sourceTree = "<group>";
@@ -300,16 +332,6 @@
 				CB1727B321B3E2EF00AC9D36 /* SUSettings.swift */,
 			);
 			path = SUSettings;
-			sourceTree = "<group>";
-		};
-		CB98265C21C505BE00932CE6 /* MyFollowers */ = {
-			isa = PBXGroup;
-			children = (
-				CB98265621C28D9E00932CE6 /* MyFollowers.swift */,
-				CB98265821C2FE6200932CE6 /* RequestsController.swift */,
-				CB98265A21C3B3A300932CE6 /* MyCell.swift */,
-			);
-			path = MyFollowers;
 			sourceTree = "<group>";
 		};
 		CBADD0EE21AC197E00896705 = {
@@ -580,6 +602,7 @@
 			files = (
 				CB18F00921B6F76500BBFAAD /* StorageManager.swift in Sources */,
 				28E5569621ADF5480009D972 /* D4HLoginRequest.swift in Sources */,
+				28D938BA21C3F79C00DC7785 /* D4HThirdPartySettingsRequest.swift in Sources */,
 				CB1727B821B3EB9600AC9D36 /* TPViewSettings.swift in Sources */,
 				CBD7A89021B05E24004BB382 /* D4HResponse.swift in Sources */,
 				CB98265721C28D9E00932CE6 /* MyFollowers.swift in Sources */,
@@ -589,7 +612,6 @@
 				CB1727B221B3E2DF00AC9D36 /* SUEditSettings.swift in Sources */,
 				CB98264A21C103A600932CE6 /* D4HDataUploadRequest.swift in Sources */,
 				28E5569A21ADF5C60009D972 /* D4HEncodingType.swift in Sources */,
-				CB98265B21C3B3A300932CE6 /* MyCell.swift in Sources */,
 				CB1727BA21B3EBA700AC9D36 /* TPEditSettings.swift in Sources */,
 				28121FCE21B5A1FD00AF6CCE /* D4HSingleRegisterRequest.swift in Sources */,
 				28E5568F21ADE9890009D972 /* NetworkManager.swift in Sources */,
@@ -607,10 +629,12 @@
 				28E5569221ADF3AB0009D972 /* D4HRequest.swift in Sources */,
 				28E5569D21ADF8870009D972 /* D4HEndpoint.swift in Sources */,
 				CBADD0FB21AC197E00896705 /* AppDelegate.swift in Sources */,
-				CB98265921C2FE6200932CE6 /* RequestsController.swift in Sources */,
+				28FF1AA821C3B1E300456B4F /* Properties.swift in Sources */,
 				CB98264F21C164ED00932CE6 /* Model.xcdatamodeld in Sources */,
 				CB17279A21B1543500AC9D36 /* SURegisterViewController.swift in Sources */,
+				28D938B821C3C3AB00DC7785 /* D4HLogoutResponse.swift in Sources */,
 				283B263521B98D9E00C939A9 /* D4HThirdPartyRegistrationRequest.swift in Sources */,
+				28D938BC21C40BAC00DC7785 /* D4HSingleUserSettingsRequest.swift in Sources */,
 				CB1727B421B3E2EF00AC9D36 /* SUSettings.swift in Sources */,
 				28B67D0421C10E0500FCA356 /* D4HLogoutRequest.swift in Sources */,
 			);
