@@ -95,13 +95,13 @@ const groupReq = Joi.object({
 
 const acceptReq = {
     authToken : authToken,
-    reqID : Joi.string().required(),
+    reqID : Joi.number().integer().required(),
     choice : Joi.boolean().required(),
 };
 
 const downloadReq = {
     authToken : authToken,
-    reqID : Joi.string().required(),
+    reqID : Joi.number().integer().required(),
 };
 
 const log = {
