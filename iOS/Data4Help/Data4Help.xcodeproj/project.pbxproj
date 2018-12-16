@@ -47,6 +47,9 @@
 		CB18F00921B6F76500BBFAAD /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB18F00821B6F76500BBFAAD /* StorageManager.swift */; };
 		CB80991F21C52821001E2EB8 /* RequestsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB80991E21C52821001E2EB8 /* RequestsController.swift */; };
 		CB80992121C52837001E2EB8 /* MyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB80992021C52837001E2EB8 /* MyCell.swift */; };
+		CB80992721C5A5E6001E2EB8 /* TPRequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB80992621C5A5E6001E2EB8 /* TPRequestCell.swift */; };
+		CB80992921C5A601001E2EB8 /* MyHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB80992821C5A601001E2EB8 /* MyHistory.swift */; };
+		CB80992B21C5A647001E2EB8 /* TPRequestsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB80992A21C5A647001E2EB8 /* TPRequestsController.swift */; };
 		CB98264A21C103A600932CE6 /* D4HDataUploadRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB98264921C103A600932CE6 /* D4HDataUploadRequest.swift */; };
 		CB98264C21C1048B00932CE6 /* dataType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB98264B21C1048B00932CE6 /* dataType.swift */; };
 		CB98264F21C164ED00932CE6 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CB98264D21C164EC00932CE6 /* Model.xcdatamodeld */; };
@@ -123,6 +126,9 @@
 		CB18F00821B6F76500BBFAAD /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		CB80991E21C52821001E2EB8 /* RequestsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsController.swift; sourceTree = "<group>"; };
 		CB80992021C52837001E2EB8 /* MyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCell.swift; sourceTree = "<group>"; };
+		CB80992621C5A5E6001E2EB8 /* TPRequestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPRequestCell.swift; sourceTree = "<group>"; };
+		CB80992821C5A601001E2EB8 /* MyHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyHistory.swift; sourceTree = "<group>"; };
+		CB80992A21C5A647001E2EB8 /* TPRequestsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPRequestsController.swift; sourceTree = "<group>"; };
 		CB98264921C103A600932CE6 /* D4HDataUploadRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HDataUploadRequest.swift; sourceTree = "<group>"; };
 		CB98264B21C1048B00932CE6 /* dataType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dataType.swift; sourceTree = "<group>"; };
 		CB98264E21C164EC00932CE6 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
@@ -205,6 +211,7 @@
 				CB17279F21B1DCAA00AC9D36 /* ThirdParty.storyboard */,
 				CB80992021C52837001E2EB8 /* MyCell.swift */,
 				CB1727A121B1DCD100AC9D36 /* SingleUser.storyboard */,
+				CB80992621C5A5E6001E2EB8 /* TPRequestCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -324,6 +331,7 @@
 			children = (
 				CB1727BC21B3ED8000AC9D36 /* TPResearchControllers */,
 				CB1727BB21B3ED7000AC9D36 /* TPSettingsControllers */,
+				CB80992C21C63AE1001E2EB8 /* MyHistoryControllers */,
 			);
 			path = TPControllers;
 			sourceTree = "<group>";
@@ -364,6 +372,15 @@
 				CB1727B321B3E2EF00AC9D36 /* SUSettings.swift */,
 			);
 			path = SUSettings;
+			sourceTree = "<group>";
+		};
+		CB80992C21C63AE1001E2EB8 /* MyHistoryControllers */ = {
+			isa = PBXGroup;
+			children = (
+				CB80992821C5A601001E2EB8 /* MyHistory.swift */,
+				CB80992A21C5A647001E2EB8 /* TPRequestsController.swift */,
+			);
+			path = MyHistoryControllers;
 			sourceTree = "<group>";
 		};
 		CBADD0EE21AC197E00896705 = {
@@ -637,9 +654,11 @@
 				28D938BA21C3F79C00DC7785 /* D4HThirdPartySettingsRequest.swift in Sources */,
 				CB1727B821B3EB9600AC9D36 /* TPViewSettings.swift in Sources */,
 				28E0144721C56C24004FA60F /* D4HDownloadGroupRequest.swift in Sources */,
+				CB80992921C5A601001E2EB8 /* MyHistory.swift in Sources */,
 				28E0144521C56B20004FA60F /* D4HDownloadSingleRequest.swift in Sources */,
 				CBD7A89021B05E24004BB382 /* D4HResponse.swift in Sources */,
 				CB98265721C28D9E00932CE6 /* MyFollowers.swift in Sources */,
+				CB80992B21C5A647001E2EB8 /* TPRequestsController.swift in Sources */,
 				CB1727B021B3E2CD00AC9D36 /* SUViewSettings.swift in Sources */,
 				CB1727A821B3347B00AC9D36 /* ResearchViewController.swift in Sources */,
 				CB1727B621B3EB8200AC9D36 /* TPSettings.swift in Sources */,
@@ -677,6 +696,7 @@
 				28D938BC21C40BAC00DC7785 /* D4HSingleUserSettingsRequest.swift in Sources */,
 				CB1727B421B3E2EF00AC9D36 /* SUSettings.swift in Sources */,
 				28B67D0421C10E0500FCA356 /* D4HLogoutRequest.swift in Sources */,
+				CB80992721C5A5E6001E2EB8 /* TPRequestCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

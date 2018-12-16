@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LCu-yW-ALz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LCu-yW-ALz">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,7 +13,7 @@
         <!--History-->
         <scene sceneID="1Yx-S9-Mgg">
             <objects>
-                <viewController id="Xca-p5-Xgf" sceneMemberID="viewController">
+                <viewController id="Xca-p5-Xgf" customClass="MyHistory" customModule="Data4Help" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZIR-qM-3EI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -27,8 +27,17 @@
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kaq-Az-HBl">
-                                <rect key="frame" x="0.0" y="136" width="375" height="593"/>
+                                <rect key="frame" x="10" y="136" width="404" height="677"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AAy-C7-TKO">
+                                        <rect key="frame" x="0.0" y="0.0" width="396" height="677"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                        <connections>
+                                            <segue destination="tLO-Il-mDg" kind="embed" id="8zc-8s-x6j"/>
+                                        </connections>
+                                    </containerView>
+                                </subviews>
                             </scrollView>
                             <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="94a-n8-Wgv">
                                 <rect key="frame" x="0.0" y="80" width="414" height="56"/>
@@ -44,6 +53,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="History" image="History" selectedImage="History" id="JZz-Gy-e8c"/>
                     <connections>
+                        <outlet property="requestsContainer" destination="AAy-C7-TKO" id="Udi-38-rii"/>
                         <outlet property="searchDisplayController" destination="RfP-yD-u7l" id="Bde-kK-7MF"/>
                     </connections>
                 </viewController>
@@ -58,7 +68,96 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="293.60000000000002" y="-179.55665024630542"/>
+            <point key="canvasLocation" x="292.75362318840581" y="-180.13392857142856"/>
+        </scene>
+        <!--TPRequestsController-->
+        <scene sceneID="udW-xr-itl">
+            <objects>
+                <tableViewController storyboardIdentifier="TPRequestsController" title="TPRequestsController" id="tLO-Il-mDg" userLabel="TPRequestsController" customClass="TPRequestsController" customModule="Data4Help" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="20" estimatedSectionHeaderHeight="20" sectionFooterHeight="20" estimatedSectionFooterHeight="20" id="FIW-Us-Y1H">
+                        <rect key="frame" x="0.0" y="0.0" width="396" height="677"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TPRequestCell" rowHeight="100" id="RZT-iW-riA" userLabel="TPRequestCell" customClass="TPRequestCell" customModule="Data4Help" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="20" width="396" height="100"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RZT-iW-riA" id="1MG-ah-GGO">
+                                    <rect key="frame" x="0.0" y="0.0" width="396" height="99.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Single User" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aJj-hd-K0o">
+                                            <rect key="frame" x="20" y="11" width="87" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Datatypes:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rh8-t0-yFT">
+                                            <rect key="frame" x="20" y="42" width="62" height="15"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Request Subscription" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lo4-Qh-dBv">
+                                            <rect key="frame" x="20" y="65" width="121" height="15"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="datatypes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="72A-jC-91u">
+                                            <rect key="frame" x="87" y="42" width="153" height="15"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LXM-U8-fbQ">
+                                            <rect key="frame" x="326" y="58" width="30" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Button" image="Download">
+                                                <color key="titleShadowColor" red="0.92246448989999996" green="0.40818893909999998" blue="0.39214158059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
+                                        </button>
+                                        <switch autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="7Pi-ED-ezd">
+                                            <rect key="frame" x="154" y="58" width="49" height="31"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                            <color key="tintColor" red="0.92246448989999996" green="0.40818893909999998" blue="0.39214158059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="onTintColor" red="0.92246448989999996" green="0.40818893909999998" blue="0.39214158059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <connections>
+                                                <action selector="toggleSubscription:" destination="RZT-iW-riA" eventType="valueChanged" id="QiA-X0-IeB"/>
+                                            </connections>
+                                        </switch>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yg2-Cb-3AM">
+                                            <rect key="frame" x="328" y="20" width="27" height="15"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="dataTypesLabel" destination="72A-jC-91u" id="PRH-d9-j4p"/>
+                                    <outlet property="dateLabel" destination="yg2-Cb-3AM" id="BhA-Yy-x1D"/>
+                                    <outlet property="downloadButton" destination="LXM-U8-fbQ" id="pFa-2S-bDA"/>
+                                    <outlet property="singleUserLabel" destination="aJj-hd-K0o" id="NSh-nx-kxd"/>
+                                    <outlet property="subscribingSwitch" destination="7Pi-ED-ezd" id="yeE-a1-Cuc"/>
+                                    <outlet property="subscriptionLabel" destination="lo4-Qh-dBv" id="kzH-e4-DRA"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="tLO-Il-mDg" id="IHD-Ae-pCg"/>
+                            <outlet property="delegate" destination="tLO-Il-mDg" id="1Z5-MM-YHK"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sg9-I0-g0m" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1256.521739130435" y="-179.12946428571428"/>
         </scene>
         <!--Research-->
         <scene sceneID="FOv-fh-cUG">
@@ -786,9 +885,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="History" width="14" height="15"/>
-        <image name="LogoSmall" width="1404" height="680"/>
-        <image name="Search" width="15" height="15"/>
-        <image name="Settings" width="15" height="15"/>
+        <image name="Download" width="30" height="30"/>
+        <image name="History" width="29" height="30"/>
+        <image name="LogoSmall" width="674.15997314453125" height="326.39999389648438"/>
+        <image name="Search" width="30" height="30"/>
+        <image name="Settings" width="30" height="30"/>
     </resources>
 </document>

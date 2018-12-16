@@ -8,27 +8,12 @@
 
 import UIKit
 
-class SampleRequest{
-    
-    var status: String?
-    var companyName: String?
-    var datatypes: [dataType]?
-    var subscribing: Bool?
-    
-    init(status: String, companyName: String, datatypes: [dataType], subscribing: Bool){
-        self.status = status
-        self.companyName = companyName
-        self.datatypes = datatypes
-        self.subscribing = subscribing
-    }
-}
-
 
 class RequestsController: UITableViewController {
     
     // Mark: Properties
     
-    var requests: [SampleRequest] = []
+    var requests: [D4HSingleRequest] = []
     var sections: [String] = []
     
     // Mark: Initializers
@@ -41,7 +26,8 @@ class RequestsController: UITableViewController {
         self.sections.append("Pending Requests")
         self.sections.append("Refused Requests")
         
-        let r: SampleRequest = SampleRequest(status: "accepted",companyName: "Company X", datatypes: [dataType.distanceWalkingRunning], subscribing: true)
+        let r: D4HSingleRequest = D4HSingleRequest(authToken: "", email: "", fc: "", types: [dataType.distanceWalkingRunning], subscribing: true, duration: 10)
+            //SampleRequest(status: "accepted",companyName: "Company X", datatypes: [dataType.distanceWalkingRunning], subscribing: true)
         requests.append(r)
         
         self.clearsSelectionOnViewWillAppear = false
@@ -78,7 +64,7 @@ class RequestsController: UITableViewController {
         }
         
         let request = requests[indexPath.row]
-        cell.initRequest(reqID: "", senderID: request.companyName!, types: request.datatypes!, subscribing: request.subscribing!, duration: 0)
+        cell.initRequest(reqID: "", senderID: "Company X"/*request.companyName!*/, types: request.types, subscribing: request.subscribing, duration: 0)
         
         return cell
     }

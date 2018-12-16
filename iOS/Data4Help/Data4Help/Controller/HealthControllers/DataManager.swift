@@ -16,6 +16,7 @@ import HealthKit
 class DataManager: NSObject {
     
     // MARK: Properties
+    var firstUpload = true
     
     var AutomatedSOSON = false
     
@@ -184,7 +185,16 @@ class DataManager: NSObject {
         print (timestamp) //print date-time
         print("hours \(sleepType) = \(sleptHours)")
         
-        StorageManager.sharedInstance.addData(entityName: "Data", type: dataType.sleepingHours.rawValue, timestamp: timestamp, value: sleptHours)
+        if(firstUpload){
+            StorageManager.sharedInstance.deleteAllData(entityName: "Data")
+            for s in new {
+                StorageManager.sharedInstance.addData(entityName: "Data", type: dataType.sleepingHours.rawValue, timestamp: getTimestamp(sample: s), value: sleptHours)
+            }
+            firstUpload = false
+        }
+        else{
+            StorageManager.sharedInstance.addData(entityName: "Data", type: dataType.sleepingHours.rawValue, timestamp: timestamp, value: sleptHours)
+        }
     
     }
     
@@ -208,7 +218,17 @@ class DataManager: NSObject {
         print(timestamp)
         print("last sample = \(String(describing: new.last!.quantity))")
         
-        StorageManager.sharedInstance.addData(entityName: "Data", type: dataType.rawValue, timestamp: timestamp, value: (((new.last?.quantity.doubleValue(for: unit))!)))
+        if(firstUpload){
+            StorageManager.sharedInstance.deleteAllData(entityName: "Data")
+            for s in new {
+                StorageManager.sharedInstance.addData(entityName: "Data", type: dataType.rawValue, timestamp: getTimestamp(sample: s), value: (((s.quantity.doubleValue(for: unit)))))
+            }
+            firstUpload = false
+        }
+        else{
+            StorageManager.sharedInstance.addData(entityName: "Data", type: dataType.rawValue, timestamp: timestamp, value: (((new.last?.quantity.doubleValue(for: unit))!)))
+        }
+        
         
         /*
          print("Added last sample")

@@ -47,9 +47,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          for sample in sampleTypes {
          dataManager.enableBackgroundData(input: sample)
          }*/
-        //dataManager.enableBackgroundData(input: HKSampleType.categoryType(forIdentifier: HKCategoryTypeIdentifier.sleepAnalysis)!, datatype: dataType.sleepingHours)
+        //dataManager.enableBackgroundData(input: HKSampleType.categoryType(forIdentifier: HKCategoryTypeIdentifier.appleStandHour)!, datatype: dataType.standingHours)
         
-        //dataManager.enableBackgroundData(input: HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.height)!, datatype: dataType.height)
+        //dataManager.enableBackgroundData(input: HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceWalkingRunning)!, datatype: dataType.distanceWalkingRunning)
         
         return true
     }
