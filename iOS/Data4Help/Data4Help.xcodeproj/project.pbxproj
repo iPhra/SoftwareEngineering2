@@ -22,6 +22,14 @@
 		28E0144321C569BB004FA60F /* D4HGroupRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E0144221C569BB004FA60F /* D4HGroupRequest.swift */; };
 		28E0144521C56B20004FA60F /* D4HDownloadSingleRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E0144421C56B20004FA60F /* D4HDownloadSingleRequest.swift */; };
 		28E0144721C56C24004FA60F /* D4HDownloadGroupRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E0144621C56C24004FA60F /* D4HDownloadGroupRequest.swift */; };
+		28E0144921C65B84004FA60F /* D4HChoiceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E0144821C65B84004FA60F /* D4HChoiceRequest.swift */; };
+		28E0144B21C65C51004FA60F /* D4HStatisticsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E0144A21C65C51004FA60F /* D4HStatisticsRequest.swift */; };
+		28E0145121C65D5B004FA60F /* D4HSingleListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E0145021C65D5B004FA60F /* D4HSingleListResponse.swift */; };
+		28E0145321C6620D004FA60F /* SUSingleRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E0145221C6620D004FA60F /* SUSingleRequest.swift */; };
+		28E0145521C665B4004FA60F /* D4HThirdPartyListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E0145421C665B4004FA60F /* D4HThirdPartyListResponse.swift */; };
+		28E0145721C66756004FA60F /* TPGroupRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E0145621C66756004FA60F /* TPGroupRequest.swift */; };
+		28E0145921C667EA004FA60F /* D4HHealthParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E0145821C667EA004FA60F /* D4HHealthParameter.swift */; };
+		28E0145B21C66ACB004FA60F /* TPSingleRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E0145A21C66ACB004FA60F /* TPSingleRequest.swift */; };
 		28E5568F21ADE9890009D972 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E5568E21ADE9890009D972 /* NetworkManager.swift */; };
 		28E5569221ADF3AB0009D972 /* D4HRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E5569121ADF3AB0009D972 /* D4HRequest.swift */; };
 		28E5569621ADF5480009D972 /* D4HLoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E5569521ADF5480009D972 /* D4HLoginRequest.swift */; };
@@ -99,6 +107,14 @@
 		28E0144221C569BB004FA60F /* D4HGroupRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HGroupRequest.swift; sourceTree = "<group>"; };
 		28E0144421C56B20004FA60F /* D4HDownloadSingleRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HDownloadSingleRequest.swift; sourceTree = "<group>"; };
 		28E0144621C56C24004FA60F /* D4HDownloadGroupRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HDownloadGroupRequest.swift; sourceTree = "<group>"; };
+		28E0144821C65B84004FA60F /* D4HChoiceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HChoiceRequest.swift; sourceTree = "<group>"; };
+		28E0144A21C65C51004FA60F /* D4HStatisticsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HStatisticsRequest.swift; sourceTree = "<group>"; };
+		28E0145021C65D5B004FA60F /* D4HSingleListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HSingleListResponse.swift; sourceTree = "<group>"; };
+		28E0145221C6620D004FA60F /* SUSingleRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUSingleRequest.swift; sourceTree = "<group>"; };
+		28E0145421C665B4004FA60F /* D4HThirdPartyListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HThirdPartyListResponse.swift; sourceTree = "<group>"; };
+		28E0145621C66756004FA60F /* TPGroupRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPGroupRequest.swift; sourceTree = "<group>"; };
+		28E0145821C667EA004FA60F /* D4HHealthParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HHealthParameter.swift; sourceTree = "<group>"; };
+		28E0145A21C66ACB004FA60F /* TPSingleRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPSingleRequest.swift; sourceTree = "<group>"; };
 		28E5568E21ADE9890009D972 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		28E5569121ADF3AB0009D972 /* D4HRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HRequest.swift; sourceTree = "<group>"; };
 		28E5569521ADF5480009D972 /* D4HLoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HLoginRequest.swift; sourceTree = "<group>"; };
@@ -195,6 +211,7 @@
 		28678F8A21AC1C14004D6B9D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				28E0145C21C66D22004FA60F /* Data4Help Model */,
 				CB98264D21C164EC00932CE6 /* Model.xcdatamodeld */,
 				28E5569021ADF3390009D972 /* Data4Help Requests */,
 				28FF1AA721C3B1E300456B4F /* Properties.swift */,
@@ -252,6 +269,7 @@
 			children = (
 				CB98264B21C1048B00932CE6 /* dataType.swift */,
 				CB98264921C103A600932CE6 /* D4HDataUploadRequest.swift */,
+				28E0144A21C65C51004FA60F /* D4HStatisticsRequest.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -265,8 +283,54 @@
 				28E0144221C569BB004FA60F /* D4HGroupRequest.swift */,
 				28E0144421C56B20004FA60F /* D4HDownloadSingleRequest.swift */,
 				28E0144621C56C24004FA60F /* D4HDownloadGroupRequest.swift */,
+				28E0144821C65B84004FA60F /* D4HChoiceRequest.swift */,
 			);
 			path = Request;
+			sourceTree = "<group>";
+		};
+		28E0144C21C65D0B004FA60F /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				28E0145021C65D5B004FA60F /* D4HSingleListResponse.swift */,
+				28E0145421C665B4004FA60F /* D4HThirdPartyListResponse.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		28E0144D21C65D13004FA60F /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		28E0144E21C65D19004FA60F /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		28E0144F21C65D24004FA60F /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				28E5569721ADF55A0009D972 /* D4HLoginResponse.swift */,
+				28121FCF21B5A41600AF6CCE /* D4HRegisterSingleResponse.swift */,
+				283B263621B98F6500C939A9 /* D4HRegisterThirdPartyResponse.swift */,
+				28D938B721C3C3AB00DC7785 /* D4HLogoutResponse.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		28E0145C21C66D22004FA60F /* Data4Help Model */ = {
+			isa = PBXGroup;
+			children = (
+				28E0145221C6620D004FA60F /* SUSingleRequest.swift */,
+				28E0145621C66756004FA60F /* TPGroupRequest.swift */,
+				28E0145821C667EA004FA60F /* D4HHealthParameter.swift */,
+				28E0145A21C66ACB004FA60F /* TPSingleRequest.swift */,
+			);
+			path = "Data4Help Model";
 			sourceTree = "<group>";
 		};
 		28E5569021ADF3390009D972 /* Data4Help Requests */ = {
@@ -295,11 +359,11 @@
 		28E5569421ADF3BE0009D972 /* Responses */ = {
 			isa = PBXGroup;
 			children = (
-				28E5569721ADF55A0009D972 /* D4HLoginResponse.swift */,
+				28E0144F21C65D24004FA60F /* Authentication */,
+				28E0144E21C65D19004FA60F /* Settings */,
+				28E0144D21C65D13004FA60F /* Data */,
+				28E0144C21C65D0B004FA60F /* Request */,
 				CBD7A88F21B05E24004BB382 /* D4HResponse.swift */,
-				28121FCF21B5A41600AF6CCE /* D4HRegisterSingleResponse.swift */,
-				283B263621B98F6500C939A9 /* D4HRegisterThirdPartyResponse.swift */,
-				28D938B721C3C3AB00DC7785 /* D4HLogoutResponse.swift */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -657,10 +721,13 @@
 				CB80992921C5A601001E2EB8 /* MyHistory.swift in Sources */,
 				28E0144521C56B20004FA60F /* D4HDownloadSingleRequest.swift in Sources */,
 				CBD7A89021B05E24004BB382 /* D4HResponse.swift in Sources */,
+				28E0144921C65B84004FA60F /* D4HChoiceRequest.swift in Sources */,
+				28E0145921C667EA004FA60F /* D4HHealthParameter.swift in Sources */,
 				CB98265721C28D9E00932CE6 /* MyFollowers.swift in Sources */,
 				CB80992B21C5A647001E2EB8 /* TPRequestsController.swift in Sources */,
 				CB1727B021B3E2CD00AC9D36 /* SUViewSettings.swift in Sources */,
 				CB1727A821B3347B00AC9D36 /* ResearchViewController.swift in Sources */,
+				28E0145321C6620D004FA60F /* SUSingleRequest.swift in Sources */,
 				CB1727B621B3EB8200AC9D36 /* TPSettings.swift in Sources */,
 				CB1727B221B3E2DF00AC9D36 /* SUEditSettings.swift in Sources */,
 				CB98264A21C103A600932CE6 /* D4HDataUploadRequest.swift in Sources */,
@@ -670,13 +737,17 @@
 				CB1727BA21B3EBA700AC9D36 /* TPEditSettings.swift in Sources */,
 				28121FCE21B5A1FD00AF6CCE /* D4HSingleRegisterRequest.swift in Sources */,
 				28E5568F21ADE9890009D972 /* NetworkManager.swift in Sources */,
+				28E0145521C665B4004FA60F /* D4HThirdPartyListResponse.swift in Sources */,
 				CBADD12D21AD7FFB00896705 /* DataManager.swift in Sources */,
 				CB17279C21B1545300AC9D36 /* TPRegisterViewController.swift in Sources */,
 				CB98264C21C1048B00932CE6 /* dataType.swift in Sources */,
+				28E0145121C65D5B004FA60F /* D4HSingleListResponse.swift in Sources */,
 				28E0144321C569BB004FA60F /* D4HGroupRequest.swift in Sources */,
 				28121FD021B5A41600AF6CCE /* D4HRegisterSingleResponse.swift in Sources */,
 				28E0143D21C56716004FA60F /* D4HSingleListRequest.swift in Sources */,
 				28E0144121C56865004FA60F /* D4HSingleRequest.swift in Sources */,
+				28E0144B21C65C51004FA60F /* D4HStatisticsRequest.swift in Sources */,
+				28E0145721C66756004FA60F /* TPGroupRequest.swift in Sources */,
 				283B263721B98F6500C939A9 /* D4HRegisterThirdPartyResponse.swift in Sources */,
 				CB17279E21B1D5C800AC9D36 /* TutorialViewController.swift in Sources */,
 				CBADD0FD21AC197E00896705 /* LoginViewController.swift in Sources */,
@@ -697,6 +768,7 @@
 				CB1727B421B3E2EF00AC9D36 /* SUSettings.swift in Sources */,
 				28B67D0421C10E0500FCA356 /* D4HLogoutRequest.swift in Sources */,
 				CB80992721C5A5E6001E2EB8 /* TPRequestCell.swift in Sources */,
+				28E0145B21C66ACB004FA60F /* TPSingleRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
