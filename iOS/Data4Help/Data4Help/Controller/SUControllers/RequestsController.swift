@@ -7,55 +7,69 @@
 //
 
 import UIKit
+import Alamofire
 
 
 class RequestsController: UITableViewController {
     
-    // Mark: Properties
+    // MARK: Properties
+
+    enum TableSection: Int {
+        case accepted = 0, pending, refused, total
+    }
+    var requests: [SUSingleRequest] = []
+    var data = [TableSection: [SUSingleRequest]]()  // Data variable to track sorted data.
+    let SectionHeaderHeight: CGFloat = 30
     
-    var requests: [D4HSingleRequest] = []
-    var sections: [String] = []
+    // MARK: Outlets
     
-    // Mark: Initializers
+    @IBOutlet var requestsTableView: UITableView!
+    
+    // MARK: Initializers
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.dataSource = self
-        
-        self.sections.append("Accepted Requests")
-        self.sections.append("Pending Requests")
-        self.sections.append("Refused Requests")
-        
-        let r: D4HSingleRequest = D4HSingleRequest(authToken: "", email: "", fc: "", types: [dataType.distanceWalkingRunning], subscribing: true, duration: 10)
-            //SampleRequest(status: "accepted",companyName: "Company X", datatypes: [dataType.distanceWalkingRunning], subscribing: true)
-        requests.append(r)
-        
         self.clearsSelectionOnViewWillAppear = false
         
-        self.navigationItem.rightBarButtonItem = self.editButtonItem
+        // Load requests from backend
+        loadData()
     }
     
     // Mark: - Table view data source
     
-    func initRequest(){
-        //initialize list of requests
-    }
-    
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return TableSection.total.rawValue
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        if let tableSection = TableSection(rawValue: section), let reqData = data[tableSection] {
+            return reqData.count
+        }
+        return 0
     }
     
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
-        return self.sections[section]
-        
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: SectionHeaderHeight))
+        view.backgroundColor = UIColor(red: 235.0/255.0, green: 104.0/255.0, blue: 100.0/255.0, alpha: 1)
+        let label = UILabel(frame: CGRect(x: 15, y: -5, width: tableView.bounds.width - 30, height: SectionHeaderHeight))
+        label.font = UIFont.boldSystemFont(ofSize: 15)
+        label.textColor = UIColor.white
+        if let tableSection = TableSection(rawValue: section) {
+            switch tableSection {
+            case .accepted:
+                label.text = "Accepted Requests"
+            case .pending:
+                label.text = "Pending Requests"
+            case .refused:
+                label.text = "Refused Requests"
+            default:
+                label.text = ""
+            }
+        }
+        view.addSubview(label)
+        return view
     }
-    
-    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -63,15 +77,41 @@ class RequestsController: UITableViewController {
             fatalError("The dequeued cell is not an instance of MyCell.")
         }
         
-        let request = requests[indexPath.row]
-        cell.initRequest(reqID: "", senderID: "Company X"/*request.companyName!*/, types: request.types, subscribing: request.subscribing, duration: 0)
-        
+        if let tableSection = TableSection(rawValue: indexPath.section), let request = data[tableSection]?[indexPath.row] {
+            cell.initRequest(reqID: request.reqid, senderID: request.company_name, types: request.types, subscribing: request.subscribing, duration: Float(request.duration))
+        }
         return cell
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
     {
-        return 100.0;//Your custom row height
+        return 100.0; // Custom row height
+    }
+    
+    
+    // MARK: Private implementation
+    
+    func loadData() {
+        // API call to retrieve requests
+        NetworkManager.sharedInstance.sendGetRequest(input: D4HSingleListRequest(authToken: Properties.authToken), endpoint: D4HEndpoint.requestListSingle) { (response, error) in
+            if response != nil {
+                let myres = D4HSingleListResponse(fromJson: response!)
+                self.requests = myres.requests
+                print(self.requests.count)
+                self.sortData()
+                self.requestsTableView.reloadData()
+            }
+            else if let error = error {
+                print(error)
+            }
+        }
+    }
+    
+    // Split retrieved requests between accepted, pending, refused
+    func sortData() {
+        data[.accepted] = requests.filter({ $0.status == "accepted" })
+        data[.pending] = requests.filter({ $0.status == "pending" })
+        data[.refused] = requests.filter({ $0.status == "refused" })
     }
     
     /*

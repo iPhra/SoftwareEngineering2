@@ -211,7 +211,7 @@
 		28678F8A21AC1C14004D6B9D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				28E0145C21C66D22004FA60F /* Data4Help Model */,
+				28E0145C21C66D22004FA60F /* Data4HelpModel */,
 				CB98264D21C164EC00932CE6 /* Model.xcdatamodeld */,
 				28E5569021ADF3390009D972 /* Data4Help Requests */,
 				28FF1AA721C3B1E300456B4F /* Properties.swift */,
@@ -322,7 +322,7 @@
 			path = Authentication;
 			sourceTree = "<group>";
 		};
-		28E0145C21C66D22004FA60F /* Data4Help Model */ = {
+		28E0145C21C66D22004FA60F /* Data4HelpModel */ = {
 			isa = PBXGroup;
 			children = (
 				28E0145221C6620D004FA60F /* SUSingleRequest.swift */,
@@ -330,7 +330,7 @@
 				28E0145821C667EA004FA60F /* D4HHealthParameter.swift */,
 				28E0145A21C66ACB004FA60F /* TPSingleRequest.swift */,
 			);
-			path = "Data4Help Model";
+			path = Data4HelpModel;
 			sourceTree = "<group>";
 		};
 		28E5569021ADF3390009D972 /* Data4Help Requests */ = {

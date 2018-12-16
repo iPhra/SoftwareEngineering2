@@ -36,6 +36,7 @@ class SUSingleRequest {
     }
     
     init(fromJson json: JSON) {
+        print(json)
         self.reqid = json["reqid"].stringValue
         self.email = json["email"].stringValue
         self.piva = json["piva"].stringValue
@@ -43,12 +44,12 @@ class SUSingleRequest {
         let typesJson = json["types"].arrayValue
         self.types = []
         for typeJson in typesJson {
-            let type = typeJson["dataType"].stringValue
+            let type = typeJson["datatype"].stringValue
             self.types.append(dataType(rawValue: type)!)
         }
         self.status = json["status"].stringValue
         self.subscribing = json["subscribing"].boolValue
-        self.duration = json["subscribing"].intValue
+        self.duration = json["duration"].intValue
     }
     
 }
