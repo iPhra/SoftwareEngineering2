@@ -6,6 +6,7 @@ const Router = require('express-promise-router');
 const Validator = require('../schemas/validator');
 const db = require('../settings/dbconnection');
 const sendEmail = require('../settings/mailer');
+const bcrypt = require('bcryptjs');
 
 const logError = require("./utils").logError;
 const validateRequest = Validator();
@@ -40,10 +41,11 @@ router.post('/reg/single', validateRequest, async (req, res) => {
 
         //generate userID and insert into the database the new registration
         userID = await insertIntoRegistration();
+        const password = await hashPassword(req.body.password);
 
         //insert into the database the new private user
         text = 'INSERT INTO PrivateUser VALUES($1, $2, $3, $4, $5, $6, $7)';
-        values = [userID, req.body.email, req.body.password, req.body.fc, req.body.full_name, req.body.birthdate, req.body.sex];
+        values = [userID, req.body.email, password, req.body.fc, req.body.full_name, req.body.birthdate, req.body.sex];
         await db.query(text, values);
 
         //send an email to activate the new account
@@ -85,10 +87,11 @@ router.post('/reg/tp', validateRequest, async (req, res) => {
 
         //generate userID and insert into the database the new registration
         userID = await insertIntoRegistration();
+        const password = await hashPassword(req.body.password);
 
         //insert into the database the new third party
         text = 'INSERT INTO ThirdParty VALUES($1, $2, $3, $4, $5, $6)';
-        values = [userID, req.body.email, req.body.password, req.body.piva, req.body.company_name, req.body.company_description];
+        values = [userID, req.body.email, password, req.body.piva, req.body.company_name, req.body.company_description];
         await db.query(text, values);
 
         //send an email to activate the new account
@@ -108,29 +111,35 @@ router.post('/login', validateRequest, async (req, res) => {
     let text;
     let rows_private;
     let rows_tp;
+    let password;
+    let userID;
 
     //query the database to find an existing account with the provided credentials
     try {
-        let values = [req.body.email, req.body.password];
+        let values = [req.body.email];
 
-        text = 'SELECT userid FROM PrivateUser WHERE email = $1 AND password = $2';
+        text = 'SELECT userid, password FROM PrivateUser WHERE email = $1';
         rows_private = await db.query(text, values);
 
-        text = 'SELECT userid FROM ThirdParty WHERE email = $1 AND password = $2';
+        text = 'SELECT userid, password FROM ThirdParty WHERE email = $1';
         rows_tp = await db.query(text, values);
+
+        if(rows_private.rowCount>0) {
+            password = rows_private.rows[0].password;
+            userID = rows_private.rows[0].userid;
+        }
+        else if(rows_tp.rowCount>0) {
+            password = rows_tp.rows[0].password;
+            userID = rows_tp.rows[0].userid;
+        }
+        else return res.status(401).send({error: "Email does not exist"});
+
+        //if the password is wrong
+        if(!(await bcrypt.compare(req.body.password, password))) return res.status(401).send({error: 'Wrong password'});
     }
     catch(error) {
         return logError(error, res)
     }
-
-    //if no account with that credentials is found
-    if(rows_private.rowCount===0 && rows_tp.rowCount===0) {
-        res.status(401).send({error: 'Wrong credentials'});
-        return;
-    }
-
-    //get the userID from the right table, based on whether he's a third party or private user
-    let userID = rows_tp.rowCount>0? rows_tp.rows[0].userid : rows_private.rows[0].userid;
 
     //if the user is already logged in, i.e. his userid is a value (not key!) in the hashmap of logged users
     if(Object.values(loggedUsers).indexOf(userID) > -1) {
@@ -220,6 +229,12 @@ function isLogged(authToken) {
 //given the authToken of a user, returns its userID from the hashmap of logged users
 function getUserIDByToken(authToken) {
     return loggedUsers[authToken]
+}
+
+
+async function hashPassword(password) {
+    const salt = await bcrypt.genSalt(10);
+    return await bcrypt.hash(password, salt);
 }
 
 
