@@ -152,7 +152,7 @@ class DataManager: NSObject {
             case(dataType.sleepingHours.rawValue):
                 self.handleSleepingHours(new: newSamples! as! [HKCategorySample], deleted: deletedSamples!)
             case(dataType.standingHours.rawValue):
-                self.handleStangingHours(new: newSamples! as! [HKCategorySample], deleted: deletedSamples!)
+                self.handleStandingHours(new: newSamples! as! [HKCategorySample], deleted: deletedSamples!)
             case(dataType.distanceWalkingRunning.rawValue):
                 self.handleQuantitySample(new: newSamples! as! [HKQuantitySample], deleted: deletedSamples!, dataType: datatype,unit: HKUnit.mile())
             case(dataType.activeEnergy.rawValue):
@@ -198,7 +198,7 @@ class DataManager: NSObject {
     
     }
     
-    func handleStangingHours(new: [HKCategorySample], deleted:[HKDeletedObject]) {
+    func handleStandingHours(new: [HKCategorySample], deleted:[HKDeletedObject]) {
         //
     }
     
@@ -228,37 +228,40 @@ class DataManager: NSObject {
         else{
             StorageManager.sharedInstance.addData(entityName: "Data", type: dataType.rawValue, timestamp: timestamp, value: (((new.last?.quantity.doubleValue(for: unit))!)))
         }
-        
-        
-        /*
-         print("Added last sample")
-         print("Show all records:")
-         let results = StorageManager.sharedInstance.getAllData(entityName: "Data")
-         for data in results{
-         print(data.value(forKey: "type") as! String)
-         print(data.value(forKey: "timestamp") as! String)
-         print(data.value(forKey: "value") as! Double)
-         };*/
-        
-        
-        //StorageManager.sharedInstance.deleteAllData(entityName: "Data")
-        
-        // Send data to server
-        /*
-         let typesString: [dataTypes] = [dataTypes.heartrate]
-         let samples:Double = (new.last?.quantity.doubleValue(for: HKUnit.count().unitDivided(by: HKUnit.minute())))!
-         
-         
-         }
-         
-         NetworkManager.sharedInstance.sendPostRequest(input: D4HDataUploadRequest(authToken:"6", types: typesString ,values:[samples], timestamps:[string]), endpoint: D4HEndpoint.login) { (response, error) in
-         if response != nil {
-         let myres = D4HLoginResponse(fromJson: response!)
-         print(myres.message)
-         }
-         else if let error = error {
-         print(error)
-         }
-         }*/
+    }
+    
+    
+    func initTimer(){
+        DispatchQueue.global(qos: .background).async {
+            while (true) {
+                print("Timer fired!")
+                
+                print("Show all records:")
+                let results = StorageManager.sharedInstance.getAllData(entityName: "Data")
+                for data in results{
+                    print(data.value(forKey: "type") as! String)
+                    print(data.value(forKey: "timestamp") as! String)
+                    print(data.value(forKey: "value") as! Double)
+                }
+                
+                
+                // Send all data
+                
+                /*
+                 NetworkManager.sharedInstance.sendPostRequest(input: D4HDataUploadRequest(authToken:"6", types: [dataType.heartrate] ,values:[[Double(50)]], timestamps:[["timestamp"]]), endpoint: D4HEndpoint.login) { (response, error) in
+                 if response != nil {
+                 let myres = D4HLoginResponse(fromJson: response!)
+                 print(myres.message)
+                 }
+                 else if let error = error {
+                 print(error)
+                 }
+                 }*/
+                
+                StorageManager.sharedInstance.deleteAllData(entityName: "Data")
+                
+                sleep(5)
+            }
+        }
     }
 }

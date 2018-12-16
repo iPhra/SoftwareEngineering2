@@ -35,6 +35,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         dataManager.storeBiologicalSex()
         
+        //dataManager.initTimer()
+        
         //Clean all data for debugging
         StorageManager.sharedInstance.deleteAllData(entityName: "Data")
         StorageManager.sharedInstance.deleteAllData(entityName: "AutomatedSOS")
