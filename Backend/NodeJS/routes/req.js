@@ -184,21 +184,47 @@ router.post('/tp/downloadGroup', validateRequest, async (req, res) => {
             return
         }
 
-        //retrieve data types and search parameters
-        let types = await getRequestTypes(req);
-        let parameters = await getRequestParameters(req);
+        const req_id = rows.rows[0].req_id;
+        const types = await getRequestTypes(req); //data types of the request
+        const parameters = await getRequestParameters(req); //search parameters of the request
+        const final_date = getFinalDate(rows); //maximum date allowed for each data point
+        const users = await getTargetUsers(parameters, final_date); //get target users matching the search parameters
 
-        let i;
-        const final_date = getFinalDate(rows);
-
-        //check that at least 1000 users exist matching the search parameters
-        if(!(await checkGroupCondition(parameters, final_date))) {
+        //if the target users are less than 1000
+        if(users.length <1) {
+            await setChoice('refused', req_id);
             res.status(403).send({error: "Less than 1000 users match the search parameters"});
             return;
         }
 
-        //@todo add data retrieval
+        let i;
+        let j;
+        let obj;
+        let response = [];
 
+        for(i=0; i<users.length; i++) {
+
+            obj = {
+                "userid" : i,
+                "data" : []
+            };
+
+            for(j=0; j<types.length; j++) {
+                text = "SELECT value,timest FROM userdata WHERE userid = $1 and datatype = $2";
+                values = [users[i], types[j].datatype];
+                rows = await db.query(text, values);
+
+                obj.data.push({
+                    "type" : types[j].datatype,
+                    "values" : rows.rows
+                })
+            }
+
+            response.push(obj)
+
+        }
+
+        await setChoice('accepted', req_id);
         res.status(200).send({data: response});
     } catch(error) {
         return logError(error, res)
@@ -415,19 +441,41 @@ async function checkPendingGroupRequests(userID) {
 
 
 //checks that at least 1000 users exist matching the search parameters
-async function checkGroupCondition(parameters, req_date) {
-    let unique = 0;
+async function getTargetUsers(parameters, req_date) {
+    let unique = [];
     let i;
+    let j;
     let text;
     let values;
+    let users;
 
     for(i=0; i<parameters.length; i++) {
-        text = "SELECT count(distinct(userid)) as n FROM userdata WHERE datatype=$1 and timest::date<=$2 and value>$3 and value<$4 ";
-        values = [parameters[i].datatype, req_date, parameters[i].lowerbound, parameters[i].upperbound];
-        unique += +((await db.query(text, values)).rows[0].n);
+
+        text = "SELECT distinct(userid) FROM userdata WHERE datatype=$1 and timest::date<=$2";
+        values = [parameters[i].datatype, req_date];
+
+        if(parameters[i].lowerbound) {
+            text+= " and value>$3";
+            values.push(parameters[i].lowerbound);
+
+            if(parameters[i].upperbound) {
+                text+= " and value<$4";
+                values.push(parameters[i].upperbound)
+            }
+        }
+        else if(parameters[i].upperbound) {
+            text+= " and value<$3";
+            values.push(parameters[i].upperbound)
+        }
+
+        users = await db.query(text, values);
+
+        for(j=0; j<users.rowCount; j++) {
+            unique.push(users.rows[j].userid);
+        }
     }
 
-    return unique>=1000
+    return unique
 }
 
 
@@ -471,6 +519,14 @@ function getFinalDate(rows) {
         final_date = rows.rows[0].req_date;
     }
     return final_date
+}
+
+
+//sets the result of a group request
+async function setChoice(choice, req_id) {
+    let text = "UPDATE grouprequest SET status=$1 WHERE req_id = $2";
+    let values = [choice, req_id];
+    await db.query(text, values)
 }
 
 
