@@ -1,5 +1,4 @@
 
-//@todo Generare activToken come una stringa random basata sullo userID
 //@todo Aggiungere encryption ed EncryptionManager
 //@todo Salvare jwt key nelle enviromental variables
 //@todo rivedere dove stanno i catch per i login

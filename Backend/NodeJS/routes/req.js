@@ -325,6 +325,7 @@ router.get('/tp/list', authenticator(), async (req, res) => {
             obj = {
                 "reqid" : singlerequests.rows[i].req_id,
                 "email" : privateuser.rows[0].email,
+                "full_name" : privateuser.rows[0].full_name,
                 "fc" : privateuser.rows[0].fc,
                 "types" : datatypes.rows,
                 "status" : singlerequests.rows[i].status,
