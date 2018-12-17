@@ -79,7 +79,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         print("Application will be closed")
         //LOG OUT
-        NetworkManager.sharedInstance.sendPostRequest(input: D4HLogoutRequest(authToken: Properties.authToken), endpoint: D4HEndpoint.logout) { (response, error) in
+        NetworkManager.sharedInstance.sendPostRequest(input: D4HLogoutRequest(authToken: Properties.authToken), endpoint: D4HEndpoint.logout, headers: Properties.auth()) { (response, error) in
             if response != nil {
                 let myres = D4HLogoutResponse(fromJson: response!)
                 // Reset authToken

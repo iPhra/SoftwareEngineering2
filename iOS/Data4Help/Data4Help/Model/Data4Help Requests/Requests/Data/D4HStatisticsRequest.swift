@@ -14,13 +14,11 @@ class D4HStatisticsRequest: D4HRequest {
     
     // MARK: - Properties
     
-    let authToken: String
     let types: [dataType]
     
     // MARK: Initialisation
     
-    init(authToken: String,  types: [dataType]) {
-        self.authToken = authToken
+    init(types: [dataType]) {
         self.types = types
         super.init(encodingType: D4HEncodingType.UTF16)
     }
@@ -29,7 +27,6 @@ class D4HStatisticsRequest: D4HRequest {
     
     override func getParams() -> Parameters {
         let params: Parameters = [
-            "authToken": authToken,
             "types": types
         ]
         print(params)

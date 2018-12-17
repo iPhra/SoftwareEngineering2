@@ -14,13 +14,11 @@ class D4HDownloadGroupRequest: D4HRequest {
     
     // MARK: - Properties
     
-    let authToken: String
     let reqID: String
     
     // MARK: Initialisation
     
-    init(authToken: String,  reqID: String) {
-        self.authToken = authToken
+    init(reqID: String) {
         self.reqID = reqID
         super.init(encodingType: D4HEncodingType.UTF16)
     }
@@ -29,7 +27,6 @@ class D4HDownloadGroupRequest: D4HRequest {
     
     override func getParams() -> Parameters {
         let params: Parameters = [
-            "authToken": authToken,
             "reqID": reqID
         ]
         print(params)

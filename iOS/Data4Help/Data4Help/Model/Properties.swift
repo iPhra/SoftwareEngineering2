@@ -19,19 +19,14 @@ struct Properties {
         self.authToken = ""
     }
     
+    static func auth() -> [String : String] {
+        return ["x-authToken" : self.authToken]
+    }
+    
     static func logout(controller: UIViewController) {
-        NetworkManager.sharedInstance.sendPostRequest(input: D4HLogoutRequest(authToken: self.authToken), endpoint: D4HEndpoint.logout) { (response, error) in
-            if response != nil {
-                let myres = D4HLogoutResponse(fromJson: response!)
                 // Reset authToken
-                        self.authToken = ""
-                print(myres.message)
+                self.authToken = ""
                 controller.performSegue(withIdentifier: "BackToLogin", sender: controller)
-            }
-            else if let error = error {
-                print(error)
-            }
-        }
     }
 }
 

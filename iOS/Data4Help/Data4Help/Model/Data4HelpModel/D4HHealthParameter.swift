@@ -14,12 +14,12 @@ class D4HHealthParameter {
     // MARK: - Properties
     
     let datatype: dataType
-    let upperbound: Int
-    let lowerbound: Int
+    let upperbound: Double
+    let lowerbound: Double
     
     // MARK: - initialization
     
-    init( datatype: dataType, upperbound: Int, lowerbound: Int) {
+    init( datatype: dataType, upperbound: Double, lowerbound: Double) {
         self.datatype = datatype
         self.upperbound = upperbound
         self.lowerbound = lowerbound
@@ -28,8 +28,8 @@ class D4HHealthParameter {
     init(fromJson json: JSON) {
         let type = json["datatype"].stringValue
         self.datatype = dataType(rawValue: type)!
-        self.upperbound = json["upperbound"].intValue
-        self.lowerbound = json["lowerbound"].intValue
+        self.upperbound = json["upperbound"].doubleValue
+        self.lowerbound = json["lowerbound"].doubleValue
     }
     
 }

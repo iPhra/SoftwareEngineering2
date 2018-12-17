@@ -14,21 +14,17 @@ class D4HThirdPartyListRequest: D4HRequest {
     
     // MARK: - Properties
     
-    let authToken: String
     
     // MARK: Initialisation
     
     init(authToken: String) {
-        self.authToken = authToken
         super.init(encodingType: D4HEncodingType.UTF16)
     }
     
     // MARK: - Networking
     
     override func getParams() -> Parameters {
-        let params: Parameters = [
-            "authToken": authToken
-        ]
+        let params: Parameters = [:]
         print(params)
         return params
     }

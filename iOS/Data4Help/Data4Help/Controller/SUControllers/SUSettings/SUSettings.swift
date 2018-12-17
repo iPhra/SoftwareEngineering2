@@ -87,7 +87,7 @@ class SUSettings: UIViewController {
         let password = EditSettings?.passwordTextField.text
         let birthdate = EditSettings?.birthdateTextField.text
 
-        NetworkManager.sharedInstance.sendPostRequest(input: D4HSingleUserSettingsRequest(authToken: Properties.authToken, password: password!, fullname: fullname!, birthdate: birthdate!), endpoint: D4HEndpoint.setInfoSingle) { (response, error) in
+        NetworkManager.sharedInstance.sendPostRequest(input: D4HSingleUserSettingsRequest(password: password!, fullname: fullname!, birthdate: birthdate!), endpoint: D4HEndpoint.setInfoSingle, headers: Properties.auth()) { (response, error) in
             if response != nil {
                 let myres = D4HRegisterSingleResponse(fromJson: response!)
                 print(myres.message)

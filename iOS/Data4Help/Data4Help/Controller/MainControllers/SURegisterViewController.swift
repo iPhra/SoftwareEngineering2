@@ -48,7 +48,7 @@ class SURegisterViewController: UIViewController {
         
         //send request throw Network Manager with registration details
         print(D4HEndpoint.registerSingle)
-        NetworkManager.sharedInstance.sendPostRequest(input: D4HSingleRegisterRequest(email: EmailTextView.text!, password: passwordTextView.text!, FC: cfTextView.text!, fullname: fullnameTextView.text!, birthday: birthdateTextView.text!, sex: "M"), endpoint: D4HEndpoint.registerSingle) { (response, error) in
+        NetworkManager.sharedInstance.sendPostRequest(input: D4HSingleRegisterRequest(email: EmailTextView.text!, password: passwordTextView.text!, FC: cfTextView.text!, fullname: fullnameTextView.text!, birthday: birthdateTextView.text!, sex: "M"), endpoint: D4HEndpoint.registerSingle, headers: nil) { (response, error) in
             if response != nil {
                 let myres = D4HRegisterSingleResponse(fromJson: response!)
                 print(myres.message)
