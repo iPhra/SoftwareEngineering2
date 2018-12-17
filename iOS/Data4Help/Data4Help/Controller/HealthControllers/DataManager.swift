@@ -8,7 +8,7 @@
 
 import UIKit
 import HealthKit
-
+import CoreData
 
 /*
  * Handles health data access thorugh HKHealthStore object
@@ -94,24 +94,30 @@ class DataManager: NSObject {
     // Mark: Background activities
     
     public func storeBiologicalSex(){
+        let sex = self.getBiologicalSex()
+        StorageManager.sharedInstance.storeBiologicalSex(biologicalSex: sex)
+    }
+    
+    func getBiologicalSex() -> String {
+        var sex: String = ""
         do{
-            let biologicalSex = try self.healthStore.biologicalSex().biologicalSex.rawValue
-            var sex: String = ""
-            switch biologicalSex {
-            case 1:
-                sex = "F"
-            case 2:
-                sex = "M"
-            case 3:
-                sex = "U"
-            default:
-                break
-            }
-            StorageManager.sharedInstance.storeBiologicalSex(biologicalSex: sex)
+        let biologicalSex = try self.healthStore.biologicalSex().biologicalSex.rawValue
+        switch biologicalSex {
+        case 1:
+            sex = "F"
+        case 2:
+            sex = "M"
+        case 3:
+            sex = "U"
+        default:
+            break
+        }
+        return sex
         }
         catch{
             print("Could not retrieve biological sex")
-        }        
+        }
+        return sex
     }
     
     public func enableBackgroundData(input: HKSampleType, datatype: dataType){

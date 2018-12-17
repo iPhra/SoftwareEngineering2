@@ -33,7 +33,7 @@ class StorageManager: NSObject {
     /*Gets all data of specified entity*/
     func getAllData(entityName:String) -> [NSManagedObject]{
         var array: [NSManagedObject] = []
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Data")
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
         //request.predicate = NSPredicate(format: "age = %@", "12")
         request.returnsObjectsAsFaults = false
         do {
