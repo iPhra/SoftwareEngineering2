@@ -7,6 +7,8 @@ const logError = utils.logError;
 const router = new Router();
 
 
+//@todo rivedere dove stanno i catch per i login
+
 router.post('/single/info', authenticator(), async (req, res) => {
     let userID = req.body.userid;
 

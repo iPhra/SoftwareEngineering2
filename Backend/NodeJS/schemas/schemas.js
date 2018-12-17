@@ -41,39 +41,33 @@ const login = {
 };
 
 const singleSettings = {
-    authToken : authToken,
     password : password,
     full_name : full_name,
     birthdate : birthdate,
 };
 
 const tpSettings = {
-    authToken : authToken,
     password : password,
     company_name : company_name,
     company_description : company_description,
 };
 
 const dataSettings = Joi.object({
-    authToken : authToken,
     types : types,
     enabled : Joi.array().items(Joi.boolean()).required(),
 }).assert('types.length',Joi.ref('enabled.length'));
 
 const dataImport = Joi.object({
-    authToken : authToken,
     types : types,
     values : Joi.array().items(Joi.array().items(Joi.number())).required(),
     timestamps: Joi.array().items(Joi.array().items(Joi.date().iso())).required(),
 }).assert('types.length',Joi.ref('values.length')).assert('types.length',Joi.ref('timestamps.length'));
 
 const dataStats = {
-    authToken : authToken,
     types : types,
 };
 
 const singleReq = {
-    authToken : authToken,
     email: email,
     fc: fc,
     types: types,
@@ -82,7 +76,6 @@ const singleReq = {
 };
 
 const groupReq = Joi.object({
-    authToken : authToken,
     types: types,
     parameters: Joi.array().items(dataTypes).required(),
     bounds : Joi.array().items(Joi.object().keys({
@@ -94,18 +87,12 @@ const groupReq = Joi.object({
 }).assert('parameters.length',Joi.ref('bounds.length'));
 
 const acceptReq = {
-    authToken : authToken,
     reqID : Joi.number().integer().required(),
     choice : Joi.boolean().required(),
 };
 
 const downloadReq = {
-    authToken : authToken,
     reqID : Joi.number().integer().required(),
-};
-
-const log = {
-    authToken : authToken,
 };
 
 
@@ -114,7 +101,6 @@ module.exports = {
     '/auth/reg/single' : singleRegSchema,
     '/auth/reg/tp' : thirdRegSchema,
     '/auth/login' : login,
-    '/auth/logout' : log,
     '/settings/single/info' : singleSettings,
     '/settings/tp/info' : tpSettings,
     '/settings/single/data' : dataSettings,
