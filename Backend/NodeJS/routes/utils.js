@@ -1,26 +1,11 @@
 const db = require('../settings/dbconnection');
+const bcrypt = require('bcryptjs');
 
 
 //logs an error thrown when a query fails, and sends a HTTP 400 response
 function logError(error, res) {
     console.log(error);
     res.status(400).send({error: 'Query error'});
-}
-
-
-//true if the given userID is a ThirdParty
-async function isThirdParty(userID) {
-    const text = 'SELECT * FROM ThirdParty WHERE userID = $1';
-    const res = await db.query(text, [userID]);
-    return res.rowCount>0
-}
-
-
-//true if the given userID is a PrivateUser
-async function isPrivateUser(userID) {
-    const text = 'SELECT * FROM PrivateUser WHERE userID = $1';
-    const res = await db.query(text, [userID]);
-    return res.rowCount>0
 }
 
 
@@ -40,9 +25,15 @@ function addDays(date, days) {
 }
 
 
+//hashes the password
+async function hashPassword(password) {
+    const salt = await bcrypt.genSalt(10);
+    return await bcrypt.hash(password, salt);
+}
+
+
 
 module.exports.logError = logError;
-module.exports.isThirdParty = isThirdParty;
-module.exports.isPrivateUser = isPrivateUser;
 module.exports.getUserIDByEmail = getUserIDByEmail;
 module.exports.addDays = addDays;
+module.exports.hashPassword = hashPassword;

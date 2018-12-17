@@ -3,6 +3,7 @@ const db = require('../settings/dbconnection');
 const utils = require('./utils');
 const authenticator = require('../middlewares/authenticator');
 
+const hashPassword = utils.hashPassword;
 const logError = utils.logError;
 const router = new Router();
 
@@ -26,8 +27,9 @@ router.post('/single/info', authenticator(), async (req, res) => {
         let values;
 
         if(req.body.password) {
+            const password = await(hashPassword(req.body.password));
             text = "UPDATE PrivateUser SET password=$1 WHERE userID=$2";
-            values = [req.body.password, userID];
+            values = [password, userID];
             await db.query(text, values);
         }
 
@@ -68,10 +70,10 @@ router.post('/tp/info', authenticator(), async (req, res) => {
         let text;
         let values;
 
-        //@todo hash password
         if(req.body.password) {
+            const password = await(hashPassword(req.body.password));
             text = "UPDATE ThirdParty SET password=$1 WHERE userID=$2";
-            values = [req.body.password, userID];
+            values = [password, userID];
             await db.query(text, values);
         }
 

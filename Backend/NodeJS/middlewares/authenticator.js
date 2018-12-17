@@ -11,7 +11,7 @@ module.exports = () => {
             req.body.usertype = decoded.usertype;
             next()
         } catch(err) {
-            return res.status(401).send("Authentication failed");
+            return res.status(401).send({error: "Authentication failed"});
         }
     }
 };

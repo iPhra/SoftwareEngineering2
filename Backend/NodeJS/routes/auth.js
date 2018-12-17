@@ -8,6 +8,7 @@ const sendEmail = require('../settings/mailer');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
+const hashPassword = require("./utils").hashPassword;
 const logError = require("./utils").logError;
 const router = new Router();
 
@@ -201,12 +202,6 @@ async function insertIntoRegistration() {
     const values = [id, false];
     await db.query(text, values);
     return id;
-}
-
-
-async function hashPassword(password) {
-    const salt = await bcrypt.genSalt(10);
-    return await bcrypt.hash(password, salt);
 }
 
 

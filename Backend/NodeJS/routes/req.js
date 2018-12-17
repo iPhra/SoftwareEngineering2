@@ -20,6 +20,7 @@ router.post('/tp/sendSingle', authenticator(), async (req, res) => {
             return
         }
 
+        //@todo prendere l'id o data la email o dato il fc a seconda di quel che c'è
         const receiver_id = await getUserIDByEmail(req);
 
         //if the receiving user does not exist
@@ -357,7 +358,7 @@ router.get('/tp/list', authenticator(), async (req, res) => {
                 "status" : singlerequests.rows[i].status,
                 "subscribing" : singlerequests.rows[i].subscribing,
                 "duration" : singlerequests.rows[i].duration,
-                "req_date" : requests.rows[i].req_date
+                "req_date" : singlerequests.rows[i].req_date
             };
 
             single.push(obj);
@@ -390,7 +391,8 @@ router.get('/tp/list', authenticator(), async (req, res) => {
                 "parameters" : searchparameters.rows,
                 "status" : grouprequests.rows[i].status,
                 "subscribing" : grouprequests.rows[i].subscribing,
-                "duration" : grouprequests.rows[i].duration
+                "duration" : grouprequests.rows[i].duration,
+                "req_date" : grouprequests.rows[i].req_date
             };
 
             group.push(obj);
