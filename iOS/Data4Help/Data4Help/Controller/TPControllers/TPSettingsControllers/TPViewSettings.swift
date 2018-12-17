@@ -9,6 +9,14 @@
 import UIKit
 
 class TPViewSettings: UIViewController {
+    
+    // MARK: Outlets
+    
+    @IBOutlet weak var organisationNameLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var passwordLabel: UILabel!
+    @IBOutlet weak var pivaLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
