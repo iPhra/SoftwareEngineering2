@@ -1,28 +1,22 @@
 const Router = require('express-promise-router');
-const Validator = require('../schemas/validator');
 const db = require('../settings/dbconnection');
-const auth = require('./auth');
 const utils = require('./utils');
+const authenticator = require('../middlewares/authenticator');
 
-const isLogged = auth.isLogged;
-const getUserIDByToken = auth.getUserIDByToken;
 const logError = utils.logError;
 const getUserIDByEmail = utils.getUserIDByEmail;
-const isThirdParty = utils.isThirdParty;
-const isPrivateUser = utils.isPrivateUser;
 const addDays = utils.addDays;
-const validateRequest = Validator();
 const router = new Router();
 
 
-router.post('/tp/sendSingle', validateRequest, async (req, res) => {
-    let userID = getUserIDByToken(req.body.authToken);
+router.post('/tp/sendSingle', authenticator(), async (req, res) => {
+    let userID = req.body.userid;
 
     try {
 
-        //if he's not logged in or he's not a ThirdParty
-        if (!isLogged(req.body.authToken) || !(await isThirdParty(userID))) {
-            res.status(401).send({error: "Wrong authentication"});
+        //if he's not logged in or he's not a PrivateUser
+        if (req.body.usertype!=="ThirdParty") {
+            res.status(401).send({error: "You need to login with a Third Party account"});
             return
         }
 
@@ -66,14 +60,14 @@ router.post('/tp/sendSingle', validateRequest, async (req, res) => {
 });
 
 
-router.post('/tp/sendGroup', validateRequest, async (req, res) => {
-    let userID = getUserIDByToken(req.body.authToken);
+router.post('/tp/sendGroup', authenticator(), async (req, res) => {
+    let userID = req.body.userid;
 
     try {
 
-        //if he's not logged in or he's not a ThirdParty
-        if (!isLogged(req.body.authToken) || !(await isThirdParty(userID))) {
-            res.status(401).send({error: "Wrong authentication"});
+        //if he's not logged in or he's not a PrivateUser
+        if (req.body.usertype!=="ThirdParty") {
+            res.status(401).send({error: "You need to login with a Third Party account"});
             return
         }
 
@@ -116,14 +110,14 @@ router.post('/tp/sendGroup', validateRequest, async (req, res) => {
 });
 
 
-router.post('/tp/downloadSingle', validateRequest, async (req, res) => {
-    let userID = getUserIDByToken(req.body.authToken);
+router.post('/tp/downloadSingle', authenticator(), async (req, res) => {
+    let userID = req.body.userid;
 
     try {
 
-        //if he's not logged in or he's not a ThirdParty
-        if (!isLogged(req.body.authToken) || !(await isThirdParty(userID))) {
-            res.status(401).send({error: "Wrong authentication"});
+        //if he's not logged in or he's not a PrivateUser
+        if (req.body.usertype!=="ThirdParty") {
+            res.status(401).send({error: "You need to login with a Third Party account"});
             return
         }
 
@@ -162,14 +156,14 @@ router.post('/tp/downloadSingle', validateRequest, async (req, res) => {
 });
 
 
-router.post('/tp/downloadGroup', validateRequest, async (req, res) => {
-    let userID = getUserIDByToken(req.body.authToken);
+router.post('/tp/downloadGroup', authenticator(), async (req, res) => {
+    let userID = req.body.userid;
 
     try {
 
-        //if he's not logged in or he's not a ThirdParty
-        if (!isLogged(req.body.authToken) || !(await isThirdParty(userID))) {
-            res.status(401).send({error: "Wrong authentication"});
+        //if he's not logged in or he's not a PrivateUser
+        if (req.body.usertype!=="ThirdParty") {
+            res.status(401).send({error: "You need to login with a Third Party account"});
             return
         }
 
@@ -232,14 +226,14 @@ router.post('/tp/downloadGroup', validateRequest, async (req, res) => {
 });
 
 
-router.post('/single/choice', validateRequest, async (req, res) => {
-    let userID = getUserIDByToken(req.body.authToken);
+router.post('/single/choice', authenticator(), async (req, res) => {
+    let userID = req.body.userid;
 
     try {
 
         //if he's not logged in or he's not a PrivateUser
-        if (!isLogged(req.body.authToken) || !(await isPrivateUser(userID))) {
-            res.status(401).send({error: "Wrong authentication"});
+        if (req.body.usertype!=="PrivateUser") {
+            res.status(401).send({error: "You need to login with a Single User account"});
             return
         }
 
@@ -265,14 +259,14 @@ router.post('/single/choice', validateRequest, async (req, res) => {
 });
 
 
-router.get('/single/list', async (req, res) => {
-    let userID = getUserIDByToken(req.query.authToken);
+router.get('/single/list', authenticator(), async (req, res) => {
+    let userID = req.body.userid;
 
     try {
 
         //if he's not logged in or he's not a PrivateUser
-        if (!isLogged(req.query.authToken) || !(await isPrivateUser(userID))) {
-            res.status(401).send({error: "Wrong authentication"});
+        if (req.body.usertype!=="PrivateUser") {
+            res.status(401).send({error: "You need to login with a Single User account"});
             return
         }
 
@@ -306,7 +300,8 @@ router.get('/single/list', async (req, res) => {
                 "types" : datatypes.rows,
                 "status" : requests.rows[i].status,
                 "subscribing" : requests.rows[i].subscribing,
-                "duration" : requests.rows[i].duration
+                "duration" : requests.rows[i].duration,
+                "req_date" : requests.rows[i].req_date
             };
 
             result.push(obj);
@@ -319,14 +314,14 @@ router.get('/single/list', async (req, res) => {
 });
 
 
-router.get('/tp/list', async (req, res) => {
-    let userID = getUserIDByToken(req.query.authToken);
+router.get('/tp/list', authenticator(), async (req, res) => {
+    let userID = req.body.userid;
 
     try {
 
-        //if he's not logged in or he's not a ThirdParty
-        if (!isLogged(req.query.authToken) || !(await isThirdParty(userID))) {
-            res.status(401).send({error: "Wrong authentication"});
+        //if he's not logged in or he's not a PrivateUser
+        if (req.body.usertype!=="ThirdParty") {
+            res.status(401).send({error: "You need to login with a Third Party account"});
             return
         }
 
@@ -361,7 +356,8 @@ router.get('/tp/list', async (req, res) => {
                 "types" : datatypes.rows,
                 "status" : singlerequests.rows[i].status,
                 "subscribing" : singlerequests.rows[i].subscribing,
-                "duration" : singlerequests.rows[i].duration
+                "duration" : singlerequests.rows[i].duration,
+                "req_date" : requests.rows[i].req_date
             };
 
             single.push(obj);

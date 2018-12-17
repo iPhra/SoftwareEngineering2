@@ -1,26 +1,20 @@
 const Router = require('express-promise-router');
-const Validator = require('../schemas/validator');
 const db = require('../settings/dbconnection');
-const auth = require('./auth');
 const utils = require('./utils');
+const authenticator = require('../middlewares/authenticator');
 
-const isLogged = auth.isLogged;
-const getUserIDByToken = auth.getUserIDByToken;
 const logError = utils.logError;
-const isThirdParty = utils.isThirdParty;
-const isPrivateUser = utils.isPrivateUser;
-const validateRequest = Validator();
 const router = new Router();
 
 
-router.post('/single/info', validateRequest, async (req, res) => {
-    let userID = getUserIDByToken(req.body.authToken);
+router.post('/single/info', authenticator(), async (req, res) => {
+    let userID = req.body.userid;
 
     try {
 
         //if he's not logged in or he's not a PrivateUser
-        if (!isLogged(req.body.authToken) || !(await isPrivateUser(userID))) {
-            res.status(401).send({error: "Wrong authentication"});
+        if (req.body.usertype!=="PrivateUser") {
+            res.status(401).send({error: "You need to login with a Single User account"});
             return
         }
 
@@ -56,14 +50,14 @@ router.post('/single/info', validateRequest, async (req, res) => {
 });
 
 
-router.post('/tp/info', validateRequest, async (req, res) => {
-    let userID = getUserIDByToken(req.body.authToken);
+router.post('/tp/info', authenticator(), async (req, res) => {
+    let userID = req.body.userid;
 
     try {
 
-        //if he's not logged in or he's not a ThirdParty
-        if (!isLogged(req.body.authToken) || !(await isThirdParty(userID))) {
-            res.status(401).send({error: "Wrong authentication"});
+        //if he's not logged in or he's not a PrivateUser
+        if (req.body.usertype!=="ThirdParty") {
+            res.status(401).send({error: "You need to login with a Third Party account"});
             return
         }
 
@@ -72,6 +66,7 @@ router.post('/tp/info', validateRequest, async (req, res) => {
         let text;
         let values;
 
+        //@todo hash password
         if(req.body.password) {
             text = "UPDATE ThirdParty SET password=$1 WHERE userID=$2";
             values = [req.body.password, userID];
@@ -99,14 +94,14 @@ router.post('/tp/info', validateRequest, async (req, res) => {
 });
 
 
-router.post('/single/data', validateRequest, async (req, res) => {
-    let userID = getUserIDByToken(req.body.authToken);
+router.post('/single/data', authenticator(), async (req, res) => {
+    let userID = req.body.userid;
 
     try {
 
         //if he's not logged in or he's not a PrivateUser
-        if (!isLogged(req.body.authToken) || !(await isPrivateUser(userID))) {
-            res.status(401).send({error: "Wrong authentication"});
+        if (req.body.usertype!=="PrivateUser") {
+            res.status(401).send({error: "You need to login with a Single User account"});
             return
         }
 

@@ -1,19 +1,14 @@
 const Router = require('express-promise-router');
-const Validator = require('../schemas/validator');
 const db = require('../settings/dbconnection');
-const auth = require('./auth');
 const utils = require('./utils');
+const authenticator = require('../middlewares/authenticator');
 
-const isLogged = auth.isLogged;
-const getUserIDByToken = auth.getUserIDByToken;
 const logError = utils.logError;
-const isPrivateUser = utils.isPrivateUser;
-const validateRequest = Validator();
 const router = new Router();
 
 
-router.post('/upload', validateRequest, async (req, res) => {
-    let userID = getUserIDByToken(req.body.authToken);
+router.post('/upload', authenticator(), async (req, res) => {
+    let userID = req.body.userid;
     let i;
     let j;
     let text;
@@ -21,9 +16,9 @@ router.post('/upload', validateRequest, async (req, res) => {
 
     try {
 
-        //if he's not logged in or he's not a PrivateUser he can't access this endpoint
-        if (!isLogged(req.body.authToken) || !(await isPrivateUser(userID))) {
-            res.status(401).send({error: "Wrong authentication"});
+        //if he's not logged in or he's not a PrivateUser
+        if (req.body.usertype!=="PrivateUser") {
+            res.status(401).send({error: "You need to login with a Single User account"});
             return
         }
 
@@ -53,14 +48,14 @@ router.post('/upload', validateRequest, async (req, res) => {
 });
 
 
-router.post('/stats', validateRequest, async (req, res) => {
-    let userID = getUserIDByToken(req.body.authToken);
+router.post('/stats', authenticator(), async (req, res) => {
+    let userID = req.body.userid;
 
     try {
 
-        //if he's not logged in or he's not a PrivateUser he can't access this endpoint
-        if (!isLogged(req.body.authToken) || !(await isPrivateUser(userID))) {
-            res.status(401).send({error: "Wrong authentication"});
+        //if he's not logged in or he's not a PrivateUser
+        if (req.body.usertype!=="PrivateUser") {
+            res.status(401).send({error: "You need to login with a Single User account"});
             return
         }
 

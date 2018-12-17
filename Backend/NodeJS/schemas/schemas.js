@@ -4,7 +4,7 @@
 
 const Joi = require('joi');
 const email = Joi.string().email().max(40).required();
-const fc = Joi.string().length(9).required();
+const fc = Joi.string().length(16).required();
 const password = Joi.string().min(8).max(20);
 const authToken = Joi.string().required();
 const full_name = Joi.string().max(30);
@@ -111,19 +111,19 @@ const log = {
 
 
 module.exports = {
-    '/reg/single' : singleRegSchema,
-    '/reg/tp' : thirdRegSchema,
-    '/login' : login,
-    '/logout' : log,
-    '/single/info' : singleSettings,
-    '/tp/info' : tpSettings,
-    '/single/data' : dataSettings,
-    '/upload' : dataImport,
-    '/stats' : dataStats,
-    '/tp/sendSingle' : singleReq,
-    '/tp/sendGroup' : groupReq,
-    '/single/choice' : acceptReq,
-    '/tp/downloadSingle' : downloadReq,
-    '/tp/downloadGroup' : downloadReq
+    '/auth/reg/single' : singleRegSchema,
+    '/auth/reg/tp' : thirdRegSchema,
+    '/auth/login' : login,
+    '/auth/logout' : log,
+    '/settings/single/info' : singleSettings,
+    '/settings/tp/info' : tpSettings,
+    '/settings/single/data' : dataSettings,
+    '/data/upload' : dataImport,
+    '/data/stats' : dataStats,
+    '/req/tp/sendSingle' : singleReq,
+    '/req/tp/sendGroup' : groupReq,
+    '/req/single/choice' : acceptReq,
+    '/req/tp/downloadSingle' : downloadReq,
+    '/req/tp/downloadGroup' : downloadReq
 };
 

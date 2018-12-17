@@ -3,19 +3,16 @@
 //@todo Aggiungere encryption ed EncryptionManager
 
 const Router = require('express-promise-router');
-const Validator = require('../schemas/validator');
 const db = require('../settings/dbconnection');
 const sendEmail = require('../settings/mailer');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 const logError = require("./utils").logError;
-const validateRequest = Validator();
 const router = new Router();
 
-let loggedUsers = {}; //hashmap authToken : userID
 
-
-router.post('/reg/single', validateRequest, async (req, res) => {
+router.post('/reg/single', async (req, res) => {
     let text;
     let values;
     let rows;
@@ -61,7 +58,7 @@ router.post('/reg/single', validateRequest, async (req, res) => {
 });
 
 
-router.post('/reg/tp', validateRequest, async (req, res) => {
+router.post('/reg/tp', async (req, res) => {
     let text;
     let values;
     let rows;
@@ -107,12 +104,13 @@ router.post('/reg/tp', validateRequest, async (req, res) => {
 });
 
 
-router.post('/login', validateRequest, async (req, res) => {
+router.post('/login', async (req, res) => {
     let text;
     let rows_private;
     let rows_tp;
     let password;
     let userID;
+    let type;
 
     //query the database to find an existing account with the provided credentials
     try {
@@ -127,46 +125,31 @@ router.post('/login', validateRequest, async (req, res) => {
         if(rows_private.rowCount>0) {
             password = rows_private.rows[0].password;
             userID = rows_private.rows[0].userid;
+            type = "PrivateUser"
         }
         else if(rows_tp.rowCount>0) {
             password = rows_tp.rows[0].password;
             userID = rows_tp.rows[0].userid;
+            type = "ThirdParty"
         }
         else return res.status(401).send({error: "Email does not exist"});
 
         //if the password is wrong
         if(!(await bcrypt.compare(req.body.password, password))) return res.status(401).send({error: 'Wrong password'});
-    }
-    catch(error) {
+
+        const token = jwt.sign({
+            userid: userID,
+            usertype: type
+        }, 'gruosso');
+
+        res.status(200).send({
+            "message" : "Login successful",
+            "authToken" : token,
+            "userType" :  type
+        })
+    } catch(error) {
         return logError(error, res)
     }
-
-    //if the user is already logged in, i.e. his userid is a value (not key!) in the hashmap of logged users
-    if(Object.values(loggedUsers).indexOf(userID) > -1) {
-        res.status(403).send({error: 'Already logged in'});
-        return;
-    }
-
-    //add the user to the logged users list and send the authToken back to the client
-    loggedUsers[userID] = userID; //@todo cambiare! la chiave della hashmap deve essere authToken!
-    res.status(200).send({
-        "message" : "Login successful",
-        "authToken" : userID, //@todo cambiare! questo deve essere authToken
-        "userType" :  rows_tp.rowCount>0 ? "ThirdParty" : "PrivateUser"
-    })
-});
-
-
-router.post('/logout', validateRequest, async (req, res) => {
-
-    //if the user is not logged in
-    if (!(req.body.authToken in loggedUsers)) {
-        res.status(401).send({error: 'Not logged in'});
-        return;
-    }
-
-    delete loggedUsers[req.body.authToken];
-    res.status(200).send({message: "Logged out"});
 });
 
 
@@ -205,30 +188,19 @@ router.get('/activ', async (req, res) => {
     res.status(200).send({message: "Account activated"})
 });
 
+
 //creates the userID and inserts it into the Registration table
 async function insertIntoRegistration() {
 
     //evaluates the total number of registered users from the database, and generates the userID based on that value
     const rows = await db.query('SELECT count(*) as userID FROM Registration');
-    const id = (+rows.rows[0].userid +1).toString(); //@todo generarlo in modo intelligente dato questo valore
+    const id = (+rows.rows[0].userid +1).toString();
 
     //insert the userID into the Registration table
     const text = 'INSERT INTO Registration(userID, activated) VALUES($1, $2)';
     const values = [id, false];
     await db.query(text, values);
     return id;
-}
-
-
-//true if the authToken of the user is present in the hasmap, ie he's logged in the server
-function isLogged(authToken) {
-    return authToken in loggedUsers
-}
-
-
-//given the authToken of a user, returns its userID from the hashmap of logged users
-function getUserIDByToken(authToken) {
-    return loggedUsers[authToken]
 }
 
 
@@ -240,8 +212,6 @@ async function hashPassword(password) {
 
 
 module.exports = router;
-module.exports.isLogged = isLogged;
-module.exports.getUserIDByToken = getUserIDByToken;
 
 
 
