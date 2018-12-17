@@ -91,6 +91,13 @@ class SUSettings: UIViewController {
             if response != nil {
                 let myres = D4HRegisterSingleResponse(fromJson: response!)
                 print(myres.message)
+                
+                // Update Labels
+                self.ViewSettings?.fullNameLabel.text = (fullname?.isEmpty)! ? self.ViewSettings?.fullNameLabel.text : fullname
+                self.ViewSettings?.passwordLabel.text = (password?.isEmpty)! ? self.ViewSettings?.passwordLabel.text : password
+                self.ViewSettings?.birthdateLabel.text = (birthdate?.isEmpty)! ? self.ViewSettings?.birthdateLabel.text : birthdate
+                
+                // Exit from edit view
                 self.startEditing(self)
             }
             else if let error = error {

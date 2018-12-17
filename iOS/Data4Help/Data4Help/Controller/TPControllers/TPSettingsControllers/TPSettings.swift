@@ -92,6 +92,13 @@ class TPSettings: UIViewController {
             if response != nil {
                 let myres = D4HRegisterSingleResponse(fromJson: response!)
                 print(myres.message)
+                
+                // Update labels
+                self.TPViewSettings?.passwordLabel.text = (password?.isEmpty)! ? self.TPViewSettings?.passwordLabel.text : password
+                self.TPViewSettings?.organisationNameLabel.text = (companyName?.isEmpty)! ? self.TPViewSettings?.organisationNameLabel.text : companyName
+                self.TPViewSettings?.descriptionLabel.text = (companyDescription?.isEmpty)! ? self.TPViewSettings?.descriptionLabel.text : companyDescription
+                
+                // Exit from edit mode
                 self.startEditing(self)
             }
             else if let error = error {

@@ -42,7 +42,7 @@ class TPSingleRequest {
         let typesJson = json["types"].arrayValue
         self.types = []
         for typeJson in typesJson {
-            let type = typeJson["dataType"].stringValue
+            let type = typeJson["datatype"].stringValue
             self.types.append(dataType(rawValue: type)!)
         }
         self.status = json["status"].stringValue

@@ -9,7 +9,15 @@
 import UIKit
 
 class SUViewSettings: UIViewController {
-
+    
+    // MARK: Outlets
+    
+    @IBOutlet weak var fullNameLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var passwordLabel: UILabel!
+    @IBOutlet weak var fcLabel: UILabel!
+    @IBOutlet weak var birthdateLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

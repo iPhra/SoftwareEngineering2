@@ -37,8 +37,8 @@ class D4HThirdPartyRegistrationRequest: D4HRequest {
         let params: Parameters = [
             "email": email,
             "password": password,
-            "PIVA": PIVA,
-            "companyName": companyName,
+            "piva": PIVA,
+            "company_name": companyName,
             "companyDescription": companyDescription,
             ]
         print(params)
