@@ -17,16 +17,12 @@ router.post('/upload', authenticator(), async (req, res) => {
     try {
 
         //if he's not logged in or he's not a PrivateUser
-        if (req.body.usertype!=="PrivateUser") {
-            res.status(401).send({error: "You need to login with a Single User account"});
-            return
-        }
+        if (req.body.usertype!=="PrivateUser")
+            return res.status(401).send({error: "You need to login with a Single User account"});
 
         //check that every data he's trying to import is enabled for that user, and that data points are not already imported
-        if (!(await checkEnabled(userID, req)) || !(await checkUniqueness(userID, req))) {
-            res.status(403).send({error: "Imported invalid data"});
-            return;
-        }
+        if (!(await checkEnabled(userID, req)) || !(await checkUniqueness(userID, req)))
+            return res.status(403).send({error: "Imported invalid data"});
 
         await(db.query('BEGIN'));
 
@@ -54,16 +50,13 @@ router.post('/stats', authenticator(), async (req, res) => {
     try {
 
         //if he's not logged in or he's not a PrivateUser
-        if (req.body.usertype!=="PrivateUser") {
-            res.status(401).send({error: "You need to login with a Single User account"});
-            return
-        }
+        if (req.body.usertype!=="PrivateUser")
+            return res.status(401).send({error: "You need to login with a Single User account"});
+
 
         //check that every data he's trying to get statistics for is enabled
-        if (!(await checkEnabled(userID, req))) {
-            res.status(403).send({error: "Getting statistics for invalid data"});
-            return;
-        }
+        if (!(await checkEnabled(userID, req)))
+            return res.status(403).send({error: "Provided datatype is not enabled"});
 
         //get datapoints from the database
         let response = {};
@@ -71,6 +64,7 @@ router.post('/stats', authenticator(), async (req, res) => {
         let text;
         let values;
         let rows;
+
         for(i=0; i<req.body.types.length; i++) {
 
             text = "SELECT avg(value) as avg, date_part('month', timest) as month, date_part('year', timest) as year " +

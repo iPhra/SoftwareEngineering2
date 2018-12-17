@@ -6,7 +6,6 @@ const Joi = require('joi');
 const email = Joi.string().email().max(40).required();
 const fc = Joi.string().length(16).required();
 const password = Joi.string().min(8).max(20);
-const authToken = Joi.string().required();
 const full_name = Joi.string().max(30);
 const birthdate = Joi.date().min("1-1-1900");
 const sex = Joi.string().valid(['M','F','U']);
@@ -68,8 +67,8 @@ const dataStats = {
 };
 
 const singleReq = {
-    email: email,
-    fc: fc,
+    email: Joi.string().email().max(40),
+    fc: Joi.string().length(16),
     types: types,
     subscribing: subscribing,
     duration: duration,

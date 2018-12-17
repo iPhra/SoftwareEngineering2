@@ -8,18 +8,15 @@ const logError = utils.logError;
 const router = new Router();
 
 
-//@todo rivedere dove stanno i catch per i login
-
 router.post('/single/info', authenticator(), async (req, res) => {
     let userID = req.body.userid;
 
     try {
 
         //if he's not logged in or he's not a PrivateUser
-        if (req.body.usertype!=="PrivateUser") {
-            res.status(401).send({error: "You need to login with a Single User account"});
-            return
-        }
+        if (req.body.usertype!=="PrivateUser")
+            return res.status(401).send({error: "You need to login with a Single User account"});
+
 
         await(db.query('BEGIN'));
 
@@ -60,10 +57,8 @@ router.post('/tp/info', authenticator(), async (req, res) => {
     try {
 
         //if he's not logged in or he's not a PrivateUser
-        if (req.body.usertype!=="ThirdParty") {
-            res.status(401).send({error: "You need to login with a Third Party account"});
-            return
-        }
+        if (req.body.usertype!=="ThirdParty")
+            return res.status(401).send({error: "You need to login with a Third Party account"});
 
         await(db.query('BEGIN'));
 
@@ -104,10 +99,8 @@ router.post('/single/data', authenticator(), async (req, res) => {
     try {
 
         //if he's not logged in or he's not a PrivateUser
-        if (req.body.usertype!=="PrivateUser") {
-            res.status(401).send({error: "You need to login with a Single User account"});
-            return
-        }
+        if (req.body.usertype!=="PrivateUser")
+            return res.status(401).send({error: "You need to login with a Single User account"});
 
         await(db.query('BEGIN'));
 
@@ -146,6 +139,57 @@ router.post('/single/data', authenticator(), async (req, res) => {
     }
 });
 
+
+router.get('/tp/list', authenticator(), async (req, res) => {
+    let userID = req.body.userid;
+
+    try {
+
+        //if he's not a PrivateUser
+        if (req.body.usertype!=="ThirdParty")
+            return res.status(401).send({error: "You need to login with a Third Party account"});
+
+        //get all the requests addressing the user
+        const text = 'SELECT email, company_name, piva, company_description FROM thirdparty WHERE userid = $1';
+        const values = [userID];
+        const settings = await db.query(text, values);
+
+        res.status(200).send({settings: {
+                email: settings.rows[0].email,
+                piva: settings.rows[0].piva,
+                company_name: settings.rows[0].company_name,
+                company_description: settings.rows[0].company_description
+            }});
+    } catch(error) {
+        return logError(error, res)
+    }
+});
+
+
+router.get('/single/list', authenticator(), async (req, res) => {
+    let userID = req.body.userid;
+
+    try {
+
+        //if he's not a PrivateUser
+        if (req.body.usertype!=="PrivateUser")
+            return res.status(401).send({error: "You need to login with a Single User account"});
+
+        //get all the requests addressing the user
+        const text = 'SELECT email, full_name, fc, birthdate FROM privateuser WHERE userid = $1';
+        const values = [userID];
+        const settings = await db.query(text, values);
+
+        res.status(200).send({settings: {
+            email: settings.rows[0].email,
+                fc: settings.rows[0].fc,
+                full_name: settings.rows[0].full_name,
+                birthdate: (settings.rows[0].birthdate).toISOString().slice(0,10)
+            }});
+    } catch(error) {
+        return logError(error, res)
+    }
+});
 
 
 module.exports = router;

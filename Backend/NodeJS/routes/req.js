@@ -1,3 +1,5 @@
+//@todo Cambiare come controllo i 1000 account delle group request (magari controllando l'ultimo valore inserito)
+
 const Router = require('express-promise-router');
 const db = require('../settings/dbconnection');
 const utils = require('./utils');
@@ -5,6 +7,7 @@ const authenticator = require('../middlewares/authenticator');
 
 const logError = utils.logError;
 const getUserIDByEmail = utils.getUserIDByEmail;
+const getUserIDByFC = utils.getUserIDByFC;
 const addDays = utils.addDays;
 const router = new Router();
 
@@ -15,25 +18,18 @@ router.post('/tp/sendSingle', authenticator(), async (req, res) => {
     try {
 
         //if he's not logged in or he's not a PrivateUser
-        if (req.body.usertype!=="ThirdParty") {
-            res.status(401).send({error: "You need to login with a Third Party account"});
-            return
-        }
+        if (req.body.usertype!=="ThirdParty")
+            return res.status(401).send({error: "You need to login with a Third Party account"});
 
-        //@todo prendere l'id o data la email o dato il fc a seconda di quel che c'è
-        const receiver_id = await getUserIDByEmail(req);
+        const receiver_id = req.body.email? await getUserIDByEmail(req) : await getUserIDByFC(req);
 
         //if the receiving user does not exist
-        if (receiver_id.rowCount===0) {
-            res.status(403).send({error: "User does not exist"});
-            return
-        }
+        if (receiver_id.rowCount===0)
+            return res.status(403).send({error: "Target user does not exist"});
 
         //if there's a pending request already from the TP to the PU
-        if(await checkPendingSingleRequests(userID, req)) {
-            res.status(403).send({error: "There already is a pending request"});
-            return
-        }
+        if(await checkPendingSingleRequests(userID, receiver_id))
+            return res.status(403).send({error: "There already is a pending request"});
 
         await(db.query('BEGIN'));
 
@@ -67,16 +63,12 @@ router.post('/tp/sendGroup', authenticator(), async (req, res) => {
     try {
 
         //if he's not logged in or he's not a PrivateUser
-        if (req.body.usertype!=="ThirdParty") {
-            res.status(401).send({error: "You need to login with a Third Party account"});
-            return
-        }
+        if (req.body.usertype!=="ThirdParty")
+            return res.status(401).send({error: "You need to login with a Third Party account"});
 
         //if there's a pending request already from the TP to the PU
-        if(await checkPendingGroupRequests(userID)) {
-            res.status(403).send({error: "There already is a pending request"});
-            return
-        }
+        if(await checkPendingGroupRequests(userID))
+            return res.status(403).send({error: "There already is a pending request"});
 
         await(db.query('BEGIN'));
 
@@ -112,15 +104,12 @@ router.post('/tp/sendGroup', authenticator(), async (req, res) => {
 
 
 router.post('/tp/downloadSingle', authenticator(), async (req, res) => {
-    let userID = req.body.userid;
 
     try {
 
-        //if he's not logged in or he's not a PrivateUser
-        if (req.body.usertype!=="ThirdParty") {
+        //if he's not logged in or he's not a ThirdParty
+        if (req.body.usertype!=="ThirdParty")
             res.status(401).send({error: "You need to login with a Third Party account"});
-            return
-        }
 
         //retrieve status of the request
         let text = "SELECT * FROM singlerequest WHERE req_id = $1";
@@ -128,10 +117,8 @@ router.post('/tp/downloadSingle', authenticator(), async (req, res) => {
         let rows = await db.query(text, values);
 
         //if the request is not present or if it was not approved
-        if(rows.rowCount===0 || rows.rows[0].status!== 'accepted') {
-            res.status(403).send({error: "Can't download data"});
-            return
-        }
+        if(rows.rowCount===0 || rows.rows[0].status!== 'accepted')
+            return res.status(403).send({error: "Can't download data"});
 
         //retrieve data types
         let types = await getRequestTypes(req);
@@ -158,15 +145,11 @@ router.post('/tp/downloadSingle', authenticator(), async (req, res) => {
 
 
 router.post('/tp/downloadGroup', authenticator(), async (req, res) => {
-    let userID = req.body.userid;
-
     try {
 
         //if he's not logged in or he's not a PrivateUser
-        if (req.body.usertype!=="ThirdParty") {
-            res.status(401).send({error: "You need to login with a Third Party account"});
-            return
-        }
+        if (req.body.usertype!=="ThirdParty")
+            return res.status(401).send({error: "You need to login with a Third Party account"});
 
         //retrieve the request
         let text = "SELECT * FROM grouprequest WHERE req_id = $1";
@@ -174,10 +157,8 @@ router.post('/tp/downloadGroup', authenticator(), async (req, res) => {
         let rows = await db.query(text, values);
 
         //if the request is not present
-        if(rows.rowCount===0) {
-            res.status(403).send({error: "Request does not exist"});
-            return
-        }
+        if(rows.rowCount===0)
+            return res.status(403).send({error: "Request does not exist"});
 
         const req_id = rows.rows[0].req_id;
         const types = await getRequestTypes(req); //data types of the request
@@ -228,21 +209,16 @@ router.post('/tp/downloadGroup', authenticator(), async (req, res) => {
 
 
 router.post('/single/choice', authenticator(), async (req, res) => {
-    let userID = req.body.userid;
 
     try {
 
         //if he's not logged in or he's not a PrivateUser
-        if (req.body.usertype!=="PrivateUser") {
-            res.status(401).send({error: "You need to login with a Single User account"});
-            return
-        }
+        if (req.body.usertype!=="PrivateUser")
+            return res.status(401).send({error: "You need to login with a Single User account"});
 
         //if the request doesn't exist or if it's not pending
-        if (!(await checkReqExistance(req))) {
-            res.status(403).send({error: "Request does not exist or is not pending"});
-            return
-        }
+        if (!(await checkReqExistance(req)))
+            return res.status(403).send({error: "Request does not exist or is not pending"});
 
         await(db.query('BEGIN'));
 
@@ -266,10 +242,8 @@ router.get('/single/list', authenticator(), async (req, res) => {
     try {
 
         //if he's not logged in or he's not a PrivateUser
-        if (req.body.usertype!=="PrivateUser") {
-            res.status(401).send({error: "You need to login with a Single User account"});
-            return
-        }
+        if (req.body.usertype!=="PrivateUser")
+            return res.status(401).send({error: "You need to login with a Single User account"});
 
         //get all the requests addressing the user
         let text = 'SELECT * FROM singlerequest WHERE receiver_id = $1';
@@ -302,7 +276,7 @@ router.get('/single/list', authenticator(), async (req, res) => {
                 "status" : requests.rows[i].status,
                 "subscribing" : requests.rows[i].subscribing,
                 "duration" : requests.rows[i].duration,
-                "req_date" : requests.rows[i].req_date
+                "req_date" : (requests.rows[i].req_date).toISOString().slice(0,10)
             };
 
             result.push(obj);
@@ -321,10 +295,8 @@ router.get('/tp/list', authenticator(), async (req, res) => {
     try {
 
         //if he's not logged in or he's not a PrivateUser
-        if (req.body.usertype!=="ThirdParty") {
-            res.status(401).send({error: "You need to login with a Third Party account"});
-            return
-        }
+        if (req.body.usertype!=="ThirdParty")
+            return res.status(401).send({error: "You need to login with a Third Party account"});
 
         //get all the single requests of the user
         let text = 'SELECT * FROM singlerequest WHERE sender_id = $1';
@@ -358,7 +330,7 @@ router.get('/tp/list', authenticator(), async (req, res) => {
                 "status" : singlerequests.rows[i].status,
                 "subscribing" : singlerequests.rows[i].subscribing,
                 "duration" : singlerequests.rows[i].duration,
-                "req_date" : singlerequests.rows[i].req_date
+                "req_date" : (singlerequests.rows[i].req_date).toISOString().slice(0,10)
             };
 
             single.push(obj);
@@ -392,7 +364,7 @@ router.get('/tp/list', authenticator(), async (req, res) => {
                 "status" : grouprequests.rows[i].status,
                 "subscribing" : grouprequests.rows[i].subscribing,
                 "duration" : grouprequests.rows[i].duration,
-                "req_date" : grouprequests.rows[i].req_date
+                "req_date" : (grouprequests.rows[i].req_date).toISOString().slice(0,10)
             };
 
             group.push(obj);
@@ -419,9 +391,9 @@ async function checkReqExistance(req) {
 
 
 //checks if there is a pending request from a given ThirdParty to a given PrivateUser
-async function checkPendingSingleRequests(userID, req) {
+async function checkPendingSingleRequests(userID, receiver_id) {
     const text = "SELECT * FROM singlerequest WHERE sender_id=$1 AND receiver_id=$2 AND status=$3";
-    const values = [userID, (await getUserIDByEmail(req)).rows[0].userid, 'pending'];
+    const values = [userID, receiver_id, 'pending'];
     const rows = await db.query(text, values);
 
     return rows.rowCount>0
