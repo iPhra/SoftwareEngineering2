@@ -30,6 +30,10 @@
 		28E0145721C66756004FA60F /* TPGroupRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E0145621C66756004FA60F /* TPGroupRequest.swift */; };
 		28E0145921C667EA004FA60F /* D4HHealthParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E0145821C667EA004FA60F /* D4HHealthParameter.swift */; };
 		28E0145B21C66ACB004FA60F /* TPSingleRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E0145A21C66ACB004FA60F /* TPSingleRequest.swift */; };
+		28E0145E21C8487C004FA60F /* D4HSingleUserInfoRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E0145D21C8487C004FA60F /* D4HSingleUserInfoRequest.swift */; };
+		28E0146021C848F7004FA60F /* D4HThirdPartyInfoRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E0145F21C848F7004FA60F /* D4HThirdPartyInfoRequest.swift */; };
+		28E0146221C84968004FA60F /* D4HSingleUserInfoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E0146121C84968004FA60F /* D4HSingleUserInfoResponse.swift */; };
+		28E0146421C84A5F004FA60F /* D4HThirdPartyInfoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E0146321C84A5F004FA60F /* D4HThirdPartyInfoResponse.swift */; };
 		28E5568F21ADE9890009D972 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E5568E21ADE9890009D972 /* NetworkManager.swift */; };
 		28E5569221ADF3AB0009D972 /* D4HRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E5569121ADF3AB0009D972 /* D4HRequest.swift */; };
 		28E5569621ADF5480009D972 /* D4HLoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E5569521ADF5480009D972 /* D4HLoginRequest.swift */; };
@@ -115,6 +119,10 @@
 		28E0145621C66756004FA60F /* TPGroupRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPGroupRequest.swift; sourceTree = "<group>"; };
 		28E0145821C667EA004FA60F /* D4HHealthParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HHealthParameter.swift; sourceTree = "<group>"; };
 		28E0145A21C66ACB004FA60F /* TPSingleRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPSingleRequest.swift; sourceTree = "<group>"; };
+		28E0145D21C8487C004FA60F /* D4HSingleUserInfoRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HSingleUserInfoRequest.swift; sourceTree = "<group>"; };
+		28E0145F21C848F7004FA60F /* D4HThirdPartyInfoRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HThirdPartyInfoRequest.swift; sourceTree = "<group>"; };
+		28E0146121C84968004FA60F /* D4HSingleUserInfoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HSingleUserInfoResponse.swift; sourceTree = "<group>"; };
+		28E0146321C84A5F004FA60F /* D4HThirdPartyInfoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HThirdPartyInfoResponse.swift; sourceTree = "<group>"; };
 		28E5568E21ADE9890009D972 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		28E5569121ADF3AB0009D972 /* D4HRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HRequest.swift; sourceTree = "<group>"; };
 		28E5569521ADF5480009D972 /* D4HLoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HLoginRequest.swift; sourceTree = "<group>"; };
@@ -260,6 +268,8 @@
 			children = (
 				28D938BB21C40BAC00DC7785 /* D4HSingleUserSettingsRequest.swift */,
 				28D938B921C3F79C00DC7785 /* D4HThirdPartySettingsRequest.swift */,
+				28E0145D21C8487C004FA60F /* D4HSingleUserInfoRequest.swift */,
+				28E0145F21C848F7004FA60F /* D4HThirdPartyInfoRequest.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -307,6 +317,8 @@
 		28E0144E21C65D19004FA60F /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				28E0146121C84968004FA60F /* D4HSingleUserInfoResponse.swift */,
+				28E0146321C84A5F004FA60F /* D4HThirdPartyInfoResponse.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -714,6 +726,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB18F00921B6F76500BBFAAD /* StorageManager.swift in Sources */,
+				28E0145E21C8487C004FA60F /* D4HSingleUserInfoRequest.swift in Sources */,
 				28E5569621ADF5480009D972 /* D4HLoginRequest.swift in Sources */,
 				28D938BA21C3F79C00DC7785 /* D4HThirdPartySettingsRequest.swift in Sources */,
 				CB1727B821B3EB9600AC9D36 /* TPViewSettings.swift in Sources */,
@@ -740,6 +753,7 @@
 				28E0145521C665B4004FA60F /* D4HThirdPartyListResponse.swift in Sources */,
 				CBADD12D21AD7FFB00896705 /* DataManager.swift in Sources */,
 				CB17279C21B1545300AC9D36 /* TPRegisterViewController.swift in Sources */,
+				28E0146221C84968004FA60F /* D4HSingleUserInfoResponse.swift in Sources */,
 				CB98264C21C1048B00932CE6 /* dataType.swift in Sources */,
 				28E0145121C65D5B004FA60F /* D4HSingleListResponse.swift in Sources */,
 				28E0144321C569BB004FA60F /* D4HGroupRequest.swift in Sources */,
@@ -763,10 +777,12 @@
 				CB98264F21C164ED00932CE6 /* Model.xcdatamodeld in Sources */,
 				CB17279A21B1543500AC9D36 /* SURegisterViewController.swift in Sources */,
 				28D938B821C3C3AB00DC7785 /* D4HLogoutResponse.swift in Sources */,
+				28E0146421C84A5F004FA60F /* D4HThirdPartyInfoResponse.swift in Sources */,
 				283B263521B98D9E00C939A9 /* D4HThirdPartyRegistrationRequest.swift in Sources */,
 				28D938BC21C40BAC00DC7785 /* D4HSingleUserSettingsRequest.swift in Sources */,
 				CB1727B421B3E2EF00AC9D36 /* SUSettings.swift in Sources */,
 				28B67D0421C10E0500FCA356 /* D4HLogoutRequest.swift in Sources */,
+				28E0146021C848F7004FA60F /* D4HThirdPartyInfoRequest.swift in Sources */,
 				CB80992721C5A5E6001E2EB8 /* TPRequestCell.swift in Sources */,
 				28E0145B21C66ACB004FA60F /* TPSingleRequest.swift in Sources */,
 			);

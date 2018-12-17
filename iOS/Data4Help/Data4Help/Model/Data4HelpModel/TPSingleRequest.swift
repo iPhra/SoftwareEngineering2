@@ -16,6 +16,7 @@ class TPSingleRequest {
     let reqid: String
     let email: String
     let fc: String
+    let full_name: String
     var types: [dataType]
     let status: String
     let subscribing: Bool
@@ -24,10 +25,11 @@ class TPSingleRequest {
     
     // MARK: - initialization
     
-    init( reqid: String, email: String, fc: String, types: [dataType], status: String, subscribing: Bool, duration: Int, date: String) {
+    init( reqid: String, email: String, fc: String, full_name: String, types: [dataType], status: String, subscribing: Bool, duration: Int, date: String) {
         self.reqid = reqid
         self.email = email
         self.fc = fc
+        self.full_name = full_name
         self.types = types
         self.status = status
         self.subscribing = subscribing
@@ -39,6 +41,7 @@ class TPSingleRequest {
         self.reqid = json["reqid"].stringValue
         self.email = json["email"].stringValue
         self.fc = json["fc"].stringValue
+        self.full_name = json["full_name"].stringValue
         let typesJson = json["types"].arrayValue
         self.types = []
         for typeJson in typesJson {

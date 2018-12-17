@@ -44,6 +44,9 @@ class SUSettings: UIViewController {
         containerView.addSubview(controller.view)
         
         controller.didMove(toParent: self)
+        
+        // load user info
+        loadinfo()
     }
     
 
@@ -99,6 +102,20 @@ class SUSettings: UIViewController {
                 
                 // Exit from edit view
                 self.startEditing(self)
+            }
+            else if let error = error {
+                print(error)
+            }
+        }
+    }
+    
+    private func loadinfo() {
+        NetworkManager.sharedInstance.sendGetRequest(input: D4HSingleUserInfoRequest(), endpoint: D4HEndpoint.getInfoSingle, headers: Properties.auth()) { (response, error) in
+            if response != nil {
+                let myres = D4HSingleUserInfoResponse(fromJson: response!)
+                
+                // Update Labels
+                self.ViewSettings?.fillView(info: myres)
             }
             else if let error = error {
                 print(error)

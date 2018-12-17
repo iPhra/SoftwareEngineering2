@@ -24,6 +24,15 @@ class SUViewSettings: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    // MARK: Public implementation
+    
+    func fillView(info: D4HSingleUserInfoResponse) {
+        fullNameLabel.text = info.full_name
+        emailLabel.text = info.email
+        fcLabel.text = info.fc
+        birthdateLabel.text = info.birthdate
+    }
+    
 
     /*
     // MARK: - Navigation
