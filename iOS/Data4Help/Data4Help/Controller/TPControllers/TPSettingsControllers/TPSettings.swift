@@ -88,7 +88,7 @@ class TPSettings: UIViewController {
         let companyName = TPEditSettings?.companyNameTextField.text
         let companyDescription = TPEditSettings?.companyDescriptionTextField.text
         
-        NetworkManager.sharedInstance.sendPostRequest(input: D4HThirdPartySettingsRequest(authToken: Properties.authToken, password: password!, company_name: companyName!, company_description: companyDescription!), endpoint: D4HEndpoint.setInfoThirdParty) { (response, error) in
+        NetworkManager.sharedInstance.sendPostRequest(input: D4HThirdPartySettingsRequest(password: password!, company_name: companyName!, company_description: companyDescription!), endpoint: D4HEndpoint.setInfoThirdParty, headers: Properties.auth()) { (response, error) in
             if response != nil {
                 let myres = D4HRegisterSingleResponse(fromJson: response!)
                 print(myres.message)

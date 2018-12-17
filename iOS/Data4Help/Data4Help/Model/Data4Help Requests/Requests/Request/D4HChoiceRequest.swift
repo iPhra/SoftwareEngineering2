@@ -14,14 +14,12 @@ class D4HChoiceRequest: D4HRequest {
     
     // MARK: - Properties
     
-    let authToken: String
     let reqID: String
     let choice: Bool
     
     // MARK: Initialisation
     
-    init(authToken: String,  reqID: String, choice: Bool) {
-        self.authToken = authToken
+    init(reqID: String, choice: Bool) {
         self.reqID = reqID
         self.choice = choice
         super.init(encodingType: D4HEncodingType.UTF16)
@@ -31,7 +29,6 @@ class D4HChoiceRequest: D4HRequest {
     
     override func getParams() -> Parameters {
         let params: Parameters = [
-            "authToken": authToken,
             "reqID": reqID,
             "choice": choice
         ]

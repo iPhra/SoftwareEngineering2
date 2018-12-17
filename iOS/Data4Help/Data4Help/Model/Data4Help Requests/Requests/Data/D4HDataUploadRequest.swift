@@ -13,15 +13,13 @@ import SwiftyJSON
 class D4HDataUploadRequest: D4HRequest {
     // MARK: - Properties
     
-    let authToken: String
     let types: [dataType]
     let values: [[Double]]
     let timestamps: [[String]]
     
     // MARK: Initialisation
     
-    init(authToken: String, types: [dataType],values: [[Double]], timestamps: [[String]]) {
-        self.authToken = authToken
+    init(types: [dataType],values: [[Double]], timestamps: [[String]]) {
         self.types = types
         self.values = values
         self.timestamps = timestamps
@@ -32,7 +30,6 @@ class D4HDataUploadRequest: D4HRequest {
     
     override func getParams() -> Parameters {
         let params: Parameters = [
-            "authToken": authToken,
             "types": types,
             "values" : values,
             "timestamps" : timestamps

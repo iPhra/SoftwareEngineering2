@@ -93,7 +93,7 @@ class RequestsController: UITableViewController {
     
     func loadData() {
         // API call to retrieve requests
-        NetworkManager.sharedInstance.sendGetRequest(input: D4HSingleListRequest(authToken: Properties.authToken), endpoint: D4HEndpoint.requestListSingle) { (response, error) in
+        NetworkManager.sharedInstance.sendGetRequest(input: D4HSingleListRequest(authToken: Properties.authToken), endpoint: D4HEndpoint.requestListSingle, headers: Properties.auth()) { (response, error) in
             if response != nil {
                 let myres = D4HSingleListResponse(fromJson: response!)
                 self.requests = myres.requests

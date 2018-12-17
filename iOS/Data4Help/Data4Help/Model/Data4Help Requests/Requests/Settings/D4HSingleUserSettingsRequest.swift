@@ -14,15 +14,13 @@ class D4HSingleUserSettingsRequest: D4HRequest {
     
     // MARK: - Properties
     
-    let authToken: String
     let password: String
     let fullname: String
     let birthdate: String
     
     // MARK: Initialisation
     
-    init(authToken: String, password: String, fullname: String, birthdate: String) {
-        self.authToken = authToken
+    init(password: String, fullname: String, birthdate: String) {
         self.password = password
         self.fullname = fullname
         self.birthdate = birthdate
@@ -32,9 +30,7 @@ class D4HSingleUserSettingsRequest: D4HRequest {
     // MARK: - Networking
     
     override func getParams() -> Parameters {
-        var params: Parameters = [
-            "authToken": authToken
-        ]
+        var params: Parameters = [:]
         if(!password.isEmpty) {
             params["password"] = password
         }

@@ -22,11 +22,12 @@ class NetworkManager {
     func sendPostRequest(
         input: D4HRequest,
         endpoint: D4HEndpoint,
+        headers: HTTPHeaders?,
         completionHandler: @escaping(JSON?, String?) -> Void
         ) {
         os_log("NetworkManager request: %@endpoint", log: OSLog.default, type: .debug)
         
-        Alamofire.request(self.getD4HUrlWithKey(endpoint: endpoint), method: HTTPMethod.post, parameters: input.getParams(), encoding: JSONEncoding.default, headers: nil).responseJSON { (dataResponse) in
+        Alamofire.request(self.getD4HUrlWithKey(endpoint: endpoint), method: HTTPMethod.post, parameters: input.getParams(), encoding: JSONEncoding.default, headers: headers).responseJSON { (dataResponse) in
             if let data = dataResponse.data {
                 let json = JSON(data)
                 switch (dataResponse.response?.statusCode) {
@@ -47,11 +48,12 @@ class NetworkManager {
     func sendGetRequest(
         input: D4HRequest,
         endpoint: D4HEndpoint,
+        headers: HTTPHeaders,
         completionHandler: @escaping(JSON?, Error?) -> Void
         ) {
         os_log("NetworkManager request: %@endpoint", log: OSLog.default, type: .debug)
         
-        Alamofire.request(self.getD4HUrlWithKey(endpoint: endpoint), method: HTTPMethod.get, parameters: input.getParams()).responseJSON { (dataResponse) in
+        Alamofire.request(self.getD4HUrlWithKey(endpoint: endpoint), method: HTTPMethod.get, parameters: input.getParams(), headers: headers).responseJSON { (dataResponse) in
             
             // Manage response
             
