@@ -1,0 +1,18 @@
+{
+  "jwtPrivateKey" : "gruosso",
+  "dbconf" : {
+    "host" : "d4h.cxxsbhqgk33o.eu-central-1.rds.amazonaws.com",
+    "port" : "5432",
+    "user": "LorenzoMolteniNegri",
+    "password": "colombetti",
+    "database": "d4h"
+  },
+  "transporter": {
+    "service": "gmail",
+    "auth": {
+      "user": "data4helpsquad@gmail.com",
+      "pass": "mauriziofixamf"
+    }
+  },
+  "email": "data4helpsquad@gmail.com"
+}

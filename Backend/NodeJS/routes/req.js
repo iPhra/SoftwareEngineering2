@@ -2,10 +2,10 @@
 
 const Router = require('express-promise-router');
 const db = require('../settings/dbconnection');
-const utils = require('./utils');
 const authenticator = require('../middlewares/authenticator');
 
 const router = new Router();
+const logError = require('./utils').logError;
 
 
 router.post('/tp/sendSingle', authenticator(), async (req, res) => {
@@ -17,20 +17,20 @@ router.post('/tp/sendSingle', authenticator(), async (req, res) => {
         if (req.body.usertype!=="ThirdParty")
             return res.status(401).send({error: "You need to login with a Third Party account"});
 
-        const receiver_id = req.body.email? await utils.getUserIDByEmail(req) : await utils.getUserIDByFC(req);
+        const receiver_id = req.body.email? await getUserIDByEmail(req) : await getUserIDByFC(req);
 
         //if the receiving user does not exist
         if (receiver_id.rowCount===0)
             return res.status(403).send({error: "Target user does not exist"});
 
         //if there's a pending request already from the TP to the PU
-        if(await utils.checkPendingSingleRequests(userID, receiver_id))
+        if(await checkPendingSingleRequests(userID, receiver_id))
             return res.status(403).send({error: "There already is a pending request"});
 
         await(db.query('BEGIN'));
 
         //insert request into SingleRequest table
-        const reqID = await utils.getReqID();
+        const reqID = await getReqID();
         const today = new Date().toISOString().slice(0, 10);
         let text = 'INSERT INTO singlerequest VALUES($1, $2, $3, $4, $5, $6, $7)';
         let values = [reqID, userID, receiver_id.rows[0].userid, req.body.subscribing, "pending", req.body.duration, today];
@@ -47,7 +47,7 @@ router.post('/tp/sendSingle', authenticator(), async (req, res) => {
         res.status(200).send({message: "Request sent"});
     } catch(error) {
         await(db.query('ROLLBACK'));
-        return utils.logError(error, res)
+        return logError(error, res)
     }
 });
 
@@ -62,13 +62,13 @@ router.post('/tp/sendGroup', authenticator(), async (req, res) => {
             return res.status(401).send({error: "You need to login with a Third Party account"});
 
         //if there's a pending request already from the TP to the PU
-        if(await utils.checkPendingGroupRequests(userID))
+        if(await checkPendingGroupRequests(userID))
             return res.status(403).send({error: "There already is a pending request"});
 
         await(db.query('BEGIN'));
 
         //insert request into GroupRequest table
-        const reqID = await utils.getReqID();
+        const reqID = await getReqID();
         const today = new Date().toISOString().slice(0, 10);
         let text = 'INSERT INTO grouprequest VALUES($1, $2, $3, $4, $5, $6)';
         let values = [reqID, userID, req.body.subscribing, "pending", req.body.duration, today];
@@ -92,7 +92,7 @@ router.post('/tp/sendGroup', authenticator(), async (req, res) => {
         res.status(200).send({message: "Request sent"});
     } catch(error) {
         await(db.query('ROLLBACK'));
-        return utils.logError(error, res)
+        return logError(error, res)
     }
 });
 
@@ -115,9 +115,9 @@ router.post('/tp/downloadSingle', authenticator(), async (req, res) => {
             return res.status(403).send({error: "Can't download data"});
 
         //retrieve data types
-        let types = await utils.getRequestTypes(req);
+        let types = await getRequestTypes(req);
 
-        const final_date = utils.getFinalDate(rows);
+        const final_date = getFinalDate(rows);
         const receiver_id = rows.rows[0].receiver_id;
         let response = [];
 
@@ -132,7 +132,7 @@ router.post('/tp/downloadSingle', authenticator(), async (req, res) => {
 
         res.status(200).send({data: response});
     } catch(error) {
-        return utils.logError(error, res)
+        return logError(error, res)
     }
 });
 
@@ -154,14 +154,14 @@ router.post('/tp/downloadGroup', authenticator(), async (req, res) => {
             return res.status(403).send({error: "Request does not exist"});
 
         const req_id = rows.rows[0].req_id;
-        const types = await utils.getRequestTypes(req); //data types of the request
-        const parameters = await utils.getRequestParameters(req); //search parameters of the request
-        const final_date = utils.getFinalDate(rows); //maximum date allowed for each data point
-        const users = await utils.getTargetUsers(parameters, final_date); //get target users matching the search parameters
+        const types = await getRequestTypes(req); //data types of the request
+        const parameters = await getRequestParameters(req); //search parameters of the request
+        const final_date = getFinalDate(rows); //maximum date allowed for each data point
+        const users = await getTargetUsers(parameters, final_date); //get target users matching the search parameters
 
         //if the target users are less than 1000
         if(users.length <1) {
-            await utils.setChoice('refused', req_id);
+            await setChoice('refused', req_id);
             res.status(403).send({error: "Less than 1000 users match the search parameters"});
             return;
         }
@@ -194,7 +194,7 @@ router.post('/tp/downloadGroup', authenticator(), async (req, res) => {
         await setChoice('accepted', req_id);
         res.status(200).send({data: response});
     } catch(error) {
-        return utils.logError(error, res)
+        return logError(error, res)
     }
 });
 
@@ -208,7 +208,7 @@ router.post('/single/choice', authenticator(), async (req, res) => {
             return res.status(401).send({error: "You need to login with a Single User account"});
 
         //if the request doesn't exist or if it's not pending
-        if (!(await utils.checkReqExistance(req)))
+        if (!(await checkReqExistance(req)))
             return res.status(403).send({error: "Request does not exist or is not pending"});
 
         await(db.query('BEGIN'));
@@ -222,7 +222,7 @@ router.post('/single/choice', authenticator(), async (req, res) => {
         res.status(200).send({message: "Action successful"});
     } catch(error) {
         await(db.query('ROLLBACK'));
-        return utils.logError(error, res)
+        return logError(error, res)
     }
 });
 
@@ -274,7 +274,7 @@ router.get('/single/list', authenticator(), async (req, res) => {
 
         res.status(200).send({requests: result});
     } catch(error) {
-        return utils.logError(error, res)
+        return logError(error, res)
     }
 });
 
@@ -365,9 +365,149 @@ router.get('/tp/list', authenticator(), async (req, res) => {
                 group : group
             }});
     } catch(error) {
-        return utils.logError(error, res)
+        return logError(error, res)
     }
 });
+
+
+//checks if a given PrivateUser exists in the db, given his email, and returns the result of the query
+async function getUserIDByEmail(req) {
+    const text = "SELECT userid FROM privateuser WHERE email=$1";
+    const values = [req.body.email];
+    return await db.query(text, values);
+}
+
+
+//checks if a given PrivateUser exists in the db, given his fc, and returns the result of the query
+async function getUserIDByFC(req) {
+    const text = "SELECT userid FROM privateuser WHERE fc=$1";
+    const values = [req.body.fc];
+    return await db.query(text, values);
+}
+
+
+//checks if a given request exists in the db
+async function checkReqExistance(req) {
+    const text = "SELECT status FROM singlerequest WHERE req_id=$1";
+    const values = [req.body.reqID];
+    const rows = await db.query(text, values);
+
+    return rows.rowCount>0 && rows.rows[0].status==='pending';
+}
+
+
+//checks if there is a pending request from a given ThirdParty to a given PrivateUser
+async function checkPendingSingleRequests(userID, receiver_id) {
+    const text = "SELECT * FROM singlerequest WHERE sender_id=$1 AND receiver_id=$2 AND status=$3";
+    const values = [userID, receiver_id, 'pending'];
+    const rows = await db.query(text, values);
+
+    return rows.rowCount>0
+}
+
+
+//checks if there is a pending request from a given ThirdParty to a given PrivateUser
+async function checkPendingGroupRequests(userID) {
+    const text = "SELECT * FROM grouprequest WHERE sender_id=$1 AND status=$2";
+    const values = [userID, 'pending'];
+    const rows = await db.query(text, values);
+
+    return rows.rowCount>0
+}
+
+
+//evaluates the total number of requests in the database, and generates the reqID
+async function getReqID() {
+    let id = 0;
+
+    let rows = await db.query( 'SELECT count(*) as reqID FROM singlerequest');
+    id+= +rows.rows[0].reqid;
+
+    rows = await db.query( 'SELECT count(*) as reqID FROM grouprequest');
+    id+= +rows.rows[0].reqid;
+
+    return (id+1).toString();
+}
+
+
+//checks that at least 1000 users exist matching the search parameters
+async function getTargetUsers(parameters, req_date) {
+    let unique = [];
+    let text;
+    let values;
+    let users;
+
+    for(let i=0; i<parameters.length; i++) {
+
+        text = "SELECT distinct(userid) FROM userdata WHERE datatype=$1 and timest::date<=$2";
+        values = [parameters[i].datatype, req_date];
+
+        if(parameters[i].lowerbound) {
+            text+= " and value>$3";
+            values.push(parameters[i].lowerbound);
+
+            if(parameters[i].upperbound) {
+                text+= " and value<$4";
+                values.push(parameters[i].upperbound)
+            }
+        }
+        else if(parameters[i].upperbound) {
+            text+= " and value<$3";
+            values.push(parameters[i].upperbound)
+        }
+
+        users = await db.query(text, values);
+
+        for(let j=0; j<users.rowCount; j++) {
+            unique.push(users.rows[j].userid);
+        }
+    }
+
+    return unique
+}
+
+
+//retrieve dataTypes of the request
+async function getRequestTypes(req) {
+    const text = "SELECT datatype FROM requestcontent WHERE req_id = $1";
+    const values = [req.body.reqID];
+    return (await db.query(text, values)).rows;
+}
+
+
+//retrieve search parameters of the request
+async function getRequestParameters(req) {
+    const text = "SELECT datatype, lowerbound, upperbound FROM searchparameter WHERE req_id = $1";
+    const values = [req.body.reqID];
+    return (await db.query(text, values)).rows;
+}
+
+
+//if the ThirdParty is subscribed, the requests lasts until the end of the subscription (duration + date), otherwhise until the day of the request
+function getFinalDate(rows) {
+    let final_date;
+
+    if(rows.rows[0].subscribing) final_date = addDays(rows.rows[0].req_date, rows.rows[0].duration);
+    else final_date = rows.rows[0].req_date;
+
+    return final_date
+}
+
+
+//sets the result of a group request
+async function setChoice(choice, req_id) {
+    let text = "UPDATE grouprequest SET status=$1 WHERE req_id = $2";
+    let values = [choice, req_id];
+    await db.query(text, values)
+}
+
+
+//given a date, adds the given number of days to that date
+function addDays(date, days) {
+    date = new Date(date);
+    date.setDate(date.getDate() + days);
+    return date;
+}
 
 
 

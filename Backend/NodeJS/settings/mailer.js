@@ -1,18 +1,14 @@
 //@todo Mettere dominio della mail al posto di 127.0.0.1
+
 const nodemailer = require('nodemailer');
+const config = require('config');
 
 
-const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: 'data4helpsquad@gmail.com',
-        pass: 'mauriziofixamf'
-    }
-});
+const transporter = nodemailer.createTransport(config.get("transporter"));
 
 module.exports = (req, activToken) => {
     const mailOptions = {
-        from: 'data4helpsquad@gmail.com',
+        from: config.get("email"),
         to: req.body.email,
         subject: 'Welcome to Data4Help',
         text: 'Activation link: http://127.0.0.1:3000/auth/activ?activToken=' + activToken

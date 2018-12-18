@@ -6,6 +6,12 @@
 const app = require('../app');
 const debug = require('debug')('backend:server');
 const http = require('http');
+const config = require('config');
+
+if(!config.get('jwtPrivateKey') || !config.get('dbconf')) {
+    console.error("FATAL ERROR: jwtPrivateKey not defined");
+    process.exit(1)
+}
 
 /**
  * Get port from environment and store in Express.

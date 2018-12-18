@@ -144,7 +144,7 @@ router.get('/tp/info', authenticator(), async (req, res) => {
 
     try {
 
-        //if he's not a PrivateUser
+        //if he's not a ThirdParty
         if (req.body.usertype!=="ThirdParty")
             return res.status(401).send({error: "You need to login with a Third Party account"});
 
@@ -189,6 +189,7 @@ router.get('/single/info', authenticator(), async (req, res) => {
         return logError(error, res)
     }
 });
+
 
 
 module.exports = router;

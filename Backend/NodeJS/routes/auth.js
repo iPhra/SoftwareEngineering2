@@ -1,14 +1,12 @@
-//@todo Salvare jwt key nelle enviromental variables
-
 const Router = require('express-promise-router');
 const db = require('../settings/dbconnection');
 const sendEmail = require('../settings/mailer');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const config = require('config');
 
 const hashPassword = require("./utils").hashPassword;
 const logError = require("./utils").logError;
-const getActivToken = require("./utils").getAuthToken;
 const router = new Router();
 
 
@@ -136,7 +134,7 @@ router.post('/login', async (req, res) => {
         const token = jwt.sign({
             userid: userID,
             usertype: type
-        }, 'gruosso');
+        }, config.get('jwtPrivateKey'));
 
         res.status(200).send({
             authToken: token,
@@ -198,6 +196,18 @@ async function insertIntoRegistration() {
         userID: id,
         activToken: activToken
     };
+}
+
+
+//generate activToken
+function getActivToken(userID) {
+    let text = userID.toString();
+    const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for (let i = 0; i < 10; i++)
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    return text;
 }
 
 
