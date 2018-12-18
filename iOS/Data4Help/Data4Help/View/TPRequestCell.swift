@@ -26,7 +26,6 @@ class TPRequestCell: UITableViewCell {
         super.awakeFromNib()
         subscribingSwitch.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
         subscribingSwitch.center.y = subscriptionLabel.center.y
-        //dateLabel.center.x = downloadButton.center.x
         downloadButton.center.y = subscriptionLabel.center.y
     }
 

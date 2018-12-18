@@ -24,6 +24,15 @@ class TPViewSettings: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    // MARK: Public implementation
+    
+    func fillView(info: D4HThirdPartyInfoResponse) {
+        organisationNameLabel.text = info.company_name
+        emailLabel.text = info.email
+        pivaLabel.text = info.piva
+        descriptionLabel.text = info.company_description
+    }
+    
 
     /*
     // MARK: - Navigation

@@ -45,6 +45,8 @@ class TPSettings: UIViewController {
         containerView.addSubview(controller.view)
         
         controller.didMove(toParent: self)
+        
+        loadinfo()
     }
     
     // MARK: Actions
@@ -100,6 +102,20 @@ class TPSettings: UIViewController {
                 
                 // Exit from edit mode
                 self.startEditing(self)
+            }
+            else if let error = error {
+                print(error)
+            }
+        }
+    }
+    
+    private func loadinfo() {
+        NetworkManager.sharedInstance.sendGetRequest(input: D4HThirdPartyInfoRequest(), endpoint: D4HEndpoint.getInfoThirdParty, headers: Properties.auth()) { (response, error) in
+            if response != nil {
+                let myres = D4HThirdPartyInfoResponse(fromJson: response!)
+                
+                // Update Labels
+                self.TPViewSettings?.fillView(info: myres)
             }
             else if let error = error {
                 print(error)

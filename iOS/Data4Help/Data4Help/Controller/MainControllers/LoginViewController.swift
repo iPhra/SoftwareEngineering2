@@ -116,7 +116,7 @@ class LoginViewController: UIViewController {
         
         //send request through Network Manager with login details
         print(D4HEndpoint.login)
-        NetworkManager.sharedInstance.sendPostRequest(input: D4HLoginRequest(email: "moltek96@gmail.com", password: "password"), endpoint: D4HEndpoint.login, headers: nil) { (response, error) in
+        NetworkManager.sharedInstance.sendPostRequest(input: D4HLoginRequest(email: "moltek96@gmail.com", password: "datahelp"), endpoint: D4HEndpoint.login, headers: nil) { (response, error) in
             if response != nil {
                 let myres = D4HLoginResponse(fromJson: response!)
                 print(myres.message)

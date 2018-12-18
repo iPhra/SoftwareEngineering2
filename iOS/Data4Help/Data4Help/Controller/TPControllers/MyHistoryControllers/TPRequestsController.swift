@@ -53,7 +53,7 @@ class TPRequestsController: UITableViewController {
         }
         if (indexPath.row < singleRequests.count) {
             let request = singleRequests[indexPath.row]
-            cell.initRequest(user: request.fc, types: request.types, subscribing: request.subscribing, duration: Float(request.duration), date: request.date)
+            cell.initRequest(user: request.full_name, types: request.types, subscribing: request.subscribing, duration: Float(request.duration), date: request.date)
         }
         else {
             let request = groupRequests[indexPath.row]
