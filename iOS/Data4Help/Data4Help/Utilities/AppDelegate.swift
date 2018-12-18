@@ -43,12 +43,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         StorageManager.sharedInstance.initAutomatedSOS()
-
-        //let sampleTypes = dataManager.sampleTypesToRead()
-        /*
-         for sample in sampleTypes {
-         dataManager.enableBackgroundData(input: sample)
-         }*/
+        
+        let sampleTypes = dataManager.sampleTypesToRead()
+        
+        for sample in sampleTypes {
+            dataManager.enableBackgroundData(input: sample, datatype: DataManager.sharedInstance.getDataTypeFromSampleType(hkSampleType: sample))
+        }
         //dataManager.enableBackgroundData(input: HKSampleType.categoryType(forIdentifier: HKCategoryTypeIdentifier.appleStandHour)!, datatype: dataType.standingHours)
         
         //dataManager.enableBackgroundData(input: HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceWalkingRunning)!, datatype: dataType.distanceWalkingRunning)

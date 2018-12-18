@@ -13,10 +13,19 @@ import CoreData
 /*
  * Handles health data access thorugh HKHealthStore object
  */
-class DataManager: NSObject {
+class DataManager {
     
     // MARK: Properties
-    var firstUpload = true
+    var firstUploads: [dataType : Bool] = [
+        dataType.activeEnergy : true,
+        dataType.heartrate : true,
+        dataType.sleepingHours : true,
+        dataType.standingHours : true,
+        dataType.steps : true,
+        dataType.distanceWalkingRunning : true,
+        dataType.height : true,
+        dataType.weight : true
+    ]
     
     var AutomatedSOSON = false
     
@@ -84,11 +93,32 @@ class DataManager: NSObject {
         sampleTypes.append(HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)!)
         sampleTypes.append(HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)!)
         sampleTypes.append(HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceWalkingRunning)!)
-        //sampleTypes.append(HKSampleType.characteristicType(forIdentifier: HKCharacteristicTypeIdentifier.biologicalSex))
         sampleTypes.append(HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.height)!)
         sampleTypes.append(HKSampleType.categoryType(forIdentifier: HKCategoryTypeIdentifier.sleepAnalysis)!)
         
         return sampleTypes
+    }
+    
+    
+    public func getDataTypeFromSampleType(hkSampleType: HKSampleType)-> dataType {
+        switch(hkSampleType){
+        case(HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.activeEnergyBurned)):
+            return dataType.activeEnergy
+        case(HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)):
+            return dataType.heartrate
+        case(HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)):
+            return dataType.steps
+        case(HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceWalkingRunning)):
+            return dataType.distanceWalkingRunning
+        case(HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.height)):
+            return dataType.height
+        case(HKSampleType.categoryType(forIdentifier: HKCategoryTypeIdentifier.sleepAnalysis)):
+            return dataType.sleepingHours
+        case(HKSampleType.categoryType(forIdentifier: HKCategoryTypeIdentifier.appleStandHour)):
+            return dataType.standingHours
+        default:
+            return dataType.heartrate
+        }
     }
     
     // Mark: Background activities
@@ -101,18 +131,18 @@ class DataManager: NSObject {
     func getBiologicalSex() -> String {
         var sex: String = ""
         do{
-        let biologicalSex = try self.healthStore.biologicalSex().biologicalSex.rawValue
-        switch biologicalSex {
-        case 1:
-            sex = "F"
-        case 2:
-            sex = "M"
-        case 3:
-            sex = "U"
-        default:
-            break
-        }
-        return sex
+            let biologicalSex = try self.healthStore.biologicalSex().biologicalSex.rawValue
+            switch biologicalSex {
+            case 1:
+                sex = "F"
+            case 2:
+                sex = "M"
+            case 3:
+                sex = "U"
+            default:
+                break
+            }
+            return sex
         }
         catch{
             print("Could not retrieve biological sex")
@@ -143,8 +173,8 @@ class DataManager: NSObject {
         healthStore.execute(query)
         
     }
-
-
+    
+    
     
     func updateHealthData(sampleType: HKSampleType, datatype: dataType, completionHandler: @escaping () -> Void) {
         
@@ -179,7 +209,7 @@ class DataManager: NSObject {
         }
         healthStore.execute(anchoredQuery)
     }
-
+    
     func handleSleepingHours(new: [HKCategorySample], deleted:[HKDeletedObject]) {
         
         let sample = new.last!
@@ -191,17 +221,16 @@ class DataManager: NSObject {
         print (timestamp) //print date-time
         print("hours \(sleepType) = \(sleptHours)")
         
-        if(firstUpload){
-            StorageManager.sharedInstance.deleteAllData(entityName: "Data")
+        if(firstUploads[dataType.sleepingHours]!){
             for s in new {
                 StorageManager.sharedInstance.addData(entityName: "Data", type: dataType.sleepingHours.rawValue, timestamp: getTimestamp(sample: s), value: sleptHours)
             }
-            firstUpload = false
+            firstUploads.updateValue(false, forKey: dataType.sleepingHours)
         }
         else{
             StorageManager.sharedInstance.addData(entityName: "Data", type: dataType.sleepingHours.rawValue, timestamp: timestamp, value: sleptHours)
         }
-    
+        
     }
     
     func handleStandingHours(new: [HKCategorySample], deleted:[HKDeletedObject]) {
@@ -224,12 +253,11 @@ class DataManager: NSObject {
         print(timestamp)
         print("last sample = \(String(describing: new.last!.quantity))")
         
-        if(firstUpload){
-            StorageManager.sharedInstance.deleteAllData(entityName: "Data")
+        if(firstUploads[dataType]!){
             for s in new {
                 StorageManager.sharedInstance.addData(entityName: "Data", type: dataType.rawValue, timestamp: getTimestamp(sample: s), value: (((s.quantity.doubleValue(for: unit)))))
             }
-            firstUpload = false
+            firstUploads.updateValue(false, forKey: dataType)
         }
         else{
             StorageManager.sharedInstance.addData(entityName: "Data", type: dataType.rawValue, timestamp: timestamp, value: (((new.last?.quantity.doubleValue(for: unit))!)))
