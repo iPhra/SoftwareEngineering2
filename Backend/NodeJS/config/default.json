@@ -1,5 +1,5 @@
 {
-  "jwtPrivateKey" : "gruosso",
+  "jwtPrivateKey" : "",
   "dbconf" : {
     "host" : "d4h.cxxsbhqgk33o.eu-central-1.rds.amazonaws.com",
     "port" : "5432",

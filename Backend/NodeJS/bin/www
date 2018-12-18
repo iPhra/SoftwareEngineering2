@@ -4,10 +4,11 @@
  * Module dependencies.
  */
 const app = require('../app');
-const debug = require('debug')('backend:server');
+const debug = require('debug')('nodejs:server');
 const http = require('http');
 const config = require('config');
 
+console.log(config.get('jwtPrivateKey'));
 if(!config.get('jwtPrivateKey') || !config.get('dbconf')) {
     console.error("FATAL ERROR: jwtPrivateKey not defined");
     process.exit(1)
