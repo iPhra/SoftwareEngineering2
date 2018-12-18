@@ -26,7 +26,7 @@ class TPRequestCell: UITableViewCell {
         super.awakeFromNib()
         subscribingSwitch.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
         subscribingSwitch.center.y = subscriptionLabel.center.y
-        dateLabel.center.x = downloadButton.center.x
+        //dateLabel.center.x = downloadButton.center.x
         downloadButton.center.y = subscriptionLabel.center.y
     }
 
@@ -38,24 +38,27 @@ class TPRequestCell: UITableViewCell {
     
     func initRequest(user: String, types: [dataType], subscribing: Bool, duration: Float, date: String){
         self.singleUserLabel.text = user
-        //self.subscribing = subscribing
+        self.subscribing = subscribing
+        self.subscribingSwitch.isOn = subscribing
         
-        var t:String = ""
+        var t: String = ""
         for type in types{
             t.append(type.rawValue)
         }
         self.dataTypesLabel.text = t
+        self.dateLabel.text = date
     }
     
 
     @IBAction func toggleSubscription(_ sender: Any) {
-        if(subscribing){
+        if(subscribing) {
             //Send end subscription request
             subscribing = false;
+            print("Subsription ended")
         }
-        else{
+        else {
             //Send begin subscription request
-            //subscribing = true
+            subscribing = true
             //Done only if request accepted
         }
     }

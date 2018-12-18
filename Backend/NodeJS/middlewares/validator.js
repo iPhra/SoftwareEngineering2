@@ -1,6 +1,6 @@
 const _ = require('lodash');
 const Joi = require('joi');
-const Schemas = require('./schemas');
+const Schemas = require('../schemas/schemas');
 
 module.exports = () => {
     // enabled HTTP methods for request data validation
@@ -16,7 +16,7 @@ module.exports = () => {
     // return the validation middleware
     return (req, res, next) => {
 
-        const route = req.route.path;
+        const route = req.url;
         const method = req.method.toLowerCase();
 
         if (_.includes(_supportedMethods, method) && _.has(Schemas, route)) {

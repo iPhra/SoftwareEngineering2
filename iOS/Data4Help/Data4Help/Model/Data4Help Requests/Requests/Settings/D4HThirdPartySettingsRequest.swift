@@ -14,15 +14,13 @@ class D4HThirdPartySettingsRequest: D4HRequest {
     
     // MARK: - Properties
     
-    let authToken: String
     let password: String
     let company_name: String
     let company_description: String
     
     // MARK: Initialisation
     
-    init(authToken: String, password: String, company_name: String, company_description: String) {
-        self.authToken = authToken
+    init(password: String, company_name: String, company_description: String) {
         self.password = password
         self.company_name = company_name
         self.company_description = company_description
@@ -32,9 +30,7 @@ class D4HThirdPartySettingsRequest: D4HRequest {
     // MARK: - Networking
     
     override func getParams() -> Parameters {
-        var params: Parameters = [
-            "authToken": authToken
-        ]
+        var params: Parameters = [:]
         if(!password.isEmpty) {
             params["password"] = password
         }

@@ -14,7 +14,6 @@ class D4HSingleRequest: D4HRequest {
     
     // MARK: - Properties
     
-    let authToken: String
     let email: String
     let fc: String
     let types: [dataType]
@@ -23,8 +22,7 @@ class D4HSingleRequest: D4HRequest {
     
     // MARK: Initialisation
     
-    init(authToken: String, email: String, fc: String, types: [dataType], subscribing: Bool, duration: Int) {
-        self.authToken = authToken
+    init(email: String, fc: String, types: [dataType], subscribing: Bool, duration: Int) {
         self.email = email
         self.fc = fc
         self.types = types
@@ -37,10 +35,9 @@ class D4HSingleRequest: D4HRequest {
     
     override func getParams() -> Parameters {
         let params: Parameters = [
-            "authToken": authToken,
             "email": email,
             "fc": fc,
-            "types": authToken,
+            "types": types,
             "subscribing": subscribing,
             "duration": duration
         ]

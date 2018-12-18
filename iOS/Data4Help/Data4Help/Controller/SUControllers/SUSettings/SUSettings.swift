@@ -44,6 +44,9 @@ class SUSettings: UIViewController {
         containerView.addSubview(controller.view)
         
         controller.didMove(toParent: self)
+        
+        // load user info
+        loadinfo()
     }
     
 
@@ -87,11 +90,32 @@ class SUSettings: UIViewController {
         let password = EditSettings?.passwordTextField.text
         let birthdate = EditSettings?.birthdateTextField.text
 
-        NetworkManager.sharedInstance.sendPostRequest(input: D4HSingleUserSettingsRequest(authToken: Properties.authToken, password: password!, fullname: fullname!, birthdate: birthdate!), endpoint: D4HEndpoint.setInfoSingle) { (response, error) in
+        NetworkManager.sharedInstance.sendPostRequest(input: D4HSingleUserSettingsRequest(password: password!, fullname: fullname!, birthdate: birthdate!), endpoint: D4HEndpoint.setInfoSingle, headers: Properties.auth()) { (response, error) in
             if response != nil {
                 let myres = D4HRegisterSingleResponse(fromJson: response!)
                 print(myres.message)
+                
+                // Update Labels
+                self.ViewSettings?.fullNameLabel.text = (fullname?.isEmpty)! ? self.ViewSettings?.fullNameLabel.text : fullname
+                self.ViewSettings?.passwordLabel.text = (password?.isEmpty)! ? self.ViewSettings?.passwordLabel.text : password
+                self.ViewSettings?.birthdateLabel.text = (birthdate?.isEmpty)! ? self.ViewSettings?.birthdateLabel.text : birthdate
+                
+                // Exit from edit view
                 self.startEditing(self)
+            }
+            else if let error = error {
+                print(error)
+            }
+        }
+    }
+    
+    private func loadinfo() {
+        NetworkManager.sharedInstance.sendGetRequest(input: D4HSingleUserInfoRequest(), endpoint: D4HEndpoint.getInfoSingle, headers: Properties.auth()) { (response, error) in
+            if response != nil {
+                let myres = D4HSingleUserInfoResponse(fromJson: response!)
+                
+                // Update Labels
+                self.ViewSettings?.fillView(info: myres)
             }
             else if let error = error {
                 print(error)

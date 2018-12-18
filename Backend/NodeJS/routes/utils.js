@@ -1,4 +1,5 @@
 const db = require('../settings/dbconnection');
+const bcrypt = require('bcryptjs');
 
 
 //logs an error thrown when a query fails, and sends a HTTP 400 response
@@ -8,26 +9,18 @@ function logError(error, res) {
 }
 
 
-//true if the given userID is a ThirdParty
-async function isThirdParty(userID) {
-    const text = 'SELECT * FROM ThirdParty WHERE userID = $1';
-    const res = await db.query(text, [userID]);
-    return res.rowCount>0
-}
-
-
-//true if the given userID is a PrivateUser
-async function isPrivateUser(userID) {
-    const text = 'SELECT * FROM PrivateUser WHERE userID = $1';
-    const res = await db.query(text, [userID]);
-    return res.rowCount>0
-}
-
-
-//checks if a given PrivateUser exists in the db, given his email and fc, and returns the result of the query
+//checks if a given PrivateUser exists in the db, given his email, and returns the result of the query
 async function getUserIDByEmail(req) {
-    const text = "SELECT userid FROM privateuser WHERE email=$1 AND fc=$2";
-    const values = [req.body.email, req.body.fc];
+    const text = "SELECT userid FROM privateuser WHERE email=$1";
+    const values = [req.body.email];
+    return await db.query(text, values);
+}
+
+
+//checks if a given PrivateUser exists in the db, given his fc, and returns the result of the query
+async function getUserIDByFC(req) {
+    const text = "SELECT userid FROM privateuser WHERE fc=$1";
+    const values = [req.body.fc];
     return await db.query(text, values);
 }
 
@@ -40,9 +33,29 @@ function addDays(date, days) {
 }
 
 
+//hashes the password
+async function hashPassword(password) {
+    const salt = await bcrypt.genSalt(10);
+    return await bcrypt.hash(password, salt);
+}
+
+
+//generate authToken
+function getActivToken(userID) {
+    let text = userID.toString();
+    const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for (let i = 0; i < 10; i++)
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    return text;
+}
+
+
 
 module.exports.logError = logError;
-module.exports.isThirdParty = isThirdParty;
-module.exports.isPrivateUser = isPrivateUser;
 module.exports.getUserIDByEmail = getUserIDByEmail;
+module.exports.getUserIDByFC = getUserIDByFC;
 module.exports.addDays = addDays;
+module.exports.hashPassword = hashPassword;
+module.exports.getAuthToken = getActivToken;

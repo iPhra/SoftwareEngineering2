@@ -23,6 +23,8 @@ enum D4HEndpoint: String {
     case setInfoSingle = "/settings/single/info"
     case setDataSingle = "/settings/single/data"
     case setInfoThirdParty = "/settings/tp/info"
+    case getInfoSingle = "/settings/single/list"
+    case getInfoThirdParty = "/settings/tp/list"
     
     // Request
     case requestListSingle = "/req/single/list"

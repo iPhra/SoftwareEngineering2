@@ -14,7 +14,6 @@ class D4HGroupRequest: D4HRequest {
     
     // MARK: - Properties
     
-    let authToken: String
     let types: [dataType]
     let parameters: [dataType]
     let bounds: [String]
@@ -23,8 +22,7 @@ class D4HGroupRequest: D4HRequest {
     
     // MARK: Initialisation
     
-    init(authToken: String, types: [dataType], parameters: [dataType], bounds: [String], subscribing: Bool, duration: Int) {
-        self.authToken = authToken
+    init(types: [dataType], parameters: [dataType], bounds: [String], subscribing: Bool, duration: Int) {
         self.types = types
         self.parameters = parameters
         self.bounds = bounds
@@ -37,7 +35,6 @@ class D4HGroupRequest: D4HRequest {
     
     override func getParams() -> Parameters {
         let params: Parameters = [
-            "authToken": authToken,
             "types": types,
             "parameters": parameters,
             "bounds": bounds,

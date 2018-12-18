@@ -1,8 +1,8 @@
 //
-//  D4HStatisticsRequest.swift
+//  D4HSingleUserInfoRequest.swift
 //  Data4Help
 //
-//  Created by Luca Molteni on 16/12/18.
+//  Created by Luca Molteni on 17/12/18.
 //  Copyright © 2018 Lorenzo Molteni Negri. All rights reserved.
 //
 
@@ -10,25 +10,20 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class D4HStatisticsRequest: D4HRequest {
+class D4HSingleUserInfoRequest: D4HRequest {
     
     // MARK: - Properties
     
-    let types: [dataType]
-    
     // MARK: Initialisation
     
-    init(types: [dataType]) {
-        self.types = types
+    init() {
         super.init(encodingType: D4HEncodingType.UTF16)
     }
     
     // MARK: - Networking
     
     override func getParams() -> Parameters {
-        let params: Parameters = [
-            "types": types
-        ]
+        let params: Parameters = [:]
         print(params)
         return params
     }

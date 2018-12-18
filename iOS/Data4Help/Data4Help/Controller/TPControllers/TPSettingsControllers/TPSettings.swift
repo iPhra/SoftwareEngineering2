@@ -88,10 +88,17 @@ class TPSettings: UIViewController {
         let companyName = TPEditSettings?.companyNameTextField.text
         let companyDescription = TPEditSettings?.companyDescriptionTextField.text
         
-        NetworkManager.sharedInstance.sendPostRequest(input: D4HThirdPartySettingsRequest(authToken: Properties.authToken, password: password!, company_name: companyName!, company_description: companyDescription!), endpoint: D4HEndpoint.setInfoThirdParty) { (response, error) in
+        NetworkManager.sharedInstance.sendPostRequest(input: D4HThirdPartySettingsRequest(password: password!, company_name: companyName!, company_description: companyDescription!), endpoint: D4HEndpoint.setInfoThirdParty, headers: Properties.auth()) { (response, error) in
             if response != nil {
                 let myres = D4HRegisterSingleResponse(fromJson: response!)
                 print(myres.message)
+                
+                // Update labels
+                self.TPViewSettings?.passwordLabel.text = (password?.isEmpty)! ? self.TPViewSettings?.passwordLabel.text : password
+                self.TPViewSettings?.organisationNameLabel.text = (companyName?.isEmpty)! ? self.TPViewSettings?.organisationNameLabel.text : companyName
+                self.TPViewSettings?.descriptionLabel.text = (companyDescription?.isEmpty)! ? self.TPViewSettings?.descriptionLabel.text : companyDescription
+                
+                // Exit from edit mode
                 self.startEditing(self)
             }
             else if let error = error {

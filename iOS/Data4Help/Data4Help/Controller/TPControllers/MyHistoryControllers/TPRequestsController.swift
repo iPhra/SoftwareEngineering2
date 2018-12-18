@@ -7,11 +7,19 @@
 //
 
 import UIKit
+import Alamofire
 
 class TPRequestsController: UITableViewController {
 
-    var requests: [D4HSingleRequest] = []
+    // MARK: Properties
+    
+    var singleRequests: [TPSingleRequest] = []
+    var groupRequests: [TPGroupRequest] = []
     var sections: [String] = []
+    
+    // MARK: Outlets
+    
+    @IBOutlet var requestsTableView: UITableView!
     
     // Mark: Initializers
     
@@ -19,37 +27,22 @@ class TPRequestsController: UITableViewController {
         super.viewDidLoad()
         self.tableView.dataSource = self
         
-        self.sections.append("Accepted Requests")
-        self.sections.append("Pending Requests")
-        self.sections.append("Refused Requests")
-        
-        let r: D4HSingleRequest = D4HSingleRequest(authToken: "", email: "", fc: "ABC123", types: [dataType.distanceWalkingRunning], subscribing: true, duration: 10)
         //SampleRequest(status: "accepted",companyName: "Company X", datatypes: [dataType.distanceWalkingRunning], subscribing: true)
-        requests.append(r)
+        //requests.append(r)
         
         self.clearsSelectionOnViewWillAppear = false
         
-        self.navigationItem.rightBarButtonItem = self.editButtonItem
+        loadData()
     }
     
     // Mark: - Table view data source
     
-    func initRequest(){
-        //initialize list of requests
-    }
-    
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
-        return self.sections[section]
-        
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return singleRequests.count + groupRequests.count
     }
     
     
@@ -58,16 +51,39 @@ class TPRequestsController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "TPRequestCell", for: indexPath) as? TPRequestCell  else {
             fatalError("The dequeued cell is not an instance of MyCell.")
         }
-        
-        let request = requests[indexPath.row]
-        cell.initRequest(user: request.fc, types: request.types, subscribing: request.subscribing, duration: Float(request.duration), date: "16-12-2018")
-        
+        if (indexPath.row < singleRequests.count) {
+            let request = singleRequests[indexPath.row]
+            cell.initRequest(user: request.fc, types: request.types, subscribing: request.subscribing, duration: Float(request.duration), date: request.date)
+        }
+        else {
+            let request = groupRequests[indexPath.row]
+            cell.initRequest(user: ("Group " + String(indexPath.row)), types: request.types, subscribing: request.subscribing, duration: Float(request.duration), date: request.date)
+        }
         return cell
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
     {
         return 100.0;//Your custom row height
+    }
+    
+    // MARK: Private implementation
+    
+    func loadData() {
+        // API call to retrieve requests
+        NetworkManager.sharedInstance.sendGetRequest(input: D4HThirdPartyListRequest(authToken: Properties.authToken), endpoint: D4HEndpoint.requestListThirdParty, headers: Properties.auth()) { (response, error) in
+            if response != nil {
+                let myres = D4HThirdPartyListResponse(fromJson: response!)
+                self.singleRequests = myres.singleRequests
+                self.groupRequests = myres.groupRequests
+                // Debug
+                print(self.singleRequests.count)
+                self.requestsTableView.reloadData()
+            }
+            else if let error = error {
+                print(error)
+            }
+        }
     }
     
     /*
