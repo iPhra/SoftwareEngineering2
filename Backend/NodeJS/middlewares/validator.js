@@ -4,7 +4,7 @@ const Schemas = require('../schemas/schemas');
 
 module.exports = () => {
     // enabled HTTP methods for request data validation
-    const _supportedMethods = ['post', 'get'];
+    const _supportedMethods = ['post'];
 
     // Joi validation options
     const _validationOptions = {

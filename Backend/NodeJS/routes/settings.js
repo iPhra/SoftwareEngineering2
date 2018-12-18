@@ -104,13 +104,12 @@ router.post('/single/data', authenticator(), async (req, res) => {
 
         await(db.query('BEGIN'));
 
-        let i;
         let text;
         let values;
         let rows;
 
         //for each value i'm trying to insert
-        for(i=0; i<req.body.types.length; i++) {
+        for(let i=0; i<req.body.types.length; i++) {
 
             text = "SELECT * FROM usersettings WHERE userid=$1 and datatype=$2";
             values = [userID, req.body.types[i]];
@@ -140,7 +139,7 @@ router.post('/single/data', authenticator(), async (req, res) => {
 });
 
 
-router.get('/tp/list', authenticator(), async (req, res) => {
+router.get('/tp/info', authenticator(), async (req, res) => {
     let userID = req.body.userid;
 
     try {
@@ -166,7 +165,7 @@ router.get('/tp/list', authenticator(), async (req, res) => {
 });
 
 
-router.get('/single/list', authenticator(), async (req, res) => {
+router.get('/single/info', authenticator(), async (req, res) => {
     let userID = req.body.userid;
 
     try {

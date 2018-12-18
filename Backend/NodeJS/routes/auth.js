@@ -1,7 +1,4 @@
-
-//@todo Aggiungere encryption ed EncryptionManager
 //@todo Salvare jwt key nelle enviromental variables
-//@todo rivedere dove stanno i catch per i login
 
 const Router = require('express-promise-router');
 const db = require('../settings/dbconnection');
@@ -142,9 +139,8 @@ router.post('/login', async (req, res) => {
         }, 'gruosso');
 
         res.status(200).send({
-            "message" : "Login successful",
-            "authToken" : token,
-            "userType" :  type
+            authToken: token,
+            userType: type
         })
     } catch(error) {
         return logError(error, res)
