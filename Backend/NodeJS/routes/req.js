@@ -1,4 +1,5 @@
 //@todo Cambiare come controllo i 1000 account delle group request (magari controllando l'ultimo valore inserito)
+//@todo Cambiare i download in get
 
 const Router = require('express-promise-router');
 const db = require('../settings/dbconnection');
@@ -119,15 +120,20 @@ router.post('/tp/downloadSingle', authenticator(), async (req, res) => {
 
         const final_date = getFinalDate(rows);
         const receiver_id = rows.rows[0].receiver_id;
-        let response = {};
+        let response = [];
+        let obj;
 
         //retrieve the value imported by the user for each datatype, and build the response
         for(let i=0; i<types.length; i++) {
+            obj = {type: types[i].datatype};
+
             text = "SELECT value, timest FROM userdata WHERE userid = $1 and datatype = $2 and timest::date <= $3";
             values = [receiver_id, types[i].datatype, final_date];
             rows = await db.query(text, values);
 
-            response[types[i].datatype] = rows.rows
+            obj["observations"] = rows.rows;
+
+            response.push(obj);
         }
 
         res.status(200).send({data: response});
