@@ -16,13 +16,13 @@ class D4HGroupRequest: D4HRequest {
     
     let types: [dataType]
     let parameters: [dataType]
-    let bounds: [String]
+    let bounds: [D4HBound]
     let subscribing: Bool
     let duration: Int
     
     // MARK: Initialisation
     
-    init(types: [dataType], parameters: [dataType], bounds: [String], subscribing: Bool, duration: Int) {
+    init(types: [dataType], parameters: [dataType], bounds: [D4HBound], subscribing: Bool, duration: Int) {
         self.types = types
         self.parameters = parameters
         self.bounds = bounds
@@ -34,10 +34,14 @@ class D4HGroupRequest: D4HRequest {
     // MARK: - Networking
     
     override func getParams() -> Parameters {
+        var boundsParam: [Parameters] = []
+        for bound in bounds {
+            boundsParam.append(bound.getParams())
+        }
         let params: Parameters = [
             "types": types,
             "parameters": parameters,
-            "bounds": bounds,
+            "bounds": boundsParam,
             "subscribing": subscribing,
             "duration": duration
         ]

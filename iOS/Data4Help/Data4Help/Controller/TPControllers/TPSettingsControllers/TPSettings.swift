@@ -110,7 +110,7 @@ class TPSettings: UIViewController {
     }
     
     private func loadinfo() {
-        NetworkManager.sharedInstance.sendGetRequest(input: D4HThirdPartyInfoRequest(), endpoint: D4HEndpoint.getInfoThirdParty, headers: Properties.auth()) { (response, error) in
+        NetworkManager.sharedInstance.sendGetRequest(input: D4HThirdPartyInfoRequest(), endpoint: D4HEndpoint.setInfoThirdParty, headers: Properties.auth()) { (response, error) in
             if response != nil {
                 let myres = D4HThirdPartyInfoResponse(fromJson: response!)
                 

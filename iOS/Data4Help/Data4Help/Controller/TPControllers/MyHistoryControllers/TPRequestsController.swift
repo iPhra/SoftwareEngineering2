@@ -48,18 +48,24 @@ class TPRequestsController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "TPRequestCell", for: indexPath) as? TPRequestCell  else {
-            fatalError("The dequeued cell is not an instance of MyCell.")
-        }
+
         if (indexPath.row < singleRequests.count) {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "TPRequestCell", for: indexPath) as? TPRequestCell  else {
+                fatalError("The dequeued cell is not an instance of TPRequestCell.")
+            }
             let request = singleRequests[indexPath.row]
-            cell.initRequest(user: request.full_name, types: request.types, subscribing: request.subscribing, duration: Float(request.duration), date: request.date)
+            cell.initRequest(reqid: request.reqid, user: request.full_name, types: request.types, subscribing: request.subscribing, duration: Float(request.duration), date: request.date)
+            return cell
         }
         else {
-            let request = groupRequests[indexPath.row]
-            cell.initRequest(user: ("Group " + String(indexPath.row)), types: request.types, subscribing: request.subscribing, duration: Float(request.duration), date: request.date)
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "TPGroupRequestCell", for: indexPath) as? TPGroupRequestCell  else {
+                fatalError("The dequeued cell is not an instance of TPGroupRequestCell.")
+            }
+            // TODO implement this part
+            let request = groupRequests[indexPath.row - singleRequests.count]
+            cell.initRequest(reqid: request.reqid, groupname: ("Group " + String(indexPath.row - singleRequests.count)), types: request.types, filters: request.parameters, subscribing: request.subscribing, duration: Float(request.duration), date: request.date)
+            return cell
         }
-        return cell
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat

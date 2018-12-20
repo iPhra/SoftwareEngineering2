@@ -34,6 +34,17 @@
 		28E0146021C848F7004FA60F /* D4HThirdPartyInfoRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E0145F21C848F7004FA60F /* D4HThirdPartyInfoRequest.swift */; };
 		28E0146221C84968004FA60F /* D4HSingleUserInfoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E0146121C84968004FA60F /* D4HSingleUserInfoResponse.swift */; };
 		28E0146421C84A5F004FA60F /* D4HThirdPartyInfoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E0146321C84A5F004FA60F /* D4HThirdPartyInfoResponse.swift */; };
+		28E0146621CBE221004FA60F /* D4HBound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E0146521CBE221004FA60F /* D4HBound.swift */; };
+		28E0146821CBE509004FA60F /* D4HChoiceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E0146721CBE509004FA60F /* D4HChoiceResponse.swift */; };
+		28E0146A21CBE5BC004FA60F /* D4HSingleResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E0146921CBE5BC004FA60F /* D4HSingleResponse.swift */; };
+		28E0146C21CBE64A004FA60F /* D4HGroupResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E0146B21CBE64A004FA60F /* D4HGroupResponse.swift */; };
+		28E0146E21CBE690004FA60F /* D4HDownloadSingleResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E0146D21CBE690004FA60F /* D4HDownloadSingleResponse.swift */; };
+		28E0147021CBE9E0004FA60F /* D4HDataUploadResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E0146F21CBE9E0004FA60F /* D4HDataUploadResponse.swift */; };
+		28E0147221CBEA0D004FA60F /* D4HStatisticsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E0147121CBEA0D004FA60F /* D4HStatisticsResponse.swift */; };
+		28E0147421CBEAE2004FA60F /* D4HStatistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E0147321CBEAE2004FA60F /* D4HStatistic.swift */; };
+		28E0147621CBEB26004FA60F /* D4HObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E0147521CBEB26004FA60F /* D4HObservation.swift */; };
+		28E0147821CBFB41004FA60F /* D4HDownloadGroupResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E0147721CBFB41004FA60F /* D4HDownloadGroupResponse.swift */; };
+		28E0147A21CC21FD004FA60F /* TPGroupRequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E0147921CC21FD004FA60F /* TPGroupRequestCell.swift */; };
 		28E5568F21ADE9890009D972 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E5568E21ADE9890009D972 /* NetworkManager.swift */; };
 		28E5569221ADF3AB0009D972 /* D4HRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E5569121ADF3AB0009D972 /* D4HRequest.swift */; };
 		28E5569621ADF5480009D972 /* D4HLoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E5569521ADF5480009D972 /* D4HLoginRequest.swift */; };
@@ -123,6 +134,17 @@
 		28E0145F21C848F7004FA60F /* D4HThirdPartyInfoRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HThirdPartyInfoRequest.swift; sourceTree = "<group>"; };
 		28E0146121C84968004FA60F /* D4HSingleUserInfoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HSingleUserInfoResponse.swift; sourceTree = "<group>"; };
 		28E0146321C84A5F004FA60F /* D4HThirdPartyInfoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HThirdPartyInfoResponse.swift; sourceTree = "<group>"; };
+		28E0146521CBE221004FA60F /* D4HBound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HBound.swift; sourceTree = "<group>"; };
+		28E0146721CBE509004FA60F /* D4HChoiceResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HChoiceResponse.swift; sourceTree = "<group>"; };
+		28E0146921CBE5BC004FA60F /* D4HSingleResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HSingleResponse.swift; sourceTree = "<group>"; };
+		28E0146B21CBE64A004FA60F /* D4HGroupResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HGroupResponse.swift; sourceTree = "<group>"; };
+		28E0146D21CBE690004FA60F /* D4HDownloadSingleResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HDownloadSingleResponse.swift; sourceTree = "<group>"; };
+		28E0146F21CBE9E0004FA60F /* D4HDataUploadResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HDataUploadResponse.swift; sourceTree = "<group>"; };
+		28E0147121CBEA0D004FA60F /* D4HStatisticsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HStatisticsResponse.swift; sourceTree = "<group>"; };
+		28E0147321CBEAE2004FA60F /* D4HStatistic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HStatistic.swift; sourceTree = "<group>"; };
+		28E0147521CBEB26004FA60F /* D4HObservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HObservation.swift; sourceTree = "<group>"; };
+		28E0147721CBFB41004FA60F /* D4HDownloadGroupResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HDownloadGroupResponse.swift; sourceTree = "<group>"; };
+		28E0147921CC21FD004FA60F /* TPGroupRequestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TPGroupRequestCell.swift; sourceTree = "<group>"; };
 		28E5568E21ADE9890009D972 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		28E5569121ADF3AB0009D972 /* D4HRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HRequest.swift; sourceTree = "<group>"; };
 		28E5569521ADF5480009D972 /* D4HLoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HLoginRequest.swift; sourceTree = "<group>"; };
@@ -237,6 +259,7 @@
 				CB80992021C52837001E2EB8 /* MyCell.swift */,
 				CB1727A121B1DCD100AC9D36 /* SingleUser.storyboard */,
 				CB80992621C5A5E6001E2EB8 /* TPRequestCell.swift */,
+				28E0147921CC21FD004FA60F /* TPGroupRequestCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -301,8 +324,13 @@
 		28E0144C21C65D0B004FA60F /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				28E0146721CBE509004FA60F /* D4HChoiceResponse.swift */,
 				28E0145021C65D5B004FA60F /* D4HSingleListResponse.swift */,
 				28E0145421C665B4004FA60F /* D4HThirdPartyListResponse.swift */,
+				28E0146921CBE5BC004FA60F /* D4HSingleResponse.swift */,
+				28E0146B21CBE64A004FA60F /* D4HGroupResponse.swift */,
+				28E0146D21CBE690004FA60F /* D4HDownloadSingleResponse.swift */,
+				28E0147721CBFB41004FA60F /* D4HDownloadGroupResponse.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -310,6 +338,8 @@
 		28E0144D21C65D13004FA60F /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				28E0146F21CBE9E0004FA60F /* D4HDataUploadResponse.swift */,
+				28E0147121CBEA0D004FA60F /* D4HStatisticsResponse.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -341,6 +371,9 @@
 				28E0145621C66756004FA60F /* TPGroupRequest.swift */,
 				28E0145821C667EA004FA60F /* D4HHealthParameter.swift */,
 				28E0145A21C66ACB004FA60F /* TPSingleRequest.swift */,
+				28E0146521CBE221004FA60F /* D4HBound.swift */,
+				28E0147321CBEAE2004FA60F /* D4HStatistic.swift */,
+				28E0147521CBEB26004FA60F /* D4HObservation.swift */,
 			);
 			path = Data4HelpModel;
 			sourceTree = "<group>";
@@ -726,10 +759,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB18F00921B6F76500BBFAAD /* StorageManager.swift in Sources */,
+				28E0146621CBE221004FA60F /* D4HBound.swift in Sources */,
 				28E0145E21C8487C004FA60F /* D4HSingleUserInfoRequest.swift in Sources */,
 				28E5569621ADF5480009D972 /* D4HLoginRequest.swift in Sources */,
 				28D938BA21C3F79C00DC7785 /* D4HThirdPartySettingsRequest.swift in Sources */,
 				CB1727B821B3EB9600AC9D36 /* TPViewSettings.swift in Sources */,
+				28E0147221CBEA0D004FA60F /* D4HStatisticsResponse.swift in Sources */,
+				28E0147821CBFB41004FA60F /* D4HDownloadGroupResponse.swift in Sources */,
 				28E0144721C56C24004FA60F /* D4HDownloadGroupRequest.swift in Sources */,
 				CB80992921C5A601001E2EB8 /* MyHistory.swift in Sources */,
 				28E0144521C56B20004FA60F /* D4HDownloadSingleRequest.swift in Sources */,
@@ -737,6 +773,7 @@
 				28E0144921C65B84004FA60F /* D4HChoiceRequest.swift in Sources */,
 				28E0145921C667EA004FA60F /* D4HHealthParameter.swift in Sources */,
 				CB98265721C28D9E00932CE6 /* MyFollowers.swift in Sources */,
+				28E0146C21CBE64A004FA60F /* D4HGroupResponse.swift in Sources */,
 				CB80992B21C5A647001E2EB8 /* TPRequestsController.swift in Sources */,
 				CB1727B021B3E2CD00AC9D36 /* SUViewSettings.swift in Sources */,
 				CB1727A821B3347B00AC9D36 /* ResearchViewController.swift in Sources */,
@@ -747,6 +784,7 @@
 				28E0143F21C567EC004FA60F /* D4HThirdPartyListRequest.swift in Sources */,
 				28E5569A21ADF5C60009D972 /* D4HEncodingType.swift in Sources */,
 				CB80992121C52837001E2EB8 /* MyCell.swift in Sources */,
+				28E0146A21CBE5BC004FA60F /* D4HSingleResponse.swift in Sources */,
 				CB1727BA21B3EBA700AC9D36 /* TPEditSettings.swift in Sources */,
 				28121FCE21B5A1FD00AF6CCE /* D4HSingleRegisterRequest.swift in Sources */,
 				28E5568F21ADE9890009D972 /* NetworkManager.swift in Sources */,
@@ -765,9 +803,11 @@
 				283B263721B98F6500C939A9 /* D4HRegisterThirdPartyResponse.swift in Sources */,
 				CB17279E21B1D5C800AC9D36 /* TutorialViewController.swift in Sources */,
 				CBADD0FD21AC197E00896705 /* LoginViewController.swift in Sources */,
+				28E0147A21CC21FD004FA60F /* TPGroupRequestCell.swift in Sources */,
 				CB1727AE21B3C8B000AC9D36 /* GRequest.swift in Sources */,
 				CB1727AC21B3C89B00AC9D36 /* SRequest.swift in Sources */,
 				CB1727BE21B4496800AC9D36 /* MyHealth.swift in Sources */,
+				28E0146821CBE509004FA60F /* D4HChoiceResponse.swift in Sources */,
 				28E5569821ADF55A0009D972 /* D4HLoginResponse.swift in Sources */,
 				28E5569221ADF3AB0009D972 /* D4HRequest.swift in Sources */,
 				28E5569D21ADF8870009D972 /* D4HEndpoint.swift in Sources */,
@@ -775,15 +815,19 @@
 				CB80991F21C52821001E2EB8 /* RequestsController.swift in Sources */,
 				28FF1AA821C3B1E300456B4F /* Properties.swift in Sources */,
 				CB98264F21C164ED00932CE6 /* Model.xcdatamodeld in Sources */,
+				28E0147021CBE9E0004FA60F /* D4HDataUploadResponse.swift in Sources */,
 				CB17279A21B1543500AC9D36 /* SURegisterViewController.swift in Sources */,
+				28E0147421CBEAE2004FA60F /* D4HStatistic.swift in Sources */,
 				28D938B821C3C3AB00DC7785 /* D4HLogoutResponse.swift in Sources */,
 				28E0146421C84A5F004FA60F /* D4HThirdPartyInfoResponse.swift in Sources */,
 				283B263521B98D9E00C939A9 /* D4HThirdPartyRegistrationRequest.swift in Sources */,
+				28E0146E21CBE690004FA60F /* D4HDownloadSingleResponse.swift in Sources */,
 				28D938BC21C40BAC00DC7785 /* D4HSingleUserSettingsRequest.swift in Sources */,
 				CB1727B421B3E2EF00AC9D36 /* SUSettings.swift in Sources */,
 				28B67D0421C10E0500FCA356 /* D4HLogoutRequest.swift in Sources */,
 				28E0146021C848F7004FA60F /* D4HThirdPartyInfoRequest.swift in Sources */,
 				CB80992721C5A5E6001E2EB8 /* TPRequestCell.swift in Sources */,
+				28E0147621CBEB26004FA60F /* D4HObservation.swift in Sources */,
 				28E0145B21C66ACB004FA60F /* TPSingleRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

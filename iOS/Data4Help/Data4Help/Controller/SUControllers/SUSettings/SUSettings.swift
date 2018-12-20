@@ -110,7 +110,7 @@ class SUSettings: UIViewController {
     }
     
     private func loadinfo() {
-        NetworkManager.sharedInstance.sendGetRequest(input: D4HSingleUserInfoRequest(), endpoint: D4HEndpoint.getInfoSingle, headers: Properties.auth()) { (response, error) in
+        NetworkManager.sharedInstance.sendGetRequest(input: D4HSingleUserInfoRequest(), endpoint: D4HEndpoint.setInfoSingle, headers: Properties.auth()) { (response, error) in
             if response != nil {
                 let myres = D4HSingleUserInfoResponse(fromJson: response!)
                 

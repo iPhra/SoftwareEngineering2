@@ -1,56 +1,64 @@
 //
-//  TPRequestCell.swift
+//  TPGroupRequestCell.swift
 //  Data4Help
 //
-//  Created by Virginia Negri on 15/12/2018.
+//  Created by Luca Molteni on 20/12/18.
 //  Copyright © 2018 Lorenzo Molteni Negri. All rights reserved.
 //
 
 import UIKit
 
-class TPRequestCell: UITableViewCell {
+class TPGroupRequestCell: UITableViewCell {
+    
+    //MARK: Outlets
+    
+    @IBOutlet weak var groupNameLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var datatypesLabel: UILabel!
+    @IBOutlet weak var subscriptionToggle: UISwitch!
+    @IBOutlet weak var subscriptionLabel: UILabel!
+    @IBOutlet weak var downloadButton: UIButton!
+    
     
     //Mark: properties
     var subscribing: Bool = false
     var reqid: String = ""
-
-    @IBOutlet weak var singleUserLabel: UILabel!
-    @IBOutlet weak var dataTypesLabel: UILabel!
-    @IBOutlet weak var subscribingSwitch: UISwitch!    
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var subscriptionLabel: UILabel!
+    var filters: [D4HHealthParameter]? = nil
     
-    @IBOutlet weak var downloadButton: UIButton!
     // Mark: functions
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        subscribingSwitch.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
-        subscribingSwitch.center.y = subscriptionLabel.center.y
+        subscriptionToggle.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
+        subscriptionToggle.center.y = subscriptionLabel.center.y
         downloadButton.center.y = subscriptionLabel.center.y
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
-    func initRequest(reqid: String, user: String, types: [dataType], subscribing: Bool, duration: Float, date: String){
+    // Is it reallly D4H bound?
+    func initRequest(reqid: String, groupname: String, types: [dataType], filters: [D4HHealthParameter], subscribing: Bool, duration: Float, date: String){
         self.reqid = reqid
-        self.singleUserLabel.text = user
+        self.groupNameLabel.text = groupname
         self.subscribing = subscribing
-        self.subscribingSwitch.isOn = subscribing
+        self.subscriptionToggle.isOn = subscribing
         
         var t: String = ""
         for type in types{
             t.append(type.rawValue)
         }
-        self.dataTypesLabel.text = t
+        
+        self.filters = filters
+        
+        self.datatypesLabel.text = t
         self.dateLabel.text = date
     }
     
-
+    
     @IBAction func toggleSubscription(_ sender: Any) {
         if(subscribing) {
             //Send end subscription request
@@ -67,9 +75,9 @@ class TPRequestCell: UITableViewCell {
     @IBAction func downloadRequestData(_ sender: Any) {
         
         // API call to download request data
-        NetworkManager.sharedInstance.sendGetRequest(input: D4HDownloadSingleRequest(reqID: self.reqid), endpoint: D4HEndpoint.downloadSingleRequest, headers: Properties.auth()) { (response, error) in
+        NetworkManager.sharedInstance.sendPostRequest(input: D4HDownloadGroupRequest(reqID: self.reqid), endpoint: D4HEndpoint.downloadGroupRequest, headers: Properties.auth()) { (response, error) in
             if response != nil {
-                let myres = D4HDownloadSingleResponse(fromJson: response!)
+                let myres = D4HDownloadGroupResponse(fromJson: response!)
             }
             else if let error = error {
                 print(error)
