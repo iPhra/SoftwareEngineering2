@@ -8,9 +8,8 @@ const debug = require('debug')('nodejs:server');
 const http = require('http');
 const config = require('config');
 
-console.log(config.get('jwtPrivateKey'));
-if(!config.get('jwtPrivateKey') || !config.get('dbconf')) {
-    console.error("FATAL ERROR: jwtPrivateKey not defined");
+if(!config.get('jwtPrivateKey')) {
+    console.error("FATAL ERROR: jwtPrivateKey not defined, please export the environmental variable");
     process.exit(1)
 }
 

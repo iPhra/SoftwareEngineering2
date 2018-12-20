@@ -57,7 +57,7 @@ router.post('/tp/sendGroup', authenticator(), async (req, res) => {
 
     try {
 
-        //if he's not logged in or he's not a PrivateUser
+        //if he's not logged in or he's not a ThirdParty
         if (req.body.usertype!=="ThirdParty")
             return res.status(401).send({error: "You need to login with a Third Party account"});
 
@@ -119,7 +119,7 @@ router.post('/tp/downloadSingle', authenticator(), async (req, res) => {
 
         const final_date = getFinalDate(rows);
         const receiver_id = rows.rows[0].receiver_id;
-        let response = [];
+        let response = {};
 
         //retrieve the value imported by the user for each datatype, and build the response
         for(let i=0; i<types.length; i++) {
@@ -140,7 +140,7 @@ router.post('/tp/downloadSingle', authenticator(), async (req, res) => {
 router.post('/tp/downloadGroup', authenticator(), async (req, res) => {
     try {
 
-        //if he's not logged in or he's not a PrivateUser
+        //if he's not logged in or he's not a ThirdParty
         if (req.body.usertype!=="ThirdParty")
             return res.status(401).send({error: "You need to login with a Third Party account"});
 
