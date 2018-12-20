@@ -57,12 +57,15 @@ router.post('/stats', authenticator(), async (req, res) => {
             return res.status(403).send({error: "Provided datatype is not enabled"});
 
         //get datapoints from the database
-        let response = {};
+        let response = [];
+        let obj;
         let text;
         let values;
         let rows;
 
         for(let i=0; i<req.body.types.length; i++) {
+
+            obj = {type:req.body.types[i]};
 
             text = "SELECT avg(value) as avg, date_part('month', timest) as month, date_part('year', timest) as year " +
                 "FROM userdata WHERE userid=$1 and datatype=$2 " +
@@ -75,8 +78,10 @@ router.post('/stats', authenticator(), async (req, res) => {
                 rows.rows[j].avg = parseFloat(rows.rows[j].avg)
             }
 
+            obj["observations"] = rows.rows;
+
             //append observation to the response
-            response[req.body.types[i]] = rows.rows
+            response.push(obj)
         }
 
         res.status(200).send({
