@@ -55,6 +55,10 @@ class SUSettings: UIViewController {
         if(edit==0){
             addChild(EditSettings!)
             containerView.addSubview((EditSettings?.view)!)
+            
+            // Edit view setup
+            EditSettings?.fillView(email: (ViewSettings?.emailLabel.text)!, cf: (ViewSettings?.fcLabel.text)!)
+            
             edit = 1
             editButton.setTitle("Close",for: .normal)
             bottomActionButton.setTitle("Save", for: .normal)

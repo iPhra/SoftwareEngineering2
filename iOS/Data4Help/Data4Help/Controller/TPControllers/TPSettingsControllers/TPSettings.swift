@@ -53,8 +53,13 @@ class TPSettings: UIViewController {
     
     @IBAction func startEditing(_ sender: Any) {
         if(edit==0){
+            
             addChild(TPEditSettings!)
             containerView.addSubview((TPEditSettings?.view)!)
+            
+            // Edit view setup
+            self.TPEditSettings?.fillView(email: (TPViewSettings?.emailLabel.text)!, piva: (TPViewSettings?.pivaLabel.text)!)
+            
             edit = 1
             editButton.setTitle("Close",for: .normal)
             bottomActionButton.setTitle("Save", for: .normal)

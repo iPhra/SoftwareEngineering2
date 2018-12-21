@@ -12,7 +12,9 @@ class SUEditSettings: UIViewController {
 
     // MARK: Outlets
     @IBOutlet weak var fullNameTextField: UITextField!
+    @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var cfLabel: UILabel!
     @IBOutlet weak var birthdateTextField: UITextField!
     
     
@@ -20,6 +22,16 @@ class SUEditSettings: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    // MARK: Public implementation
+    
+    func fillView(email: String, cf: String) {
+        fullNameTextField.text = ""
+        emailLabel.text = email
+        passwordTextField.text = ""
+        cfLabel.text = cf
+        birthdateTextField.text = ""
     }
     
 

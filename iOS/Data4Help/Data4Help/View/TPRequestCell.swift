@@ -67,7 +67,7 @@ class TPRequestCell: UITableViewCell {
     @IBAction func downloadRequestData(_ sender: Any) {
         
         // API call to download request data
-        NetworkManager.sharedInstance.sendGetRequest(input: D4HDownloadSingleRequest(reqID: self.reqid), endpoint: D4HEndpoint.downloadSingleRequest, headers: Properties.auth()) { (response, error) in
+        NetworkManager.sharedInstance.sendPostRequest(input: D4HDownloadSingleRequest(reqID: self.reqid), endpoint: D4HEndpoint.downloadSingleRequest, headers: Properties.auth()) { (response, error) in
             if response != nil {
                 let myres = D4HDownloadSingleResponse(fromJson: response!)
             }
