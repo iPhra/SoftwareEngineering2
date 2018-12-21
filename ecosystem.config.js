@@ -1,7 +1,7 @@
 module.exports = {
   apps: [{
     name: 'data4help',
-    script: './Backend/NodeJS/bin/www'
+    script: 'd4h_jwtPrivateKey=gruosso node ./Backend/NodeJS/bin/www'
   }],
   deploy: {
     production: {
