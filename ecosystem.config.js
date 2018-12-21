@@ -1,7 +1,7 @@
 module.exports = {
   apps: [{
-    name: 'tutorial-2',
-    script: './index.js'
+    name: 'data4help',
+    script: './Backend/NodeJS/bin/www.js'
   }],
   deploy: {
     production: {
