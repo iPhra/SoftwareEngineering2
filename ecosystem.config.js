@@ -11,7 +11,7 @@ module.exports = {
       ref: 'origin/master',
       repo: 'git@github.com:iphra/LorenzoMolteniNegri.git',
       path: '/home/ubuntu/Server',
-      'post-deploy': 'npm install && pm2 startOrRestart ecosystem.config.js'
+      'post-deploy': 'cd ./Backend/NodeJS && npm install && cd ../../ && pm2 startOrRestart ecosystem.config.js'
     }
   }
 }
