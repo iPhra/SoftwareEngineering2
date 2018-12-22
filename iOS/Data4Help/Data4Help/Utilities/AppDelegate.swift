@@ -13,6 +13,8 @@ import CoreData
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
+    // Mark: Properties
+    
     var window: UIWindow?
     
     var launchedShortcutItem: UIApplicationShortcutItem?
@@ -29,48 +31,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return container
     }()
     
+    // Mark: Shared instance
+    
     class var shared: AppDelegate {
         return UIApplication.shared.delegate as! AppDelegate
     }
-
     
+    // Mark: Functions
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        let dataManager:DataManager = DataManager()
-        dataManager.authorizeHKinApp()
-        
-        dataManager.storeBiologicalSex()
-        
-    
-        
-        //dataManager.initTimer()
-    
-        /*
-        if let shortcutItem = launchOptions?[UIApplication.LaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
-            if shortcutItem.type == "com.lorenzomolteninegri.Data4Help.automatedsos" /*"\(String(describing: Bundle.main.bundleIdentifier)).AutomatedSOS" */{
-                // shortcut was triggered!
-                print("3D touch works!!")
-                self.launchedShortcutItem = shortcutItem
-            }
-        }*/
 
+        // Data manager initializers
+        
+        DataManager.sharedInstance.authorizeHKinApp()
+        DataManager.sharedInstance.storeBiologicalSex()
+        
+        //DataManager.sharedInstance.initTimer()
+        
+        // Storage manager initializers
         
         //Clean all data for debugging
         StorageManager.sharedInstance.deleteAllData(entityName: "Data")
         StorageManager.sharedInstance.deleteAllData(entityName: "AutomatedSOS")
         
-        
         StorageManager.sharedInstance.initAutomatedSOS()
-        
-        let sampleTypes = dataManager.sampleTypesToRead()
-        
-        for sample in sampleTypes {
-            //dataManager.enableBackgroundData(input: sample, datatype: DataManager.sharedInstance.getDataTypeFromSampleType(hkSampleType: sample))
-        }
-        //dataManager.enableBackgroundData(input: HKSampleType.categoryType(forIdentifier: HKCategoryTypeIdentifier.appleStandHour)!, datatype: dataType.standingHours)
-        
-        //dataManager.enableBackgroundData(input: HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceWalkingRunning)!, datatype: dataType.distanceWalkingRunning)
         
         return true
     }
@@ -118,28 +102,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
+    // Mark: Shortcut handlers
+    
     static func deleteAllQuickShortcuts(){
         UIApplication.shared.shortcutItems?.removeAll()
     }
     
     
     func application(_ application: UIApplication,
-                              performActionFor shortcutItem: UIApplicationShortcutItem,
-                              completionHandler: @escaping (Bool) -> Void){
-    
-        if shortcutItem.type == "com.lorenzomolteninegri.Data4Help.automatedsos"{
+                     performActionFor shortcutItem: UIApplicationShortcutItem,
+                     completionHandler: @escaping (Bool) -> Void){
+        
+        if shortcutItem.type == "com.lorenzomolteninegri.Data4Help.automatedSOS"{
             completionHandler(handleShortcutItem(item: shortcutItem))
         }
     }
     
     
-    
     func handleShortcutItem(item: UIApplicationShortcutItem) -> Bool {
-        print("I am the handler !!! ")
+        DataManager.sharedInstance.enableAutomatedSOS()
         return true
     }
-
-}
     
+    // Mark: First data import handler
+    
+    func firstImport(){
+        let sampleTypes = DataManager.sharedInstance.sampleTypesToRead()
+        for sample in sampleTypes {
+            DataManager.sharedInstance.enableBackgroundData(input: sample, datatype: DataManager.sharedInstance.getDataTypeFromSampleType(hkSampleType: sample))
+        }
+    }
+    
+}
 
 

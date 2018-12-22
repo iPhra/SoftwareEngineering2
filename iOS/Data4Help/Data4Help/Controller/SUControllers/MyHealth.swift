@@ -25,11 +25,14 @@ class MyHealth: UIViewController {
     
     @IBOutlet weak var bubbleChartView: BubbleChartView!
     
-    //MARK: Functions
+    @IBOutlet weak var automatedSOSSwitch: UISwitch!
     
+    //MARK: Functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        automatedSOSSwitch.setOn(DataManager.sharedInstance.getStoredAutomatedSOSValue(), animated: true)
         
         // Load all stored data
         /*
@@ -143,7 +146,6 @@ class MyHealth: UIViewController {
         DataManager.sharedInstance.toggleAutomatedSOS();
     }
     
-    
 }
 
 extension MyHealth: IAxisValueFormatter {
@@ -152,4 +154,5 @@ extension MyHealth: IAxisValueFormatter {
         return xvals[Int(value)]
     }
 }
+
 

@@ -332,6 +332,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="MyHealth" image="MyHealth" selectedImage="MyHealth" id="Nu6-bn-woq"/>
                     <connections>
+                        <outlet property="automatedSOSSwitch" destination="IsF-nH-4HZ" id="it2-cZ-aAO"/>
                         <outlet property="barChartView" destination="vcV-cV-eD2" id="Tbz-Ve-0JT"/>
                         <outlet property="bubbleChartView" destination="41L-4h-Ron" id="dek-3C-eRp"/>
                         <outlet property="scrollView" destination="LBr-av-nUc" id="46w-To-tMA"/>

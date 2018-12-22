@@ -74,7 +74,7 @@ class DataManager {
         }
     }
     
-    // Mark: functions
+    // Mark: Automated SOS handlers
     
     public func toggleAutomatedSOS(){
         if(AutomatedSOSON){
@@ -84,6 +84,17 @@ class DataManager {
             AutomatedSOSON = true;
         }
         StorageManager.sharedInstance.setAutomatedSOSValue(value: AutomatedSOSON)
+    }
+    
+    public func enableAutomatedSOS(){
+        if(!AutomatedSOSON){
+            AutomatedSOSON = true;
+            StorageManager.sharedInstance.setAutomatedSOSValue(value: AutomatedSOSON)
+        }
+    }
+    
+    public func getStoredAutomatedSOSValue() -> Bool{
+        return StorageManager.sharedInstance.getAutomatedSOS()
     }
     
     func callAmbulance(){
@@ -96,6 +107,7 @@ class DataManager {
          }
     }
     
+    // Mark: Data import handlers
     
     public func sampleTypesToRead() -> [HKSampleType] {
         var sampleTypes = [HKSampleType]()
@@ -222,7 +234,9 @@ class DataManager {
     }
     
     func handleSleepingHours(new: [HKCategorySample], deleted:[HKDeletedObject]) {
-        
+        if(new.count==0){
+            return
+        }
         let sample = new.last!
         let sleepType = (sample.value == HKCategoryValueSleepAnalysis.inBed.rawValue) ? "InBed" : "Asleep"
         let timestamp = getTimestamp(sample: sample)
@@ -258,6 +272,9 @@ class DataManager {
     
     
     func handleQuantitySample(new: [HKQuantitySample], deleted:[HKDeletedObject], dataType: dataType, unit: HKUnit){
+        if(new.count==0){
+            return
+        }
         let sample = new.last!
         let timestamp = getTimestamp(sample: sample)
         

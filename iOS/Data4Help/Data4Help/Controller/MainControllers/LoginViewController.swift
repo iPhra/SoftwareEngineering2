@@ -55,7 +55,8 @@ class LoginViewController: UIViewController {
                 print(Properties.authToken)
                 // Perform segue either to Single user or Third Party interface
                 if myres.userType == "PrivateUser" {
-                    self.configureDynamicShortcutItem()
+                    self.configureDynamicShortcutItem() //Loads single user quick actions
+                    AppDelegate.shared.firstImport() //Uploads first user data
                     self.performSegue(withIdentifier: "GoToSingleUser", sender: self)
                 } else {
                     self.performSegue(withIdentifier: "GoToThirdParty", sender: self)
