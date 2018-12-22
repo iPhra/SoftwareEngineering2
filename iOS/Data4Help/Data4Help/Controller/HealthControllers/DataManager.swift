@@ -16,6 +16,7 @@ import CoreData
 class DataManager {
     
     // MARK: Properties
+    
     var firstUploads: [dataType : Bool] = [
         dataType.activeEnergy : true,
         dataType.heartrate : true,
@@ -24,12 +25,15 @@ class DataManager {
         dataType.steps : true,
         dataType.distanceWalkingRunning : true,
         dataType.height : true,
-        dataType.weight : true
+        dataType.weight : true,
+        dataType.bloodPressure : true
     ]
         
     var AutomatedSOSON = StorageManager.sharedInstance.getAutomatedSOS()
     
     let healthStore:HKHealthStore = HKHealthStore()
+    
+    let automatedSOSManager: AutomatedSOSManager = AutomatedSOSManager()
     
     // MARK: Singleton Instance
     
@@ -56,7 +60,9 @@ class DataManager {
             HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceWalkingRunning)!,
             HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.height)!,
             HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.bodyMass)!,
-            HKObjectType.characteristicType(forIdentifier: HKCharacteristicTypeIdentifier.dateOfBirth)!
+            HKObjectType.characteristicType(forIdentifier: HKCharacteristicTypeIdentifier.dateOfBirth)!,
+            HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.bloodPressureDiastolic)!,
+            HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.bloodPressureSystolic)!
         ]
         
         
@@ -97,16 +103,6 @@ class DataManager {
         return StorageManager.sharedInstance.getAutomatedSOS()
     }
     
-    func callAmbulance(){
-         if let url = URL(string: "tel://\(3337856870/*112*/)"), UIApplication.shared.canOpenURL(url) {
-            if #available(iOS 10, *) {
-                UIApplication.shared.open(url)
-            } else {
-                UIApplication.shared.openURL(url)
-            }
-         }
-    }
-    
     // Mark: Data import handlers
     
     public func sampleTypesToRead() -> [HKSampleType] {
@@ -118,6 +114,7 @@ class DataManager {
         sampleTypes.append(HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceWalkingRunning)!)
         sampleTypes.append(HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.height)!)
         sampleTypes.append(HKSampleType.categoryType(forIdentifier: HKCategoryTypeIdentifier.sleepAnalysis)!)
+        sampleTypes.append(HKSampleType.correlationType(forIdentifier: HKCorrelationTypeIdentifier.bloodPressure)!)
         
         return sampleTypes
     }
@@ -139,6 +136,8 @@ class DataManager {
             return dataType.sleepingHours
         case(HKSampleType.categoryType(forIdentifier: HKCategoryTypeIdentifier.appleStandHour)):
             return dataType.standingHours
+        case(HKSampleType.correlationType(forIdentifier: HKCorrelationTypeIdentifier.bloodPressure)):
+            return dataType.bloodPressure
         default:
             return dataType.heartrate
         }
@@ -222,6 +221,8 @@ class DataManager {
                 self.handleQuantitySample(new: newSamples! as! [HKQuantitySample], deleted: deletedSamples!, dataType: datatype,unit: HKUnit.pound())
             case(dataType.height.rawValue):
                 self.handleQuantitySample(new: newSamples! as! [HKQuantitySample], deleted: deletedSamples!, dataType: datatype,unit: HKUnit.foot())
+            case(dataType.bloodPressure.rawValue):
+                self.handleBloodPressureSample(new: newSamples! as! [HKCorrelation], deleted: deletedSamples!)
             default:
                 break
             }
@@ -279,7 +280,7 @@ class DataManager {
         let timestamp = getTimestamp(sample: sample)
         
         print(timestamp)
-        print("last sample = \(String(describing: new.last!.quantity))")
+        print("last sample = \(String(describing: sample.quantity))")
         
         if(firstUploads[dataType]!){
             for s in new {
@@ -288,7 +289,42 @@ class DataManager {
             firstUploads.updateValue(false, forKey: dataType)
         }
         else{
+            if(dataType == .heartrate){
+                self.automatedSOSManager.checkHeartRate(heartRate: (new.last?.quantity.doubleValue(for: unit))!, timestamp: timestamp)
+            }
             StorageManager.sharedInstance.addData(entityName: "Data", type: dataType.rawValue, timestamp: timestamp, value: (((new.last?.quantity.doubleValue(for: unit))!)))
+        }
+    }
+    
+    func handleBloodPressureSample(new: [HKCorrelation], deleted: [HKDeletedObject]){
+        if(new.count==0){
+            return
+        }
+        var diastolic: HKQuantitySample?
+        var systolic: HKQuantitySample?
+        var dTimestamp: String?
+        var sTimestamp: String?
+        
+        if(firstUploads[dataType.bloodPressure]!){
+            for correlation in new{
+                diastolic = correlation.objects(for: HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.bloodPressureDiastolic)!).first as? HKQuantitySample
+                dTimestamp = getTimestamp(sample: diastolic!)
+                systolic = correlation.objects(for: HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.bloodPressureSystolic)!).first as? HKQuantitySample
+                sTimestamp = getTimestamp(sample: systolic!)
+                
+                print("systolic: \(systolic!.quantity)")
+                print("diastolic: \(diastolic!.quantity)")
+            }
+            firstUploads.updateValue(false, forKey: dataType.bloodPressure)
+        }
+        else{
+            let correlation = new.last
+            diastolic = correlation!.objects(for: HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.bloodPressureDiastolic)!).first as? HKQuantitySample
+            dTimestamp = getTimestamp(sample: diastolic!)
+            systolic = correlation!.objects(for: HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.bloodPressureSystolic)!).first as? HKQuantitySample
+            sTimestamp = getTimestamp(sample: systolic!)
+            
+            self.automatedSOSManager.checkBloodPressure(systolic: systolic!.quantity.doubleValue(for: HKUnit.millimeterOfMercury()), diastolyc: diastolic!.quantity.doubleValue(for: HKUnit.millimeterOfMercury()), timestamp: sTimestamp!)
         }
     }
     
