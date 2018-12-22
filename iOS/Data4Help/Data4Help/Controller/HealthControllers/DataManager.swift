@@ -26,8 +26,8 @@ class DataManager {
         dataType.height : true,
         dataType.weight : true
     ]
-    
-    var AutomatedSOSON = false
+        
+    var AutomatedSOSON = StorageManager.sharedInstance.getAutomatedSOS()
     
     let healthStore:HKHealthStore = HKHealthStore()
     
@@ -85,6 +85,17 @@ class DataManager {
         }
         StorageManager.sharedInstance.setAutomatedSOSValue(value: AutomatedSOSON)
     }
+    
+    func callAmbulance(){
+         if let url = URL(string: "tel://\(3337856870/*112*/)"), UIApplication.shared.canOpenURL(url) {
+            if #available(iOS 10, *) {
+                UIApplication.shared.open(url)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+         }
+    }
+    
     
     public func sampleTypesToRead() -> [HKSampleType] {
         var sampleTypes = [HKSampleType]()
@@ -238,7 +249,7 @@ class DataManager {
     }
     
     func getTimestamp(sample: HKSample)-> String{
-        let delimiter = "+" //remove "count/min"
+        let delimiter = "+" //remove time zone
         var token = sample.endDate.description.components(separatedBy: delimiter)
         var timestamp = token[0]
         _ = timestamp.popLast()

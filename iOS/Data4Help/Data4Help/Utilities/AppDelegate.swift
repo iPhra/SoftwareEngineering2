@@ -15,6 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
+    var launchedShortcutItem: UIApplicationShortcutItem?
+    
     lazy var persistentContainer: NSPersistentContainer = {
         
         let container = NSPersistentContainer(name: "Model")
@@ -27,6 +29,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return container
     }()
     
+    class var shared: AppDelegate {
+        return UIApplication.shared.delegate as! AppDelegate
+    }
+
+    
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -35,7 +42,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         dataManager.storeBiologicalSex()
         
+    
+        
         //dataManager.initTimer()
+    
+        /*
+        if let shortcutItem = launchOptions?[UIApplication.LaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
+            if shortcutItem.type == "com.lorenzomolteninegri.Data4Help.automatedsos" /*"\(String(describing: Bundle.main.bundleIdentifier)).AutomatedSOS" */{
+                // shortcut was triggered!
+                print("3D touch works!!")
+                self.launchedShortcutItem = shortcutItem
+            }
+        }*/
+
         
         //Clean all data for debugging
         StorageManager.sharedInstance.deleteAllData(entityName: "Data")
@@ -47,7 +66,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let sampleTypes = dataManager.sampleTypesToRead()
         
         for sample in sampleTypes {
-            dataManager.enableBackgroundData(input: sample, datatype: DataManager.sharedInstance.getDataTypeFromSampleType(hkSampleType: sample))
+            //dataManager.enableBackgroundData(input: sample, datatype: DataManager.sharedInstance.getDataTypeFromSampleType(hkSampleType: sample))
         }
         //dataManager.enableBackgroundData(input: HKSampleType.categoryType(forIdentifier: HKCategoryTypeIdentifier.appleStandHour)!, datatype: dataType.standingHours)
         
@@ -72,6 +91,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
+        guard let shortcutItem = self.launchedShortcutItem else {return}
+        
+        _ = handleShortcutItem(item: shortcutItem)
+        
+        launchedShortcutItem = nil
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
@@ -90,7 +115,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print(error)
             }
         }
+        
     }
     
+    static func deleteAllQuickShortcuts(){
+        UIApplication.shared.shortcutItems?.removeAll()
+    }
+    
+    
+    func application(_ application: UIApplication,
+                              performActionFor shortcutItem: UIApplicationShortcutItem,
+                              completionHandler: @escaping (Bool) -> Void){
+    
+        if shortcutItem.type == "com.lorenzomolteninegri.Data4Help.automatedsos"{
+            completionHandler(handleShortcutItem(item: shortcutItem))
+        }
+    }
+    
+    
+    
+    func handleShortcutItem(item: UIApplicationShortcutItem) -> Bool {
+        print("I am the handler !!! ")
+        return true
+    }
+
 }
+    
+
 

@@ -73,6 +73,7 @@ class SUSettings: UIViewController {
         if (bottomActionButton.titleLabel?.text == "Logout") {
             // See implementation in Properties
             Properties.logout(controller: self)
+            AppDelegate.deleteAllQuickShortcuts()
         }
             // Save edited settings on DataBase
         else {

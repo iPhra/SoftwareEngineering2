@@ -16,7 +16,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -56,6 +55,7 @@ class LoginViewController: UIViewController {
                 print(Properties.authToken)
                 // Perform segue either to Single user or Third Party interface
                 if myres.userType == "PrivateUser" {
+                    self.configureDynamicShortcutItem()
                     self.performSegue(withIdentifier: "GoToSingleUser", sender: self)
                 } else {
                     self.performSegue(withIdentifier: "GoToThirdParty", sender: self)
@@ -68,6 +68,14 @@ class LoginViewController: UIViewController {
         }
         
     }
+    
+    func configureDynamicShortcutItem() {
+        let type = "com.lorenzomolteninegri.Data4Help.automatedSOS"
+        let shortcutItem = UIApplicationShortcutItem.init(type: type, localizedTitle: "Enable AutomatedSOS", localizedSubtitle: nil, icon: UIApplicationShortcutIcon.init(type: UIApplicationShortcutIcon.IconType.love), userInfo:nil)
+        
+        UIApplication.shared.shortcutItems = [shortcutItem]
+    }
+    
     
     // MARK: debugging functions
     // TO be deleted before deployment

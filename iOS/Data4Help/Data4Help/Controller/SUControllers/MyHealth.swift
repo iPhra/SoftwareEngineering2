@@ -27,6 +27,7 @@ class MyHealth: UIViewController {
     
     //MARK: Functions
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,7 +38,7 @@ class MyHealth: UIViewController {
             print(data.value(forKey: "type") as! String)
             print(data.value(forKey: "timestamp") as! String)
         }*/
-        
+            
         //Setup scroll view
         
         scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height + 50)

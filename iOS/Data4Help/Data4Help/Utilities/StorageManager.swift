@@ -92,6 +92,20 @@ class StorageManager: NSObject {
         }
     }
     
+    func getAutomatedSOS() -> Bool{
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "AutomatedSOS")
+        request.returnsObjectsAsFaults = false
+        do {
+            let result = try context.fetch(request)
+            if (result.count>0){
+                let r = result[0] as! NSManagedObject
+                return (r.value(forKey: "enabled")) as! Bool;
+            }
+        } catch {
+        }
+        return false
+    }
+    
     func initAutomatedSOS(){
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "AutomatedSOS")
         request.returnsObjectsAsFaults = false
