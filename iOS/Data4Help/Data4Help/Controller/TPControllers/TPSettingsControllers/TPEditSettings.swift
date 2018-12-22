@@ -13,7 +13,9 @@ class TPEditSettings: UIViewController {
     // MARK: Outlets
     
     @IBOutlet weak var companyNameTextField: UITextField!
+    @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var pivaLabel: UILabel!
     @IBOutlet weak var companyDescriptionTextField: UITextField!
     
     
@@ -23,6 +25,15 @@ class TPEditSettings: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    // MARK: Actions
+    
+    func fillView(email: String, piva: String) {
+        companyNameTextField.text = ""
+        emailLabel.text = email
+        passwordTextField.text = "********"
+        pivaLabel.text = piva
+        companyDescriptionTextField.text = ""
+    }
 
     /*
     // MARK: - Navigation
