@@ -335,7 +335,7 @@ class DataManager {
                 print("Timer fired!")
                 
                 print("Show all records:")
-                let results = StorageManager.sharedInstance.getAllData(entityName: "Data")
+                let results = StorageManager.sharedInstance.getAllData(ofEntity: "Data")
                 for data in results{
                     print(data.value(forKey: "type") as! String)
                     print(data.value(forKey: "timestamp") as! String)

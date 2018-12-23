@@ -30,11 +30,10 @@ class StorageManager: NSObject {
     // Mark: Functions
     
     
-    /*Gets all data of specified entity*/
-    func getAllData(entityName:String) -> [NSManagedObject]{
+    /* Gets all data of specified entity */
+    func getAllData(ofEntity: String) -> [NSManagedObject]{
         var array: [NSManagedObject] = []
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
-        //request.predicate = NSPredicate(format: "age = %@", "12")
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: ofEntity)
         request.returnsObjectsAsFaults = false
         do {
             let result = try context.fetch(request)
@@ -47,6 +46,29 @@ class StorageManager: NSObject {
             print("Failed fetching data")
         }
         return array
+    }
+    
+    /*Gets all "Data" entities of specified type*/
+    func getAllData(ofType: String) -> [Double]{
+        var result: [Double] = []
+        let allData = self.getAllData(ofEntity: "Data")
+        let filteredData = allData.filter { $0.value(forKeyPath: "type") as! String == ofType}
+        if (filteredData.count==0) {print("Empty Storage")} //debug
+        for data in filteredData {
+                result.append(data.value(forKeyPath: "value") as! Double)
+        }
+        return result
+    }
+    
+    /*Gets last value of the specified data type*/
+    func getLastDataValue(ofType: String) -> Double? {
+        let results = self.getAllData(ofType: ofType)
+        if(results.count==0){
+            return nil
+        }
+        else{
+            return results.last
+        }
     }
    
     /*Stores data of indicated type with specified timestamp, type, value*/

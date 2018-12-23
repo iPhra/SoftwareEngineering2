@@ -49,11 +49,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //DataManager.sharedInstance.initTimer()
         
         // Storage manager initializers
+            
         
         //Clean all data for debugging
         StorageManager.sharedInstance.deleteAllData(entityName: "Data")
         StorageManager.sharedInstance.deleteAllData(entityName: "AutomatedSOS")
-        
+                
         StorageManager.sharedInstance.initAutomatedSOS()
         
         return true

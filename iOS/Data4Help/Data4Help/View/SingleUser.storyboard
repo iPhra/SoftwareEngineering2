@@ -178,6 +178,31 @@
             </objects>
             <point key="canvasLocation" x="293.60000000000002" y="-180.29556650246306"/>
         </scene>
+        <!--bubbleChartView-->
+        <scene sceneID="WXg-b6-dPN">
+            <objects>
+                <viewController storyboardIdentifier="bubbleChartView" id="4j9-pm-Rf3" userLabel="bubbleChartView" customClass="BubbleChartViewController" customModule="Data4Help" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tS7-dH-zMo">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="311"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RT8-sd-2bN" customClass="BubbleChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="315"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="wMY-vo-jKq"/>
+                    </view>
+                    <connections>
+                        <outlet property="bubbleChartView" destination="RT8-sd-2bN" id="Gg1-H0-OyX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3no-tm-2u2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1087" y="-613"/>
+        </scene>
         <!--RequestsController-->
         <scene sceneID="rvI-Bj-Ve6">
             <objects>
@@ -271,7 +296,7 @@
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AutomatedSOS ON" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5kY-As-wTW">
-                                <rect key="frame" x="50" y="115" width="147" height="21"/>
+                                <rect key="frame" x="50" y="115" width="147" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -284,43 +309,45 @@
                                     <action selector="toggleAutomatedSOSON:" destination="KyL-8m-lQ7" eventType="valueChanged" id="CMw-5M-Dgt"/>
                                 </connections>
                             </switch>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LBr-av-nUc">
-                                <rect key="frame" x="0.0" y="184" width="414" height="660"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aZ4-MD-0gb">
+                                <rect key="frame" x="1" y="175" width="413" height="1153"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="41L-4h-Ron" customClass="BubbleChartView" customModule="Charts">
-                                        <rect key="frame" x="20" y="389" width="374" height="167"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="MgX-Wr-An0">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1169"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DHB-zj-47w">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="435"/>
+                                                <connections>
+                                                    <segue destination="RZ8-LU-ULH" kind="embed" id="XQN-qZ-01B"/>
+                                                </connections>
+                                            </containerView>
+                                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PKt-ES-zOA">
+                                                <rect key="frame" x="0.0" y="435" width="414" height="423"/>
+                                                <connections>
+                                                    <segue destination="Lzt-GV-Bt2" kind="embed" id="TgA-xN-qx1"/>
+                                                </connections>
+                                            </containerView>
+                                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I98-t1-k5n">
+                                                <rect key="frame" x="0.0" y="858" width="414" height="311"/>
+                                                <connections>
+                                                    <segue destination="4j9-pm-Rf3" kind="embed" id="0v9-9J-AYg"/>
+                                                </connections>
+                                            </containerView>
+                                        </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="167" id="EMV-fn-8J8"/>
+                                            <constraint firstItem="PKt-ES-zOA" firstAttribute="top" secondItem="DHB-zj-47w" secondAttribute="bottom" constant="20" id="PP6-tZ-pKa"/>
                                         </constraints>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vcV-cV-eD2" customClass="BarChartView" customModule="Charts">
-                                        <rect key="frame" x="20" y="20" width="374" height="361"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="361" id="k5F-2p-iJz"/>
-                                        </constraints>
-                                    </view>
+                                    </stackView>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="vcV-cV-eD2" firstAttribute="leading" secondItem="LBr-av-nUc" secondAttribute="leading" constant="20" id="0Jr-pg-15Y"/>
-                                    <constraint firstItem="vcV-cV-eD2" firstAttribute="top" secondItem="LBr-av-nUc" secondAttribute="top" constant="20" id="EYf-y0-7Qf"/>
-                                    <constraint firstItem="vcV-cV-eD2" firstAttribute="trailing" secondItem="41L-4h-Ron" secondAttribute="trailing" id="RHc-ZC-f9k"/>
-                                    <constraint firstItem="vcV-cV-eD2" firstAttribute="leading" secondItem="41L-4h-Ron" secondAttribute="leading" id="g6v-xD-Ebo"/>
-                                    <constraint firstAttribute="bottom" secondItem="41L-4h-Ron" secondAttribute="bottom" constant="20" id="gqM-IW-cq2"/>
-                                    <constraint firstItem="41L-4h-Ron" firstAttribute="top" secondItem="vcV-cV-eD2" secondAttribute="bottom" constant="8" symbolic="YES" id="rwZ-zf-jrP"/>
-                                    <constraint firstItem="vcV-cV-eD2" firstAttribute="centerX" secondItem="LBr-av-nUc" secondAttribute="centerX" id="zHb-pA-FRF"/>
-                                    <constraint firstAttribute="trailing" secondItem="vcV-cV-eD2" secondAttribute="trailing" constant="20" id="zUR-9V-y8e"/>
-                                </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="pXx-0z-B40" firstAttribute="top" secondItem="wx1-9H-eSs" secondAttribute="top" id="0Yj-jd-XmP"/>
-                            <constraint firstItem="pXx-0z-B40" firstAttribute="centerX" secondItem="LBr-av-nUc" secondAttribute="centerX" id="Dnz-Gj-bJy"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="LBr-av-nUc" secondAttribute="bottom" constant="-31" id="HFB-2h-Z8x"/>
-                            <constraint firstItem="LBr-av-nUc" firstAttribute="top" secondItem="5kY-As-wTW" secondAttribute="bottom" constant="48" id="I1P-DL-MK0"/>
-                            <constraint firstItem="LBr-av-nUc" firstAttribute="leading" secondItem="GYN-rv-tIy" secondAttribute="leadingMargin" constant="-20" id="Ndo-4l-acP"/>
+                            <constraint firstItem="PKt-ES-zOA" firstAttribute="top" secondItem="wx1-9H-eSs" secondAttribute="top" constant="566" id="4Wf-AB-Lga"/>
+                            <constraint firstItem="DHB-zj-47w" firstAttribute="top" secondItem="pXx-0z-B40" secondAttribute="bottom" constant="87" id="MHs-bi-xXI"/>
                             <constraint firstItem="pXx-0z-B40" firstAttribute="leading" secondItem="GYN-rv-tIy" secondAttribute="leading" id="OJg-Ux-qRV"/>
                             <constraint firstItem="IsF-nH-4HZ" firstAttribute="leading" secondItem="5kY-As-wTW" secondAttribute="trailing" constant="88" id="SP3-l2-fvo"/>
                             <constraint firstItem="5kY-As-wTW" firstAttribute="top" secondItem="pXx-0z-B40" secondAttribute="bottom" constant="27" id="g3b-5U-zRt"/>
@@ -333,14 +360,62 @@
                     <tabBarItem key="tabBarItem" title="MyHealth" image="MyHealth" selectedImage="MyHealth" id="Nu6-bn-woq"/>
                     <connections>
                         <outlet property="automatedSOSSwitch" destination="IsF-nH-4HZ" id="it2-cZ-aAO"/>
-                        <outlet property="barChartView" destination="vcV-cV-eD2" id="Tbz-Ve-0JT"/>
-                        <outlet property="bubbleChartView" destination="41L-4h-Ron" id="dek-3C-eRp"/>
-                        <outlet property="scrollView" destination="LBr-av-nUc" id="46w-To-tMA"/>
+                        <outlet property="scrollView" destination="aZ4-MD-0gb" id="Vkh-Fj-ncC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kH2-PR-gLo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="293.60000000000002" y="-897.04433497536945"/>
+            <point key="canvasLocation" x="292.75362318840581" y="-1108.2589285714284"/>
+        </scene>
+        <!--AverageBarChartViewController-->
+        <scene sceneID="VXs-Hs-vkk">
+            <objects>
+                <viewController storyboardIdentifier="AverageBarChartViewController" id="RZ8-LU-ULH" userLabel="AverageBarChartViewController" customClass="AverageBarChartViewController" customModule="Data4Help" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LFx-kY-3SP">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="435"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l8t-3T-97M" customClass="BarChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="458"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Ies-3E-rb9"/>
+                    </view>
+                    <connections>
+                        <outlet property="barChartView" destination="l8t-3T-97M" id="RNP-fL-rXC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qc7-ie-MlP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1086" y="-1365"/>
+        </scene>
+        <!--barChartCurrentValues-->
+        <scene sceneID="frp-NP-hTt">
+            <objects>
+                <viewController storyboardIdentifier="barChartCurrentValues" id="Lzt-GV-Bt2" userLabel="barChartCurrentValues" customClass="CurrentBarChartViewController" customModule="Data4Help" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aLq-Tc-x7I">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="423"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jRB-Ms-bzb" customClass="BarChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="448"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="kFQ-6A-zyP"/>
+                    </view>
+                    <connections>
+                        <outlet property="barChartCurrentValues" destination="jRB-Ms-bzb" id="2iz-mR-gVr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I6Y-Qp-tZx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1079" y="-952"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Bit-M5-0GS">
