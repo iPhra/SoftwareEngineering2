@@ -79,6 +79,11 @@ class RequestsController: UITableViewController {
         
         if let tableSection = TableSection(rawValue: indexPath.section), let request = data[tableSection]?[indexPath.row] {
             cell.initRequest(reqID: request.reqid, senderID: request.company_name, types: request.types, subscribing: request.subscribing, duration: Float(request.duration))
+            if(tableSection != TableSection(rawValue: 1)) {
+                cell.acceptButton.isHidden = true
+                cell.refuseButton.isHidden = true
+            }
+            
         }
         return cell
     }
