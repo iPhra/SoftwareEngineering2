@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class MyCell: UITableViewCell {
     
@@ -15,6 +16,9 @@ class MyCell: UITableViewCell {
     @IBOutlet weak var labelCompany: UILabel!
     @IBOutlet weak var labelSubscribing: UILabel!    
     @IBOutlet weak var labelDatatypes: UILabel!
+    @IBOutlet weak var refuseButton: UIButton!
+    @IBOutlet weak var acceptButton: UIButton!
+    
     
     // Mark: Properties
     
@@ -56,5 +60,31 @@ class MyCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+    
+    // MARK: Actions
+    
+    // Refuse request
+    @IBAction func choiceRefuse(_ sender: Any) {
+        choice(choice: false)
+    }
+    
+    // Accept request
+    @IBAction func choiceAccept(_ sender: Any) {
+        choice(choice: true)
+    }
+    
+    // API call to send request choice
+    private func choice(choice: Bool) {
+        NetworkManager.sharedInstance.sendPostRequest(input: D4HChoiceRequest(reqID: reqID, choice: choice), endpoint: D4HEndpoint.requestChoice, headers: Properties.auth()) { (response, error) in
+            if response != nil {
+                let myres = D4HChoiceResponse(fromJson: response!)
+                print(myres.message)
+            }
+            else if let error = error {
+                print(error)
+            }
+        }
+    }
+    
 
 }

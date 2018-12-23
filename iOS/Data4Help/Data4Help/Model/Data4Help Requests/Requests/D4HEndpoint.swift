@@ -29,7 +29,7 @@ enum D4HEndpoint: String {
     case requestListThirdParty = "/req/tp/list"
     case singleRequest = "/req/tp/sendSingle"
     case groupRequest = "/req/tp/sendGroup"
-    case requestAnswer = "/req/single/choice"
+    case requestChoice = "/req/single/choice"
     case downloadGroupRequest = "/req/tp/downloadGroup"
     case downloadSingleRequest = "/req/tp/downloadSingle"
     
