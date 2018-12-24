@@ -1,5 +1,3 @@
-//@todo Mettere dominio di aws al posto di 127.0.0.1
-
 const nodemailer = require('nodemailer');
 const config = require('config');
 
