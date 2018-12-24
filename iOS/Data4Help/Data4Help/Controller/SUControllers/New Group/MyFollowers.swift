@@ -20,7 +20,7 @@ class MyFollowers: UIViewController {
         
         // load child view controllers
         
-        let storyboard = UIStoryboard(name: "SingleUser", bundle: Bundle.main)
+        /*let storyboard = UIStoryboard(name: "SingleUser", bundle: Bundle.main)
         
         // Instantiate View Controller
         let controller = storyboard.instantiateViewController(withIdentifier: "RequestsController") as! Data4Help.RequestsController
@@ -33,7 +33,7 @@ class MyFollowers: UIViewController {
         
         self.requestsContainer.addSubview(controller.view)
         
-        controller.didMove(toParent: self)
+        controller.didMove(toParent: self)*/
         // Do any additional setup after loading the view.
     }
     

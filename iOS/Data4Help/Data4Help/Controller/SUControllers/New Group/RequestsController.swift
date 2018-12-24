@@ -20,6 +20,7 @@ class RequestsController: UITableViewController, MyCellDelegate {
     var requests: [SUSingleRequest] = []
     var data = [TableSection: [SUSingleRequest]]()  // Data variable to track sorted data.
     let SectionHeaderHeight: CGFloat = 30
+    var alreadyLoaded = false
     
     // MARK: Outlets
     
@@ -32,8 +33,12 @@ class RequestsController: UITableViewController, MyCellDelegate {
         self.tableView.dataSource = self
         self.clearsSelectionOnViewWillAppear = false
         
-        // Load requests from backend
-        loadData()
+        if (alreadyLoaded==false) {
+            // Load requests from backend
+            alreadyLoaded=true
+            loadData()
+            
+        }
     }
     
     // Mark: - Table view data source

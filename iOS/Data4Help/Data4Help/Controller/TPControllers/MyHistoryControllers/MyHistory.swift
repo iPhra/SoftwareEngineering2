@@ -19,7 +19,7 @@ class MyHistory: UIViewController {
         
         // load child view controllers
         
-        let storyboard = UIStoryboard(name: "ThirdParty", bundle: Bundle.main)
+        /*let storyboard = UIStoryboard(name: "ThirdParty", bundle: Bundle.main)
         
         // Instantiate View Controller
         let controller = storyboard.instantiateViewController(withIdentifier: "TPRequestsController") as! Data4Help.TPRequestsController
@@ -32,7 +32,7 @@ class MyHistory: UIViewController {
         
         self.requestsContainer.addSubview(controller.view)
         
-        controller.didMove(toParent: self)
+        controller.didMove(toParent: self)*/
         // Do any additional setup after loading the view.
     }
     
