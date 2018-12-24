@@ -14,5 +14,6 @@
       "pass": "mauriziofixamf"
     }
   },
-  "email": "data4helpsquad@gmail.com"
+  "email": "data4helpsquad@gmail.com",
+  "hostname" : "http://127.0.0.1:3000/"
 }

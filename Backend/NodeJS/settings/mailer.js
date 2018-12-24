@@ -11,12 +11,11 @@ module.exports = (req, activToken) => {
         from: config.get("email"),
         to: req.body.email,
         subject: 'Welcome to Data4Help',
-        text: 'Activation link: http://127.0.0.1:3000/auth/activ?activToken=' + activToken
+        text: 'Activation link: ' + config.get("hostname") + 'auth/activ?activToken=' + activToken
     };
 
     transporter.sendMail(mailOptions, (error) => {
         if(error) {
-            //@todo handle error
             console.log(error);
         }  else {
             console.log('Email sent to ' + req.body.email)

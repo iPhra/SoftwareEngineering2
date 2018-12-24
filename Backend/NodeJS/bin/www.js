@@ -1,13 +1,7 @@
 const app = require('../app');
 const debug = require('debug')('nodejs:server');
 const http = require('http');
-const config = require('config');
-require('express-async-errors');
 
-if(!config.get('jwtPrivateKey')) {
-    console.error("FATAL ERROR: jwtPrivateKey not defined, please export the environmental variable");
-    process.exit(1)
-}
 
 const port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
