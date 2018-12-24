@@ -10,6 +10,7 @@
 		1D5ED11ED4C4AA86453AB757 /* Pods_Data4Help.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6698D8B24F51E95CD50F02E1 /* Pods_Data4Help.framework */; };
 		28121FCE21B5A1FD00AF6CCE /* D4HSingleRegisterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28121FCD21B5A1FD00AF6CCE /* D4HSingleRegisterRequest.swift */; };
 		28121FD021B5A41600AF6CCE /* D4HRegisterSingleResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28121FCF21B5A41600AF6CCE /* D4HRegisterSingleResponse.swift */; };
+		2828E54521D0239F00E6F9DC /* MyCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2828E54421D0239F00E6F9DC /* MyCellDelegate.swift */; };
 		283B263521B98D9E00C939A9 /* D4HThirdPartyRegistrationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283B263421B98D9E00C939A9 /* D4HThirdPartyRegistrationRequest.swift */; };
 		283B263721B98F6500C939A9 /* D4HRegisterThirdPartyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283B263621B98F6500C939A9 /* D4HRegisterThirdPartyResponse.swift */; };
 		28B67D0421C10E0500FCA356 /* D4HLogoutRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B67D0321C10E0500FCA356 /* D4HLogoutRequest.swift */; };
@@ -114,6 +115,7 @@
 /* Begin PBXFileReference section */
 		28121FCD21B5A1FD00AF6CCE /* D4HSingleRegisterRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HSingleRegisterRequest.swift; sourceTree = "<group>"; };
 		28121FCF21B5A41600AF6CCE /* D4HRegisterSingleResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HRegisterSingleResponse.swift; sourceTree = "<group>"; };
+		2828E54421D0239F00E6F9DC /* MyCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCellDelegate.swift; sourceTree = "<group>"; };
 		283B263421B98D9E00C939A9 /* D4HThirdPartyRegistrationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HThirdPartyRegistrationRequest.swift; sourceTree = "<group>"; };
 		283B263621B98F6500C939A9 /* D4HRegisterThirdPartyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HRegisterThirdPartyResponse.swift; sourceTree = "<group>"; };
 		28B67D0321C10E0500FCA356 /* D4HLogoutRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HLogoutRequest.swift; sourceTree = "<group>"; };
@@ -579,6 +581,7 @@
 			children = (
 				CB98265621C28D9E00932CE6 /* MyFollowers.swift */,
 				CB80991E21C52821001E2EB8 /* RequestsController.swift */,
+				2828E54421D0239F00E6F9DC /* MyCellDelegate.swift */,
 			);
 			name = MyFollowers;
 			path = "New Group";
@@ -855,6 +858,7 @@
 				28E0146421C84A5F004FA60F /* D4HThirdPartyInfoResponse.swift in Sources */,
 				283B263521B98D9E00C939A9 /* D4HThirdPartyRegistrationRequest.swift in Sources */,
 				28E0146E21CBE690004FA60F /* D4HDownloadSingleResponse.swift in Sources */,
+				2828E54521D0239F00E6F9DC /* MyCellDelegate.swift in Sources */,
 				28D938BC21C40BAC00DC7785 /* D4HSingleUserSettingsRequest.swift in Sources */,
 				CB1727B421B3E2EF00AC9D36 /* SUSettings.swift in Sources */,
 				28B67D0421C10E0500FCA356 /* D4HLogoutRequest.swift in Sources */,

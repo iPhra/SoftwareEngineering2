@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 
 
-class RequestsController: UITableViewController {
+class RequestsController: UITableViewController, MyCellDelegate {
     
     // MARK: Properties
 
@@ -76,6 +76,8 @@ class RequestsController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath) as? MyCell  else {
             fatalError("The dequeued cell is not an instance of MyCell.")
         }
+        
+        cell.delegate = self
         
         if let tableSection = TableSection(rawValue: indexPath.section), let request = data[tableSection]?[indexPath.row] {
             cell.initRequest(reqID: request.reqid, senderID: request.company_name, types: request.types, subscribing: request.subscribing, duration: Float(request.duration))
