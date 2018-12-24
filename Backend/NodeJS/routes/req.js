@@ -1,5 +1,4 @@
-//@todo Cambiare come controllo i 1000 account delle group request (magari controllando l'ultimo valore inserito)
-//@todo Cambiare i download in get
+//@todo Cambiare il controllo sui 1000 target user prendendo l'ultimo data point e facendo il controllo su quello
 
 const Router = require('express-promise-router');
 const db = require('../settings/dbconnection');

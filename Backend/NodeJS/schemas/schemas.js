@@ -1,7 +1,3 @@
-//@todo Aggiungere validation a birthdate per controllare sia nel formato DDMMYYYY
-//@todo Aggiungere che duration può esserci solo se c'è subscribing a true
-
-
 const Joi = require('joi');
 const email = Joi.string().email().max(40).required();
 const fc = Joi.string().length(16).required();
@@ -9,7 +5,7 @@ const password = Joi.string().min(8).max(20);
 const full_name = Joi.string().max(30);
 const birthdate = Joi.date().min("1-1-1900");
 const sex = Joi.string().valid(['M','F','U']);
-const dataTypes = Joi.string().valid(['standinghours','heartrate','distancewalkingrunning','sleepinghours', 'weight', 'height', 'age', 'activeenergy', 'steps']);
+const dataTypes = Joi.string().valid(['standinghours','heartrate','distancewalkingrunning','sleepinghours', 'weight', 'height', 'age', 'activeenergy', 'steps', 'systolic_pressure', 'diastolic_pressure']);
 const company_name = Joi.string().max(20);
 const company_description = Joi.string().max(100);
 const types = Joi.array().items(dataTypes).max(50).required();
