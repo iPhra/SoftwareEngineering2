@@ -28,6 +28,9 @@ class MyCell: UITableViewCell {
     var subscribing: Bool = false
     var duration: Float = 0
     
+    weak var delegate: MyCellDelegate?
+
+    
     // Mark: initializers
     
     func initRequest(reqID: String, senderID: String, types: [dataType], subscribing: Bool, duration: Float){
@@ -79,6 +82,7 @@ class MyCell: UITableViewCell {
             if response != nil {
                 let myres = D4HChoiceResponse(fromJson: response!)
                 print(myres.message)
+                self.delegate?.loadData()
             }
             else if let error = error {
                 print(error)
