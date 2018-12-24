@@ -81,4 +81,6 @@ typings/
 #workspace
 .idea/workspace.xml
 
+*workspace
+
 *.Rhistory
