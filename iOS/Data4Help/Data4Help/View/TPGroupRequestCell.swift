@@ -25,6 +25,8 @@ class TPGroupRequestCell: UITableViewCell {
     var reqid: String = ""
     var filters: [D4HHealthParameter]? = nil
     
+    weak var delegate: RequestCellDelegate?
+    
     // Mark: functions
     
     override func awakeFromNib() {
@@ -74,15 +76,17 @@ class TPGroupRequestCell: UITableViewCell {
     
     @IBAction func downloadRequestData(_ sender: Any) {
         
+        self.delegate?.saveCSVgroup(reqid: reqid)
+        
         // API call to download request data
-        NetworkManager.sharedInstance.sendPostRequest(input: D4HDownloadGroupRequest(reqID: self.reqid), endpoint: D4HEndpoint.downloadGroupRequest, headers: Properties.auth()) { (response, error) in
+        /*NetworkManager.sharedInstance.sendPostRequest(input: D4HDownloadGroupRequest(reqID: self.reqid), endpoint: D4HEndpoint.downloadGroupRequest, headers: Properties.auth()) { (response, error) in
             if response != nil {
                 let myres = D4HDownloadGroupResponse(fromJson: response!)
             }
             else if let error = error {
                 print(error)
             }
-        }
+        }*/
     }
     
 }

@@ -12,12 +12,13 @@ import SwiftyJSON
 class D4HDownloadSingleResponse: D4HResponse {
     
     // MARK: - Properties
+    let path: URL?
     
     // MARK: - initialization
     
     init(fromJson json: JSON) {
         let fileName = "SingleRequest.csv"
-        let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
+        self.path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
         
         // Document structure
         var csvText = "DataType,Value,Timestamp\n"

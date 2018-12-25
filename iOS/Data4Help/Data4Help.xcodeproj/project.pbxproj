@@ -11,6 +11,7 @@
 		28121FCE21B5A1FD00AF6CCE /* D4HSingleRegisterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28121FCD21B5A1FD00AF6CCE /* D4HSingleRegisterRequest.swift */; };
 		28121FD021B5A41600AF6CCE /* D4HRegisterSingleResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28121FCF21B5A41600AF6CCE /* D4HRegisterSingleResponse.swift */; };
 		2828E54521D0239F00E6F9DC /* MyCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2828E54421D0239F00E6F9DC /* MyCellDelegate.swift */; };
+		2828E54721D2448300E6F9DC /* RequestCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2828E54621D2448300E6F9DC /* RequestCellDelegate.swift */; };
 		283B263521B98D9E00C939A9 /* D4HThirdPartyRegistrationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283B263421B98D9E00C939A9 /* D4HThirdPartyRegistrationRequest.swift */; };
 		283B263721B98F6500C939A9 /* D4HRegisterThirdPartyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283B263621B98F6500C939A9 /* D4HRegisterThirdPartyResponse.swift */; };
 		28B67D0421C10E0500FCA356 /* D4HLogoutRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B67D0321C10E0500FCA356 /* D4HLogoutRequest.swift */; };
@@ -116,6 +117,7 @@
 		28121FCD21B5A1FD00AF6CCE /* D4HSingleRegisterRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HSingleRegisterRequest.swift; sourceTree = "<group>"; };
 		28121FCF21B5A41600AF6CCE /* D4HRegisterSingleResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HRegisterSingleResponse.swift; sourceTree = "<group>"; };
 		2828E54421D0239F00E6F9DC /* MyCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCellDelegate.swift; sourceTree = "<group>"; };
+		2828E54621D2448300E6F9DC /* RequestCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestCellDelegate.swift; sourceTree = "<group>"; };
 		283B263421B98D9E00C939A9 /* D4HThirdPartyRegistrationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HThirdPartyRegistrationRequest.swift; sourceTree = "<group>"; };
 		283B263621B98F6500C939A9 /* D4HRegisterThirdPartyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HRegisterThirdPartyResponse.swift; sourceTree = "<group>"; };
 		28B67D0321C10E0500FCA356 /* D4HLogoutRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D4HLogoutRequest.swift; sourceTree = "<group>"; };
@@ -498,6 +500,7 @@
 			children = (
 				CB80992821C5A601001E2EB8 /* MyHistory.swift */,
 				CB80992A21C5A647001E2EB8 /* TPRequestsController.swift */,
+				2828E54621D2448300E6F9DC /* RequestCellDelegate.swift */,
 			);
 			path = MyHistoryControllers;
 			sourceTree = "<group>";
@@ -843,6 +846,7 @@
 				CB1727AE21B3C8B000AC9D36 /* GRequest.swift in Sources */,
 				CB1727AC21B3C89B00AC9D36 /* SRequest.swift in Sources */,
 				CB1727BE21B4496800AC9D36 /* MyHealth.swift in Sources */,
+				2828E54721D2448300E6F9DC /* RequestCellDelegate.swift in Sources */,
 				28E0146821CBE509004FA60F /* D4HChoiceResponse.swift in Sources */,
 				28E5569821ADF55A0009D972 /* D4HLoginResponse.swift in Sources */,
 				28E5569221ADF3AB0009D972 /* D4HRequest.swift in Sources */,

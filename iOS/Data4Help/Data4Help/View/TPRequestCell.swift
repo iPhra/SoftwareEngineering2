@@ -13,6 +13,8 @@ class TPRequestCell: UITableViewCell {
     //Mark: properties
     var subscribing: Bool = false
     var reqid: String = ""
+    
+    weak var delegate: RequestCellDelegate?
 
     @IBOutlet weak var singleUserLabel: UILabel!
     @IBOutlet weak var dataTypesLabel: UILabel!
@@ -66,15 +68,17 @@ class TPRequestCell: UITableViewCell {
     
     @IBAction func downloadRequestData(_ sender: Any) {
         
+        self.delegate?.saveCSVsingle(reqid: reqid)
+        
         // API call to download request data
-        NetworkManager.sharedInstance.sendPostRequest(input: D4HDownloadSingleRequest(reqID: self.reqid), endpoint: D4HEndpoint.downloadSingleRequest, headers: Properties.auth()) { (response, error) in
+        /*NetworkManager.sharedInstance.sendPostRequest(input: D4HDownloadSingleRequest(reqID: self.reqid), endpoint: D4HEndpoint.downloadSingleRequest, headers: Properties.auth()) { (response, error) in
             if response != nil {
                 let myres = D4HDownloadSingleResponse(fromJson: response!)
             }
             else if let error = error {
                 print(error)
             }
-        }
+        }*/
     }
     
 }

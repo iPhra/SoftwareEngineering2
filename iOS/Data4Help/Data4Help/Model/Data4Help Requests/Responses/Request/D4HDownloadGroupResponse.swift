@@ -13,11 +13,13 @@ class D4HDownloadGroupResponse: D4HResponse {
     
     // MARK: - Properties
     
+    let path: URL?
+    
     // MARK: - initialization
     
     init(fromJson json: JSON) {
         let fileName = "Tasks.csv"
-        let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
+        self.path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
         
         // Document structure
         var csvText = "UserID,DataType,Value,Timestamp\n"

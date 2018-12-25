@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class TPRequestsController: UITableViewController {
+class TPRequestsController: UITableViewController, RequestCellDelegate {
 
     // MARK: Properties
     
@@ -55,6 +55,7 @@ class TPRequestsController: UITableViewController {
             }
             let request = singleRequests[indexPath.row]
             cell.initRequest(reqid: request.reqid, user: request.full_name, types: request.types, subscribing: request.subscribing, duration: Float(request.duration), date: request.date)
+            cell.delegate = self
             return cell
         }
         else {
@@ -64,6 +65,7 @@ class TPRequestsController: UITableViewController {
             // TODO implement this part
             let request = groupRequests[indexPath.row - singleRequests.count]
             cell.initRequest(reqid: request.reqid, groupname: ("Group " + String(indexPath.row - singleRequests.count)), types: request.types, filters: request.parameters, subscribing: request.subscribing, duration: Float(request.duration), date: request.date)
+            cell.delegate = self
             return cell
         }
     }
@@ -90,6 +92,57 @@ class TPRequestsController: UITableViewController {
                 print(error)
             }
         }
+    }
+    
+    func saveCSVgroup(reqid: String) {
+        // API call to download request data
+        NetworkManager.sharedInstance.sendPostRequest(input: D4HDownloadGroupRequest(reqID: reqid), endpoint: D4HEndpoint.downloadGroupRequest, headers: Properties.auth()) { (response, error) in
+         if response != nil {
+         let myres = D4HDownloadGroupResponse(fromJson: response!)
+            // Show download action
+            let vc = UIActivityViewController(activityItems: [myres.path], applicationActivities: [])
+             /*vc.excludedActivityTypes = [
+             UIActivity.ActivityType.assignToContact,
+             UIActivity.ActivityType.saveToCameraRoll,
+             UIActivity.ActivityType.postToFlickr,
+             UIActivity.ActivityType.postToVimeo,
+             UIActivity.ActivityType.postToTencentWeibo,
+             UIActivity.ActivityType.postToTwitter,
+             UIActivity.ActivityType.postToFacebook,
+             UIActivity.ActivityType.openInIBooks
+             ]*/
+            self.present(vc, animated: true, completion: nil)
+         }
+         else if let error = error {
+            print(error)
+            }
+         }
+    }
+    
+    func saveCSVsingle(reqid: String) {
+        // API call to download request data
+        NetworkManager.sharedInstance.sendPostRequest(input: D4HDownloadSingleRequest(reqID: reqid), endpoint: D4HEndpoint.downloadSingleRequest, headers: Properties.auth()) { (response, error) in
+         if response != nil {
+         let myres = D4HDownloadSingleResponse(fromJson: response!)
+         // Show download action
+         let vc = UIActivityViewController(activityItems: [myres.path], applicationActivities: [])
+         /*vc.excludedActivityTypes = [
+         UIActivity.ActivityType.assignToContact,
+         UIActivity.ActivityType.saveToCameraRoll,
+         UIActivity.ActivityType.postToFlickr,
+         UIActivity.ActivityType.postToVimeo,
+         UIActivity.ActivityType.postToTencentWeibo,
+         UIActivity.ActivityType.postToTwitter,
+         UIActivity.ActivityType.postToFacebook,
+         UIActivity.ActivityType.openInIBooks
+         ]*/
+         self.present(vc, animated: true, completion: nil)
+         }
+         else if let error = error {
+         print(error)
+         }
+         }
+
     }
     
     /*
