@@ -18,7 +18,7 @@ class DataManager {
     // MARK: Properties
     
     var firstUploads: [dataType : Bool] = [
-        dataType.activeEnergy : true,
+        dataType.activeEnergyBurned : true,
         dataType.heartrate : true,
         dataType.sleepingHours : true,
         dataType.standingHours : true,
@@ -29,7 +29,7 @@ class DataManager {
         dataType.bloodPressure : true
     ]
     
-    var dataTypesToRead: [String] = [ dataType.activeEnergy.rawValue,
+    var dataTypesToRead: [String] = [ dataType.activeEnergyBurned.rawValue,
                                         dataType.diastolic_pressure.rawValue,
                                         dataType.systolic_pressure.rawValue,
                                         dataType.distanceWalkingRunning.rawValue,
@@ -133,7 +133,7 @@ class DataManager {
     public func getDataTypeFromSampleType(hkSampleType: HKSampleType)-> dataType {
         switch(hkSampleType){
         case(HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.activeEnergyBurned)):
-            return dataType.activeEnergy
+            return dataType.activeEnergyBurned
         case(HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)):
             return dataType.heartrate
         case(HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)):
@@ -184,9 +184,7 @@ class DataManager {
     
     public func enableBackgroundData(input: HKSampleType, datatype: dataType){
         
-        let sampleType = input
-        
-        self.healthStore.enableBackgroundDelivery(for: sampleType, frequency: .immediate) { (success, error) in
+        self.healthStore.enableBackgroundDelivery(for: input, frequency: .immediate) { (success, error) in
             if let unwrappedError = error {
                 print("could not enable background delivery: \(unwrappedError)")
             }
@@ -195,7 +193,7 @@ class DataManager {
             }
         }
         //2.  open observer query
-        let query = HKObserverQuery(sampleType: sampleType, predicate: nil) { (query, completionHandler, error) in
+        let query = HKObserverQuery(sampleType: input, predicate: nil) { (query, completionHandler, error) in
             
             self.updateHealthData(sampleType: input, datatype: datatype) {
                 completionHandler()
@@ -204,6 +202,17 @@ class DataManager {
         }
         healthStore.execute(query)
         
+    }
+    
+     public func disableBackgroundDelivery(){
+        self.healthStore.disableAllBackgroundDelivery { (success, error) in
+            if let unwrappedError = error {
+                print("could not disable background delivery: \(unwrappedError)")
+            }
+            if success {
+                print("background delivery disabled")
+            }
+        }
     }
     
     
@@ -223,7 +232,7 @@ class DataManager {
                 self.handleStandingHours(new: newSamples! as! [HKCategorySample], deleted: deletedSamples!)
             case(dataType.distanceWalkingRunning.rawValue):
                 self.handleQuantitySample(new: newSamples! as! [HKQuantitySample], deleted: deletedSamples!, dataType: datatype,unit: HKUnit.mile())
-            case(dataType.activeEnergy.rawValue):
+            case(dataType.activeEnergyBurned.rawValue):
                 self.handleQuantitySample(new: newSamples! as! [HKQuantitySample], deleted: deletedSamples!,dataType: datatype, unit: HKUnit.kilocalorie())
             case(dataType.steps.rawValue):
                 self.handleQuantitySample(new: newSamples! as! [HKQuantitySample], deleted: deletedSamples!,dataType: datatype, unit: HKUnit.count())
@@ -341,7 +350,7 @@ class DataManager {
     
     func initTimer(){
         DispatchQueue.global(qos: .background).async {
-            while (true) {
+            while (Properties.authToken != "") {
                 
                 var dataTypes: [String] = []
                 var dataValues: [[Double]] = []
@@ -373,7 +382,6 @@ class DataManager {
                             print(error)
                         }
                     }
-                    StorageManager.sharedInstance.deleteAllData(entityName: "Data")
                 }
                 
                 // send new data each hour
