@@ -14,11 +14,11 @@ class D4HStatisticsRequest: D4HRequest {
     
     // MARK: - Properties
     
-    let types: [dataType]
+    let types: [String]
     
     // MARK: Initialisation
     
-    init(types: [dataType]) {
+    init(types: [String]) {
         self.types = types
         super.init(encodingType: D4HEncodingType.UTF16)
     }

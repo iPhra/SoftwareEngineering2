@@ -1,21 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="637ba8bf-1b94-4c9e-be2d-39a16b1ba7d6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../iOS/Data4Help/Data4Help/Controller/SUControllers/MyHealth/AverageBarChartViewController.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../iOS/Data4Help/Data4Help/Controller/SUControllers/MyHealth/BubbleChartViewController.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../iOS/Data4Help/Data4Help/Controller/SUControllers/MyHealth/CurrentBarChartViewController.swift" afterDir="false" />
+    <list default="true" id="637ba8bf-1b94-4c9e-be2d-39a16b1ba7d6" name="Default Changelist" comment="Update MyHealth interface">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../iOS/Data4Help/Data4Help.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/../../iOS/Data4Help/Data4Help.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../iOS/Data4Help/Data4Help.xcworkspace/xcuserdata/Virginia.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/../../iOS/Data4Help/Data4Help.xcworkspace/xcuserdata/Virginia.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../iOS/Data4Help/Data4Help.xcworkspace/xcuserdata/Virginia.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" beforeDir="false" afterPath="$PROJECT_DIR$/../../iOS/Data4Help/Data4Help.xcworkspace/xcuserdata/Virginia.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../iOS/Data4Help/Data4Help/Controller/HealthControllers/DataManager.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../../iOS/Data4Help/Data4Help/Controller/HealthControllers/DataManager.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../iOS/Data4Help/Data4Help/Controller/SUControllers/MyFollowers.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../../iOS/Data4Help/Data4Help/Controller/SUControllers/New Group/MyFollowers.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../iOS/Data4Help/Data4Help/Controller/SUControllers/MyHealth.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../../iOS/Data4Help/Data4Help/Controller/SUControllers/MyHealth/MyHealth.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../iOS/Data4Help/Data4Help/Controller/SUControllers/RequestsController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../../iOS/Data4Help/Data4Help/Controller/SUControllers/New Group/RequestsController.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../iOS/Data4Help/Data4Help/Utilities/AppDelegate.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../../iOS/Data4Help/Data4Help/Utilities/AppDelegate.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../iOS/Data4Help/Data4Help/Utilities/StorageManager.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../../iOS/Data4Help/Data4Help/Utilities/StorageManager.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../iOS/Data4Help/Data4Help/View/SingleUser.storyboard" beforeDir="false" afterPath="$PROJECT_DIR$/../../iOS/Data4Help/Data4Help/View/SingleUser.storyboard" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iOS/Data4Help/Data4Help/Controller/SUControllers/MyHealth/CurrentBarChartViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../../iOS/Data4Help/Data4Help/Controller/SUControllers/MyHealth/CurrentBarChartViewController.swift" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -28,11 +18,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/schemas/schemas.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="257">
-              <caret line="27" selection-start-line="27" selection-end-line="27" />
+            <state relative-caret-position="105">
+              <caret line="7" column="200" lean-forward="true" selection-start-line="7" selection-start-column="182" selection-end-line="7" selection-end-column="200" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/routes/data.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="420">
+              <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
             </state>
           </provider>
         </entry>
@@ -68,7 +67,7 @@
     <option name="x" value="44" />
     <option name="y" value="23" />
     <option name="width" value="1396" />
-    <option name="height" value="828" />
+    <option name="height" value="826" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -83,21 +82,6 @@
             <path>
               <item name="NodeJS" type="b2602c69:ProjectViewProjectNode" />
               <item name="NodeJS" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="NodeJS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="NodeJS" type="462c0819:PsiDirectoryNode" />
-              <item name="bin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="NodeJS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="NodeJS" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="NodeJS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="NodeJS" type="462c0819:PsiDirectoryNode" />
-              <item name="routes" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="NodeJS" type="b2602c69:ProjectViewProjectNode" />
@@ -137,7 +121,7 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="www" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="bin/www" working-dir="$PROJECT_DIR$">
+    <configuration name="www.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="bin/www.js" working-dir="$PROJECT_DIR$">
       <envs>
         <env name="DEBUG" value="nodejs:server" />
         <env name="d4h_jwtPrivateKey" value="gruosso" />
@@ -146,7 +130,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Node.js.www" />
+        <item itemvalue="Node.js.www.js" />
       </list>
     </recent_temporary>
   </component>
@@ -176,7 +160,14 @@
       <workItem from="1545505112289" duration="16000" />
       <workItem from="1545505202876" duration="45000" />
       <workItem from="1545511505720" duration="1426000" />
-      <workItem from="1545585636920" duration="1115000" />
+      <workItem from="1545585636920" duration="1343000" />
+      <workItem from="1545603134335" duration="557000" />
+      <workItem from="1545726222893" duration="682000" />
+      <workItem from="1545813907485" duration="83000" />
+      <workItem from="1545862851355" duration="8000" />
+      <workItem from="1545907015795" duration="9000" />
+      <workItem from="1545930369044" duration="7000" />
+      <workItem from="1545935273164" duration="4358000" />
     </task>
     <task id="LOCAL-00001" summary="db connection">
       <created>1544101655507</created>
@@ -227,14 +218,22 @@
       <option name="project" value="LOCAL" />
       <updated>1545493775552</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Update MyHealth interface">
+      <created>1545590054329</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1545590054329</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19219000" />
+    <option name="totallyTimeSpent" value="25151000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="44" y="23" width="1396" height="828" extended-state="0" />
+    <frame x="44" y="23" width="1396" height="826" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24727273" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -242,15 +241,15 @@
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.56872725" visible="true" weight="0.32608697" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.5672727" weight="0.27520436" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39891452" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.7229091" weight="0.4021739" />
-      <window_info active="true" anchor="bottom" id="Event Log" order="9" sideWeight="0.43127272" side_tool="true" visible="true" weight="0.32608697" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32866243" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.71854544" weight="0.5013624" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.28145453" side_tool="true" weight="0.40190735" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.4989091" weight="0.32697546" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -260,6 +259,30 @@
     <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="RECENT_FILTERS">
       <map>
         <entry key="Branch">
@@ -282,7 +305,8 @@
     <MESSAGE value="Add 3DTouch for AutomatedSOS and add emergency call" />
     <MESSAGE value="Update AppDelegate to handle first data import" />
     <MESSAGE value="Add AutomatedSOSManager to check critical health status and call ambulance" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add AutomatedSOSManager to check critical health status and call ambulance" />
+    <MESSAGE value="Update MyHealth interface" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update MyHealth interface" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/dbconnection" />
@@ -291,24 +315,11 @@
     <entry file="file://$PROJECT_DIR$/package-lock.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/bin/www">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/www" />
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1140">
           <caret line="76" lean-forward="true" selection-start-line="76" selection-end-line="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/data.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="34" selection-start-line="28" selection-start-column="34" selection-end-line="28" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -340,13 +351,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/auth.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1485">
-          <caret line="99" column="43" selection-start-line="99" selection-start-column="43" selection-end-line="99" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -375,17 +379,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/index.js">
+    <entry file="file://$PROJECT_DIR$/routes/index.js" />
+    <entry file="file://$PROJECT_DIR$/routes/auth.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        <state relative-caret-position="-842">
+          <caret line="99" lean-forward="true" selection-start-line="99" selection-end-line="99" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/schemas/schemas.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="27" selection-start-line="27" selection-end-line="27" />
+        <state relative-caret-position="105">
+          <caret line="7" column="200" lean-forward="true" selection-start-line="7" selection-start-column="182" selection-end-line="7" selection-end-column="200" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/data.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
         </state>
       </provider>
     </entry>

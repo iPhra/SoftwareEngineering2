@@ -22,5 +22,7 @@ enum dataType: String {
     case age = "age"
     case activeEnergy = "activeEnergy"
     case bloodPressure = "bloodPressure"
+    case systolic_pressure = "systolic_pressure"
+    case diastolic_pressure = "diastolic_pressure"
     
 }

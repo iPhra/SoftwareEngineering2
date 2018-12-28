@@ -132,6 +132,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         for sample in sampleTypes {
             DataManager.sharedInstance.enableBackgroundData(input: sample, datatype: DataManager.sharedInstance.getDataTypeFromSampleType(hkSampleType: sample))
         }
+        DataManager.sharedInstance.initTimer() // send data
     }
     
 }
