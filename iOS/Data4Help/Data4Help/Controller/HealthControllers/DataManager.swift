@@ -28,6 +28,17 @@ class DataManager {
         dataType.weight : true,
         dataType.bloodPressure : true
     ]
+    
+    var dataTypesToRead: [String] = [ dataType.activeEnergy.rawValue,
+                                        dataType.diastolic_pressure.rawValue,
+                                        dataType.systolic_pressure.rawValue,
+                                        dataType.distanceWalkingRunning.rawValue,
+                                        dataType.heartrate.rawValue,
+                                        dataType.height.rawValue,
+                                        dataType.sleepingHours.rawValue,
+                                        dataType.standingHours.rawValue,
+                                        dataType.steps.rawValue,
+                                        dataType.weight.rawValue]
         
     var AutomatedSOSON = StorageManager.sharedInstance.getAutomatedSOS()
     
@@ -118,7 +129,6 @@ class DataManager {
         
         return sampleTypes
     }
-    
     
     public func getDataTypeFromSampleType(hkSampleType: HKSampleType)-> dataType {
         switch(hkSampleType){
@@ -332,33 +342,42 @@ class DataManager {
     func initTimer(){
         DispatchQueue.global(qos: .background).async {
             while (true) {
-                print("Timer fired!")
                 
-                print("Show all records:")
-                let results = StorageManager.sharedInstance.getAllData(ofEntity: "Data")
-                for data in results{
-                    print(data.value(forKey: "type") as! String)
-                    print(data.value(forKey: "timestamp") as! String)
-                    print(data.value(forKey: "value") as! Double)
+                var dataTypes: [String] = []
+                var dataValues: [[Double]] = []
+                var dataTimestamps: [[String]] = []
+                
+                for dataType in self.dataTypesToRead{
+                    let results = StorageManager.sharedInstance.getAllDataObjects(ofType: dataType)
+                    var values: [Double] = []
+                    var timestamps : [String] = []
+                    if (results.count>0){
+                        dataTypes.append(dataType)
+                        for data in results{
+                            values.append(data.value(forKey: "value") as! Double)
+                            timestamps.append(data.value(forKey: "timestamp") as! String)
+                        }
+                        dataValues.append(values)
+                        dataTimestamps.append(timestamps)
+                    }
+                }
+                                
+                // Send all data if present
+                if(dataTypes.count>0){
+                    NetworkManager.sharedInstance.sendPostRequest(input: D4HDataUploadRequest(types: dataTypes, values: dataValues, timestamps: dataTimestamps), endpoint: D4HEndpoint.uploadData, headers: Properties.auth()) { (response, error) in
+                        if response != nil {
+                            let myres = D4HDataUploadResponse(fromJson: response!)
+                            print(myres.message)
+                        }
+                        else if let error = error {
+                            print(error)
+                        }
+                    }
+                    StorageManager.sharedInstance.deleteAllData(entityName: "Data")
                 }
                 
-                
-                // Send all data
-                
-                /*
-                 NetworkManager.sharedInstance.sendPostRequest(input: D4HDataUploadRequest(authToken:"6", types: [dataType.heartrate] ,values:[[Double(50)]], timestamps:[["timestamp"]]), endpoint: D4HEndpoint.login) { (response, error) in
-                 if response != nil {
-                 let myres = D4HLoginResponse(fromJson: response!)
-                 print(myres.message)
-                 }
-                 else if let error = error {
-                 print(error)
-                 }
-                 }*/
-                
-                StorageManager.sharedInstance.deleteAllData(entityName: "Data")
-                
-                sleep(5)
+                // send new data each hour
+                sleep(3600)
             }
         }
     }

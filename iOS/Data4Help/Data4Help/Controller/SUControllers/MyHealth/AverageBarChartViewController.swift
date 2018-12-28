@@ -28,7 +28,24 @@ class AverageBarChartViewController: UIViewController {
         
         xvals = ["Min BPM", "Avg BPM","Max BPM"]
         
+        //var othersAverageBPM : [Double] = []
+        
         // SEND DATA STATISTICS REQUEST
+        /*
+        NetworkManager.sharedInstance.sendGetRequest(input: D4HStatisticsRequest(types: DataManager.sharedInstance.dataTypesToRead), endpoint: D4HEndpoint.statistics, headers: Properties.auth()) { (response, error) in
+            if response != nil {
+                let myres: D4HStatisticsResponse = D4HStatisticsResponse(fromJson: response!)
+                let statistics: [D4HStatistic] = myres.statistics
+                for s in statistics {
+                    self.xvals.append(s.type.rawValue)
+                    othersAverageBPM.append((s.observations.first?.avg)!) // replace with correct value in array of observations
+                }
+            }
+            else if let error = error {
+                print(error)
+            }
+        }
+        */
         
         let myAverageBPM = [70.0, 90.0, 110.0]
         let othersAverageBPM = [90.0, 100.0, 120.0]

@@ -13,13 +13,13 @@ import SwiftyJSON
 class D4HDataUploadRequest: D4HRequest {
     // MARK: - Properties
     
-    let types: [dataType]
+    let types: [String]
     let values: [[Double]]
     let timestamps: [[String]]
     
     // MARK: Initialisation
     
-    init(types: [dataType],values: [[Double]], timestamps: [[String]]) {
+    init(types: [String],values: [[Double]], timestamps: [[String]]) {
         self.types = types
         self.values = values
         self.timestamps = timestamps

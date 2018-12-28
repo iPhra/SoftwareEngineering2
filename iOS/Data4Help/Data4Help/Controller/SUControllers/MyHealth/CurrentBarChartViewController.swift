@@ -67,6 +67,8 @@ class CurrentBarChartViewController: UIViewController {
         barChartCurrentValues.xAxis.granularity = 1.0
         barChartCurrentValues.xAxis.labelPosition = .bottom
         
+        barChartCurrentValues.xAxis.labelRotationAngle = -45.0
+        
     }
     
     /*Load current values of each dataType to show*/
@@ -76,7 +78,6 @@ class CurrentBarChartViewController: UIViewController {
             let current: Double? = StorageManager.sharedInstance.getLastDataValue(ofType: dataType)
             result.append(current ?? 0)
         }
-        print("SIZE \(result.count)")
         return result
     }
     

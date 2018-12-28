@@ -60,6 +60,14 @@ class StorageManager: NSObject {
         return result
     }
     
+    /*Gets all "Data" entities of specified type*/
+    func getAllDataObjects(ofType: String) -> [NSManagedObject]{
+        let allData = self.getAllData(ofEntity: "Data")
+        let filteredData = allData.filter { $0.value(forKeyPath: "type") as! String == ofType}
+        if (filteredData.count==0) {print("Empty Storage")} //debug
+        return filteredData
+    }
+    
     /*Gets last value of the specified data type*/
     func getLastDataValue(ofType: String) -> Double? {
         let results = self.getAllData(ofType: ofType)
