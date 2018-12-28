@@ -15,7 +15,7 @@ class CurrentBarChartViewController: UIViewController {
 
     @IBOutlet weak var barChartCurrentValues: BarChartView!
     
-    var dataTypesToShow: [String] = [ dataType.activeEnergy.rawValue,
+    var dataTypesToShow: [String] = [ dataType.activeEnergyBurned.rawValue,
                                       dataType.bloodPressure.rawValue,
                                       dataType.distanceWalkingRunning.rawValue,
                                       dataType.heartrate.rawValue,

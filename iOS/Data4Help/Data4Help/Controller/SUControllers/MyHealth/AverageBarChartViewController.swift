@@ -13,7 +13,11 @@ class AverageBarChartViewController: UIViewController {
     
     // Mark: Properties
     
-    var xvals: [String]!
+    var xvals: [String] = []
+    
+    var othersAverageBPM : [Double] = []
+    
+    var myAverageBPM : [Double] = []
     
     weak var axisFormatDelegate: IAxisValueFormatter?
 
@@ -25,30 +29,23 @@ class AverageBarChartViewController: UIViewController {
         super.viewDidLoad()
         
         axisFormatDelegate = (self as IAxisValueFormatter)
-        
-        xvals = ["Min BPM", "Avg BPM","Max BPM"]
-        
-        //var othersAverageBPM : [Double] = []
-        
-        // SEND DATA STATISTICS REQUEST
-        /*
+                
         NetworkManager.sharedInstance.sendGetRequest(input: D4HStatisticsRequest(types: DataManager.sharedInstance.dataTypesToRead), endpoint: D4HEndpoint.statistics, headers: Properties.auth()) { (response, error) in
             if response != nil {
                 let myres: D4HStatisticsResponse = D4HStatisticsResponse(fromJson: response!)
                 let statistics: [D4HStatistic] = myres.statistics
                 for s in statistics {
-                    self.xvals.append(s.type.rawValue)
-                    othersAverageBPM.append((s.observations.first?.avg)!) // replace with correct value in array of observations
+                    if let myValue = StorageManager.sharedInstance.getLastDataValue(ofType: "\(s.type.rawValue)"){
+                        self.xvals.append(s.type.rawValue)
+                        self.othersAverageBPM.append((s.observations.first?.avg)!) // replace with correct value in array of observations
+                        self.myAverageBPM.append(myValue)
+                    }
                 }
             }
             else if let error = error {
                 print(error)
             }
         }
-        */
-        
-        let myAverageBPM = [70.0, 90.0, 110.0]
-        let othersAverageBPM = [90.0, 100.0, 120.0]
         
         setChart(dataEntryX: xvals, firstDataEntryY: myAverageBPM, secondDataEntryY: othersAverageBPM)
     }

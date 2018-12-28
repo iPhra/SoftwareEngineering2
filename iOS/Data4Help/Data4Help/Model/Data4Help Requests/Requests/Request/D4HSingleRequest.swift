@@ -16,13 +16,13 @@ class D4HSingleRequest: D4HRequest {
     
     let email: String
     let fc: String
-    let types: [dataType]
+    let types: [String]
     let subscribing: Bool
     let duration: Int
     
     // MARK: Initialisation
     
-    init(email: String, fc: String, types: [dataType], subscribing: Bool, duration: Int) {
+    init(email: String, fc: String, types: [String], subscribing: Bool, duration: Int) {
         self.email = email
         self.fc = fc
         self.types = types
