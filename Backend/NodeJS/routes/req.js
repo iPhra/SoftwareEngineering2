@@ -1,7 +1,7 @@
 //@todo Cambiare il controllo sui 1000 target user prendendo l'ultimo data point e facendo il controllo su quello
 
 const Router = require('express-promise-router');
-const db = require('../settings/dbconnection');
+const db = require('../utils/dbconnection');
 const authenticator = require('../middlewares/authenticator');
 
 const router = new Router();

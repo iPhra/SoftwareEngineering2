@@ -1,5 +1,5 @@
 const winston = require('winston');
-const db = require('../settings/dbconnection');
+const db = require('../utils/dbconnection');
 
 const logger = winston.createLogger({
     level: 'info',

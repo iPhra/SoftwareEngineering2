@@ -1,0 +1,9 @@
+{
+  "dbconf": {
+    "host": "localhost",
+    "port": "",
+    "user": "iphra",
+    "password": "",
+    "database": "data4help"
+  }
+}

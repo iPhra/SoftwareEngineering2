@@ -1,5 +1,5 @@
 const Router = require('express-promise-router');
-const db = require('../settings/dbconnection');
+const db = require('../utils/dbconnection');
 const utils = require('../utils/security');
 const authenticator = require('../middlewares/authenticator');
 
