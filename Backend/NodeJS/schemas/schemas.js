@@ -47,11 +47,6 @@ const tpSettings = {
     company_description : company_description,
 };
 
-const dataSettings = Joi.object({
-    types : types,
-    enabled : Joi.array().items(Joi.boolean()).required(),
-}).assert('types.length',Joi.ref('enabled.length'));
-
 const dataImport = Joi.object({
     types : types,
     values : Joi.array().items(Joi.array().items(Joi.number())).required(),
@@ -98,7 +93,6 @@ module.exports = {
     '/auth/login' : login,
     '/settings/single/info' : singleSettings,
     '/settings/tp/info' : tpSettings,
-    '/settings/single/data' : dataSettings,
     '/data/upload' : dataImport,
     '/data/stats' : dataStats,
     '/req/tp/sendSingle' : singleReq,

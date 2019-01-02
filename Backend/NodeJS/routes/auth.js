@@ -98,9 +98,13 @@ router.post('/login', async (req, res) => {
     }
     else return res.status(401).send({error: "Email provided does not exist"});
 
+    //check if account is activated
+    let activated = await db.query("SELECT activated FROM Registration WHERE userid=$1",[userID]);
+    if(activated.rows[0].activated===false) return res.status(401).send({error: "Account not activated"});
 
     //if the password is wrong
     if(!(await bcrypt.compare(req.body.password, password))) return res.status(401).send({error: 'Wrong password'});
+
 
     //generate jwt token containing userid and the type of the account
     const token = jwt.sign({
@@ -148,8 +152,8 @@ async function insertIntoRegistration() {
 
     //insert the authToken into the Registration table
     const activToken = getActivToken(id);
-    const text = 'INSERT INTO registration VALUES($1, $2)';
-    const values = [activToken, false];
+    const text = 'INSERT INTO registration VALUES($1, $2, $3)';
+    const values = [id, activToken, false];
     await db.query(text, values);
 
     return {

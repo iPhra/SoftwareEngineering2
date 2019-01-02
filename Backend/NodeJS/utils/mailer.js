@@ -12,11 +12,14 @@ module.exports = (req, activToken) => {
         text: 'Activation link: ' + config.get("hostname") + 'auth/activ?activToken=' + activToken
     };
 
-    transporter.sendMail(mailOptions, (error) => {
-        if(error) {
-            console.log(error);
-        }  else {
-            console.log('Email sent to ' + req.body.email)
-        }
-    })
+    //if we are in production or development
+    if(process.env.NODE_ENV!=="test") {
+        transporter.sendMail(mailOptions, (error) => {
+            if(error) {
+                console.log(error);
+            }  else {
+                console.log('Email sent to ' + req.body.email)
+            }
+        })
+    }
 };
