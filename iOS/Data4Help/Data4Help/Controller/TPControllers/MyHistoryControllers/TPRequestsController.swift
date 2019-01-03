@@ -17,6 +17,13 @@ class TPRequestsController: UITableViewController, RequestCellDelegate {
     var groupRequests: [TPGroupRequest] = []
     var sections: [String] = []
     
+    lazy var refresher: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.tintColor = UIColor(red: 233/255, green: 105/255, blue: 103/255, alpha: 1)
+        refreshControl.addTarget(self, action: #selector(loadData), for: .valueChanged)
+        return refreshControl
+    }()
+    
     // MARK: Outlets
     
     @IBOutlet var requestsTableView: UITableView!
@@ -27,12 +34,11 @@ class TPRequestsController: UITableViewController, RequestCellDelegate {
         super.viewDidLoad()
         self.tableView.dataSource = self
         
-        //SampleRequest(status: "accepted",companyName: "Company X", datatypes: [dataType.distanceWalkingRunning], subscribing: true)
-        //requests.append(r)
-        
         self.clearsSelectionOnViewWillAppear = false
         
         loadData()
+        
+        tableView.refreshControl = self.refresher
     }
     
     // Mark: - Table view data source
@@ -76,7 +82,8 @@ class TPRequestsController: UITableViewController, RequestCellDelegate {
     }
     
     // MARK: Private implementation
-    
+
+    @objc
     func loadData() {
         // API call to retrieve requests
         NetworkManager.sharedInstance.sendGetRequest(input: D4HThirdPartyListRequest(authToken: Properties.authToken), endpoint: D4HEndpoint.requestListThirdParty, headers: Properties.auth()) { (response, error) in
@@ -91,6 +98,11 @@ class TPRequestsController: UITableViewController, RequestCellDelegate {
             else if let error = error {
                 print(error)
             }
+        }
+        
+        let deadline = DispatchTime.now() + .milliseconds(700) //put in completion block??
+        DispatchQueue.main.asyncAfter(deadline: deadline) {
+            self.refresher.endRefreshing()
         }
     }
     

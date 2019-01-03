@@ -5,5 +5,9 @@ use_frameworks!
 target 'Data4Help' do
     pod 'Alamofire'
     pod 'SwiftyJSON'
-    pod 'Charts' 
+    pod 'Charts'
+    target 'Data4HelpTests' do
+        inherit! :search_paths
+        pod 'Alamofire'
+    end
 end

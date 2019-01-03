@@ -14,15 +14,15 @@ class D4HGroupRequest: D4HRequest {
     
     // MARK: - Properties
     
-    let types: [dataType]
-    let parameters: [dataType]
+    let types: [String]
+    let parameters: [String]
     let bounds: [D4HBound]
     let subscribing: Bool
     let duration: Int
     
     // MARK: Initialisation
     
-    init(types: [dataType], parameters: [dataType], bounds: [D4HBound], subscribing: Bool, duration: Int) {
+    init(types: [String], parameters: [String], bounds: [D4HBound], subscribing: Bool, duration: Int) {
         self.types = types
         self.parameters = parameters
         self.bounds = bounds

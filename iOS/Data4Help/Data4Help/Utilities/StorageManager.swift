@@ -35,6 +35,7 @@ class StorageManager: NSObject {
         var array: [NSManagedObject] = []
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: ofEntity)
         request.returnsObjectsAsFaults = false
+ 
         do {
             let result = try context.fetch(request)
             if (result.count==0) {print("Empty Storage")} //debug
@@ -42,7 +43,8 @@ class StorageManager: NSObject {
                 array.append(data)
             }
             
-        } catch {
+        }
+        catch {
             print("Failed fetching data")
         }
         return array

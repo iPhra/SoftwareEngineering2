@@ -51,9 +51,9 @@ class SRequest: UIViewController {
     
     @IBAction func sendRequest(_ sender: Any) {
         
-        NetworkManager.sharedInstance.sendPostRequest(input: D4HSingleRequest(email: emailTextField.text!, fc: CFTextField.text!, types: getDataTypesToSend(), subscribing: subscriptionSwitch.isOn, duration: Int(durationTextField.text!) ?? 0), endpoint: D4HEndpoint.uploadData, headers: Properties.auth()) { (response, error) in
+        NetworkManager.sharedInstance.sendPostRequest(input: D4HSingleRequest(email: emailTextField.text!, fc: CFTextField.text!, types: getDataTypesToSend(), subscribing: subscriptionSwitch.isOn, duration: Int(durationTextField.text!) ?? 0), endpoint: D4HEndpoint.singleRequest, headers: Properties.auth()) { (response, error) in
             if response != nil {
-                let myres = D4HDataUploadResponse(fromJson: response!)
+                let myres = D4HSingleResponse(fromJson: response!)
                 print(myres.message)
             }
             else if let error = error {

@@ -40,7 +40,7 @@ class ResearchViewController: UIViewController {
         
         addChild(controller)
         
-        viewContainer.addSubview(controller.view)
+        self.viewContainer.addSubview(controller.view)
         
         controller.didMove(toParent: self)
     }
@@ -49,12 +49,12 @@ class ResearchViewController: UIViewController {
         
         if(requestType==0){
             addChild(GRequest!)
-            viewContainer.addSubview((GRequest?.view)!)
+            self.viewContainer.addSubview((GRequest?.view)!)
             requestType=1
         }
         else{
             addChild(SRequest!)
-            viewContainer.addSubview((SRequest?.view)!)
+            self.viewContainer.addSubview((SRequest?.view)!)
             requestType=0
         }
     }
