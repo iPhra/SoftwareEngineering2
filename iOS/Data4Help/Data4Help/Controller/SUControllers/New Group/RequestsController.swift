@@ -13,7 +13,14 @@ import Alamofire
 class RequestsController: UITableViewController, MyCellDelegate {
     
     // MARK: Properties
-
+    
+    lazy var refresher: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.tintColor = UIColor(red: 233/255, green: 105/255, blue: 103/255, alpha: 1)
+        refreshControl.addTarget(self, action: #selector(loadData), for: .valueChanged)
+        return refreshControl
+    }()
+    
     enum TableSection: Int {
         case accepted = 0, pending, refused, total
     }
@@ -39,6 +46,8 @@ class RequestsController: UITableViewController, MyCellDelegate {
             loadData()
             
         }
+        
+        tableView.refreshControl = self.refresher
     }
     
     // Mark: - Table view data source
@@ -75,6 +84,7 @@ class RequestsController: UITableViewController, MyCellDelegate {
         view.addSubview(label)
         return view
     }
+
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -103,6 +113,7 @@ class RequestsController: UITableViewController, MyCellDelegate {
     
     // MARK: Private implementation
     
+    @objc
     func loadData() {
         // API call to retrieve requests
         NetworkManager.sharedInstance.sendGetRequest(input: D4HSingleListRequest(authToken: Properties.authToken), endpoint: D4HEndpoint.requestListSingle, headers: Properties.auth()) { (response, error) in
@@ -117,6 +128,12 @@ class RequestsController: UITableViewController, MyCellDelegate {
                 print(error)
             }
         }
+        
+        let deadline = DispatchTime.now() + .milliseconds(700) //put in completion block??
+        DispatchQueue.main.asyncAfter(deadline: deadline) {
+            self.refresher.endRefreshing()
+        }
+    
     }
     
     // Split retrieved requests between accepted, pending, refused
