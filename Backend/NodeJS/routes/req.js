@@ -1,5 +1,3 @@
-//@todo Cambiare il controllo sui 1000 target user prendendo l'ultimo data point e facendo il controllo su quello
-
 const Router = require('express-promise-router');
 const db = require('../utils/dbconnection');
 const authenticator = require('../middlewares/authenticator');
@@ -54,10 +52,6 @@ router.post('/tp/sendGroup', authenticator(), async (req, res) => {
     //if he's not logged in or he's not a ThirdParty
     if (req.body.usertype!=="ThirdParty")
         return res.status(401).send({error: "You need to login with a Third Party account"});
-
-    //if there's a pending request already from the TP to the PU
-    if(await checkPendingGroupRequests(userID))
-        return res.status(403).send({error: "There already is a pending request"});
 
 
     await(db.query('BEGIN'));
@@ -375,16 +369,6 @@ async function checkReqExistance(req) {
 async function checkPendingSingleRequests(userID, receiver_id) {
     const text = "SELECT * FROM singlerequest WHERE sender_id=$1 AND receiver_id=$2 AND status=$3";
     const values = [userID, receiver_id, 'pending'];
-    const rows = await db.query(text, values);
-
-    return rows.rowCount>0
-}
-
-
-//checks if there is a pending request from a given ThirdParty to a given PrivateUser
-async function checkPendingGroupRequests(userID) {
-    const text = "SELECT * FROM grouprequest WHERE sender_id=$1 AND status=$2";
-    const values = [userID, 'pending'];
     const rows = await db.query(text, values);
 
     return rows.rowCount>0

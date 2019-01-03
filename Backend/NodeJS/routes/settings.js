@@ -8,7 +8,7 @@ const router = new Router();
 
 
 //change the settings for a PrivateUser
-router.post('/single/info', authenticator(), async (req, res, next) => {
+router.post('/single/info', authenticator(), async (req, res) => {
     let userID = req.body.userid;
 
     //if he's not logged in or he's not a PrivateUser

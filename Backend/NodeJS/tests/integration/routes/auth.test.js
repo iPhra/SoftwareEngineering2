@@ -19,6 +19,11 @@ describe('/auth', () => {
         await db.query("TRUNCATE grouprequest, singlerequest, privateuser, thirdparty, userdata, searchparameter, requestcontent, registration")
     });
 
+    //close db
+    afterAll(() => {
+        db.pool.end();
+    });
+
 
     describe('/reg/single', () => {
 
@@ -39,7 +44,7 @@ describe('/auth', () => {
             expect(res.status).toBe(200);
             const reg = await db.query("SELECT * FROM Registration");
             const dbuser = await db.query("SELECT * FROM PrivateUser");
-            expect(reg.rows[0].activated=false); //account can't be activated yet
+            expect(reg.rows[0].activated).toBeFalsy(); //account can't be activated yet
             expect(dbuser.rows[0].email).toEqual(privateuser.email);
             expect(await bcrypt.compare(dbuser.rows[0].password, privateuser.password));
             expect(dbuser.rows[0].fc).toEqual(privateuser.fc);
@@ -118,6 +123,7 @@ describe('/auth', () => {
             await request(server).post('/auth/reg/tp').send(thirdparty)
                 .set('Content-Type', 'application/json')
                 .set('Accept', 'application/json');
+            //get the generated token from the database to be used for activation
             const token = (await db.query("SELECT activ_token FROM Registration")).rows[0].activ_token;
             const res = await request(server).get('/auth/activ').query({activToken: token});
 
@@ -132,6 +138,7 @@ describe('/auth', () => {
                 .set('Accept', 'application/json');
             const token = (await db.query("SELECT activ_token FROM Registration")).rows[0].activ_token;
             await request(server).get('/auth/activ').query({activToken: token});
+            //try to reactivate the account again
             const res = await request(server).get('/auth/activ').query({activToken: token});
 
             expect(res.status).toBe(403);
@@ -159,6 +166,7 @@ describe('/auth', () => {
             await request(server).post('/auth/reg/tp').send(thirdparty)
                 .set('Content-Type', 'application/json')
                 .set('Accept', 'application/json');
+            //activate the account
             const token = (await db.query("SELECT activ_token FROM Registration")).rows[0].activ_token;
             await request(server).get('/auth/activ').query({activToken: token});
             const res = await request(server).post('/auth/login').send({
