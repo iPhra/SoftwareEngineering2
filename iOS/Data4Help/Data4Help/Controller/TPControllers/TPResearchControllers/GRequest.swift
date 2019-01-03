@@ -14,7 +14,7 @@ class GRequest: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
     
-    let parameters: [String] = [dataType.age.rawValue, dataType.weight.rawValue, dataType.heartrate.rawValue]
+    let parameters: [String] = [dataType.age.rawValue, dataType.weight.rawValue, dataType.heartrate.rawValue, dataType.sleepingHours.rawValue]
     
     // Mark: Sliders
     
@@ -46,7 +46,11 @@ class GRequest: UIViewController {
     
     @IBOutlet weak var subscriptionSwitch: UISwitch!
     
+    // Mark: Subscription TextField
+    
     @IBOutlet weak var durationTextField: UITextField!
+    
+    // Mark: Buttons
     
     @IBOutlet weak var sendRequestButton: UIButton!
     
@@ -60,9 +64,15 @@ class GRequest: UIViewController {
     
     @IBOutlet weak var maxWeightSliderText: UILabel!
     
+    // Filters TextFields
+    
     @IBOutlet weak var minBPMTextField: UITextField!
     
     @IBOutlet weak var maxBPMTextField: UITextField!
+    
+    @IBOutlet weak var minSleepingHoursTextField: UITextField!
+    
+    @IBOutlet weak var maxSleepingHoursTextField: UITextField!
     
     // Mark: Functions
     
@@ -79,6 +89,8 @@ class GRequest: UIViewController {
         minBPMTextField.text = ""
         maxBPMTextField.text = ""
         durationTextField.text = ""
+        minSleepingHoursTextField.text = ""
+        maxSleepingHoursTextField.text = ""
     }
     
 
@@ -92,6 +104,7 @@ class GRequest: UIViewController {
     }
     */
     
+    // Send a group request
     @IBAction func sendRequest(_ sender: Any) {
         
         NetworkManager.sharedInstance.sendPostRequest(input: D4HGroupRequest(types: getDataTypesToSend(), parameters: self.parameters, bounds: getBounds(), subscribing: subscriptionSwitch.isOn, duration: Int(durationTextField.text!) ?? 0), endpoint: D4HEndpoint.groupRequest, headers: Properties.auth()) { (response, error) in
@@ -105,6 +118,7 @@ class GRequest: UIViewController {
         }
     }
     
+    // Return a list of requested datatypes
     func getDataTypesToSend() -> [String]{
         var dataTypesToSend : [String] = []
         if(heartRateSwitch.isOn) { dataTypesToSend.append(dataType.heartrate.rawValue)}
@@ -121,38 +135,42 @@ class GRequest: UIViewController {
         return dataTypesToSend
     }
     
+    // Add upper and lower bound for each search parameter
     func getBounds() -> [D4HBound]{
         var bounds: [D4HBound] = []
+        
         let ageBound = D4HBound(upperbound: Double(Int(maxAgeSlider.value)), lowerbound: Double(Int(minAgeSlider.value)))
         bounds.append(ageBound)
+        
         let weightBound = D4HBound(upperbound: Double(Int(maxWeightSlider.value)), lowerbound: Double(Int(minWeightSlider.value)))
         bounds.append(weightBound)
+        
         let heartRateBound = D4HBound(upperbound: Double(Int(minBPMTextField.text!) ?? 0) , lowerbound: Double(Int(maxBPMTextField.text!) ?? 1000) )
         bounds.append(heartRateBound)
+        
+        let sleepingHoursBound = D4HBound(upperbound: Double(Int(minSleepingHoursTextField.text!) ?? 0), lowerbound: Double(Int(minSleepingHoursTextField.text!) ?? 1000))
+        bounds.append(sleepingHoursBound)
+        
         return bounds
     }
     
     @IBAction func minAgeSliderValueChanged(_ sender: UISlider) {
         let currentValue: Int = Int(sender.value)
-        print("Slider changing to \(currentValue) ?")
         self.minAgeSliderText.text = "\(currentValue) yo"
     }
     
     @IBAction func maxAgeSliderValueChanged(_ sender: UISlider) {
         let currentValue: Int = Int(sender.value)
-        print("Slider changing to \(currentValue) ?")
         self.maxAgeSliderText.text = "\(currentValue) yo"
     }
     
     @IBAction func minWeightSliderValueChanged(_ sender: UISlider) {
         let currentValue: Int = Int(sender.value)
-        print("Slider changing to \(currentValue) ?")
         self.minWeightSliderText.text = "\(currentValue) kg"
     }
     
     @IBAction func maxWeightSliderValueChanged(_ sender: UISlider) {
         let currentValue: Int = Int(sender.value)
-        print("Slider changing to \(currentValue) ?")
         self.maxWeightSliderText.text = "\(currentValue) kg"
     }
 }

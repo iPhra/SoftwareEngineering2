@@ -14,7 +14,7 @@ enum dataType: String {
     case standingHours = "standinghours"
     case heartrate = "heartrate"
     case distanceWalkingRunning = "distancewalkingrunning"
-    case steps = "stepCount"
+    case steps = "stepcount"
     case biologicalSex = "biologicalSex"
     case sleepingHours = "sleepinghours"
     case weight = "weight"

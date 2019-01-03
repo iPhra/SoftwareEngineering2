@@ -427,7 +427,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="60" minValue="0.0" maxValue="120" translatesAutoresizingMaskIntoConstraints="NO" id="hnz-3Q-1he">
-                                        <rect key="frame" x="158" y="120" width="175" height="30"/>
+                                        <rect key="frame" x="137" y="120" width="175" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="tintColor" red="0.92246448989999996" green="0.40818893909999998" blue="0.39214158059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
@@ -459,7 +459,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="100" minValue="0.0" maxValue="200" translatesAutoresizingMaskIntoConstraints="NO" id="1j4-q3-PZg">
-                                        <rect key="frame" x="158" y="200" width="175" height="30"/>
+                                        <rect key="frame" x="137" y="200" width="175" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="tintColor" red="0.92246448989999996" green="0.40818893909999998" blue="0.39214158059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
@@ -474,7 +474,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="60" minValue="0.0" maxValue="120" translatesAutoresizingMaskIntoConstraints="NO" id="tAC-Az-aFu">
-                                        <rect key="frame" x="158" y="80" width="175" height="30"/>
+                                        <rect key="frame" x="137" y="80" width="175" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="tintColor" red="0.92246448989999996" green="0.40818893909999998" blue="0.39214158059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
@@ -539,7 +539,7 @@
                                         <color key="onTintColor" red="0.92246448989999996" green="0.40818893909999998" blue="0.39214158059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </switch>
                                     <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="100" minValue="0.0" maxValue="200" translatesAutoresizingMaskIntoConstraints="NO" id="Mbh-ix-uoL">
-                                        <rect key="frame" x="158" y="160" width="175" height="30"/>
+                                        <rect key="frame" x="137" y="160" width="175" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="tintColor" red="0.92246448989999996" green="0.40818893909999998" blue="0.39214158059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
@@ -582,8 +582,8 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="onTintColor" red="0.92246448989999996" green="0.40818893909999998" blue="0.39214158059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </switch>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Avg BPM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bft-Nv-rj1">
-                                        <rect key="frame" x="20" y="244" width="69" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Avg Heart Rate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bft-Nv-rj1">
+                                        <rect key="frame" x="20" y="244" width="115" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -627,42 +627,63 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="minAge" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OaQ-gu-kDW" userLabel="minAgeSliderText">
-                                        <rect key="frame" x="339" y="84" width="58" height="21"/>
+                                        <rect key="frame" x="318" y="84" width="58" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="maxAge" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="njC-pP-3BB" userLabel="minAgeSliderText">
-                                        <rect key="frame" x="339" y="124" width="62" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="minWeight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t8d-jz-Nrk" userLabel="minAgeSliderText">
-                                        <rect key="frame" x="339" y="163" width="81" height="21"/>
+                                        <rect key="frame" x="318" y="124" width="62" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="maxWeight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xb0-ph-hZg" userLabel="minAgeSliderText">
-                                        <rect key="frame" x="339" y="204" width="86" height="21"/>
+                                        <rect key="frame" x="318" y="204" width="86" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Min" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xlB-W3-Dea">
-                                        <rect key="frame" x="160" y="239" width="63" height="30"/>
+                                        <rect key="frame" x="193" y="238" width="63" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Max" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TBX-C3-Rq1">
-                                        <rect key="frame" x="268" y="239" width="63" height="30"/>
+                                        <rect key="frame" x="275" y="238" width="63" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="minWeight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t8d-jz-Nrk" userLabel="minAgeSliderText">
+                                        <rect key="frame" x="318" y="164" width="81" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Avg Sleeping Hours" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rac-24-sBa">
+                                        <rect key="frame" x="21" y="282" width="150" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Min" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MbF-nF-8MR">
+                                        <rect key="frame" x="193" y="278" width="63" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Max" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Yho-qY-rJK">
+                                        <rect key="frame" x="275" y="277" width="63" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -684,11 +705,13 @@
                         <outlet property="maxAgeSlider" destination="hnz-3Q-1he" id="diS-RO-4Sm"/>
                         <outlet property="maxAgeSliderText" destination="njC-pP-3BB" id="lkI-jM-Jce"/>
                         <outlet property="maxBPMTextField" destination="TBX-C3-Rq1" id="Z6n-tD-b4C"/>
+                        <outlet property="maxSleepingHoursTextField" destination="Yho-qY-rJK" id="5UM-bP-mRf"/>
                         <outlet property="maxWeightSlider" destination="1j4-q3-PZg" id="SAU-fp-IPL"/>
                         <outlet property="maxWeightSliderText" destination="Xb0-ph-hZg" id="B57-14-uKs"/>
                         <outlet property="minAgeSlider" destination="tAC-Az-aFu" id="AKL-b2-BSs"/>
                         <outlet property="minAgeSliderText" destination="OaQ-gu-kDW" id="yps-mx-0mK"/>
                         <outlet property="minBPMTextField" destination="xlB-W3-Dea" id="5oV-cF-YuB"/>
+                        <outlet property="minSleepingHoursTextField" destination="MbF-nF-8MR" id="Otf-tD-WCi"/>
                         <outlet property="minWeightSlider" destination="Mbh-ix-uoL" id="rcm-dz-pCr"/>
                         <outlet property="minWeightSliderText" destination="t8d-jz-Nrk" id="tns-0g-1Wm"/>
                         <outlet property="scrollView" destination="DDk-3T-rLz" id="onv-DR-1gg"/>
@@ -833,8 +856,8 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="onTintColor" red="0.92246448989999996" green="0.40818893909999998" blue="0.39214158059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </switch>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r7H-os-1H6">
-                                        <rect key="frame" x="287" y="527" width="49" height="31"/>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="r7H-os-1H6">
+                                        <rect key="frame" x="287" y="527" width="51" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="onTintColor" red="0.92246448989999996" green="0.40818893909999998" blue="0.39214158059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </switch>
