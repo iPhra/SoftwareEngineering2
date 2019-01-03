@@ -1,0 +1,143 @@
+\documentclass[titlepage]{article}
+
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{subfig}
+\graphicspath{ {./images/} }
+			
+
+\title{{\Huge {\it Data4Help}}}
+\author{Lorenzo, Molteni, Negri}
+\date{January 13, 2019}
+
+\begin{document}
+
+\makeatletter
+    \begin{titlepage}
+        \begin{center}
+            \includegraphics[width=\linewidth]{logo.png}\\[20ex]
+            {\huge  \@title }\\[2ex] 
+            {\LARGE  \@author}\\[3ex] 
+            {\LARGE {\it ITD} Document}\\[3ex]
+            {\large \@date}\\[5ex]
+        \end{center}
+    \end{titlepage}
+\makeatother
+\thispagestyle{empty}
+\newpage
+
+%Add content for page two here (useful for two-sided printing)
+\thispagestyle{empty}
+\newpage
+
+
+	
+%Index	
+\pagebreak
+\tableofcontents{}
+\pagebreak
+
+
+%Introduction
+\section{Introduction}
+\subsection{Purpose and Scope}
+\subsection{Definitions, Acronyms, Abbreviations}
+\subsubsection{Definitions}
+\begin{itemize}
+	\item {\bf Framework}
+	\item {\bf Library}
+	\item {\bf Packet Manager}
+\end{itemize}
+\subsubsection{Acronyms}
+\begin{longtable}{| p{2 cm} | p{7 cm} |} \hline
+		{\bf DBMS} & Data Base Management {\it System} \\ \hline
+		{\bf REST} & REpresentational State Transfer \\ \hline
+		{\bf API} & Application Programming Interface \\ \hline
+		{\bf OS} & Operating {\it System}\\ \hline
+		{\bf UI} & User Interface \\ \hline
+		{\bf HTTP} & HyperText Transfer Protocol \\ \hline	
+		{\bf URL} & Uniform Resource Locator \\ \hline
+		{\bf JSON} & JavaScript Object Notation \\ \hline
+		\caption{Acronyms}	
+						
+	\end{longtable}
+\subsubsection{Abbreviations}
+
+\begin{itemize}
+	\item {\bf (Rn):} n-th Requirement
+\end{itemize}
+
+\subsection{Reference Documents}
+\subsection{Overview}
+
+\pagebreak
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Requirements Implemented
+\section{Requirements Implemented}
+
+\subsection{User Authentication}
+\subsection{User Management}
+\subsection{Creation of Single Requests}
+\subsection{Creation of Group Requests}
+\subsection{Data Management}
+\subsection{Health Status Monitoring}
+\subsection{AutomatedSOS}
+\subsection{Run Management}
+
+\pagebreak
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Design Choices
+\section{Design Choices}
+\subsection{Database choices}
+\subsection{Back-end choices}
+\subsection{Front-end choices}
+\subsubsection{\bf iOS}
+\begin{itemize}
+	\item {\bf Operating system}
+	\item {\bf Documentation}
+	\item {\bf Interface peculiarity}
+	\item {\bf Device compatibility}
+	\item {\bf Frameworks}
+	\item {\bf Programming language and environment}
+\end{itemize}
+\subsubsection{\bf Swift}
+\begin{itemize}
+	\item {\bf Simplicity}
+	\item {\bf Speed}
+	\item {\bf Built-in patterns}
+\end{itemize}
+\subsubsection{\bf External Frameworks}
+\begin{itemize}
+	\item {\bf Alamofire}
+	\item {\bf SwiftyJSON}
+	\item {\bf Charts}
+\end{itemize}
+\subsubsection{\bf Apple Frameworks}
+\begin{itemize}
+	\item {\bf Foundation}
+	\item {\bf Healthkit}
+	\item {\bf UIKit}
+	\item {\bf CoreData}
+\end{itemize}
+
+\pagebreak
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Source Code Structure
+\section{Source Code Structure}
+\subsection{Node project structure}
+\subsection{Database description}
+\subsection{XCode project structure}
+
+\pagebreak
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Testing
+\section{Testing}
+
+\pagebreak
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Efforts
+\section{Efforts}
+
+
+\end{document}
