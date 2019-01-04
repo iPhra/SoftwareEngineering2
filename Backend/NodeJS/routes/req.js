@@ -2,6 +2,7 @@ const Router = require('express-promise-router');
 const db = require('../utils/dbconnection');
 const authenticator = require('../middlewares/authenticator');
 
+const addDays = require("../utils/utils").addDays;
 const router = new Router();
 
 
@@ -242,7 +243,7 @@ router.get('/single/list', authenticator(), async (req, res) => {
             "status" : requests.rows[i].status,
             "subscribing" : requests.rows[i].subscribing,
             "duration" : requests.rows[i].duration,
-            "req_date" : (requests.rows[i].req_date).toISOString().slice(0,10)
+            "req_date" : addDays((requests.rows[i].req_date).toISOString().slice(0,10),1)
         };
 
         result.push(obj);
@@ -292,7 +293,7 @@ router.get('/tp/list', authenticator(), async (req, res) => {
             "status" : singlerequests.rows[i].status,
             "subscribing" : singlerequests.rows[i].subscribing,
             "duration" : singlerequests.rows[i].duration,
-            "req_date" : (singlerequests.rows[i].req_date).toISOString().slice(0,10)
+            "req_date" : addDays((singlerequests.rows[i].req_date).toISOString().slice(0,10),1)
         };
 
         single.push(obj);
@@ -326,7 +327,7 @@ router.get('/tp/list', authenticator(), async (req, res) => {
             "status" : grouprequests.rows[i].status,
             "subscribing" : grouprequests.rows[i].subscribing,
             "duration" : grouprequests.rows[i].duration,
-            "req_date" : (grouprequests.rows[i].req_date).toISOString().slice(0,10)
+            "req_date" : addDays((grouprequests.rows[i].req_date).toISOString().slice(0,10),1)
         };
 
         group.push(obj);
@@ -343,7 +344,7 @@ router.get('/tp/list', authenticator(), async (req, res) => {
 async function getUserIDByEmail(req) {
     const text = "SELECT userid FROM privateuser WHERE email=$1";
     const values = [req.body.email];
-    return await db.query(text, values);
+    return await db.query(text, values)
 }
 
 
@@ -368,7 +369,7 @@ async function checkReqExistance(req) {
 //checks if there is a pending request from a given ThirdParty to a given PrivateUser
 async function checkPendingSingleRequests(userID, receiver_id) {
     const text = "SELECT * FROM singlerequest WHERE sender_id=$1 AND receiver_id=$2 AND status=$3";
-    const values = [userID, receiver_id, 'pending'];
+    const values = [userID, receiver_id.rows[0].userid, 'pending'];
     const rows = await db.query(text, values);
 
     return rows.rowCount>0
@@ -461,12 +462,7 @@ async function setChoice(choice, req_id) {
 }
 
 
-//given a date, adds the given number of days to that date
-function addDays(date, days) {
-    date = new Date(date);
-    date.setDate(date.getDate() + days);
-    return date;
-}
+
 
 
 

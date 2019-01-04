@@ -1,5 +1,3 @@
-//@todo Bug nel test di registrazione con le date?
-
 const jwt = require('jsonwebtoken');
 const config = require('config');
 const request = require('supertest');
@@ -52,7 +50,7 @@ describe('/auth', () => {
             expect(await bcrypt.compare(dbuser.rows[0].password, privateuser.password));
             expect(dbuser.rows[0].fc).toEqual(privateuser.fc);
             expect(dbuser.rows[0].full_name).toEqual(privateuser.full_name);
-            //expect(dbuser.rows[0].birthdate.toISOString().slice(0,10)).toEqual(privateuser.birthdate);
+            expect((new Date(dbuser.rows[0].birthdate)).toDateString()).toEqual((new Date(privateuser.birthdate)).toDateString());
             expect(dbuser.rows[0].sex).toEqual(privateuser.sex);
         });
 

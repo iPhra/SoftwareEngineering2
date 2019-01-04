@@ -5,7 +5,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require('config');
 
-const hashPassword = require("../utils/security").hashPassword;
+const hashPassword = require("../utils/utils").hashPassword;
 const router = new Router();
 
 

@@ -1,8 +1,9 @@
 const Router = require('express-promise-router');
 const db = require('../utils/dbconnection');
-const utils = require('../utils/security');
+const utils = require('../utils/utils');
 const authenticator = require('../middlewares/authenticator');
 
+const addDays = utils.addDays;
 const hashPassword = utils.hashPassword;
 const router = new Router();
 
@@ -120,7 +121,7 @@ router.get('/single/info', authenticator(), async (req, res) => {
         email: settings.rows[0].email,
             fc: settings.rows[0].fc,
             full_name: settings.rows[0].full_name,
-            birthdate: (settings.rows[0].birthdate).toISOString().slice(0,10)
+            birthdate: addDays((settings.rows[0].birthdate).toISOString().slice(0,10),1)
     }});
 });
 

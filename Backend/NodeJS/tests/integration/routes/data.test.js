@@ -1,5 +1,3 @@
-//@todo bug date
-
 const request = require('supertest');
 const db = require('../../../utils/dbconnection');
 let server;

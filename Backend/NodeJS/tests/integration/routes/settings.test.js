@@ -92,8 +92,8 @@ describe('/settings', () => {
             expect(settings.rows[0].fc).toEqual(privateuser.fc); //same fc
             expect(settings.rows[0].full_name).toEqual("Francesco Vito Lorenzo"); //new full name
             expect(settings.rows[0].email).toEqual(privateuser.email); //same email
-            expect(await bcrypt.compare(settings.rows[0].password, privateuser.password)).toBeFalsy() //password is changed
-            //expect(settings.rows[0].birthdate).toEqual(privateuser.birthdate);
+            expect(await bcrypt.compare(settings.rows[0].password, privateuser.password)).toBeFalsy(); //password is changed
+            expect((new Date(settings.rows[0].birthdate)).toDateString()).toEqual((new Date(privateuser.birthdate)).toDateString());
         });
 
         it('should let a single user retrieve his private settings', async () => {
@@ -109,7 +109,8 @@ describe('/settings', () => {
             expect(res.body.settings.fc).toEqual(privateuser.fc);
             expect(res.body.settings.email).toEqual(privateuser.email);
             expect(res.body.settings.full_name).toEqual(privateuser.full_name);
-            //expect(res.body.settings.birthdate).toEqual(privateuser.birthdate);
+            console.log(res.body.settings.birthdate);
+            expect((new Date(res.body.settings.birthdate)).toDateString()).toEqual((new Date(privateuser.birthdate)).toDateString());
         });
 
         it('should forbid a non logged in user to update his private settings', async () => {
