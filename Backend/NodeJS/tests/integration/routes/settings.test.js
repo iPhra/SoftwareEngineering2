@@ -29,6 +29,8 @@ describe('/settings', () => {
     //before each test, i register a third party user and a private user, activate their accounts and log them in
     beforeEach(async () => {
         server = require('../../../bin/www');
+
+        //register
         await request(server).post('/auth/reg/tp').send(thirdparty)
             .set('Content-Type', 'application/json')
             .set('Accept', 'application/json');
@@ -43,10 +45,10 @@ describe('/settings', () => {
             "password" : "password",
         })).body.authToken;
 
+        //register
         await request(server).post('/auth/reg/single').send(privateuser)
             .set('Content-Type', 'application/json')
             .set('Accept', 'application/json');
-
 
         //activate the account
         token = (await db.query("SELECT activ_token FROM Registration")).rows[1].activ_token;
@@ -74,6 +76,7 @@ describe('/settings', () => {
     describe('/single/info', () => {
 
         it('should let a single user update his private settings', async () => {
+            //change settings
             const res = await request(server).post('/settings/single/info').send({
                 "password" : "newpassword",
                 "full_name" : "Francesco Vito Lorenzo"
@@ -82,7 +85,9 @@ describe('/settings', () => {
                 .set('Accept', 'application/json')
                 .set('x-authToken', authToken_pu);
 
+
             expect(res.status).toBe(200);
+
             const settings = await db.query("SELECT * FROM privateuser WHERE userid=$1",[2]);
             expect(settings.rows[0].fc).toEqual(privateuser.fc); //same fc
             expect(settings.rows[0].full_name).toEqual("Francesco Vito Lorenzo"); //new full name
@@ -92,12 +97,15 @@ describe('/settings', () => {
         });
 
         it('should let a single user retrieve his private settings', async () => {
+            //get settings
             const res = await request(server).get('/settings/single/info')
                 .set('Content-Type', 'application/json')
                 .set('Accept', 'application/json')
                 .set('x-authToken', authToken_pu);
 
+
             expect(res.status).toBe(200);
+
             expect(res.body.settings.fc).toEqual(privateuser.fc);
             expect(res.body.settings.email).toEqual(privateuser.email);
             expect(res.body.settings.full_name).toEqual(privateuser.full_name);
@@ -105,6 +113,7 @@ describe('/settings', () => {
         });
 
         it('should forbid a non logged in user to update his private settings', async () => {
+            //change settings
             const res = await request(server).post('/settings/single/info').send({
                 "password" : "newpassword",
                 "full_name" : "Francesco Vito Lorenzo"
@@ -113,10 +122,12 @@ describe('/settings', () => {
                 .set('Accept', 'application/json')
                 .set('x-authToken', "00000"); //bad token
 
+
             expect(res.status).toBe(401);
         });
 
         it('should forbid a third party user to update the settings of a private user', async () => {
+            //change settings
             const res = await request(server).post('/settings/single/info').send({
                 "password" : "newpassword",
                 "full_name" : "Francesco Vito Lorenzo"
@@ -124,6 +135,7 @@ describe('/settings', () => {
                 .set('Content-Type', 'application/json')
                 .set('Accept', 'application/json')
                 .set('x-authToken', authToken_tp); //logging in with a third party account
+
 
             expect(res.status).toBe(401);
         });
@@ -133,6 +145,7 @@ describe('/settings', () => {
     describe('/tp/info', () => {
 
         it('should let a third party update his private settings', async () => {
+            //change settings
             const res = await request(server).post('/settings/tp/info').send({
                 "password" : "newpassword",
                 "company_name" : "Gruosso"
@@ -141,7 +154,9 @@ describe('/settings', () => {
                 .set('Accept', 'application/json')
                 .set('x-authToken', authToken_tp);
 
+
             expect(res.status).toBe(200);
+
             const settings = await db.query("SELECT * FROM thirdparty WHERE userid=$1",[1]);
             expect(settings.rows[0].piva).toEqual(thirdparty.piva); //piva is the same
             expect(settings.rows[0].company_name).toEqual("Gruosso"); //new company name is Gruosso
@@ -151,12 +166,15 @@ describe('/settings', () => {
         });
 
         it('should let a third party retrieve his private settings', async () => {
+            //get settings
             const res = await request(server).get('/settings/tp/info')
                 .set('Content-Type', 'application/json')
                 .set('Accept', 'application/json')
                 .set('x-authToken', authToken_tp);
 
+
             expect(res.status).toBe(200);
+
             expect(res.body.settings.piva).toEqual(thirdparty.piva);
             expect(res.body.settings.email).toEqual(thirdparty.email);
             expect(res.body.settings.company_description).toEqual(thirdparty.company_description);
@@ -164,6 +182,7 @@ describe('/settings', () => {
         });
 
         it('should forbid a non logged in user to update his private settings', async () => {
+            //change settings
             const res = await request(server).post('/settings/tp/info').send({
                 "password" : "newpassword",
                 "company_name" : "Gruosso"
@@ -172,10 +191,12 @@ describe('/settings', () => {
                 .set('Accept', 'application/json')
                 .set('x-authToken', "00000"); //bad token
 
+
             expect(res.status).toBe(401);
         });
 
         it('should forbid a private user to update the settings of a third party', async () => {
+            //change settings
             const res = await request(server).post('/settings/tp/info').send({
                 "password" : "newpassword",
                 "company_name" : "Gruosso"
@@ -183,6 +204,7 @@ describe('/settings', () => {
                 .set('Content-Type', 'application/json')
                 .set('Accept', 'application/json')
                 .set('x-authToken', authToken_pu); //logging in with a private user account
+
 
             expect(res.status).toBe(401);
         });
