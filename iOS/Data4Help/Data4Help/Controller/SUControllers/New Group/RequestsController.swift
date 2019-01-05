@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 
 
-class RequestsController: UITableViewController, MyCellDelegate {
+class RequestsController: UIViewController, UITableViewDelegate, UITableViewDataSource, MyCellDelegate, UISearchBarDelegate {
     
     // MARK: Properties
     
@@ -26,44 +26,49 @@ class RequestsController: UITableViewController, MyCellDelegate {
     }
     var requests: [SUSingleRequest] = []
     var data = [TableSection: [SUSingleRequest]]()  // Data variable to track sorted data.
+    var filtered = [TableSection: [SUSingleRequest]]() // Filtered data used by SearchBar
+    
     let SectionHeaderHeight: CGFloat = 30
-    var alreadyLoaded = false
+    var searchActive : Bool = false
     
     // MARK: Outlets
     
     @IBOutlet var requestsTableView: UITableView!
+    @IBOutlet weak var requestsResearchBar: UISearchBar!
     
     // MARK: Initializers
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.dataSource = self
-        self.clearsSelectionOnViewWillAppear = false
+        self.requestsTableView.delegate = self
+        self.requestsTableView.dataSource = self
+        self.requestsResearchBar.delegate = self
+    
+        // Load requests from backend
+        loadData()
         
-        if (alreadyLoaded==false) {
-            // Load requests from backend
-            alreadyLoaded=true
-            loadData()
-            
-        }
-        
-        tableView.refreshControl = self.refresher
+        requestsTableView.refreshControl = self.refresher
     }
     
     // Mark: - Table view data source
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return TableSection.total.rawValue
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if(searchActive) {
+            if let tableSection = TableSection(rawValue: section), let filteredReqData = filtered[tableSection] {
+                return filteredReqData.count
+            }
+        }
         if let tableSection = TableSection(rawValue: section), let reqData = data[tableSection] {
             return reqData.count
         }
         return 0
     }
     
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: SectionHeaderHeight))
         view.backgroundColor = UIColor(red: 235.0/255.0, green: 104.0/255.0, blue: 100.0/255.0, alpha: 1)
         let label = UILabel(frame: CGRect(x: 15, y: -5, width: tableView.bounds.width - 30, height: SectionHeaderHeight))
@@ -86,7 +91,7 @@ class RequestsController: UITableViewController, MyCellDelegate {
     }
 
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath) as? MyCell  else {
             fatalError("The dequeued cell is not an instance of MyCell.")
@@ -94,13 +99,22 @@ class RequestsController: UITableViewController, MyCellDelegate {
         
         cell.delegate = self
         
-        if let tableSection = TableSection(rawValue: indexPath.section), let request = data[tableSection]?[indexPath.row] {
-            cell.initRequest(reqID: request.reqid, senderID: request.company_name, types: request.types, subscribing: request.subscribing, duration: Float(request.duration))
-            if(tableSection != TableSection(rawValue: 1)) {
-                cell.acceptButton.isHidden = true
-                cell.refuseButton.isHidden = true
+        if(searchActive){
+            if let tableSection = TableSection(rawValue: indexPath.section), let request = filtered[tableSection]?[indexPath.row] {
+                cell.initRequest(reqID: request.reqid, senderID: request.company_name, types: request.types, subscribing: request.subscribing, duration: Float(request.duration))
+                if(tableSection != TableSection(rawValue: 1)) {
+                    cell.acceptButton.isHidden = true
+                    cell.refuseButton.isHidden = true
+                }
             }
-            
+        } else {
+            if let tableSection = TableSection(rawValue: indexPath.section), let request = data[tableSection]?[indexPath.row] {
+                cell.initRequest(reqID: request.reqid, senderID: request.company_name, types: request.types, subscribing: request.subscribing, duration: Float(request.duration))
+                if(tableSection != TableSection(rawValue: 1)) {
+                    cell.acceptButton.isHidden = true
+                    cell.refuseButton.isHidden = true
+                }
+            }
         }
         return cell
     }
@@ -141,6 +155,35 @@ class RequestsController: UITableViewController, MyCellDelegate {
         data[.accepted] = requests.filter({ $0.status == "accepted" })
         data[.pending] = requests.filter({ $0.status == "pending" })
         data[.refused] = requests.filter({ $0.status == "refused" })
+    }
+    
+    // MARK: SearchBar management
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchActive = true;
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        filtered[.accepted] = requests.filter({ (req) -> Bool in
+            return req.company_name.range(of: searchText, options: .caseInsensitive) != nil && req.status == "accepted"
+        })
+        filtered[.pending] = requests.filter({ (req) -> Bool in
+            return req.company_name.range(of: searchText, options: .caseInsensitive) != nil && req.status == "pending"
+        })
+        filtered[.refused] = requests.filter({ (req) -> Bool in
+            return req.company_name.range(of: searchText, options: .caseInsensitive) != nil && req.status == "refused"
+        })
+        if(filtered.count == 0){
+            searchActive = false;
+        } else {
+            searchActive = true;
+        }
+        self.requestsTableView.reloadData()
     }
     
     /*
