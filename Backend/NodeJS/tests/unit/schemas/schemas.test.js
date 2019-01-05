@@ -305,7 +305,7 @@ describe('Schemas', () => {
         });
 
         it('Should not validate a wrong duration value', () => {
-            delete request.duration; //this is correct because default value is 1 day
+            delete request.duration; //this is correct because it can be missing
             result = Joi.validate(request, schemas["/req/tp/sendSingle"]);
             expect(result.error).toBeNull();
 

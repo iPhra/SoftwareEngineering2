@@ -31,7 +31,7 @@ router.post('/tp/sendSingle', authenticator(), async (req, res) => {
     const reqID = await getReqID();
     const today = new Date().toISOString().slice(0, 10);
     let text = 'INSERT INTO singlerequest VALUES($1, $2, $3, $4, $5, $6, $7)';
-    let values = [reqID, userID, receiver_id.rows[0].userid, req.body.subscribing, "pending", req.body.duration, today];
+    let values = [reqID, userID, receiver_id.rows[0].userid, req.body.subscribing, "pending", req.body.subscribing? (req.body.duration? req.body.duration : 1) : null, today];
     await db.query(text, values);
 
     //for each type, insert the type into RequestContent table
@@ -61,7 +61,7 @@ router.post('/tp/sendGroup', authenticator(), async (req, res) => {
     const reqID = await getReqID();
     const today = new Date().toISOString().slice(0, 10);
     let text = 'INSERT INTO grouprequest VALUES($1, $2, $3, $4, $5, $6)';
-    let values = [reqID, userID, req.body.subscribing, "pending", req.body.duration, today];
+    let values = [reqID, userID, req.body.subscribing, "pending", req.body.subscribing? (req.body.duration? req.body.duration : 1) : null, today];
     await db.query(text, values);
 
     //for each type, insert the type into RequestContent table
@@ -233,6 +233,7 @@ router.get('/single/list', authenticator(), async (req, res) => {
         text = 'SELECT datatype FROM requestcontent WHERE req_id = $1';
         values = [requests.rows[i].req_id];
         datatypes = await db.query(text, values);
+        const req_date = addDays((requests.rows[i].req_date).toISOString().slice(0,10),1).toISOString().slice(0,10);
 
         obj = {
             "reqid" : requests.rows[i].req_id,
@@ -243,7 +244,8 @@ router.get('/single/list', authenticator(), async (req, res) => {
             "status" : requests.rows[i].status,
             "subscribing" : requests.rows[i].subscribing,
             "duration" : requests.rows[i].duration,
-            "req_date" : addDays((requests.rows[i].req_date).toISOString().slice(0,10),1).toISOString().slice(0,10)
+            "req_date" : req_date,
+            "expired" : addDays(req_date,requests.rows[i].duration) < new Date()
         };
 
         result.push(obj);
@@ -283,6 +285,7 @@ router.get('/tp/list', authenticator(), async (req, res) => {
         text = 'SELECT datatype FROM requestcontent WHERE req_id = $1';
         values = [singlerequests.rows[i].req_id];
         datatypes = await db.query(text, values);
+        const req_date = addDays((singlerequests.rows[i].req_date).toISOString().slice(0,10),1).toISOString().slice(0,10);
 
         obj = {
             "reqid" : singlerequests.rows[i].req_id,
@@ -293,7 +296,8 @@ router.get('/tp/list', authenticator(), async (req, res) => {
             "status" : singlerequests.rows[i].status,
             "subscribing" : singlerequests.rows[i].subscribing,
             "duration" : singlerequests.rows[i].duration,
-            "req_date" : addDays((singlerequests.rows[i].req_date).toISOString().slice(0,10),1).toISOString().slice(0,10)
+            "req_date" : req_date,
+            "expired" : addDays(req_date, singlerequests.rows[i].duration) < new Date()
         };
 
         single.push(obj);
@@ -319,6 +323,7 @@ router.get('/tp/list', authenticator(), async (req, res) => {
         text = 'SELECT datatype, upperbound, lowerbound FROM searchparameter WHERE req_id = $1';
         values = [grouprequests.rows[i].req_id];
         searchparameters = await db.query(text, values);
+        const req_date = addDays((grouprequests.rows[i].req_date).toISOString().slice(0,10),1).toISOString().slice(0,10);
 
         obj = {
             "reqid" : grouprequests.rows[i].req_id,
@@ -327,7 +332,8 @@ router.get('/tp/list', authenticator(), async (req, res) => {
             "status" : grouprequests.rows[i].status,
             "subscribing" : grouprequests.rows[i].subscribing,
             "duration" : grouprequests.rows[i].duration,
-            "req_date" : addDays((grouprequests.rows[i].req_date).toISOString().slice(0,10),1).toISOString().slice(0,10)
+            "req_date" : req_date,
+            "expired" : addDays(req_date,grouprequests.rows[i].duration) < new Date()
         };
 
         group.push(obj);
