@@ -16,12 +16,14 @@ class D4HStatistic {
     
     let type: dataType
     var observations: [D4HObservation]
+    var others: [D4HObservation]
     
     // MARK: Initialisators
     
-    init(type: dataType, observations: [D4HObservation]) {
+    init(type: dataType, observations: [D4HObservation], others: [D4HObservation]) {
         self.type = type
         self.observations = observations
+        self.others = others
     }
     
     init(fromJson json: JSON) {
@@ -31,6 +33,11 @@ class D4HStatistic {
         let observationsJSON = json["observations"].arrayValue
         for observationJSON in observationsJSON {
             self.observations.append(D4HObservation(fromJson: observationJSON))
+        }
+        self.others = []
+        let othersJSON = json["others"].arrayValue
+        for otherJSON in othersJSON {
+            self.others.append(D4HObservation(fromJson: otherJSON))
         }
     }
 }

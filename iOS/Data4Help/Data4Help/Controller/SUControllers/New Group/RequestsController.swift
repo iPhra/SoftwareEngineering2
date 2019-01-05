@@ -167,6 +167,14 @@ class RequestsController: UIViewController, UITableViewDelegate, UITableViewData
         searchActive = false;
     }
     
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         filtered[.accepted] = requests.filter({ (req) -> Bool in
@@ -178,7 +186,8 @@ class RequestsController: UIViewController, UITableViewDelegate, UITableViewData
         filtered[.refused] = requests.filter({ (req) -> Bool in
             return req.company_name.range(of: searchText, options: .caseInsensitive) != nil && req.status == "refused"
         })
-        if(filtered.count == 0){
+        if(filtered[.accepted]?.count == 0 && filtered[.pending]?.count == 0 && filtered[.refused]?.count == 0){
+            
             searchActive = false;
         } else {
             searchActive = true;

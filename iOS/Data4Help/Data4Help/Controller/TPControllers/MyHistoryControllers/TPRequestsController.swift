@@ -9,13 +9,16 @@
 import UIKit
 import Alamofire
 
-class TPRequestsController: UITableViewController, RequestCellDelegate {
+class TPRequestsController: UIViewController, UITableViewDelegate, UITableViewDataSource, RequestCellDelegate, UISearchBarDelegate {
 
     // MARK: Properties
     
     var singleRequests: [TPSingleRequest] = []
     var groupRequests: [TPGroupRequest] = []
-    var sections: [String] = []
+    var filteredSingleRequests: [TPSingleRequest] = []
+    var filteredGroupRequests: [TPGroupRequest] = []
+    
+    var searchActive : Bool = false
     
     lazy var refresher: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -27,52 +30,77 @@ class TPRequestsController: UITableViewController, RequestCellDelegate {
     // MARK: Outlets
     
     @IBOutlet var requestsTableView: UITableView!
+    @IBOutlet weak var requestsResearchBar: UISearchBar!
     
     // Mark: Initializers
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.dataSource = self
-        
-        self.clearsSelectionOnViewWillAppear = false
+        self.requestsTableView.dataSource = self
+        self.requestsTableView.delegate = self
+        self.requestsResearchBar.delegate = self
         
         loadData()
         
-        tableView.refreshControl = self.refresher
+        requestsTableView.refreshControl = self.refresher
     }
     
     // Mark: - Table view data source
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if(searchActive) {
+            return filteredSingleRequests.count + filteredGroupRequests.count
+        }
         return singleRequests.count + groupRequests.count
     }
     
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-
-        if (indexPath.row < singleRequests.count) {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "TPRequestCell", for: indexPath) as? TPRequestCell  else {
-                fatalError("The dequeued cell is not an instance of TPRequestCell.")
+        if(searchActive){
+            if (indexPath.row < filteredSingleRequests.count) {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "TPRequestCell", for: indexPath) as? TPRequestCell  else {
+                    fatalError("The dequeued cell is not an instance of TPRequestCell.")
+                }
+                let request = filteredSingleRequests[indexPath.row]
+                cell.initRequest(reqid: request.reqid, user: request.full_name, types: request.types, subscribing: request.subscribing, duration: Float(request.duration), date: request.date)
+                cell.delegate = self
+                return cell
             }
-            let request = singleRequests[indexPath.row]
-            cell.initRequest(reqid: request.reqid, user: request.full_name, types: request.types, subscribing: request.subscribing, duration: Float(request.duration), date: request.date)
-            cell.delegate = self
-            return cell
-        }
-        else {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "TPGroupRequestCell", for: indexPath) as? TPGroupRequestCell  else {
-                fatalError("The dequeued cell is not an instance of TPGroupRequestCell.")
+            else {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "TPGroupRequestCell", for: indexPath) as? TPGroupRequestCell  else {
+                    fatalError("The dequeued cell is not an instance of TPGroupRequestCell.")
+                }
+                // TODO implement this part
+                let request = filteredGroupRequests[indexPath.row - filteredSingleRequests.count]
+                cell.initRequest(reqid: request.reqid, groupname: ("Group " + String(request.reqid)), types: request.types, filters: request.parameters, subscribing: request.subscribing, duration: Float(request.duration), date: request.date)
+                cell.delegate = self
+                return cell
             }
-            // TODO implement this part
-            let request = groupRequests[indexPath.row - singleRequests.count]
-            cell.initRequest(reqid: request.reqid, groupname: ("Group " + String(indexPath.row - singleRequests.count)), types: request.types, filters: request.parameters, subscribing: request.subscribing, duration: Float(request.duration), date: request.date)
-            cell.delegate = self
-            return cell
+        } else {
+            if (indexPath.row < singleRequests.count) {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "TPRequestCell", for: indexPath) as? TPRequestCell  else {
+                    fatalError("The dequeued cell is not an instance of TPRequestCell.")
+                }
+                let request = singleRequests[indexPath.row]
+                cell.initRequest(reqid: request.reqid, user: request.full_name, types: request.types, subscribing: request.subscribing, duration: Float(request.duration), date: request.date)
+                cell.delegate = self
+                return cell
+            }
+            else {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "TPGroupRequestCell", for: indexPath) as? TPGroupRequestCell  else {
+                    fatalError("The dequeued cell is not an instance of TPGroupRequestCell.")
+                }
+                // TODO implement this part
+                let request = groupRequests[indexPath.row - singleRequests.count]
+                cell.initRequest(reqid: request.reqid, groupname: ("Group " + String(request.reqid)), types: request.types, filters: request.parameters, subscribing: request.subscribing, duration: Float(request.duration), date: request.date)
+                cell.delegate = self
+                return cell
+            }
         }
     }
     
@@ -155,6 +183,39 @@ class TPRequestsController: UITableViewController, RequestCellDelegate {
          }
          }
 
+    }
+    
+    // MARK: SearchBar management
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchActive = true;
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filteredSingleRequests = singleRequests.filter({ (req) -> Bool in
+            return req.full_name.range(of: searchText, options: .caseInsensitive) != nil
+        })
+        filteredGroupRequests = groupRequests.filter({ (req) -> Bool in
+            return ("Group "+String(req.reqid)).range(of: searchText, options: .caseInsensitive) != nil
+        })
+        if(filteredSingleRequests.count + filteredGroupRequests.count == 0){
+            searchActive = false;
+        } else {
+            searchActive = true;
+        }
+        self.requestsTableView.reloadData()
     }
     
     /*

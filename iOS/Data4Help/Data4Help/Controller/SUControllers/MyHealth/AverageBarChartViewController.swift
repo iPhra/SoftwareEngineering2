@@ -30,7 +30,7 @@ class AverageBarChartViewController: UIViewController {
         
         axisFormatDelegate = (self as IAxisValueFormatter)
                 
-        NetworkManager.sharedInstance.sendGetRequest(input: D4HStatisticsRequest(types: DataManager.sharedInstance.dataTypesToRead), endpoint: D4HEndpoint.statistics, headers: Properties.auth()) { (response, error) in
+        NetworkManager.sharedInstance.sendPostRequest(input: D4HStatisticsRequest(types: DataManager.sharedInstance.dataTypesToRead), endpoint: D4HEndpoint.statistics, headers: Properties.auth()) { (response, error) in
             if response != nil {
                 let myres: D4HStatisticsResponse = D4HStatisticsResponse(fromJson: response!)
                 let statistics: [D4HStatistic] = myres.statistics

@@ -437,10 +437,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Logo" width="679" height="459.1199951171875"/>
+        <image name="Logo" width="1414" height="956"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="hzu-ap-4Sf"/>
-        <segue reference="G0l-X5-w2g"/>
+        <segue reference="z5U-HW-eWC"/>
     </inferredMetricsTieBreakers>
 </document>
