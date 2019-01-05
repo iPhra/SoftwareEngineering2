@@ -81,7 +81,7 @@ const acceptReq = {
     choice : Joi.boolean().required(),
 };
 
-const downloadReq = {
+const req = {
     reqID : Joi.number().integer().required(),
 };
 
@@ -98,7 +98,8 @@ module.exports = {
     '/req/tp/sendSingle' : singleReq,
     '/req/tp/sendGroup' : groupReq,
     '/req/single/choice' : acceptReq,
-    '/req/tp/downloadSingle' : downloadReq,
-    '/req/tp/downloadGroup' : downloadReq
+    '/req/tp/downloadSingle' : req,
+    '/req/tp/downloadGroup' : req,
+    '/req/sub/end' : req
 };
 

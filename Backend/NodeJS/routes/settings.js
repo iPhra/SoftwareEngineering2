@@ -121,7 +121,7 @@ router.get('/single/info', authenticator(), async (req, res) => {
         email: settings.rows[0].email,
             fc: settings.rows[0].fc,
             full_name: settings.rows[0].full_name,
-            birthdate: addDays((settings.rows[0].birthdate).toISOString().slice(0,10),1)
+            birthdate: addDays((settings.rows[0].birthdate).toISOString().slice(0,10),1).toISOString().slice(0,10)
     }});
 });
 

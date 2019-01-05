@@ -243,7 +243,7 @@ router.get('/single/list', authenticator(), async (req, res) => {
             "status" : requests.rows[i].status,
             "subscribing" : requests.rows[i].subscribing,
             "duration" : requests.rows[i].duration,
-            "req_date" : addDays((requests.rows[i].req_date).toISOString().slice(0,10),1)
+            "req_date" : addDays((requests.rows[i].req_date).toISOString().slice(0,10),1).toISOString().slice(0,10)
         };
 
         result.push(obj);
@@ -293,7 +293,7 @@ router.get('/tp/list', authenticator(), async (req, res) => {
             "status" : singlerequests.rows[i].status,
             "subscribing" : singlerequests.rows[i].subscribing,
             "duration" : singlerequests.rows[i].duration,
-            "req_date" : addDays((singlerequests.rows[i].req_date).toISOString().slice(0,10),1)
+            "req_date" : addDays((singlerequests.rows[i].req_date).toISOString().slice(0,10),1).toISOString().slice(0,10)
         };
 
         single.push(obj);
@@ -327,7 +327,7 @@ router.get('/tp/list', authenticator(), async (req, res) => {
             "status" : grouprequests.rows[i].status,
             "subscribing" : grouprequests.rows[i].subscribing,
             "duration" : grouprequests.rows[i].duration,
-            "req_date" : addDays((grouprequests.rows[i].req_date).toISOString().slice(0,10),1)
+            "req_date" : addDays((grouprequests.rows[i].req_date).toISOString().slice(0,10),1).toISOString().slice(0,10)
         };
 
         group.push(obj);
@@ -337,6 +337,64 @@ router.get('/tp/list', authenticator(), async (req, res) => {
         single : single,
             group : group
         }});
+});
+
+
+//lets a user end the subscription
+router.post('/sub/endSingle', authenticator(), async (req, res) => {
+    const request = await retrieveSingleRequest(req);
+
+    //if the request doesn't exist or if the subscription is off
+    if (!(request.rowCount>0 && request.rows[0].subscribing===true && request.rows[0].status==="accepted"))
+        return res.status(403).send({error: "Request does not exist or the subscription is already off"});
+
+    //if the request is already expired
+    if(addDays(request.rows[0].req_date,request.rows[0].duration) < new Date())
+        return res.status(403).send({error: "Request has already expired"});
+
+    //if the user is not the receiver or sender of the request
+    if (!(request.rows[0].receiver_id===req.body.userid || request.rows[0].sender_id===req.body.userid))
+        return res.status(401).send({error: "You can't access this request"});
+
+
+    await(db.query('BEGIN'));
+
+    //update the request, set subscribing to false
+    let text = 'UPDATE singlerequest SET subscribing=$1 WHERE req_id = $2';
+    let values = [false, req.body.reqID];
+    await db.query(text, values);
+
+    await(db.query('COMMIT'));
+    res.status(200).send({message: "Subscription endend"});
+});
+
+
+//lets a user end the subscription
+router.post('/sub/endGroup', authenticator(), async (req, res) => {
+    const request = await retrieveGroupRequest(req);
+
+    //if the request doesn't exist or if the subscription is off
+    if (!(request.rowCount>0 && request.rows[0].subscribing===true && request.rows[0].status==="accepted"))
+        return res.status(403).send({error: "Request does not exist or the subscription is already off"});
+
+    //if the request is already expired
+    if(addDays(request.rows[0].req_date,request.rows[0].duration) < new Date())
+        return res.status(403).send({error: "Request has already expired"});
+
+    //if the user is not the receiver or sender of the request
+    if (!(request.rows[0].sender_id===req.body.userid))
+        return res.status(401).send({error: "You can't access this request"});
+
+
+    await(db.query('BEGIN'));
+
+    //update the request, set subscribing to false
+    let text = 'UPDATE grouprequest SET subscribing=$1 WHERE req_id = $2';
+    let values = [false, req.body.reqID];
+    await db.query(text, values);
+
+    await(db.query('COMMIT'));
+    res.status(200).send({message: "Subscription endend"});
 });
 
 
@@ -363,6 +421,22 @@ async function checkReqExistance(req) {
     const rows = await db.query(text, values);
 
     return rows.rowCount>0 && rows.rows[0].status==='pending';
+}
+
+
+//retrieves a single request
+async function retrieveSingleRequest(req) {
+    const text = "SELECT * FROM singlerequest WHERE req_id=$1";
+    const values = [req.body.reqID];
+    return await db.query(text, values);
+}
+
+
+//retrieves a group request
+async function retrieveGroupRequest(req) {
+    const text = "SELECT * FROM grouprequest WHERE req_id=$1";
+    const values = [req.body.reqID];
+    return await db.query(text, values);
 }
 
 
@@ -460,9 +534,6 @@ async function setChoice(choice, req_id) {
     let values = [choice, req_id];
     await db.query(text, values)
 }
-
-
-
 
 
 
