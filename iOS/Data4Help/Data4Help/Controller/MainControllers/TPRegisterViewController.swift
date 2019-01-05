@@ -51,7 +51,6 @@ class TPRegisterViewController: UIViewController {
         //send request throw Network Manager with registration details
         print(D4HEndpoint.registerThirdParty)
         NetworkManager.sharedInstance.sendPostRequest(input: D4HThirdPartyRegistrationRequest(email: emailTextView.text!, password: passwordTextView.text!, PIVA: PIVATextView.text!, companyName: organisationTextView.text!, companyDescription: "TODO"), endpoint: D4HEndpoint.registerThirdParty, headers: nil) { (response, error) in
-            print(response!)
             if response != nil {
                 let myres = D4HRegisterSingleResponse(fromJson: response!)
                 print(myres)
@@ -59,6 +58,9 @@ class TPRegisterViewController: UIViewController {
             }
             else if let error = error {
                 print(error)
+                let alert = UIAlertController(title: "Error", message: error, preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
             }
         }
     }

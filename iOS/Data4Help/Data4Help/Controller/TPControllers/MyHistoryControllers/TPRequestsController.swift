@@ -67,7 +67,7 @@ class TPRequestsController: UIViewController, UITableViewDelegate, UITableViewDa
                     fatalError("The dequeued cell is not an instance of TPRequestCell.")
                 }
                 let request = filteredSingleRequests[indexPath.row]
-                cell.initRequest(reqid: request.reqid, user: request.full_name, types: request.types, subscribing: request.subscribing, duration: Float(request.duration), date: request.date)
+                cell.initRequest(reqid: request.reqid, user: request.full_name, types: request.types, subscribing: request.subscribing, duration: Float(request.duration ?? 0), date: request.date, expired: request.expired)
                 cell.delegate = self
                 return cell
             }
@@ -77,7 +77,7 @@ class TPRequestsController: UIViewController, UITableViewDelegate, UITableViewDa
                 }
                 // TODO implement this part
                 let request = filteredGroupRequests[indexPath.row - filteredSingleRequests.count]
-                cell.initRequest(reqid: request.reqid, groupname: ("Group " + String(request.reqid)), types: request.types, filters: request.parameters, subscribing: request.subscribing, duration: Float(request.duration), date: request.date)
+                cell.initRequest(reqid: request.reqid, groupname: ("Group " + String(request.reqid)), types: request.types, filters: request.parameters, subscribing: request.subscribing, duration: Float(request.duration ?? 0), date: request.date, expired: request.expired)
                 cell.delegate = self
                 return cell
             }
@@ -87,7 +87,7 @@ class TPRequestsController: UIViewController, UITableViewDelegate, UITableViewDa
                     fatalError("The dequeued cell is not an instance of TPRequestCell.")
                 }
                 let request = singleRequests[indexPath.row]
-                cell.initRequest(reqid: request.reqid, user: request.full_name, types: request.types, subscribing: request.subscribing, duration: Float(request.duration), date: request.date)
+                cell.initRequest(reqid: request.reqid, user: request.full_name, types: request.types, subscribing: request.subscribing, duration: Float(request.duration ?? 0), date: request.date, expired: request.expired)
                 cell.delegate = self
                 return cell
             }
@@ -97,7 +97,7 @@ class TPRequestsController: UIViewController, UITableViewDelegate, UITableViewDa
                 }
                 // TODO implement this part
                 let request = groupRequests[indexPath.row - singleRequests.count]
-                cell.initRequest(reqid: request.reqid, groupname: ("Group " + String(request.reqid)), types: request.types, filters: request.parameters, subscribing: request.subscribing, duration: Float(request.duration), date: request.date)
+                cell.initRequest(reqid: request.reqid, groupname: ("Group " + String(request.reqid)), types: request.types, filters: request.parameters, subscribing: request.subscribing, duration: Float(request.duration ?? 0), date: request.date, expired: request.expired)
                 cell.delegate = self
                 return cell
             }

@@ -20,12 +20,13 @@ class TPSingleRequest {
     var types: [dataType]
     let status: String
     let subscribing: Bool
-    let duration: Int
+    let duration: Int?
     let date: String
+    let expired: Bool
     
     // MARK: - initialization
     
-    init( reqid: String, email: String, fc: String, full_name: String, types: [dataType], status: String, subscribing: Bool, duration: Int, date: String) {
+    init( reqid: String, email: String, fc: String, full_name: String, types: [dataType], status: String, subscribing: Bool, duration: Int?, date: String, expired: Bool) {
         self.reqid = reqid
         self.email = email
         self.fc = fc
@@ -35,6 +36,7 @@ class TPSingleRequest {
         self.subscribing = subscribing
         self.duration = duration
         self.date = date
+        self.expired = expired
     }
     
     init(fromJson json: JSON) {
@@ -52,6 +54,7 @@ class TPSingleRequest {
         self.subscribing = json["subscribing"].boolValue
         self.duration = json["subscribing"].intValue
         self.date = json["req_date"].stringValue
+        self.expired = json["expired"].boolValue
     }
     
 }

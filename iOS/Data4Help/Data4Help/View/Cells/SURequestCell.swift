@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class MyCell: UITableViewCell {
+class SURequestCell: UITableViewCell {
     
     // Mark: Labels
     
@@ -33,7 +33,7 @@ class MyCell: UITableViewCell {
     
     // Mark: initializers
     
-    func initRequest(reqID: String, senderID: String, types: [dataType], subscribing: Bool, duration: Float){
+    func initRequest(reqID: String, senderID: String, types: [dataType], subscribing: Bool, duration: Float, expired: Bool){
         self.reqID = reqID
         self.companyName = senderID
         self.dataTypes = types

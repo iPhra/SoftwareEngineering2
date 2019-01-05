@@ -126,10 +126,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexColor" red="0.92156862750000001" green="0.40784313729999999" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyCell" rowHeight="100" id="J6f-9Q-Gnd" customClass="MyCell" customModule="Data4Help" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SURequestCell" rowHeight="100" id="J6f-9Q-Gnd" customClass="SURequestCell" customModule="Data4Help" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="20" width="414" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="J6f-9Q-Gnd" id="k4t-BV-7Sb" userLabel="MyCell" customClass="MyCell" customModule="Data4Help" customModuleProvider="target">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="J6f-9Q-Gnd" id="k4t-BV-7Sb" userLabel="MyCell" customClass="SURequestCell" customModule="Data4Help" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="99.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
@@ -629,11 +629,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Accept" width="60" height="60"/>
-        <image name="Followers" width="15" height="15"/>
-        <image name="LogoSmall" width="1404" height="680"/>
-        <image name="MyHealth" width="14" height="15"/>
-        <image name="Refuse" width="60" height="60"/>
-        <image name="Settings" width="15" height="15"/>
+        <image name="Accept" width="96" height="96"/>
+        <image name="Followers" width="30" height="30"/>
+        <image name="LogoSmall" width="674.15997314453125" height="326.39999389648438"/>
+        <image name="MyHealth" width="29" height="30"/>
+        <image name="Refuse" width="96" height="96"/>
+        <image name="Settings" width="30" height="30"/>
     </resources>
 </document>

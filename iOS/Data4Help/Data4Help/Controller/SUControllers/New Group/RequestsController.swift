@@ -93,15 +93,15 @@ class RequestsController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath) as? MyCell  else {
-            fatalError("The dequeued cell is not an instance of MyCell.")
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SURequestCell", for: indexPath) as? SURequestCell  else {
+            fatalError("The dequeued cell is not an instance of SURequestCell.")
         }
         
         cell.delegate = self
         
         if(searchActive){
             if let tableSection = TableSection(rawValue: indexPath.section), let request = filtered[tableSection]?[indexPath.row] {
-                cell.initRequest(reqID: request.reqid, senderID: request.company_name, types: request.types, subscribing: request.subscribing, duration: Float(request.duration))
+                cell.initRequest(reqID: request.reqid, senderID: request.company_name, types: request.types, subscribing: request.subscribing, duration: Float(request.duration ?? 0), expired: request.expired)
                 if(tableSection != TableSection(rawValue: 1)) {
                     cell.acceptButton.isHidden = true
                     cell.refuseButton.isHidden = true
@@ -109,7 +109,7 @@ class RequestsController: UIViewController, UITableViewDelegate, UITableViewData
             }
         } else {
             if let tableSection = TableSection(rawValue: indexPath.section), let request = data[tableSection]?[indexPath.row] {
-                cell.initRequest(reqID: request.reqid, senderID: request.company_name, types: request.types, subscribing: request.subscribing, duration: Float(request.duration))
+                cell.initRequest(reqID: request.reqid, senderID: request.company_name, types: request.types, subscribing: request.subscribing, duration: Float(request.duration ?? 0), expired: request.expired)
                 if(tableSection != TableSection(rawValue: 1)) {
                     cell.acceptButton.isHidden = true
                     cell.refuseButton.isHidden = true
