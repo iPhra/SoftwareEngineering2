@@ -295,6 +295,17 @@
                                     <action selector="CreateAccount:" destination="Unf-gw-5zd" eventType="touchUpInside" id="Isw-Z0-Fm3"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yrj-Iy-wxM">
+                                <rect key="frame" x="105" y="760" width="167" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <state key="normal" title="Already have an account? Login">
+                                    <color key="titleColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" id="8mF-bd-hyT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -396,6 +407,17 @@
                                     <action selector="CreateAccount:" destination="cXK-wV-fpB" eventType="touchUpInside" id="MIj-3W-D6z"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tyb-p1-uuI">
+                                <rect key="frame" x="105" y="760" width="167" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <state key="normal" title="Already have an account? Login">
+                                    <color key="titleColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" id="2UM-hL-UcA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -437,10 +459,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Logo" width="1414" height="956"/>
+        <image name="Logo" width="679" height="459.1199951171875"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="6ES-Gd-9FS"/>
         <segue reference="hzu-ap-4Sf"/>
-        <segue reference="z5U-HW-eWC"/>
+        <segue reference="G0l-X5-w2g"/>
     </inferredMetricsTieBreakers>
 </document>

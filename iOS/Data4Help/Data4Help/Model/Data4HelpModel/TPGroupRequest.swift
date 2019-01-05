@@ -18,12 +18,13 @@ class TPGroupRequest {
     var parameters: [D4HHealthParameter]
     let status: String
     let subscribing: Bool
-    let duration: Int
+    let duration: Int?
     let date: String
+    let expired: Bool
     
     // MARK: - initialization
     
-    init( reqid: String, types: [dataType], parameters: [D4HHealthParameter], status: String, subscribing: Bool, duration: Int, date: String) {
+    init( reqid: String, types: [dataType], parameters: [D4HHealthParameter], status: String, subscribing: Bool, duration: Int?, date: String, expired: Bool) {
         self.reqid = reqid
         self.types = types
         self.parameters = parameters
@@ -31,6 +32,7 @@ class TPGroupRequest {
         self.subscribing = subscribing
         self.duration = duration
         self.date = date
+        self.expired = expired
     }
     
     init(fromJson json: JSON) {
@@ -50,6 +52,7 @@ class TPGroupRequest {
         self.subscribing = json["subscribing"].boolValue
         self.duration = json["duration"].intValue
         self.date = json["req_date"].stringValue
+        self.expired = json["expired"].boolValue
     }
     
 }

@@ -20,12 +20,13 @@ class SUSingleRequest {
     var types: [dataType]
     let status: String
     let subscribing: Bool
-    let duration: Int
+    let duration: Int?
     let date: String
+    let expired: Bool
     
     // MARK: - initialization
     
-    init( reqid: String, email: String, piva: String, company_name: String, types: [dataType], status: String, subscribing: Bool, duration: Int, date: String) {
+    init( reqid: String, email: String, piva: String, company_name: String, types: [dataType], status: String, subscribing: Bool, duration: Int?, date: String, expired: Bool) {
         self.reqid = reqid
         self.email = email
         self.piva = piva
@@ -35,6 +36,7 @@ class SUSingleRequest {
         self.subscribing = subscribing
         self.duration = duration
         self.date = date
+        self.expired = expired
     }
     
     init(fromJson json: JSON) {
@@ -53,6 +55,7 @@ class SUSingleRequest {
         self.subscribing = json["subscribing"].boolValue
         self.duration = json["duration"].intValue
         self.date = json["req_date"].stringValue
+        self.expired = json["expired"].boolValue
     }
     
 }

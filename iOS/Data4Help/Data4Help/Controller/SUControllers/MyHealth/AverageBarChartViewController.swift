@@ -35,11 +35,14 @@ class AverageBarChartViewController: UIViewController {
                 let myres: D4HStatisticsResponse = D4HStatisticsResponse(fromJson: response!)
                 let statistics: [D4HStatistic] = myres.statistics
                 for s in statistics {
-                    if let myValue = StorageManager.sharedInstance.getLastDataValue(ofType: "\(s.type.rawValue)"){
+                    if(s.observations.count>0){
+                        //if let myValue = StorageManager.sharedInstance.getLastDataValue(ofType: "\(s.type.rawValue)"){
                         self.xvals.append(s.type.rawValue)
-                        self.othersAverageBPM.append((s.observations.first?.avg)!) // replace with correct value in array of observations
-                        self.myAverageBPM.append(myValue)
-                    }
+                        self.othersAverageBPM.append((s.others.first?.avg)!)
+                        //self.myAverageBPM.append(myValue)
+                        self.myAverageBPM.append((s.observations.first?.avg)!)
+                        // }
+                    }                    
                 }
             }
             else if let error = error {

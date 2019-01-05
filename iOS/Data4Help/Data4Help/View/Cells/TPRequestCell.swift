@@ -11,6 +11,7 @@ import UIKit
 class TPRequestCell: UITableViewCell {
     
     //Mark: properties
+    
     var subscribing: Bool = false
     var reqid: String = ""
     
@@ -23,6 +24,7 @@ class TPRequestCell: UITableViewCell {
     @IBOutlet weak var subscriptionLabel: UILabel!
     
     @IBOutlet weak var downloadButton: UIButton!
+    
     // Mark: functions
     
     override func awakeFromNib() {
@@ -38,11 +40,12 @@ class TPRequestCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func initRequest(reqid: String, user: String, types: [dataType], subscribing: Bool, duration: Float, date: String){
+    func initRequest(reqid: String, user: String, types: [dataType], subscribing: Bool, duration: Float?, date: String, expired: Bool){
         self.reqid = reqid
         self.singleUserLabel.text = user
         self.subscribing = subscribing
-        self.subscribingSwitch.isOn = subscribing
+        self.subscribingSwitch.isOn = subscribing && (duration != nil)
+        self.subscribingSwitch.isEnabled = !expired && subscribing && (duration != nil)
         
         var t: String = ""
         for type in types{
@@ -54,15 +57,33 @@ class TPRequestCell: UITableViewCell {
     
 
     @IBAction func toggleSubscription(_ sender: Any) {
-        if(subscribing) {
-            //Send end subscription request
-            subscribing = false;
-            print("Subsription ended")
-        }
-        else {
-            //Send begin subscription request
-            subscribing = true
-            //Done only if request accepted
+        if(subscribingSwitch.isEnabled && subscribing) {
+            
+            NetworkManager.sharedInstance.sendPostRequest(input: D4HEndSubscriptionRequest(reqID: self.reqid), endpoint: D4HEndpoint.endSingleSubscription, headers: Properties.auth()) { (response, error) in
+                if response != nil {
+                    let myres: D4HStatisticsResponse = D4HStatisticsResponse(fromJson: response!)
+                    print(myres)
+                    self.subscribing = false;
+                    self.subscribingSwitch.isEnabled = false
+                }
+                else if let error = error {
+                    print(error)
+                    var parentViewController: UIViewController? {
+                        var parentResponder: UIResponder? = self
+                        while parentResponder != nil {
+                            parentResponder = parentResponder!.next
+                            if parentResponder is UIViewController {
+                                return parentResponder as! UIViewController!
+                            }
+                        }
+                        return nil
+                    }
+                    let alert = UIAlertController(title: "Error", message: error, preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                    parentViewController!.present(alert, animated: true, completion: nil)
+                    self.subscribingSwitch.isOn = true
+                }
+            }
         }
     }
     

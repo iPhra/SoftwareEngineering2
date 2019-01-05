@@ -42,12 +42,13 @@ class TPGroupRequestCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    // Is it reallly D4H bound?
-    func initRequest(reqid: String, groupname: String, types: [dataType], filters: [D4HHealthParameter], subscribing: Bool, duration: Float, date: String){
+    // Is it really D4H bound?
+    func initRequest(reqid: String, groupname: String, types: [dataType], filters: [D4HHealthParameter], subscribing: Bool, duration: Float?, date: String, expired: Bool){
         self.reqid = reqid
         self.groupNameLabel.text = groupname
         self.subscribing = subscribing
-        self.subscriptionToggle.isOn = subscribing
+        self.subscriptionToggle.isOn = subscribing && (duration != nil)
+        self.subscriptionToggle.isEnabled = !expired && subscribing && (duration != nil)
         
         var t: String = ""
         for type in types{
@@ -62,15 +63,19 @@ class TPGroupRequestCell: UITableViewCell {
     
     
     @IBAction func toggleSubscription(_ sender: Any) {
-        if(subscribing) {
-            //Send end subscription request
+        if(subscriptionToggle.isEnabled && subscribing) {
             subscribing = false;
-            print("Subsription ended")
-        }
-        else {
-            //Send begin subscription request
-            subscribing = true
-            //Done only if request accepted
+            subscriptionToggle.isEnabled = false
+            
+            NetworkManager.sharedInstance.sendPostRequest(input: D4HEndSubscriptionRequest(reqID: self.reqid), endpoint: D4HEndpoint.endGroupSubscription, headers: Properties.auth()) { (response, error) in
+                if response != nil {
+                    let myres: D4HStatisticsResponse = D4HStatisticsResponse(fromJson: response!)
+                    print(myres)
+                }
+                else if let error = error {
+                    print(error)
+                }
+            }
         }
     }
     

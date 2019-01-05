@@ -32,10 +32,11 @@ enum D4HEndpoint: String {
     case requestChoice = "/req/single/choice"
     case downloadGroupRequest = "/req/tp/downloadGroup"
     case downloadSingleRequest = "/req/tp/downloadSingle"
+    case endSingleSubscription = "/req/sub/endSingle"
+    case endGroupSubscription = "/req/sub/endGroup"
     
     // Data
     
     case uploadData = "/data/upload"
     case statistics = "/data/stats"
-
 }

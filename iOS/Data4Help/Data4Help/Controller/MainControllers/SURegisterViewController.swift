@@ -76,10 +76,12 @@ class SURegisterViewController: UIViewController {
             }
             else if let error = error {
                 print(error)
+                let alert = UIAlertController(title: "Error", message: error, preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
             }
         }
     }
-    
     /*
     // MARK: - Navigation
 
