@@ -201,7 +201,6 @@ describe('/req', () => {
             const res = await request(server).post('/req/tp/sendGroup').send({
                 "subscribing" : false,
                 "types" : ["heartrate","stepcount"],
-                "duration" : 25,
                 "bounds" : [{
                     "lowerbound":22,
                     "upperbound":100
@@ -220,7 +219,7 @@ describe('/req', () => {
             expect(req.rows[0].sender_id).toBe("1");
             expect(req.rows[0].subscribing).toBeFalsy();
             expect(req.rows[0].status).toMatch("pending");
-            expect(req.rows[0].duration).toBe(25);
+            expect(req.rows[0].duration).toBe(null);
             expect(req.rows[0].req_date.toISOString().slice(0,7)).toMatch((new Date()).toISOString().slice(0,7));
 
             const content = await db.query("SELECT * FROM requestcontent");
