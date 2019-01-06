@@ -13,6 +13,8 @@ class TPRequestCell: UITableViewCell {
     //Mark: properties
     
     var subscribing: Bool = false
+    var duration: Float?
+    var expired: Bool = false
     var reqid: String = ""
     
     weak var delegate: RequestCellDelegate?
@@ -46,6 +48,8 @@ class TPRequestCell: UITableViewCell {
         self.subscribing = subscribing
         self.subscribingSwitch.isOn = subscribing && (duration != nil)
         self.subscribingSwitch.isEnabled = !expired && subscribing && (duration != nil)
+        self.duration = duration
+        self.expired = expired
         
         var t: String = ""
         for type in types{

@@ -43,6 +43,12 @@ class TPRequestsController: UIViewController, UITableViewDelegate, UITableViewDa
         loadData()
         
         requestsTableView.refreshControl = self.refresher
+        
+        // Just register the whole table view for force touch
+        // no need to register the individual cells!
+        if traitCollection.forceTouchCapability == .available {
+            registerForPreviewing(with: self as! UIViewControllerPreviewingDelegate, sourceView: requestsTableView)
+        }
     }
     
     // Mark: - Table view data source
@@ -273,4 +279,41 @@ class TPRequestsController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     */
 
+}
+
+// MARK: Force Touch on Table View
+
+extension TPRequestsController: UIViewControllerPreviewingDelegate {
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        if let indexPath = requestsTableView.indexPathForRow(at: location) {
+            
+            if let cell = requestsTableView.cellForRow(at: indexPath) as? TPRequestCell {
+                let sb = UIStoryboard(name: "ThirdParty", bundle: nil)
+                let popup = sb.instantiateViewController(withIdentifier: "PopupRequestViewController") as! PopupRequestViewController
+                popup.initPopup(title: cell.singleUserLabel.text, datatypes: cell.dataTypesLabel.text, subscribing: cell.subscribing, date: cell.dateLabel.text, duration: cell.duration, expired: cell.expired)
+                return popup
+            }
+            
+            let groupCell = requestsTableView.cellForRow(at: indexPath) as! TPGroupRequestCell
+            let sb = UIStoryboard(name: "ThirdParty", bundle: nil)
+            let popup = sb.instantiateViewController(withIdentifier: "PopupRequestViewController") as! PopupRequestViewController
+            popup.initPopup(title: groupCell.groupNameLabel.text, datatypes: groupCell.datatypesLabel.text, subscribing: groupCell.subscribing, date: groupCell.dateLabel.text, duration: groupCell.duration, expired: groupCell.expired)
+            popup.initFilters(healthparameters: groupCell.filters ?? [])
+            return popup
+            
+        }
+        return nil
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        navigationController?.pushViewController(viewControllerToCommit, animated: true)
+    }
+    
+    
+    func touchedView(view: UIView, location: CGPoint) -> Bool {
+        let locationInView = view.convert(location, from: requestsTableView)
+        return view.bounds.contains(locationInView)
+    }
+    
 }

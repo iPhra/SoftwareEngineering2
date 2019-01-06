@@ -22,6 +22,8 @@ class TPGroupRequestCell: UITableViewCell {
     
     //Mark: properties
     var subscribing: Bool = false
+    var duration: Float?
+    var expired: Bool = false
     var reqid: String = ""
     var filters: [D4HHealthParameter]? = nil
     
@@ -49,6 +51,8 @@ class TPGroupRequestCell: UITableViewCell {
         self.subscribing = subscribing
         self.subscriptionToggle.isOn = subscribing && (duration != nil)
         self.subscriptionToggle.isEnabled = !expired && subscribing && (duration != nil)
+        self.duration = duration
+        self.expired = expired
         
         var t: String = ""
         for type in types{
