@@ -3,7 +3,7 @@ const db = require('../../../utils/dbconnection');
 let server;
 
 
-//not testing login and if the user is a third party when sending a request, that check has already been tested
+//not testing login and if the user is a third party when sending a request, that check has already been tested in auth.test.js
 describe('/req', () => {
 
     let authToken_pu1;
@@ -345,7 +345,159 @@ describe('/req', () => {
 
             expect(res.status).toBe(403);
         });
+    });
 
+
+    describe('/single/list', () => {
+
+        it('should let a private user retrieve the list of its requests', async () => {
+            //send first request
+            await request(server).post('/req/tp/sendSingle').send({
+                "subscribing" : true,
+                "fc" : "1234363912333133",
+                "types" : ["heartrate"],
+                "duration" : 10
+            })
+                .set('Content-Type', 'application/json')
+                .set('Accept', 'application/json')
+                .set('x-authToken', authToken_tp);
+
+            //accept the request
+            await request(server).post('/req/single/choice').send({
+                "reqID": "1",
+                "choice": true
+            })
+                .set('Content-Type', 'application/json')
+                .set('Accept', 'application/json')
+                .set('x-authToken', authToken_pu1);
+
+            //send second request
+            await request(server).post('/req/tp/sendSingle').send({
+                "subscribing" : false,
+                "email" : "extreme_enigma@hotmail.it",
+                "types" : ["stepcount","activeenergyburned"],
+            })
+                .set('Content-Type', 'application/json')
+                .set('Accept', 'application/json')
+                .set('x-authToken', authToken_tp);
+
+            //retrieve list
+            const res = await request(server).get('/req/single/list')
+                .set('Content-Type', 'application/json')
+                .set('Accept', 'application/json')
+                .set('x-authToken', authToken_pu1);
+
+
+            expect(res.status).toBe(200);
+
+            expect(res.body.requests[0].reqid).toBe(1);
+            expect(res.body.requests[0].email).toMatch("thirdparty@gmail.com");
+            expect(res.body.requests[0].piva).toMatch("00000000000");
+            expect(res.body.requests[0].company_name).toMatch("Third Party");
+            expect(res.body.requests[0].types[0].datatype).toMatch("heartrate");
+            expect(res.body.requests[0].status).toMatch("accepted");
+            expect(res.body.requests[0].subscribing).toBeTruthy();
+            expect(res.body.requests[0].duration).toBe(10);
+            expect((new Date(res.body.requests[0].req_date)).toDateString()).toMatch((new Date()).toDateString());
+            expect(res.body.requests[0].expired).toBeFalsy();
+
+            expect(res.body.requests[1].reqid).toBe(2);
+            expect(res.body.requests[1].email).toMatch("thirdparty@gmail.com");
+            expect(res.body.requests[1].piva).toMatch("00000000000");
+            expect(res.body.requests[1].company_name).toMatch("Third Party");
+            expect(res.body.requests[1].types[0].datatype).toMatch("stepcount");
+            expect(res.body.requests[1].types[1].datatype).toMatch("activeenergyburned");
+            expect(res.body.requests[1].status).toMatch("pending");
+            expect(res.body.requests[1].subscribing).toBeFalsy();
+            expect(res.body.requests[1].duration).toBe(null);
+            expect((new Date(res.body.requests[1].req_date)).toDateString()).toMatch((new Date()).toDateString());
+            expect(res.body.requests[1].expired).toBeTruthy();
+
+        });
+    });
+
+
+    describe('/group/list', () => {
+
+        it('should let a third party retrieve the list of its requests', async () => {
+            //send first request
+            await request(server).post('/req/tp/sendSingle').send({
+                "subscribing" : true,
+                "fc" : "1234363912333133",
+                "types" : ["heartrate"],
+                "duration" : 10
+            })
+                .set('Content-Type', 'application/json')
+                .set('Accept', 'application/json')
+                .set('x-authToken', authToken_tp);
+
+            //send second request
+            await request(server).post('/req/tp/sendSingle').send({
+                "subscribing" : false,
+                "email" : "test@hotmail.it",
+                "types" : ["stepcount","activeenergyburned"],
+            })
+                .set('Content-Type', 'application/json')
+                .set('Accept', 'application/json')
+                .set('x-authToken', authToken_tp);
+
+            //send group request
+            await request(server).post('/req/tp/sendGroup').send({
+                "subscribing" : true,
+                "types" : ["heartrate","stepcount"],
+                "bounds" : [{
+                    "lowerbound":22,
+                    "upperbound":100
+                }],
+                "parameters" : ["heartrate"]
+            })
+                .set('Content-Type', 'application/json')
+                .set('Accept', 'application/json')
+                .set('x-authToken', authToken_tp);
+
+            //retrieve list
+            const res = await request(server).get('/req/tp/list')
+                .set('Content-Type', 'application/json')
+                .set('Accept', 'application/json')
+                .set('x-authToken', authToken_tp);
+
+
+            expect(res.status).toBe(200);
+
+            expect(res.body.requests.single[0].reqid).toBe(1);
+            expect(res.body.requests.single[0].email).toMatch("extreme_enigma@hotmail.it");
+            expect(res.body.requests.single[0].fc).toMatch("1234363912333133");
+            expect(res.body.requests.single[0].full_name).toMatch("Francesco Lorenzo");
+            expect(res.body.requests.single[0].types[0].datatype).toMatch("heartrate");
+            expect(res.body.requests.single[0].status).toMatch("pending");
+            expect(res.body.requests.single[0].subscribing).toBeTruthy();
+            expect(res.body.requests.single[0].duration).toBe(10);
+            expect((new Date(res.body.requests.single[0].req_date)).toDateString()).toMatch((new Date()).toDateString());
+            expect(res.body.requests.single[0].expired).toBeFalsy();
+
+            expect(res.body.requests.single[1].reqid).toBe(2);
+            expect(res.body.requests.single[1].email).toMatch("test@hotmail.it");
+            expect(res.body.requests.single[1].fc).toMatch("1234363912333100");
+            expect(res.body.requests.single[1].full_name).toMatch("test");
+            expect(res.body.requests.single[1].types[0].datatype).toMatch("stepcount");
+            expect(res.body.requests.single[1].types[1].datatype).toMatch("activeenergyburned");
+            expect(res.body.requests.single[1].status).toMatch("pending");
+            expect(res.body.requests.single[1].subscribing).toBeFalsy();
+            expect(res.body.requests.single[1].duration).toBe(null);
+            expect((new Date(res.body.requests.single[1].req_date)).toDateString()).toMatch((new Date()).toDateString());
+            expect(res.body.requests.single[1].expired).toBeTruthy();
+
+            expect(res.body.requests.group[0].reqid).toBe(3);
+            expect(res.body.requests.group[0].types[0].datatype).toMatch("heartrate");
+            expect(res.body.requests.group[0].types[1].datatype).toMatch("stepcount");
+            expect(res.body.requests.group[0].parameters[0].lowerbound).toBe(22);
+            expect(res.body.requests.group[0].parameters[0].upperbound).toBe(100);
+            expect(res.body.requests.group[0].status).toMatch("pending");
+            expect(res.body.requests.group[0].subscribing).toBeTruthy();
+            expect(res.body.requests.group[0].duration).toBe(1);
+            expect((new Date(res.body.requests.group[0].req_date)).toDateString()).toMatch((new Date()).toDateString());
+            expect(res.body.requests.group[0].expired).toBeFalsy();
+        });
     });
 
 });
