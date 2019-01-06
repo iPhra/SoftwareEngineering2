@@ -500,4 +500,447 @@ describe('/req', () => {
         });
     });
 
+
+    describe('/sub/endSingle', () => {
+
+        it('should let a private user end a subscription', async () => {
+            //send a request
+            await request(server).post('/req/tp/sendSingle').send({
+                "subscribing" : true,
+                "fc" : "1234363912333133",
+                "types" : ["heartrate"],
+                "duration" : 10
+            })
+                .set('Content-Type', 'application/json')
+                .set('Accept', 'application/json')
+                .set('x-authToken', authToken_tp);
+
+            //accept the request
+            await request(server).post('/req/single/choice').send({
+                "reqID": "1",
+                "choice": true
+            })
+                .set('Content-Type', 'application/json')
+                .set('Accept', 'application/json')
+                .set('x-authToken', authToken_pu1);
+
+            //retrieve list
+            const res = await request(server).post('/req/sub/endSingle').send({
+                "reqID": "1",
+            })
+                .set('Content-Type', 'application/json')
+                .set('Accept', 'application/json')
+                .set('x-authToken', authToken_pu1);
+
+
+            expect(res.status).toBe(200);
+
+            const sub = await db.query("SELECT * FROM singlerequest");
+            expect(sub.rows[0].subscribing).toBeFalsy()
+        });
+
+        it('should let a third party end a subscription', async () => {
+            //send a request
+            await request(server).post('/req/tp/sendSingle').send({
+                "subscribing" : true,
+                "fc" : "1234363912333133",
+                "types" : ["heartrate"],
+                "duration" : 10
+            })
+                .set('Content-Type', 'application/json')
+                .set('Accept', 'application/json')
+                .set('x-authToken', authToken_tp);
+
+            //accept the request
+            await request(server).post('/req/single/choice').send({
+                "reqID": "1",
+                "choice": true
+            })
+                .set('Content-Type', 'application/json')
+                .set('Accept', 'application/json')
+                .set('x-authToken', authToken_pu1);
+
+            //end the sub
+            const res = await request(server).post('/req/sub/endSingle').send({
+                "reqID": "1",
+            })
+                .set('Content-Type', 'application/json')
+                .set('Accept', 'application/json')
+                .set('x-authToken', authToken_tp);
+
+
+            expect(res.status).toBe(200);
+
+            const sub = await db.query("SELECT * FROM singlerequest");
+            expect(sub.rows[0].subscribing).toBeFalsy()
+        });
+
+
+        it('should not let a user end a subscription that was already false', async () => {
+            //send a request
+            await request(server).post('/req/tp/sendSingle').send({
+                "subscribing" : false,
+                "fc" : "1234363912333133",
+                "types" : ["heartrate"],
+            })
+                .set('Content-Type', 'application/json')
+                .set('Accept', 'application/json')
+                .set('x-authToken', authToken_tp);
+
+            //accept the request
+            await request(server).post('/req/single/choice').send({
+                "reqID": "1",
+                "choice": true
+            })
+                .set('Content-Type', 'application/json')
+                .set('Accept', 'application/json')
+                .set('x-authToken', authToken_pu1);
+
+            //try to end it
+            const res = await request(server).post('/req/sub/endSingle').send({
+                "reqID": "1",
+            })
+                .set('Content-Type', 'application/json')
+                .set('Accept', 'application/json')
+                .set('x-authToken', authToken_tp);
+
+
+            expect(res.status).toBe(403);
+        });
+
+
+        it('should not let a user end a subscription that wasn\'t accepted', async () => {
+            //send a request
+            await request(server).post('/req/tp/sendSingle').send({
+                "subscribing" : false,
+                "fc" : "1234363912333133",
+                "types" : ["heartrate"],
+            })
+                .set('Content-Type', 'application/json')
+                .set('Accept', 'application/json')
+                .set('x-authToken', authToken_tp);
+
+            //accept the request
+            await request(server).post('/req/single/choice').send({
+                "reqID": "1",
+                "choice": true
+            })
+                .set('Content-Type', 'application/json')
+                .set('Accept', 'application/json')
+                .set('x-authToken', authToken_pu1);
+
+            //try to end it
+            const res = await request(server).post('/req/sub/endSingle').send({
+                "reqID": "1",
+            })
+                .set('Content-Type', 'application/json')
+                .set('Accept', 'application/json')
+                .set('x-authToken', authToken_tp);
+
+
+            expect(res.status).toBe(403);
+        });
+
+
+        it('should not let a user end a subscription that doesn\'t belong to him', async () => {
+            //send a request
+            await request(server).post('/req/tp/sendSingle').send({
+                "subscribing" : false,
+                "fc" : "1234363912333133",
+                "types" : ["heartrate"],
+            })
+                .set('Content-Type', 'application/json')
+                .set('Accept', 'application/json')
+                .set('x-authToken', authToken_tp);
+
+            //try to end it
+            const res = await request(server).post('/req/sub/endSingle').send({
+                "reqID": "1",
+            })
+                .set('Content-Type', 'application/json')
+                .set('Accept', 'application/json')
+                .set('x-authToken', authToken_pu2); //he can't stop the sub
+
+
+            expect(res.status).toBe(403);
+        });
+    });
+
+
+    describe('/sub/endGroup', () => {
+
+        it('should let a third party end a subscription', async () => {
+            //send a request
+            await request(server).post('/req/tp/sendGroup').send({
+                "subscribing" : true,
+                "types" : ["heartrate","stepcount"],
+                "bounds" : [{
+                    "lowerbound":22,
+                    "upperbound":100
+                }],
+                "parameters" : ["heartrate"]
+            })
+                .set('Content-Type', 'application/json')
+                .set('Accept', 'application/json')
+                .set('x-authToken', authToken_tp);
+
+            //download the result to accept it
+            await request(server).post('/req/tp/downloadGroup').send({
+                "reqID": "1"
+            })
+                .set('Content-Type', 'application/json')
+                .set('Accept', 'application/json')
+                .set('x-authToken', authToken_tp);
+
+            //end the sub
+            const res = await request(server).post('/req/sub/endGroup').send({
+                "reqID": "1",
+            })
+                .set('Content-Type', 'application/json')
+                .set('Accept', 'application/json')
+                .set('x-authToken', authToken_tp);
+
+
+            expect(res.status).toBe(200);
+
+            const sub = await db.query("SELECT * FROM grouprequest");
+            expect(sub.rows[0].subscribing).toBeFalsy()
+        });
+
+
+        it('should not let a user end a subscription that was already false', async () => {
+            //send a request
+            await request(server).post('/req/tp/sendGroup').send({
+                "subscribing" : false,
+                "types" : ["heartrate","stepcount"],
+                "bounds" : [{
+                    "lowerbound":22,
+                    "upperbound":100
+                }],
+                "parameters" : ["heartrate"]
+            })
+                .set('Content-Type', 'application/json')
+                .set('Accept', 'application/json')
+                .set('x-authToken', authToken_tp);
+
+            //download the result to accept it
+            await request(server).post('/req/tp/downloadGroup').send({
+                "reqID": "1"
+            })
+                .set('Content-Type', 'application/json')
+                .set('Accept', 'application/json')
+                .set('x-authToken', authToken_tp);
+
+            //try to end it
+            const res = await request(server).post('/req/sub/endSingle').send({
+                "reqID": "1",
+            })
+                .set('Content-Type', 'application/json')
+                .set('Accept', 'application/json')
+                .set('x-authToken', authToken_tp);
+
+
+            expect(res.status).toBe(403);
+        });
+
+
+        it('should not let a user end a subscription that wasn\'t accepted', async () => {
+            //send a request
+            await request(server).post('/req/tp/sendGroup').send({
+                "subscribing" : false,
+                "types" : ["heartrate","stepcount"],
+                "bounds" : [{
+                    "lowerbound":22,
+                    "upperbound":100
+                }],
+                "parameters" : ["heartrate"]
+            })
+                .set('Content-Type', 'application/json')
+                .set('Accept', 'application/json')
+                .set('x-authToken', authToken_tp);
+
+            //try to end it
+            const res = await request(server).post('/req/sub/endSingle').send({
+                "reqID": "1",
+            })
+                .set('Content-Type', 'application/json')
+                .set('Accept', 'application/json')
+                .set('x-authToken', authToken_tp);
+
+
+            expect(res.status).toBe(403);
+        });
+    });
+
+
+    describe('/tp/downloadSingle', () => {
+
+        it('should let a third party download the results of an accepted request', async () => {
+            //send request
+            await request(server).post('/req/tp/sendSingle').send({
+                "subscribing" : true,
+                "fc" : "1234363912333133",
+                "types" : ["heartrate"],
+                "duration" : 10
+            })
+                .set('Content-Type', 'application/json')
+                .set('Accept', 'application/json')
+                .set('x-authToken', authToken_tp);
+
+            //accept the request
+            await request(server).post('/req/single/choice').send({
+                "reqID": "1",
+                "choice": true
+            })
+                .set('Content-Type', 'application/json')
+                .set('Accept', 'application/json')
+                .set('x-authToken', authToken_pu1);
+
+            //download the result
+            const res = await request(server).post('/req/tp/downloadSingle').send({
+                "reqID": "1"
+            })
+                .set('Content-Type', 'application/json')
+                .set('Accept', 'application/json')
+                .set('x-authToken', authToken_tp);
+
+
+            expect(res.status).toBe(200);
+
+            expect(res.body.data[0].type).toMatch("heartrate");
+            expect(res.body.data[0].observations[0].value).toBe(98);
+            expect(new Date(res.body.data[0].observations[0].timest).toISOString().slice(0,10)).toMatch("2008-12-22"); //in order of date
+
+            expect(res.body.data[0].observations[1].value).toBe(7);
+            expect(new Date(res.body.data[0].observations[1].timest).toISOString().slice(0,10)).toMatch("2013-02-02");
+        });
+
+        it('should not let a third party download the results of a non accepted request', async () => {
+            //send request
+            await request(server).post('/req/tp/sendSingle').send({
+                "subscribing" : true,
+                "fc" : "1234363912333133",
+                "types" : ["heartrate"],
+                "duration" : 10
+            })
+                .set('Content-Type', 'application/json')
+                .set('Accept', 'application/json')
+                .set('x-authToken', authToken_tp);
+
+            //download the result
+            const res = await request(server).post('/req/tp/downloadSingle').send({
+                "reqID": "1"
+            })
+                .set('Content-Type', 'application/json')
+                .set('Accept', 'application/json')
+                .set('x-authToken', authToken_tp);
+
+
+            expect(res.status).toBe(403);
+        });
+
+        it('should not let a third party download the results of a request that doesn\'t exist', async () => {
+            //download the result
+            const res = await request(server).post('/req/tp/downloadSingle').send({
+                "reqID": "1"
+            })
+                .set('Content-Type', 'application/json')
+                .set('Accept', 'application/json')
+                .set('x-authToken', authToken_tp);
+
+
+            expect(res.status).toBe(403);
+        });
+    });
+
+
+    describe('/tp/downloadGroup', () => {
+
+        it('should let a third party download the results of a group request', async () => {
+            //send request
+            await request(server).post('/req/tp/sendGroup').send({
+                "subscribing" : false,
+                "types" : ["heartrate"],
+                "bounds" : [{
+                    "lowerbound":0,
+                    "upperbound":100
+                }],
+                "parameters" : ["heartrate"]
+            })
+                .set('Content-Type', 'application/json')
+                .set('Accept', 'application/json')
+                .set('x-authToken', authToken_tp);
+
+            //download the result
+            const res = await request(server).post('/req/tp/downloadGroup').send({
+                "reqID": "1"
+            })
+                .set('Content-Type', 'application/json')
+                .set('Accept', 'application/json')
+                .set('x-authToken', authToken_tp);
+
+
+            expect(res.status).toBe(200);
+
+            const req = await db.query("SELECT * FROM grouprequest");
+            expect(req.rows[0].status).toMatch("accepted");
+
+            expect(res.body.data[0].userid).toBe(0);
+            expect(res.body.data[0].data[0].type).toMatch("heartrate");
+            expect(res.body.data[0].data[0].values[0].value).toBe(98);
+            expect(new Date(res.body.data[0].data[0].values[0].timest).toISOString().slice(0,10)).toMatch("2008-12-22"); //in order of date
+
+            expect(res.body.data[0].data[0].values[1].value).toBe(7);
+            expect(new Date(res.body.data[0].data[0].values[1].timest).toISOString().slice(0,10)).toMatch("2013-02-02");
+
+            expect(res.body.data[1].userid).toBe(1);
+            expect(res.body.data[1].data[0].type).toMatch("heartrate");
+            expect(res.body.data[1].data[0].values[0].value).toBe(96);
+            expect(new Date(res.body.data[1].data[0].values[0].timest).toISOString().slice(0,10)).toMatch("2008-12-12"); //in order of date
+
+            expect(res.body.data[1].data[0].values[1].value).toBe(9);
+            expect(new Date(res.body.data[1].data[0].values[1].timest).toISOString().slice(0,10)).toMatch("2013-03-02");
+        });
+
+        it('should not let a third party download the results of a request that doesn\'t exist', async () => {
+            //download the result
+            const res = await request(server).post('/req/tp/downloadGroup').send({
+                "reqID": "1"
+            })
+                .set('Content-Type', 'application/json')
+                .set('Accept', 'application/json')
+                .set('x-authToken', authToken_tp);
+
+
+            expect(res.status).toBe(403);
+        });
+
+        it('should not let a third party download the results of a request that doesn\'t match the parameter constraint', async () => {
+            //send request
+            await request(server).post('/req/tp/sendGroup').send({
+                "subscribing" : false,
+                "types" : ["heartrate"],
+                "bounds" : [{
+                    "lowerbound":0,
+                    "upperbound":5
+                }],
+                "parameters" : ["heartrate"]
+            })
+                .set('Content-Type', 'application/json')
+                .set('Accept', 'application/json')
+                .set('x-authToken', authToken_tp);
+
+            //download the result
+            const res = await request(server).post('/req/tp/downloadGroup').send({
+                "reqID": "1"
+            })
+                .set('Content-Type', 'application/json')
+                .set('Accept', 'application/json')
+                .set('x-authToken', authToken_tp);
+
+
+            expect(res.status).toBe(403);
+        });
+    });
+
 });

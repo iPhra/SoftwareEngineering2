@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="637ba8bf-1b94-4c9e-be2d-39a16b1ba7d6" name="Default Changelist" comment="Update MyHealth interface">
+    <list default="true" id="637ba8bf-1b94-4c9e-be2d-39a16b1ba7d6" name="Default Changelist" comment="Remove try-catch blocks, add error middleware, code refactoring, add logger with winston">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../iOS/Data4Help/Data4Help.xcworkspace/xcuserdata/Virginia.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/../../iOS/Data4Help/Data4Help.xcworkspace/xcuserdata/Virginia.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../iOS/Data4Help/Data4Help/Controller/SUControllers/MyHealth/CurrentBarChartViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../../iOS/Data4Help/Data4Help/Controller/SUControllers/MyHealth/CurrentBarChartViewController.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/req.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/req.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/integration/routes/data.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/integration/routes/data.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/integration/routes/req.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/integration/routes/req.test.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -19,19 +19,91 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/schemas/schemas.js">
+        <entry file="file://$PROJECT_DIR$/middlewares/validator.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="200" lean-forward="true" selection-start-line="7" selection-start-column="182" selection-end-line="7" selection-end-column="200" />
+            <state relative-caret-position="435">
+              <caret line="29" column="16" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="16" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tests/integration/routes/data.test.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="242">
+              <caret line="117" column="25" selection-start-line="117" selection-start-column="25" selection-end-line="117" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/integration/routes/settings.test.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1485">
+              <caret line="99" column="26" selection-start-line="99" selection-start-column="26" selection-end-line="99" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/integration/routes/req.test.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="301">
+              <caret line="939" lean-forward="true" selection-start-line="939" selection-end-line="939" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/settings.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="473">
+              <caret line="127" lean-forward="true" selection-start-line="127" selection-end-line="127" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/req.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="160" column="99" selection-start-line="160" selection-start-column="99" selection-end-line="160" selection-end-column="99" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/data.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+            <state relative-caret-position="540">
+              <caret line="36" selection-start-line="36" selection-end-line="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/schemas/schemas.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="13" selection-start-line="13" selection-end-line="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/startup/validator.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="8" column="2" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/auth.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="14" column="15" selection-start-line="14" selection-start-column="15" selection-end-line="14" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -52,14 +124,47 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/dbconnection" />
-        <option value="$PROJECT_DIR$/app.js" />
-        <option value="$PROJECT_DIR$/bin/www" />
-        <option value="$PROJECT_DIR$/routes/settings.js" />
         <option value="$PROJECT_DIR$/settings/dbconnection.js" />
-        <option value="$PROJECT_DIR$/config/default.json" />
-        <option value="$PROJECT_DIR$/settings/mailer.js" />
-        <option value="$PROJECT_DIR$/routes/auth.js" />
+        <option value="$PROJECT_DIR$/bin/www" />
+        <option value="$PROJECT_DIR$/routes/data.js" />
+        <option value="$PROJECT_DIR$/routes/utils.js" />
+        <option value="$PROJECT_DIR$/combined.log" />
+        <option value="$PROJECT_DIR$/error.log" />
+        <option value="$PROJECT_DIR$/middlewares/error.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/startup/index.js" />
+        <option value="$PROJECT_DIR$/startup/logging.js" />
+        <option value="$PROJECT_DIR$/app.js" />
+        <option value="$PROJECT_DIR$/startup/prod.js" />
+        <option value="$PROJECT_DIR$/config/production.json.js" />
+        <option value="$PROJECT_DIR$/settings/mailer.js" />
+        <option value="$PROJECT_DIR$/config/production.json" />
+        <option value="$PROJECT_DIR$/tests/lib.test.js" />
+        <option value="$PROJECT_DIR$/config/test.json.js" />
+        <option value="$PROJECT_DIR$/config/default.json" />
+        <option value="$PROJECT_DIR$/config/test.json" />
+        <option value="$PROJECT_DIR$/tests/unit/lib.test.js" />
+        <option value="$PROJECT_DIR$/tests/integration/routes/auth.js" />
+        <option value="$PROJECT_DIR$/bin/www.js" />
+        <option value="$PROJECT_DIR$/utils/mailer.js" />
+        <option value="$PROJECT_DIR$/tests/unit/schemas/schemas.test.js" />
+        <option value="$PROJECT_DIR$/routes/auth.js" />
+        <option value="$PROJECT_DIR$/middlewares/authenticator.js" />
+        <option value="$PROJECT_DIR$/utils/dbconnection.js" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/tests/integration/routes/data.tests.js" />
+        <option value="$PROJECT_DIR$/tests/integration/routes/requests.test.js" />
+        <option value="$PROJECT_DIR$/tests/integration/routes/settings.test.js" />
+        <option value="$PROJECT_DIR$/utils/security.js" />
+        <option value="$PROJECT_DIR$/tests/integration/routes/auth.test.js" />
+        <option value="$PROJECT_DIR$/routes/settings.js" />
+        <option value="$PROJECT_DIR$/middlewares/validator.js" />
+        <option value="$PROJECT_DIR$/startup/routes.js" />
+        <option value="$PROJECT_DIR$/startup/validator.js" />
+        <option value="$PROJECT_DIR$/schemas/schemas.js" />
+        <option value="$PROJECT_DIR$/routes/req.js" />
+        <option value="$PROJECT_DIR$/tests/integration/routes/req.test.js" />
+        <option value="$PROJECT_DIR$/tests/integration/routes/data.test.js" />
       </list>
     </option>
   </component>
@@ -67,7 +172,7 @@
     <option name="x" value="44" />
     <option name="y" value="23" />
     <option name="width" value="1396" />
-    <option name="height" value="826" />
+    <option name="height" value="877" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -86,12 +191,20 @@
             <path>
               <item name="NodeJS" type="b2602c69:ProjectViewProjectNode" />
               <item name="NodeJS" type="462c0819:PsiDirectoryNode" />
-              <item name="schemas" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="NodeJS" type="b2602c69:ProjectViewProjectNode" />
               <item name="NodeJS" type="462c0819:PsiDirectoryNode" />
-              <item name="settings" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="integration" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NodeJS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NodeJS" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="integration" type="462c0819:PsiDirectoryNode" />
+              <item name="routes" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -103,10 +216,18 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="8.12.0" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs.jest.jest_package" value="$PROJECT_DIR$/node_modules/jest" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="settings.nodejs" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/utils" />
+      <recent name="$PROJECT_DIR$/tests/unit" />
+      <recent name="$PROJECT_DIR$/startup" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -120,17 +241,75 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
-    <configuration name="www.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="bin/www.js" working-dir="$PROJECT_DIR$">
-      <envs>
-        <env name="DEBUG" value="nodejs:server" />
-        <env name="d4h_jwtPrivateKey" value="gruosso" />
-      </envs>
+  <component name="RunManager" selected="Jest./data./upload.should throw away already imported data">
+    <configuration name="/data./upload.should throw away already imported data" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/tests/integration/routes/data.test.js" />
+      <test-names>
+        <test-name value="/data" />
+        <test-name value="/upload" />
+        <test-name value="should throw away already imported data" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="/req./sub/endGroup" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="SUITE" />
+      <test-file value="$PROJECT_DIR$/tests/integration/routes/req.test.js" />
+      <test-names>
+        <test-name value="/req" />
+        <test-name value="/sub/endGroup" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="/req./sub/endGroup.should not let a user end a subscription that wasn't accepted" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/tests/integration/routes/req.test.js" />
+      <test-names>
+        <test-name value="/req" />
+        <test-name value="/sub/endGroup" />
+        <test-name value="should not let a user end a subscription that wasn't accepted" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="/req./tp/downloadSingle" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="SUITE" />
+      <test-file value="$PROJECT_DIR$/tests/integration/routes/req.test.js" />
+      <test-names>
+        <test-name value="/req" />
+        <test-name value="/tp/downloadSingle" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="www.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/bin/www.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Jest./data./upload.should throw away already imported data" />
+        <item itemvalue="Jest./req./sub/endGroup.should not let a user end a subscription that wasn't accepted" />
+        <item itemvalue="Jest./req./sub/endGroup" />
         <item itemvalue="Node.js.www.js" />
+        <item itemvalue="Jest./req./tp/downloadSingle" />
       </list>
     </recent_temporary>
   </component>
@@ -160,14 +339,36 @@
       <workItem from="1545505112289" duration="16000" />
       <workItem from="1545505202876" duration="45000" />
       <workItem from="1545511505720" duration="1426000" />
-      <workItem from="1545585636920" duration="1343000" />
-      <workItem from="1545603134335" duration="557000" />
-      <workItem from="1545726222893" duration="682000" />
-      <workItem from="1545813907485" duration="83000" />
-      <workItem from="1545862851355" duration="8000" />
-      <workItem from="1545907015795" duration="9000" />
-      <workItem from="1545930369044" duration="7000" />
-      <workItem from="1545935273164" duration="4358000" />
+      <workItem from="1545585636920" duration="1115000" />
+      <workItem from="1545604330805" duration="1004000" />
+      <workItem from="1545605499473" duration="1355000" />
+      <workItem from="1545641399639" duration="7071000" />
+      <workItem from="1545654326606" duration="2766000" />
+      <workItem from="1545668975908" duration="711000" />
+      <workItem from="1545750536075" duration="659000" />
+      <workItem from="1545819003744" duration="644000" />
+      <workItem from="1546016312394" duration="2000000" />
+      <workItem from="1546020774821" duration="805000" />
+      <workItem from="1546028048158" duration="8000" />
+      <workItem from="1546174942469" duration="248000" />
+      <workItem from="1546204302716" duration="2361000" />
+      <workItem from="1546365503029" duration="57000" />
+      <workItem from="1546420717645" duration="5337000" />
+      <workItem from="1546448794052" duration="3537000" />
+      <workItem from="1546460872269" duration="3868000" />
+      <workItem from="1546464840652" duration="553000" />
+      <workItem from="1546521525144" duration="418000" />
+      <workItem from="1546536008243" duration="95000" />
+      <workItem from="1546547110721" duration="6998000" />
+      <workItem from="1546604855531" duration="2043000" />
+      <workItem from="1546633464817" duration="5309000" />
+      <workItem from="1546638917351" duration="26000" />
+      <workItem from="1546692930892" duration="4158000" />
+      <workItem from="1546698348382" duration="27000" />
+      <workItem from="1546721071709" duration="2092000" />
+      <workItem from="1546777313177" duration="2340000" />
+      <workItem from="1546779996227" duration="93000" />
+      <workItem from="1546805540579" duration="4589000" />
     </task>
     <task id="LOCAL-00001" summary="db connection">
       <created>1544101655507</created>
@@ -218,71 +419,205 @@
       <option name="project" value="LOCAL" />
       <updated>1545493775552</updated>
     </task>
-    <task id="LOCAL-00008" summary="Update MyHealth interface">
-      <created>1545590054329</created>
+    <task id="LOCAL-00008" summary="Remove try-catch blocks, add error middleware, code refactoring, add logger with winston">
+      <created>1545646032646</created>
       <option name="number" value="00008" />
       <option name="presentableId" value="LOCAL-00008" />
       <option name="project" value="LOCAL" />
-      <updated>1545590054329</updated>
+      <updated>1545646032646</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Add startup environment and production variables">
+      <created>1545655909649</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1545655909649</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Bugfix">
+      <created>1545656538922</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1545656538922</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Bugfix">
+      <created>1545656663080</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1545656663080</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Add new datatypes to the schema">
+      <created>1545669816659</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1545669816659</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Add test directory">
+      <created>1546016344826</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1546016344826</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Fix to datatype">
+      <created>1546020857132</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1546020857132</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Add integration testing framework">
+      <created>1546365548452</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1546365548452</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Add userid to Registration, add unit test for schemas.js, add integration test for auth.js">
+      <created>1546464885024</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1546464885024</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Add settings.test.js and data.test.js, remove pending check from group requests">
+      <created>1546554113849</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1546554113849</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Complete data.test.js and test refactor">
+      <created>1546606908045</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1546606908045</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Fixed a bug when sending a request and create req.test.js">
+      <created>1546638935427</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1546638935427</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Add two new endpoints">
+      <created>1546698109899</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1546698109899</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Bufix to Joi">
+      <created>1546723129048</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1546723129048</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Test two new endpoints">
+      <created>1546780078764</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1546780078765</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="_req__tp_downloadSingle - 2019.01.06 at 21h 57m 05s.xml">
+      <configuration name="/req./tp/downloadSingle" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+    <history-entry file="_req__tp_downloadSingle - 2019.01.06 at 21h 57m 42s.xml">
+      <configuration name="/req./tp/downloadSingle" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+    <history-entry file="_req__tp_downloadSingle - 2019.01.06 at 21h 57m 54s.xml">
+      <configuration name="/req./tp/downloadSingle" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+    <history-entry file="_req__tp_downloadSingle - 2019.01.06 at 21h 58m 10s.xml">
+      <configuration name="/req./tp/downloadSingle" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+    <history-entry file="_req__tp_downloadSingle - 2019.01.06 at 21h 58m 21s.xml">
+      <configuration name="/req./tp/downloadSingle" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+    <history-entry file="_req__sub_endGroup - 2019.01.06 at 22h 23m 32s.xml">
+      <configuration name="/req./sub/endGroup" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+    <history-entry file="_req__sub_endGroup - 2019.01.06 at 22h 23m 54s.xml">
+      <configuration name="/req./sub/endGroup" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+    <history-entry file="_req__sub_endGroup_should_not_let_a_user_end_a_subscription_that_wasn't_accepted - 2019.01.06 at 22h 25m 39s.xml">
+      <configuration name="/req./sub/endGroup.should not let a user end a subscription that wasn't accepted" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+    <history-entry file="_data__upload_should_throw_away_already_imported_data - 2019.01.06 at 22h 28m 18s.xml">
+      <configuration name="/data./upload.should throw away already imported data" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+    <history-entry file="_data__upload_should_throw_away_already_imported_data - 2019.01.06 at 22h 28m 53s.xml">
+      <configuration name="/data./upload.should throw away already imported data" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+  </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25151000" />
+    <option name="totallyTimeSpent" value="80423000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="44" y="23" width="1396" height="826" extended-state="0" />
-    <editor active="true" />
+    <frame x="44" y="23" width="1396" height="877" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24727273" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4989429" visible="true" weight="0.248" />
+      <window_info id="Structure" order="1" sideWeight="0.5010571" side_tool="true" weight="0.248" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.5672727" weight="0.27520436" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39891452" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49963635" weight="0.32866243" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.56363636" weight="0.32356688" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.49745455" visible="true" weight="0.39745224" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3299363" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.71854544" weight="0.5013624" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.28145453" side_tool="true" weight="0.40190735" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.4989091" weight="0.32697546" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.7229091" weight="0.40127388" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5025455" side_tool="true" weight="0.39745224" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.4989091" weight="0.32738853" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4989429" visible="true" weight="0.248" />
+      <window_info id="Structure" order="1" sideWeight="0.5010571" side_tool="true" weight="0.248" />
+      <window_info id="npm" order="2" side_tool="true" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49963635" weight="0.32866243" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.56363636" visible="true" weight="0.32356688" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49745455" weight="0.39745224" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.7229091" weight="0.40127388" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5025455" side_tool="true" weight="0.39745224" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.4989091" weight="0.32738853" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="RECENTLY_FILTERED_USER_GROUPS">
-                <collection />
-              </option>
-              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-                <collection />
-              </option>
-              <option name="COLUMN_ORDER">
-                <list>
-                  <option value="0" />
-                  <option value="1" />
-                  <option value="2" />
-                  <option value="3" />
-                </list>
-              </option>
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
     <option name="RECENT_FILTERS">
       <map>
         <entry key="Branch">
@@ -305,44 +640,41 @@
     <MESSAGE value="Add 3DTouch for AutomatedSOS and add emergency call" />
     <MESSAGE value="Update AppDelegate to handle first data import" />
     <MESSAGE value="Add AutomatedSOSManager to check critical health status and call ambulance" />
-    <MESSAGE value="Update MyHealth interface" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update MyHealth interface" />
+    <MESSAGE value="Remove try-catch blocks, add error middleware, code refactoring, add logger with winston" />
+    <MESSAGE value="Add startup environment and production variables" />
+    <MESSAGE value="Bugfix" />
+    <MESSAGE value="Add new datatypes to the schema" />
+    <MESSAGE value="Add test directory" />
+    <MESSAGE value="Fix to datatype" />
+    <MESSAGE value="Add integration testing framework" />
+    <MESSAGE value="Add userid to Registration, add unit test for schemas.js, add integration test for auth.js" />
+    <MESSAGE value="Add settings.test.js and data.test.js, remove pending check from group requests" />
+    <MESSAGE value="Complete data.test.js and test refactor" />
+    <MESSAGE value="Fixed a bug when sending a request and create req.test.js" />
+    <MESSAGE value="Add two new endpoints" />
+    <MESSAGE value="Bufix to Joi" />
+    <MESSAGE value="Test two new endpoints" />
+    <option name="LAST_COMMIT_MESSAGE" value="Test two new endpoints" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/tests/integration/routes/data.test.js</url>
+          <line>95</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/dbconnection" />
     <entry file="file://$PROJECT_DIR$/controllers/authManager.js" />
     <entry file="file://$PROJECT_DIR$/schemas/validator.js" />
-    <entry file="file://$PROJECT_DIR$/package-lock.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/www" />
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1140">
-          <caret line="76" lean-forward="true" selection-start-line="76" selection-end-line="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/req.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1187">
-          <caret line="243" column="22" selection-start-line="243" selection-start-column="22" selection-end-line="243" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/default.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/utils/test.js" />
+    <entry file="file://$PROJECT_DIR$/utils/error.log">
+      <provider selected="true" editor-type-id="LogFileEditorProvider" />
     </entry>
     <entry file="file://$PROJECT_DIR$/config/custom-environment-variables.json">
       <provider selected="true" editor-type-id="text-editor">
@@ -351,53 +683,209 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/utils/combined.log">
+      <provider selected="true" editor-type-id="LogFileEditorProvider" />
+      <provider editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/unit/lib.test.js" />
+    <entry file="file://$PROJECT_DIR$/utils/EC2.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="180">
+            <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/test.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/production.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="1" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/default.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/mailer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="473">
+          <caret line="84" selection-start-line="84" selection-end-line="84" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/dbconnection.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="2" lean-forward="true" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/www.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="15" selection-start-line="25" selection-start-column="15" selection-end-line="25" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
+        <state relative-caret-position="225">
+          <caret line="15" column="25" lean-forward="true" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/settings/mailer.js">
+    <entry file="file://$PROJECT_DIR$/ecosystem.config.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+        <state relative-caret-position="255">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/settings.js">
+    <entry file="file://$PROJECT_DIR$/tests/integration/routes/auth.test.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/middlewares/authenticator.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2910">
-          <caret line="194" column="24" selection-start-line="194" selection-start-column="24" selection-end-line="194" selection-end-column="24" />
+        <state relative-caret-position="195">
+          <caret line="13" column="22" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/settings/dbconnection.js">
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/middlewares/error.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/unit/schemas/schemas.test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1170">
+          <caret line="78" lean-forward="true" selection-start-line="78" selection-end-line="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/startup/logging.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package-lock.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/startup/prod.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="2" selection-start-line="7" selection-start-column="2" selection-end-line="7" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/startup/routes.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/middlewares/validator.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="16" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/integration/routes/settings.test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1485">
+          <caret line="99" column="26" selection-start-line="99" selection-start-column="26" selection-end-line="99" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/utils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/data.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/schemas/schemas.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/startup/validator.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="2" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/index.js" />
     <entry file="file://$PROJECT_DIR$/routes/auth.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-842">
-          <caret line="99" lean-forward="true" selection-start-line="99" selection-end-line="99" />
+        <state relative-caret-position="210">
+          <caret line="14" column="15" selection-start-line="14" selection-start-column="15" selection-end-line="14" selection-end-column="15" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/schemas/schemas.js">
+    <entry file="file://$PROJECT_DIR$/routes/settings.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="200" lean-forward="true" selection-start-line="7" selection-start-column="182" selection-end-line="7" selection-end-column="200" />
+        <state relative-caret-position="473">
+          <caret line="127" lean-forward="true" selection-start-line="127" selection-end-line="127" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/data.js">
+    <entry file="file://$PROJECT_DIR$/routes/req.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+        <state relative-caret-position="15">
+          <caret line="160" column="99" selection-start-line="160" selection-start-column="99" selection-end-line="160" selection-end-column="99" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/integration/routes/req.test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="939" lean-forward="true" selection-start-line="939" selection-end-line="939" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/integration/routes/data.test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="117" column="25" selection-start-line="117" selection-start-column="25" selection-end-line="117" selection-end-column="25" />
         </state>
       </provider>
     </entry>

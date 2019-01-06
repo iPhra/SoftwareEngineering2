@@ -96,7 +96,11 @@ router.post('/tp/downloadSingle', authenticator(), async (req, res) => {
 
     //if the request is not present or if it was not approved
     if(rows.rowCount===0 || rows.rows[0].status!== 'accepted')
-        return res.status(403).send({error: "Can't download data"});
+        return res.status(403).send({error: "Request does not exist or wasn't approved"});
+
+    //if the user is not the sender of the request
+    if (!(rows.rows[0].sender_id===req.body.userid))
+        return res.status(401).send({error: "You can't access this request"});
 
 
     //retrieve data types
@@ -114,6 +118,10 @@ router.post('/tp/downloadSingle', authenticator(), async (req, res) => {
         text = "SELECT value, timest FROM userdata WHERE userid = $1 and datatype = $2 and timest::date <= $3";
         values = [receiver_id, types[i].datatype, final_date];
         rows = await db.query(text, values);
+
+        for(let j=0; j<rows.rowCount; j++) {
+            rows.rows[j].timest = rows.rows[j].timest.toISOString().slice(0,10);
+        }
 
         obj["observations"] = rows.rows;
 
@@ -139,6 +147,10 @@ router.post('/tp/downloadGroup', authenticator(), async (req, res) => {
     if(rows.rowCount===0)
         return res.status(403).send({error: "Request does not exist"});
 
+    //if the user is not the sender of the request
+    if (!(rows.rows[0].sender_id===req.body.userid))
+        return res.status(401).send({error: "You can't access this request"});
+
 
     const req_id = rows.rows[0].req_id;
     const types = await getRequestTypes(req); //data types of the request
@@ -146,7 +158,7 @@ router.post('/tp/downloadGroup', authenticator(), async (req, res) => {
     const final_date = getFinalDate(rows); //maximum date allowed for each data point
     const users = await getTargetUsers(parameters, final_date); //get target users matching the search parameters
 
-    //if the target users are less than 1000
+    //if the target users are less than 1000 (1 in this case, as 1000 is not feasible for our case)
     if(users.length <1) {
         await setChoice('refused', req_id);
         res.status(403).send({error: "Less than 1000 users match the search parameters"});
@@ -167,6 +179,10 @@ router.post('/tp/downloadGroup', authenticator(), async (req, res) => {
             text = "SELECT value,timest FROM userdata WHERE userid = $1 and datatype = $2";
             values = [users[i], types[j].datatype];
             rows = await db.query(text, values);
+
+            for(let j=0; j<rows.rowCount; j++) {
+                rows.rows[j].timest = rows.rows[j].timest.toISOString().slice(0,10);
+            }
 
             obj.data.push({
                 "type" : types[j].datatype,
@@ -350,7 +366,7 @@ router.get('/tp/list', authenticator(), async (req, res) => {
 router.post('/sub/endSingle', authenticator(), async (req, res) => {
     const request = await retrieveSingleRequest(req);
 
-    //if the request doesn't exist or if the subscription is off
+    //if the request doesn't exist or if the subscription is off or if it wasn't accepted
     if (!(request.rowCount>0 && request.rows[0].subscribing===true && request.rows[0].status==="accepted"))
         return res.status(403).send({error: "Request does not exist or the subscription is already off"});
 
@@ -379,7 +395,7 @@ router.post('/sub/endSingle', authenticator(), async (req, res) => {
 router.post('/sub/endGroup', authenticator(), async (req, res) => {
     const request = await retrieveGroupRequest(req);
 
-    //if the request doesn't exist or if the subscription is off
+    //if the request doesn't exist or if the subscription is off or if it wasn't accepted
     if (!(request.rowCount>0 && request.rows[0].subscribing===true && request.rows[0].status==="accepted"))
         return res.status(403).send({error: "Request does not exist or the subscription is already off"});
 

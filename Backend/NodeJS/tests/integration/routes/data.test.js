@@ -51,6 +51,7 @@ describe('/data', () => {
     describe('/upload', () => {
 
         it('should let a single user upload his data', async () => {
+            //upload data
             const res = await request(server).post('/data/upload').send({
                 "types" : ["heartrate","sleepinghours"],
                 "values" : [[98, 7], [8]],
@@ -77,6 +78,7 @@ describe('/data', () => {
         });
 
         it('should forbid a non logged in user to upload his data settings', async () => {
+            //try to upload data
             const res = await request(server).post('/data/upload').send({
                 "types" : ["heartrate","sleepinghours"],
                 "values" : [[98, 7], [8]],
@@ -90,6 +92,7 @@ describe('/data', () => {
         });
 
         it('should throw away already imported data', async () => {
+            //upload first data
             await request(server).post('/data/upload').send({
                 "types" : ["heartrate","sleepinghours"],
                 "values" : [[98, 7], [8]],
@@ -99,6 +102,7 @@ describe('/data', () => {
                 .set('Accept', 'application/json')
                 .set('x-authToken', authToken_pu);
 
+            //upload second data containing repetitions
             const res = await request(server).post('/data/upload').send({
                 "types" : ["sleepinghours", "heartrate"],
                 "values" : [[7,8,10], []],
