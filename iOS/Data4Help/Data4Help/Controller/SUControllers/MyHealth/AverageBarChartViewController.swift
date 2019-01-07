@@ -86,14 +86,38 @@ class AverageBarChartViewController: UIViewController {
         
     }
     
-    func loadValue(){
-    
+    func loadData(){
+        NetworkManager.sharedInstance.sendPostRequest(input: D4HStatisticsRequest(types: DataManager.sharedInstance.dataTypesToRead), endpoint: D4HEndpoint.statistics, headers: Properties.auth()) { (response, error) in
+            if response != nil {
+                let myres: D4HStatisticsResponse = D4HStatisticsResponse(fromJson: response!)
+                let statistics: [D4HStatistic] = myres.statistics
+                for s in statistics {
+                    if(s.observations.count>0){
+                        self.xvals.append(s.type.rawValue)
+                        self.othersAverageBPM.append((s.others.first?.avg)!)
+                        self.myAverageBPM.append((s.observations.first?.avg)!)
+                    }
+                }
+                self.setChart(dataEntryX: self.xvals, firstDataEntryY: self.myAverageBPM, secondDataEntryY: self.othersAverageBPM)
+            }
+            else if let error = error {
+                print(error)
+            }
+        }
+        self.setChart(dataEntryX: self.xvals, firstDataEntryY: self.myAverageBPM, secondDataEntryY: self.othersAverageBPM)
     }
+    
+    @IBAction func reloadData(_ sender: Any) {
+        self.barChartView.clearValues()
+        loadData()
+        self.barChartView.notifyDataSetChanged()
+        self.setChart(dataEntryX: self.xvals, firstDataEntryY: self.myAverageBPM, secondDataEntryY: self.othersAverageBPM)
+    }
+    
 
 }
 
 extension AverageBarChartViewController: IAxisValueFormatter {
-    
     func stringForValue(_ value: Double, axis: AxisBase?) -> String {
         return xvals[Int(value)]
     }

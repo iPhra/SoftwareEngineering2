@@ -42,15 +42,16 @@ class DataManager {
     
     var currentValues: [String: Double] = [
         dataType.activeEnergyBurned.rawValue : 0,
+        dataType.diastolic_pressure.rawValue : 0,
+        dataType.systolic_pressure.rawValue : 0,
+        dataType.distanceWalkingRunning.rawValue : 0,
         dataType.heartrate.rawValue : 0,
+        dataType.height.rawValue : 0,
         dataType.sleepingHours.rawValue : 0,
         dataType.standingHours.rawValue : 0,
         dataType.steps.rawValue : 0,
-        dataType.distanceWalkingRunning.rawValue : 0,
-        dataType.height.rawValue : 0,
         dataType.weight.rawValue : 0,
-        dataType.bloodPressure.rawValue : 0
-    ]
+        ]
         
     var AutomatedSOSON = StorageManager.sharedInstance.getAutomatedSOS()
     
@@ -301,7 +302,6 @@ class DataManager {
         if(new.count==0){
             return
         }
-        
     self.currentValues.updateValue((new.last!.endDate.timeIntervalSince(new.last!.startDate))/3600, forKey: dataType.standingHours.rawValue)
         
         if(firstUploads[dataType.sleepingHours]!){
