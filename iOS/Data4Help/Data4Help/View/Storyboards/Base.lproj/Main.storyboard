@@ -461,10 +461,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Logo" width="1414" height="956"/>
+        <image name="Logo" width="679" height="459.1199951171875"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="6ES-Gd-9FS"/>
         <segue reference="hzu-ap-4Sf"/>
-        <segue reference="2UM-hL-UcA"/>
+        <segue reference="G0l-X5-w2g"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -257,29 +257,49 @@ class DataManager {
         if(new.count==0){
             return
         }
-        let sample = new.last!
-        let sleepType = (sample.value == HKCategoryValueSleepAnalysis.inBed.rawValue) ? "InBed" : "Asleep"
-        let timestamp = getTimestamp(sample: sample)
-        let sleptHours: Double = (sample.endDate.timeIntervalSince(sample.startDate))/3600
-        print(sleptHours)
-        
-        print (timestamp) //print date-time
-        print("hours \(sleepType) = \(sleptHours)")
         
         if(firstUploads[dataType.sleepingHours]!){
             for s in new {
+                let sleptHours : Double = (s.endDate.timeIntervalSince(s.startDate))/3600
                 StorageManager.sharedInstance.addData(entityName: "Data", type: dataType.sleepingHours.rawValue, timestamp: getTimestamp(sample: s), value: sleptHours)
             }
             firstUploads.updateValue(false, forKey: dataType.sleepingHours)
         }
         else{
+            let sample = new.last!
+            let sleepType = (sample.value == HKCategoryValueSleepAnalysis.inBed.rawValue) ? "InBed" : "Asleep"
+            let timestamp = getTimestamp(sample: sample)
+            let sleptHours: Double = (sample.endDate.timeIntervalSince(sample.startDate))/3600
+            print(sleptHours)
+            
+            print (timestamp) //print date-time
+            print("hours \(sleepType) = \(sleptHours)")
+            
             StorageManager.sharedInstance.addData(entityName: "Data", type: dataType.sleepingHours.rawValue, timestamp: timestamp, value: sleptHours)
         }
         
     }
     
     func handleStandingHours(new: [HKCategorySample], deleted:[HKDeletedObject]) {
-        //
+        if(new.count==0){
+            return
+        }
+        
+        if(firstUploads[dataType.sleepingHours]!){
+            for s in new {
+                let standingHours: Double = (s.endDate.timeIntervalSince(s.startDate))/3600
+                StorageManager.sharedInstance.addData(entityName: "Data", type: dataType.sleepingHours.rawValue, timestamp: getTimestamp(sample: s), value: standingHours)
+            }
+            firstUploads.updateValue(false, forKey: dataType.sleepingHours)
+        }
+        else{
+            let sample = new.last!
+            let timestamp = getTimestamp(sample: sample)
+            let standingHours: Double = (sample.endDate.timeIntervalSince(sample.startDate))/3600
+            print(standingHours)
+            
+            StorageManager.sharedInstance.addData(entityName: "Data", type: dataType.sleepingHours.rawValue, timestamp: timestamp, value: standingHours)
+        }
     }
     
     func getTimestamp(sample: HKSample)-> String{

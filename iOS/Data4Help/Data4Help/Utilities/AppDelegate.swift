@@ -93,6 +93,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if response != nil {
                 let myres = D4HLogoutResponse(fromJson: response!)
                 // Reset authToken
+                AppDelegate.deleteAllQuickShortcuts()
                 Properties.logout()
                 print(myres.message)
             }
@@ -109,7 +110,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.shortcutItems?.removeAll()
     }
     
-    
+    /*
     func application(_ application: UIApplication,
                      performActionFor shortcutItem: UIApplicationShortcutItem,
                      completionHandler: @escaping (Bool) -> Void){
@@ -118,7 +119,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             completionHandler(handleShortcutItem(item: shortcutItem))
         }
     }
-    
+    */
     
     func handleShortcutItem(item: UIApplicationShortcutItem) -> Bool {
         DataManager.sharedInstance.enableAutomatedSOS()

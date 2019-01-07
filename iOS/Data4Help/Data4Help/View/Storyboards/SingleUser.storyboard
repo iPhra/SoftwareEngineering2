@@ -232,10 +232,10 @@
             </objects>
             <point key="canvasLocation" x="293.60000000000002" y="-180.29556650246306"/>
         </scene>
-        <!--bubbleChartView-->
+        <!--BubbleChartViewController-->
         <scene sceneID="WXg-b6-dPN">
             <objects>
-                <viewController storyboardIdentifier="bubbleChartView" id="4j9-pm-Rf3" userLabel="bubbleChartView" customClass="BubbleChartViewController" customModule="Data4Help" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BubbleChartViewController" id="4j9-pm-Rf3" userLabel="BubbleChartViewController" customClass="BubbleChartViewController" customModule="Data4Help" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tS7-dH-zMo">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="311"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -324,7 +324,6 @@
                         <constraints>
                             <constraint firstItem="pXx-0z-B40" firstAttribute="top" secondItem="wx1-9H-eSs" secondAttribute="top" id="0Yj-jd-XmP"/>
                             <constraint firstItem="pXx-0z-B40" firstAttribute="leading" secondItem="GYN-rv-tIy" secondAttribute="leading" id="OJg-Ux-qRV"/>
-                            <constraint firstItem="DHB-zj-47w" firstAttribute="top" secondItem="pXx-0z-B40" secondAttribute="bottom" constant="87" id="OLm-Yi-cfh"/>
                             <constraint firstItem="IsF-nH-4HZ" firstAttribute="leading" secondItem="5kY-As-wTW" secondAttribute="trailing" constant="88" id="SP3-l2-fvo"/>
                             <constraint firstItem="5kY-As-wTW" firstAttribute="top" secondItem="pXx-0z-B40" secondAttribute="bottom" constant="27" id="g3b-5U-zRt"/>
                             <constraint firstItem="5kY-As-wTW" firstAttribute="leading" secondItem="wx1-9H-eSs" secondAttribute="leading" constant="50" id="gQP-NY-iub"/>
@@ -368,10 +367,10 @@
             </objects>
             <point key="canvasLocation" x="1086" y="-1365"/>
         </scene>
-        <!--barChartCurrentValues-->
+        <!--CurrentBarChartViewController-->
         <scene sceneID="frp-NP-hTt">
             <objects>
-                <viewController storyboardIdentifier="barChartCurrentValues" id="Lzt-GV-Bt2" userLabel="barChartCurrentValues" customClass="CurrentBarChartViewController" customModule="Data4Help" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CurrentBarChartViewController" id="Lzt-GV-Bt2" userLabel="CurrentBarChartViewController" customClass="CurrentBarChartViewController" customModule="Data4Help" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aLq-Tc-x7I">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="423"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

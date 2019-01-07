@@ -25,6 +25,8 @@ class CurrentBarChartViewController: UIViewController {
                                       dataType.steps.rawValue,
                                       dataType.weight.rawValue]
     
+    var currentValues : [Double] = []
+    
     weak var axisFormatDelegate: IAxisValueFormatter?
     
     // Mark: Functions
@@ -34,7 +36,9 @@ class CurrentBarChartViewController: UIViewController {
         
         axisFormatDelegate = (self as IAxisValueFormatter)
         
-        setCurrentValuesChart(dataEntryX: dataTypesToShow, dataEntryY: self.loadCurrentValues() )
+        loadCurrentValues()
+        
+        setCurrentValuesChart(dataEntryX: dataTypesToShow, dataEntryY: self.currentValues )
         
     }
     
@@ -72,13 +76,11 @@ class CurrentBarChartViewController: UIViewController {
     }
     
     /*Load current values of each dataType to show*/
-    func loadCurrentValues() -> [Double] {
-        var result: [Double] = []
+    func loadCurrentValues(){
         for dataType in self.dataTypesToShow {
             let current: Double? = StorageManager.sharedInstance.getLastDataValue(ofType: dataType)
-            result.append(current ?? 0)
+            self.currentValues.append(current ?? 0)
         }
-        return result
     }
     
 }

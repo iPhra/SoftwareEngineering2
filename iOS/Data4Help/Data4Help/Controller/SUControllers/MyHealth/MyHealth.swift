@@ -15,7 +15,7 @@ class MyHealth: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet weak var automatedSOSSwitch: UISwitch!
-        
+
     
     //MARK: Functions
     
