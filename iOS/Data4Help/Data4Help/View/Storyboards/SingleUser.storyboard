@@ -237,11 +237,11 @@
             <objects>
                 <viewController storyboardIdentifier="BubbleChartViewController" id="4j9-pm-Rf3" userLabel="BubbleChartViewController" customClass="BubbleChartViewController" customModule="Data4Help" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tS7-dH-zMo">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="311"/>
+                        <rect key="frame" x="0.0" y="0.0" width="490" height="300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RT8-sd-2bN" customClass="BubbleChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="315"/>
+                                <rect key="frame" x="0.0" y="0.0" width="490" height="287"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -255,7 +255,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3no-tm-2u2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1087" y="-613"/>
+            <point key="canvasLocation" x="1447.8260869565217" y="-749.33035714285711"/>
         </scene>
         <!--MyHealth-->
         <scene sceneID="D8k-Wn-NRW">
@@ -289,34 +289,31 @@
                                     <action selector="toggleAutomatedSOSON:" destination="KyL-8m-lQ7" eventType="valueChanged" id="CMw-5M-Dgt"/>
                                 </connections>
                             </switch>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aZ4-MD-0gb">
-                                <rect key="frame" x="1" y="175" width="413" height="1153"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lac-9z-Ocy">
+                                <rect key="frame" x="0.0" y="150" width="530" height="907"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="MgX-Wr-An0">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1169"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <subviews>
-                                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DHB-zj-47w">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="435"/>
-                                                <connections>
-                                                    <segue destination="RZ8-LU-ULH" kind="embed" id="XQN-qZ-01B"/>
-                                                </connections>
-                                            </containerView>
-                                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PKt-ES-zOA">
-                                                <rect key="frame" x="0.0" y="435" width="414" height="423"/>
-                                                <connections>
-                                                    <segue destination="Lzt-GV-Bt2" kind="embed" id="TgA-xN-qx1"/>
-                                                </connections>
-                                            </containerView>
-                                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I98-t1-k5n">
-                                                <rect key="frame" x="0.0" y="858" width="414" height="311"/>
-                                                <connections>
-                                                    <segue destination="4j9-pm-Rf3" kind="embed" id="0v9-9J-AYg"/>
-                                                </connections>
-                                            </containerView>
-                                        </subviews>
-                                    </stackView>
+                                    <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wbf-yv-we6">
+                                        <rect key="frame" x="0.0" y="0.0" width="490" height="500"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                        <connections>
+                                            <segue destination="RZ8-LU-ULH" kind="embed" id="jPe-hp-ekj"/>
+                                        </connections>
+                                    </containerView>
+                                    <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uow-aV-mAe">
+                                        <rect key="frame" x="0.0" y="510" width="490" height="550"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                        <connections>
+                                            <segue destination="Lzt-GV-Bt2" kind="embed" id="tEB-8C-MbA"/>
+                                        </connections>
+                                    </containerView>
+                                    <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I6r-Nr-LN1">
+                                        <rect key="frame" x="0.0" y="1080" width="490" height="300"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                        <connections>
+                                            <segue destination="4j9-pm-Rf3" kind="embed" id="wIL-kk-mgh"/>
+                                        </connections>
+                                    </containerView>
                                 </subviews>
                             </scrollView>
                         </subviews>
@@ -335,7 +332,7 @@
                     <tabBarItem key="tabBarItem" title="MyHealth" image="MyHealth" selectedImage="MyHealth" id="Nu6-bn-woq"/>
                     <connections>
                         <outlet property="automatedSOSSwitch" destination="IsF-nH-4HZ" id="it2-cZ-aAO"/>
-                        <outlet property="scrollView" destination="aZ4-MD-0gb" id="Vkh-Fj-ncC"/>
+                        <outlet property="scrollView" destination="Lac-9z-Ocy" id="3xA-1Y-v1q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kH2-PR-gLo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -347,11 +344,11 @@
             <objects>
                 <viewController storyboardIdentifier="AverageBarChartViewController" id="RZ8-LU-ULH" userLabel="AverageBarChartViewController" customClass="AverageBarChartViewController" customModule="Data4Help" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LFx-kY-3SP">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="435"/>
+                        <rect key="frame" x="0.0" y="0.0" width="490" height="500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l8t-3T-97M" customClass="BarChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="458"/>
+                                <rect key="frame" x="0.0" y="0.0" width="490" height="500"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -365,20 +362,21 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qc7-ie-MlP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1086" y="-1365"/>
+            <point key="canvasLocation" x="1482.608695652174" y="-1534.1517857142856"/>
         </scene>
         <!--CurrentBarChartViewController-->
         <scene sceneID="frp-NP-hTt">
             <objects>
                 <viewController storyboardIdentifier="CurrentBarChartViewController" id="Lzt-GV-Bt2" userLabel="CurrentBarChartViewController" customClass="CurrentBarChartViewController" customModule="Data4Help" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aLq-Tc-x7I">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="423"/>
+                        <rect key="frame" x="0.0" y="0.0" width="490" height="550"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jRB-Ms-bzb" customClass="BarChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="448"/>
+                                <rect key="frame" x="0.0" y="0.0" width="490" height="550"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -390,7 +388,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I6Y-Qp-tZx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1079" y="-952"/>
+            <point key="canvasLocation" x="1482.608695652174" y="-1071.4285714285713"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Bit-M5-0GS">
@@ -625,6 +623,19 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="daQ-hT-p2D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2430.434782608696" y="598.66071428571422"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="6kO-Hi-OgC">
+            <objects>
+                <viewController id="Cv7-jw-uEV" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Yah-Va-OEv">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="suB-af-adV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
     <resources>

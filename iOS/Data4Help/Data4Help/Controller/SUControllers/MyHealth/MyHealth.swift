@@ -26,7 +26,7 @@ class MyHealth: UIViewController {
         
         //Setup scroll view
         
-        scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height + 500)
+        scrollView.contentSize = CGSize(width: self.view.frame.width + 200, height: self.view.frame.height + 1000)
    
     }
     

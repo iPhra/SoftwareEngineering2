@@ -35,12 +35,16 @@ class CurrentBarChartViewController: UIViewController {
         super.viewDidLoad()
         
         axisFormatDelegate = (self as IAxisValueFormatter)
-        
-        loadCurrentValues()
+
+        for dataType in self.dataTypesToShow {
+            let current: Double = DataManager.sharedInstance.currentValues[dataType]!
+            self.currentValues.append(current)
+        }
         
         setCurrentValuesChart(dataEntryX: dataTypesToShow, dataEntryY: self.currentValues )
         
     }
+    
     
     func setCurrentValuesChart(dataEntryX forX:[String],dataEntryY: [Double]) {
         
@@ -57,6 +61,7 @@ class CurrentBarChartViewController: UIViewController {
         chartDataSet.colors = ChartColorTemplates.colorful()
         let chartData = BarChartData(dataSet: chartDataSet)
         barChartCurrentValues.data = chartData
+        
         
         barChartCurrentValues.drawGridBackgroundEnabled = false
         barChartCurrentValues.drawBarShadowEnabled = false
@@ -76,12 +81,14 @@ class CurrentBarChartViewController: UIViewController {
     }
     
     /*Load current values of each dataType to show*/
-    func loadCurrentValues(){
+    func loadData(){
         for dataType in self.dataTypesToShow {
-            let current: Double? = StorageManager.sharedInstance.getLastDataValue(ofType: dataType)
-            self.currentValues.append(current ?? 0)
+            let current: Double = DataManager.sharedInstance.currentValues[dataType]!
+            self.currentValues.append(current)
         }
     }
+    
+    
     
 }
 
