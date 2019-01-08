@@ -23,6 +23,8 @@ class LoginViewController: UIViewController {
         self.hideKeyboardWhenTappedAround()
         // Do any additional setup after loading the view, typically from a nib.
         
+        //Delete any shortcut that has not been properly deleted
+        AppDelegate.deleteAllQuickShortcuts()
         
         // DEBUGGING FUNCTIONS
         // DELETE BEFORE DEPLOYMENT

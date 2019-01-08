@@ -39,6 +39,19 @@ class DataManager {
                                         dataType.standingHours.rawValue,
                                         dataType.steps.rawValue,
                                         dataType.weight.rawValue]
+    
+    var currentValues: [String: Double] = [
+        dataType.activeEnergyBurned.rawValue : 0,
+        dataType.diastolic_pressure.rawValue : 0,
+        dataType.systolic_pressure.rawValue : 0,
+        dataType.distanceWalkingRunning.rawValue : 0,
+        dataType.heartrate.rawValue : 0,
+        dataType.height.rawValue : 0,
+        dataType.sleepingHours.rawValue : 0,
+        dataType.standingHours.rawValue : 0,
+        dataType.steps.rawValue : 0,
+        dataType.weight.rawValue : 0,
+        ]
         
     var AutomatedSOSON = StorageManager.sharedInstance.getAutomatedSOS()
     
@@ -89,6 +102,10 @@ class DataManager {
             print("Read Write Authorization succeded")
             
         }
+    }
+    
+    func getCurrentValue(datatype: String) -> Double {
+        return self.currentValues[datatype] ?? 0
     }
     
     // Mark: Automated SOS handlers
@@ -257,29 +274,51 @@ class DataManager {
         if(new.count==0){
             return
         }
-        let sample = new.last!
-        let sleepType = (sample.value == HKCategoryValueSleepAnalysis.inBed.rawValue) ? "InBed" : "Asleep"
-        let timestamp = getTimestamp(sample: sample)
-        let sleptHours: Double = (sample.endDate.timeIntervalSince(sample.startDate))/3600
-        print(sleptHours)
-        
-        print (timestamp) //print date-time
-        print("hours \(sleepType) = \(sleptHours)")
+    self.currentValues.updateValue((new.last!.endDate.timeIntervalSince(new.last!.startDate))/3600, forKey: dataType.sleepingHours.rawValue)
         
         if(firstUploads[dataType.sleepingHours]!){
             for s in new {
+                let sleptHours : Double = (s.endDate.timeIntervalSince(s.startDate))/3600
                 StorageManager.sharedInstance.addData(entityName: "Data", type: dataType.sleepingHours.rawValue, timestamp: getTimestamp(sample: s), value: sleptHours)
             }
             firstUploads.updateValue(false, forKey: dataType.sleepingHours)
         }
         else{
+            let sample = new.last!
+            let sleepType = (sample.value == HKCategoryValueSleepAnalysis.inBed.rawValue) ? "InBed" : "Asleep"
+            let timestamp = getTimestamp(sample: sample)
+            let sleptHours: Double = (sample.endDate.timeIntervalSince(sample.startDate))/3600
+            print(sleptHours)
+            
+            print (timestamp) //print date-time
+            print("hours \(sleepType) = \(sleptHours)")
+            
             StorageManager.sharedInstance.addData(entityName: "Data", type: dataType.sleepingHours.rawValue, timestamp: timestamp, value: sleptHours)
         }
         
     }
     
     func handleStandingHours(new: [HKCategorySample], deleted:[HKDeletedObject]) {
-        //
+        if(new.count==0){
+            return
+        }
+    self.currentValues.updateValue((new.last!.endDate.timeIntervalSince(new.last!.startDate))/3600, forKey: dataType.standingHours.rawValue)
+        
+        if(firstUploads[dataType.sleepingHours]!){
+            for s in new {
+                let standingHours: Double = (s.endDate.timeIntervalSince(s.startDate))/3600
+                StorageManager.sharedInstance.addData(entityName: "Data", type: dataType.sleepingHours.rawValue, timestamp: getTimestamp(sample: s), value: standingHours)
+            }
+            firstUploads.updateValue(false, forKey: dataType.sleepingHours)
+        }
+        else{
+            let sample = new.last!
+            let timestamp = getTimestamp(sample: sample)
+            let standingHours: Double = (sample.endDate.timeIntervalSince(sample.startDate))/3600
+            print(standingHours)
+            
+            StorageManager.sharedInstance.addData(entityName: "Data", type: dataType.sleepingHours.rawValue, timestamp: timestamp, value: standingHours)
+        }
     }
     
     func getTimestamp(sample: HKSample)-> String{
@@ -300,6 +339,8 @@ class DataManager {
         
         print(timestamp)
         print("last sample = \(String(describing: sample.quantity))")
+        
+        self.currentValues.updateValue(new.last!.quantity.doubleValue(for: unit), forKey: dataType.rawValue)
         
         if(firstUploads[dataType]!){
             for s in new {
@@ -323,6 +364,13 @@ class DataManager {
         var systolic: HKQuantitySample?
         var dTimestamp: String?
         var sTimestamp: String?
+        
+        let correlation = new.last
+        diastolic = correlation!.objects(for: HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.bloodPressureDiastolic)!).first as? HKQuantitySample
+        systolic = correlation!.objects(for: HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.bloodPressureSystolic)!).first as? HKQuantitySample
+        self.currentValues.updateValue((systolic?.quantity.doubleValue(for: HKUnit.millimeterOfMercury()))!, forKey: dataType.systolic_pressure.rawValue)
+        self.currentValues.updateValue((diastolic?.quantity.doubleValue(for: HKUnit.millimeterOfMercury()))!, forKey: dataType.diastolic_pressure.rawValue)
+
         
         if(firstUploads[dataType.bloodPressure]!){
             for correlation in new{

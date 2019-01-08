@@ -16,7 +16,8 @@ class CurrentBarChartViewController: UIViewController {
     @IBOutlet weak var barChartCurrentValues: BarChartView!
     
     var dataTypesToShow: [String] = [ dataType.activeEnergyBurned.rawValue,
-                                      dataType.bloodPressure.rawValue,
+                                      dataType.diastolic_pressure.rawValue,
+                                      dataType.systolic_pressure.rawValue,
                                       dataType.distanceWalkingRunning.rawValue,
                                       dataType.heartrate.rawValue,
                                       dataType.height.rawValue,
@@ -24,6 +25,19 @@ class CurrentBarChartViewController: UIViewController {
                                       dataType.standingHours.rawValue,
                                       dataType.steps.rawValue,
                                       dataType.weight.rawValue]
+    
+    var currentValues: [String: Double] = [
+        dataType.activeEnergyBurned.rawValue : 0,
+        dataType.diastolic_pressure.rawValue : 0,
+        dataType.systolic_pressure.rawValue : 0,
+        dataType.distanceWalkingRunning.rawValue : 0,
+        dataType.heartrate.rawValue : 0,
+        dataType.height.rawValue : 0,
+        dataType.sleepingHours.rawValue : 0,
+        dataType.standingHours.rawValue : 0,
+        dataType.steps.rawValue : 0,
+        dataType.weight.rawValue : 0,
+    ]
     
     weak var axisFormatDelegate: IAxisValueFormatter?
     
@@ -33,9 +47,23 @@ class CurrentBarChartViewController: UIViewController {
         super.viewDidLoad()
         
         axisFormatDelegate = (self as IAxisValueFormatter)
+
         
-        setCurrentValuesChart(dataEntryX: dataTypesToShow, dataEntryY: self.loadCurrentValues() )
+        for dataType in self.dataTypesToShow {
+            let current: Double = DataManager.sharedInstance.currentValues[dataType]!
+            self.currentValues.updateValue(current, forKey: dataType)
+        }
+                
+        setCurrentValuesChart(dataEntryX: dataTypesToShow, dataEntryY: self.currentValues.map({$0.value}) )
         
+    }
+    
+    
+    @IBAction func reloadChart(_ sender: Any) {
+        self.barChartCurrentValues.clearValues()
+        loadData()
+        self.barChartCurrentValues.notifyDataSetChanged()
+        setCurrentValuesChart(dataEntryX: dataTypesToShow, dataEntryY: self.currentValues.map({$0.value}) )
     }
     
     func setCurrentValuesChart(dataEntryX forX:[String],dataEntryY: [Double]) {
@@ -54,6 +82,7 @@ class CurrentBarChartViewController: UIViewController {
         let chartData = BarChartData(dataSet: chartDataSet)
         barChartCurrentValues.data = chartData
         
+        
         barChartCurrentValues.drawGridBackgroundEnabled = false
         barChartCurrentValues.drawBarShadowEnabled = false
         barChartCurrentValues.drawBordersEnabled = false
@@ -67,26 +96,31 @@ class CurrentBarChartViewController: UIViewController {
         barChartCurrentValues.xAxis.granularity = 1.0
         barChartCurrentValues.xAxis.labelPosition = .bottom
         
+        barChartCurrentValues.xAxis.setLabelCount(10, force: true)
+        
         barChartCurrentValues.xAxis.labelRotationAngle = -45.0
         
     }
     
     /*Load current values of each dataType to show*/
-    func loadCurrentValues() -> [Double] {
-        var result: [Double] = []
-        for dataType in self.dataTypesToShow {
-            let current: Double? = StorageManager.sharedInstance.getLastDataValue(ofType: dataType)
-            result.append(current ?? 0)
+    func loadData(){
+        
+        for dataType in dataTypesToShow {
+            let current: Double = DataManager.sharedInstance.currentValues[dataType]!
+            self.currentValues.updateValue(current, forKey: dataType)
         }
-        return result
     }
+    
+    
     
 }
 
 extension CurrentBarChartViewController: IAxisValueFormatter {
     
     func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-        return dataTypesToShow[Int(value)]
+      return dataTypesToShow[Int(value)]
     }
+    
+    
 }
 

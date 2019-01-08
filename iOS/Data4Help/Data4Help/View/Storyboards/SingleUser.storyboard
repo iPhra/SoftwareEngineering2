@@ -232,16 +232,16 @@
             </objects>
             <point key="canvasLocation" x="293.60000000000002" y="-180.29556650246306"/>
         </scene>
-        <!--bubbleChartView-->
+        <!--BubbleChartViewController-->
         <scene sceneID="WXg-b6-dPN">
             <objects>
-                <viewController storyboardIdentifier="bubbleChartView" id="4j9-pm-Rf3" userLabel="bubbleChartView" customClass="BubbleChartViewController" customModule="Data4Help" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BubbleChartViewController" id="4j9-pm-Rf3" userLabel="BubbleChartViewController" customClass="BubbleChartViewController" customModule="Data4Help" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tS7-dH-zMo">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="311"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RT8-sd-2bN" customClass="BubbleChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="315"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -255,7 +255,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3no-tm-2u2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1087" y="-613"/>
+            <point key="canvasLocation" x="1447.8260869565217" y="-749.33035714285711"/>
         </scene>
         <!--MyHealth-->
         <scene sceneID="D8k-Wn-NRW">
@@ -275,59 +275,69 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lac-9z-Ocy">
+                                <rect key="frame" x="0.0" y="150" width="600" height="907"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wbf-yv-we6">
+                                        <rect key="frame" x="0.0" y="34" width="600" height="500"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                        <connections>
+                                            <segue destination="RZ8-LU-ULH" kind="embed" id="jPe-hp-ekj"/>
+                                        </connections>
+                                    </containerView>
+                                    <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uow-aV-mAe">
+                                        <rect key="frame" x="0.0" y="580" width="600" height="600"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                        <connections>
+                                            <segue destination="Lzt-GV-Bt2" kind="embed" id="tEB-8C-MbA"/>
+                                        </connections>
+                                    </containerView>
+                                    <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I6r-Nr-LN1">
+                                        <rect key="frame" x="0.0" y="1190" width="600" height="300"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                        <connections>
+                                            <segue destination="4j9-pm-Rf3" kind="embed" id="wIL-kk-mgh"/>
+                                        </connections>
+                                    </containerView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your average values " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uXU-1d-5ED">
+                                        <rect key="frame" x="29" y="8" width="168" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <color key="textColor" red="0.92246448989999996" green="0.40818893909999998" blue="0.39214158059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your current values " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GCy-w2-U6f">
+                                        <rect key="frame" x="29" y="551" width="163" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <color key="textColor" red="0.92246448989999996" green="0.40818893909999998" blue="0.39214158059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </scrollView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AutomatedSOS ON" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5kY-As-wTW">
-                                <rect key="frame" x="50" y="115" width="147" height="20.5"/>
+                                <rect key="frame" x="29" y="115" width="147" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="IsF-nH-4HZ">
-                                <rect key="frame" x="285" y="115" width="51" height="31"/>
+                                <rect key="frame" x="276" y="115" width="51" height="31"/>
                                 <color key="tintColor" red="0.92246448989999996" green="0.40818893909999998" blue="0.39214158059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="onTintColor" red="0.92246448989999996" green="0.40818893909999998" blue="0.39214158059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="toggleAutomatedSOSON:" destination="KyL-8m-lQ7" eventType="valueChanged" id="CMw-5M-Dgt"/>
                                 </connections>
                             </switch>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aZ4-MD-0gb">
-                                <rect key="frame" x="1" y="175" width="413" height="1153"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="MgX-Wr-An0">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1169"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <subviews>
-                                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DHB-zj-47w">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="435"/>
-                                                <connections>
-                                                    <segue destination="RZ8-LU-ULH" kind="embed" id="XQN-qZ-01B"/>
-                                                </connections>
-                                            </containerView>
-                                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PKt-ES-zOA">
-                                                <rect key="frame" x="0.0" y="435" width="414" height="423"/>
-                                                <connections>
-                                                    <segue destination="Lzt-GV-Bt2" kind="embed" id="TgA-xN-qx1"/>
-                                                </connections>
-                                            </containerView>
-                                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I98-t1-k5n">
-                                                <rect key="frame" x="0.0" y="858" width="414" height="311"/>
-                                                <connections>
-                                                    <segue destination="4j9-pm-Rf3" kind="embed" id="0v9-9J-AYg"/>
-                                                </connections>
-                                            </containerView>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="pXx-0z-B40" firstAttribute="top" secondItem="wx1-9H-eSs" secondAttribute="top" id="0Yj-jd-XmP"/>
                             <constraint firstItem="pXx-0z-B40" firstAttribute="leading" secondItem="GYN-rv-tIy" secondAttribute="leading" id="OJg-Ux-qRV"/>
-                            <constraint firstItem="DHB-zj-47w" firstAttribute="top" secondItem="pXx-0z-B40" secondAttribute="bottom" constant="87" id="OLm-Yi-cfh"/>
-                            <constraint firstItem="IsF-nH-4HZ" firstAttribute="leading" secondItem="5kY-As-wTW" secondAttribute="trailing" constant="88" id="SP3-l2-fvo"/>
+                            <constraint firstItem="IsF-nH-4HZ" firstAttribute="leading" secondItem="5kY-As-wTW" secondAttribute="trailing" constant="100" id="SP3-l2-fvo"/>
                             <constraint firstItem="5kY-As-wTW" firstAttribute="top" secondItem="pXx-0z-B40" secondAttribute="bottom" constant="27" id="g3b-5U-zRt"/>
-                            <constraint firstItem="5kY-As-wTW" firstAttribute="leading" secondItem="wx1-9H-eSs" secondAttribute="leading" constant="50" id="gQP-NY-iub"/>
+                            <constraint firstItem="5kY-As-wTW" firstAttribute="leading" secondItem="wx1-9H-eSs" secondAttribute="leading" constant="29" id="gQP-NY-iub"/>
                             <constraint firstAttribute="trailing" secondItem="pXx-0z-B40" secondAttribute="trailing" id="kQ4-uo-OfI"/>
                             <constraint firstItem="5kY-As-wTW" firstAttribute="top" secondItem="IsF-nH-4HZ" secondAttribute="top" id="rsn-iH-wuV"/>
                         </constraints>
@@ -336,7 +346,7 @@
                     <tabBarItem key="tabBarItem" title="MyHealth" image="MyHealth" selectedImage="MyHealth" id="Nu6-bn-woq"/>
                     <connections>
                         <outlet property="automatedSOSSwitch" destination="IsF-nH-4HZ" id="it2-cZ-aAO"/>
-                        <outlet property="scrollView" destination="aZ4-MD-0gb" id="Vkh-Fj-ncC"/>
+                        <outlet property="scrollView" destination="Lac-9z-Ocy" id="3xA-1Y-v1q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kH2-PR-gLo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -348,13 +358,17 @@
             <objects>
                 <viewController storyboardIdentifier="AverageBarChartViewController" id="RZ8-LU-ULH" userLabel="AverageBarChartViewController" customClass="AverageBarChartViewController" customModule="Data4Help" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LFx-kY-3SP">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="435"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l8t-3T-97M" customClass="BarChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="458"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="9qp-Y6-ual" appends="YES" id="BlT-Rs-cma"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -365,21 +379,30 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qc7-ie-MlP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="9qp-Y6-ual">
+                    <connections>
+                        <action selector="reloadData:" destination="RZ8-LU-ULH" id="mx2-fV-eXC"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1086" y="-1365"/>
+            <point key="canvasLocation" x="1482.608695652174" y="-1534.1517857142856"/>
         </scene>
-        <!--barChartCurrentValues-->
+        <!--CurrentBarChartViewController-->
         <scene sceneID="frp-NP-hTt">
             <objects>
-                <viewController storyboardIdentifier="barChartCurrentValues" id="Lzt-GV-Bt2" userLabel="barChartCurrentValues" customClass="CurrentBarChartViewController" customModule="Data4Help" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CurrentBarChartViewController" id="Lzt-GV-Bt2" userLabel="CurrentBarChartViewController" customClass="CurrentBarChartViewController" customModule="Data4Help" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aLq-Tc-x7I">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="423"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jRB-Ms-bzb" customClass="BarChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="448"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="550"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Vdj-cT-NdK" appends="YES" id="Ggl-70-Qkj"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -390,8 +413,13 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I6Y-Qp-tZx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Vdj-cT-NdK">
+                    <connections>
+                        <action selector="reloadChart:" destination="Lzt-GV-Bt2" id="wq3-3E-2yV"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1079" y="-952"/>
+            <point key="canvasLocation" x="1482.608695652174" y="-1071.4285714285713"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Bit-M5-0GS">

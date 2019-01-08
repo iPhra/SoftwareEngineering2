@@ -36,21 +36,19 @@ class AverageBarChartViewController: UIViewController {
                 let statistics: [D4HStatistic] = myres.statistics
                 for s in statistics {
                     if(s.observations.count>0){
-                        //if let myValue = StorageManager.sharedInstance.getLastDataValue(ofType: "\(s.type.rawValue)"){
                         self.xvals.append(s.type.rawValue)
                         self.othersAverageBPM.append((s.others.first?.avg)!)
-                        //self.myAverageBPM.append(myValue)
                         self.myAverageBPM.append((s.observations.first?.avg)!)
-                        // }
                     }                    
                 }
+                self.setChart(dataEntryX: self.xvals, firstDataEntryY: self.myAverageBPM, secondDataEntryY: self.othersAverageBPM)
             }
             else if let error = error {
                 print(error)
             }
         }
+        self.setChart(dataEntryX: self.xvals, firstDataEntryY: self.myAverageBPM, secondDataEntryY: self.othersAverageBPM)
         
-        setChart(dataEntryX: xvals, firstDataEntryY: myAverageBPM, secondDataEntryY: othersAverageBPM)
     }
     
     func setChart(dataEntryX forX:[String],firstDataEntryY: [Double], secondDataEntryY: [Double]) {
@@ -74,22 +72,54 @@ class AverageBarChartViewController: UIViewController {
         barChartView.drawGridBackgroundEnabled = false
         barChartView.drawBarShadowEnabled = false
         barChartView.drawBordersEnabled = false
-        
+                
         barChartView.leftAxis.enabled = false
         barChartView.rightAxis.enabled = false
-        
+ 
         let xAxisValue = barChartView.xAxis
         xAxisValue.valueFormatter = axisFormatDelegate
         barChartView.xAxis.granularityEnabled = true
         barChartView.xAxis.granularity = 1.0
         barChartView.xAxis.labelPosition = .bottom
         
+        barChartView.xAxis.setLabelCount(10, force: true)
+        
+        barChartView.xAxis.labelRotationAngle = -45.0
+        
     }
+    
+    func loadData(){
+        NetworkManager.sharedInstance.sendPostRequest(input: D4HStatisticsRequest(types: DataManager.sharedInstance.dataTypesToRead), endpoint: D4HEndpoint.statistics, headers: Properties.auth()) { (response, error) in
+            if response != nil {
+                let myres: D4HStatisticsResponse = D4HStatisticsResponse(fromJson: response!)
+                let statistics: [D4HStatistic] = myres.statistics
+                for s in statistics {
+                    if(s.observations.count>0){
+                        self.xvals.append(s.type.rawValue)
+                        self.othersAverageBPM.append((s.others.first?.avg)!)
+                        self.myAverageBPM.append((s.observations.first?.avg)!)
+                    }
+                }
+                self.setChart(dataEntryX: self.xvals, firstDataEntryY: self.myAverageBPM, secondDataEntryY: self.othersAverageBPM)
+            }
+            else if let error = error {
+                print(error)
+            }
+        }
+        self.setChart(dataEntryX: self.xvals, firstDataEntryY: self.myAverageBPM, secondDataEntryY: self.othersAverageBPM)
+    }
+    
+    @IBAction func reloadData(_ sender: Any) {
+        self.barChartView.clearValues()
+        loadData()
+        self.barChartView.notifyDataSetChanged()
+        self.setChart(dataEntryX: self.xvals, firstDataEntryY: self.myAverageBPM, secondDataEntryY: self.othersAverageBPM)
+    }
+    
 
 }
 
 extension AverageBarChartViewController: IAxisValueFormatter {
-    
     func stringForValue(_ value: Double, axis: AxisBase?) -> String {
         return xvals[Int(value)]
     }
