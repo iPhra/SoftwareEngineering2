@@ -49,8 +49,8 @@ router.post('/upload', authenticator(), async (req, res) => {
 });
 
 
-//get statistics of a PrivateUser
-router.post('/stats', authenticator(), async (req, res) => {
+//get statistics of a PrivateUser to be compared with others
+router.post('/stats/avg', authenticator(), async (req, res) => {
     let userID = req.body.userid;
 
     //if he's not logged in or he's not a PrivateUser
@@ -96,6 +96,51 @@ router.post('/stats', authenticator(), async (req, res) => {
         }
 
         obj["others"] = rows.rows;
+
+        //append observation to the response
+        response.push(obj)
+    }
+
+    res.status(200).send({
+        data : response
+    })
+});
+
+
+//get statistics of a PrivateUser relative to minmax values
+router.post('/stats/minmax', authenticator(), async (req, res) => {
+    let userID = req.body.userid;
+
+    //if he's not logged in or he's not a PrivateUser
+    if (req.body.usertype!=="PrivateUser")
+        return res.status(401).send({error: "You need to login with a Single User account"});
+
+    //get datapoints from the database
+    let response = [];
+    let obj;
+    let text;
+    let values;
+    let rows;
+
+    for(let i=0; i<req.body.types.length; i++) {
+
+        obj = {type:req.body.types[i]};
+
+        text = "SELECT avg(value) as avg, min(value) as min, max(value) as max, date_part('month', timest) as month, date_part('year', timest) as year " +
+            "FROM userdata WHERE userid=$1 and datatype=$2 " +
+            "GROUP BY date_part('year', timest), date_part('month', timest) " +
+            "ORDER BY date_part('year',timest), date_part('month', timest)";
+        values = [userID, req.body.types[i]];
+        rows = await db.query(text, values);
+
+        //convert each value of avg, min and max from string to float
+        for(let j=0; j<rows.rows.length; j++) {
+            rows.rows[j].avg = parseFloat(rows.rows[j].avg);
+            rows.rows[j].min = parseFloat(rows.rows[j].min);
+            rows.rows[j].max = parseFloat(rows.rows[j].max);
+        }
+
+        obj["observations"] = rows.rows;
 
         //append observation to the response
         response.push(obj)

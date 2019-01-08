@@ -133,7 +133,7 @@ describe('/data', () => {
     });
 
 
-    describe('/data/stats', async () => {
+    describe('/data/stats/avg', async () => {
 
         it('should let a single user retrieve statistics about his imported data', async () => {
             //upload data of the first user
@@ -179,7 +179,7 @@ describe('/data', () => {
                 .set('x-authToken', authToken_pu2);
 
             //retrieve statistics of the first user
-            const res = await request(server).post('/data/stats').send({
+            const res = await request(server).post('/data/stats/avg').send({
                 "types" : ["heartrate", "sleepinghours"]
             })
                 .set('Content-Type', 'application/json')
@@ -215,6 +215,53 @@ describe('/data', () => {
 
             //only user in the db with sleepinghours, so the global average matches his average
             expect(res.body.data[1]["others"]).toMatchObject(res.body.data[1]["observations"]);
+        });
+    });
+
+
+    describe('/data/stats/minmax', async () => {
+
+        it('should let a single user retrieve statistics about his imported data', async () => {
+            //upload data of the first user
+            await request(server).post('/data/upload').send({
+                "types" : ["heartrate","sleepinghours"],
+                "values" : [[98, 7, 96], [8, 6]],
+                "timestamps" : [["2008-12-22 08:26:12", "2013-02-03", "2008-12-21"], ["2019-12-22 08:26:11", "2019-12-22 08:24:11"]]
+            })
+                .set('Content-Type', 'application/json')
+                .set('Accept', 'application/json')
+                .set('x-authToken', authToken_pu);
+
+            //retrieve statistics of the first user
+            const res = await request(server).post('/data/stats/minmax').send({
+                "types" : ["heartrate", "sleepinghours"]
+            })
+                .set('Content-Type', 'application/json')
+                .set('Accept', 'application/json')
+                .set('x-authToken', authToken_pu);
+
+
+            expect(res.status).toBe(200);
+
+            expect(res.body.data[0]["type"]).toEqual("heartrate");
+            expect(res.body.data[0]["observations"][0].avg).toBe(97);
+            expect(res.body.data[0]["observations"][0].min).toBe(96);
+            expect(res.body.data[0]["observations"][0].max).toBe(98);
+            expect(res.body.data[0]["observations"][0].month).toBe(12);
+            expect(res.body.data[0]["observations"][0].year).toBe(2008);
+
+            expect(res.body.data[0]["observations"][1].avg).toBe(7);
+            expect(res.body.data[0]["observations"][1].min).toBe(7);
+            expect(res.body.data[0]["observations"][1].max).toBe(7);
+            expect(res.body.data[0]["observations"][1].month).toBe(2);
+            expect(res.body.data[0]["observations"][1].year).toBe(2013);
+
+            expect(res.body.data[1]["type"]).toEqual("sleepinghours");
+            expect(res.body.data[1]["observations"][0].avg).toBe(7);
+            expect(res.body.data[1]["observations"][0].min).toBe(6);
+            expect(res.body.data[1]["observations"][0].max).toBe(8);
+            expect(res.body.data[1]["observations"][0].month).toBe(12);
+            expect(res.body.data[1]["observations"][0].year).toBe(2019);
         });
     });
 
