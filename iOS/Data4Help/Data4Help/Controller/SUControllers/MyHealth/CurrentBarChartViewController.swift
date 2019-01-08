@@ -96,6 +96,8 @@ class CurrentBarChartViewController: UIViewController {
         barChartCurrentValues.xAxis.granularity = 1.0
         barChartCurrentValues.xAxis.labelPosition = .bottom
         
+        barChartCurrentValues.xAxis.setLabelCount(10, force: true)
+        
         barChartCurrentValues.xAxis.labelRotationAngle = -45.0
         
     }

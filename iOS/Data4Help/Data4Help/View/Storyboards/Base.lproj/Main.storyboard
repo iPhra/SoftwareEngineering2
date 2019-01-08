@@ -550,11 +550,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Hospital" width="33" height="33"/>
-        <image name="Logo" width="1414" height="956"/>
-        <image name="One" width="42" height="42"/>
-        <image name="Two" width="42" height="42"/>
-        <image name="User" width="33" height="33"/>
+        <image name="Hospital" width="180" height="180"/>
+        <image name="Logo" width="679" height="459.1199951171875"/>
+        <image name="One" width="96" height="96"/>
+        <image name="Two" width="96" height="96"/>
+        <image name="User" width="180" height="180"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="SE2-hx-oPf"/>

@@ -72,7 +72,7 @@ class AverageBarChartViewController: UIViewController {
         barChartView.drawGridBackgroundEnabled = false
         barChartView.drawBarShadowEnabled = false
         barChartView.drawBordersEnabled = false
-        
+                
         barChartView.leftAxis.enabled = false
         barChartView.rightAxis.enabled = false
  
@@ -81,6 +81,8 @@ class AverageBarChartViewController: UIViewController {
         barChartView.xAxis.granularityEnabled = true
         barChartView.xAxis.granularity = 1.0
         barChartView.xAxis.labelPosition = .bottom
+        
+        barChartView.xAxis.setLabelCount(10, force: true)
         
         barChartView.xAxis.labelRotationAngle = -45.0
         
