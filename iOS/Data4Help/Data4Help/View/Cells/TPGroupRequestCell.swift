@@ -18,6 +18,7 @@ class TPGroupRequestCell: UITableViewCell {
     @IBOutlet weak var subscriptionToggle: UISwitch!
     @IBOutlet weak var subscriptionLabel: UILabel!
     @IBOutlet weak var downloadButton: UIButton!
+    @IBOutlet weak var filtersLabel: UILabel!
     
     
     //Mark: properties
@@ -26,6 +27,7 @@ class TPGroupRequestCell: UITableViewCell {
     var expired: Bool = false
     var reqid: String = ""
     var filters: [D4HHealthParameter]? = nil
+    var filtersToSet: String?
     
     weak var delegate: RequestCellDelegate?
     
@@ -60,7 +62,8 @@ class TPGroupRequestCell: UITableViewCell {
         }
         
         self.filters = filters
-        
+        initFilters(healthparameters: self.filters ?? [])
+        self.filtersLabel.text = filtersToSet
         self.datatypesLabel.text = t
         self.dateLabel.text = date
     }
@@ -96,6 +99,16 @@ class TPGroupRequestCell: UITableViewCell {
                 print(error)
             }
         }*/
+    }
+    
+    func initFilters(healthparameters: [D4HHealthParameter]){
+        filtersToSet = ""
+        for p in healthparameters {
+            filtersToSet?.append(p.datatype.rawValue)
+            filtersToSet?.append(": ")
+            filtersToSet?.append("min: \(p.lowerbound), max: \(p.upperbound)")
+            filtersToSet?.append("\n")
+        }
     }
     
 }
