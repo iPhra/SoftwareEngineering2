@@ -38,5 +38,5 @@ enum D4HEndpoint: String {
     // Data
     
     case uploadData = "/data/upload"
-    case statistics = "/data/stats"
+    case statistics = "/data/stats/avg"
 }

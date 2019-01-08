@@ -19,6 +19,8 @@ class AverageBarChartViewController: UIViewController {
     
     var myAverageBPM : [Double] = []
     
+    var countLabels : Int = 0
+    
     weak var axisFormatDelegate: IAxisValueFormatter?
 
     @IBOutlet weak var barChartView: BarChartView!
@@ -34,13 +36,16 @@ class AverageBarChartViewController: UIViewController {
             if response != nil {
                 let myres: D4HStatisticsResponse = D4HStatisticsResponse(fromJson: response!)
                 let statistics: [D4HStatistic] = myres.statistics
+                var count : Int = 0
                 for s in statistics {
                     if(s.observations.count>0){
+                        count += 1
                         self.xvals.append(s.type.rawValue)
                         self.othersAverageBPM.append((s.others.first?.avg)!)
                         self.myAverageBPM.append((s.observations.first?.avg)!)
                     }                    
                 }
+                self.countLabels = count
                 self.setChart(dataEntryX: self.xvals, firstDataEntryY: self.myAverageBPM, secondDataEntryY: self.othersAverageBPM)
             }
             else if let error = error {
@@ -82,7 +87,7 @@ class AverageBarChartViewController: UIViewController {
         barChartView.xAxis.granularity = 1.0
         barChartView.xAxis.labelPosition = .bottom
         
-        barChartView.xAxis.setLabelCount(10, force: true)
+        barChartView.xAxis.setLabelCount(self.countLabels, force: true)
         
         barChartView.xAxis.labelRotationAngle = -45.0
         
