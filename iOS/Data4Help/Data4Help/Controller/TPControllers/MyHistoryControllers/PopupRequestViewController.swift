@@ -10,9 +10,10 @@ import UIKit
 
 class PopupRequestViewController: UIViewController {
     
+    // MARK: Properties
+    
     @IBOutlet weak var requestTitle: UILabel!
     var titleToSet: String?
-    
     
     @IBOutlet weak var dateLabel: UILabel!
     var dateToSet: String?
@@ -23,16 +24,16 @@ class PopupRequestViewController: UIViewController {
     @IBOutlet weak var subscribingLabel: UILabel!
     var subscribing: String?
     
-    
     @IBOutlet weak var durationLabel: UILabel!
     var durationToSet: String?
     
     @IBOutlet weak var expiredLabel: UILabel!
     var expired: String?
     
+    @IBOutlet weak var filtersLabel: UILabel!
     var filtersToSet: String?
     
-    @IBOutlet weak var filtersLabel: UILabel!
+    // MARK: Functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +44,9 @@ class PopupRequestViewController: UIViewController {
         self.durationLabel!.text = durationToSet ?? "0"
         self.expiredLabel!.text = expired ?? "No"
         self.filtersLabel!.text = filtersToSet ?? "No filters"
+        
+        self.datatypesLabel.sizeToFit()
+        self.filtersLabel.sizeToFit()
     }
     
     func initPopup(title: String?, datatypes: String?, subscribing: Bool, date: String?, duration: Float?, expired: Bool){

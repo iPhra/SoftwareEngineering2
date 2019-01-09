@@ -54,7 +54,12 @@ class TPRequestCell: UITableViewCell {
         var t: String = ""
         for type in types{
             t.append(type.rawValue)
+            t.append(", ")
         }
+        
+        t.dropLast() //delete last space
+        t.dropLast() //delete last comma
+        
         self.dataTypesLabel.text = t
         self.dateLabel.text = date
     }

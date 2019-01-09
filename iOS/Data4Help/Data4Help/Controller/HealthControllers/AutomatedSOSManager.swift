@@ -38,6 +38,8 @@ class BloodPressure {
 
 class AutomatedSOSManager {
     
+    // MARK: Properties
+    
     let bloodPressureUpperBound: BloodPressure = BloodPressure(systolic: 140.0,diastolyc: 90.0) //STAGE 2 HYPERTENSION NYHA
     let bloodPressureLowerBound: BloodPressure = BloodPressure(systolic: 90.0,diastolyc: 60.0) //HYPOTENSION NYHA
     let heartRateUpperBound: Double = 150.0
@@ -47,6 +49,8 @@ class AutomatedSOSManager {
     var lastHeartRateSampleTimestamp:String?
     var lastBloodPressureSample:BloodPressure?
     var lastBloodPressureTimestamp:String?
+    
+    // MARK: Functions
     
     func callAmbulance(){
         if let url = URL(string: "tel://\(112)"), UIApplication.shared.canOpenURL(url) {
