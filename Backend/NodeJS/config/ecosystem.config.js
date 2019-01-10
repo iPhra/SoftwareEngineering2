@@ -2,7 +2,7 @@ module.exports = {
   apps : [
       {
         name: "Data4Help",
-        script: "./bin/www.js",
+        script: "../bin/www.js",
         watch: true,
         env: {
             "PORT": 3000,
