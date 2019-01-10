@@ -88,11 +88,11 @@ class BubbleChartViewController: UIViewController {
         
         if(dataPoints.count > 0){
             
-            let chartData1 = BubbleChartDataSet(values: dataEntries1,label: dataPoints[0] )
+            let chartData1 = BubbleChartDataSet(values: dataEntries1,label: "min" )
             
-            let chartData2 = BubbleChartDataSet(values: dataEntries2,label: dataPoints[1] )
+            let chartData2 = BubbleChartDataSet(values: dataEntries2,label: "avg" )
             
-            let chartData3 = BubbleChartDataSet(values: dataEntries3,label: dataPoints[2] )
+            let chartData3 = BubbleChartDataSet(values: dataEntries3,label: "max" )
             
             chartData1.colors =  [UIColor(red: 33/255, green: 150/255, blue: 254/255, alpha: 1)]
             chartData2.colors =  [UIColor(red: 62/255, green: 89/255, blue: 254/255, alpha: 1)]

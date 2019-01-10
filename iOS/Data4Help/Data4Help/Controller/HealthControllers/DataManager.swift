@@ -433,7 +433,7 @@ class DataManager {
                 }
                 
                 // send new data each hour
-                sleep(20)
+                sleep(3600)
             }
         }
     }

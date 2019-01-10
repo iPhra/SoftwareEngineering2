@@ -37,12 +37,13 @@ class LoginViewController: UIViewController {
         
         // END DEBUGGING CALLS
         
+        /*
         // Attempt to automatically login
         Properties.getNameAndAddress()
         if (Properties.password != "" && Properties.username != "") {
             print("Sending automatic login request")
             login(email: Properties.username, password: Properties.password)
-        }
+        }*/
     }
     
     // MARK: Actions
@@ -53,7 +54,7 @@ class LoginViewController: UIViewController {
         }
         
         // Save persistently user credentials
-        Properties.saveUserandPass(user: usernameTextField.text!, pass: passwordTextField.text!)
+        //Properties.saveUserandPass(user: usernameTextField.text!, pass: passwordTextField.text!)
         
         login(email: usernameTextField.text!, password: passwordTextField.text!)
     }
@@ -84,6 +85,8 @@ class LoginViewController: UIViewController {
                 print(Properties.authToken)
                 // Perform segue either to Single user or Third Party interface
                 if myres.userType == "PrivateUser" {
+                    AppDelegate.shared.firstImport()
+                    self.configureDynamicShortcutItem()
                     self.performSegue(withIdentifier: "GoToSingleUser", sender: self)
                 } else {
                     self.performSegue(withIdentifier: "GoToThirdParty", sender: self)
