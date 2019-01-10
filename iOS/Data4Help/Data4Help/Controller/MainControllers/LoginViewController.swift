@@ -21,7 +21,6 @@ class LoginViewController: UIViewController {
         
         // Hide keyboard when tap out
         self.hideKeyboardWhenTappedAround()
-        // Do any additional setup after loading the view, typically from a nib.
         
         //Delete any shortcut that has not been properly deleted
         AppDelegate.deleteAllQuickShortcuts()
@@ -35,19 +34,47 @@ class LoginViewController: UIViewController {
         
         let swipe = UISwipeGestureRecognizer(target: self, action: #selector(swiped))
         view.addGestureRecognizer(swipe)
+        
+        // END DEBUGGING CALLS
+        
+        // Attempt to automatically login
+        Properties.getNameAndAddress()
+        if (Properties.password != "" && Properties.username != "") {
+            print("Sending automatic login request")
+            login(email: Properties.username, password: Properties.password)
+        }
     }
     
     // MARK: Actions
+    
     @IBAction func loginUser(_ sender: UIButton) {
         guard  usernameTextField.text != nil && passwordTextField.text != nil else {
             return
         }
         
+        // Save persistently user credentials
+        Properties.saveUserandPass(user: usernameTextField.text!, pass: passwordTextField.text!)
+        
+        login(email: usernameTextField.text!, password: passwordTextField.text!)
+    }
+    
+    func configureDynamicShortcutItem() {
+        let type = "com.lorenzomolteninegri.Data4Help.automatedSOS"
+        let shortcutItem = UIApplicationShortcutItem.init(type: type, localizedTitle: "Enable AutomatedSOS", localizedSubtitle: nil, icon: UIApplicationShortcutIcon.init(type: UIApplicationShortcutIcon.IconType.love), userInfo:nil)
+        
+        UIApplication.shared.shortcutItems = [shortcutItem]
+    }
+    
+    
+    // MARK: Private implementation
+    
+    private func login(email: String, password: String) {
+        
         print("Sending login request")
         
         //send request through Network Manager with login details
         print(D4HEndpoint.login)
-        NetworkManager.sharedInstance.sendPostRequest(input: D4HLoginRequest(email: usernameTextField.text!, password: passwordTextField.text!), endpoint: D4HEndpoint.login, headers: nil) { (response, error) in
+        NetworkManager.sharedInstance.sendPostRequest(input: D4HLoginRequest(email: email, password: password), endpoint: D4HEndpoint.login, headers: nil) { (response, error) in
             if response != nil {
                 let myres = D4HLoginResponse(fromJson: response!)
                 print(myres.message)
@@ -57,8 +84,6 @@ class LoginViewController: UIViewController {
                 print(Properties.authToken)
                 // Perform segue either to Single user or Third Party interface
                 if myres.userType == "PrivateUser" {
-                    self.configureDynamicShortcutItem() //Loads single user quick actions
-                    AppDelegate.shared.firstImport() //Uploads first user data
                     self.performSegue(withIdentifier: "GoToSingleUser", sender: self)
                 } else {
                     self.performSegue(withIdentifier: "GoToThirdParty", sender: self)
@@ -67,19 +92,8 @@ class LoginViewController: UIViewController {
             }
             else if let error = error {
                 print(error)
-                let alert = UIAlertController(title: "Error", message: "The credentials are invald", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
             }
         }
-        
-    }
-    
-    func configureDynamicShortcutItem() {
-        let type = "com.lorenzomolteninegri.Data4Help.automatedSOS"
-        let shortcutItem = UIApplicationShortcutItem.init(type: type, localizedTitle: "Enable AutomatedSOS", localizedSubtitle: nil, icon: UIApplicationShortcutIcon.init(type: UIApplicationShortcutIcon.IconType.love), userInfo:nil)
-        
-        UIApplication.shared.shortcutItems = [shortcutItem]
     }
     
     
@@ -93,30 +107,7 @@ class LoginViewController: UIViewController {
             return
         }
         
-        print("Sending login request")
-        
-        //send request through Network Manager with login details
-        print(D4HEndpoint.login)
-        NetworkManager.sharedInstance.sendPostRequest(input: D4HLoginRequest(email: "gruosso_industries@gmail.com", password: "data4help"), endpoint: D4HEndpoint.login, headers: nil) { (response, error) in
-            if response != nil {
-                let myres = D4HLoginResponse(fromJson: response!)
-                print(myres.message)
-                
-                // Set authToken for the logged user
-                Properties.authToken = myres.authToken
-                print(Properties.authToken)
-                // Perform segue either to Single user or Third Party interface
-                if myres.userType == "PrivateUser" {
-                    self.performSegue(withIdentifier: "GoToSingleUser", sender: self)
-                } else {
-                    self.performSegue(withIdentifier: "GoToThirdParty", sender: self)
-                }
-                
-            }
-            else if let error = error {
-                print(error)
-            }
-        }
+        login(email: "gruosso_industries@gmail.com", password: "data4help")
     }
 
     @objc func swiped() {
@@ -126,30 +117,7 @@ class LoginViewController: UIViewController {
             return
         }
         
-        print("Sending login request")
-        
-        //send request through Network Manager with login details
-        print(D4HEndpoint.login)
-        NetworkManager.sharedInstance.sendPostRequest(input: D4HLoginRequest(email: "moltek96@gmail.com", password: "datahelp"), endpoint: D4HEndpoint.login, headers: nil) { (response, error) in
-            if response != nil {
-                let myres = D4HLoginResponse(fromJson: response!)
-                print(myres.message)
-                
-                // Set authToken for the logged user
-                Properties.authToken = myres.authToken
-                print(Properties.authToken)
-                // Perform segue either to Single user or Third Party interface
-                if myres.userType == "PrivateUser" {
-                    self.performSegue(withIdentifier: "GoToSingleUser", sender: self)
-                } else {
-                    self.performSegue(withIdentifier: "GoToThirdParty", sender: self)
-                }
-                
-            }
-            else if let error = error {
-                print(error)
-            }
-        }
+        login(email: "moltek96@gmail.com", password: "datahelp")
     }
     
 }
