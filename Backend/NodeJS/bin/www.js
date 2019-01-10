@@ -1,4 +1,4 @@
-const app = require('../app');
+const app = require('../routes/app');
 const debug = require('debug')('nodejs:server');
 const http = require('http');
 
