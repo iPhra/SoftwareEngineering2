@@ -77,6 +77,10 @@ class AverageBarChartViewController: UIViewController {
         barChartView.drawGridBackgroundEnabled = false
         barChartView.drawBarShadowEnabled = false
         barChartView.drawBordersEnabled = false
+        
+        barChartView.scaleXEnabled = false
+        barChartView.scaleYEnabled = false
+        barChartView.doubleTapToZoomEnabled = false
                 
         barChartView.leftAxis.enabled = false
         barChartView.rightAxis.enabled = false

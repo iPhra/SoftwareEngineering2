@@ -87,6 +87,10 @@ class CurrentBarChartViewController: UIViewController {
         barChartCurrentValues.drawBarShadowEnabled = false
         barChartCurrentValues.drawBordersEnabled = false
         
+        barChartCurrentValues.scaleXEnabled = false
+        barChartCurrentValues.scaleYEnabled = false
+        barChartCurrentValues.doubleTapToZoomEnabled = false
+        
         barChartCurrentValues.leftAxis.enabled = false
         barChartCurrentValues.rightAxis.enabled = false
         

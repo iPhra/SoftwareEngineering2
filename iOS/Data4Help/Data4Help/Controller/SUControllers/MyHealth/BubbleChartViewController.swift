@@ -112,6 +112,9 @@ class BubbleChartViewController: UIViewController {
         bubbleChartView.xAxis.granularity = 1.0
         bubbleChartView.xAxis.labelPosition = .bottom
         
+        bubbleChartView.scaleXEnabled = false
+        bubbleChartView.scaleYEnabled = false
+        
         bubbleChartView.xAxis.setLabelCount(self.countLabels, force: true)
         bubbleChartView!.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .easeInBounce)
         

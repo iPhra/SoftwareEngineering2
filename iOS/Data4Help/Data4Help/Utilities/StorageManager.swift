@@ -26,6 +26,11 @@ class StorageManager: NSObject {
         
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
+    let privateContext : NSManagedObjectContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+    
+    override init() {
+        privateContext.parent = context
+    }
     
     // Mark: Functions
     
@@ -37,12 +42,13 @@ class StorageManager: NSObject {
         request.returnsObjectsAsFaults = false
  
         do {
-            let result = try context.fetch(request)
-            if (result.count==0) {print("Empty Storage")} //debug
-            for data in result as! [NSManagedObject] {
-                array.append(data)
-            }
-            
+            //context.performAndWait {
+                let result = try privateContext.fetch(request)
+                if (result.count==0) {print("Empty Storage")} //debug
+                for data in result as! [NSManagedObject] {
+                    array.append(data)
+                }
+            //}
         }
         catch {
             print("Failed fetching data")
@@ -89,18 +95,18 @@ class StorageManager: NSObject {
         newData.setValue(timestamp, forKey: "timestamp")
         newData.setValue(value, forKey: "value")
         do {
-            try context.save()
+            try privateContext.save()
         } catch {
             print("Failed saving")
         }
     }
     
     func storeBiologicalSex(biologicalSex: String){
-        let entity = NSEntityDescription.entity(forEntityName: "BiologicalSex", in: context)
-        let newData = NSManagedObject(entity: entity!, insertInto: context)
+        let entity = NSEntityDescription.entity(forEntityName: "BiologicalSex", in: privateContext)
+        let newData = NSManagedObject(entity: entity!, insertInto: privateContext)
         newData.setValue(biologicalSex, forKey: "biologicalSex")
         do {
-            try context.save()
+            try privateContext.save()
         } catch {
             print("Failed saving")
         }
@@ -110,14 +116,14 @@ class StorageManager: NSObject {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "AutomatedSOS")
         request.returnsObjectsAsFaults = false
         do {
-            let results = try context.fetch(request)
+            let results = try privateContext.fetch(request)
             (results[0] as! NSManagedObject).setValue(value, forKey: "enabled")
         } catch {
             print("Failed fetching data")
         }
         
         do {
-            try context.save()
+            try privateContext.save()
         }
         catch {
             print("Saving Core Data Failed: \(error)")
@@ -128,7 +134,7 @@ class StorageManager: NSObject {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "AutomatedSOS")
         request.returnsObjectsAsFaults = false
         do {
-            let result = try context.fetch(request)
+            let result = try privateContext.fetch(request)
             if (result.count>0){
                 let r = result[0] as! NSManagedObject
                 return (r.value(forKey: "enabled")) as! Bool;
@@ -142,18 +148,18 @@ class StorageManager: NSObject {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "AutomatedSOS")
         request.returnsObjectsAsFaults = false
         do {
-            let result = try context.fetch(request)
+            let result = try privateContext.fetch(request)
             if (result.count>0){
                 return;
             }
         } catch {
             //No action
         }
-        let entity = NSEntityDescription.entity(forEntityName: "AutomatedSOS", in: context)
-        let newData = NSManagedObject(entity: entity!, insertInto: context)
+        let entity = NSEntityDescription.entity(forEntityName: "AutomatedSOS", in: privateContext)
+        let newData = NSManagedObject(entity: entity!, insertInto: privateContext)
         newData.setValue(false, forKey: "enabled")
         do {
-            try context.save()
+            try privateContext.save()
         }
         catch {
             print("Saving Core Data Failed: \(error)")
@@ -166,8 +172,8 @@ class StorageManager: NSObject {
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
         
         do {
-            try self.context.execute(deleteRequest)
-            try self.context.save()
+            try self.privateContext.execute(deleteRequest)
+            try self.privateContext.save()
         } catch {
             print ("Could not delete all data")
         }
