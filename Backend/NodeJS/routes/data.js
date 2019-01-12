@@ -19,28 +19,19 @@ router.post('/upload', authenticator(), async (req, res) => {
     let values;
     let rows;
 
-    //throw away already imported observations
+    //import each observation into the database
     for(let i=0; i<req.body.types.length; i++) {
         for(let j=0; j<req.body.values[i].length; j++) {
             text = "SELECT * FROM userdata WHERE userid=$1 and datatype=$2 and timest=$3";
             values = [userID, req.body.types[i], req.body.timestamps[i][j]];
             rows = await db.query(text, values);
 
-            //if present, pop the values from the request
-            if(rows.rowCount>0) {
-                req.body.timestamps[i].splice(j,1);
-                req.body.values[i].splice(j,1);
-                j--;
+            //if not present, i import it
+            if(rows.rowCount===0) {
+                text = "INSERT INTO userdata VALUES($1, $2, $3, $4)";
+                values = [userID, req.body.types[i], req.body.timestamps[i][j], req.body.values[i][j]];
+                await db.query(text, values);
             }
-        }
-    }
-
-    //import each observation into the database
-    for(let i=0; i<req.body.types.length; i++) {
-        for(let j=0; j<req.body.values[i].length; j++) {
-            text = "INSERT INTO userdata VALUES($1, $2, $3, $4)";
-            values = [userID, req.body.types[i], req.body.timestamps[i][j], req.body.values[i][j]];
-            await db.query(text, values);
         }
     }
 
