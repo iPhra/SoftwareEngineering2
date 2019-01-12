@@ -252,7 +252,7 @@ describe('Schemas', () => {
             expect(result.error).not.toBeNull();
         });
 
-        it('Should not validate a wrong array of values', () => {
+        it('Should not validate a wrong array of timestamps', () => {
             delete data.timestamps;
             result = Joi.validate(data, schemas["/data/upload"]);
             expect(result.error).not.toBeNull();

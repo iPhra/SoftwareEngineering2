@@ -77,7 +77,7 @@ describe('/data', () => {
             expect(data.rows[2].value).toBe(8)
         });
 
-        it('should forbid a non logged in user to upload his data settings', async () => {
+        it('should forbid a non logged in user to upload his data', async () => {
             //try to upload data
             const res = await request(server).post('/data/upload').send({
                 "types" : ["heartrate","sleepinghours"],

@@ -417,7 +417,7 @@ describe('/req', () => {
     });
 
 
-    describe('/group/list', () => {
+    describe('/tp/list', () => {
 
         it('should let a third party retrieve the list of its requests', async () => {
             //send first request
