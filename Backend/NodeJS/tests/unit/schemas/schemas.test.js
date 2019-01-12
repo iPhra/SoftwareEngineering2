@@ -100,11 +100,11 @@ describe('Schemas', () => {
             result = Joi.validate(privateuser, schemas["/auth/reg/single"]);
             expect(result.error).not.toBeNull();
 
-            privateuser.birthdate = "16/08/1996"; //not ISO standard
+            privateuser.birthdate = "16-08-1996"; //not ISO standard
             result = Joi.validate(privateuser, schemas["/auth/reg/single"]);
             expect(result.error).not.toBeNull();
 
-            privateuser.birthdate = "1990/02/12"; //ISO standard
+            privateuser.birthdate = "1990-02-12"; //ISO standard
             result = Joi.validate(privateuser, schemas["/auth/reg/single"]);
             expect(result.error).toBeNull();
         });
@@ -192,7 +192,7 @@ describe('Schemas', () => {
     describe('Change private user settings', () => {
 
         it('Should validate a well formed schema', () => {
-            result = Joi.validate({"password":"another password", "full_name":"another name", "birthdate":"2002/12/03"}, schemas["/settings/single/info"]);
+            result = Joi.validate({"password":"another password", "full_name":"another name", "birthdate":"2002-12-03"}, schemas["/settings/single/info"]);
             expect(result.error).toBeNull()
         })
     });
