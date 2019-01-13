@@ -66,21 +66,30 @@ class SURegisterViewController: UIViewController {
         
         let sex = DataManager.sharedInstance.getBiologicalSex()
         
-        //send request throw Network Manager with registration details
-        print(D4HEndpoint.registerSingle)
-        NetworkManager.sharedInstance.sendPostRequest(input: D4HSingleRegisterRequest(email: EmailTextView.text!, password: passwordTextView.text!, FC: cfTextView.text!, fullname: fullnameTextView.text!, birthday: birthdateTextView.text!, sex: sex), endpoint: D4HEndpoint.registerSingle, headers: nil) { (response, error) in
-            if response != nil {
-                let myres = D4HRegisterSingleResponse(fromJson: response!)
-                print(myres.message)
-                self.performSegue(withIdentifier: "LoginFromSU", sender: self)
-            }
-            else if let error = error {
-                print(error)
-                let alert = UIAlertController(title: "Error", message: error, preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+        if(sex != ""){
+            //send request throw Network Manager with registration details
+            print(D4HEndpoint.registerSingle)
+            NetworkManager.sharedInstance.sendPostRequest(input: D4HSingleRegisterRequest(email: EmailTextView.text!, password: passwordTextView.text!, FC: cfTextView.text!, fullname: fullnameTextView.text!, birthday: birthdateTextView.text!, sex: sex), endpoint: D4HEndpoint.registerSingle, headers: nil) { (response, error) in
+                if response != nil {
+                    let myres = D4HRegisterSingleResponse(fromJson: response!)
+                    print(myres.message)
+                    self.performSegue(withIdentifier: "LoginFromSU", sender: self)
+                }
+                else if let error = error {
+                    print(error)
+                    let alert = UIAlertController(title: "Error", message: error, preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
             }
         }
+        else{
+            let alert = UIAlertController(title: "Error", message: "You must add your biological sex in Health app", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+        
     }
     /*
     // MARK: - Navigation
