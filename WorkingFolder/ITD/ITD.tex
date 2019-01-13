@@ -118,15 +118,12 @@
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	%Requirements Implemented
 	\section{Requirements Implemented}
-	\begin{itemize}
-		\item {\bf [R1]} The S2B allows users to create either a {\it Single User} or a {\it Third Party} account. 
-		\item {\bf [R5]} To access the service users must log in with their account credentials.
-	\end{itemize}	
+	
 	
 	\subsection{User Authentication}
 	\begin{itemize}
-		\item R1 The S2B allows users to create either a Single User or a Third Party account.
-		\item R5 To access the service users must log in with their account cre- dentials.
+		\item {\bf [R1]} The S2B allows users to create either a {\it Single User} or a {\it Third Party} account. 
+		\item {\bf [R5]} To access the service users must log in with their account credentials.
 	\end{itemize}
 	
 	{\bf Database} \newline
@@ -154,8 +151,7 @@
 		\item {\bf [R5]} To access the service users must log in with their account credentials.
 		\item {\bf [R35]} The S2B allows organisers to create a {\it Third Party} account using {\it Data4Help}.
 		\item {\bf [R43]} The S2B allows runners to create a {\it Single User} account using {\it Data4Help}.
-	\end{itemize}			
-	
+	\end{itemize} \noindent			
 	{\bf Database} \newline
 	According to the type of account created, all information concerning a user will be stored in either the PrivateUser table or the ThirdPartyUser table. In both tables users are uniquely identified by a userID and an email. Both will be associated with a properly hashed password. The table concerning {\it Single User} data will also store the user\textsc{\char13}s FC, if available, its name, birthday and sex. That concerning {\it Third Parties} instead will store the company\textsc{\char13}s name, P.IVA and description. 
 	Finally, the UserSettings table uniquely concerns {\it Single User} accounts and stores information about which types of health data to import from their device. When imported, all health data concerning a user is stored in the UserData table. Each record is identified by the user\textsc{\char13}s userID, its type, its timestamp and stores the measured value.
@@ -191,7 +187,7 @@
 		\item {\bf [R47]} A user can\textsc{\char13}t accept the request if he doesn\textsc{\char13}t have at least his position available as requestable data type.
 	\end{itemize}	
 	
-	
+	\noindent
 	{\bf Database} \newline
 	When a {\it Third Party} creates a Single Request, all its related information is stored in the SingleRequest table. Each request is uniquely identified by a requestID and specifies its {\it Third Party} sender, {\it Single User} receiver, its status and specification on whether it is a subscription or not. The content of each request must be stored in the RequestContent table. The content includes the request\textsc{\char13}s unique ID and the requested type of health data.
 	Each Single Request addresses a {\it Single User} that is able to accept it or refuse it. The information on the status of the request is stored in the SingleRequest table under the field status that is initially pending and is modified to accepted or refused according to the {\it Single User}\textsc{\char13}s action. The various statuses are described by the requeststatus enumeration.
@@ -221,7 +217,7 @@
 		\item {\bf [R30]} All group requests must specify whether the {\it Third Party} is subscribing to that request of data. 
 		\item {\bf [R31]} Subscriptions to requests can be ended by the {\it Third Party} at any time.
 	\end{itemize}	
-	
+	\noindent
 	{\bf Database} \newline
 	All information concerning group requests created by {\it Third Parties} is stored in the GroupRequest table. This keeps track of all requests identified by a unique requestID and specifying the {\it Third Party} sender, the request status and information concerning the subscription. Furthermore each group request may be associated to one or more tuples in the SearchParameters table. This stores all filters for group requests by associating a requestID to a type of health data, its requested lower and upper bounds.
 	All group requests have initially set the field status to pending. However, once they are evaluated, the field is then set to either accepted or refused according to the evaluation of the filters on users.
@@ -246,7 +242,7 @@
 		\item {\bf [R7]} When the application is open, the S2B continuously import data in background.
 		\item {\bf [R8]} The S2B binds collected data only to the user\textsc{\char13}s account that imported it. 
 	\end{itemize}	
-	
+	\noindent
 	{\bf Database} \newline
 	User related data that is stored persistently belongs to two categories: sensitive data and health data. The first type includes user\textsc{\char13}s FC, email, position and password. These are not filtered by database queries and not available to {\it Third Parties} performing group requests. Furthermore, passwords are hashed in the database to ensure privacy. The second category concerns user\textsc{\char13}s health data that, as mentioned above, is stored persistently in order to provide health monitoring services.
 	\newline
@@ -267,7 +263,7 @@
 		\item {\bf [R15]} The S2B allows {\it Single User}s to visualize their historical data using aggregated statistical operators. 
 		\item {\bf [R16]} The S2B allows {\it Single User}s to visualize their historical data over multiple timespans.
 	\end{itemize}	
-	
+	\noindent
 	{\bf Database} \newline
 	{\it Data4Help}\textsc{\char13}s health monitoring services is provided by storing health data of all its users relating it to its type and time of acquisition. As mentioned above, a {\it Single User}\textsc{\char13}s health data is stored in the UserData table, where each record is identified by the userID, the type of health data, its timestamp and the measured value. The types of health data that can be stored are defined in the datatype enumeration and used all around the schema.
 	\newline
@@ -289,7 +285,7 @@
 		\item {\bf [R33]} {\it AutomatedSOS} can be enabled only if the user grants permission to make emergency phone calls. 
 		\item {\bf [R34]} If {\it AutomatedSOS} is enabled and the {\it System} detects that a user\textsc{\char13}s heart rate is below or above the critical threshold for his age, an ambulance is called. 
 	\end{itemize}
-	
+	\noindent
 	{\bf Database} \newline
 	{\it AutomatedSOS}\textsc{\char13}s functionalities are exclusively implemented in the client application and do not need to store persistent data onto the database.
 	\newline
@@ -1414,7 +1410,7 @@
 	
 	\begin{figure}[H]
 		\center
-		\includegraphics[width=6cm]{GitHub.png}
+		\includegraphics[width=5cm]{GitHub.png}
 		\caption{GitHub contribution}
 		\label{fig:Hist}
 	\end{figure}
