@@ -1,0 +1,54 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Purpose and Scope}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{Definitions, Acronyms, Abbreviations}{section.1}% 3
+\BOOKMARK [3][-]{subsubsection.1.2.1}{Definitions}{subsection.1.2}% 4
+\BOOKMARK [3][-]{subsubsection.1.2.2}{Acronyms}{subsection.1.2}% 5
+\BOOKMARK [3][-]{subsubsection.1.2.3}{Abbreviations}{subsection.1.2}% 6
+\BOOKMARK [2][-]{subsection.1.3}{Reference Documents}{section.1}% 7
+\BOOKMARK [2][-]{subsection.1.4}{Overview}{section.1}% 8
+\BOOKMARK [1][-]{section.2}{Requirements Implemented}{}% 9
+\BOOKMARK [2][-]{subsection.2.1}{User Authentication}{section.2}% 10
+\BOOKMARK [2][-]{subsection.2.2}{User Management}{section.2}% 11
+\BOOKMARK [2][-]{subsection.2.3}{Creation of Single Requests}{section.2}% 12
+\BOOKMARK [2][-]{subsection.2.4}{Creation of Group Requests}{section.2}% 13
+\BOOKMARK [2][-]{subsection.2.5}{Data Management}{section.2}% 14
+\BOOKMARK [2][-]{subsection.2.6}{Health Status Monitoring}{section.2}% 15
+\BOOKMARK [2][-]{subsection.2.7}{AutomatedSOS}{section.2}% 16
+\BOOKMARK [2][-]{subsection.2.8}{Run Management}{section.2}% 17
+\BOOKMARK [1][-]{section.3}{Design Choices}{}% 18
+\BOOKMARK [2][-]{subsection.3.1}{Database choices}{section.3}% 19
+\BOOKMARK [2][-]{subsection.3.2}{Back-end choices}{section.3}% 20
+\BOOKMARK [2][-]{subsection.3.3}{Front-end choices}{section.3}% 21
+\BOOKMARK [3][-]{subsubsection.3.3.1}{iOS}{subsection.3.3}% 22
+\BOOKMARK [3][-]{subsubsection.3.3.2}{Swift}{subsection.3.3}% 23
+\BOOKMARK [3][-]{subsubsection.3.3.3}{External Frameworks}{subsection.3.3}% 24
+\BOOKMARK [3][-]{subsubsection.3.3.4}{Apple Frameworks}{subsection.3.3}% 25
+\BOOKMARK [1][-]{section.4}{Source Code Structure}{}% 26
+\BOOKMARK [2][-]{subsection.4.1}{Backend project structure}{section.4}% 27
+\BOOKMARK [3][-]{subsubsection.4.1.1}{bin}{subsection.4.1}% 28
+\BOOKMARK [3][-]{subsubsection.4.1.2}{config}{subsection.4.1}% 29
+\BOOKMARK [3][-]{subsubsection.4.1.3}{middlewares}{subsection.4.1}% 30
+\BOOKMARK [3][-]{subsubsection.4.1.4}{routes}{subsection.4.1}% 31
+\BOOKMARK [3][-]{subsubsection.4.1.5}{schemas}{subsection.4.1}% 32
+\BOOKMARK [3][-]{subsubsection.4.1.6}{startup}{subsection.4.1}% 33
+\BOOKMARK [3][-]{subsubsection.4.1.7}{utils}{subsection.4.1}% 34
+\BOOKMARK [2][-]{subsection.4.2}{Database description}{section.4}% 35
+\BOOKMARK [3][-]{subsubsection.4.2.1}{Enums}{subsection.4.2}% 36
+\BOOKMARK [3][-]{subsubsection.4.2.2}{Tables description}{subsection.4.2}% 37
+\BOOKMARK [2][-]{subsection.4.3}{XCode project structure}{section.4}% 38
+\BOOKMARK [3][-]{subsubsection.4.3.1}{Views}{subsection.4.3}% 39
+\BOOKMARK [3][-]{subsubsection.4.3.2}{Controllers}{subsection.4.3}% 40
+\BOOKMARK [3][-]{subsubsection.4.3.3}{Models}{subsection.4.3}% 41
+\BOOKMARK [3][-]{subsubsection.4.3.4}{Utilities}{subsection.4.3}% 42
+\BOOKMARK [1][-]{section.5}{Testing}{}% 43
+\BOOKMARK [2][-]{subsection.5.1}{Unit Testing}{section.5}% 44
+\BOOKMARK [3][-]{subsubsection.5.1.1}{Backend}{subsection.5.1}% 45
+\BOOKMARK [2][-]{subsection.5.2}{Integration Testing}{section.5}% 46
+\BOOKMARK [3][-]{subsubsection.5.2.1}{Backend}{subsection.5.2}% 47
+\BOOKMARK [2][-]{subsection.5.3}{System Testing}{section.5}% 48
+\BOOKMARK [1][-]{section.6}{Installation}{}% 49
+\BOOKMARK [2][-]{subsection.6.1}{Preliminary Operations}{section.6}% 50
+\BOOKMARK [2][-]{subsection.6.2}{Backend}{section.6}% 51
+\BOOKMARK [2][-]{subsection.6.3}{Frontend}{section.6}% 52
+\BOOKMARK [1][-]{section.7}{Future developments}{}% 53
+\BOOKMARK [1][-]{section.8}{Efforts}{}% 54
