@@ -36,6 +36,9 @@ class NetworkManager {
                     completionHandler(json, nil)
                 default:
                     print("Response: ERROR")
+                    guard json["error"].string != nil else {
+                        return completionHandler(nil,"Backend is down")
+                    }
                     completionHandler(nil,json["error"].string!)
                 }
             } else if let error = dataResponse.error {
@@ -76,7 +79,7 @@ class NetworkManager {
     }
     
     private func getD4HUrlWithKey(endpoint: D4HEndpoint) -> URL {
-        let urlString = GCP.D4HAPIbaseURLdeployed + endpoint.rawValue
+        let urlString = GCP.D4HAPIbaseURL + endpoint.rawValue
         return URL(string: urlString)!
     }
     

@@ -35,7 +35,7 @@
                                     <outlet property="delegate" destination="Xca-p5-Xgf" id="Hcf-FO-Y9C"/>
                                 </connections>
                             </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="20" estimatedSectionHeaderHeight="20" sectionFooterHeight="20" estimatedSectionFooterHeight="20" translatesAutoresizingMaskIntoConstraints="NO" id="FIW-Us-Y1H">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="20" estimatedSectionHeaderHeight="20" sectionFooterHeight="20" estimatedSectionFooterHeight="20" translatesAutoresizingMaskIntoConstraints="NO" id="FIW-Us-Y1H">
                                 <rect key="frame" x="0.0" y="144" width="414" height="669"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -1308,10 +1308,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Download" width="30" height="30"/>
-        <image name="History" width="29" height="30"/>
-        <image name="LogoSmall" width="674.15997314453125" height="326.39999389648438"/>
-        <image name="Search" width="30" height="30"/>
-        <image name="Settings" width="30" height="30"/>
+        <image name="Download" width="15" height="15"/>
+        <image name="History" width="14" height="15"/>
+        <image name="LogoSmall" width="1404" height="680"/>
+        <image name="Search" width="15" height="15"/>
+        <image name="Settings" width="15" height="15"/>
     </resources>
 </document>
