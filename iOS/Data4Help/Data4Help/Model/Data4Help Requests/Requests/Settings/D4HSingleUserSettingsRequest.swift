@@ -32,13 +32,13 @@ class D4HSingleUserSettingsRequest: D4HRequest {
     override func getParams() -> Parameters {
         var params: Parameters = [:]
         if(!password.isEmpty) {
-            params["password"] = password
+            params["password"] = password.trimmingCharacters(in: .whitespacesAndNewlines)
         }
         if(!fullname.isEmpty) {
-            params["full_name"] = fullname
+            params["full_name"] = fullname.trimmingCharacters(in: .whitespacesAndNewlines)
         }
         if(!birthdate.isEmpty) {
-            params["birthdate"] = birthdate
+            params["birthdate"] = birthdate.trimmingCharacters(in: .whitespacesAndNewlines)
         }
         print(params)
         return params

@@ -32,7 +32,7 @@ class TPEditSettings: UIViewController {
     func fillView(email: String, piva: String) {
         companyNameTextField.text = ""
         emailLabel.text = email
-        passwordTextField.text = "********"
+        passwordTextField.text = ""
         pivaLabel.text = piva
         companyDescriptionTextField.text = ""
     }

@@ -123,7 +123,7 @@ class SUSettings: UIViewController {
                 
                 // Update Labels
                 self.ViewSettings?.fullNameLabel.text = (fullname?.isEmpty)! ? self.ViewSettings?.fullNameLabel.text : fullname
-                self.ViewSettings?.passwordLabel.text = (password?.isEmpty)! ? self.ViewSettings?.passwordLabel.text : password
+                self.ViewSettings?.passwordLabel.text = (password?.isEmpty)! ? self.ViewSettings?.passwordLabel.text : "********"
                 self.ViewSettings?.birthdateLabel.text = (birthdate?.isEmpty)! ? self.ViewSettings?.birthdateLabel.text : birthdate
                 
                 // Exit from edit view

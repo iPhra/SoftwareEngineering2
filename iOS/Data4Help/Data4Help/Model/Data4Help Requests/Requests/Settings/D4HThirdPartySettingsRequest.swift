@@ -32,13 +32,13 @@ class D4HThirdPartySettingsRequest: D4HRequest {
     override func getParams() -> Parameters {
         var params: Parameters = [:]
         if(!password.isEmpty) {
-            params["password"] = password
+            params["password"] = password.trimmingCharacters(in: .whitespacesAndNewlines)
         }
         if(!company_name.isEmpty) {
-            params["company_name"] = company_name
+            params["company_name"] = company_name.trimmingCharacters(in: .whitespacesAndNewlines)
         }
         if(!company_description.isEmpty) {
-            params["company_description"] = company_description
+            params["company_description"] = company_description.trimmingCharacters(in: .whitespacesAndNewlines)
         }
         print(params)
         return params
