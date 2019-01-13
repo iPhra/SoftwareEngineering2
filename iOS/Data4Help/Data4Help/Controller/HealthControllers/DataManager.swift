@@ -23,6 +23,8 @@ class DataManager {
         to: Date())!
     let calendar = Calendar.current
     
+    var myHealth: MyHealth?
+    
     var firstUploads: [dataType : Bool] = [
         dataType.activeEnergyBurned : true,
         dataType.heartrate : true,
@@ -130,6 +132,7 @@ class DataManager {
         if(!AutomatedSOSON){
             AutomatedSOSON = true;
             StorageManager.sharedInstance.setAutomatedSOSValue(value: AutomatedSOSON)
+            myHealth?.automatedSOSSwitch.setOn(true, animated: true)
         }
     }
     

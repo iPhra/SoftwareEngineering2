@@ -1,0 +1,6 @@
+framework module Pods_Data4HelpTests {
+  umbrella header "Pods-Data4HelpTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
