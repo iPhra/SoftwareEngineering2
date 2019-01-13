@@ -8,7 +8,7 @@ const sex = Joi.string().valid(['M','F']);
 const dataTypes = Joi.string().valid(['standinghours','heartrate','distancewalkingrunning','sleepinghours', 'weight', 'height', 'age', 'activeenergyburned', 'stepcount', 'systolic_pressure', 'diastolic_pressure']);
 const company_name = Joi.string().max(20);
 const company_description = Joi.string().max(100);
-const types = Joi.array().items(dataTypes).max(50).required();
+const types = Joi.array().items(dataTypes).max(50).min(1).required();
 const subscribing = Joi.boolean().default(false);
 const duration = Joi.any().when('subscribing', { is: true, then: Joi.number().integer().positive(), otherwise: Joi.any().forbidden()});
 
