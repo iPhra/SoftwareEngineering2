@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.11.11)  13 JAN 2019 21:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.11.11)  13 JAN 2019 23:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -858,11 +858,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 1082--1090
 
  []
 
-<./images/ERFinal.png, id=192, 550.60706pt x 657.2053pt>
+<./images/ERFinal.png, id=192, 557.83406pt x 672.111pt>
 File: ./images/ERFinal.png Graphic file (type png)
 <use ./images/ERFinal.png>
 Package pdftex.def Info: ./images/ERFinal.png  used on input line 1093.
-(pdftex.def)             Requested size: 426.79134pt x 509.42912pt.
+(pdftex.def)             Requested size: 426.79134pt x 514.23502pt.
 
 Overfull \hbox (81.79134pt too wide) in paragraph at lines 1093--1094
  [] 
@@ -1001,7 +1001,7 @@ blic/amsfonts/cm/cmr17.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/publ
 ic/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/publi
 c/amsfonts/cm/cmti10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public
 /amsfonts/cm/cmti12.pfb>
-Output written on "Design Document.pdf" (65 pages, 1322039 bytes).
+Output written on "Design Document.pdf" (65 pages, 1320585 bytes).
 PDF statistics:
  293 PDF objects out of 1000 (max. 8388607)
  173 compressed objects within 2 object streams
