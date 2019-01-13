@@ -17,6 +17,12 @@ class DataManager {
     
     // MARK: Properties
     
+    var startDate: Date = Calendar.current.date(
+        byAdding: .weekOfYear,
+        value: -1,
+        to: Date())!
+    let calendar = Calendar.current
+    
     var firstUploads: [dataType : Bool] = [
         dataType.activeEnergyBurned : true,
         dataType.heartrate : true,
@@ -277,9 +283,25 @@ class DataManager {
     self.currentValues.updateValue((new.last!.endDate.timeIntervalSince(new.last!.startDate))/3600, forKey: dataType.sleepingHours.rawValue)
         
         if(firstUploads[dataType.sleepingHours]!){
+            var dataValues: [Double] = []
+            var timestamps: [String] = []
             for s in new {
-                let sleptHours : Double = (s.endDate.timeIntervalSince(s.startDate))/3600
-                StorageManager.sharedInstance.addData(entityName: "Data", type: dataType.sleepingHours.rawValue, timestamp: getTimestamp(sample: s), value: sleptHours)
+                let sampleDate: Date = s.startDate
+                let components = calendar.dateComponents([.day], from: startDate, to: sampleDate)
+                if((components.day ?? 0) < 8 && (components.day ?? 0) > -1){
+                    let sleptHours : Double = (s.endDate.timeIntervalSince(s.startDate))/3600
+                    dataValues.append(sleptHours)
+                    timestamps.append(getTimestamp(sample: s))
+                }
+            }
+            NetworkManager.sharedInstance.sendPostRequest(input: D4HDataUploadRequest(types: [dataType.sleepingHours.rawValue], values: [dataValues], timestamps: [timestamps]), endpoint: D4HEndpoint.uploadData, headers: Properties.auth()) { (response, error) in
+                if response != nil {
+                    let myres = D4HDataUploadResponse(fromJson: response!)
+                    print(myres.message)
+                }
+                else if let error = error {
+                    print(error)
+                }
             }
             firstUploads.updateValue(false, forKey: dataType.sleepingHours)
         }
@@ -305,9 +327,25 @@ class DataManager {
     self.currentValues.updateValue((new.last!.endDate.timeIntervalSince(new.last!.startDate))/3600, forKey: dataType.standingHours.rawValue)
         
         if(firstUploads[dataType.sleepingHours]!){
+            var dataValues: [Double] = []
+            var timestamps: [String] = []
             for s in new {
-                let standingHours: Double = (s.endDate.timeIntervalSince(s.startDate))/3600
-                StorageManager.sharedInstance.addData(entityName: "Data", type: dataType.sleepingHours.rawValue, timestamp: getTimestamp(sample: s), value: standingHours)
+                let sampleDate: Date = s.startDate
+                let components = calendar.dateComponents([.day], from: startDate, to: sampleDate)
+                if((components.day ?? 0) < 8 && (components.day ?? 0) > -1){
+                    let standingHours: Double = (s.endDate.timeIntervalSince(s.startDate))/3600
+                    dataValues.append(standingHours)
+                    timestamps.append(getTimestamp(sample: s))
+                }
+            }
+            NetworkManager.sharedInstance.sendPostRequest(input: D4HDataUploadRequest(types: [dataType.standingHours.rawValue], values: [dataValues], timestamps: [timestamps]), endpoint: D4HEndpoint.uploadData, headers: Properties.auth()) { (response, error) in
+                if response != nil {
+                    let myres = D4HDataUploadResponse(fromJson: response!)
+                    print(myres.message)
+                }
+                else if let error = error {
+                    print(error)
+                }
             }
             firstUploads.updateValue(false, forKey: dataType.sleepingHours)
         }
@@ -343,8 +381,25 @@ class DataManager {
         self.currentValues.updateValue(new.last!.quantity.doubleValue(for: unit), forKey: dataType.rawValue)
         
         if(firstUploads[dataType]!){
+            var dataValues: [Double] = []
+            var timestamps: [String] = []
             for s in new {
-                StorageManager.sharedInstance.addData(entityName: "Data", type: dataType.rawValue, timestamp: getTimestamp(sample: s), value: (((s.quantity.doubleValue(for: unit)))))
+                let sampleDate: Date = s.startDate
+                let components = calendar.dateComponents([.day], from: startDate, to: sampleDate)
+                if((components.day ?? 0) < 8 && (components.day ?? 0) > -1){
+                    dataValues.append(s.quantity.doubleValue(for: unit))
+                    timestamps.append(getTimestamp(sample: s))
+                    
+                }
+            }
+            NetworkManager.sharedInstance.sendPostRequest(input: D4HDataUploadRequest(types: [dataType.rawValue], values: [dataValues], timestamps: [timestamps]), endpoint: D4HEndpoint.uploadData, headers: Properties.auth()) { (response, error) in
+                if response != nil {
+                    let myres = D4HDataUploadResponse(fromJson: response!)
+                    print(myres.message)
+                }
+                else if let error = error {
+                    print(error)
+                }
             }
             firstUploads.updateValue(false, forKey: dataType)
         }
@@ -373,16 +428,38 @@ class DataManager {
 
         
         if(firstUploads[dataType.bloodPressure]!){
+            var diastolicValues: [Double] = []
+            var systolicaValues: [Double] = []
+            var diastolicTimestamps: [String] = []
+            var systolicTimestamps: [String] = []
             for correlation in new{
-                diastolic = correlation.objects(for: HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.bloodPressureDiastolic)!).first as? HKQuantitySample
-                dTimestamp = getTimestamp(sample: diastolic!)
-                systolic = correlation.objects(for: HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.bloodPressureSystolic)!).first as? HKQuantitySample
-                sTimestamp = getTimestamp(sample: systolic!)
+                let sampleDate: Date = correlation.startDate
+                let components = calendar.dateComponents([.day], from: startDate, to: sampleDate)
+                if((components.day ?? 0) < 8 && (components.day ?? 0) > -1){
+                    diastolic = correlation.objects(for: HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.bloodPressureDiastolic)!).first as? HKQuantitySample
+                    dTimestamp = getTimestamp(sample: diastolic!)
+                    systolic = correlation.objects(for: HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.bloodPressureSystolic)!).first as? HKQuantitySample
+                    sTimestamp = getTimestamp(sample: systolic!)
                 
-                print("systolic: \(systolic!.quantity)")
-                print("diastolic: \(diastolic!.quantity)")
+                    systolicaValues.append(systolic!.quantity.doubleValue(for: HKUnit.millimeterOfMercury()))
+                    diastolicValues.append(diastolic!.quantity.doubleValue(for: HKUnit.millimeterOfMercury()))
+                    diastolicTimestamps.append(dTimestamp!)
+                    systolicTimestamps.append(sTimestamp!)
+                    
+                    print("systolic: \(systolic!.quantity)")
+                    print("diastolic: \(diastolic!.quantity)")
+                }
             }
             firstUploads.updateValue(false, forKey: dataType.bloodPressure)
+            NetworkManager.sharedInstance.sendPostRequest(input: D4HDataUploadRequest(types: [dataType.systolic_pressure.rawValue,dataType.diastolic_pressure.rawValue], values: [systolicaValues,diastolicValues], timestamps: [systolicTimestamps,diastolicTimestamps]), endpoint: D4HEndpoint.uploadData, headers: Properties.auth()) { (response, error) in
+                if response != nil {
+                    let myres = D4HDataUploadResponse(fromJson: response!)
+                    print(myres.message)
+                }
+                else if let error = error {
+                    print(error)
+                }
+            }
         }
         else{
             let correlation = new.last
@@ -433,7 +510,7 @@ class DataManager {
                 }
                 
                 // send new data each hour
-                sleep(20)
+                sleep(3600)
             }
         }
     }
