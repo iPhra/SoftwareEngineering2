@@ -387,7 +387,7 @@ router.post('/sub/endSingle', authenticator(), async (req, res) => {
     await db.query(text, values);
 
     await(db.query('COMMIT'));
-    res.status(200).send({message: "Subscription endend"});
+    res.status(200).send({message: "Subscription ended"});
 });
 
 
@@ -416,7 +416,7 @@ router.post('/sub/endGroup', authenticator(), async (req, res) => {
     await db.query(text, values);
 
     await(db.query('COMMIT'));
-    res.status(200).send({message: "Subscription endend"});
+    res.status(200).send({message: "Subscription ended"});
 });
 
 
