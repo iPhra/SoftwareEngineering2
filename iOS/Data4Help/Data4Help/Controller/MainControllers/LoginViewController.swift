@@ -102,29 +102,5 @@ class LoginViewController: UIViewController {
         }
     }
     
-    
-    // MARK: debugging functions
-    // TO be deleted before deployment
-    
-    @objc func doubleTapped() {
-        // do something here
-        print("Secret login to third party")
-        guard  usernameTextField.text != nil && passwordTextField.text != nil else {
-            return
-        }
-        
-        login(email: "gruossoindustries@gmail.com", password: "data4help")
-    }
-
-    @objc func swiped() {
-        // do something here
-        print("Secret login to single user")
-        guard  usernameTextField.text != nil && passwordTextField.text != nil else {
-            return
-        }
-        
-        login(email: "moltek96@gmail.com", password: "datahelp")
-    }
-    
 }
 

@@ -21,7 +21,6 @@ class DataManager {
         byAdding: .weekOfYear,
         value: -1,
         to: Date())!
-    var today: Date = Date()
     let calendar = Calendar.current
     
     var myHealth: MyHealth?
@@ -395,7 +394,7 @@ class DataManager {
                     timestamps.append(getTimestamp(sample: s))
                     
                 }
-                let diffMinutes = calendar.dateComponents([.day], from: today, to: sampleDate).minute ?? 0
+                let diffMinutes = calendar.dateComponents([.minute], from: Date(), to: sampleDate).minute ?? 0
                 
                 if( dataType == .heartrate && diffMinutes < 1 && diffMinutes > -1 ){
                     self.automatedSOSManager.checkHeartRate(heartRate: (new.last?.quantity.doubleValue(for: unit))!, timestamp: timestamp)
@@ -413,8 +412,7 @@ class DataManager {
             firstUploads.updateValue(false, forKey: dataType)
         }
         else{
-            let diffMinutes = calendar.dateComponents([.minute], from: today, to: ((new.last)?.startDate)!).minute ?? 0
-            print("DIFF \(diffMinutes)")
+            let diffMinutes = calendar.dateComponents([.minute], from: Date(), to: ((new.last)?.startDate)!).minute!
             if(dataType == .heartrate && diffMinutes < 1 && diffMinutes > -1){
                 self.automatedSOSManager.checkHeartRate(heartRate: (new.last?.quantity.doubleValue(for: unit))!, timestamp: timestamp)
             }
@@ -461,7 +459,7 @@ class DataManager {
                     print("systolic: \(systolic!.quantity)")
                     print("diastolic: \(diastolic!.quantity)")
                     
-                    let diffMinutes = calendar.dateComponents([.day], from: today, to: sampleDate).minute ?? 0
+                    let diffMinutes = calendar.dateComponents([.minute], from: Date(), to: sampleDate).minute ?? 0
                     
                     if( diffMinutes < 1 && diffMinutes > -1 ){
                         self.automatedSOSManager.checkBloodPressure(systolic: systolic!.quantity.doubleValue(for: HKUnit.millimeterOfMercury()), diastolyc: diastolic!.quantity.doubleValue(for: HKUnit.millimeterOfMercury()), timestamp: sTimestamp!)
@@ -488,7 +486,7 @@ class DataManager {
             systolic = correlation!.objects(for: HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.bloodPressureSystolic)!).first as? HKQuantitySample
             sTimestamp = getTimestamp(sample: systolic!)
             
-            let diffMinutes = calendar.dateComponents([.minute], from: today, to: ((new.last)?.startDate)!).minute ?? 0
+            let diffMinutes = calendar.dateComponents([.minute], from: Date(), to: ((new.last)?.startDate)!).minute ?? 0
             
             if(diffMinutes < 1 && diffMinutes > -1) {
                 self.automatedSOSManager.checkBloodPressure(systolic: systolic!.quantity.doubleValue(for: HKUnit.millimeterOfMercury()), diastolyc: diastolic!.quantity.doubleValue(for: HKUnit.millimeterOfMercury()), timestamp: sTimestamp!)

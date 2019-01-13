@@ -25,11 +25,11 @@ class AverageBarChartViewController: UIViewController {
                             dataType.weight.rawValue]
     
     var myAverageBPM: [String: Double] = [
+        dataType.heartrate.rawValue : 0,
         dataType.activeEnergyBurned.rawValue : 0,
         dataType.diastolic_pressure.rawValue : 0,
         dataType.systolic_pressure.rawValue : 0,
         dataType.distanceWalkingRunning.rawValue : 0,
-        dataType.heartrate.rawValue : 0,
         dataType.height.rawValue : 0,
         dataType.sleepingHours.rawValue : 0,
         dataType.standingHours.rawValue : 0,
@@ -38,11 +38,11 @@ class AverageBarChartViewController: UIViewController {
         ]
     
     var othersAverageBPM: [String: Double] = [
+        dataType.heartrate.rawValue : 0,
         dataType.activeEnergyBurned.rawValue : 0,
         dataType.diastolic_pressure.rawValue : 0,
         dataType.systolic_pressure.rawValue : 0,
         dataType.distanceWalkingRunning.rawValue : 0,
-        dataType.heartrate.rawValue : 0,
         dataType.height.rawValue : 0,
         dataType.sleepingHours.rawValue : 0,
         dataType.standingHours.rawValue : 0,
