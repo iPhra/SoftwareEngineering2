@@ -45,7 +45,7 @@ class SRequest: UIViewController {
         // Hide keyboard when tap out
         self.hideKeyboardWhenTappedAround()
         
-        scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height + 50)
+        scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height + 250)
         
         emailTextField.text = ""
         CFTextField.text = ""
@@ -58,6 +58,10 @@ class SRequest: UIViewController {
             if response != nil {
                 let myres = D4HSingleResponse(fromJson: response!)
                 print(myres.message)
+                let alert = UIAlertController(title: "Message", message: "Request sent!", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                self.resetRequest()
             }
             else if let error = error {
                 print(error)
@@ -66,6 +70,21 @@ class SRequest: UIViewController {
                 self.present(alert, animated: true, completion: nil)
             }
         }
+    }
+    
+    func resetRequest(){
+        emailTextField.text = ""
+        CFTextField.text = ""
+        durationTextField.text = ""
+        heartRateSwitch.setOn(false, animated: true)
+        stepsSwitch.setOn(false, animated: true)
+        bloodPressureSwitch.setOn(false, animated: true)
+        activeEnergyBurnedSwitch.setOn(false, animated: true)
+        sleepingHoursSwitch.setOn(false, animated: true)
+        heightSwitch.setOn(false, animated: true)
+        standingHoursSwitch.setOn(false, animated: true)
+        weightSwitch.setOn(false, animated: true)
+        subscriptionSwitch.setOn(false, animated: true)
     }
     
     func getDataTypesToSend() -> [String]{

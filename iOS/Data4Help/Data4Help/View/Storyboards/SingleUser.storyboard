@@ -673,11 +673,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Accept" width="60" height="60"/>
-        <image name="Followers" width="15" height="15"/>
-        <image name="LogoSmall" width="1404" height="680"/>
-        <image name="MyHealth" width="14" height="15"/>
-        <image name="Refuse" width="60" height="60"/>
-        <image name="Settings" width="15" height="15"/>
+        <image name="Accept" width="96" height="96"/>
+        <image name="Followers" width="30" height="30"/>
+        <image name="LogoSmall" width="674.15997314453125" height="326.39999389648438"/>
+        <image name="MyHealth" width="29" height="30"/>
+        <image name="Refuse" width="96" height="96"/>
+        <image name="Settings" width="30" height="30"/>
     </resources>
 </document>
