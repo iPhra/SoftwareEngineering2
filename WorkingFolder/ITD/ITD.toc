@@ -1,31 +1,54 @@
-\contentsline {section}{\numberline {1}Introduction}{2}
-\contentsline {subsection}{\numberline {1.1}Purpose and Scope}{2}
-\contentsline {subsection}{\numberline {1.2}Definitions, Acronyms, Abbreviations}{2}
-\contentsline {subsubsection}{\numberline {1.2.1}Definitions}{2}
-\contentsline {subsubsection}{\numberline {1.2.2}Acronyms}{2}
-\contentsline {subsubsection}{\numberline {1.2.3}Abbreviations}{2}
-\contentsline {subsection}{\numberline {1.3}Reference Documents}{2}
-\contentsline {subsection}{\numberline {1.4}Overview}{2}
-\contentsline {section}{\numberline {2}Requirements Implemented}{3}
-\contentsline {subsection}{\numberline {2.1}User Authentication}{3}
-\contentsline {subsection}{\numberline {2.2}User Management}{3}
-\contentsline {subsection}{\numberline {2.3}Creation of Single Requests}{3}
-\contentsline {subsection}{\numberline {2.4}Creation of Group Requests}{3}
-\contentsline {subsection}{\numberline {2.5}Data Management}{3}
-\contentsline {subsection}{\numberline {2.6}Health Status Monitoring}{3}
-\contentsline {subsection}{\numberline {2.7}AutomatedSOS}{3}
-\contentsline {subsection}{\numberline {2.8}Run Management}{3}
-\contentsline {section}{\numberline {3}Design Choices}{4}
-\contentsline {subsection}{\numberline {3.1}Database choices}{4}
-\contentsline {subsection}{\numberline {3.2}Back-end choices}{4}
-\contentsline {subsection}{\numberline {3.3}Front-end choices}{4}
-\contentsline {subsubsection}{\numberline {3.3.1}\bf iOS}{4}
-\contentsline {subsubsection}{\numberline {3.3.2}\bf Swift}{4}
-\contentsline {subsubsection}{\numberline {3.3.3}\bf External Frameworks}{4}
-\contentsline {subsubsection}{\numberline {3.3.4}\bf Apple Frameworks}{4}
-\contentsline {section}{\numberline {4}Source Code Structure}{5}
-\contentsline {subsection}{\numberline {4.1}Node project structure}{5}
-\contentsline {subsection}{\numberline {4.2}Database description}{5}
-\contentsline {subsection}{\numberline {4.3}XCode project structure}{5}
-\contentsline {section}{\numberline {5}Testing}{6}
-\contentsline {section}{\numberline {6}Efforts}{7}
+\contentsline {section}{\numberline {1}Introduction}{3}{section.1}
+\contentsline {subsection}{\numberline {1.1}Purpose and Scope}{3}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}Definitions, Acronyms, Abbreviations}{3}{subsection.1.2}
+\contentsline {subsubsection}{\numberline {1.2.1}Definitions}{3}{subsubsection.1.2.1}
+\contentsline {subsubsection}{\numberline {1.2.2}Acronyms}{3}{subsubsection.1.2.2}
+\contentsline {subsubsection}{\numberline {1.2.3}Abbreviations}{4}{subsubsection.1.2.3}
+\contentsline {subsection}{\numberline {1.3}Reference Documents}{4}{subsection.1.3}
+\contentsline {subsection}{\numberline {1.4}Overview}{4}{subsection.1.4}
+\contentsline {section}{\numberline {2}Requirements Implemented}{6}{section.2}
+\contentsline {subsection}{\numberline {2.1}User Authentication}{6}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}User Management}{7}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}Creation of Single Requests}{8}{subsection.2.3}
+\contentsline {subsection}{\numberline {2.4}Creation of Group Requests}{9}{subsection.2.4}
+\contentsline {subsection}{\numberline {2.5}Data Management}{11}{subsection.2.5}
+\contentsline {subsection}{\numberline {2.6}Health Status Monitoring}{11}{subsection.2.6}
+\contentsline {subsection}{\numberline {2.7}AutomatedSOS}{12}{subsection.2.7}
+\contentsline {subsection}{\numberline {2.8}Run Management}{13}{subsection.2.8}
+\contentsline {section}{\numberline {3}Design Choices}{14}{section.3}
+\contentsline {subsection}{\numberline {3.1}Database choices}{14}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Back-end choices}{14}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Front-end choices}{16}{subsection.3.3}
+\contentsline {subsubsection}{\numberline {3.3.1}iOS}{16}{subsubsection.3.3.1}
+\contentsline {subsubsection}{\numberline {3.3.2}Swift}{17}{subsubsection.3.3.2}
+\contentsline {subsubsection}{\numberline {3.3.3}External Frameworks}{17}{subsubsection.3.3.3}
+\contentsline {subsubsection}{\numberline {3.3.4}Apple Frameworks}{18}{subsubsection.3.3.4}
+\contentsline {section}{\numberline {4}Source Code Structure}{19}{section.4}
+\contentsline {subsection}{\numberline {4.1}Backend project structure}{19}{subsection.4.1}
+\contentsline {subsubsection}{\numberline {4.1.1}bin}{19}{subsubsection.4.1.1}
+\contentsline {subsubsection}{\numberline {4.1.2}config}{19}{subsubsection.4.1.2}
+\contentsline {subsubsection}{\numberline {4.1.3}middlewares}{20}{subsubsection.4.1.3}
+\contentsline {subsubsection}{\numberline {4.1.4}routes}{20}{subsubsection.4.1.4}
+\contentsline {subsubsection}{\numberline {4.1.5}schemas}{20}{subsubsection.4.1.5}
+\contentsline {subsubsection}{\numberline {4.1.6}startup}{21}{subsubsection.4.1.6}
+\contentsline {subsubsection}{\numberline {4.1.7}utils}{21}{subsubsection.4.1.7}
+\contentsline {subsection}{\numberline {4.2}Database description}{21}{subsection.4.2}
+\contentsline {subsubsection}{\numberline {4.2.1}Enums}{22}{subsubsection.4.2.1}
+\contentsline {subsubsection}{\numberline {4.2.2}Tables description}{23}{subsubsection.4.2.2}
+\contentsline {subsection}{\numberline {4.3}XCode project structure}{25}{subsection.4.3}
+\contentsline {subsubsection}{\numberline {4.3.1}Views}{26}{subsubsection.4.3.1}
+\contentsline {subsubsection}{\numberline {4.3.2}Controllers}{27}{subsubsection.4.3.2}
+\contentsline {subsubsection}{\numberline {4.3.3}Models}{38}{subsubsection.4.3.3}
+\contentsline {subsubsection}{\numberline {4.3.4}Utilities}{39}{subsubsection.4.3.4}
+\contentsline {section}{\numberline {5}Testing}{41}{section.5}
+\contentsline {subsection}{\numberline {5.1}Unit Testing}{41}{subsection.5.1}
+\contentsline {subsubsection}{\numberline {5.1.1}Backend}{41}{subsubsection.5.1.1}
+\contentsline {subsection}{\numberline {5.2}Integration Testing}{45}{subsection.5.2}
+\contentsline {subsubsection}{\numberline {5.2.1}Backend}{45}{subsubsection.5.2.1}
+\contentsline {subsection}{\numberline {5.3}System Testing}{48}{subsection.5.3}
+\contentsline {section}{\numberline {6}Installation}{54}{section.6}
+\contentsline {subsection}{\numberline {6.1}Preliminary Operations}{54}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}Backend}{54}{subsection.6.2}
+\contentsline {subsection}{\numberline {6.3}Frontend}{55}{subsection.6.3}
+\contentsline {section}{\numberline {7}Future developments}{56}{section.7}
+\contentsline {section}{\numberline {8}Efforts}{57}{section.8}
