@@ -71,6 +71,7 @@ class StorageManager: NSObject {
     /*Gets all "Data" entities of specified type*/
     func getAllDataObjects(ofType: String) -> [NSManagedObject]{
         let allData = self.getAllData(ofEntity: "Data")
+        if allData.count==0 {return []}
         let filteredData = allData.filter { $0.value(forKeyPath: "type") as! String == ofType}
         if (filteredData.count==0) {print("Empty Storage")} //debug
         return filteredData

@@ -66,7 +66,7 @@ class SURegisterViewController: UIViewController {
         
         let sex = DataManager.sharedInstance.getBiologicalSex()
         
-        if(sex != ""){
+        if(sex != "" && sex != "U"){
             //send request throw Network Manager with registration details
             print(D4HEndpoint.registerSingle)
             NetworkManager.sharedInstance.sendPostRequest(input: D4HSingleRegisterRequest(email: EmailTextView.text!, password: passwordTextView.text!, FC: cfTextView.text!, fullname: fullnameTextView.text!, birthday: birthdateTextView.text!, sex: sex), endpoint: D4HEndpoint.registerSingle, headers: nil) { (response, error) in

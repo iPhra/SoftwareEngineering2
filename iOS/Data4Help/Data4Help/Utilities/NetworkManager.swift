@@ -37,7 +37,7 @@ class NetworkManager {
                 default:
                     print("Response: ERROR")
                     guard json["error"].string != nil else {
-                        return completionHandler(nil,"Backend is down")
+                        return completionHandler(nil,"Server is temporarily unavailable")
                     }
                     completionHandler(nil,json["error"].string!)
                 }
