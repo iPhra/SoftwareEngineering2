@@ -76,8 +76,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        
-        guard let shortcutItem = self.launchedShortcutItem else {return}
+
+    }
+    
+    func application(_ application: UIApplication,
+                              performActionFor shortcutItem: UIApplicationShortcutItem,
+                              completionHandler: @escaping (Bool) -> Void){
         
         _ = handleShortcutItem(item: shortcutItem)
         

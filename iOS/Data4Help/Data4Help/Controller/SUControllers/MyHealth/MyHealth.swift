@@ -22,11 +22,13 @@ class MyHealth: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        DataManager.sharedInstance.myHealth = self
+        
         automatedSOSSwitch.setOn(DataManager.sharedInstance.getStoredAutomatedSOSValue(), animated: true)
         
         //Setup scroll view
         
-        scrollView.contentSize = CGSize(width: self.view.frame.width + 500, height: self.view.frame.height + 1000)
+        scrollView.contentSize = CGSize(width: self.view.frame.width + 500, height: self.view.frame.height + 1500)
    
     }
     
