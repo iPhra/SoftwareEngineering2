@@ -3,12 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="637ba8bf-1b94-4c9e-be2d-39a16b1ba7d6" name="Default Changelist" comment="Remove try-catch blocks, add error middleware, code refactoring, add logger with winston">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../iOS/Data4Help/Data4Help.xcworkspace/xcuserdata/Virginia.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/../../iOS/Data4Help/Data4Help.xcworkspace/xcuserdata/Virginia.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../iOS/Data4Help/Data4Help.xcworkspace/xcuserdata/Virginia.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" beforeDir="false" afterPath="$PROJECT_DIR$/../../iOS/Data4Help/Data4Help.xcworkspace/xcuserdata/Virginia.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../iOS/Data4Help/Data4Help/Controller/HealthControllers/AutomatedSOSManager.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../../iOS/Data4Help/Data4Help/Controller/HealthControllers/AutomatedSOSManager.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../iOS/Data4Help/Data4Help/Controller/HealthControllers/DataManager.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../../iOS/Data4Help/Data4Help/Controller/HealthControllers/DataManager.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../iOS/Data4Help/Data4Help/Controller/TPControllers/TPResearchControllers/GRequest.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../../iOS/Data4Help/Data4Help/Controller/TPControllers/TPResearchControllers/GRequest.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../iOS/Data4Help/Data4Help/Controller/TPControllers/TPSettingsControllers/TPSettings.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../../iOS/Data4Help/Data4Help/Controller/TPControllers/TPSettingsControllers/TPSettings.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iOS/Data4Help/Data4Help.xcworkspace/xcuserdata/molte.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/../../iOS/Data4Help/Data4Help.xcworkspace/xcuserdata/molte.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../iOS/Data4Help/Data4Help/Model/Data4Help Requests/Responses/Request/D4HDownloadSingleResponse.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../../iOS/Data4Help/Data4Help/Model/Data4Help Requests/Responses/Request/D4HDownloadSingleResponse.swift" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -22,10 +18,86 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/routes/req.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="354">
+              <caret line="409" lean-forward="true" selection-start-line="409" selection-end-line="409" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/utils/EC2.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="180">
+                <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/auth.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-727">
+              <caret line="100" column="35" lean-forward="true" selection-start-line="100" selection-start-column="35" selection-end-line="100" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/data.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="42" selection-start-line="12" selection-start-column="42" selection-end-line="12" selection-end-column="42" />
+            <state relative-caret-position="230">
+              <caret line="77" column="116" lean-forward="true" selection-start-line="77" selection-start-column="116" selection-end-line="77" selection-end-column="116" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/middlewares/validator.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="140">
+              <caret line="29" column="16" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/unit/schemas/schemas.test.js">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/integration/routes/auth.test.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1680">
+              <caret line="112" lean-forward="true" selection-start-line="112" selection-end-line="112" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/integration/routes/data.test.js">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/package.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/settings.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="93" column="107" lean-forward="true" selection-start-line="93" selection-start-column="107" selection-end-line="93" selection-end-column="107" />
             </state>
           </provider>
         </entry>
@@ -102,7 +174,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -118,12 +189,54 @@
             <path>
               <item name="NodeJS" type="b2602c69:ProjectViewProjectNode" />
               <item name="NodeJS" type="462c0819:PsiDirectoryNode" />
+              <item name="middlewares" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NodeJS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NodeJS" type="462c0819:PsiDirectoryNode" />
+              <item name="routes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NodeJS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NodeJS" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NodeJS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NodeJS" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="integration" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NodeJS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NodeJS" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="integration" type="462c0819:PsiDirectoryNode" />
+              <item name="routes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NodeJS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NodeJS" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="unit" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NodeJS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NodeJS" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="unit" type="462c0819:PsiDirectoryNode" />
+              <item name="schemas" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NodeJS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NodeJS" type="462c0819:PsiDirectoryNode" />
               <item name="utils" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -570,7 +683,14 @@
       <option name="project" value="LOCAL" />
       <updated>1547400027167</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Documentation fixes">
+      <created>1547418562723</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1547418562723</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -606,7 +726,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="101533000" />
+    <option name="totallyTimeSpent" value="102257000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -618,9 +738,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="44" y="23" width="1396" height="826" extended-state="0" />
+    <frame x="0" y="29" width="1396" height="822" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4989429" visible="true" weight="0.24727273" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4989429" visible="true" weight="0.14327273" />
       <window_info id="Structure" order="1" sideWeight="0.5010571" side_tool="true" weight="0.248" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -632,7 +753,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32970026" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="8" sideWeight="0.7229091" visible="true" weight="0.4223433" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.7229091" weight="0.4223433" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5025455" side_tool="true" weight="0.39745224" />
       <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.4989091" weight="0.32561308" />
       <window_info anchor="bottom" id="Messages" order="11" />
@@ -706,7 +827,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add new datatypes to the schema" />
     <MESSAGE value="Add test directory" />
     <MESSAGE value="Fix to datatype" />
     <MESSAGE value="Add integration testing framework" />
@@ -731,7 +851,8 @@
     <MESSAGE value="Reset requests when sent and edit textfields editing" />
     <MESSAGE value="Update MyHealth charts" />
     <MESSAGE value="Fix charts dimension and scroll view" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix charts dimension and scroll view" />
+    <MESSAGE value="Documentation fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Documentation fixes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -791,14 +912,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="25" lean-forward="true" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
+        <state relative-caret-position="105">
+          <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ecosystem.config.js" />
     <entry file="file://$PROJECT_DIR$/tests/integration/routes/auth.test.js">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1680">
+          <caret line="112" lean-forward="true" selection-start-line="112" selection-end-line="112" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/middlewares/authenticator.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -816,11 +941,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/unit/schemas/schemas.test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1170">
-          <caret line="78" lean-forward="true" selection-start-line="78" selection-end-line="78" />
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/startup/logging.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -841,7 +962,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/middlewares/validator.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
+        <state relative-caret-position="140">
           <caret line="29" column="16" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="16" />
         </state>
       </provider>
@@ -871,8 +992,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/req.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="400" selection-start-line="400" selection-end-line="400" />
+        <state relative-caret-position="354">
+          <caret line="409" lean-forward="true" selection-start-line="409" selection-end-line="409" />
         </state>
       </provider>
     </entry>
@@ -920,23 +1041,19 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/integration/routes/data.test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="113" lean-forward="true" selection-start-line="113" selection-end-line="113" />
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/auth.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="115" column="25" lean-forward="true" selection-start-line="115" selection-start-column="25" selection-end-line="115" selection-end-column="25" />
+        <state relative-caret-position="-727">
+          <caret line="100" column="35" lean-forward="true" selection-start-line="100" selection-start-column="35" selection-end-line="100" selection-end-column="35" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/settings.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1905">
-          <caret line="127" lean-forward="true" selection-start-line="127" selection-end-line="127" />
+        <state relative-caret-position="323">
+          <caret line="93" column="107" lean-forward="true" selection-start-line="93" selection-start-column="107" selection-end-line="93" selection-end-column="107" />
         </state>
       </provider>
     </entry>
@@ -954,7 +1071,7 @@
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="180">
-            <caret line="12" column="57" selection-start-line="12" selection-start-column="57" selection-end-line="12" selection-end-column="57" />
+            <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
           </first_editor>
           <second_editor />
         </state>
@@ -962,8 +1079,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/data.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="42" selection-start-line="12" selection-start-column="42" selection-end-line="12" selection-end-column="42" />
+        <state relative-caret-position="230">
+          <caret line="77" column="116" lean-forward="true" selection-start-line="77" selection-start-column="116" selection-end-line="77" selection-end-column="116" />
         </state>
       </provider>
     </entry>
