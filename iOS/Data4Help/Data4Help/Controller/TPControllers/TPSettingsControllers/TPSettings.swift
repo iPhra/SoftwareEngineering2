@@ -123,7 +123,7 @@ class TPSettings: UIViewController {
                 print(myres.message)
                 
                 // Update labels
-                self.TPViewSettings?.passwordLabel.text = (password?.isEmpty)! ? self.TPViewSettings?.passwordLabel.text : password
+                self.TPViewSettings?.passwordLabel.text = (password?.isEmpty)! ? self.TPViewSettings?.passwordLabel.text : "********"
                 self.TPViewSettings?.organisationNameLabel.text = (companyName?.isEmpty)! ? self.TPViewSettings?.organisationNameLabel.text : companyName
                 self.TPViewSettings?.descriptionLabel.text = (companyDescription?.isEmpty)! ? self.TPViewSettings?.descriptionLabel.text : companyDescription
                 

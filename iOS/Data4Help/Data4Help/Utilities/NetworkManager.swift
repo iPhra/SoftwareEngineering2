@@ -76,7 +76,7 @@ class NetworkManager {
         input: D4HRequest,
         endpoint: D4HEndpoint,
         headers: HTTPHeaders,
-        completionHandler: @escaping(JSON?, Error?) -> Void
+        completionHandler: @escaping(JSON?, String?) -> Void
         ) {
         os_log("NetworkManager request: %@endpoint", log: OSLog.default, type: .debug)
         
@@ -87,10 +87,21 @@ class NetworkManager {
             if let data = dataResponse.data {
                 print("Response: SUCCESS")
                 let json = JSON(data)
-                completionHandler(json, nil)
+                switch (dataResponse.response?.statusCode) {
+                case 200,
+                     304:
+                    print("Response: SUCCESS")
+                    completionHandler(json, nil)
+                default:
+                    print("Response: ERROR")
+                    guard json["error"].string != nil else {
+                        return completionHandler(nil,"Server is temporarily unavailable")
+                    }
+                    completionHandler(nil,json["error"].string!)
+                }
             } else if let error = dataResponse.error {
                 print("Response: ERROR")
-                completionHandler(nil,error)
+                completionHandler(nil,error.localizedDescription)
             }
         }
     }
