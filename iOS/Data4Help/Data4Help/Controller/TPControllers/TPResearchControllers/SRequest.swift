@@ -42,6 +42,9 @@ class SRequest: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Hide keyboard when tap out
+        self.hideKeyboardWhenTappedAround()
+        
         scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height + 50)
         
         emailTextField.text = ""

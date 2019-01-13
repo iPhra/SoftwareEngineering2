@@ -34,13 +34,20 @@ class D4HSingleRequest: D4HRequest {
     // MARK: - Networking
     
     override func getParams() -> Parameters {
-        let params: Parameters = [
-            "email": email,
-            "fc": fc,
+        var params: Parameters = [
+
             "types": types,
-            "subscribing": subscribing,
-            "duration": duration
+            "subscribing": subscribing
         ]
+        if subscribing {
+            params["duration"] = duration
+        }
+        if !email.isEmpty {
+            params["email"] = email
+        }
+        if !fc.isEmpty {
+            params["fc"] = fc
+        }
         print(params)
         return params
     }

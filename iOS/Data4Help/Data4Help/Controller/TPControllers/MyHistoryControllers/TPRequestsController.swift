@@ -36,6 +36,10 @@ class TPRequestsController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Hide keyboard when tap out
+        self.hideKeyboardWhenTappedAround()
+        
         self.requestsTableView.dataSource = self
         self.requestsTableView.delegate = self
         self.requestsResearchBar.delegate = self

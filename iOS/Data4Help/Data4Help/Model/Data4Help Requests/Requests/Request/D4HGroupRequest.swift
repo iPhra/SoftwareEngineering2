@@ -38,13 +38,15 @@ class D4HGroupRequest: D4HRequest {
         for bound in bounds {
             boundsParam.append(bound.getParams())
         }
-        let params: Parameters = [
+        var params: Parameters = [
             "types": types,
             "parameters": parameters,
             "bounds": boundsParam,
-            "subscribing": subscribing,
-            "duration": duration
+            "subscribing": subscribing
         ]
+        if subscribing {
+            params["duration"] = duration
+        }
         print(params)
         return params
     }

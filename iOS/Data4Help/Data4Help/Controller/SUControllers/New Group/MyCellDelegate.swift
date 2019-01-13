@@ -6,6 +6,6 @@
 //  Copyright © 2018 Lorenzo Molteni Negri. All rights reserved.
 //
 
-protocol MyCellDelegate: class {
+protocol SUCellDelegate: class {
     func loadData()
 }

@@ -28,7 +28,7 @@ class SURequestCell: UITableViewCell {
     var subscribing: Bool = false
     var duration: Float = 0
     
-    weak var delegate: MyCellDelegate?
+    weak var delegate: SUCellDelegate?
 
     
     // Mark: initializers

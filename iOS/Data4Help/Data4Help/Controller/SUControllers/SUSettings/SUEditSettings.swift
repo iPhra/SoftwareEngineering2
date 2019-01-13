@@ -21,6 +21,9 @@ class SUEditSettings: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // Hide keyboard when tap out
+        self.hideKeyboardWhenTappedAround()
+        
         // Do any additional setup after loading the view.
     }
     

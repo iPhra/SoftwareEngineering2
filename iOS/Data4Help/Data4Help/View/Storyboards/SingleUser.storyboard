@@ -121,7 +121,7 @@
                                     <outlet property="delegate" destination="1FC-Qn-7EH" id="gg1-Cf-2es"/>
                                 </connections>
                             </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="20" estimatedSectionHeaderHeight="20" sectionFooterHeight="20" estimatedSectionFooterHeight="20" translatesAutoresizingMaskIntoConstraints="NO" id="Wnq-nk-gNq">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="20" estimatedSectionHeaderHeight="20" sectionFooterHeight="20" estimatedSectionFooterHeight="20" translatesAutoresizingMaskIntoConstraints="NO" id="Wnq-nk-gNq">
                                 <rect key="frame" x="0.0" y="144" width="414" height="669"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexColor" red="0.92156862750000001" green="0.40784313729999999" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -673,11 +673,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Accept" width="96" height="96"/>
-        <image name="Followers" width="30" height="30"/>
-        <image name="LogoSmall" width="674.15997314453125" height="326.39999389648438"/>
-        <image name="MyHealth" width="29" height="30"/>
-        <image name="Refuse" width="96" height="96"/>
-        <image name="Settings" width="30" height="30"/>
+        <image name="Accept" width="60" height="60"/>
+        <image name="Followers" width="15" height="15"/>
+        <image name="LogoSmall" width="1404" height="680"/>
+        <image name="MyHealth" width="14" height="15"/>
+        <image name="Refuse" width="60" height="60"/>
+        <image name="Settings" width="15" height="15"/>
     </resources>
 </document>

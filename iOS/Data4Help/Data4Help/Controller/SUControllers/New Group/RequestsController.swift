@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 
 
-class RequestsController: UIViewController, UITableViewDelegate, UITableViewDataSource, MyCellDelegate, UISearchBarDelegate {
+class RequestsController: UIViewController, UITableViewDelegate, UITableViewDataSource, SUCellDelegate, UISearchBarDelegate {
     
     // MARK: Properties
     
@@ -40,6 +40,10 @@ class RequestsController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Hide keyboard when tap out
+        self.hideKeyboardWhenTappedAround()
+        
         self.requestsTableView.delegate = self
         self.requestsTableView.dataSource = self
         self.requestsResearchBar.delegate = self

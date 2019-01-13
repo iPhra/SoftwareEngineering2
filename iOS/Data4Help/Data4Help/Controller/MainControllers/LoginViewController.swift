@@ -110,7 +110,7 @@ class LoginViewController: UIViewController {
             return
         }
         
-        login(email: "gruosso_industries@gmail.com", password: "data4help")
+        login(email: "gruossoindustries@gmail.com", password: "data4help")
     }
 
     @objc func swiped() {
