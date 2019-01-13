@@ -7,20 +7,20 @@
 \contentsline {subsubsection}{\numberline {1.3.3}Abbreviations}{3}
 \contentsline {subsection}{\numberline {1.4}Revision history}{3}
 \contentsline {subsection}{\numberline {1.5}Reference Documents}{3}
-\contentsline {subsection}{\numberline {1.6}Document Structure}{3}
+\contentsline {subsection}{\numberline {1.6}Document Structure}{4}
 \contentsline {section}{\numberline {2}Architectural Design}{5}
 \contentsline {subsection}{\numberline {2.1}Overview}{5}
 \contentsline {subsection}{\numberline {2.2}Component view}{6}
 \contentsline {subsection}{\numberline {2.3}Deployment view}{11}
 \contentsline {subsection}{\numberline {2.4}Runtime view}{13}
 \contentsline {subsection}{\numberline {2.5}Component interfaces}{27}
-\contentsline {subsection}{\numberline {2.6}Selected architectural styles and patterns}{38}
-\contentsline {subsection}{\numberline {2.7}Other design decisions}{40}
-\contentsline {section}{\numberline {3}User Interface Design}{42}
-\contentsline {section}{\numberline {4}Requirements Traceability}{44}
-\contentsline {section}{\numberline {5}Implementation, Integration and Test Plan}{49}
-\contentsline {subsection}{\numberline {5.1}Overview}{49}
-\contentsline {subsection}{\numberline {5.2}Implementation}{49}
-\contentsline {subsection}{\numberline {5.3}Unit testing}{50}
-\contentsline {subsection}{\numberline {5.4}Integration testing}{51}
-\contentsline {section}{\numberline {6}Effort Spent}{54}
+\contentsline {subsection}{\numberline {2.6}Selected architectural styles and patterns}{46}
+\contentsline {subsection}{\numberline {2.7}Other design decisions}{48}
+\contentsline {section}{\numberline {3}User Interface Design}{50}
+\contentsline {section}{\numberline {4}Requirements Traceability}{52}
+\contentsline {section}{\numberline {5}Implementation, Integration and Test Plan}{57}
+\contentsline {subsection}{\numberline {5.1}Overview}{57}
+\contentsline {subsection}{\numberline {5.2}Implementation}{57}
+\contentsline {subsection}{\numberline {5.3}Unit testing}{58}
+\contentsline {subsection}{\numberline {5.4}Integration testing}{59}
+\contentsline {section}{\numberline {6}Effort Spent}{62}
