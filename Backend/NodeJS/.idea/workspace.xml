@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="637ba8bf-1b94-4c9e-be2d-39a16b1ba7d6" name="Default Changelist" comment="Remove try-catch blocks, add error middleware, code refactoring, add logger with winston">
+    <list default="true" id="637ba8bf-1b94-4c9e-be2d-39a16b1ba7d6" name="Default Changelist" comment="Update working folder">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../iOS/Data4Help/Data4Help.xcworkspace/xcuserdata/molte.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/../../iOS/Data4Help/Data4Help.xcworkspace/xcuserdata/molte.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../iOS/Data4Help/Data4Help/Model/Data4Help Requests/Responses/Request/D4HDownloadSingleResponse.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../../iOS/Data4Help/Data4Help/Model/Data4Help Requests/Responses/Request/D4HDownloadSingleResponse.swift" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -20,8 +18,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/req.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="354">
-              <caret line="409" lean-forward="true" selection-start-line="409" selection-end-line="409" />
+            <state relative-caret-position="24">
+              <caret line="387" lean-forward="true" selection-start-line="387" selection-end-line="387" />
             </state>
           </provider>
         </entry>
@@ -690,7 +688,49 @@
       <option name="project" value="LOCAL" />
       <updated>1547418562723</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="fix">
+      <created>1547418970505</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1547418970505</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Doc fixes">
+      <created>1547418994454</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1547418994454</updated>
+    </task>
+    <task id="LOCAL-00040" summary="fix">
+      <created>1547419337738</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1547419337738</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Update working folder">
+      <created>1547419392183</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1547419392183</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Final fix">
+      <created>1547419413556</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1547419413556</updated>
+    </task>
+    <task id="LOCAL-00043" summary="fix">
+      <created>1547419849776</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1547419849776</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -726,7 +766,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="102257000" />
+    <option name="totallyTimeSpent" value="103119000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -827,10 +867,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add test directory" />
-    <MESSAGE value="Fix to datatype" />
-    <MESSAGE value="Add integration testing framework" />
-    <MESSAGE value="Add userid to Registration, add unit test for schemas.js, add integration test for auth.js" />
     <MESSAGE value="Add settings.test.js and data.test.js, remove pending check from group requests" />
     <MESSAGE value="Complete data.test.js and test refactor" />
     <MESSAGE value="Fixed a bug when sending a request and create req.test.js" />
@@ -852,7 +888,11 @@
     <MESSAGE value="Update MyHealth charts" />
     <MESSAGE value="Fix charts dimension and scroll view" />
     <MESSAGE value="Documentation fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Documentation fixes" />
+    <MESSAGE value="Doc fixes" />
+    <MESSAGE value="Update working folder" />
+    <MESSAGE value="Final fix" />
+    <MESSAGE value="fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -992,8 +1032,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/req.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="409" lean-forward="true" selection-start-line="409" selection-end-line="409" />
+        <state relative-caret-position="24">
+          <caret line="387" lean-forward="true" selection-start-line="387" selection-end-line="387" />
         </state>
       </provider>
     </entry>
