@@ -413,7 +413,9 @@ class DataManager {
             firstUploads.updateValue(false, forKey: dataType)
         }
         else{
-            if( dataType == .heartrate ){
+            let diffMinutes = calendar.dateComponents([.minute], from: today, to: ((new.last)?.startDate)!).minute ?? 0
+            print("DIFF \(diffMinutes)")
+            if(dataType == .heartrate && diffMinutes < 1 && diffMinutes > -1){
                 self.automatedSOSManager.checkHeartRate(heartRate: (new.last?.quantity.doubleValue(for: unit))!, timestamp: timestamp)
             }
             
@@ -486,7 +488,11 @@ class DataManager {
             systolic = correlation!.objects(for: HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.bloodPressureSystolic)!).first as? HKQuantitySample
             sTimestamp = getTimestamp(sample: systolic!)
             
-            self.automatedSOSManager.checkBloodPressure(systolic: systolic!.quantity.doubleValue(for: HKUnit.millimeterOfMercury()), diastolyc: diastolic!.quantity.doubleValue(for: HKUnit.millimeterOfMercury()), timestamp: sTimestamp!)
+            let diffMinutes = calendar.dateComponents([.minute], from: today, to: ((new.last)?.startDate)!).minute ?? 0
+            
+            if(diffMinutes < 1 && diffMinutes > -1) {
+                self.automatedSOSManager.checkBloodPressure(systolic: systolic!.quantity.doubleValue(for: HKUnit.millimeterOfMercury()), diastolyc: diastolic!.quantity.doubleValue(for: HKUnit.millimeterOfMercury()), timestamp: sTimestamp!)
+            }
         }
     }
     
@@ -529,7 +535,7 @@ class DataManager {
                 }
                 
                 // send new data each hour
-                sleep(10000)
+                sleep(3600)
             }
         }
     }

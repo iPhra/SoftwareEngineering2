@@ -82,7 +82,7 @@ class GRequest: UIViewController {
         // Hide keyboard when tap out
         self.hideKeyboardWhenTappedAround()
 
-        scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height + 300)
+        scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height + 500)
         
         minAgeSliderText.text = ""
         maxAgeSliderText.text = ""

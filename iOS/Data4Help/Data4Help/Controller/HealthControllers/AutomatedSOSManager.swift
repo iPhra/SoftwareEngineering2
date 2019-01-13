@@ -63,21 +63,27 @@ class AutomatedSOSManager {
     }
     
     func checkHeartRate(heartRate: Double, timestamp: String){
-        self.lastHeartRateSample = heartRate
-        if(heartRate<heartRateLowerBound || heartRate>heartRateUpperBound){
-            callAmbulance()
+        if(DataManager.sharedInstance.AutomatedSOSON){
+            self.lastHeartRateSample = heartRate
+            if(heartRate<heartRateLowerBound || heartRate>heartRateUpperBound){
+                callAmbulance()
+            }
+            else{
+                return
+            }
         }
-        else{
-            return
-        }
+        
     }
     
     func checkBloodPressure(systolic: Double, diastolyc: Double, timestamp: String){
-        self.lastBloodPressureSample = BloodPressure(systolic: systolic, diastolyc: diastolyc)
-        self.lastBloodPressureTimestamp = timestamp
-        if(self.bloodPressureUpperBound.isToppedBy(systolic: systolic, diastolyc: diastolyc) || self.bloodPressureLowerBound.isLoweredBy(systolic: systolic, diastolyc: diastolyc)){
-            callAmbulance()
+        if(DataManager.sharedInstance.AutomatedSOSON){
+            self.lastBloodPressureSample = BloodPressure(systolic: systolic, diastolyc: diastolyc)
+            self.lastBloodPressureTimestamp = timestamp
+            if(self.bloodPressureUpperBound.isToppedBy(systolic: systolic, diastolyc: diastolyc) || self.bloodPressureLowerBound.isLoweredBy(systolic: systolic, diastolyc: diastolyc)){
+                callAmbulance()
+            }
         }
+        
     }
     
 }
