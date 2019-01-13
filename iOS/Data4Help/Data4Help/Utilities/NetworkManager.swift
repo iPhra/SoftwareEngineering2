@@ -11,6 +11,30 @@ import Alamofire
 import SwiftyJSON
 import os.log
 
+extension Alamofire.SessionManager{
+    @discardableResult
+    open func requestWithoutCache(
+        _ url: URLConvertible,
+        method: HTTPMethod = .get,
+        parameters: Parameters? = nil,
+        encoding: ParameterEncoding = URLEncoding.default,
+        headers: HTTPHeaders? = nil)// also you can add URLRequest.CachePolicy here as parameter
+        -> DataRequest
+    {
+        do {
+            var urlRequest = try URLRequest(url: url, method: method, headers: headers)
+            urlRequest.cachePolicy = .reloadIgnoringCacheData // <<== Cache disabled
+            let encodedURLRequest = try encoding.encode(urlRequest, with: parameters)
+            return request(encodedURLRequest)
+        } catch {
+            // TODO: find a better way to handle error
+            print(error)
+            return request(URLRequest(url: URL(string: "http://example.com/wrong_request")!))
+        }
+    }
+}
+
+
 class NetworkManager {
     
     //MARK:  Singleton pattern
@@ -27,7 +51,7 @@ class NetworkManager {
         ) {
         os_log("NetworkManager request: %@endpoint", log: OSLog.default, type: .debug)
         
-        Alamofire.request(self.getD4HUrlWithKey(endpoint: endpoint), method: HTTPMethod.post, parameters: input.getParams(), encoding: JSONEncoding.default, headers: headers).responseJSON { (dataResponse) in
+        Alamofire.SessionManager.default.requestWithoutCache(self.getD4HUrlWithKey(endpoint: endpoint), method: HTTPMethod.post, parameters: input.getParams(), encoding: JSONEncoding.default, headers: headers).responseJSON { (dataResponse) in
             if let data = dataResponse.data {
                 let json = JSON(data)
                 switch (dataResponse.response?.statusCode) {
@@ -56,7 +80,7 @@ class NetworkManager {
         ) {
         os_log("NetworkManager request: %@endpoint", log: OSLog.default, type: .debug)
         
-        Alamofire.request(self.getD4HUrlWithKey(endpoint: endpoint), method: HTTPMethod.get, parameters: input.getParams(), headers: headers).responseJSON { (dataResponse) in
+        Alamofire.SessionManager.default.requestWithoutCache(self.getD4HUrlWithKey(endpoint: endpoint), method: HTTPMethod.get, parameters: input.getParams(), headers: headers).responseJSON { (dataResponse) in
             
             // Manage response
             

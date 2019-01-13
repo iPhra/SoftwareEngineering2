@@ -38,8 +38,15 @@ class RequestsController: UIViewController, UITableViewDelegate, UITableViewData
     
     // MARK: Initializers
     
+    override func viewWillAppear(_ animated: Bool) {
+        print("View will appear")
+        loadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("vIew loaded")
         
         // Hide keyboard when tap out
         self.hideKeyboardWhenTappedAround()
@@ -134,6 +141,8 @@ class RequestsController: UIViewController, UITableViewDelegate, UITableViewData
     @objc
     func loadData() {
         // API call to retrieve requests
+        
+        print("Loading data")
         NetworkManager.sharedInstance.sendGetRequest(input: D4HSingleListRequest(authToken: Properties.authToken), endpoint: D4HEndpoint.requestListSingle, headers: Properties.auth()) { (response, error) in
             if response != nil {
                 let myres = D4HSingleListResponse(fromJson: response!)

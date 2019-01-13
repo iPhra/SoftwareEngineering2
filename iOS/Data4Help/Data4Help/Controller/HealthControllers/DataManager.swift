@@ -510,7 +510,7 @@ class DataManager {
                 }
                 
                 // send new data each hour
-                sleep(3600)
+                sleep(10000)
             }
         }
     }

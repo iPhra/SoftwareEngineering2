@@ -34,6 +34,10 @@ class TPRequestsController: UIViewController, UITableViewDelegate, UITableViewDa
     
     // Mark: Initializers
     
+    override func viewWillAppear(_ animated: Bool) {
+        loadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
