@@ -22,6 +22,10 @@ class TPSettings: UIViewController {
     var TPEditSettings: TPEditSettings? = nil
     var edit = 0
     
+    override func viewWillAppear(_ animated: Bool) {
+        loadinfo()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

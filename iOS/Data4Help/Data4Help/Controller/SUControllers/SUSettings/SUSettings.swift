@@ -21,6 +21,10 @@ class SUSettings: UIViewController {
     var EditSettings: SUEditSettings? = nil
     var edit = 0
     
+    override func viewWillAppear(_ animated: Bool) {
+        loadinfo()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
