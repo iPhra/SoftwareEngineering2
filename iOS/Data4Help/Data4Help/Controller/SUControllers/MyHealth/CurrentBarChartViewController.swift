@@ -15,11 +15,11 @@ class CurrentBarChartViewController: UIViewController {
 
     @IBOutlet weak var barChartCurrentValues: BarChartView!
     
-    var dataTypesToShow: [String] = [ dataType.activeEnergyBurned.rawValue,
+    var dataTypesToShow: [String] = [ dataType.heartrate.rawValue,
+                                      dataType.activeEnergyBurned.rawValue,
                                       dataType.diastolic_pressure.rawValue,
                                       dataType.systolic_pressure.rawValue,
                                       dataType.distanceWalkingRunning.rawValue,
-                                      dataType.heartrate.rawValue,
                                       dataType.height.rawValue,
                                       dataType.sleepingHours.rawValue,
                                       dataType.standingHours.rawValue,

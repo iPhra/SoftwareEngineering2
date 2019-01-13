@@ -17,13 +17,55 @@ class BubbleChartViewController: UIViewController {
     
     weak var axisFormatDelegate: IAxisValueFormatter?
     
-    var countLabels: Int = 0
+    var xvals: [String] = [ dataType.heartrate.rawValue,
+                            dataType.activeEnergyBurned.rawValue,
+                            dataType.diastolic_pressure.rawValue,
+                            dataType.systolic_pressure.rawValue,
+                            dataType.distanceWalkingRunning.rawValue,
+                            dataType.height.rawValue,
+                            dataType.sleepingHours.rawValue,
+                            dataType.standingHours.rawValue,
+                            dataType.steps.rawValue,
+                            dataType.weight.rawValue]
     
-    var xvals : [String] = []
+    var min: [String: Double] = [
+        dataType.activeEnergyBurned.rawValue : 0,
+        dataType.diastolic_pressure.rawValue : 0,
+        dataType.systolic_pressure.rawValue : 0,
+        dataType.distanceWalkingRunning.rawValue : 0,
+        dataType.heartrate.rawValue : 0,
+        dataType.height.rawValue : 0,
+        dataType.sleepingHours.rawValue : 0,
+        dataType.standingHours.rawValue : 0,
+        dataType.steps.rawValue : 0,
+        dataType.weight.rawValue : 0,
+        ]
     
-    var min : [Double] = []
-    var max : [Double] = []
-    var avg : [Double] = []
+    var max: [String: Double] = [
+        dataType.activeEnergyBurned.rawValue : 0,
+        dataType.diastolic_pressure.rawValue : 0,
+        dataType.systolic_pressure.rawValue : 0,
+        dataType.distanceWalkingRunning.rawValue : 0,
+        dataType.heartrate.rawValue : 0,
+        dataType.height.rawValue : 0,
+        dataType.sleepingHours.rawValue : 0,
+        dataType.standingHours.rawValue : 0,
+        dataType.steps.rawValue : 0,
+        dataType.weight.rawValue : 0,
+        ]
+    
+    var avg: [String: Double] = [
+        dataType.activeEnergyBurned.rawValue : 0,
+        dataType.diastolic_pressure.rawValue : 0,
+        dataType.systolic_pressure.rawValue : 0,
+        dataType.distanceWalkingRunning.rawValue : 0,
+        dataType.heartrate.rawValue : 0,
+        dataType.height.rawValue : 0,
+        dataType.sleepingHours.rawValue : 0,
+        dataType.standingHours.rawValue : 0,
+        dataType.steps.rawValue : 0,
+        dataType.weight.rawValue : 0,
+        ]
     
     // MArk: Functions
 
@@ -37,25 +79,21 @@ class BubbleChartViewController: UIViewController {
             if response != nil {
                 let myres: D4HStatisticsResponse = D4HStatisticsResponse(fromJson: response!)
                 let statistics: [D4HStatistic] = myres.statistics
-                var count: Int = 0
                 for s in statistics {
                     if(s.observations.count>0){
-                        count += 1
-                        self.xvals.append(s.type.rawValue)
-                        self.avg.append((s.observations.first?.avg ?? 0))
-                        self.min.append((s.observations.first?.min ?? 0))
-                        self.max.append((s.observations.first?.max ?? 0))
+                        self.avg.updateValue((s.observations.first?.avg)!, forKey: s.type.rawValue)
+                        self.min.updateValue((s.observations.first?.min)!, forKey: s.type.rawValue)
+                        self.max.updateValue((s.observations.first?.max)!, forKey: s.type.rawValue)
                     }
                 }
-                self.countLabels = count
-                self.setChartBubble(dataPoints: self.xvals, values1: self.min, values2: self.avg, values3: self.max, sortIndex: 3)
+                self.setChartBubble(dataPoints: self.xvals, values1: Array(self.min.values), values2: Array(self.avg.values), values3: Array(self.max.values), sortIndex: 3)
             }
             else if let error = error {
                 print(error)
             }
         }
         
-        self.setChartBubble(dataPoints: self.xvals, values1: self.min, values2: self.avg, values3: self.max, sortIndex: 3)
+        self.setChartBubble(dataPoints: self.xvals, values1: Array(self.min.values), values2: Array(self.avg.values), values3: Array(self.max.values), sortIndex: 3)
 
     }
     
@@ -115,7 +153,9 @@ class BubbleChartViewController: UIViewController {
         bubbleChartView.scaleXEnabled = false
         bubbleChartView.scaleYEnabled = false
         
-        bubbleChartView.xAxis.setLabelCount(self.countLabels, force: true)
+        bubbleChartView.xAxis.labelRotationAngle = -45.0
+        
+        bubbleChartView.xAxis.setLabelCount(10, force: true)
         bubbleChartView!.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .easeInBounce)
         
     }
@@ -125,32 +165,28 @@ class BubbleChartViewController: UIViewController {
             if response != nil {
                 let myres: D4HStatisticsResponse = D4HStatisticsResponse(fromJson: response!)
                 let statistics: [D4HStatistic] = myres.statistics
-                var count: Int = 0
                 for s in statistics {
                     if(s.observations.count>0){
-                        count += 1
-                        self.xvals.append(s.type.rawValue)
-                        self.avg.append((s.observations.first?.avg ?? 0))
-                        self.min.append((s.observations.first?.min ?? 0))
-                        self.max.append((s.observations.first?.max ?? 0))
+                        self.avg.updateValue((s.observations.first?.avg)!, forKey: s.type.rawValue)
+                        self.min.updateValue((s.observations.first?.min)!, forKey: s.type.rawValue)
+                        self.max.updateValue((s.observations.first?.max)!, forKey: s.type.rawValue)
                     }
                 }
-                self.countLabels = count
-                self.setChartBubble(dataPoints: self.xvals, values1: self.min, values2: self.avg, values3: self.max, sortIndex: 3)
+                self.setChartBubble(dataPoints: self.xvals, values1: Array(self.min.values), values2: Array(self.avg.values), values3: Array(self.max.values), sortIndex: 3)
             }
             else if let error = error {
                 print(error)
             }
         }
         
-        self.setChartBubble(dataPoints: self.xvals, values1: self.min, values2: self.avg, values3: self.max, sortIndex: 3)
+        self.setChartBubble(dataPoints: self.xvals, values1: Array(self.min.values), values2: Array(self.avg.values), values3: Array(self.max.values), sortIndex: 3)
     }
     
     @IBAction func reloadData(_ sender: Any) {
         self.bubbleChartView.clearValues()
         loadData()
         self.bubbleChartView.notifyDataSetChanged()
-        self.setChartBubble(dataPoints: self.xvals, values1: self.min, values2: self.avg, values3: self.max, sortIndex: 3)
+        self.setChartBubble(dataPoints: self.xvals, values1: Array(self.min.values), values2: Array(self.avg.values), values3: Array(self.max.values), sortIndex: 3)
     }
     
     

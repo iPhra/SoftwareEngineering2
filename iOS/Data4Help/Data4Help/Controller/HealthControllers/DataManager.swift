@@ -21,6 +21,7 @@ class DataManager {
         byAdding: .weekOfYear,
         value: -1,
         to: Date())!
+    var today: Date = Date()
     let calendar = Calendar.current
     
     var myHealth: MyHealth?
@@ -388,11 +389,16 @@ class DataManager {
             var timestamps: [String] = []
             for s in new {
                 let sampleDate: Date = s.startDate
-                let components = calendar.dateComponents([.day], from: startDate, to: sampleDate)
+                let components = calendar.dateComponents([.day], from: sampleDate, to: startDate)
                 if((components.day ?? 0) < 8 && (components.day ?? 0) > -1){
                     dataValues.append(s.quantity.doubleValue(for: unit))
                     timestamps.append(getTimestamp(sample: s))
                     
+                }
+                let diffMinutes = calendar.dateComponents([.day], from: today, to: sampleDate).minute ?? 0
+                
+                if( dataType == .heartrate && diffMinutes < 1 && diffMinutes > -1 ){
+                    self.automatedSOSManager.checkHeartRate(heartRate: (new.last?.quantity.doubleValue(for: unit))!, timestamp: timestamp)
                 }
             }
             NetworkManager.sharedInstance.sendPostRequest(input: D4HDataUploadRequest(types: [dataType.rawValue], values: [dataValues], timestamps: [timestamps]), endpoint: D4HEndpoint.uploadData, headers: Properties.auth()) { (response, error) in
@@ -407,9 +413,10 @@ class DataManager {
             firstUploads.updateValue(false, forKey: dataType)
         }
         else{
-            if(dataType == .heartrate){
+            if( dataType == .heartrate ){
                 self.automatedSOSManager.checkHeartRate(heartRate: (new.last?.quantity.doubleValue(for: unit))!, timestamp: timestamp)
             }
+            
             StorageManager.sharedInstance.addData(entityName: "Data", type: dataType.rawValue, timestamp: timestamp, value: (((new.last?.quantity.doubleValue(for: unit))!)))
         }
     }
@@ -451,9 +458,15 @@ class DataManager {
                     
                     print("systolic: \(systolic!.quantity)")
                     print("diastolic: \(diastolic!.quantity)")
+                    
+                    let diffMinutes = calendar.dateComponents([.day], from: today, to: sampleDate).minute ?? 0
+                    
+                    if( diffMinutes < 1 && diffMinutes > -1 ){
+                        self.automatedSOSManager.checkBloodPressure(systolic: systolic!.quantity.doubleValue(for: HKUnit.millimeterOfMercury()), diastolyc: diastolic!.quantity.doubleValue(for: HKUnit.millimeterOfMercury()), timestamp: sTimestamp!)
+                    }
                 }
             }
-            firstUploads.updateValue(false, forKey: dataType.bloodPressure)
+            
             NetworkManager.sharedInstance.sendPostRequest(input: D4HDataUploadRequest(types: [dataType.systolic_pressure.rawValue,dataType.diastolic_pressure.rawValue], values: [systolicaValues,diastolicValues], timestamps: [systolicTimestamps,diastolicTimestamps]), endpoint: D4HEndpoint.uploadData, headers: Properties.auth()) { (response, error) in
                 if response != nil {
                     let myres = D4HDataUploadResponse(fromJson: response!)
@@ -463,6 +476,8 @@ class DataManager {
                     print(error)
                 }
             }
+            
+            firstUploads.updateValue(false, forKey: dataType.bloodPressure)
         }
         else{
             let correlation = new.last
@@ -505,6 +520,7 @@ class DataManager {
                         if response != nil {
                             let myres = D4HDataUploadResponse(fromJson: response!)
                             print(myres.message)
+                            StorageManager.sharedInstance.deleteAllData(entityName: "Data")
                         }
                         else if let error = error {
                             print(error)
