@@ -1343,17 +1343,18 @@
 			\item Opening your IDE and creating a new Project selecting /LorenzoMolteniNegri/Backend/NodeJS as root, then creating a script to run it. Please refer to the documentation provided for your IDE, make sure to select bin/www.js as the executable to run.
 		\end{itemize}
 	\end{enumerate}
-	To run all tests you need to install a local PostgreSQL database. 
-	Follow the steps mentioned in this guide \href{https://www.codementor.io/engineerapart/getting-started-with-postgresql-on-mac-osx-are8jcopb}{https://www.codementor.io/engineerapart/getting-started-with-postgresql-on-mac-osx-are8jcopb} for what concerns installing Postgres through Homebrew, creating a user and creating the database.
-	Once the database is up and running, recreate the DB schema provided in this documentation using a SQL client of your choice. For SQLWorkbenchJ, to access and modify the database, follow these steps:
+	To run all tests you need to install a local PostgreSQL database. \newline
+	Follow the steps mentioned in this guide  \href{https://www.codementor.io/engineerapart/getting-started-with-postgresql-on-mac-osx-are8jcopb}{https://www.codementor.io/engineerapart/getting-started-with-postgresql-on-mac-osx-are8jcopb} for what concerns installing Postgres through Homebrew, creating a user named "iphra" with empty password and a new database called "data4help". \newline
+	Then, you have to recreate the DB schema provided in this documentation using a SQL client of your choice. For SQLWorkbenchJ, to access and modify the database, follow these steps:
 	\begin{enumerate}
 		\item In the Select Connection window, choose the Driver for PostgreSQL among those available.
-		\item Use this url: “jdbc:postgresql://localhost/yourdbname”. yourdbname should be the name you used when you created the local database.
-		\item Username should be the one used when creating your user in the aforementioned guide.
+		\item Use this url: “jdbc:postgresql://localhost/data4help”.
+		\item Username should be "iphra".
 		\item Leave all other options default, and connect to the database.
 		\item You can now recreate our schema by using Statement windows to type SQL commands.
 	\end{enumerate}
 	
+	\noindent
 	When the database is ready, open Terminal and head to /LorenzoMolteniNegri/Backend/NodeJS, you can now run all tests by typing “npm test”.
 	
 	\subsection{Frontend}
