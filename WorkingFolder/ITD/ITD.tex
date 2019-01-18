@@ -1358,14 +1358,18 @@
 	When the database is ready, open Terminal and head to /LorenzoMolteniNegri/Backend/NodeJS, you can now run all tests by typing “npm test”.
 	
 	\subsection{Frontend}
-	To access the frontend\textsc{\char13}s source code you must have XCode installed and do the following steps:
+	To access the frontend\textsc{\char13}s source code you must have XCode installed. We recommend having the latest version of the software installed (10.1) and the latest update of your OS. We cannot guarantee correct functioning with previous versions. You must now follow these steps:
 	\begin{enumerate}
-		\item In XCode open the Xcode workspace file of {\it Data4Help} located in /LorenzoMolteniNegri/iOS/Data4Help/
-		\item In the project\textsc{\char13}s General tab insert valid Developer Account credentials in the “Team” field.
+		\item Open a shell and reach the directory of the XCode project located in /LorenzoMolteniNegri/iOS/Data4Help/
+		\item Delete the files Data4Help.xcworkspace, Podfile.lock and the directory Pods
+		\item Type {\it pod install} to reinstall pods and generate a new workspace
+		\item In XCode open the newly generated workspace, located in /LorenzoMolteniNegri/iOS/Data4Help/
+		\item In the project\textsc{\char13}s General tab insert valid Developer Account credentials in the “Team” field (E.g. the ones of your AppleID) and a bundleId different from the actual one.
 		\item To build the project you must select a destination under $Product \rightarrow Destination$. You can either:
 		\begin{tasks}
-			\task Select an iOS Simulator. We recommend using an iPhone XS simulator to take advantage of the wide screen and latest capabilities.
-			\task Select your personal device after having connected it to the USB port. Please be sure to be running iOS 8.0 or a later version. We recommend running the latest version of iOS.
+			\task Select an iOS Simulator. We recommend using an iPhone XS simulator to take advantage of the wide screen and latest capabilities. 
+			If you use a simulator you must run the server locally. In the $Utilities \rightarrow NetworkManager.swift$ file, be sure to have GCP.D4HAPIbaseURL as prefix of your url in the function getD4HUrlWithKey of GCP. 
+			\task Select your personal device after having connected it to the USB port. Please be sure to be running iOS 8.0 or a later version. We recommend running the latest version of iOS. If you use your personal device you must connect to the deployed server. In the $Utilities \rightarrow NetworkManager.swift$ file, be sure to have GCP.D4HAPIbaseURLdeployed as prefix of your url in the function getD4HUrlWithKey of GCP. 
 		\end{tasks}
 		\item Run the application. If the destination is your personal device an error will appear after having installed the app for the first time. The error appears because the Developer App certificate for your account must be trusted on your device. To remove it proceed as follows:
 		\begin{tasks}

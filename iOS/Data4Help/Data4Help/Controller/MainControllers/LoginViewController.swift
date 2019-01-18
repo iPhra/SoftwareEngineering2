@@ -25,25 +25,6 @@ class LoginViewController: UIViewController {
         //Delete any shortcut that has not been properly deleted
         AppDelegate.deleteAllQuickShortcuts()
         
-        // DEBUGGING FUNCTIONS
-        // DELETE BEFORE DEPLOYMENT
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(doubleTapped))
-        tap.numberOfTapsRequired = 2
-        view.addGestureRecognizer(tap)
-        
-        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(swiped))
-        view.addGestureRecognizer(swipe)
-        
-        // END DEBUGGING CALLS
-        
-        /*
-        // Attempt to automatically login
-        Properties.getNameAndAddress()
-        if (Properties.password != "" && Properties.username != "") {
-            print("Sending automatic login request")
-            login(email: Properties.username, password: Properties.password)
-        }*/
     }
     
     // MARK: Actions

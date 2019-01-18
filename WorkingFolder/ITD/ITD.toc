@@ -50,5 +50,5 @@
 \contentsline {subsection}{\numberline {6.1}Preliminary Operations}{54}{subsection.6.1}
 \contentsline {subsection}{\numberline {6.2}Backend}{54}{subsection.6.2}
 \contentsline {subsection}{\numberline {6.3}Frontend}{55}{subsection.6.3}
-\contentsline {section}{\numberline {7}Future developments}{56}{section.7}
-\contentsline {section}{\numberline {8}Efforts}{57}{section.8}
+\contentsline {section}{\numberline {7}Future developments}{57}{section.7}
+\contentsline {section}{\numberline {8}Efforts}{58}{section.8}
