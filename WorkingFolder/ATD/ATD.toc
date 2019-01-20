@@ -1,0 +1,21 @@
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}
+\contentsline {subsection}{\numberline {1.1}Purpose and Scope}{2}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}References}{2}{subsection.1.2}
+\contentsline {subsection}{\numberline {1.3}Project analysed}{2}{subsection.1.3}
+\contentsline {subsection}{\numberline {1.4}Overview}{2}{subsection.1.4}
+\contentsline {section}{\numberline {2}Installation Setup}{3}{section.2}
+\contentsline {subsection}{\numberline {2.1}Server}{3}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Third Party client}{3}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}Individual client}{3}{subsection.2.3}
+\contentsline {section}{\numberline {3}Acceptance Test Cases}{4}{section.3}
+\contentsline {subsection}{\numberline {3.1}Third Party - Registration}{4}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Individual - Registration}{5}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Login}{5}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.4}Third Party - Settings Management}{6}{subsection.3.4}
+\contentsline {subsection}{\numberline {3.5}Individual - Settings Management}{7}{subsection.3.5}
+\contentsline {subsection}{\numberline {3.6}Individual - AutomatedSOS Service}{7}{subsection.3.6}
+\contentsline {subsection}{\numberline {3.7}Individual - Data Acquisition}{8}{subsection.3.7}
+\contentsline {subsection}{\numberline {3.8}Data Management}{8}{subsection.3.8}
+\contentsline {subsection}{\numberline {3.9}Individual Requests}{9}{subsection.3.9}
+\contentsline {subsection}{\numberline {3.10}Anonymous Requests}{10}{subsection.3.10}
+\contentsline {section}{\numberline {4}Summary}{12}{section.4}

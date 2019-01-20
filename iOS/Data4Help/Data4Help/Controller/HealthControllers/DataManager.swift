@@ -388,7 +388,7 @@ class DataManager {
             var timestamps: [String] = []
             for s in new {
                 let sampleDate: Date = s.startDate
-                let components = calendar.dateComponents([.day], from: sampleDate, to: startDate)
+                let components = calendar.dateComponents([.day], from: startDate, to: sampleDate)
                 if((components.day ?? 0) < 8 && (components.day ?? 0) > -1){
                     dataValues.append(s.quantity.doubleValue(for: unit))
                     timestamps.append(getTimestamp(sample: s))

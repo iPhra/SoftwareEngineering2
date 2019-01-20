@@ -1,0 +1,422 @@
+\documentclass[titlepage]{article}
+
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{subfig}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref} 
+\usepackage{xcolor}
+\usepackage{tasks}
+\graphicspath{ {./images/} }
+			
+
+\title{{\Huge {\it {\it Data4Help}}}}
+\author{Lorenzo, Molteni, Negri}
+\date{January 20, 2019}
+
+\begin{document}
+
+\makeatletter
+    \begin{titlepage}
+        \begin{center}
+            \includegraphics[width=\linewidth]{logo.png}\\[20ex]
+            {\huge  \@title }\\[2ex] 
+            {\LARGE  \@author}\\[3ex] 
+            {\LARGE {\it ATD} - Acceptance Test Deliverable}\\[3ex]
+            {\large \@date}\\[5ex]
+        \end{center}
+    \end{titlepage}
+\makeatother
+\thispagestyle{empty}
+\newpage
+
+%Add content for page two here (useful for two-sided printing)
+\thispagestyle{empty}
+\newpage
+
+
+	
+%Index	
+\pagebreak
+\tableofcontents{}
+\pagebreak
+
+
+%Introduction
+\section{Introduction}
+
+\subsection{Purpose and Scope}
+The purpose of this document is to validate the assigned project with regards to the installation procedure, the testing of implemented requirements, and the overall coherence and quality of documentation.
+
+\subsection{References}
+The documents used to derive all Acceptance Test cases, and perform installation, are:
+\begin{itemize}
+    \item {RASD:} Requirements Analysis and Specification Document
+    \item{DD:} Design Document
+    \item{ITD:} Implementation and Testing Document
+\end{itemize}
+
+\subsection{Project analysed}
+The authors of the project we had to review are:
+\begin{itemize}
+    \item {Paolo Romeo:} paolo1.romeo@mail.polimi.it
+    \item{Andrea Scotti:} andrea5.scotti@mail.polimi.it
+    \item{Francesco Staccone:} francesco.staccone@mail.polimi.it
+\end{itemize}
+
+\noindent
+Their GitHub repository can be found at: \href{https://github.com/dev-strenuus/RomeoScottiStaccone}{https://github.com/dev-strenuus/RomeoScottiStaccone}. 
+
+
+
+\subsection{Overview}
+The remaining parts of the document are organised as follows:
+\begin{itemize}
+
+\item {\bf Installation Setup:}
+explains what we did in order to install the System and run it properly
+
+\item {\bf Acceptance Test Cases:}
+contains the acceptance test cases defined and their outcomes
+
+\item {\bf Summary:}
+is an overall consideration regarding the quality of the documentation and coherence with the implementation
+
+\end{itemize}
+
+
+\pagebreak
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Installation Setup
+\section{Installation Setup}
+Installation has been performed on MacOS Mojave 10.14.2 by all members of our group.
+
+\subsection{Server}
+To install the server we unzipped the executable folder and ran the command provided in the ITD to execute the jar. \newline
+Due to LaTeX changing the `` into ", copy-paste of the command to run the server on the Terminal doesn't work, so we had to insert the correct quote character. Apart from this issue caused by LaTeX, the server is immediate to setup and run.
+
+\subsection{Third Party client}
+To access the interface of a Third Party, we tried using Safari, Chrome and Firefox to connect to the provided ip (with {\it ipserver:port} set to localhost:3000). \newline
+No issues were encountered.
+
+\subsection{Individual client}
+Node.js was required to access the interface of an {\it Individual} , but its installation was not necessary because all members of our group already have it installed, along with NPM. 
+\newline
+\newline
+To install Cordova, Ionic and Phonegap we used the provided command, but had to add ``sudo" to give permissions to install the dependencies globally, as most Macs are not setup with super user permissions. \newline
+\newline
+For what concerns Phonegap, the iOS application is no longer available on the AppStore, but we managed to borrow an Android device to try the mobile experience. Nonetheless, after contacting the team, they also recommended us to try a browser as well, without having to launch Phonegap. \newline
+Safari does not display a date picker, so we could not use it for signup. We instead used Chrome, and had to disable Web Security by running it through the Terminal: ``open -a Google\ Chrome --args --disable-web-security --user-data-dir". After signup was successful, we could switch back to Safari, without having further issues.
+\newline
+For the Android application we carefully followed the installation guide provided in the ITD document without any relevant issue. The interface and functionalities are exactly the same available for the web version.
+
+
+\pagebreak
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Acceptance Test cases
+\section{Acceptance Test Cases}
+We tested the functionality of each implemented requirement in the ITD, both with positive and negative outcomes. For each test, we provide a brief description of how it was performed, its desired outcome and its actual outcome. \newline
+HTTP codes are retrieved using Chrome Developer Tools. 
+
+\subsection{Third Party - Registration}
+\begin{itemize}
+    \item {\bf R15)} Two different users cannot have the same username.
+    \item {\bf R16)} The system must allow the third party to register to the application, by specifying its VAT registration number, name and password.
+\end{itemize}
+
+\renewcommand*{\arraystretch}{1.4}
+\begin{longtable}{| p{3 cm} | p{4 cm} | p{4 cm} |} \hline
+    {\bf Test description} & {\bf Desired outcome} & {\bf Test outcome} \\ \hline
+    Register a user providing correct informations & 
+    Registration is successful, user is brought back to login page
+        & HTTP 200; \textcolor{green}{Test passed} \\ \hline
+    Register a user providing a VAT already used & 
+    Registration fails, user is prompted to insert a different VAT
+        & HTTP 409; \textcolor{green}{Test passed} \\ \hline
+    Register a user providing a Name already used & 
+    Registration fails, user is prompted to insert a different Name
+        & HTTP 409; \textcolor{green}{Test passed} \\ \hline
+    Register a user without accepting the agreement & 
+    Registration fails, user is prompted to accept the agreement
+        & Request is not sent; \textcolor{green}{Test passed} \\ \hline
+    Register a user with a VAT not long 11 characters & 
+    Registration fails, user is prompted to insert a valid VAT
+        & Request is not sent; \textcolor{green}{Test passed} \\ \hline
+    Register a user with an empty Name or Password & 
+    Registration fails, user is prompted to insert a valid Name or Password
+        & Request is not sent; \textcolor{green}{Test passed} \\ \hline
+    \caption{Third Party Registration suite}
+\end{longtable}
+
+\noindent
+For what concerns R13, the VAT has to be unique for every Third Party, thus being the "username" mentioned in the requirement. As we can see though, the Name of the Third Party must also be unique, but this is not specified in the documentation, and can be confusing since for Individuals the (Name, Surname) couple doesn't have to be unique, but only its Fiscal Code does. \newline
+
+
+\subsection{Individual - Registration}
+\begin{itemize}
+    \item {\bf R15)} Two different users cannot have the same username.
+    \item {\bf R13)} The system must allow the individual to register to the application by selecting a password and providing his/her data, fiscal code included.
+\end{itemize}
+
+\renewcommand*{\arraystretch}{1.4}
+\begin{longtable}{| p{3 cm} | p{4 cm} | p{4 cm} |} \hline
+    {\bf Test description} & {\bf Desired outcome} & {\bf Test outcome} \\ \hline
+    Register a user providing correct informations & 
+    Registration is successful, user is brought back to login page
+        & HTTP 200; \textcolor{green}{Test passed} \\ \hline
+    Register a user providing a Fiscal Code already used & 
+    Registration fails, user is prompted to insert a different Fiscal Code
+        & HTTP 409; \textcolor{green}{Test passed} \\ \hline
+    Register a user without accepting the agreement & 
+    Registration fails, user is prompted to accept the agreement
+        & Request is not sent; \textcolor{green}{Test passed} \\ \hline
+    Register a user with a Fiscal Code not long 16 characters & 
+    Registration fails, user is prompted to insert a valid Fiscal Code
+        & Request is not sent; \textcolor{green}{Test passed} \\ \hline
+    Register a user with an empty Name, Surname or Password & 
+    Registration fails, user is prompted to insert a valid Name, Surname or Password
+        & Request is not sent; \textcolor{green}{Test passed} \\ \hline
+    Register a user with a Birthdate not matching dd/mm/yyyy & 
+    Registration fails, user is prompted to insert a valid Birthdate
+        & HTTP 400; \textcolor{red}{Test partially failed}: the check should be done without sending the request \\ \hline
+    Register a user with an empty Latitude or Longitude & 
+    Registration fails, user is prompted to insert a valid Latitude or Longitude
+        & Request is not sent; \textcolor{green}{Test passed} \\ \hline
+    \caption{Third Party Registration suite}
+\end{longtable}
+
+
+\subsection{Login}
+\begin{itemize}
+    \item {\bf R17)} The system must allow the third party to log in to the application by providing the combination of a VAT registration number and a password that match an account.
+    \item {\bf R14)} The system must allow the individual to log in to the application by providing the combination of a fiscal code and a password that matches an account.
+\end{itemize}
+
+\renewcommand*{\arraystretch}{1.4}
+\begin{longtable}{| p{3 cm} | p{4 cm} | p{4 cm} |} \hline
+    {\bf Test description} & {\bf Desired outcome} & {\bf Test outcome} \\ \hline
+    Log in a third party account with valid credentials & 
+    Login is successful, user is brought to the third party user home page
+        & HTTP 200; \textcolor{green}{Test passed} \\ \hline
+    Log in the third party website with malformed VAT & 
+    Login fails 
+        & Request not sent; \textcolor{green}{Test passed} \\ \hline
+    Log in the third party website with credentials not matching an account & 
+    Login fails 
+        & HTTP 401; \textcolor{green}{Test passed} \\ \hline
+    Log in an individual account with valid credentials & 
+    Login is successful, user is brought to the individual user home page
+        & HTTP 200; \textcolor{green}{Test passed} \\ \hline
+    Log in the individual website with malformed fiscal code & 
+    Login fails 
+        & Request not sent; \textcolor{green}{Test passed} \\ \hline
+    Log in the individual website with credentials not matching an account & 
+    Login fails 
+        & HTTP 401; \textcolor{green}{Test passed} \\ \hline
+    \caption{Login suite}
+\end{longtable}
+
+\subsection{Third Party - Settings Management}
+\begin{itemize}
+    \item {\bf R33)} The system must allow the Third party to change its password.
+\end{itemize}
+
+\begin{longtable}{| p{3 cm} | p{4 cm} | p{4 cm} |} \hline
+    {\bf Test description} & {\bf Desired outcome} & {\bf Test outcome} \\ \hline
+    Change password with a new one of long length (13 characters) & 
+    Change password successful
+        & HTTP 200; \textcolor{green}{Test passed} \\ \hline
+    Change password with a new one of short length (4 characters) & 
+    Change of password successful
+        & HTTP 422; \textcolor{red}{Test failed}: password not changed \\ \hline
+    Change password providing wrong old password & 
+    Change password fails
+        & HTTP 422; \textcolor{green}{Test passed} \\ \hline
+    \caption{Third Party Settings Management suite}
+\end{longtable}
+
+
+\subsection{Individual - Settings Management}
+\begin{itemize}
+    \item {\bf R31)} The system must allow the user to change his/her personal info.
+    \item {\bf R32)} The system must allow the individual to change his/her password.
+ password.
+\end{itemize}
+
+\begin{longtable}{| p{3 cm} | p{4 cm} | p{4 cm} |} \hline
+    {\bf Test description} & {\bf Desired outcome} & {\bf Test outcome} \\ \hline
+    Change password with a new one of long length (13 characters) & 
+    Change of password successful
+        & HTTP 200; \textcolor{green}{Test passed} \\ \hline
+    Change password with a new one of short length (4 characters) & 
+    Change of password successful
+        & HTTP 422; \textcolor{red}{Test failed}: password not changed \\ \hline
+    Change password providing wrong old password & 
+    Change of password fails
+        & HTTP 422; \textcolor{green}{Test passed} \\ \hline
+    Change coordinates with valid new ones & 
+    Change of coordinates successful
+        & HTTP 200; \textcolor{green}{Test passed} \\ \hline
+    Change coordinates with invalid new ones (e.g. latitude 300)& 
+    Change of coordinates not successful
+        & HTTP 200; \textcolor{red}{Test failed}: the request should not go through \\ \hline
+    \caption{Individual Settings Management suite}
+\end{longtable}
+
+\noindent
+You can insert invalid values for Latitude and Longitude, but this means creating garbage data.
+
+
+\subsection{Individual - AutomatedSOS Service}
+\begin{itemize}
+    \item {\bf R25)} The AutomatedSOS service must be enabled.
+    \item {\bf R18)} When the health status values go below the threshold, the system must send an SOS within 5 seconds.
+    \item {\bf R26)} The system must allow the user to enable/disable the AutomatedSOS service at any time.
+ password.
+\end{itemize}
+
+\begin{longtable}{| p{3 cm} | p{4 cm} | p{4 cm} |} \hline
+    {\bf Test description} & {\bf Desired outcome} & {\bf Test outcome} \\ \hline
+    Enable automatedSOS & 
+    Enable automatedSOS successful
+        & HTTP 200; \textcolor{green}{Test passed} \\ \hline
+    Disable automatedSOS & 
+    Disable automatedSOS successful
+        & HTTP 200; \textcolor{green}{Test passed} \\ \hline
+    \caption{Individual AutomatedSOS Service suite}
+\end{longtable}
+
+\subsection{Individual - Data Acquisition}
+\begin{itemize}
+    \item {\bf R27)} The system must be able to store data retrieved from registered users.
+    \item {\bf R35)}  The system must be able to aggregate data based on the location of the individuals residence.
+ password.
+\end{itemize}
+
+\begin{longtable}{| p{3 cm} | p{4 cm} | p{4 cm} |} \hline
+    {\bf Test description} & {\bf Desired outcome} & {\bf Test outcome} \\ \hline
+    Try to access health data of a group of individuals that does not match the location filters specified in the anonymous request. & 
+    No data are shown
+        & No data are shown \textcolor{green}{Test passed} \\ \hline
+    \caption{Data acquisition suite}
+\end{longtable}
+
+\subsection{Data Management}
+\begin{itemize}
+    \item {\bf R11)} The system is optimized to send the data received from the mobile application to the third parties as soon as possible.
+    \item {\bf R9)} The third party is not allowed to access the users data until he/she accepts the request.
+    \item {\bf R2)} The system must be able to provide to the third party the location and the health status of individuals.
+    \item {\bf R1)} The users must have given the consensus to the treatment of their information to the third party.
+ password.
+\end{itemize}
+
+\noindent
+Notice that the following tests have been performed on dummy data given that, as expressed in the ITD, R3 and R35 have not been implemented yet. Also the last part of R2 has not been implemented and as a consequence location data will not be considered during the tests.
+
+\begin{longtable}{| p{3 cm} | p{4 cm} | p{4 cm} |} \hline
+    {\bf Test description} & {\bf Desired outcome} & {\bf Test outcome} \\ \hline
+    Try to access health data of a pending single request & Data are unavailable &
+    Function unavailable; \textcolor{green}{Test passed}\\ \hline
+    Try to access health data of an accepted single request & 
+    Data are available
+        & Health data are shown after pressing the "watch" button in the notification Tab;  \textcolor{green}{Test  passed}\\ \hline
+    Try to access health data of a refused single request & 
+    Data are unavailable
+        & Function unavailable; \textcolor{green}{Test passed} \\ \hline
+    The users must have given the consensus to the treatment of their information to third parties  & 
+    User consensus is explicitly asked
+        & User consensus is given in the agreement accepted during the signup phase and indirectly when accepting a request  \textcolor{green}{Test passed}\\ \hline
+    \caption{Data Management suite}
+\end{longtable}
+
+\subsection{Individual Requests}
+\begin{itemize}
+    \item {\bf R28)} The user must have an active subscription to stop it.
+    \item {\bf R29)} The system must be able to allow the user to unsubscribe to the third party and to stop the transmission of his/her data.
+    \item {\bf R7)} The system must be able to forward the requests from the third party to the user;
+    \item {\bf R8)} The system must save the preference of the user.
+    \item {\bf R37)} The system must allow the third party to make individual requests.
+\end{itemize}
+
+\begin{longtable}{| p{3 cm} | p{4 cm} | p{4 cm} |} \hline
+    {\bf Test description} & {\bf Desired outcome} & {\bf Test outcome} \\ \hline
+    Send individual request with invalid fiscal code & 
+    Send individual request fails
+        & HTTP 409; \textcolor{green}{Test passed}\\ \hline
+    Send individual request with valid fiscal code & 
+    Individual request sent and received by individual user
+        & HTTP 200; \textcolor{green}{Test passed}\\ \hline
+    Accept individual request from third party & 
+    Individual request accepted and third party is notified
+        & HTTP 200; \textcolor{green}{Test passed} \\ \hline
+    Refuse individual request from third party & 
+    Individual request refused and third party is notified
+        & HTTP 200; \textcolor{green}{Test passed}\\ \hline
+    Send individual request to individual who has refused a previous request sent by the same third party & 
+    Individual request is sent
+        & HTTP 409; \textcolor{red}{Test failed}: the request is not sent and the user is prompted to check if the fiscal code is correct\\ \hline
+    Send individual request to individual who has refused a previous request sent by a different third party & 
+    Individual request is sent
+        & HTTP 200; \textcolor{green}{Test passed}\\ \hline
+    \caption{Individual Requests suite}
+\end{longtable}
+\noindent
+Even though we could not import real data from a device for an Individual account, we were able to test Individual requests using randomly created data through an ad hoc button in the Individual home page.
+
+%% user that has refused a request is still in the list of registered users
+
+\subsection{Anonymous Requests}
+\begin{itemize}
+    \item {\bf R5)} The system must be able to provide to the third party the health status of individuals in an anonymous way.
+    \item {\bf R4)}The groups must be composed at least by 1000 individuals.
+    \item {\bf R6)} The system must be able to aggregate the data of the individuals, as requested by the third party.
+    \item {\bf R36)} The system must allow the third party to make group requests.
+\end{itemize}
+
+\noindent
+Note that to make the testing phase more accessible the developers added a command line parameter, {\it  "DanonymousSize"}, to set the minimum number of individuals needed to satisfy an anonymous request. While performing the tests this parameter has been set to 2.
+
+\begin{longtable}{| p{3 cm} | p{4 cm} | p{4 cm} |} \hline
+    {\bf Test description} & {\bf Desired outcome} & {\bf Test outcome} \\ \hline
+    Send anonymous request with valid filters & 
+    Anonymous request sent successfully
+        & HTTP 200; \textcolor{green}{Test passed} \\ \hline
+    Send anonymous request with invalid filters (negative values for age, values out of range for latitude and longitude) & 
+    Anonymous request sent successfully
+        & HTTP 200; \textcolor{red}{Test failed}: user should be informed of malformed filters\\ \hline
+   Try to access health data related to an anonymous request concerning more than the number of individuals specified in the params & 
+Health data shown successfully
+& Health data are shown after pressing the "watch"   button in the notification Tab; \textcolor{green}{Test passed}\\ \hline
+Try to access health data related to an anonymous request concerning less than the number of individuals specified in the params & 
+Health data shown successfully
+& No health data are shown  \textcolor{green}{Test passed}\\ \hline
+    \caption{Anonymous Requests suite}
+\end{longtable}
+\noindent
+R4 is not satisfied by the system. We have verified this after sending an anonymous request with malformed filters (successfully sent as mentioned in the above table). The response contained an empty data set, thus showing that the check on the 1000 individuals was not performed correctly.
+
+\pagebreak
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%Summary%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Summary}
+Overall we reckon that the application works as expected and the implemented requirements and goals have been almost completely reached. In the remaining part of this section we will highlight some of the features that we think should be improved as well as what are the good elements of the project.
+\newline
+\newline
+\noindent
+When performing testing, we noted that most fields (except for VAT and Fiscal Code) do not have explicit range limits. A name, for instance, may have a length that ranges from 1 to the maximum value possible for that data type. This may cause security issues for the company (database attacks). \newline
+We did not count this as an error, since the documentation does not specify constraints on those variable, and implementing them is quite straightforward. \newline
+On the other hand, a password has hidden constraints, since it cannot be of arbitrary length, but the user is not informed of this and it's not written in the documentation.
+\newline
+\newline
+\noindent
+The user interface is simple, responsive and presents its functionalities in an ordered and structured manner. 
+However, even though  the  outcome of some tests is  correct,  we  found  the  lack  of  feedback  confusing, as when you press a button sending a HTTP request you don't know if it was successful or if it failed (and why).
+\newline
+\newline
+\noindent
+As a final note we wanted to highlight the fact that the developing team has been always available to provide answer and support to any question.
+
+
+
+
+\end{document}
