@@ -29,7 +29,7 @@ class D4HBound {
     func getParams() -> Parameters {
         var params: Parameters = [:]
         if upperbound != nil {
-            params["upperBound"] = upperbound
+            params["upperbound"] = upperbound
         }
         if lowerbound != nil {
             params["lowerbound"] = lowerbound

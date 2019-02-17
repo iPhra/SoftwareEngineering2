@@ -175,10 +175,10 @@ class GRequest: UIViewController {
         let weightBound = D4HBound(upperbound: Double(Int(maxWeightSlider.value)), lowerbound: Double(Int(minWeightSlider.value)))
         bounds.append(weightBound)
         
-        let heartRateBound = D4HBound(upperbound: Double(Int(minBPMTextField.text!) ?? 0) , lowerbound: Double(Int(maxBPMTextField.text!) ?? 1000) )
+        let heartRateBound = D4HBound(upperbound: Double(Int(minBPMTextField.text!) ?? 1000) , lowerbound: Double(Int(maxBPMTextField.text!) ?? 0) )
         bounds.append(heartRateBound)
         
-        let sleepingHoursBound = D4HBound(upperbound: Double(Int(minSleepingHoursTextField.text!) ?? 0), lowerbound: Double(Int(minSleepingHoursTextField.text!) ?? 1000))
+        let sleepingHoursBound = D4HBound(upperbound: Double(Int(minSleepingHoursTextField.text!) ?? 1000), lowerbound: Double(Int(minSleepingHoursTextField.text!) ?? 0))
         bounds.append(sleepingHoursBound)
         
         return bounds
