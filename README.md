@@ -13,6 +13,8 @@ This course aims at providing students with the knowledge and skills needed to c
 
 This repository refers to the 2019 edition of the course, whose main topic is a system for collecting and sharing health data. The final delivery is an iOS application that interacts with Apple's HealthKit to collect data, forwards it to a server deployed on Amazon's EC2 for processing, and then stores it on Amazon's RDS.
 
+Please use Data4Help.pdf as an overview to the project.
+
 The project has been developed with the following technologies:
 - Backend: Node.js
 - Database: PostgreSQL
