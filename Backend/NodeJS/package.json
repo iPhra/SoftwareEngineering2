@@ -22,7 +22,7 @@
     "jsonwebtoken": "^8.4.0",
     "lodash": "latest",
     "morgan": "~1.9.0",
-    "nodemailer": "^4.7.0",
+    "nodemailer": "^6.4.16",
     "pg": "^7.7.1",
     "pug": "2.0.0-beta11",
     "winston": "^3.1.0"
